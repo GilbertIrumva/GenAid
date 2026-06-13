@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand blue (from logo #0088ff) */
+  --color-primary-50: #e6f4ff;
+  --color-primary-100: #cce9ff;
+  --color-primary-200: #99d3ff;
+  --color-primary-300: #66bdff;
+  --color-primary-400: #33a7ff;
+  --color-primary-500: #0088ff;
+  --color-primary-600: #0070d9;
+  --color-primary-700: #0058b3;
+  --color-primary-800: #00428c;
+  --color-primary-900: #002d66;
+
+  /* Warm accent for CTAs (donate, etc.) */
+  --color-accent-400: #fbbf24;
+  --color-accent-500: #f59e0b;
+  --color-accent-600: #d97706;
+
+  /* Neutrals */
+  --color-surface: #ffffff;
+  --color-bg: #f7fbff;
+  --color-ink: #0b1729;
+  --color-muted: #5b6776;
+  --color-line: #e3eaf2;
+
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Fraunces", "Plus Jakarta Sans", Georgia, serif;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Offset for sticky 73px header so anchor jumps don't hide under it. */
+  scroll-padding-top: 80px;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  font-feature-settings: "ss01" on, "ss02" on;
+}
