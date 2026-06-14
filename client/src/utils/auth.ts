@@ -42,14 +42,14 @@ export async function signup(
   name: string,
   email: string,
   password: string
-): Promise<AuthUser> {
-  const { data } = await api.post<{ token: string; user: AuthUser }>(
+): Promise<{ message: string }> {
+  // The server intentionally does NOT return a token on register: new accounts
+  // must be approved by an admin before they can sign in.
+  const { data } = await api.post<{ ok: boolean; message: string }>(
     "/auth/register",
     { name, email, password }
   );
-  localStorage.setItem(TOKEN_KEY, data.token);
-  localStorage.setItem(USER_KEY, JSON.stringify(data.user));
-  return data.user;
+  return { message: data.message };
 }
 
 export function logout() {

@@ -1,20 +1,21 @@
 import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
+import { env } from "../config/env";
 import { User } from "../models/User";
 import { AuthRequest } from "../middleware/auth";
 
 function signToken(id: string): string {
-  const secret = process.env.JWT_SECRET;
-  if (!secret) throw new Error("JWT_SECRET not configured");
-  return jwt.sign({ id }, secret, { expiresIn: "7d" });
+  return jwt.sign({ id }, env.JWT_SECRET, { expiresIn: "7d" });
 }
 
 export async function register(req: Request, res: Response) {
   try {
-    const { name, email, password } = req.body;
-    if (!name || !email || !password) {
-      return res.status(400).json({ error: "name, email and password are required" });
-    }
+    // Body has already been validated and sanitized by validateBody(registerSchema).
+    const { name, email, password } = req.body as {
+      name: string;
+      email: string;
+      password: string;
+    };
 
     const existing = await User.findOne({ email });
     if (existing) {
@@ -22,14 +23,21 @@ export async function register(req: Request, res: Response) {
     }
 
     // Never trust `role` from the request body. New self-signups always
-    // become editors. Promotion to admin must happen manually in the DB
-    // (or via a future admin-only endpoint).
-    const user = await User.create({ name, email, password, role: "editor" });
-    const token = signToken(String(user._id));
+    // land as unapproved editors. Promotion to admin or flipping `approved`
+    // must happen manually in the DB (or via a future admin-only endpoint).
+    await User.create({
+      name,
+      email,
+      password,
+      role: "editor",
+      approved: false,
+    });
 
+    // Do NOT return a token here — the account is pending approval.
     res.status(201).json({
-      token,
-      user: { id: user._id, name: user.name, email: user.email, role: user.role },
+      ok: true,
+      message:
+        "Account created. An administrator must approve it before you can sign in.",
     });
   } catch (err) {
     res.status(400).json({ error: (err as Error).message });
@@ -38,14 +46,19 @@ export async function register(req: Request, res: Response) {
 
 export async function login(req: Request, res: Response) {
   try {
-    const { email, password } = req.body;
-    if (!email || !password) {
-      return res.status(400).json({ error: "email and password are required" });
-    }
+    const { email, password } = req.body as { email: string; password: string };
 
     const user = await User.findOne({ email });
-    if (!user || !(await user.comparePassword(password))) {
+    // Use a constant-time-ish path regardless of whether the user exists.
+    const valid = user ? await user.comparePassword(password) : false;
+    if (!user || !valid) {
       return res.status(401).json({ error: "Invalid credentials" });
+    }
+
+    if (!user.approved) {
+      return res
+        .status(403)
+        .json({ error: "Account pending administrator approval" });
     }
 
     const token = signToken(String(user._id));

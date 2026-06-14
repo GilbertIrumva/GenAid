@@ -10,6 +10,7 @@ import { causes } from "@/data/causes";
 import { team } from "@/data/team";
 import { testimonials } from "@/data/testimonials";
 import { SITE } from "@/data/site";
+import { useSEO } from "@/utils/useSEO";
 
 interface ApiVideo {
   _id: string;
@@ -54,6 +55,20 @@ const impactStats = [
   { value: "12", label: "Active programs" },
 ];
 
+interface ApiImpactMetric {
+  _id: string;
+  title: string;
+  value: number;
+  icon: string;
+  order: number;
+}
+
+function formatMetric(n: number): string {
+  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(n % 1_000_000 === 0 ? 0 : 1)}M+`;
+  if (n >= 1_000) return `${(n / 1_000).toFixed(n % 1_000 === 0 ? 0 : 1)}k+`;
+  return n.toLocaleString();
+}
+
 const values = [
   {
     title: "Refugee-led, community-driven",
@@ -86,10 +101,33 @@ async function submitContact(payload: {
 }
 
 export default function Home() {
+  useSEO({
+    title: "Generation Aid — Refugee-led innovation in Kakuma",
+    description:
+      "Generation Aid equips youth in Kakuma refugee camp with digital skills, entrepreneurship training and pathways to employment.",
+  });
+
   const { data: apiVideos = [] } = useQuery({
     queryKey: ["public", "videos"],
     queryFn: fetchVideos,
   });
+
+  const { data: apiMetrics = [] } = useQuery<ApiImpactMetric[]>({
+    queryKey: ["public", "impact"],
+    queryFn: async () => {
+      const { data } = await api.get<ApiImpactMetric[]>("/impact");
+      return data;
+    },
+  });
+
+  const displayedStats =
+    apiMetrics.length > 0
+      ? apiMetrics
+          .slice()
+          .sort((a, b) => a.order - b.order)
+          .slice(0, 4)
+          .map((m) => ({ value: formatMetric(m.value), label: m.title }))
+      : impactStats;
 
   const [contact, setContact] = useState({ name: "", email: "", message: "" });
   const [contactState, setContactState] = useState<
@@ -136,17 +174,30 @@ export default function Home() {
   return (
     <>
       {/* ============ HERO ============ */}
-      <Section id="home" className="!pt-20 !pb-12">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          <div>
-            <span className="inline-block rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
-              Refugee-led innovation in Kakuma
-            </span>
-            <h1 className="mt-4 text-4xl font-bold leading-tight text-ink sm:text-5xl lg:text-6xl">
+      <section
+        id="home"
+        className="relative isolate flex min-h-[80vh] items-center overflow-hidden"
+      >
+        {/* Background image */}
+        <SmartImage
+          src="/home.jpg"
+          alt="Refugee youth in a Generation Aid training session in Kakuma"
+          fallbackLabel=""
+          className="absolute inset-0 -z-20 h-full w-full object-cover"
+        />
+        {/* Dark gradient overlay so white text stays readable */}
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 bg-gradient-to-r from-ink/80 via-ink/60 to-ink/30"
+        />
+
+        <div className="mx-auto w-full max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
+          <div className="max-w-2xl text-white">
+            <h1 className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
               Building futures, <br />
-              <span className="text-primary-500">one opportunity</span> at a time.
+              <span className="text-primary-400">one opportunity</span> at a time.
             </h1>
-            <p className="mt-6 max-w-xl text-lg text-muted">
+            <p className="mt-6 max-w-xl text-lg text-white/90">
               Generation Aid equips youth in Kakuma refugee camp with digital skills,
               entrepreneurship training, and pathways to employment &mdash; so they can
               shape their own future.
@@ -162,28 +213,14 @@ export default function Home() {
                 href={SITE.donateUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-md border border-primary-500 px-5 py-3 text-sm font-semibold text-primary-600 transition hover:bg-primary-50"
+                className="rounded-md border border-white/70 bg-white/10 px-5 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/20"
               >
                 Donate
               </a>
             </div>
           </div>
-          <div className="relative">
-            <div className="aspect-[4/3] w-full overflow-hidden rounded-3xl bg-primary-100">
-              <SmartImage
-                src="https://generationaid.org/wp-content/uploads/2025/03/1737728618417-1-1024x768.jpeg"
-                alt="Refugee youth in a Generation Aid training session in Kakuma"
-                fallbackLabel="Photo coming soon"
-                className="h-full w-full object-cover"
-              />
-            </div>
-            <div className="absolute -bottom-6 -left-6 hidden rounded-2xl bg-surface p-4 shadow-lg sm:block">
-              <p className="font-display text-3xl font-bold text-primary-500">2,400+</p>
-              <p className="text-xs uppercase tracking-wider text-muted">Lives impacted</p>
-            </div>
-          </div>
         </div>
-      </Section>
+      </section>
 
       {/* ============ ABOUT ============ */}
       <Section id="about" className="bg-surface">
@@ -385,7 +422,7 @@ export default function Home() {
         </div>
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {impactStats.map((m) => (
+          {displayedStats.map((m) => (
             <div
               key={m.label}
               className="rounded-2xl border border-line bg-bg p-6 text-center"

@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import Section from "@/components/Section";
+import SmartImage from "@/components/SmartImage";
+import { useSEO } from "@/utils/useSEO";
+import { SITE } from "@/data/site";
 
 const objectives = [
   "Empower refugees with knowledge and skills — education, digital skills, livelihood and entrepreneurship — so they can earn a sustainable income through remote work opportunities.",
@@ -46,29 +49,45 @@ const values = [
 ];
 
 export default function About() {
+  useSEO({
+    title: "About",
+    description: "Generation Aid is a youth refugee-led organisation transforming education into employment in Kakuma since 2019.",
+  });
   return (
     <>
       {/* HERO */}
-      <Section className="!pt-20 !pb-12">
-        <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-block rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
-            Where it all began
-          </span>
-          <h1 className="mt-4 text-4xl font-bold leading-tight text-ink sm:text-5xl">
-            Who are we?
-          </h1>
-          <p className="mt-6 text-lg text-muted">
-            Generation Aid is a youth Refugee-Led Organisation (RLO) dedicated to
-            transforming lives through vocational skills, EdTech, education, livelihood
-            and entrepreneurship programs &mdash; creating educational and employment
-            pathways for refugee communities and helping them integrate into the global
-            economy.
-          </p>
+      <section className="relative isolate flex min-h-[55vh] items-center overflow-hidden">
+        {/* TODO: replace with real Generation Aid photo */}
+        <SmartImage
+          src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?w=1600&q=80"
+          alt="Generation Aid community gathered together"
+          fallbackLabel=""
+          className="absolute inset-0 -z-20 h-full w-full object-cover"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 bg-gradient-to-r from-ink/85 via-ink/65 to-ink/40"
+        />
+        <div className="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+          <div className="max-w-2xl text-white">
+            <span className="inline-block rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-300 backdrop-blur">
+              Where it all began
+            </span>
+            <h1 className="mt-4 text-4xl font-bold leading-tight sm:text-5xl">
+              Who are we?
+            </h1>
+            <p className="mt-5 max-w-xl text-lg text-white/85">
+              Generation Aid is a youth Refugee-Led Organisation (RLO) dedicated to
+              transforming lives through vocational skills, EdTech, education,
+              livelihood and entrepreneurship programs &mdash; creating educational
+              and employment pathways for refugee communities.
+            </p>
+          </div>
         </div>
-      </Section>
+      </section>
 
       {/* INTRO STORY */}
-      <Section className="!pt-0">
+      <Section>
         <div className="mx-auto max-w-4xl space-y-5 text-base leading-relaxed text-muted">
           <p>
             We are transforming education-into-employment systems &mdash; preparing,
@@ -266,12 +285,14 @@ export default function About() {
             <p className="mt-2 text-sm text-primary-100">
               Your support fuels our mission. Donate today and make a lasting impact.
             </p>
-            <button
-              type="button"
+            <a
+              href={SITE.donateUrl}
+              target="_blank"
+              rel="noreferrer"
               className="mt-5 inline-block rounded-md bg-accent-500 px-4 py-2 text-sm font-semibold text-ink hover:bg-accent-400"
             >
               Donate now
-            </button>
+            </a>
           </div>
           <div className="rounded-2xl bg-white/10 p-6 backdrop-blur">
             <h3 className="font-display text-lg font-semibold">Sponsor</h3>

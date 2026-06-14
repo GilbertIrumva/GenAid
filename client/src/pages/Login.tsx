@@ -9,32 +9,42 @@ type Mode = "signin" | "signup";
 export default function Login() {
   const navigate = useNavigate();
   const location = useLocation();
-  const redirectTo = (location.state as { from?: string } | null)?.from ?? "/admin/videos";
+  const redirectTo = (location.state as { from?: string } | null)?.from ?? "/admin";
 
   const [mode, setMode] = useState<Mode>("signin");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const [info, setInfo] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
   function switchMode(next: Mode) {
     setMode(next);
     setError(null);
+    setInfo(null);
     setPassword("");
   }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError(null);
+    setInfo(null);
     setLoading(true);
     try {
       if (mode === "signin") {
         await login(email, password);
+        navigate(redirectTo, { replace: true });
       } else {
-        await signup(name, email, password);
+        const { message } = await signup(name, email, password);
+        // New accounts are pending; tell the user and flip to sign-in.
+        setInfo(
+          message ||
+            "Account created. An admin must approve it before you can sign in."
+        );
+        setMode("signin");
+        setPassword("");
       }
-      navigate(redirectTo, { replace: true });
     } catch (err) {
       const e = err as { response?: { data?: { error?: string } }; message?: string };
       const fallback = mode === "signin" ? "Sign in failed" : "Sign up failed";
@@ -131,6 +141,11 @@ export default function Login() {
 
           {error && (
             <p className="rounded-md bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p>
+          )}
+          {info && (
+            <p className="rounded-md bg-green-50 px-3 py-2 text-sm text-green-700">
+              {info}
+            </p>
           )}
 
           <button

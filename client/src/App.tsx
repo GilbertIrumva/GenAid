@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import PublicLayout from "./layouts/PublicLayout";
 import AdminLayout from "./layouts/AdminLayout";
 import RequireAuth from "./components/RequireAuth";
+import RequireRole from "./components/RequireRole";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Programs from "./pages/Programs";
@@ -16,7 +17,15 @@ import Jobs from "./pages/Jobs";
 import Volunteer from "./pages/Volunteer";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
+import AdminDashboard from "./pages/AdminDashboard";
+import AdminMessages from "./pages/AdminMessages";
 import AdminVideos from "./pages/AdminVideos";
+import AdminPhotos from "./pages/AdminPhotos";
+import AdminPrograms from "./pages/AdminPrograms";
+import AdminImpact from "./pages/AdminImpact";
+import AdminStories from "./pages/AdminStories";
+import AdminPartners from "./pages/AdminPartners";
+import AdminUsers from "./pages/AdminUsers";
 import NotFound from "./pages/NotFound";
 
 export default function App() {
@@ -47,7 +56,22 @@ export default function App() {
           </RequireAuth>
         }
       >
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/admin/messages" element={<AdminMessages />} />
         <Route path="/admin/videos" element={<AdminVideos />} />
+        <Route path="/admin/photos" element={<AdminPhotos />} />
+        <Route path="/admin/programs" element={<AdminPrograms />} />
+        <Route path="/admin/impact" element={<AdminImpact />} />
+        <Route path="/admin/stories" element={<AdminStories />} />
+        <Route path="/admin/partners" element={<AdminPartners />} />
+        <Route
+          path="/admin/users"
+          element={
+            <RequireRole role="admin">
+              <AdminUsers />
+            </RequireRole>
+          }
+        />
       </Route>
     </Routes>
   );

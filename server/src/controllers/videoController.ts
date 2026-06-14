@@ -67,3 +67,45 @@ export async function deleteVideo(req: Request, res: Response) {
     res.status(500).json({ error: (err as Error).message });
   }
 }
+
+export async function updateVideo(req: Request, res: Response) {
+  try {
+    const { title, description } = req.body as {
+      title?: string;
+      description?: string;
+    };
+
+    const patch: { title?: string; description?: string } = {};
+    if (typeof title === "string") {
+      const t = title.trim();
+      if (t.length < 2 || t.length > 160) {
+        return res
+          .status(400)
+          .json({ error: "title must be 2-160 characters" });
+      }
+      patch.title = t;
+    }
+    if (typeof description === "string") {
+      const d = description.trim();
+      if (d.length < 5 || d.length > 5000) {
+        return res
+          .status(400)
+          .json({ error: "description must be 5-5000 characters" });
+      }
+      patch.description = d;
+    }
+
+    if (Object.keys(patch).length === 0) {
+      return res.status(400).json({ error: "Nothing to update" });
+    }
+
+    const video = await Video.findByIdAndUpdate(req.params.id, patch, {
+      new: true,
+      runValidators: true,
+    });
+    if (!video) return res.status(404).json({ error: "Video not found" });
+    res.json(video);
+  } catch (err) {
+    res.status(400).json({ error: (err as Error).message });
+  }
+}

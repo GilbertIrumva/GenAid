@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
+import { env } from "../config/env";
 import { User, IUser } from "../models/User";
 
 export interface AuthRequest extends Request {
@@ -14,15 +15,14 @@ export async function protect(req: AuthRequest, res: Response, next: NextFunctio
     }
 
     const token = header.split(" ")[1];
-    const secret = process.env.JWT_SECRET;
-    if (!secret) {
-      return res.status(500).json({ error: "JWT_SECRET not configured" });
+    if (!token) {
+      return res.status(401).json({ error: "Not authorized: missing token" });
     }
 
-    const decoded = jwt.verify(token, secret) as { id: string };
+    const decoded = jwt.verify(token, env.JWT_SECRET) as { id: string };
     const user = await User.findById(decoded.id).select("-password");
-    if (!user) {
-      return res.status(401).json({ error: "Not authorized: user not found" });
+    if (!user || !user.approved) {
+      return res.status(401).json({ error: "Not authorized" });
     }
 
     req.user = user;
@@ -32,6 +32,10 @@ export async function protect(req: AuthRequest, res: Response, next: NextFunctio
   }
 }
 
+/**
+ * Restrict a route to specific roles. Use AFTER `protect`:
+ *   router.get("/secret", protect, requireRole("admin"), handler);
+ */
 export function requireRole(...roles: Array<"admin" | "editor">) {
   return (req: AuthRequest, res: Response, next: NextFunction) => {
     if (!req.user || !roles.includes(req.user.role)) {

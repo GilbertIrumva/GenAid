@@ -1,42 +1,47 @@
 import { useState } from "react";
-import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { cn } from "@/utils/cn";
 import { SITE } from "@/data/site";
 import { isAuthenticated } from "@/utils/auth";
 
+/**
+ * Top-level routes shown in the primary nav. We deliberately use real routes
+ * (not anchor-scroll within the home page) so each section gets its own URL,
+ * crawlable by search engines and shareable as a link.
+ */
 const navItems = [
-  { id: "home", label: "Home" },
-  { id: "about", label: "About" },
-  { id: "programs", label: "Programs" },
-  { id: "causes", label: "Causes" },
-  { id: "impact", label: "Impact" },
-  { id: "team", label: "Team" },
-  { id: "stories", label: "Stories" },
-  { id: "videos", label: "Videos" },
-  { id: "contact", label: "Contact" },
+  { to: "/", label: "Home", end: true },
+  { to: "/about", label: "About" },
+  { to: "/programs", label: "Programs" },
+  { to: "/impact", label: "Impact" },
+  { to: "/stories", label: "Stories" },
+  { to: "/blog", label: "Blog" },
+  { to: "/partners", label: "Partners" },
+  { to: "/contact", label: "Contact" },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const location = useLocation();
-  const navigate = useNavigate();
-  const onHome = location.pathname === "/";
   const loggedIn = isAuthenticated();
-  const portalHref = loggedIn ? "/admin/videos" : "/login";
+  const portalHref = loggedIn ? "/admin" : "/login";
   const portalLabel = loggedIn ? "Admin" : "Staff portal";
 
-  function handleNavClick(id: string) {
-    setOpen(false);
-    if (onHome) {
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-    } else {
-      navigate("/#" + id);
-    }
-  }
+  const linkClass = (isActive: boolean) =>
+    cn(
+      "text-sm font-medium transition-colors hover:text-primary-600",
+      isActive ? "text-primary-600" : "text-ink/80"
+    );
 
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-surface/90 backdrop-blur">
+      {/* Skip-to-content link for keyboard and screen-reader users. */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-primary-500 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
+      >
+        Skip to content
+      </a>
+
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <Link to="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
           <img
@@ -47,40 +52,21 @@ export default function Navbar() {
           <span className="font-display text-xl font-semibold text-ink">Generation Aid</span>
         </Link>
 
-        <nav className="hidden items-center gap-6 lg:flex">
+        <nav aria-label="Main" className="hidden items-center gap-6 lg:flex">
           {navItems.map((item) => (
-            <button
-              key={item.id}
-              type="button"
-              onClick={() => handleNavClick(item.id)}
-              className="text-sm font-medium text-ink/80 transition-colors hover:text-primary-600"
+            <NavLink
+              key={item.to}
+              to={item.to}
+              end={item.end}
+              className={({ isActive }) => linkClass(isActive)}
             >
               {item.label}
-            </button>
+            </NavLink>
           ))}
-          <NavLink
-            to="/blog"
-            className={({ isActive }) =>
-              cn(
-                "text-sm font-medium transition-colors hover:text-primary-600",
-                isActive ? "text-primary-600" : "text-ink/80"
-              )
-            }
-          >
-            Blog
-          </NavLink>
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <NavLink
-            to={portalHref}
-            className={({ isActive }) =>
-              cn(
-                "text-sm font-medium transition-colors hover:text-primary-600",
-                isActive ? "text-primary-600" : "text-ink/80"
-              )
-            }
-          >
+          <NavLink to={portalHref} className={({ isActive }) => linkClass(isActive)}>
             {portalLabel}
           </NavLink>
           <a
@@ -96,6 +82,8 @@ export default function Navbar() {
         <button
           type="button"
           aria-label="Toggle menu"
+          aria-expanded={open}
+          aria-controls="mobile-nav"
           className="rounded-md p-2 text-ink lg:hidden"
           onClick={() => setOpen((o) => !o)}
         >
@@ -110,39 +98,39 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <nav className="border-t border-line bg-surface lg:hidden">
+        <nav
+          id="mobile-nav"
+          aria-label="Mobile"
+          className="border-t border-line bg-surface lg:hidden"
+        >
           <div className="space-y-1 px-4 py-3">
             {navItems.map((item) => (
-              <button
-                key={item.id}
-                type="button"
-                onClick={() => handleNavClick(item.id)}
-                className={cn(
-                  "block w-full rounded-md px-3 py-2 text-left text-sm font-medium text-ink/80 hover:bg-bg"
-                )}
+              <NavLink
+                key={item.to}
+                to={item.to}
+                end={item.end}
+                onClick={() => setOpen(false)}
+                className={({ isActive }) =>
+                  cn(
+                    "block rounded-md px-3 py-2 text-sm font-medium",
+                    isActive
+                      ? "bg-primary-50 text-primary-600"
+                      : "text-ink/80 hover:bg-bg"
+                  )
+                }
               >
                 {item.label}
-              </button>
+              </NavLink>
             ))}
-            <NavLink
-              to="/blog"
-              onClick={() => setOpen(false)}
-              className={({ isActive }) =>
-                cn(
-                  "block rounded-md px-3 py-2 text-sm font-medium",
-                  isActive ? "bg-primary-50 text-primary-600" : "text-ink/80 hover:bg-bg"
-                )
-              }
-            >
-              Blog
-            </NavLink>
             <NavLink
               to={portalHref}
               onClick={() => setOpen(false)}
               className={({ isActive }) =>
                 cn(
                   "block rounded-md px-3 py-2 text-sm font-medium",
-                  isActive ? "bg-primary-50 text-primary-600" : "text-ink/80 hover:bg-bg"
+                  isActive
+                    ? "bg-primary-50 text-primary-600"
+                    : "text-ink/80 hover:bg-bg"
                 )
               }
             >

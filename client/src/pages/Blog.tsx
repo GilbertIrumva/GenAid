@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import Section from "@/components/Section";
+import SmartImage from "@/components/SmartImage";
 import { posts } from "@/data/posts";
 import { videos as fallbackVideos } from "@/data/videos";
 import { api } from "@/api/client";
+import { useSEO } from "@/utils/useSEO";
 
 const recent = posts.slice(0, 3);
 
@@ -16,45 +18,85 @@ interface ApiVideo {
   createdAt: string;
 }
 
+interface ApiPhoto {
+  _id: string;
+  title: string;
+  description: string;
+  imageUrl: string;
+  createdAt: string;
+}
+
 async function fetchVideos(): Promise<ApiVideo[]> {
   const { data } = await api.get<ApiVideo[]>("/videos");
   return data;
 }
 
+async function fetchPhotos(): Promise<ApiPhoto[]> {
+  const { data } = await api.get<ApiPhoto[]>("/photos");
+  return data;
+}
+
 export default function Blog() {
+  useSEO({
+    title: "Blog",
+    description: "News, project launches and reflections from Generation Aid in Kakuma.",
+  });
   const { data: apiVideos = [] } = useQuery({
     queryKey: ["public", "videos"],
     queryFn: fetchVideos,
+  });
+  const { data: photos = [] } = useQuery({
+    queryKey: ["public", "photos"],
+    queryFn: fetchPhotos,
   });
 
   return (
     <>
       {/* HERO */}
-      <Section className="!pt-20 !pb-12">
-        <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-block rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
-            Our Blog
-          </span>
-          <h1 className="mt-4 text-4xl font-bold leading-tight text-ink sm:text-5xl">
-            News &amp; Updates
-          </h1>
-          <p className="mt-6 text-lg text-muted">
-            Stories from the field, project launches and reflections from the
-            Generation Aid team in Kakuma.
-          </p>
-          <div className="mt-6">
-            <a
-              href="#videos"
-              className="inline-flex items-center gap-2 rounded-md border border-primary-500 px-4 py-2 text-sm font-semibold text-primary-600 hover:bg-primary-50"
-            >
-              Watch our videos &darr;
-            </a>
+      <section className="relative isolate flex min-h-[55vh] items-center overflow-hidden">
+        {/* TODO: replace with real Generation Aid photo */}
+        <SmartImage
+          src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1600&q=80"
+          alt="Laptop and notebook representing our blog"
+          fallbackLabel=""
+          className="absolute inset-0 -z-20 h-full w-full object-cover"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 bg-gradient-to-r from-ink/85 via-ink/65 to-ink/40"
+        />
+        <div className="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+          <div className="max-w-2xl text-white">
+            <span className="inline-block rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-300 backdrop-blur">
+              Our Blog
+            </span>
+            <h1 className="mt-4 text-4xl font-bold leading-tight sm:text-5xl">
+              News &amp; Updates
+            </h1>
+            <p className="mt-5 max-w-xl text-lg text-white/85">
+              Stories from the field, project launches and reflections from the
+              Generation Aid team in Kakuma.
+            </p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <a
+                href="#gallery"
+                className="rounded-md bg-primary-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary-600"
+              >
+                See our photos &darr;
+              </a>
+              <a
+                href="#videos"
+                className="rounded-md border border-white/40 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur hover:bg-white/20"
+              >
+                Watch our videos &darr;
+              </a>
+            </div>
           </div>
         </div>
-      </Section>
+      </section>
 
       {/* MAIN GRID */}
-      <Section className="!pt-0">
+      <Section>
         <div className="grid gap-10 lg:grid-cols-[2fr_1fr]">
           {/* Posts list */}
           <div className="space-y-8">
@@ -137,6 +179,57 @@ export default function Blog() {
           </aside>
         </div>
       </Section>
+
+      {/* PHOTO GALLERY */}
+      {photos.length > 0 && (
+        <Section id="gallery" className="!pt-0">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="inline-block rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
+              Gallery
+            </span>
+            <h2 className="mt-4 text-3xl font-bold text-ink sm:text-4xl">
+              Moments from the field
+            </h2>
+            <p className="mt-3 text-muted">
+              Photos uploaded by our team — workshops, graduations, daily life in
+              the Kakuma hub.
+            </p>
+          </div>
+
+          <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {photos.map((p) => (
+              <li
+                key={p._id}
+                className="overflow-hidden rounded-2xl border border-line bg-surface transition hover:border-primary-300 hover:shadow-md"
+              >
+                <div className="aspect-video w-full overflow-hidden bg-bg">
+                  <img
+                    src={p.imageUrl}
+                    alt={p.title}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+                  />
+                </div>
+                <div className="p-5">
+                  <h3 className="font-display text-lg font-semibold text-ink">
+                    {p.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">
+                    {p.description}
+                  </p>
+                  <p className="mt-3 text-xs font-semibold uppercase tracking-wider text-primary-600">
+                    {new Date(p.createdAt).toLocaleDateString(undefined, {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </Section>
+      )}
 
       {/* VIDEOS */}
       <Section id="videos" className="bg-surface">

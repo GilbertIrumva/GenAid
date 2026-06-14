@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Section from "@/components/Section";
 import SmartImage from "@/components/SmartImage";
+import { useSEO } from "@/utils/useSEO";
 
 const subPrograms = [
   {
@@ -39,28 +40,45 @@ const programDetails = [
 ];
 
 export default function Programs() {
+  useSEO({
+    title: "Programs",
+    description: "Digital skills, tailoring, English and entrepreneurship programs designed for refugee youth in Kakuma.",
+  });
   return (
     <>
       {/* HERO */}
-      <Section className="!pt-20 !pb-12">
-        <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-block rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
-            Digital Livelihood
-          </span>
-          <h1 className="mt-4 text-4xl font-bold leading-tight text-ink sm:text-5xl">
-            Education &amp; Capacity Building
-          </h1>
-          <p className="mt-6 text-lg text-muted">
-            Vocational and education programs in ICT, tailoring &amp; dressmaking craft
-            training, English language skills, and other innovative education that plays
-            a critical role in the economic and livelihood development of refugee youth
-            in the Kakuma refugee camp.
-          </p>
+      <section className="relative isolate flex min-h-[55vh] items-center overflow-hidden">
+        {/* TODO: replace with real Generation Aid photo */}
+        <SmartImage
+          src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=1600&q=80"
+          alt="Learner in a vocational training session"
+          fallbackLabel=""
+          className="absolute inset-0 -z-20 h-full w-full object-cover"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 bg-gradient-to-r from-ink/85 via-ink/65 to-ink/40"
+        />
+        <div className="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+          <div className="max-w-2xl text-white">
+            <span className="inline-block rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-300 backdrop-blur">
+              Digital Livelihood
+            </span>
+            <h1 className="mt-4 text-4xl font-bold leading-tight sm:text-5xl">
+              Education &amp; Capacity Building
+            </h1>
+            <p className="mt-5 max-w-xl text-lg text-white/85">
+              Vocational and education programs in ICT, tailoring &amp; dressmaking
+              craft training, English language skills, and other innovative education
+              that plays a critical role in the economic and livelihood development of
+              refugee youth in the Kakuma refugee camp.
+            </p>
+          </div>
         </div>
-      </Section>
+      </section>
 
       {/* OVERVIEW CARDS */}
-      <Section className="!pt-0">
+      <Section>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {subPrograms.map((p) => (
             <article

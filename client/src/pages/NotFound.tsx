@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import Section from "@/components/Section";
+import { useSEO } from "@/utils/useSEO";
 
 export default function NotFound() {
+  useSEO({ title: "Page not found", description: "The page you are looking for does not exist." });
   return (
     <Section>
       <div className="mx-auto max-w-md text-center">

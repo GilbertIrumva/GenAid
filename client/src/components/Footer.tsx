@@ -29,11 +29,10 @@ export default function Footer() {
             Explore
           </h4>
           <ul className="mt-3 space-y-2 text-sm">
-            <li><Link to="/#about" className="text-muted hover:text-primary-600">About</Link></li>
-            <li><Link to="/#programs" className="text-muted hover:text-primary-600">Programs</Link></li>
-            <li><Link to="/#impact" className="text-muted hover:text-primary-600">Impact</Link></li>
-            <li><Link to="/#stories" className="text-muted hover:text-primary-600">Stories</Link></li>
-            <li><Link to="/#videos" className="text-muted hover:text-primary-600">Videos</Link></li>
+            <li><Link to="/about" className="text-muted hover:text-primary-600">About</Link></li>
+            <li><Link to="/programs" className="text-muted hover:text-primary-600">Programs</Link></li>
+            <li><Link to="/impact" className="text-muted hover:text-primary-600">Impact</Link></li>
+            <li><Link to="/stories" className="text-muted hover:text-primary-600">Stories</Link></li>
             <li><Link to="/blog" className="text-muted hover:text-primary-600">Blog</Link></li>
           </ul>
         </div>
@@ -53,9 +52,8 @@ export default function Footer() {
                 Donate via GlobalGiving
               </a>
             </li>
-            <li><Link to="/#causes" className="text-muted hover:text-primary-600">Causes to support</Link></li>
-            <li><Link to="/#contact" className="text-muted hover:text-primary-600">Volunteer</Link></li>
-            <li><Link to="/#contact" className="text-muted hover:text-primary-600">Contact</Link></li>
+            <li><Link to="/partners" className="text-muted hover:text-primary-600">Partners</Link></li>
+            <li><Link to="/contact" className="text-muted hover:text-primary-600">Contact</Link></li>
           </ul>
         </div>
 
@@ -92,7 +90,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Generation Aid. All rights reserved.
           </span>
           <Link
-            to={loggedIn ? "/admin/videos" : "/login"}
+            to={loggedIn ? "/admin" : "/login"}
             className="font-semibold text-muted hover:text-primary-600"
           >
             {loggedIn ? "Admin dashboard" : "Staff portal"}
