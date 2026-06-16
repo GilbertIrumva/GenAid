@@ -16,7 +16,9 @@ services:
     region: oregon
     plan: free
     rootDir: server
-    buildCommand: npm install && npm run build
+    # Include devDependencies (typescript, @types/*) so the build can compile.
+    # NODE_ENV=production would otherwise cause npm to skip them.
+    buildCommand: npm ci --include=dev && npm run build
     startCommand: npm start
     healthCheckPath: /api/health
     autoDeploy: true
