@@ -5,31 +5,66 @@ import { User } from "../models/User";
 import { ContactMessage } from "../models/ContactMessage";
 import { Video } from "../models/Video";
 import { Photo } from "../models/Photo";
+import { Post } from "../models/Post";
+import { Story } from "../models/Story";
+import { Program } from "../models/Program";
+import { Partner } from "../models/Partner";
+import { ImpactMetric } from "../models/ImpactMetric";
 import { AuthRequest } from "../middleware/auth";
 
 /* ------------------------------------------------------------------ stats */
 
 export async function getDashboardStats(_req: AuthRequest, res: Response) {
   try {
+    // Compute a simple month-over-month message trend so the dashboard can
+    // show whether engagement is rising or falling without a full analytics
+    // pipeline.
+    const now = new Date();
+    const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+    const sixtyDaysAgo = new Date(now.getTime() - 60 * 24 * 60 * 60 * 1000);
+
     const [
       totalUsers,
       pendingUsers,
       totalMessages,
       unreadMessages,
+      messagesLast30,
+      messagesPrev30,
       totalVideos,
       totalPhotos,
+      totalPosts,
+      draftPosts,
+      totalStories,
+      totalPrograms,
+      totalPartners,
+      impactMetrics,
       recentMessages,
+      draftPostsList,
     ] = await Promise.all([
       User.countDocuments({}),
       User.countDocuments({ approved: false }),
       ContactMessage.countDocuments({}),
       ContactMessage.countDocuments({ read: false }),
+      ContactMessage.countDocuments({ createdAt: { $gte: thirtyDaysAgo } }),
+      ContactMessage.countDocuments({
+        createdAt: { $gte: sixtyDaysAgo, $lt: thirtyDaysAgo },
+      }),
       Video.countDocuments({}),
       Photo.countDocuments({}),
+      Post.countDocuments({}),
+      Post.countDocuments({ published: false }),
+      Story.countDocuments({}),
+      Program.countDocuments({}),
+      Partner.countDocuments({}),
+      ImpactMetric.find().sort({ order: 1 }).limit(6),
       ContactMessage.find()
         .sort({ createdAt: -1 })
         .limit(5)
         .select("name email subject createdAt read"),
+      Post.find({ published: false })
+        .sort({ updatedAt: -1, createdAt: -1 })
+        .limit(5)
+        .select("title slug author updatedAt createdAt"),
     ]);
 
     res.json({
@@ -37,9 +72,18 @@ export async function getDashboardStats(_req: AuthRequest, res: Response) {
       pendingUsers,
       totalMessages,
       unreadMessages,
+      messagesLast30,
+      messagesPrev30,
       totalVideos,
       totalPhotos,
+      totalPosts,
+      draftPosts,
+      totalStories,
+      totalPrograms,
+      totalPartners,
+      impactMetrics,
       recentMessages,
+      draftPostsList,
     });
   } catch (err) {
     res.status(500).json({ error: (err as Error).message });

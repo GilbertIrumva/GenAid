@@ -1,13 +1,68 @@
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import { useTranslation } from "react-i18next";
 import Section from "@/components/Section";
 import SmartImage from "@/components/SmartImage";
-import { posts } from "@/data/posts";
+import { posts as seedPosts, type BlogPost as SeedPost } from "@/data/posts";
 import { videos as fallbackVideos } from "@/data/videos";
+
 import { api } from "@/api/client";
 import { useSEO } from "@/utils/useSEO";
 
-const recent = posts.slice(0, 3);
+interface ApiPost {
+  _id: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  author: string;
+  cover: string;
+  slug?: string;
+  published: boolean;
+  publishedAt: string;
+  createdAt: string;
+}
+
+/** Shape consumed by the page — both API and seed posts are mapped to this. */
+interface DisplayPost {
+  slug: string;
+  title: string;
+  date: string;
+  author: string;
+  excerpt: string;
+  cover: string | undefined;
+}
+
+function formatDate(input: string): string {
+  const d = new Date(input);
+  if (Number.isNaN(d.getTime())) return input;
+  return d.toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+
+function fromApi(p: ApiPost): DisplayPost {
+  return {
+    slug: p.slug ?? p._id,
+    title: p.title,
+    date: formatDate(p.publishedAt ?? p.createdAt),
+    author: p.author,
+    excerpt: p.excerpt,
+    cover: p.cover || undefined,
+  };
+}
+
+function fromSeed(p: SeedPost): DisplayPost {
+  return {
+    slug: p.slug,
+    title: p.title,
+    date: p.date,
+    author: p.author,
+    excerpt: p.excerpt,
+    cover: p.cover,
+  };
+}
 
 interface ApiVideo {
   _id: string;
@@ -26,6 +81,11 @@ interface ApiPhoto {
   createdAt: string;
 }
 
+async function fetchPosts(): Promise<ApiPost[]> {
+  const { data } = await api.get<ApiPost[]>("/posts");
+  return data;
+}
+
 async function fetchVideos(): Promise<ApiVideo[]> {
   const { data } = await api.get<ApiVideo[]>("/videos");
   return data;
@@ -37,9 +97,14 @@ async function fetchPhotos(): Promise<ApiPhoto[]> {
 }
 
 export default function Blog() {
+  const { t } = useTranslation();
   useSEO({
     title: "Blog",
     description: "News, project launches and reflections from Generation Aid in Kakuma.",
+  });
+  const { data: apiPosts = [] } = useQuery({
+    queryKey: ["public", "posts"],
+    queryFn: fetchPosts,
   });
   const { data: apiVideos = [] } = useQuery({
     queryKey: ["public", "videos"],
@@ -49,6 +114,11 @@ export default function Blog() {
     queryKey: ["public", "photos"],
     queryFn: fetchPhotos,
   });
+
+  // API wins when present, otherwise seed keeps the page populated.
+  const posts: DisplayPost[] =
+    apiPosts.length > 0 ? apiPosts.map(fromApi) : seedPosts.map(fromSeed);
+  const recent = posts.slice(0, 3);
 
   return (
     <>
@@ -68,27 +138,26 @@ export default function Blog() {
         <div className="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="max-w-2xl text-white">
             <span className="inline-block rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-300 backdrop-blur">
-              Our Blog
+              {t("blog.hero.eyebrowAlt")}
             </span>
             <h1 className="mt-4 text-4xl font-bold leading-tight sm:text-5xl">
-              News &amp; Updates
+              {t("blog.hero.titleAlt")}
             </h1>
             <p className="mt-5 max-w-xl text-lg text-white/85">
-              Stories from the field, project launches and reflections from the
-              Generation Aid team in Kakuma.
+              {t("blog.hero.subtitleAlt")}
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <a
                 href="#gallery"
                 className="rounded-md bg-primary-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary-600"
               >
-                See our photos &darr;
+                {t("blog.seePhotos")}
               </a>
               <a
                 href="#videos"
                 className="rounded-md border border-white/40 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur hover:bg-white/20"
               >
-                Watch our videos &darr;
+                {t("blog.watchVideos")}
               </a>
             </div>
           </div>
@@ -110,7 +179,7 @@ export default function Blog() {
                     {p.date}
                   </time>
                   <span>&middot;</span>
-                  <span>by {p.author}</span>
+                  <span>{t("blog.byAuthor", { author: p.author })}</span>
                 </div>
                 <h2 className="mt-3 font-display text-xl font-semibold text-ink sm:text-2xl">
                   <Link to={`/blog/${p.slug}`} className="hover:text-primary-600">
@@ -124,7 +193,7 @@ export default function Blog() {
                   to={`/blog/${p.slug}`}
                   className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-primary-600 hover:underline"
                 >
-                  Read more &rarr;
+                  {t("common.readMoreArrow")}
                 </Link>
               </article>
             ))}
@@ -133,21 +202,15 @@ export default function Blog() {
           {/* Sidebar */}
           <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
             <div className="rounded-2xl border border-line bg-surface p-6">
-              <h3 className="font-display text-lg font-semibold text-ink">About us</h3>
+              <h3 className="font-display text-lg font-semibold text-ink">{t("blog.aboutUsTitle")}</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted">
-                Over the years, GAID has worked tirelessly to provide a range of
-                services to displaced communities &mdash; including entrepreneurship,
-                vocational education and digital skills. We became a legal
-                Community-Based Organisation in 2019 and later transitioned to the name
-                Generation Aid, before receiving our Government certificate in 2025.
-                The name reflects our ambition of serving refugees and displaced youth
-                within the Kakuma refugee camp.
+                {t("blog.aboutUsBody")}
               </p>
             </div>
 
             <div className="rounded-2xl border border-line bg-surface p-6">
               <h3 className="font-display text-lg font-semibold text-ink">
-                Recent articles
+                {t("blog.recentArticles")}
               </h3>
               <ul className="mt-4 space-y-4">
                 {recent.map((r) => (
@@ -168,11 +231,11 @@ export default function Blog() {
 
             <div className="rounded-2xl border border-line bg-surface p-6">
               <h3 className="font-display text-lg font-semibold text-ink">
-                Post categories
+                {t("blog.postCategories")}
               </h3>
               <ul className="mt-4 space-y-2 text-sm">
                 <li>
-                  <span className="text-muted">Uncategorized</span>
+                  <span className="text-muted">{t("blog.uncategorized")}</span>
                 </li>
               </ul>
             </div>
@@ -185,15 +248,12 @@ export default function Blog() {
         <Section id="gallery" className="!pt-0">
           <div className="mx-auto max-w-3xl text-center">
             <span className="inline-block rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
-              Gallery
+              {t("blog.gallery")}
             </span>
             <h2 className="mt-4 text-3xl font-bold text-ink sm:text-4xl">
-              Moments from the field
+              {t("blog.momentsField")}
             </h2>
-            <p className="mt-3 text-muted">
-              Photos uploaded by our team — workshops, graduations, daily life in
-              the Kakuma hub.
-            </p>
+            <p className="mt-3 text-muted">{t("blog.momentsSubtitle")}</p>
           </div>
 
           <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -235,15 +295,12 @@ export default function Blog() {
       <Section id="videos" className="bg-surface">
         <div className="mx-auto max-w-3xl text-center">
           <span className="inline-block rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
-            Watch
+            {t("blog.videosEyebrow")}
           </span>
           <h2 className="mt-4 text-3xl font-bold text-ink sm:text-4xl">
-            Videos &amp; stories on screen
+            {t("blog.videosTitle")}
           </h2>
-          <p className="mt-3 text-muted">
-            Walkthroughs of our hub, graduate testimonials, behind-the-scenes from
-            workshops, and updates from the field.
-          </p>
+          <p className="mt-3 text-muted">{t("blog.videosSubtitle")}</p>
         </div>
 
         <div className="mt-10 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -305,7 +362,7 @@ export default function Blog() {
                             <path d="M8 5v14l11-7z" />
                           </svg>
                           <p className="mt-2 text-xs font-semibold uppercase tracking-wider">
-                            Coming soon
+                            {t("common.comingSoon")}
                           </p>
                         </div>
                       </div>
@@ -331,7 +388,7 @@ export default function Blog() {
             to="/contact"
             className="inline-block rounded-md bg-primary-500 px-5 py-3 text-sm font-semibold text-white hover:bg-primary-600"
           >
-            Have a story? Get in touch
+            {t("blog.haveAStory")}
           </Link>
         </div>
       </Section>

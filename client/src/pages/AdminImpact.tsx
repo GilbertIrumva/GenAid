@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { api } from "@/api/client";
 import { cn } from "@/utils/cn";
@@ -28,6 +29,7 @@ function getErrorMessage(err: unknown, fallback: string): string {
 
 export default function AdminImpact() {
   const qc = useQueryClient();
+  const { t } = useTranslation();
   const [editingId, setEditingId] = useState<string | null>(null);
   const [form, setForm] = useState<MetricForm>(EMPTY);
   const [search, setSearch] = useState("");
@@ -73,11 +75,11 @@ export default function AdminImpact() {
       return data;
     },
     onSuccess: () => {
-      toast.success("Metric created");
+      toast.success(t("admin.impact.created"));
       setForm(EMPTY);
       invalidate();
     },
-    onError: (err) => toast.error(getErrorMessage(err, "Create failed")),
+    onError: (err) => toast.error(getErrorMessage(err, t("admin.impact.createFailed"))),
   });
 
   const update = useMutation({
@@ -86,11 +88,11 @@ export default function AdminImpact() {
       return data;
     },
     onSuccess: () => {
-      toast.success("Metric updated");
+      toast.success(t("admin.impact.updated"));
       setEditingId(null);
       invalidate();
     },
-    onError: (err) => toast.error(getErrorMessage(err, "Update failed")),
+    onError: (err) => toast.error(getErrorMessage(err, t("admin.impact.updateFailed"))),
   });
 
   const remove = useMutation({
@@ -98,11 +100,11 @@ export default function AdminImpact() {
       await api.delete(`/impact/${id}`);
     },
     onSuccess: () => {
-      toast.success("Metric deleted");
+      toast.success(t("admin.impact.deleted"));
       if (editingId) setEditingId(null);
       invalidate();
     },
-    onError: (err) => toast.error(getErrorMessage(err, "Delete failed")),
+    onError: (err) => toast.error(getErrorMessage(err, t("admin.impact.deleteFailed"))),
   });
 
   function handleSubmit(e: React.FormEvent) {
@@ -117,10 +119,9 @@ export default function AdminImpact() {
   return (
     <div className="space-y-10">
       <header>
-        <h1 className="font-display text-3xl font-bold text-ink">Impact metrics</h1>
+        <h1 className="font-display text-3xl font-bold text-ink">{t("admin.impact.title")}</h1>
         <p className="mt-1 text-sm text-muted">
-          Numbers shown on the Home and Impact pages. Use whole numbers — they are
-          formatted automatically (1500 → 1.5k+).
+          {t("admin.impact.pageSubtitle")}
         </p>
       </header>
 
@@ -128,7 +129,7 @@ export default function AdminImpact() {
       <section className="rounded-2xl border border-line bg-surface p-6 shadow-sm">
         <div className="flex items-center justify-between">
           <h2 className="font-display text-lg font-semibold text-ink">
-            {isEditing ? "Edit metric" : "Add a new metric"}
+            {isEditing ? t("admin.impact.editMetric") : t("admin.impact.addNew")}
           </h2>
           {isEditing && (
             <button
@@ -136,27 +137,27 @@ export default function AdminImpact() {
               onClick={() => setEditingId(null)}
               className="text-xs font-semibold text-muted hover:text-ink"
             >
-              Cancel edit
+              {t("admin.impact.cancelEdit")}
             </button>
           )}
         </div>
 
         <form onSubmit={handleSubmit} className="mt-5 grid gap-5 md:grid-cols-2">
           <label className="md:col-span-2">
-            <span className="block text-sm font-semibold text-ink">Label</span>
+            <span className="block text-sm font-semibold text-ink">{t("admin.common.label")}</span>
             <input
               required
               minLength={2}
               maxLength={120}
               value={form.title}
               onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))}
-              placeholder="e.g. Youth trained"
+              placeholder={t("admin.impact.labelPlaceholder")}
               className="mt-1 w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-ink outline-none focus:border-primary-500"
             />
           </label>
 
           <label>
-            <span className="block text-sm font-semibold text-ink">Value</span>
+            <span className="block text-sm font-semibold text-ink">{t("admin.impact.value")}</span>
             <input
               type="number"
               required
@@ -171,7 +172,7 @@ export default function AdminImpact() {
 
           <label>
             <span className="block text-sm font-semibold text-ink">
-              Display order
+              {t("admin.impact.displayOrder")}
             </span>
             <input
               type="number"
@@ -185,13 +186,13 @@ export default function AdminImpact() {
 
           <label className="md:col-span-2">
             <span className="block text-sm font-semibold text-ink">
-              Icon <span className="font-normal text-muted">(emoji, optional)</span>
+              {t("admin.impact.icon")} <span className="font-normal text-muted">({t("admin.common.optional")})</span>
             </span>
             <input
               maxLength={8}
               value={form.icon}
               onChange={(e) => setForm((f) => ({ ...f, icon: e.target.value }))}
-              placeholder="🎓"
+              placeholder={t("admin.impact.iconPlaceholder")}
               className="mt-1 w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-ink outline-none focus:border-primary-500"
             />
           </label>
@@ -203,10 +204,10 @@ export default function AdminImpact() {
               className="rounded-md bg-primary-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary-600 disabled:opacity-60"
             >
               {isPending
-                ? "Saving…"
+                ? t("admin.common.saving")
                 : isEditing
-                ? "Save changes"
-                : "Create metric"}
+                ? t("admin.impact.saveChanges")
+                : t("admin.impact.createMetric")}
             </button>
           </div>
         </form>
@@ -216,13 +217,13 @@ export default function AdminImpact() {
       <section>
         <div className="flex flex-wrap items-end justify-between gap-3">
           <h2 className="font-display text-lg font-semibold text-ink">
-            Existing metrics
+            {t("admin.impact.existing")}
           </h2>
           <input
             type="search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search…"
+            placeholder={t("admin.impact.searchPlaceholder")}
             className="w-full rounded-md border border-line bg-surface px-3 py-2 text-sm outline-none focus:border-primary-500 sm:w-64"
           />
         </div>
@@ -237,7 +238,7 @@ export default function AdminImpact() {
             ))}
           </div>
         ) : filtered.length === 0 ? (
-          <p className="mt-4 text-sm text-muted">No metrics yet.</p>
+          <p className="mt-4 text-sm text-muted">{t("admin.impact.noMetrics")}</p>
         ) : (
           <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {filtered
@@ -260,24 +261,24 @@ export default function AdminImpact() {
                     {m.value.toLocaleString()}
                   </div>
                   <p className="mt-1 text-sm font-medium text-ink">{m.title}</p>
-                  <p className="mt-1 text-xs text-muted">Order: {m.order}</p>
+                  <p className="mt-1 text-xs text-muted">{t("admin.impact.orderLabel", { order: m.order })}</p>
                   <div className="mt-4 flex items-center justify-between gap-2 text-xs">
                     <button
                       type="button"
                       onClick={() => setEditingId(m._id)}
                       className="rounded-md border border-line bg-surface px-3 py-1 font-semibold text-ink hover:border-primary-300 hover:text-primary-600"
                     >
-                      Edit
+                      {t("admin.common.edit")}
                     </button>
                     <button
                       type="button"
                       onClick={() => {
-                        if (confirm(`Delete "${m.title}"?`)) remove.mutate(m._id);
+                        if (confirm(t("admin.impact.confirmDelete", { title: m.title }))) remove.mutate(m._id);
                       }}
                       disabled={remove.isPending}
                       className="font-semibold text-red-600 hover:text-red-700"
                     >
-                      Delete
+                      {t("admin.common.delete")}
                     </button>
                   </div>
                 </li>

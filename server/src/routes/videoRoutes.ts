@@ -7,12 +7,11 @@ import {
 } from "../controllers/videoController";
 import { protect } from "../middleware/auth";
 import { uploadVideo } from "../middleware/upload";
-import { verifyUploadedFiles } from "../middleware/verifyUpload";
 
 const router = Router();
 
 router.get("/", getVideos);
-router.post("/", protect, uploadVideo, verifyUploadedFiles, createVideo);
+router.post("/", protect, uploadVideo, createVideo);
 router.patch("/:id", protect, updateVideo);
 router.delete("/:id", protect, deleteVideo);
 

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { useTranslation } from "react-i18next";
 import Section from "@/components/Section";
 import SmartImage from "@/components/SmartImage";
 import { api } from "@/api/client";
@@ -101,6 +102,7 @@ async function submitContact(payload: {
 }
 
 export default function Home() {
+  const { t } = useTranslation();
   useSEO({
     title: "Generation Aid — Refugee-led innovation in Kakuma",
     description:
@@ -135,11 +137,6 @@ export default function Home() {
   >("idle");
   const [contactError, setContactError] = useState<string | null>(null);
 
-  const [newsletterEmail, setNewsletterEmail] = useState("");
-  const [newsletterState, setNewsletterState] = useState<
-    "idle" | "sending" | "sent" | "error"
-  >("idle");
-
   async function handleContactSubmit(e: React.FormEvent) {
     e.preventDefault();
     setContactState("sending");
@@ -152,22 +149,6 @@ export default function Home() {
       const e = err as { response?: { data?: { error?: string } }; message?: string };
       setContactError(e.response?.data?.error ?? e.message ?? "Could not send message");
       setContactState("error");
-    }
-  }
-
-  async function handleNewsletterSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setNewsletterState("sending");
-    try {
-      await submitContact({
-        name: "Newsletter subscriber",
-        email: newsletterEmail,
-        message: "Newsletter signup from website",
-      });
-      setNewsletterState("sent");
-      setNewsletterEmail("");
-    } catch {
-      setNewsletterState("error");
     }
   }
 
@@ -193,21 +174,23 @@ export default function Home() {
 
         <div className="mx-auto w-full max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
           <div className="max-w-2xl text-white">
-            <h1 className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
-              Building futures, <br />
-              <span className="text-primary-400">one opportunity</span> at a time.
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary-300">
+              {t("home.hero.eyebrow")}
+            </p>
+            <h1 className="mt-4 text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+              {t("home.hero.titleStart")} <br />
+              <span className="text-primary-400">{t("home.hero.titleHighlight")}</span>{" "}
+              {t("home.hero.titleEnd")}
             </h1>
             <p className="mt-6 max-w-xl text-lg text-white/90">
-              Generation Aid equips youth in Kakuma refugee camp with digital skills,
-              entrepreneurship training, and pathways to employment &mdash; so they can
-              shape their own future.
+              {t("home.hero.subtitle")}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href="#programs"
                 className="rounded-md bg-primary-500 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-primary-600"
               >
-                Explore programs
+                {t("home.hero.ctaPrograms")}
               </a>
               <a
                 href={SITE.donateUrl}
@@ -215,7 +198,7 @@ export default function Home() {
                 rel="noreferrer"
                 className="rounded-md border border-white/70 bg-white/10 px-5 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/20"
               >
-                Donate
+                {t("home.hero.ctaDonate")}
               </a>
             </div>
           </div>
@@ -224,41 +207,42 @@ export default function Home() {
 
       {/* ============ ABOUT ============ */}
       <Section id="about" className="bg-surface">
-        <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-block rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
-            About us
-          </span>
-          <h2 className="mt-4 text-3xl font-bold text-ink sm:text-4xl">
-            A youth refugee-led organisation
-          </h2>
-          <p className="mt-5 text-lg text-muted">
-            Generation Aid is a youth Refugee-Led Organisation (RLO) born in 2019 in
-            Kakuma, transforming education-into-employment systems so refugees can
-            integrate into the global economy.
-          </p>
+        <div className="grid items-center gap-10 lg:grid-cols-2">
+          {/* TODO: replace with real Generation Aid photo */}
+          <div className="order-2 overflow-hidden rounded-3xl shadow-lg lg:order-1">
+            <SmartImage
+              src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1200&q=80"
+              alt="Generation Aid staff and youth gathered together"
+              fallbackLabel=""
+              className="aspect-[4/5] w-full object-cover"
+            />
+          </div>
+          <div className="order-1 lg:order-2">
+            <span className="inline-block rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
+              {t("home.about.eyebrow")}
+            </span>
+            <h2 className="mt-4 text-3xl font-bold text-ink sm:text-4xl">
+              {t("home.about.title")}
+            </h2>
+            <p className="mt-5 text-lg text-muted">{t("home.about.body1")}</p>
+            <p className="mt-4 text-muted">{t("home.about.body2")}</p>
+          </div>
         </div>
 
         <div className="mx-auto mt-12 grid max-w-6xl gap-6 md:grid-cols-2">
           <div className="rounded-2xl border border-line bg-bg p-8">
             <span className="text-xs font-semibold uppercase tracking-wider text-primary-600">
-              Our Vision
+              {t("home.about.ourVision")}
             </span>
-            <h3 className="mt-3 text-2xl font-bold text-ink">A future without barriers</h3>
-            <p className="mt-4 text-muted">
-              Empowering neglected refugees with innovative programs that reduce
-              unemployment and increase income &mdash; so they can become active members
-              of the global community and economy.
-            </p>
+            <h3 className="mt-3 text-2xl font-bold text-ink">{t("home.about.visionTitle")}</h3>
+            <p className="mt-4 text-muted">{t("home.about.visionBody")}</p>
           </div>
           <div className="rounded-2xl border border-line bg-bg p-8">
             <span className="text-xs font-semibold uppercase tracking-wider text-primary-600">
-              Our Mission
+              {t("home.about.ourMission")}
             </span>
-            <h3 className="mt-3 text-2xl font-bold text-ink">Skills that change lives</h3>
-            <p className="mt-4 text-muted">
-              To transform refugees&apos; lives by providing vocational skills and
-              EdTech programs that create educational and employment pathways.
-            </p>
+            <h3 className="mt-3 text-2xl font-bold text-ink">{t("home.about.missionTitle")}</h3>
+            <p className="mt-4 text-muted">{t("home.about.missionBody")}</p>
           </div>
         </div>
 
@@ -278,7 +262,7 @@ export default function Home() {
             to="/about"
             className="inline-block text-sm font-semibold text-primary-600 hover:underline"
           >
-            Read our full story &rarr;
+            {t("home.about.readFullStory")}
           </Link>
         </div>
       </Section>
@@ -288,18 +272,18 @@ export default function Home() {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <span className="inline-block rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
-              Our work
+              {t("home.programs.eyebrow")}
             </span>
             <h2 className="mt-3 text-3xl font-bold text-ink sm:text-4xl">
-              Featured programs
+              {t("home.programs.title")}
             </h2>
-            <p className="mt-2 text-muted">A snapshot of what we run on the ground.</p>
+            <p className="mt-2 text-muted">{t("home.programs.subtitle")}</p>
           </div>
           <Link
             to="/programs"
             className="text-sm font-semibold text-primary-600 hover:underline"
           >
-            View all programs &rarr;
+            {t("home.programs.viewAll")}
           </Link>
         </div>
 
@@ -335,14 +319,12 @@ export default function Home() {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <span className="inline-block rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
-              Urgent causes
+              {t("home.causes.eyebrow")}
             </span>
             <h2 className="mt-3 text-3xl font-bold text-ink sm:text-4xl">
-              Causes that need your support
+              {t("home.causes.title")}
             </h2>
-            <p className="mt-2 text-muted">
-              Every contribution moves a specific project forward.
-            </p>
+            <p className="mt-2 text-muted">{t("home.causes.subtitle")}</p>
           </div>
           <a
             href={SITE.donateUrl}
@@ -350,38 +332,43 @@ export default function Home() {
             rel="noreferrer"
             className="text-sm font-semibold text-primary-600 hover:underline"
           >
-            Donate via GlobalGiving &rarr;
+            {t("home.causes.donateLink")}
           </a>
         </div>
 
         <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {causes.map((c) => {
             const pct = Math.min(100, Math.round((c.raised / c.goal) * 100));
+            const title = t(`home.causes.items.${c.key}.title`, c.title);
+            const description = t(
+              `home.causes.items.${c.key}.description`,
+              c.description,
+            );
             return (
               <article
-                key={c.title}
+                key={c.key}
                 className="overflow-hidden rounded-2xl border border-line bg-bg transition hover:border-primary-300 hover:shadow-md"
               >
                 <div className="aspect-video w-full overflow-hidden bg-primary-50">
                   <SmartImage
                     src={c.image}
-                    alt={c.title}
+                    alt={title}
                     className="h-full w-full object-cover"
                   />
                 </div>
                 <div className="p-5">
                   <h3 className="font-display text-lg font-semibold text-ink">
-                    {c.title}
+                    {title}
                   </h3>
-                  <p className="mt-2 text-sm text-muted">{c.description}</p>
+                  <p className="mt-2 text-sm text-muted">{description}</p>
 
                   <div className="mt-5">
                     <div className="flex items-center justify-between text-xs font-semibold">
                       <span className="text-primary-600">
-                        ${c.raised.toLocaleString()} raised
+                        ${c.raised.toLocaleString()} {t("home.causes.raised")}
                       </span>
                       <span className="text-muted">
-                        of ${c.goal.toLocaleString()}
+                        {t("home.causes.of")} ${c.goal.toLocaleString()}
                       </span>
                     </div>
                     <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-primary-50">
@@ -398,7 +385,7 @@ export default function Home() {
                     rel="noreferrer"
                     className="mt-5 inline-block rounded-md bg-primary-500 px-4 py-2 text-sm font-semibold text-white hover:bg-primary-600"
                   >
-                    Donate to this cause
+                    {t("home.causes.donateToCause")}
                   </a>
                 </div>
               </article>
@@ -411,14 +398,12 @@ export default function Home() {
       <Section id="impact" className="bg-surface">
         <div className="text-center">
           <span className="inline-block rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
-            Impact
+            {t("home.impact.eyebrow")}
           </span>
           <h2 className="mt-3 text-3xl font-bold text-ink sm:text-4xl">
-            Our impact in numbers
+            {t("home.impact.title")}
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-muted">
-            Real change, measured by the people we&apos;ve walked alongside.
-          </p>
+          <p className="mx-auto mt-3 max-w-2xl text-muted">{t("home.impact.subtitle")}</p>
         </div>
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -452,50 +437,53 @@ export default function Home() {
       <Section id="team">
         <div className="mx-auto max-w-3xl text-center">
           <span className="inline-block rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
-            Our team
+            {t("home.team.eyebrow")}
           </span>
           <h2 className="mt-3 text-3xl font-bold text-ink sm:text-4xl">
-            The people behind Generation Aid
+            {t("home.team.title")}
           </h2>
-          <p className="mt-3 text-muted">
-            A refugee-led team of passionate, transparent and accountable changemakers.
-          </p>
+          <p className="mt-3 text-muted">{t("home.team.subtitle")}</p>
         </div>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {team.map((m) => (
-            <article
-              key={m.name}
-              className="overflow-hidden rounded-2xl border border-line bg-surface text-center shadow-sm"
-            >
-              <div className="aspect-square w-full overflow-hidden bg-primary-50">
-                <SmartImage
-                  src={m.image}
-                  alt={m.name}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <div className="p-5">
-                <h3 className="font-display text-lg font-semibold text-ink">
-                  {m.name}
-                </h3>
-                <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
-                  {m.role}
-                </p>
-                <p className="mt-3 text-sm text-muted">{m.bio}</p>
-                {m.linkedin && (
-                  <a
-                    href={m.linkedin}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-4 inline-block text-xs font-semibold text-primary-600 hover:underline"
-                  >
-                    Connect on LinkedIn &rarr;
-                  </a>
-                )}
-              </div>
-            </article>
-          ))}
+          {team.map((m) => {
+            const name = t(`home.team.items.${m.key}.name`, m.name);
+            const role = t(`home.team.items.${m.key}.role`, m.role);
+            const bio = t(`home.team.items.${m.key}.bio`, m.bio);
+            return (
+              <article
+                key={m.key}
+                className="overflow-hidden rounded-2xl border border-line bg-surface text-center shadow-sm"
+              >
+                <div className="aspect-square w-full overflow-hidden bg-primary-50">
+                  <SmartImage
+                    src={m.image}
+                    alt={name}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="p-5">
+                  <h3 className="font-display text-lg font-semibold text-ink">
+                    {name}
+                  </h3>
+                  <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
+                    {role}
+                  </p>
+                  <p className="mt-3 text-sm text-muted">{bio}</p>
+                  {m.linkedin && (
+                    <a
+                      href={m.linkedin}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-4 inline-block text-xs font-semibold text-primary-600 hover:underline"
+                    >
+                      {t("home.team.connectLinkedIn")}
+                    </a>
+                  )}
+                </div>
+              </article>
+            );
+          })}
         </div>
       </Section>
 
@@ -504,15 +492,15 @@ export default function Home() {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <span className="inline-block rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
-              Stories
+              {t("home.stories.eyebrow")}
             </span>
             <h2 className="mt-3 text-3xl font-bold text-ink sm:text-4xl">
-              Latest from the blog
+              {t("home.stories.title")}
             </h2>
-            <p className="mt-2 text-muted">News, project launches and reflections from Kakuma.</p>
+            <p className="mt-2 text-muted">{t("home.stories.subtitle")}</p>
           </div>
           <Link to="/blog" className="text-sm font-semibold text-primary-600 hover:underline">
-            All articles &rarr;
+            {t("home.stories.allArticles")}
           </Link>
         </div>
 
@@ -535,7 +523,7 @@ export default function Home() {
                 to={`/blog/${p.slug}`}
                 className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary-600 hover:underline"
               >
-                Read more &rarr;
+                {t("common.readMoreArrow")}
               </Link>
             </article>
           ))}
@@ -546,36 +534,41 @@ export default function Home() {
       <Section id="testimonials" className="bg-surface">
         <div className="mx-auto max-w-3xl text-center">
           <span className="inline-block rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
-            Testimonials
+            {t("home.testimonials.eyebrow")}
           </span>
           <h2 className="mt-3 text-3xl font-bold text-ink sm:text-4xl">
-            What people say about us
+            {t("home.testimonials.title")}
           </h2>
         </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {testimonials.map((t) => (
-            <figure
-              key={t.name}
-              className="flex h-full flex-col rounded-2xl border border-line bg-bg p-6 shadow-sm"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="h-7 w-7 text-primary-300"
-                aria-hidden="true"
+          {testimonials.map((item) => {
+            const quote = t(`home.testimonials.items.${item.key}.quote`, item.quote);
+            const name = t(`home.testimonials.items.${item.key}.name`, item.name);
+            const role = t(`home.testimonials.items.${item.key}.role`, item.role);
+            return (
+              <figure
+                key={item.key}
+                className="flex h-full flex-col rounded-2xl border border-line bg-bg p-6 shadow-sm"
               >
-                <path d="M9.4 5.5C6.3 6.3 4 9.2 4 12.6V19h6.4v-6.4H7.3c0-2.1 1.4-3.8 3.4-4.4l-1.3-2.7zm10 0c-3.1.8-5.4 3.7-5.4 7.1V19h6.4v-6.4h-3.1c0-2.1 1.4-3.8 3.4-4.4l-1.3-2.7z" />
-              </svg>
-              <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-ink">
-                &ldquo;{t.quote}&rdquo;
-              </blockquote>
-              <figcaption className="mt-6 border-t border-line pt-4">
-                <p className="font-display text-sm font-semibold text-ink">{t.name}</p>
-                <p className="text-xs text-muted">{t.role}</p>
-              </figcaption>
-            </figure>
-          ))}
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="h-7 w-7 text-primary-300"
+                  aria-hidden="true"
+                >
+                  <path d="M9.4 5.5C6.3 6.3 4 9.2 4 12.6V19h6.4v-6.4H7.3c0-2.1 1.4-3.8 3.4-4.4l-1.3-2.7zm10 0c-3.1.8-5.4 3.7-5.4 7.1V19h6.4v-6.4h-3.1c0-2.1 1.4-3.8 3.4-4.4l-1.3-2.7z" />
+                </svg>
+                <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-ink">
+                  &ldquo;{quote}&rdquo;
+                </blockquote>
+                <figcaption className="mt-6 border-t border-line pt-4">
+                  <p className="font-display text-sm font-semibold text-ink">{name}</p>
+                  <p className="text-xs text-muted">{role}</p>
+                </figcaption>
+              </figure>
+            );
+          })}
         </div>
       </Section>
 
@@ -583,14 +576,12 @@ export default function Home() {
       <Section id="videos" className="bg-surface">
         <div className="mx-auto max-w-3xl text-center">
           <span className="inline-block rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
-            Watch
+            {t("home.videos.eyebrow")}
           </span>
           <h2 className="mt-3 text-3xl font-bold text-ink sm:text-4xl">
-            Videos &amp; stories on screen
+            {t("home.videos.title")}
           </h2>
-          <p className="mt-3 text-muted">
-            Walkthroughs of our hub, graduate testimonials, and updates from the field.
-          </p>
+          <p className="mt-3 text-muted">{t("home.videos.subtitle")}</p>
         </div>
 
         <div className="mt-10 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -635,7 +626,7 @@ export default function Home() {
                           <path d="M8 5v14l11-7z" />
                         </svg>
                         <p className="mt-2 text-xs font-semibold uppercase tracking-wider">
-                          Coming soon
+                          {t("common.comingSoon")}
                         </p>
                       </div>
                     </div>
@@ -652,122 +643,83 @@ export default function Home() {
       </Section>
 
       {/* ============ DONATE / GET INVOLVED ============ */}
-      <Section id="donate" className="bg-primary-600 text-white">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-bold sm:text-4xl">Stand with the next generation.</h2>
-          <p className="mx-auto mt-3 max-w-2xl text-primary-100">
-            Whether you partner, fund, mentor or volunteer &mdash; your support unlocks
-            opportunity for refugee youth.
-          </p>
-        </div>
-
-        <div className="mx-auto mt-10 grid max-w-5xl gap-6 md:grid-cols-3">
-          <div className="rounded-2xl bg-white/10 p-6 backdrop-blur">
-            <h3 className="font-display text-lg font-semibold">Give</h3>
-            <p className="mt-2 text-sm text-primary-100">
-              Your support fuels our mission. Donate today and make a lasting impact.
-            </p>
-            <a
-              href={SITE.donateUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-5 inline-block rounded-md bg-accent-500 px-4 py-2 text-sm font-semibold text-ink hover:bg-accent-400"
-            >
-              Donate now
-            </a>
+      <section
+        id="donate"
+        className="relative isolate overflow-hidden bg-primary-600 py-16 text-white sm:py-20"
+      >
+        {/* TODO: replace with real Generation Aid photo */}
+        <SmartImage
+          src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=1600&q=80"
+          alt="Hands joining together in support"
+          fallbackLabel=""
+          className="absolute inset-0 -z-20 h-full w-full object-cover"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 bg-gradient-to-br from-primary-700/90 via-primary-600/85 to-primary-500/80"
+        />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="text-3xl font-bold sm:text-4xl">{t("home.donateBlock.title")}</h2>
+            <p className="mx-auto mt-3 max-w-2xl text-primary-100">{t("home.donateBlock.subtitle")}</p>
           </div>
-          <div className="rounded-2xl bg-white/10 p-6 backdrop-blur">
-            <h3 className="font-display text-lg font-semibold">Sponsor</h3>
-            <p className="mt-2 text-sm text-primary-100">
-              Become a sponsor and help drive meaningful change in our programs.
-            </p>
-            <a
-              href="#programs"
-              className="mt-5 inline-block rounded-md border border-white/40 px-4 py-2 text-sm font-semibold hover:bg-white/10"
-            >
-              Sponsor a program
-            </a>
-          </div>
-          <div className="rounded-2xl bg-white/10 p-6 backdrop-blur">
-            <h3 className="font-display text-lg font-semibold">Volunteer</h3>
-            <p className="mt-2 text-sm text-primary-100">
-              Join us as a volunteer and be part of creating lasting impact.
-            </p>
-            <a
-              href="#contact"
-              className="mt-5 inline-block rounded-md border border-white/40 px-4 py-2 text-sm font-semibold hover:bg-white/10"
-            >
-              Get in touch
-            </a>
+
+          <div className="mx-auto mt-10 grid max-w-5xl gap-6 md:grid-cols-3">
+            <div className="rounded-2xl bg-white/10 p-6 backdrop-blur">
+              <h3 className="font-display text-lg font-semibold">{t("home.donateBlock.give")}</h3>
+              <p className="mt-2 text-sm text-primary-100">{t("home.donateBlock.giveBody")}</p>
+              <a
+                href={SITE.donateUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-5 inline-block rounded-md bg-accent-500 px-4 py-2 text-sm font-semibold text-ink hover:bg-accent-400"
+              >
+                {t("common.donateNow")}
+              </a>
+            </div>
+            <div className="rounded-2xl bg-white/10 p-6 backdrop-blur">
+              <h3 className="font-display text-lg font-semibold">{t("home.donateBlock.sponsor")}</h3>
+              <p className="mt-2 text-sm text-primary-100">{t("home.donateBlock.sponsorBody")}</p>
+              <a
+                href="#programs"
+                className="mt-5 inline-block rounded-md border border-white/40 px-4 py-2 text-sm font-semibold hover:bg-white/10"
+              >
+                {t("home.donateBlock.sponsorCta")}
+              </a>
+            </div>
+            <div className="rounded-2xl bg-white/10 p-6 backdrop-blur">
+              <h3 className="font-display text-lg font-semibold">{t("home.donateBlock.volunteer")}</h3>
+              <p className="mt-2 text-sm text-primary-100">{t("home.donateBlock.volunteerBody")}</p>
+              <a
+                href="#contact"
+                className="mt-5 inline-block rounded-md border border-white/40 px-4 py-2 text-sm font-semibold hover:bg-white/10"
+              >
+                {t("common.getInTouch")}
+              </a>
+            </div>
           </div>
         </div>
-      </Section>
-
-      {/* ============ NEWSLETTER ============ */}
-      <Section id="newsletter" className="bg-surface">
-        <div className="mx-auto max-w-3xl rounded-3xl bg-gradient-to-br from-primary-500 to-primary-700 p-10 text-center text-white shadow-lg sm:p-12">
-          <h2 className="text-3xl font-bold sm:text-4xl">Stay in the loop</h2>
-          <p className="mx-auto mt-3 max-w-xl text-primary-100">
-            Monthly updates on programs, volunteer opportunities and stories from
-            Kakuma &mdash; straight to your inbox.
-          </p>
-
-          <form
-            onSubmit={handleNewsletterSubmit}
-            className="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex-row"
-          >
-            <input
-              required
-              type="email"
-              placeholder="you@email.com"
-              value={newsletterEmail}
-              onChange={(e) => setNewsletterEmail(e.target.value)}
-              className="flex-1 rounded-md border border-white/30 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-primary-100 outline-none focus:border-white"
-            />
-            <button
-              type="submit"
-              disabled={newsletterState === "sending"}
-              className="rounded-md bg-accent-500 px-5 py-3 text-sm font-semibold text-ink hover:bg-accent-400 disabled:opacity-60"
-            >
-              {newsletterState === "sending" ? "Subscribing…" : "Subscribe"}
-            </button>
-          </form>
-
-          {newsletterState === "sent" && (
-            <p className="mt-4 text-sm text-white">
-              Thanks &mdash; you&apos;re on the list.
-            </p>
-          )}
-          {newsletterState === "error" && (
-            <p className="mt-4 text-sm text-white">
-              Something went wrong. Please try again.
-            </p>
-          )}
-        </div>
-      </Section>
+      </section>
 
       {/* ============ CONTACT ============ */}
       <Section id="contact">
         <div className="grid gap-12 lg:grid-cols-2">
           <div>
             <span className="inline-block rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
-              Contact
+              {t("home.contact.eyebrow")}
             </span>
             <h2 className="mt-3 text-3xl font-bold text-ink sm:text-4xl">
-              Let&apos;s build something together
+              {t("home.contact.title")}
             </h2>
-            <p className="mt-4 text-muted">
-              Have a question, partnership idea, or want to volunteer? Send us a message
-              and we&apos;ll get back to you.
-            </p>
+            <p className="mt-4 text-muted">{t("home.contact.subtitle")}</p>
 
             <ul className="mt-8 space-y-3 text-sm text-muted">
               <li>
-                <span className="font-semibold text-ink">Location:</span> Kakuma,
-                Turkana County, Kenya
+                <span className="font-semibold text-ink">{t("home.contact.locationLabel")}</span>{" "}
+                {t("home.contact.locationValue")}
               </li>
               <li>
-                <span className="font-semibold text-ink">Email:</span>{" "}
+                <span className="font-semibold text-ink">{t("home.contact.emailLabel")}</span>{" "}
                 <a href="mailto:hello@generationaid.org" className="text-primary-600 hover:underline">
                   hello@generationaid.org
                 </a>
@@ -780,7 +732,7 @@ export default function Home() {
             className="space-y-4 rounded-2xl border border-line bg-surface p-6 shadow-sm sm:p-8"
           >
             <label className="block">
-              <span className="block text-sm font-semibold text-ink">Name</span>
+              <span className="block text-sm font-semibold text-ink">{t("common.name")}</span>
               <input
                 required
                 value={contact.name}
@@ -790,7 +742,7 @@ export default function Home() {
             </label>
 
             <label className="block">
-              <span className="block text-sm font-semibold text-ink">Email</span>
+              <span className="block text-sm font-semibold text-ink">{t("common.email")}</span>
               <input
                 required
                 type="email"
@@ -801,7 +753,7 @@ export default function Home() {
             </label>
 
             <label className="block">
-              <span className="block text-sm font-semibold text-ink">Message</span>
+              <span className="block text-sm font-semibold text-ink">{t("common.message")}</span>
               <textarea
                 required
                 rows={5}
@@ -813,7 +765,7 @@ export default function Home() {
 
             {contactState === "sent" && (
               <p className="rounded-md bg-primary-50 px-3 py-2 text-sm text-primary-700">
-                Thanks &mdash; your message is on its way.
+                {t("common.thanks")}
               </p>
             )}
             {contactState === "error" && contactError && (
@@ -827,7 +779,7 @@ export default function Home() {
               disabled={contactState === "sending"}
               className="w-full rounded-md bg-primary-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary-600 disabled:opacity-60"
             >
-              {contactState === "sending" ? "Sending…" : "Send message"}
+              {contactState === "sending" ? t("common.sending") : t("common.sendMessage")}
             </button>
           </form>
         </div>

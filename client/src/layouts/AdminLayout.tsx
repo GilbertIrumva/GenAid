@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import { useTranslation } from "react-i18next";
 import { Toaster } from "sonner";
 import { api } from "@/api/client";
 import { getUser, logout } from "@/utils/auth";
@@ -38,6 +39,7 @@ interface NavItem {
 export default function AdminLayout() {
   const navigate = useNavigate();
   const user = getUser();
+  const { t } = useTranslation();
   const [mobileOpen, setMobileOpen] = useState(false);
   const { data: stats } = useAdminBadges();
 
@@ -47,22 +49,23 @@ export default function AdminLayout() {
   }
 
   const nav: NavItem[] = [
-    { to: "/admin", label: "Dashboard", icon: "▦", end: true },
+    { to: "/admin", label: t("admin.nav.dashboard"), icon: "▦", end: true },
     {
       to: "/admin/messages",
-      label: "Messages",
+      label: t("admin.nav.messages"),
       icon: "✉",
       badge: stats?.unreadMessages,
     },
-    { to: "/admin/videos", label: "Videos", icon: "▶" },
-    { to: "/admin/photos", label: "Photos", icon: "▤" },
-    { to: "/admin/programs", label: "Programs", icon: "◇" },
-    { to: "/admin/impact", label: "Impact", icon: "▲" },
-    { to: "/admin/stories", label: "Stories", icon: "✎" },
-    { to: "/admin/partners", label: "Partners", icon: "◈" },
+    { to: "/admin/videos", label: t("admin.nav.videos"), icon: "▶" },
+    { to: "/admin/photos", label: t("admin.nav.photos"), icon: "▤" },
+    { to: "/admin/programs", label: t("admin.nav.programs"), icon: "◇" },
+    { to: "/admin/impact", label: t("admin.nav.impact"), icon: "▲" },
+    { to: "/admin/stories", label: t("admin.nav.stories"), icon: "✎" },
+    { to: "/admin/blog", label: t("admin.nav.blog"), icon: "✍" },
+    { to: "/admin/partners", label: t("admin.nav.partners"), icon: "◈" },
     {
       to: "/admin/users",
-      label: "Users",
+      label: t("admin.nav.users"),
       icon: "◉",
       badge: stats?.pendingUsers,
       adminOnly: true,
@@ -78,16 +81,16 @@ export default function AdminLayout() {
       {/* MOBILE TOP BAR */}
       <header className="sticky top-0 z-30 flex items-center justify-between border-b border-line bg-surface px-4 py-3 lg:hidden">
         <Link to="/admin" className="font-display text-base font-bold">
-          Generation Aid <span className="text-primary-600">/ admin</span>
+          Generation Aid <span className="text-primary-600">/ {t("admin.nav.adminLabel").toLowerCase()}</span>
         </Link>
         <button
           type="button"
-          aria-label="Open admin menu"
+          aria-label={t("admin.common.openMenu")}
           aria-expanded={mobileOpen}
           onClick={() => setMobileOpen((v) => !v)}
           className="rounded-md border border-line px-3 py-1.5 text-sm"
         >
-          {mobileOpen ? "Close" : "Menu"}
+          {mobileOpen ? t("admin.common.close") : t("admin.common.menu")}
         </button>
       </header>
 
@@ -102,11 +105,11 @@ export default function AdminLayout() {
           <div className="hidden h-16 items-center border-b border-line px-6 lg:flex">
             <Link to="/admin" className="font-display text-lg font-bold">
               Generation Aid
-              <span className="ml-1 text-primary-600">/ admin</span>
+              <span className="ml-1 text-primary-600">/ {t("admin.nav.adminLabel").toLowerCase()}</span>
             </Link>
           </div>
 
-          <nav className="space-y-1 p-4" aria-label="Admin">
+          <nav className="space-y-1 p-4" aria-label={t("admin.nav.adminLabel")}>
             {visibleNav.map((item) => (
               <NavLink
                 key={item.to}
@@ -152,14 +155,14 @@ export default function AdminLayout() {
                 to="/"
                 className="flex-1 rounded-md border border-line px-3 py-1.5 text-center text-xs font-semibold text-ink hover:border-primary-300 hover:text-primary-600"
               >
-                View site
+                {t("admin.common.viewSite")}
               </Link>
               <button
                 type="button"
                 onClick={handleLogout}
                 className="flex-1 rounded-md bg-ink px-3 py-1.5 text-xs font-semibold text-white hover:bg-ink/90"
               >
-                Sign out
+                {t("admin.common.signOut")}
               </button>
             </div>
           </div>
@@ -169,7 +172,7 @@ export default function AdminLayout() {
         {mobileOpen && (
           <button
             type="button"
-            aria-label="Close menu"
+            aria-label={t("admin.common.close")}
             onClick={() => setMobileOpen(false)}
             className="fixed inset-0 z-10 bg-ink/40 lg:hidden"
           />

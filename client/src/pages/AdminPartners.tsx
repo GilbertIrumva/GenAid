@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { api } from "@/api/client";
 import { cn } from "@/utils/cn";
@@ -28,6 +29,7 @@ function getErrorMessage(err: unknown, fallback: string): string {
 
 export default function AdminPartners() {
   const qc = useQueryClient();
+  const { t } = useTranslation();
   const [editingId, setEditingId] = useState<string | null>(null);
   const [form, setForm] = useState<PartnerForm>(EMPTY);
   const [search, setSearch] = useState("");
@@ -73,11 +75,11 @@ export default function AdminPartners() {
       return data;
     },
     onSuccess: () => {
-      toast.success("Partner added");
+      toast.success(t("admin.partners.added"));
       setForm(EMPTY);
       invalidate();
     },
-    onError: (err) => toast.error(getErrorMessage(err, "Create failed")),
+    onError: (err) => toast.error(getErrorMessage(err, t("admin.partners.createFailed"))),
   });
 
   const update = useMutation({
@@ -86,11 +88,11 @@ export default function AdminPartners() {
       return data;
     },
     onSuccess: () => {
-      toast.success("Partner updated");
+      toast.success(t("admin.partners.updated"));
       setEditingId(null);
       invalidate();
     },
-    onError: (err) => toast.error(getErrorMessage(err, "Update failed")),
+    onError: (err) => toast.error(getErrorMessage(err, t("admin.partners.updateFailed"))),
   });
 
   const remove = useMutation({
@@ -98,11 +100,11 @@ export default function AdminPartners() {
       await api.delete(`/partners/${id}`);
     },
     onSuccess: () => {
-      toast.success("Partner deleted");
+      toast.success(t("admin.partners.deleted"));
       if (editingId) setEditingId(null);
       invalidate();
     },
-    onError: (err) => toast.error(getErrorMessage(err, "Delete failed")),
+    onError: (err) => toast.error(getErrorMessage(err, t("admin.partners.deleteFailed"))),
   });
 
   function handleSubmit(e: React.FormEvent) {
@@ -117,9 +119,9 @@ export default function AdminPartners() {
   return (
     <div className="space-y-10">
       <header>
-        <h1 className="font-display text-3xl font-bold text-ink">Partners</h1>
+        <h1 className="font-display text-3xl font-bold text-ink">{t("admin.partners.title")}</h1>
         <p className="mt-1 text-sm text-muted">
-          Organisations that fund, collaborate with, or champion our work.
+          {t("admin.partners.pageSubtitle")}
         </p>
       </header>
 
@@ -127,7 +129,7 @@ export default function AdminPartners() {
       <section className="rounded-2xl border border-line bg-surface p-6 shadow-sm">
         <div className="flex items-center justify-between">
           <h2 className="font-display text-lg font-semibold text-ink">
-            {isEditing ? "Edit partner" : "Add a new partner"}
+            {isEditing ? t("admin.partners.editPartner") : t("admin.partners.addNew")}
           </h2>
           {isEditing && (
             <button
@@ -135,14 +137,14 @@ export default function AdminPartners() {
               onClick={() => setEditingId(null)}
               className="text-xs font-semibold text-muted hover:text-ink"
             >
-              Cancel edit
+              {t("admin.partners.cancelEdit")}
             </button>
           )}
         </div>
 
         <form onSubmit={handleSubmit} className="mt-5 grid gap-5 md:grid-cols-2">
           <label>
-            <span className="block text-sm font-semibold text-ink">Name</span>
+            <span className="block text-sm font-semibold text-ink">{t("admin.common.name")}</span>
             <input
               required
               minLength={2}
@@ -155,7 +157,7 @@ export default function AdminPartners() {
 
           <label>
             <span className="block text-sm font-semibold text-ink">
-              Website <span className="font-normal text-muted">(optional)</span>
+              {t("admin.partners.website")} <span className="font-normal text-muted">({t("admin.common.optional")})</span>
             </span>
             <input
               type="url"
@@ -170,20 +172,20 @@ export default function AdminPartners() {
 
           <label className="md:col-span-2">
             <span className="block text-sm font-semibold text-ink">
-              Logo URL <span className="font-normal text-muted">(optional)</span>
+              {t("admin.partners.logoUrl")} <span className="font-normal text-muted">({t("admin.common.optional")})</span>
             </span>
             <input
               type="url"
               value={form.logo}
               onChange={(e) => setForm((f) => ({ ...f, logo: e.target.value }))}
-              placeholder="https://…/logo.svg"
+              placeholder={t("admin.partners.logoPlaceholder")}
               className="mt-1 w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-ink outline-none focus:border-primary-500"
             />
           </label>
 
           <label className="md:col-span-2">
             <span className="block text-sm font-semibold text-ink">
-              Description <span className="font-normal text-muted">(optional)</span>
+              {t("admin.common.description")} <span className="font-normal text-muted">({t("admin.common.optional")})</span>
             </span>
             <textarea
               rows={4}
@@ -203,10 +205,10 @@ export default function AdminPartners() {
               className="rounded-md bg-primary-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary-600 disabled:opacity-60"
             >
               {isPending
-                ? "Saving…"
+                ? t("admin.common.saving")
                 : isEditing
-                ? "Save changes"
-                : "Add partner"}
+                ? t("admin.partners.saveChanges")
+                : t("admin.partners.addPartner")}
             </button>
           </div>
         </form>
@@ -216,13 +218,13 @@ export default function AdminPartners() {
       <section>
         <div className="flex flex-wrap items-end justify-between gap-3">
           <h2 className="font-display text-lg font-semibold text-ink">
-            Existing partners
+            {t("admin.partners.existing")}
           </h2>
           <input
             type="search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search…"
+            placeholder={t("admin.partners.searchPlaceholder")}
             className="w-full rounded-md border border-line bg-surface px-3 py-2 text-sm outline-none focus:border-primary-500 sm:w-64"
           />
         </div>
@@ -234,7 +236,7 @@ export default function AdminPartners() {
             <div className="h-32 animate-pulse rounded-2xl border border-line bg-surface" />
           </div>
         ) : filtered.length === 0 ? (
-          <p className="mt-4 text-sm text-muted">No partners yet.</p>
+          <p className="mt-4 text-sm text-muted">{t("admin.partners.noPartners")}</p>
         ) : (
           <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {filtered.map((p) => (
@@ -255,7 +257,7 @@ export default function AdminPartners() {
                     />
                   ) : (
                     <div className="flex h-14 w-14 items-center justify-center rounded-md border border-line bg-bg text-[10px] text-muted">
-                      No logo
+                      {t("admin.partners.noLogo")}
                     </div>
                   )}
                   <div className="min-w-0 flex-1">
@@ -285,17 +287,17 @@ export default function AdminPartners() {
                     onClick={() => setEditingId(p._id)}
                     className="rounded-md border border-line bg-surface px-3 py-1 font-semibold text-ink hover:border-primary-300 hover:text-primary-600"
                   >
-                    Edit
+                    {t("admin.common.edit")}
                   </button>
                   <button
                     type="button"
                     onClick={() => {
-                      if (confirm(`Delete "${p.name}"?`)) remove.mutate(p._id);
+                      if (confirm(t("admin.partners.confirmDelete", { name: p.name }))) remove.mutate(p._id);
                     }}
                     disabled={remove.isPending}
                     className="font-semibold text-red-600 hover:text-red-700"
                   >
-                    Delete
+                    {t("admin.common.delete")}
                   </button>
                 </div>
               </li>

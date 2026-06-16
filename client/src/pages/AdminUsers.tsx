@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { api } from "@/api/client";
 import { getUser } from "@/utils/auth";
@@ -22,6 +23,7 @@ function getErrorMessage(err: unknown, fallback: string): string {
 export default function AdminUsers() {
   const qc = useQueryClient();
   const me = getUser();
+  const { t } = useTranslation();
   const [search, setSearch] = useState("");
 
   const { data: users = [], isLoading } = useQuery<AdminUser[]>({
@@ -61,10 +63,10 @@ export default function AdminUsers() {
       return data;
     },
     onSuccess: () => {
-      toast.success("User updated");
+      toast.success(t("admin.users.userUpdated"));
       invalidate();
     },
-    onError: (err) => toast.error(getErrorMessage(err, "Update failed")),
+    onError: (err) => toast.error(getErrorMessage(err, t("admin.users.updateFailed"))),
   });
 
   const remove = useMutation({
@@ -72,18 +74,18 @@ export default function AdminUsers() {
       await api.delete(`/admin/users/${id}`);
     },
     onSuccess: () => {
-      toast.success("User deleted");
+      toast.success(t("admin.users.userDeleted"));
       invalidate();
     },
-    onError: (err) => toast.error(getErrorMessage(err, "Delete failed")),
+    onError: (err) => toast.error(getErrorMessage(err, t("admin.users.deleteFailed"))),
   });
 
   return (
     <div className="space-y-8">
       <header>
-        <h1 className="font-display text-3xl font-bold text-ink">Users</h1>
+        <h1 className="font-display text-3xl font-bold text-ink">{t("admin.users.title")}</h1>
         <p className="mt-1 text-sm text-muted">
-          Approve new sign-ups and manage roles for the team.
+          {t("admin.users.pageSubtitle")}
         </p>
       </header>
 
@@ -91,7 +93,7 @@ export default function AdminUsers() {
         type="search"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        placeholder="Search by name, email, or role…"
+        placeholder={t("admin.users.searchPlaceholder")}
         className="w-full rounded-md border border-line bg-surface px-3 py-2 text-sm outline-none focus:border-primary-500 sm:max-w-md"
       />
 
@@ -103,18 +105,18 @@ export default function AdminUsers() {
             <div className="h-12 animate-pulse rounded-md bg-bg" />
           </div>
         ) : filtered.length === 0 ? (
-          <p className="p-8 text-center text-sm text-muted">No users found.</p>
+          <p className="p-8 text-center text-sm text-muted">{t("admin.users.noUsersFound")}</p>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-sm">
               <thead className="border-b border-line bg-bg/60 text-xs uppercase tracking-wide text-muted">
                 <tr>
-                  <th className="px-4 py-3 font-semibold">Name</th>
-                  <th className="px-4 py-3 font-semibold">Email</th>
-                  <th className="px-4 py-3 font-semibold">Role</th>
-                  <th className="px-4 py-3 font-semibold">Status</th>
-                  <th className="px-4 py-3 font-semibold">Joined</th>
-                  <th className="px-4 py-3 font-semibold text-right">Actions</th>
+                  <th className="px-4 py-3 font-semibold">{t("admin.users.colName")}</th>
+                  <th className="px-4 py-3 font-semibold">{t("admin.users.colEmail")}</th>
+                  <th className="px-4 py-3 font-semibold">{t("admin.users.colRole")}</th>
+                  <th className="px-4 py-3 font-semibold">{t("admin.users.colStatus")}</th>
+                  <th className="px-4 py-3 font-semibold">{t("admin.users.colJoined")}</th>
+                  <th className="px-4 py-3 font-semibold text-right">{t("admin.users.colActions")}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-line">
@@ -126,7 +128,7 @@ export default function AdminUsers() {
                         {u.name}
                         {isSelf && (
                           <span className="ml-2 rounded-full bg-primary-50 px-2 py-0.5 text-xs font-semibold text-primary-700">
-                            you
+                            {t("admin.users.you")}
                           </span>
                         )}
                       </td>
@@ -143,8 +145,8 @@ export default function AdminUsers() {
                           disabled={isSelf || update.isPending}
                           className="rounded-md border border-line bg-surface px-2 py-1 text-xs font-semibold uppercase outline-none focus:border-primary-500 disabled:opacity-60"
                         >
-                          <option value="editor">Editor</option>
-                          <option value="admin">Admin</option>
+                          <option value="editor">{t("admin.users.editor")}</option>
+                          <option value="admin">{t("admin.users.admin")}</option>
                         </select>
                       </td>
                       <td className="px-4 py-3">
@@ -156,7 +158,7 @@ export default function AdminUsers() {
                               : "bg-amber-50 text-amber-700"
                           )}
                         >
-                          {u.approved ? "Approved" : "Pending"}
+                          {u.approved ? t("admin.users.approved") : t("admin.users.pendingShort")}
                         </span>
                       </td>
                       <td className="px-4 py-3 text-xs text-muted">
@@ -176,7 +178,7 @@ export default function AdminUsers() {
                               disabled={update.isPending}
                               className="rounded-md bg-primary-500 px-3 py-1 text-xs font-semibold text-white hover:bg-primary-600"
                             >
-                              Approve
+                              {t("admin.users.approve")}
                             </button>
                           )}
                           {u.approved && (
@@ -191,7 +193,7 @@ export default function AdminUsers() {
                               disabled={isSelf || update.isPending}
                               className="rounded-md border border-line bg-surface px-3 py-1 text-xs font-semibold text-ink hover:border-amber-300 disabled:opacity-60"
                             >
-                              Suspend
+                              {t("admin.users.suspend")}
                             </button>
                           )}
                           <button
@@ -199,7 +201,7 @@ export default function AdminUsers() {
                             onClick={() => {
                               if (
                                 confirm(
-                                  `Delete user "${u.name}"? This cannot be undone.`
+                                  t("admin.users.confirmDelete", { name: u.name })
                                 )
                               ) {
                                 remove.mutate(u._id);
@@ -208,7 +210,7 @@ export default function AdminUsers() {
                             disabled={isSelf || remove.isPending}
                             className="rounded-md border border-red-200 bg-red-50 px-3 py-1 text-xs font-semibold text-red-700 hover:bg-red-100 disabled:opacity-50"
                           >
-                            Delete
+                            {t("admin.common.delete")}
                           </button>
                         </div>
                       </td>

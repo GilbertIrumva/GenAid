@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { api } from "@/api/client";
 import { cn } from "@/utils/cn";
@@ -21,6 +22,7 @@ function getErrorMessage(err: unknown, fallback: string): string {
 
 export default function AdminMessages() {
   const qc = useQueryClient();
+  const { t } = useTranslation();
   const [onlyUnread, setOnlyUnread] = useState(false);
   const [search, setSearch] = useState("");
   const [openId, setOpenId] = useState<string | null>(null);
@@ -61,10 +63,10 @@ export default function AdminMessages() {
       return data;
     },
     onSuccess: (_, vars) => {
-      toast.success(vars.read ? "Marked as read" : "Marked as unread");
+      toast.success(vars.read ? t("admin.messages.markedAsRead") : t("admin.messages.markedAsUnread"));
       invalidate();
     },
-    onError: (err) => toast.error(getErrorMessage(err, "Update failed")),
+    onError: (err) => toast.error(getErrorMessage(err, t("admin.messages.updateFailed"))),
   });
 
   const remove = useMutation({
@@ -72,19 +74,19 @@ export default function AdminMessages() {
       await api.delete(`/admin/messages/${id}`);
     },
     onSuccess: () => {
-      toast.success("Message deleted");
+      toast.success(t("admin.messages.deleted"));
       setOpenId(null);
       invalidate();
     },
-    onError: (err) => toast.error(getErrorMessage(err, "Delete failed")),
+    onError: (err) => toast.error(getErrorMessage(err, t("admin.messages.deleteFailed"))),
   });
 
   return (
     <div className="space-y-8">
       <header>
-        <h1 className="font-display text-3xl font-bold text-ink">Messages</h1>
+        <h1 className="font-display text-3xl font-bold text-ink">{t("admin.messages.title")}</h1>
         <p className="mt-1 text-sm text-muted">
-          Inbox of submissions from the public contact form.
+          {t("admin.messages.inboxSubtitle")}
         </p>
       </header>
 
@@ -93,7 +95,7 @@ export default function AdminMessages() {
           type="search"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search name, email, subject…"
+          placeholder={t("admin.messages.searchPlaceholder")}
           className="min-w-0 flex-1 rounded-md border border-line bg-surface px-3 py-2 text-sm outline-none focus:border-primary-500"
         />
         <label className="flex items-center gap-2 text-sm text-ink">
@@ -103,7 +105,7 @@ export default function AdminMessages() {
             onChange={(e) => setOnlyUnread(e.target.checked)}
             className="h-4 w-4 rounded border-line text-primary-600 focus:ring-primary-500"
           />
-          Show only unread
+          {t("admin.messages.showOnlyUnread")}
         </label>
       </div>
 
@@ -115,7 +117,7 @@ export default function AdminMessages() {
             <div className="h-14 animate-pulse rounded-md bg-bg" />
           </div>
         ) : filtered.length === 0 ? (
-          <p className="p-8 text-center text-sm text-muted">No messages found.</p>
+          <p className="p-8 text-center text-sm text-muted">{t("admin.messages.noMessagesFound")}</p>
         ) : (
           <ul className="divide-y divide-line">
             {filtered.map((m) => {
@@ -178,7 +180,7 @@ export default function AdminMessages() {
                           )}`}
                           className="rounded-md bg-primary-500 px-3 py-1.5 font-semibold text-white hover:bg-primary-600"
                         >
-                          Reply by email
+                          {t("admin.messages.replyByEmail")}
                         </a>
                         <button
                           type="button"
@@ -188,19 +190,19 @@ export default function AdminMessages() {
                           disabled={toggleRead.isPending}
                           className="rounded-md border border-line bg-surface px-3 py-1.5 font-semibold text-ink hover:border-primary-300"
                         >
-                          Mark as {m.read ? "unread" : "read"}
+                          {m.read ? t("admin.messages.markAsUnread") : t("admin.messages.markAsRead")}
                         </button>
                         <button
                           type="button"
                           onClick={() => {
-                            if (confirm(`Delete message from ${m.name}?`)) {
+                            if (confirm(t("admin.messages.confirmDelete", { name: m.name }))) {
                               remove.mutate(m._id);
                             }
                           }}
                           disabled={remove.isPending}
                           className="rounded-md border border-red-200 bg-red-50 px-3 py-1.5 font-semibold text-red-700 hover:bg-red-100"
                         >
-                          Delete
+                          {t("admin.common.delete")}
                         </button>
                       </div>
                     </div>

@@ -1,9 +1,7 @@
 import { Request, Response } from "express";
-import fs from "fs";
-import path from "path";
 import { Video } from "../models/Video";
 import { AuthRequest } from "../middleware/auth";
-import { UPLOADS_ROOT } from "../middleware/upload";
+import { cloudinary } from "../config/cloudinary";
 
 export async function getVideos(_req: Request, res: Response) {
   try {
@@ -32,14 +30,15 @@ export async function createVideo(req: AuthRequest, res: Response) {
       return res.status(400).json({ error: "video file is required" });
     }
 
-    const videoUrl = `/uploads/videos/${videoFile.filename}`;
-    const posterUrl = posterFile ? `/uploads/posters/${posterFile.filename}` : "";
-
+    // multer-storage-cloudinary exposes the secure URL on `path` and the
+    // Cloudinary public_id on `filename`.
     const video = await Video.create({
       title: title.trim(),
       description: description.trim(),
-      videoUrl,
-      posterUrl,
+      videoUrl: videoFile.path,
+      posterUrl: posterFile?.path ?? "",
+      videoPublicId: videoFile.filename,
+      posterPublicId: posterFile?.filename ?? "",
       uploadedBy: String(req.user?._id ?? ""),
     });
 
@@ -54,12 +53,16 @@ export async function deleteVideo(req: Request, res: Response) {
     const video = await Video.findByIdAndDelete(req.params.id);
     if (!video) return res.status(404).json({ error: "Video not found" });
 
-    // Best-effort cleanup of files on disk.
-    for (const url of [video.videoUrl, video.posterUrl]) {
-      if (!url) continue;
-      const rel = url.replace(/^\/uploads\//, "");
-      const abs = path.join(UPLOADS_ROOT, rel);
-      fs.promises.unlink(abs).catch(() => {});
+    // Best-effort cleanup of Cloudinary assets.
+    if (video.videoPublicId) {
+      cloudinary.uploader
+        .destroy(video.videoPublicId, { resource_type: "video" })
+        .catch(() => {});
+    }
+    if (video.posterPublicId) {
+      cloudinary.uploader
+        .destroy(video.posterPublicId, { resource_type: "image" })
+        .catch(() => {});
     }
 
     res.json({ ok: true });

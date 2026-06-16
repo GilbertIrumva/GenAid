@@ -1,41 +1,44 @@
-import fs from "fs";
 import path from "path";
 import multer from "multer";
+import { CloudinaryStorage } from "multer-storage-cloudinary";
+import { cloudinary } from "../config/cloudinary";
 import { env } from "../config/env";
-
-/** Absolute path to <repo>/server/uploads on disk. */
-export const UPLOADS_ROOT = path.resolve(process.cwd(), "uploads");
-export const VIDEOS_DIR = path.join(UPLOADS_ROOT, "videos");
-export const POSTERS_DIR = path.join(UPLOADS_ROOT, "posters");
-export const PHOTOS_DIR = path.join(UPLOADS_ROOT, "photos");
-
-for (const dir of [UPLOADS_ROOT, VIDEOS_DIR, POSTERS_DIR, PHOTOS_DIR]) {
-  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-}
 
 const ALLOWED_VIDEO_EXT = new Set([".mp4", ".webm", ".mov", ".m4v"]);
 const ALLOWED_IMAGE_EXT = new Set([".jpg", ".jpeg", ".png", ".webp"]);
 
-function safeName(original: string) {
-  const ext = path.extname(original).toLowerCase();
-  const base = path
-    .basename(original, ext)
-    .toLowerCase()
-    .replace(/[^a-z0-9-_]+/g, "-")
-    .replace(/-+/g, "-")
-    .slice(0, 40);
-  const stamp = Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 8);
-  return `${base || "file"}-${stamp}${ext}`;
-}
-
-const storage = multer.diskStorage({
-  destination: (_req, file, cb) => {
-    if (file.fieldname === "video") cb(null, VIDEOS_DIR);
-    else if (file.fieldname === "poster") cb(null, POSTERS_DIR);
-    else if (file.fieldname === "image") cb(null, PHOTOS_DIR);
-    else cb(new Error("Unexpected field: " + file.fieldname), "");
+/**
+ * Cloudinary storage. `folder` and `resource_type` are picked based on the
+ * incoming field name so videos / posters / photos land in tidy buckets.
+ *
+ * After upload, multer exposes the file as:
+ *   - `req.file.path`     -> the secure HTTPS URL of the asset
+ *   - `req.file.filename` -> the Cloudinary `public_id` (used for deletion)
+ */
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params: async (_req, file) => {
+    const ext = path.extname(file.originalname).replace(".", "").toLowerCase();
+    if (file.fieldname === "video") {
+      return {
+        folder: "gnaid/videos",
+        resource_type: "video",
+        format: ext || "mp4",
+      };
+    }
+    if (file.fieldname === "poster") {
+      return {
+        folder: "gnaid/posters",
+        resource_type: "image",
+        format: ext || "jpg",
+      };
+    }
+    return {
+      folder: "gnaid/photos",
+      resource_type: "image",
+      format: ext || "jpg",
+    };
   },
-  filename: (_req, file, cb) => cb(null, safeName(file.originalname)),
 });
 
 function fileFilter(

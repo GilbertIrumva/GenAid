@@ -1,9 +1,7 @@
 import { Request, Response } from "express";
-import fs from "fs";
-import path from "path";
 import { Photo } from "../models/Photo";
 import { AuthRequest } from "../middleware/auth";
-import { UPLOADS_ROOT } from "../middleware/upload";
+import { cloudinary } from "../config/cloudinary";
 
 export async function getPhotos(_req: Request, res: Response) {
   try {
@@ -35,7 +33,8 @@ export async function createPhoto(req: AuthRequest, res: Response) {
     const photo = await Photo.create({
       title: title.trim(),
       description: description.trim(),
-      imageUrl: `/uploads/photos/${file.filename}`,
+      imageUrl: file.path,
+      imagePublicId: file.filename,
       uploadedBy: String(req.user?._id ?? ""),
     });
 
@@ -92,11 +91,11 @@ export async function deletePhoto(req: Request, res: Response) {
     const photo = await Photo.findByIdAndDelete(req.params.id);
     if (!photo) return res.status(404).json({ error: "Photo not found" });
 
-    // Best-effort cleanup of the file on disk.
-    if (photo.imageUrl) {
-      const rel = photo.imageUrl.replace(/^\/uploads\//, "");
-      const abs = path.join(UPLOADS_ROOT, rel);
-      fs.promises.unlink(abs).catch(() => {});
+    // Best-effort cleanup of the Cloudinary asset.
+    if (photo.imagePublicId) {
+      cloudinary.uploader
+        .destroy(photo.imagePublicId, { resource_type: "image" })
+        .catch(() => {});
     }
 
     res.json({ ok: true });

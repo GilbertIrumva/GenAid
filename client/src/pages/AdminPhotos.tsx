@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { api } from "@/api/client";
 import EditMediaModal from "@/components/EditMediaModal";
@@ -31,6 +32,7 @@ function PhotoSkeleton() {
 
 export default function AdminPhotos() {
   const qc = useQueryClient();
+  const { t } = useTranslation();
   const { data: photos = [], isLoading } = useQuery<PhotoRecord[]>({
     queryKey: ["admin", "photos"],
     queryFn: async () => {
@@ -66,7 +68,7 @@ export default function AdminPhotos() {
 
   const uploadMutation = useMutation({
     mutationFn: async () => {
-      if (!imageFile) throw new Error("Please choose an image file");
+      if (!imageFile) throw new Error(t("admin.photos.chooseFile"));
 
       const fd = new FormData();
       fd.append("title", title);
@@ -81,13 +83,13 @@ export default function AdminPhotos() {
       return data;
     },
     onSuccess: () => {
-      toast.success("Photo uploaded");
+      toast.success(t("admin.photos.uploaded"));
       qc.invalidateQueries({ queryKey: ["admin", "photos"] });
       qc.invalidateQueries({ queryKey: ["public", "photos"] });
       qc.invalidateQueries({ queryKey: ["admin", "stats"] });
       resetForm();
     },
-    onError: (err) => toast.error(getErrorMessage(err, "Upload failed")),
+    onError: (err) => toast.error(getErrorMessage(err, t("admin.photos.uploadFailed"))),
   });
 
   const deleteMutation = useMutation({
@@ -95,12 +97,12 @@ export default function AdminPhotos() {
       await api.delete(`/photos/${id}`);
     },
     onSuccess: () => {
-      toast.success("Photo deleted");
+      toast.success(t("admin.photos.deleted"));
       qc.invalidateQueries({ queryKey: ["admin", "photos"] });
       qc.invalidateQueries({ queryKey: ["public", "photos"] });
       qc.invalidateQueries({ queryKey: ["admin", "stats"] });
     },
-    onError: (err) => toast.error(getErrorMessage(err, "Delete failed")),
+    onError: (err) => toast.error(getErrorMessage(err, t("admin.photos.deleteFailed"))),
   });
 
   const updateMutation = useMutation({
@@ -115,12 +117,12 @@ export default function AdminPhotos() {
       return data;
     },
     onSuccess: () => {
-      toast.success("Photo updated");
+      toast.success(t("admin.photos.updated"));
       setEditing(null);
       qc.invalidateQueries({ queryKey: ["admin", "photos"] });
       qc.invalidateQueries({ queryKey: ["public", "photos"] });
     },
-    onError: (err) => toast.error(getErrorMessage(err, "Update failed")),
+    onError: (err) => toast.error(getErrorMessage(err, t("admin.photos.updateFailed"))),
   });
 
   function handleSubmit(e: React.FormEvent) {
@@ -141,23 +143,22 @@ export default function AdminPhotos() {
   return (
     <div className="space-y-10">
       <header>
-        <h1 className="font-display text-3xl font-bold text-ink">Photos</h1>
+        <h1 className="font-display text-3xl font-bold text-ink">{t("admin.photos.title")}</h1>
         <p className="mt-1 text-sm text-muted">
-          Upload images with a subject and description. They appear in the public
-          Blog gallery.
+          {t("admin.photos.pageSubtitle")}
         </p>
       </header>
 
       {/* UPLOAD FORM */}
       <section className="rounded-2xl border border-line bg-surface p-6 shadow-sm">
         <h2 className="font-display text-lg font-semibold text-ink">
-          Upload a new photo
+          {t("admin.photos.uploadNew")}
         </h2>
 
         <form onSubmit={handleSubmit} className="mt-5 grid gap-5 md:grid-cols-2">
           <label className="md:col-span-2">
             <span className="block text-sm font-semibold text-ink">
-              Subject / title
+              {t("admin.photos.subjectTitle")}
             </span>
             <input
               required
@@ -165,14 +166,14 @@ export default function AdminPhotos() {
               maxLength={160}
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="e.g. Graduation day at the Digital Hub"
+              placeholder={t("admin.photos.subjectPlaceholder")}
               className="mt-1 w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-ink outline-none focus:border-primary-500"
             />
           </label>
 
           <label className="md:col-span-2">
             <span className="block text-sm font-semibold text-ink">
-              Description
+              {t("admin.common.description")}
             </span>
             <textarea
               required
@@ -180,14 +181,14 @@ export default function AdminPhotos() {
               minLength={5}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Tell the story behind the photo…"
+              placeholder={t("admin.photos.descPlaceholder")}
               className="mt-1 w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-ink outline-none focus:border-primary-500"
             />
           </label>
 
           <label className="md:col-span-2">
             <span className="block text-sm font-semibold text-ink">
-              Image file <span className="text-red-600">*</span>
+              {t("admin.photos.imageFile")} <span className="text-red-600">*</span>
             </span>
             <input
               required
@@ -198,18 +199,18 @@ export default function AdminPhotos() {
               className="mt-1 w-full text-sm text-muted file:mr-3 file:rounded-md file:border-0 file:bg-primary-50 file:px-3 file:py-2 file:text-sm file:font-semibold file:text-primary-700 hover:file:bg-primary-100"
             />
             <span className="mt-1 block text-xs text-muted">
-              Max 10 MB. JPG, PNG or WebP.
+              {t("admin.photos.maxFileNote")}
             </span>
           </label>
 
           {preview && (
             <div className="md:col-span-2">
               <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted">
-                Preview
+                {t("admin.photos.preview")}
               </p>
               <img
                 src={preview}
-                alt="Selected file preview"
+                alt={t("admin.photos.previewAlt")}
                 className="max-h-64 rounded-md border border-line object-contain"
               />
             </div>
@@ -223,7 +224,7 @@ export default function AdminPhotos() {
                   style={{ width: `${progress}%` }}
                 />
               </div>
-              <p className="mt-1 text-xs text-muted">Uploading… {progress}%</p>
+              <p className="mt-1 text-xs text-muted">{t("admin.photos.uploadingPct", { pct: progress })}</p>
             </div>
           )}
 
@@ -233,7 +234,7 @@ export default function AdminPhotos() {
               disabled={uploadMutation.isPending || !imageFile}
               className="rounded-md bg-primary-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary-600 disabled:opacity-60"
             >
-              {uploadMutation.isPending ? "Uploading…" : "Upload photo"}
+              {uploadMutation.isPending ? t("admin.common.uploading") : t("admin.photos.uploadButton")}
             </button>
           </div>
         </form>
@@ -243,13 +244,13 @@ export default function AdminPhotos() {
       <section>
         <div className="flex flex-wrap items-end justify-between gap-3">
           <h2 className="font-display text-lg font-semibold text-ink">
-            Uploaded photos
+            {t("admin.photos.existing")}
           </h2>
           <input
             type="search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search photos…"
+            placeholder={t("admin.photos.searchPlaceholder")}
             className="w-full rounded-md border border-line bg-surface px-3 py-2 text-sm outline-none focus:border-primary-500 sm:w-64"
           />
         </div>
@@ -261,7 +262,7 @@ export default function AdminPhotos() {
             <PhotoSkeleton />
           </ul>
         ) : filtered.length === 0 ? (
-          <p className="mt-4 text-sm text-muted">No photos yet.</p>
+          <p className="mt-4 text-sm text-muted">{t("admin.photos.noPhotosYet")}</p>
         ) : (
           <ul className="mt-4 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {filtered.map((p) => (
@@ -294,19 +295,19 @@ export default function AdminPhotos() {
                         onClick={() => setEditing(p)}
                         className="font-semibold text-primary-600 hover:text-primary-700"
                       >
-                        Edit
+                        {t("admin.common.edit")}
                       </button>
                       <button
                         type="button"
                         onClick={() => {
-                          if (confirm(`Delete "${p.title}"?`)) {
+                          if (confirm(t("admin.photos.confirmDelete", { title: p.title }))) {
                             deleteMutation.mutate(p._id);
                           }
                         }}
                         disabled={deleteMutation.isPending}
                         className="font-semibold text-red-600 hover:text-red-700"
                       >
-                        Delete
+                        {t("admin.common.delete")}
                       </button>
                     </div>
                   </div>
@@ -319,7 +320,7 @@ export default function AdminPhotos() {
 
       <EditMediaModal
         item={editing}
-        label="photo"
+        label={t("admin.nav.photos").toLowerCase()}
         isSaving={updateMutation.isPending}
         onClose={() => setEditing(null)}
         onSave={(patch) =>

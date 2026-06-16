@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { api } from "@/api/client";
 import EditMediaModal from "@/components/EditMediaModal";
@@ -33,6 +34,7 @@ function VideoSkeleton() {
 
 export default function AdminVideos() {
   const qc = useQueryClient();
+  const { t } = useTranslation();
   const { data: videos = [], isLoading } = useQuery<VideoRecord[]>({
     queryKey: ["admin", "videos"],
     queryFn: async () => {
@@ -64,7 +66,7 @@ export default function AdminVideos() {
 
   const uploadMutation = useMutation({
     mutationFn: async () => {
-      if (!videoFile) throw new Error("Please choose a video file");
+      if (!videoFile) throw new Error(t("admin.videos.chooseVideoFile"));
 
       const fd = new FormData();
       fd.append("title", title);
@@ -80,14 +82,14 @@ export default function AdminVideos() {
       return data;
     },
     onSuccess: () => {
-      toast.success("Video uploaded");
+      toast.success(t("admin.videos.uploaded"));
       qc.invalidateQueries({ queryKey: ["admin", "videos"] });
       qc.invalidateQueries({ queryKey: ["public", "videos"] });
       qc.invalidateQueries({ queryKey: ["admin", "stats"] });
       resetForm();
     },
     onError: (err) => {
-      toast.error(getErrorMessage(err, "Upload failed"));
+      toast.error(getErrorMessage(err, t("admin.videos.uploadFailed")));
     },
   });
 
@@ -96,12 +98,12 @@ export default function AdminVideos() {
       await api.delete(`/videos/${id}`);
     },
     onSuccess: () => {
-      toast.success("Video deleted");
+      toast.success(t("admin.videos.deleted"));
       qc.invalidateQueries({ queryKey: ["admin", "videos"] });
       qc.invalidateQueries({ queryKey: ["public", "videos"] });
       qc.invalidateQueries({ queryKey: ["admin", "stats"] });
     },
-    onError: (err) => toast.error(getErrorMessage(err, "Delete failed")),
+    onError: (err) => toast.error(getErrorMessage(err, t("admin.videos.deleteFailed"))),
   });
 
   const updateMutation = useMutation({
@@ -116,12 +118,12 @@ export default function AdminVideos() {
       return data;
     },
     onSuccess: () => {
-      toast.success("Video updated");
+      toast.success(t("admin.videos.updated"));
       setEditing(null);
       qc.invalidateQueries({ queryKey: ["admin", "videos"] });
       qc.invalidateQueries({ queryKey: ["public", "videos"] });
     },
-    onError: (err) => toast.error(getErrorMessage(err, "Update failed")),
+    onError: (err) => toast.error(getErrorMessage(err, t("admin.videos.updateFailed"))),
   });
 
   function handleSubmit(e: React.FormEvent) {
@@ -142,21 +144,21 @@ export default function AdminVideos() {
   return (
     <div className="space-y-10">
       <header>
-        <h1 className="font-display text-3xl font-bold text-ink">Videos</h1>
+        <h1 className="font-display text-3xl font-bold text-ink">{t("admin.videos.title")}</h1>
         <p className="mt-1 text-sm text-muted">
-          Upload videos (with an optional poster image) to feature on the Blog page.
+          {t("admin.videos.pageSubtitle")}
         </p>
       </header>
 
       {/* UPLOAD FORM */}
       <section className="rounded-2xl border border-line bg-surface p-6 shadow-sm">
         <h2 className="font-display text-lg font-semibold text-ink">
-          Upload a new video
+          {t("admin.videos.uploadNew")}
         </h2>
 
         <form onSubmit={handleSubmit} className="mt-5 grid gap-5 md:grid-cols-2">
           <label className="md:col-span-2">
-            <span className="block text-sm font-semibold text-ink">Title</span>
+            <span className="block text-sm font-semibold text-ink">{t("admin.common.title")}</span>
             <input
               required
               value={title}
@@ -167,7 +169,7 @@ export default function AdminVideos() {
 
           <label className="md:col-span-2">
             <span className="block text-sm font-semibold text-ink">
-              Description
+              {t("admin.common.description")}
             </span>
             <textarea
               required
@@ -180,7 +182,7 @@ export default function AdminVideos() {
 
           <label>
             <span className="block text-sm font-semibold text-ink">
-              Video file <span className="text-red-600">*</span>
+              {t("admin.videos.videoFile")} <span className="text-red-600">*</span>
             </span>
             <input
               required
@@ -191,13 +193,13 @@ export default function AdminVideos() {
               className="mt-1 w-full text-sm text-muted file:mr-3 file:rounded-md file:border-0 file:bg-primary-50 file:px-3 file:py-2 file:text-sm file:font-semibold file:text-primary-700 hover:file:bg-primary-100"
             />
             <span className="mt-1 block text-xs text-muted">
-              Max 200 MB. MP4 recommended.
+              {t("admin.videos.maxFileNote")}
             </span>
           </label>
 
           <label>
             <span className="block text-sm font-semibold text-ink">
-              Poster image <span className="text-muted">(optional)</span>
+              {t("admin.videos.posterImage")} <span className="text-muted">({t("admin.common.optional").toLowerCase()})</span>
             </span>
             <input
               type="file"
@@ -217,7 +219,7 @@ export default function AdminVideos() {
                 />
               </div>
               <p className="mt-1 text-xs text-muted">
-                Uploading… {progress}%
+                {t("admin.videos.uploadingPct", { pct: progress })}
               </p>
             </div>
           )}
@@ -228,7 +230,7 @@ export default function AdminVideos() {
               disabled={uploadMutation.isPending || !videoFile}
               className="rounded-md bg-primary-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary-600 disabled:opacity-60"
             >
-              {uploadMutation.isPending ? "Uploading…" : "Upload video"}
+              {uploadMutation.isPending ? t("admin.common.uploading") : t("admin.videos.uploadVideo")}
             </button>
           </div>
         </form>
@@ -238,13 +240,13 @@ export default function AdminVideos() {
       <section>
         <div className="flex flex-wrap items-end justify-between gap-3">
           <h2 className="font-display text-lg font-semibold text-ink">
-            Existing videos
+            {t("admin.videos.existing")}
           </h2>
           <input
             type="search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search videos…"
+            placeholder={t("admin.videos.searchPlaceholder")}
             className="w-full rounded-md border border-line bg-surface px-3 py-2 text-sm outline-none focus:border-primary-500 sm:w-64"
           />
         </div>
@@ -256,7 +258,7 @@ export default function AdminVideos() {
             <VideoSkeleton />
           </ul>
         ) : filtered.length === 0 ? (
-          <p className="mt-4 text-sm text-muted">No videos found.</p>
+          <p className="mt-4 text-sm text-muted">{t("admin.videos.noVideosFound")}</p>
         ) : (
           <ul className="mt-4 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {filtered.map((v) => (
@@ -290,19 +292,19 @@ export default function AdminVideos() {
                         onClick={() => setEditing(v)}
                         className="font-semibold text-primary-600 hover:text-primary-700"
                       >
-                        Edit
+                        {t("admin.common.edit")}
                       </button>
                       <button
                         type="button"
                         onClick={() => {
-                          if (confirm(`Delete "${v.title}"?`)) {
+                          if (confirm(t("admin.videos.confirmDelete", { title: v.title }))) {
                             deleteMutation.mutate(v._id);
                           }
                         }}
                         disabled={deleteMutation.isPending}
                         className="font-semibold text-red-600 hover:text-red-700"
                       >
-                        Delete
+                        {t("admin.common.delete")}
                       </button>
                     </div>
                   </div>
@@ -315,7 +317,7 @@ export default function AdminVideos() {
 
       <EditMediaModal
         item={editing}
-        label="video"
+        label={t("admin.nav.videos").toLowerCase()}
         isSaving={updateMutation.isPending}
         onClose={() => setEditing(null)}
         onSave={(patch) =>

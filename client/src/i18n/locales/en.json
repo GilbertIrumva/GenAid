@@ -1,0 +1,1122 @@
+{
+  "common": {
+    "skipToContent": "Skip to content",
+    "donate": "Donate",
+    "donateNow": "Donate now",
+    "loading": "Loading…",
+    "readMore": "Read more",
+    "readMoreArrow": "Read more →",
+    "learnMore": "Learn more",
+    "viewAll": "View all",
+    "viewAllArrow": "View all →",
+    "getInvolved": "Get involved",
+    "getInTouch": "Get in touch",
+    "contactUs": "Contact us",
+    "sendMessage": "Send message",
+    "sending": "Sending…",
+    "thanks": "Thanks — your message is on its way.",
+    "language": "Language",
+    "english": "English",
+    "french": "Français",
+    "theme": "Theme",
+    "lightMode": "Light mode",
+    "darkMode": "Dark mode",
+    "search": "Search",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "update": "Update",
+    "create": "Create",
+    "back": "Back",
+    "submit": "Submit",
+    "close": "Close",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "Message",
+    "subject": "Subject",
+    "title": "Title",
+    "description": "Description",
+    "address": "Kakuma Refugee Camp, Turkana West, Kenya",
+    "comingSoon": "Coming soon",
+    "noResults": "No results found.",
+    "tryAgain": "Try again"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "programs": "Programs",
+    "impact": "Impact",
+    "stories": "Stories",
+    "blog": "Blog",
+    "partners": "Partners",
+    "contact": "Contact",
+    "volunteer": "Volunteer",
+    "jobs": "Jobs",
+    "staffPortal": "Staff portal",
+    "admin": "Admin",
+    "toggleMenu": "Toggle menu"
+  },
+  "footer": {
+    "tagline": "Reskilling & promoting education for refugees, creating quality job opportunities and bringing them into the global community.",
+    "explore": "Explore",
+    "getInvolved": "Get involved",
+    "contact": "Contact",
+    "donateGlobalGiving": "Donate via GlobalGiving",
+    "kenya": "Kenya:",
+    "international": "International:",
+    "rights": "All rights reserved.",
+    "adminDashboard": "Admin dashboard"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Refugee-led • Kakuma, Kenya",
+      "titleStart": "Building futures,",
+      "titleHighlight": "one opportunity",
+      "titleEnd": "at a time.",
+      "subtitle": "Generation Aid equips youth in Kakuma refugee camp with digital skills, entrepreneurship training, and pathways to employment — so they can shape their own future.",
+      "ctaDonate": "Donate",
+      "ctaPrograms": "Explore programs"
+    },
+    "about": {
+      "eyebrow": "About us",
+      "title": "A youth refugee-led organisation",
+      "body1": "Generation Aid is a youth Refugee-Led Organisation (RLO) born in 2019 in Kakuma, transforming education-into-employment systems so refugees can integrate into the global economy.",
+      "body2": "We are built, led and delivered by refugees themselves — designing programs that match the realities of camp life and the opportunities of the global digital economy.",
+      "ourVision": "Our Vision",
+      "visionTitle": "A future without barriers",
+      "visionBody": "Empowering neglected refugees with innovative programs that reduce unemployment and increase income — so they can become active members of the global community and economy.",
+      "ourMission": "Our Mission",
+      "missionTitle": "Skills that change lives",
+      "missionBody": "To transform refugees' lives by providing vocational skills and EdTech programs that create educational and employment pathways.",
+      "readFullStory": "Read our full story →"
+    },
+    "programs": {
+      "eyebrow": "Our work",
+      "title": "Featured programs",
+      "subtitle": "A snapshot of what we run on the ground.",
+      "viewAll": "View all programs →"
+    },
+    "causes": {
+      "eyebrow": "Urgent causes",
+      "title": "Causes that need your support",
+      "subtitle": "Every contribution moves a specific project forward.",
+      "donateLink": "Donate via GlobalGiving →",
+      "raised": "raised",
+      "of": "of",
+      "donateToCause": "Donate to this cause",
+      "items": {
+        "hub": {
+          "title": "A Hub of Hope in the Heart of Kakuma",
+          "description": "Help us expand our Digital Community Hub — workstations, solar power and high-speed internet for refugee youth."
+        },
+        "jobs": {
+          "title": "Empowering Refugees with Generation Jobs",
+          "description": "Train refugee youth in remote work skills and connect them to real, paying international contracts."
+        },
+        "artists": {
+          "title": "Empowering Refugee Artists",
+          "description": "Support the Kakuma Art Project and the Senga Gallery — materials, workshops and global exhibitions."
+        }
+      }
+    },
+    "impact": {
+      "eyebrow": "Impact",
+      "title": "Our impact in numbers",
+      "subtitle": "Real change, measured by the people we've walked alongside."
+    },
+    "team": {
+      "eyebrow": "Our team",
+      "title": "The people behind Generation Aid",
+      "subtitle": "A refugee-led team of passionate, transparent and accountable changemakers.",
+      "connectLinkedIn": "Connect on LinkedIn →",
+      "items": {
+        "hubert": {
+          "role": "Founder & CEO",
+          "bio": "Congolese refugee, social entrepreneur and changemaker. Founded Generation Aid in 2019 to rewrite the narrative for refugee youth in Kakuma."
+        },
+        "programs": {
+          "name": "Programs Lead",
+          "role": "Vocational & Livelihood Programs",
+          "bio": "Designs and runs our vocational, livelihood and entrepreneurship tracks across the Kakuma camp."
+        },
+        "digital": {
+          "name": "Digital Skills Trainer",
+          "role": "Remote Work Bootcamp",
+          "bio": "Mentors learners through graphic design, content writing and virtual-assistant tracks that lead to paid remote contracts."
+        },
+        "community": {
+          "name": "Community Lead",
+          "role": "Outreach & Volunteers",
+          "bio": "Coordinates volunteers, community partners and intake for every cohort that enters the Generation Aid hub."
+        }
+      }
+    },
+    "stories": {
+      "eyebrow": "Stories",
+      "title": "Latest from the blog",
+      "subtitle": "News, project launches and reflections from Kakuma.",
+      "allArticles": "All articles →"
+    },
+    "testimonials": {
+      "eyebrow": "Testimonials",
+      "title": "What people say about us",
+      "items": {
+        "amani": {
+          "quote": "Generation Aid gave me my first remote contract. Today I support my family by working online from Kakuma — something I never thought possible.",
+          "role": "Remote Work Bootcamp graduate"
+        },
+        "mwangi": {
+          "quote": "The Senga Gallery changed everything. For the first time, my paintings are seen — and they tell the story of where I come from.",
+          "role": "Kakuma Art Project artist"
+        },
+        "partner": {
+          "quote": "A truly refugee-led organisation. Their work bridges learning, livelihoods and dignity — and they deliver real outcomes.",
+          "name": "Partner organisation",
+          "role": "Education NGO, Nairobi"
+        }
+      }
+    },
+    "videos": {
+      "eyebrow": "Watch",
+      "title": "Videos & stories on screen",
+      "subtitle": "Walkthroughs of our hub, graduate testimonials, and updates from the field."
+    },
+    "donateBlock": {
+      "title": "Stand with the next generation.",
+      "subtitle": "Whether you partner, fund, mentor or volunteer — your support unlocks opportunity for refugee youth.",
+      "give": "Give",
+      "giveBody": "Your support fuels our mission. Donate today and make a lasting impact.",
+      "sponsor": "Sponsor",
+      "sponsorBody": "Become a sponsor and help drive meaningful change in our programs.",
+      "sponsorCta": "Sponsor a program",
+      "volunteer": "Volunteer",
+      "volunteerBody": "Join us as a volunteer and be part of creating lasting impact."
+    },
+    "contact": {
+      "eyebrow": "Contact",
+      "title": "Let's build something together",
+      "subtitle": "Have a question, partnership idea, or want to volunteer? Send us a message and we'll get back to you.",
+      "locationLabel": "Location:",
+      "locationValue": "Kakuma, Turkana County, Kenya",
+      "emailLabel": "Email:"
+    }
+  },
+  "about": {
+    "hero": {
+      "eyebrow": "Where it all began",
+      "title": "Who are we?",
+      "subtitle": "Generation Aid is a youth Refugee-Led Organisation (RLO) dedicated to transforming lives through vocational skills, EdTech, education, livelihood and entrepreneurship programs — creating educational and employment pathways for refugee communities."
+    },
+    "intro": {
+      "p1": "We are transforming education-into-employment systems — preparing, placing and supporting people into life-changing careers that would otherwise be inaccessible — so refugees can integrate into the global economy.",
+      "p2": "Generation Aid is a youth-led refugee nonprofit based in Kenya's Kakuma Refugee Camp, born in 2019 during COVID-19. Over the years, GAID has worked tirelessly to provide a range of services to displaced communities — vocational education, entrepreneurship, food distribution and digital skills.",
+      "p3Prefix": "The name ",
+      "p3Brand": "Generation Aid",
+      "p3Middle": " was given by our founder ",
+      "p3FounderName": "Hubert Senga",
+      "p3Suffix": " to reflect our ambition of serving refugees and displaced people in this current generation."
+    },
+    "objectivesTitle": "Our objectives",
+    "objectivesSubtitle": "What Generation Aid works to achieve.",
+    "objectives": [
+      "Empower refugees with knowledge and skills — education, digital skills, livelihood and entrepreneurship — so they can earn a sustainable income through remote work opportunities.",
+      "Equip refugees with the essential knowledge and competencies to navigate the digital world, fostering creativity and problem-solving.",
+      "Build sustainable community development projects through long-term initiatives in education, entrepreneurship and social support."
+    ],
+    "focusedTitle": "Our focused programs",
+    "focusedEyebrow": "What we do",
+    "focusedPrograms": [
+      {
+        "title": "Vocational & Livelihood skills",
+        "body": "Vocational training, small-business support and income-generating projects that help refugees build sustainable, self-reliant futures."
+      },
+      {
+        "title": "Education",
+        "body": "Learning tools and inclusive programs that support education for all — especially girls and children with disabilities — and bridge youth into higher education."
+      },
+      {
+        "title": "EdTech",
+        "body": "Digital learning tools, inclusive education and skills training that close the education gap in displacement settings."
+      },
+      {
+        "title": "Entrepreneurship",
+        "body": "Training, resources and market access that help refugees launch sustainable businesses and achieve self-reliance."
+      },
+      {
+        "title": "Remote Employment",
+        "body": "Digital-skills training plus our Digital Community Hub — high-speed internet, stable power and devices — connecting refugees to global remote work."
+      }
+    ],
+    "valuesTitle": "Our core values",
+    "values": [
+      {
+        "title": "Refugee-led, community-driven",
+        "body": "We work as a group of passionate refugees and make sure youth voices in the community are heard."
+      },
+      {
+        "title": "Accountability & Transparency",
+        "body": "We are answerable for our actions and conduct every activity with full transparency."
+      },
+      {
+        "title": "Self-reliance",
+        "body": "We build self-sustaining pathways so the organisation can keep supporting the community even without external support."
+      }
+    ],
+    "historyEyebrow": "Our story",
+    "historyTitle": "History — how we began",
+    "history": {
+      "p1Start": "Generation Aid was born in 2019 from the vision, determination and lived experience of our founder ",
+      "p1FounderName": "Hubert Senga",
+      "p1End": " — a social entrepreneur and changemaker on a mission to transform the lives of refugees through digital skills, innovative education and economic empowerment.",
+      "p2Start": "As a Congolese refugee who has lived in Kakuma refugee camp for over nine years, Hubert has witnessed firsthand the immense barriers refugees face: limited access to education, unemployment and the struggle for dignity. But rather than accept these challenges as fate, he chose to ",
+      "p2Emphasis": "rewrite the narrative.",
+      "p3Start": "GAID's work is grounded in the belief that refugees and other displaced individuals have the right to live with dignity and respect, and should have access to the resources and opportunities they need to rebuild their lives. We became a Community Based Organisation in 2019, transitioned to the name ",
+      "p3Brand": "Generation Aid",
+      "p3End": " the same year, and received our Government certificate in 2025.",
+      "p4": "Through Generation Aid we are not just closing literacy and unemployment gaps — we are building a future where every refugee has the tools, knowledge and opportunities to shape their destiny. This is more than a movement; it is a revolution of hope, innovation and unstoppable resilience.",
+      "p5": "We are grateful to our partners and donors who have been instrumental in this journey of empowering youth and advancing the UN Strategic Development Goals 2030 of Quality Education, Reduced Inequality, Decent Work and Economic Growth."
+    },
+    "founded": "Founded",
+    "certified": "Certified",
+    "basedIn": "Based in",
+    "kakumaCamp": "Kakuma Refugee Camp, Kenya",
+    "getInvolvedTitle": "Want to get involved?",
+    "getInvolvedSubtitle": "There are many ways to stand with us — choose what fits you best."
+  },
+  "programs": {
+    "hero": {
+      "eyebrow": "Digital Livelihood",
+      "title": "Education & Capacity Building",
+      "subtitle": "Vocational and education programs in ICT, tailoring & dressmaking craft training, English language skills, and other innovative education that plays a critical role in the economic and livelihood development of refugee youth in the Kakuma refugee camp."
+    },
+    "programLabel": "Program {{n}}",
+    "youthDigital": {
+      "tag": "Youth Digital Skills",
+      "title": "From the camp to the global digital economy",
+      "subtitle": "Equipping refugee youth with the skills, tools and connections to earn online — closing the digital divide one trainee at a time."
+    },
+    "creativity": {
+      "tag": "Creativity",
+      "title": "Art crossing borders",
+      "subtitle": "A single canvas sparked a movement — bringing materials, workshops and dignity to refugee artists in Kakuma Camp."
+    },
+    "cta": {
+      "title": "Help us reach more refugee youth.",
+      "subtitle": "Sponsor a program, donate equipment or join us as a volunteer."
+    },
+    "overview": [
+      {
+        "title": "Computer Literacy Skills",
+        "body": "ICT and digital literacy training that prepares refugee youth for both online and offline careers."
+      },
+      {
+        "title": "Tailoring & Dressmaking",
+        "body": "Hands-on craft training paired with entrepreneurship coaching so learners can launch their own tailoring businesses."
+      },
+      {
+        "title": "English Language Skills",
+        "body": "Communicative English classes for beginner, intermediate and advanced learners — built around real daily interactions."
+      }
+    ],
+    "details": [
+      {
+        "title": "Computer Literacy Skills",
+        "body": "Information and Communication Technologies (ICT) are essential skills for any career a student may want to pursue. At GAID we offer two ICT courses tailored to the needs of youth in Kakuma — Basic ICT & Digital Literacy and an introduction to programming. With these skills we unlock the creativity of youth and enable them to transform their communities through innovation and virtual entrepreneurship, paving the way for decent livelihoods and economic growth both online and offline.",
+        "features": [
+          "Basic ICT & digital literacy",
+          "Introduction to programming",
+          "Hands-on lab time",
+          "Pathway to remote work"
+        ]
+      },
+      {
+        "title": "Tailoring & Dressmaking Craft Training",
+        "body": "Our craft training program provides practical tailoring and dressmaking skills through hands-on training and attachments with local tailoring businesses. Participants also take part in entrepreneurship training to equip them with the skills needed to start and run their own successful businesses — creating their own opportunities and achieving self-sufficiency.",
+        "features": [
+          "Practical sewing & garment construction",
+          "Industry attachments with local tailors",
+          "Entrepreneurship coaching",
+          "Start-up kit for top graduates"
+        ]
+      },
+      {
+        "title": "English Language Skills",
+        "body": "GAID's English language program is designed for beginners, intermediates and advanced learners. We offer Communicative English classes for youth who need to improve day-to-day interactions and return to their communities with a better understanding of English in both written and oral forms.",
+        "features": [
+          "Beginner, intermediate & advanced tracks",
+          "Communicative speaking focus",
+          "Reading & writing fundamentals",
+          "Real-world conversation practice"
+        ]
+      }
+    ],
+    "bpo": {
+      "eyebrow": "1. Flagship initiative",
+      "title": "Remote Work through the BPO Model",
+      "p1": "One of Generation Aid's flagship initiatives is the <b>Remote Work Training & Freelancing Bootcamp</b>, designed to equip refugee youth with the digital skills needed to access online job opportunities. In Kakuma, where traditional employment is scarce, remote work offers a lifeline to financial independence. The program trains participants in <b>graphic design</b>, <b>digital marketing</b>, <b>content writing</b> and <b>virtual assistance</b> — giving them marketable skills for a global market and connecting them to remote work opportunities.",
+      "p2": "The bootcamp includes hands-on workshops, mentorship from experienced freelancers, and dedicated workstations with internet access so participants can practise their skills and apply for jobs. By the end of the training, many graduates secure remote contracts — enabling them to earn a sustainable income, support their families and reduce reliance on humanitarian aid."
+    },
+    "coding": {
+      "eyebrow": "2. Building the next generation of developers",
+      "title": "Coding & Web Development Academy",
+      "p1": "Beyond technical training, participants work on <b>real-world projects</b> — building e-commerce websites and digital storytelling platforms for refugee artists. Hackathons and coding challenges encourage innovation by tasking students with <b>solving local problems through technology</b>.",
+      "p2": "The program also connects aspiring developers with <b>career guidance</b>, <b>scholarships</b> and <b>internship opportunities</b> — providing a clear pathway into the global tech industry.",
+      "p3": "These initiatives reflect Generation Aid's commitment to bridging the digital divide and ensuring that refugee youth are <b>not left behind in the digital economy</b>."
+    },
+    "kap": {
+      "howEyebrow": "How it began",
+      "howTitle": "One painting, one conversation",
+      "howP1": "<em>Boat</em> — the painting that started all of this — led Tara Dominick and Hubert into a conversation about the existence of art in the Kakuma Refugee Camp. What followed was the founding of the <b>Kakuma Art Project (KAP)</b>.",
+      "howP2": "Once committed to the project, it was as if everything started to align. Tara initially offered two hours a week, but the project now occupies three or four days of her week — and her thoughts constantly.",
+      "howP3": "From conception, Tara sold <strong>10 limited edition signed prints</strong> of <em>Boat</em> to fund Phase 1 — getting paints, brushes, palette knives, paper, charcoal and canvasses into the camp.",
+      "quote": "One small action can ripple out to create significant change.",
+      "quoteAttr": "— Bob Brimson, one of the first believers in the project. He coined the tagline <span>“the power of one painting”</span>.",
+      "beautyEyebrow": "The beauty of the programs",
+      "beautyTitle": "Education, visibility and opportunity",
+      "beautyBody": "The project provides artists at the camp with education, visibility and opportunity — supported by a continuing series of workshops run through the <b>Generation Aid Centre</b> in Kakuma Camp.",
+      "paintingEyebrow": "An artist's story",
+      "paintingTitle": "Painting <em>Home</em> from afar",
+      "paintingP1": "Mwangi, a 52-year-old artist living at the Kakuma Camp, creates beautiful images of his homeland. Yet for years he was limited by resources — no canvas, no paint, no brushes.",
+      "paintingP2": "His passion to paint meant salvaging old t-shirts from the dump, washing them, and coating them with glue to create a makeshift canvas. His ingenuity and passion moved Tara deeply when she first saw his work.",
+      "paintingP3": "His work has given the root of the program and is now well recognised.",
+      "activitiesEyebrow": "Activities",
+      "activitiesTitle": "Refugee Artisan & Handicraft Cooperative",
+      "activitiesP1": "Many refugees in Kakuma come from rich cultural backgrounds with <b>strong artistic traditions</b> in beading, weaving, tailoring and wood carving. However, limited market access prevents them from turning these skills into sustainable businesses. To address this, Generation Aid established the <b>Refugee Artisan & Handicraft Cooperative</b> — a platform that supports refugee artisans in producing and selling their handmade products to local and international markets.",
+      "activitiesP2": "The initiative provides specialised training in various handicrafts, helping artisans improve product quality, develop unique designs and scale their production. It also connects them with buyers, NGOs and online marketplaces where they can showcase and sell their work. Through storytelling and branding workshops, artisans learn how to share their journey and cultural heritage — making their products more valuable in global markets.",
+      "celebratingEyebrow": "Celebrating our talents",
+      "celebratingTitle": "A cooperative model that pools strength",
+      "celebratingP1": "To further support artisans, Generation Aid is developing a <b>cooperative model</b> that lets artisans pool resources, access small business loans and collectively invest in materials and equipment. This ensures that even those with limited financial means can participate and grow their businesses.",
+      "celebratingP2": "The Refugee Artisan & Handicraft Cooperative not only preserves cultural heritage but also creates <b>sustainable jobs and economic opportunities</b> for artisans — particularly women and youth. By giving them a platform to monetise their skills, this initiative empowers refugees to build independent and dignified livelihoods beyond humanitarian aid.",
+      "galleryEyebrow": "The Senga Gallery",
+      "galleryTitle": "More than a building — an art gallery at the heart of Kakuma",
+      "galleryP1": "The first ever art gallery has been built — becoming a beacon of hope, a place for refugees to express themselves, to inspire one another, and to stand proud alongside each other as they move forward with their lives.",
+      "galleryP2": "KAP is run by <b>Tara Dominick</b>, a fine artist from Devon, together with <b>Hubert Senga</b> and Generation Aid who manage delivery of the art programmes on the ground in Kakuma.",
+      "galleryCaption1": "The workshop organised by the Birgheter project, to promote beauty and pride for the refugees.",
+      "galleryCaption2": "Through running art workshops, Generation Aid learns the real challenges the community is facing and develops community-based solutions.",
+      "galleryP3": "Through running workshops the refugee community in Kakuma comes together to advocate for peace, unity and talent. It is a unique program giving refugees a platform to share what's hidden in their cultures — gifts the wider world can learn from.",
+      "galleryCaption3": "The first ever art gallery in Kakuma refugee camp — named <b>The Senga Gallery</b> to honour the refugee advocacy of Hubert Senga, founder of Generation Aid.",
+      "whyTitle": "Why this gallery matters",
+      "whySubtitle": "The gallery is inclusive — built to promote creativity among refugees.",
+      "whyCards": [
+        {
+          "title": "Expression & Identity",
+          "body": "A safe space where refugee artists can give form to memories of home, stories of journey, and visions of tomorrow."
+        },
+        {
+          "title": "Solar-Powered Gallery",
+          "body": "Solar panels ensure there's always light to see the artwork — making the gallery viable and sustainable long-term."
+        },
+        {
+          "title": "Community & Solidarity",
+          "body": "Artists stand alongside one another, building pride and connection within a community that has lost so much."
+        },
+        {
+          "title": "Global Visibility",
+          "body": "Through exhibitions like the one in Wiltshire, refugee stories reach new audiences — bridging worlds through art."
+        }
+      ]
+    }
+  },
+  "impact": {
+    "hero": {
+      "eyebrow": "Our impact",
+      "titleStart": "Real numbers. Real lives.",
+      "titleHighlight": "Real change in Kakuma.",
+      "subtitle": "We measure what matters — opportunities created, livelihoods restored, and futures unlocked. Every number below represents a person whose potential is finally being met."
+    },
+    "byTheNumbers": "By the numbers",
+    "byTheNumbersSubtitle": "Updated as our programs grow.",
+    "metricsEmpty": "Impact metrics will appear here as we publish them.",
+    "outcomesEyebrow": "What we measure",
+    "outcomesTitle": "Four outcomes, one mission",
+    "outcomesSubtitle": "Every program we run is designed against these four outcome areas — so you can see exactly how a class, a placement or a seed kit translates into long-term change for refugee youth in Kakuma.",
+    "highlightsTitle": "Recent highlights",
+    "highlightsSubtitle": "A few moments from the last twelve months we're proud of.",
+    "journeyEyebrow": "Our journey",
+    "journeyTitle": "From a small idea to a refugee-led movement",
+    "journeySubtitle": "Generation Aid has been built one cohort, one partnership and one graduate at a time.",
+    "behindNumbersTitle": "Behind the numbers",
+    "behindNumbersSubtitle": "The people whose lives our programs have shaped.",
+    "readAllStories": "Read all stories →",
+    "ctaTitle": "Want to help these numbers grow?",
+    "ctaSubtitle": "Every donation, partnership, or volunteer hour expands what we can deliver next year.",
+    "partnerWithUs": "Partner with us"
+  },
+  "stories": {
+    "hero": {
+      "eyebrow": "Stories",
+      "title": "Voices from our community",
+      "titleStart": "Real journeys from",
+      "titleHighlight": "Kakuma",
+      "subtitle": "The graduates, trainers and partners whose lives our programs have shaped — in their own words.",
+      "subtitleAlt": "Every number on our impact page is a person. These are some of the people behind the numbers — in their own words."
+    },
+    "empty": "Stories will appear here as we publish them.",
+    "readStory": "Read story →",
+    "featured": "Featured story",
+    "readPersonStory": "Read {{name}}'s story →",
+    "moreFromCommunity": "More stories from the community",
+    "moreSubtitle": "From first-time coders to cooperative founders — explore the paths our learners are building.",
+    "shareTitle": "Are you a graduate? Share your story.",
+    "shareBody": "Your journey can inspire the next learner who walks into the Hub. We'll help you write and publish it — in any language you're comfortable with.",
+    "submitStory": "Submit your story",
+    "notFound": "Story not found",
+    "notFoundSubtitle": "We couldn't find a story at this URL.",
+    "backToAll": "Back to all stories",
+    "allStories": "← All stories",
+    "moreStories": "More stories"
+  },
+  "blog": {
+    "hero": {
+      "eyebrow": "Blog",
+      "eyebrowAlt": "Our Blog",
+      "title": "News, ideas and updates",
+      "titleAlt": "News & Updates",
+      "subtitle": "Project launches, partnerships, reflections from the field, and what we're learning along the way.",
+      "subtitleAlt": "Stories from the field, project launches and reflections from the Generation Aid team in Kakuma."
+    },
+    "seePhotos": "See our photos ↓",
+    "watchVideos": "Watch our videos ↓",
+    "photosTitle": "Photos",
+    "photosSubtitle": "Photos uploaded by our team — workshops, graduations, daily life in Kakuma.",
+    "videosTitle": "Videos & stories on screen",
+    "videosEyebrow": "Watch",
+    "videosSubtitle": "Walkthroughs of our hub, graduate testimonials, behind-the-scenes from workshops, and updates from the field.",
+    "haveAStory": "Have a story? Get in touch",
+    "empty": "No articles published yet.",
+    "backToBlog": "← Back to blog",
+    "byAuthor": "by {{author}}",
+    "aboutUsTitle": "About us",
+    "aboutUsBody": "Over the years, GAID has worked tirelessly to provide a range of services to displaced communities — including entrepreneurship, vocational education and digital skills. We became a legal Community-Based Organisation in 2019 and later transitioned to the name Generation Aid, before receiving our Government certificate in 2025. The name reflects our ambition of serving refugees and displaced youth within the Kakuma refugee camp.",
+    "recentArticles": "Recent articles",
+    "postCategories": "Post categories",
+    "uncategorized": "Uncategorized",
+    "gallery": "Gallery",
+    "momentsField": "Moments from the field",
+    "momentsSubtitle": "Photos uploaded by our team — workshops, graduations, daily life in the Kakuma hub.",
+    "postNotFound": "Post not found",
+    "postNotFoundSubtitle": "The article you're looking for doesn't exist.",
+    "moreArticles": "More articles"
+  },
+  "contact": {
+    "hero": {
+      "eyebrow": "Get in touch",
+      "eyebrowAlt": "Contact",
+      "title": "We'd love to hear from you",
+      "titleAlt": "Let's talk.",
+      "subtitle": "Questions, partnerships, press, volunteering — drop us a line and we'll get back to you within a few working days.",
+      "subtitleAlt": "Whether you want to partner, donate, volunteer or just say hello — we read every message and reply within two business days."
+    },
+    "formTitle": "Send us a message",
+    "allFieldsRequired": "All fields required unless marked optional.",
+    "namePlaceholder": "Your name",
+    "emailPlaceholder": "you@email.com",
+    "subjectPlaceholder": "What's this about?",
+    "messagePlaceholder": "Tell us a bit more…",
+    "yourName": "Your name",
+    "subjectLabel": "Subject",
+    "send": "Send message",
+    "contactInfo": "Contact information",
+    "ourLocation": "Our location",
+    "callUs": "Call us",
+    "writeUs": "Write to us",
+    "office": "Office",
+    "officeHours": "Office hours",
+    "timesAreEAT": "Times are East Africa Time (UTC+3).",
+    "phone": "Phone",
+    "emailHeading": "Email",
+    "faq": "FAQ",
+    "faqTitle": "Frequently asked",
+    "faqs": {
+      "donate": {
+        "q": "How do I donate?",
+        "a": "Use the Donate button anywhere on the site — it links to our verified GlobalGiving page. For larger gifts or corporate matching, email info@generationaid.org and we'll arrange a direct transfer or invoice."
+      },
+      "volunteer": {
+        "q": "Can I volunteer remotely?",
+        "a": "Yes. We work with remote mentors in design, writing, software, English language and career coaching. Send us a note with your skills and weekly availability via the form above."
+      },
+      "spend": {
+        "q": "How are donations spent?",
+        "a": "Roughly 78% of every donation funds direct programme delivery (training, stipends, equipment, internet). 14% covers Hub operations, and 8% covers organisational overhead. Full breakdown in our annual report — request a copy via email."
+      },
+      "registered": {
+        "q": "Are you a registered organisation?",
+        "a": "Yes. Generation Aid is a registered refugee-led organisation operating in the Kakuma camp under host-country regulations, with international fiscal sponsorship for donations."
+      }
+    },
+    "hours": {
+      "weekdays": { "days": "Monday – Friday", "hours": "8:30 – 17:00 EAT" },
+      "saturday": { "days": "Saturday", "hours": "9:00 – 13:00 EAT" },
+      "sunday": { "days": "Sunday & public holidays", "hours": "Closed" }
+    },
+    "messageSent": "Message sent — thank you.",
+    "messageSentBody": "We've received your note and a team member will reply within two business days. If your matter is urgent, please call us on the numbers in the sidebar.",
+    "next": "Next",
+    "nextBody": "We'll route your message to the right team.",
+    "replyWindow": "Reply window",
+    "replyWindowBody": "Within 2 business days (Mon–Fri, EAT).",
+    "needSooner": "Need it sooner?",
+    "sendAnother": "Send another message",
+    "supportOurWork": "Support our work →",
+    "errorName": "Please enter your name",
+    "errorEmail": "Please enter a valid email",
+    "errorMessage": "Please write a short message",
+    "errorSendFailed": "Could not send message"
+  },
+  "volunteer": {
+    "hero": {
+      "eyebrow": "Volunteer",
+      "title": "Volunteer with us",
+      "subtitle": "Lend your skills, time or network to refugee-led change in Kakuma."
+    }
+  },
+  "partners": {
+    "hero": {
+      "eyebrow": "Partners",
+      "title": "The organisations walking beside us",
+      "titleStart": "Partner with a",
+      "titleHighlight": "refugee-led",
+      "titleEnd": "organisation",
+      "subtitle": "We're proud to work alongside funders, NGOs and businesses that share our belief in refugee-led change.",
+      "subtitleAlt": "We work with NGOs, governments and companies that want measurable impact and a direct line to the community they serve."
+    },
+    "becomeAPartner": "Become a partner",
+    "emailPartnerships": "Email partnerships team",
+    "whyPartner": "Why partner with us",
+    "whyPartnerSubtitle": "Four things every partner gets, day one.",
+    "currentPartners": "Our current partners",
+    "currentPartnersSubtitle": "A growing network of organisations standing with refugee-led innovation.",
+    "getInvolved": "Get involved",
+    "threeWays": "Three ways to partner",
+    "threeWaysSubtitle": "Every partnership is bespoke — pick the entry point that fits and we'll shape the rest with you.",
+    "mostPopular": "Most popular",
+    "readyToTalk": "Ready to talk?",
+    "readyToTalkBody": "Send us a short note about your organisation and what you'd like to build together. We respond within two business days.",
+    "emailUs": "Email {{email}}",
+    "categories": {
+      "Strategic": "Strategic",
+      "Funding": "Funding",
+      "Implementation": "Implementation",
+      "Corporate": "Corporate"
+    },
+    "list": {
+      "unhcr": "Long-standing collaboration on protection, education access and refugee-led programming inside the Kakuma camp.",
+      "globalgiving": "Our primary international donation platform — providing the rails for individual giving and corporate matching campaigns.",
+      "refugepoint": "Implementing partner on durable solutions, livelihoods training and resettlement-ready skills programmes.",
+      "salesforce": "Technology partner — providing the CRM backbone for our beneficiary tracking, alumni engagement and donor stewardship.",
+      "lwf": "Joint delivery of education programming and shared infrastructure across the Kalobeyei integrated settlement.",
+      "konexio": "Pan-African network partner connecting refugee-led organisations with digital-skills curricula, mentorship and cross-border learning exchanges.",
+      "turkana": "Host-community engagement, business permits and joint youth-employment initiatives across Turkana West."
+    },
+    "benefits": {
+      "rooted": {
+        "title": "Community-rooted delivery",
+        "body": "Every program is designed and run by refugees themselves — meaning higher uptake, lower cost-per-beneficiary and outcomes that stick."
+      },
+      "measured": {
+        "title": "Measured impact",
+        "body": "We track every learner from intake through graduation and into employment. Quarterly reports tied to your funding, no exceptions."
+      },
+      "visibility": {
+        "title": "Brand & ESG visibility",
+        "body": "Co-branded campaigns, on-the-ground photography and named-room sponsorship in our Digital Community Hub."
+      },
+      "talent": {
+        "title": "Talent pipeline",
+        "body": "Direct hiring access to our Generation Jobs graduates — designers, writers, developers, virtual assistants and customer-support specialists."
+      }
+    },
+    "tiers": {
+      "programme": {
+        "name": "Programme partner",
+        "tagline": "Fund what we build",
+        "body": "Co-design and co-deliver a specific programme — digital skills, tailoring, English, or remote work — with quarterly impact reports tied to your investment.",
+        "from": "From $10,000 / year",
+        "features": [
+          "Branded cohort or curriculum module",
+          "Quarterly impact + financial reports",
+          "Two co-branded story features per year",
+          "Invitation to the annual partner briefing"
+        ],
+        "ctaLabel": "Sponsor a programme"
+      },
+      "hub": {
+        "name": "Hub sponsor",
+        "tagline": "Anchor the Digital Hub",
+        "body": "Multi-year support for the Digital Community Hub: named-room sponsorship, on-site brand visibility, and a permanent place in our annual report and donor wall.",
+        "from": "From $25,000 / year",
+        "features": [
+          "Named room or workstation inside the Hub",
+          "Logo on the donor wall + annual report cover",
+          "Custom monthly dashboard of usage metrics",
+          "Quarterly executive call with our CEO",
+          "Site visit hosted by the Generation Aid team"
+        ],
+        "ctaLabel": "Become a Hub sponsor"
+      },
+      "talent": {
+        "name": "Talent partner",
+        "tagline": "Hire refugee talent",
+        "body": "Hire Generation Jobs graduates directly into remote roles — we handle screening, onboarding and ongoing mentorship at no cost to your company.",
+        "from": "No fee — hiring partnership",
+        "features": [
+          "Shortlist of vetted, role-ready candidates",
+          "Free onboarding + first-90-days mentor support",
+          "Quarterly hiring partner sync",
+          "Optional joint case study after first hire"
+        ],
+        "ctaLabel": "Start hiring"
+      }
+    }
+  },
+  "jobs": {
+    "hero": {
+      "eyebrow": "Jobs",
+      "title": "Work with us",
+      "subtitle": "Open roles, internships and volunteer positions — refugee applicants strongly encouraged."
+    },
+    "empty": "No open roles right now. Check back soon or get in touch."
+  },
+  "login": {
+    "title": "Sign in to your account",
+    "subtitle": "Staff & admin access only.",
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "signIn": "Sign in",
+    "signingIn": "Signing in…",
+    "staffPortal": "Staff portal",
+    "signinWelcome": "Welcome back. Sign in to manage content.",
+    "signupWelcome": "Create a staff account. New accounts default to editor access.",
+    "signUp": "Sign up",
+    "fullName": "Full name",
+    "minPassword": "Minimum 8 characters.",
+    "createAccount": "Create account",
+    "creatingAccount": "Creating account…",
+    "backToSite": "← Back to site"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "subtitle": "The page you're looking for doesn't exist or has been moved.",
+    "goHome": "Back to home",
+    "error404": "Error 404",
+    "wandered": "This page wandered off.",
+    "explainer": "The link you followed might be broken, or the page may have moved. Let's get you back on track — try one of the links below.",
+    "reportLink": "Report a broken link",
+    "tryInstead": "Try one of these instead",
+    "popularDestinations": "Popular destinations across the Generation Aid site.",
+    "go": "Go →",
+    "linkPrograms": "Our programmes",
+    "linkProgramsDesc": "Digital skills, tailoring, English and remote work.",
+    "linkStories": "Graduate stories",
+    "linkStoriesDesc": "Voices from the Hub and the Generation Jobs cohort.",
+    "linkImpact": "Our impact",
+    "linkImpactDesc": "Numbers, milestones and the people behind them.",
+    "linkContact": "Get in touch",
+    "linkContactDesc": "Partnerships, volunteering or media enquiries."
+  },
+  "pageStub": {
+    "comingSoon": "This page is coming together — content lands here soon."
+  },
+  "programDetail": {
+    "backToPrograms": "← Back to programs",
+    "notFound": "Program not found."
+  },
+  "admin": {
+    "common": {
+      "newItem": "New item",
+      "create": "Create",
+      "creating": "Creating…",
+      "update": "Update",
+      "updating": "Updating…",
+      "saved": "Saved",
+      "search": "Search…",
+      "loading": "Loading…",
+      "noItems": "No items yet.",
+      "add": "Add",
+      "adding": "Adding…",
+      "save": "Save",
+      "saving": "Saving…",
+      "delete": "Delete",
+      "deleting": "Deleting…",
+      "edit": "Edit",
+      "cancel": "Cancel",
+      "upload": "Upload",
+      "uploading": "Uploading…",
+      "close": "Close",
+      "actions": "Actions",
+      "draft": "Draft",
+      "published": "Published",
+      "yes": "Yes",
+      "no": "No",
+      "confirmDelete": "Are you sure you want to delete this item?",
+      "selectFile": "Select a file",
+      "required": "Required",
+      "optional": "Optional",
+      "back": "Back",
+      "openMenu": "Open admin menu",
+      "menu": "Menu",
+      "title": "Title",
+      "slug": "Slug",
+      "author": "Author",
+      "date": "Date",
+      "status": "Status",
+      "order": "Order",
+      "image": "Image",
+      "caption": "Caption",
+      "name": "Name",
+      "role": "Role",
+      "category": "Category",
+      "url": "URL",
+      "description": "Description",
+      "summary": "Summary",
+      "body": "Body",
+      "location": "Location",
+      "label": "Label",
+      "value": "Value",
+      "email": "Email",
+      "approve": "Approve",
+      "approving": "Approving…",
+      "reject": "Reject",
+      "rejecting": "Rejecting…",
+      "makeAdmin": "Make admin",
+      "makeEditor": "Make editor",
+      "viewSite": "View site",
+      "signOut": "Sign out"
+    },
+    "nav": {
+      "dashboard": "Dashboard",
+      "messages": "Messages",
+      "videos": "Videos",
+      "photos": "Photos",
+      "programs": "Programs",
+      "impact": "Impact",
+      "stories": "Stories",
+      "blog": "Blog",
+      "partners": "Partners",
+      "users": "Users",
+      "viewSite": "View site",
+      "signOut": "Sign out",
+      "adminLabel": "Admin"
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "welcome": "Welcome back",
+      "welcomeBack": "Welcome back, {{name}}",
+      "signedInAs": "Signed in as {{email}}",
+      "overview": "Site overview",
+      "snapshot": "Snapshot of content across the public site.",
+      "recentMessages": "Recent messages",
+      "recentMessagesSubtitle": "Latest five contact-form submissions.",
+      "openInbox": "Open inbox",
+      "noMessages": "No messages yet.",
+      "viewAll": "View all",
+      "unreadMessages": "Unread messages",
+      "pendingUsers": "Pending users",
+      "published": "Published",
+      "totals": "Totals",
+      "loadingStats": "Loading stats…",
+      "failedStats": "Could not load stats.",
+      "failedMessages": "Could not load messages.",
+      "quickPeek": "A quick look at what's happening across the site.",
+      "failedStatsLoad": "Failed to load stats: {{error}}",
+      "keyMetrics": "Key metrics",
+      "draftsInProgress": "Drafts in progress",
+      "pendingApprovals": "Pending approvals",
+      "storiesPublished": "Stories published",
+      "totalAccounts": "{{count}} total accounts",
+      "postsPublished": "{{count}} posts published",
+      "programsPartners": "{{programs}} programs · {{partners}} partners",
+      "totalDot30d": "{{total}} total · {{last30}} in last 30d",
+      "contentOverview": "Content overview",
+      "posts": "Posts",
+      "stories": "Stories",
+      "programs": "Programs",
+      "partners": "Partners",
+      "videos": "Videos",
+      "photos": "Photos",
+      "viewAllArrow": "View all →",
+      "manageBlog": "Manage blog →",
+      "manage": "Manage →",
+      "draftLabel": "Draft",
+      "updatedAgo": "{{author}} · updated {{ago}}",
+      "editArrow": "Edit →",
+      "impactMetricsTitle": "Impact metrics",
+      "noDrafts": "No drafts. Everything is shipped — nice work.",
+      "justNow": "just now",
+      "minAgo": "{{count}} min ago",
+      "hrAgo": "{{count}} hr ago",
+      "dAgo": "{{count}} d ago"
+    },
+    "videos": {
+      "title": "Videos",
+      "subtitle": "Upload, retitle and remove videos that show on the public site.",
+      "newVideo": "New video",
+      "videoFile": "Video file",
+      "posterImage": "Poster image",
+      "poster": "Poster",
+      "file": "File",
+      "published": "Published",
+      "unpublish": "Unpublish",
+      "publish": "Publish",
+      "noVideos": "No videos uploaded yet.",
+      "pageSubtitle": "Upload videos (with an optional poster image) to feature on the Blog page.",
+      "uploadNew": "Upload a new video",
+      "maxFileNote": "Max 200 MB. MP4 recommended.",
+      "chooseVideoFile": "Please choose a video file",
+      "uploadFailed": "Upload failed",
+      "deleteFailed": "Delete failed",
+      "updateFailed": "Update failed",
+      "uploaded": "Video uploaded",
+      "deleted": "Video deleted",
+      "updated": "Video updated",
+      "uploadingPct": "Uploading… {{pct}}%",
+      "uploadVideo": "Upload video",
+      "existing": "Existing videos",
+      "searchPlaceholder": "Search videos…",
+      "noVideosFound": "No videos found.",
+      "confirmDelete": "Delete \"{{title}}\"?"
+    },
+    "photos": {
+      "title": "Photos",
+      "subtitle": "Blog gallery.",
+      "newPhoto": "New photo",
+      "uploadPhoto": "Upload photo",
+      "alt": "Alt text",
+      "noPhotos": "No photos uploaded yet.",
+      "pageSubtitle": "Upload images with a subject and description. They appear in the public Blog gallery.",
+      "uploadNew": "Upload a new photo",
+      "subjectTitle": "Subject / title",
+      "subjectPlaceholder": "e.g. Graduation day at the Digital Hub",
+      "descPlaceholder": "Tell the story behind the photo…",
+      "imageFile": "Image file",
+      "maxFileNote": "Max 10 MB. JPG, PNG or WebP.",
+      "preview": "Preview",
+      "previewAlt": "Selected file preview",
+      "uploadingPct": "Uploading… {{pct}}%",
+      "uploadButton": "Upload photo",
+      "uploaded": "Photo uploaded",
+      "deleted": "Photo deleted",
+      "updated": "Photo updated",
+      "chooseFile": "Please choose an image file",
+      "uploadFailed": "Upload failed",
+      "deleteFailed": "Delete failed",
+      "updateFailed": "Update failed",
+      "existing": "Uploaded photos",
+      "searchPlaceholder": "Search photos…",
+      "noPhotosYet": "No photos yet.",
+      "confirmDelete": "Delete \"{{title}}\"?"
+    },
+    "programs": {
+      "title": "Programs",
+      "subtitle": "Manage public program listings.",
+      "newProgram": "New program",
+      "noPrograms": "No programs yet.",
+      "pageSubtitle": "Create, edit, and feature programs shown on the public site.",
+      "editProgram": "Edit program",
+      "addNew": "Add a new program",
+      "cancelEdit": "Cancel edit",
+      "categoryPlaceholder": "e.g. Education, Livelihoods",
+      "imageUrl": "Image URL",
+      "featureOnHome": "Feature on the home page",
+      "saveChanges": "Save changes",
+      "createProgram": "Create program",
+      "existing": "Existing programs",
+      "searchPlaceholder": "Search…",
+      "noImage": "No image",
+      "featuredBadge": "Featured",
+      "created": "Program created",
+      "updated": "Program updated",
+      "deleted": "Program deleted",
+      "createFailed": "Create failed",
+      "updateFailed": "Update failed",
+      "deleteFailed": "Delete failed",
+      "confirmDelete": "Delete \"{{title}}\"?"
+    },
+    "impact": {
+      "title": "Impact metrics",
+      "subtitle": "Numbers shown on the home and impact pages.",
+      "newMetric": "New metric",
+      "noMetrics": "No metrics yet.",
+      "pageSubtitle": "Numbers shown on the Home and Impact pages. Use whole numbers — they are formatted automatically (1500 → 1.5k+).",
+      "editMetric": "Edit metric",
+      "addNew": "Add a new metric",
+      "cancelEdit": "Cancel edit",
+      "labelPlaceholder": "e.g. Youth trained",
+      "value": "Value",
+      "displayOrder": "Display order",
+      "icon": "Icon",
+      "iconPlaceholder": "Leave blank",
+      "saveChanges": "Save changes",
+      "createMetric": "Create metric",
+      "existing": "Existing metrics",
+      "searchPlaceholder": "Search…",
+      "orderLabel": "Order: {{order}}",
+      "created": "Metric created",
+      "updated": "Metric updated",
+      "deleted": "Metric deleted",
+      "createFailed": "Create failed",
+      "updateFailed": "Update failed",
+      "deleteFailed": "Delete failed",
+      "confirmDelete": "Delete \"{{title}}\"?"
+    },
+    "stories": {
+      "title": "Stories",
+      "subtitle": "Graduate and community stories.",
+      "newStory": "New story",
+      "noStories": "No stories yet.",
+      "pageSubtitle": "Personal stories from program participants and alumni.",
+      "editStory": "Edit story",
+      "addNew": "Add a new story",
+      "cancelEdit": "Cancel edit",
+      "authorPlaceholder": "Name of the person whose story this is",
+      "imageHint": "JPG, PNG or WebP. Max 10 MB.",
+      "summaryPlaceholder": "One or two sentences shown on cards and previews.",
+      "rolePlaceholder": "e.g. Remote graphic designer",
+      "programPlaceholder": "e.g. Remote Work Bootcamp",
+      "locationPlaceholder": "e.g. Kakuma, Kenya",
+      "slug": "URL slug",
+      "slugPlaceholder": "auto-generated from title if blank",
+      "shortExcerpt": "Short excerpt",
+      "excerptPlaceholder": "Punchier than the summary — used at the top of the story page.",
+      "fullStory": "Full story",
+      "fullStoryPlaceholder": "Use a blank line between paragraphs.",
+      "saveChanges": "Save changes",
+      "publishStory": "Publish story",
+      "existing": "Existing stories",
+      "searchPlaceholder": "Search…",
+      "noImage": "No image",
+      "created": "Story created",
+      "updated": "Story updated",
+      "deleted": "Story deleted",
+      "createFailed": "Create failed",
+      "updateFailed": "Update failed",
+      "deleteFailed": "Delete failed",
+      "confirmDelete": "Delete \"{{title}}\"?"
+    },
+    "blog": {
+      "title": "Blog",
+      "subtitle": "Articles and announcements.",
+      "newPost": "New post",
+      "noPosts": "No posts yet.",
+      "pageTitle": "Blog posts",
+      "pageSubtitle": "News, announcements and reflections for the public Blog page.",
+      "editPost": "Edit post",
+      "addNew": "Add a new post",
+      "cancelEdit": "Cancel edit",
+      "publishDate": "Publish date",
+      "slug": "URL slug",
+      "slugPlaceholder": "auto-generated from title if blank",
+      "coverImage": "Cover image",
+      "coverHint": "Appears at the top of the post and on the Blog index. JPG/PNG/WebP, max 10 MB.",
+      "excerpt": "Excerpt",
+      "excerptPlaceholder": "One or two sentences shown on the blog list.",
+      "fullContent": "Full content",
+      "fullContentPlaceholder": "Use a blank line between paragraphs.",
+      "publishedLabel": "Published",
+      "uncheckDraft": "(uncheck to save as draft)",
+      "saveChanges": "Save changes",
+      "publishPost": "Publish post",
+      "saveDraft": "Save draft",
+      "existing": "Existing posts",
+      "searchPlaceholder": "Search…",
+      "noCover": "No cover",
+      "draft": "Draft",
+      "created": "Post published",
+      "updated": "Post updated",
+      "deleted": "Post deleted",
+      "createFailed": "Create failed",
+      "updateFailed": "Update failed",
+      "deleteFailed": "Delete failed",
+      "confirmDelete": "Delete \"{{title}}\"?"
+    },
+    "partners": {
+      "title": "Partners",
+      "subtitle": "Logos and links shown on the partners page.",
+      "newPartner": "New partner",
+      "noPartners": "No partners yet.",
+      "pageSubtitle": "Organisations that fund, collaborate with, or champion our work.",
+      "editPartner": "Edit partner",
+      "addNew": "Add a new partner",
+      "cancelEdit": "Cancel edit",
+      "website": "Website",
+      "logoUrl": "Logo URL",
+      "logoPlaceholder": "https://…/logo.svg",
+      "saveChanges": "Save changes",
+      "addPartner": "Add partner",
+      "existing": "Existing partners",
+      "searchPlaceholder": "Search…",
+      "noLogo": "No logo",
+      "added": "Partner added",
+      "updated": "Partner updated",
+      "deleted": "Partner deleted",
+      "createFailed": "Create failed",
+      "updateFailed": "Update failed",
+      "deleteFailed": "Delete failed",
+      "confirmDelete": "Delete \"{{name}}\"?"
+    },
+    "messages": {
+      "title": "Messages",
+      "subtitle": "Contact-form submissions.",
+      "from": "From",
+      "received": "Received",
+      "markRead": "Mark read",
+      "markUnread": "Mark unread",
+      "reply": "Reply",
+      "unread": "Unread",
+      "read": "Read",
+      "noMessages": "No messages yet.",
+      "inboxSubtitle": "Inbox of submissions from the public contact form.",
+      "searchPlaceholder": "Search name, email, subject…",
+      "showOnlyUnread": "Show only unread",
+      "noMessagesFound": "No messages found.",
+      "replyByEmail": "Reply by email",
+      "markAsUnread": "Mark as unread",
+      "markAsRead": "Mark as read",
+      "markedAsRead": "Marked as read",
+      "markedAsUnread": "Marked as unread",
+      "updateFailed": "Update failed",
+      "deleteFailed": "Delete failed",
+      "deleted": "Message deleted",
+      "confirmDelete": "Delete message from {{name}}?"
+    },
+    "users": {
+      "title": "Users",
+      "subtitle": "Approve new sign-ups and manage editor & admin access.",
+      "pending": "Pending approval",
+      "approved": "Approved",
+      "rejected": "Rejected",
+      "noPending": "No users awaiting approval.",
+      "noUsers": "No users yet.",
+      "changeRole": "Change role",
+      "adminBadge": "Admin",
+      "editorBadge": "Editor",
+      "pageSubtitle": "Approve new sign-ups and manage roles for the team.",
+      "searchPlaceholder": "Search by name, email, or role…",
+      "noUsersFound": "No users found.",
+      "colName": "Name",
+      "colEmail": "Email",
+      "colRole": "Role",
+      "colStatus": "Status",
+      "colJoined": "Joined",
+      "colActions": "Actions",
+      "you": "you",
+      "editor": "Editor",
+      "admin": "Admin",
+      "pendingShort": "Pending",
+      "approve": "Approve",
+      "suspend": "Suspend",
+      "userUpdated": "User updated",
+      "userDeleted": "User deleted",
+      "updateFailed": "Update failed",
+      "deleteFailed": "Delete failed",
+      "confirmDelete": "Delete user \"{{name}}\"? This cannot be undone."
+    },
+    "editModal": {
+      "subtitle": "Update the subject and description shown on the public site.",
+      "saveChanges": "Save changes"
+    }
+  }
+}

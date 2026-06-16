@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { api } from "@/api/client";
 import { cn } from "@/utils/cn";
@@ -37,6 +38,7 @@ function getErrorMessage(err: unknown, fallback: string): string {
 
 export default function AdminPrograms() {
   const qc = useQueryClient();
+  const { t } = useTranslation();
   const [editingId, setEditingId] = useState<string | null>(null);
   const [form, setForm] = useState<ProgramForm>(EMPTY);
   const [search, setSearch] = useState("");
@@ -88,11 +90,11 @@ export default function AdminPrograms() {
       return data;
     },
     onSuccess: () => {
-      toast.success("Program created");
+      toast.success(t("admin.programs.created"));
       setForm(EMPTY);
       invalidate();
     },
-    onError: (err) => toast.error(getErrorMessage(err, "Create failed")),
+    onError: (err) => toast.error(getErrorMessage(err, t("admin.programs.createFailed"))),
   });
 
   const update = useMutation({
@@ -101,11 +103,11 @@ export default function AdminPrograms() {
       return data;
     },
     onSuccess: () => {
-      toast.success("Program updated");
+      toast.success(t("admin.programs.updated"));
       setEditingId(null);
       invalidate();
     },
-    onError: (err) => toast.error(getErrorMessage(err, "Update failed")),
+    onError: (err) => toast.error(getErrorMessage(err, t("admin.programs.updateFailed"))),
   });
 
   const remove = useMutation({
@@ -113,11 +115,11 @@ export default function AdminPrograms() {
       await api.delete(`/programs/${id}`);
     },
     onSuccess: () => {
-      toast.success("Program deleted");
+      toast.success(t("admin.programs.deleted"));
       if (editingId) setEditingId(null);
       invalidate();
     },
-    onError: (err) => toast.error(getErrorMessage(err, "Delete failed")),
+    onError: (err) => toast.error(getErrorMessage(err, t("admin.programs.deleteFailed"))),
   });
 
   function handleSubmit(e: React.FormEvent) {
@@ -132,9 +134,9 @@ export default function AdminPrograms() {
   return (
     <div className="space-y-10">
       <header>
-        <h1 className="font-display text-3xl font-bold text-ink">Programs</h1>
+        <h1 className="font-display text-3xl font-bold text-ink">{t("admin.programs.title")}</h1>
         <p className="mt-1 text-sm text-muted">
-          Create, edit, and feature programs shown on the public site.
+          {t("admin.programs.pageSubtitle")}
         </p>
       </header>
 
@@ -142,7 +144,7 @@ export default function AdminPrograms() {
       <section className="rounded-2xl border border-line bg-surface p-6 shadow-sm">
         <div className="flex items-center justify-between">
           <h2 className="font-display text-lg font-semibold text-ink">
-            {isEditing ? "Edit program" : "Add a new program"}
+            {isEditing ? t("admin.programs.editProgram") : t("admin.programs.addNew")}
           </h2>
           {isEditing && (
             <button
@@ -150,14 +152,14 @@ export default function AdminPrograms() {
               onClick={() => setEditingId(null)}
               className="text-xs font-semibold text-muted hover:text-ink"
             >
-              Cancel edit
+              {t("admin.programs.cancelEdit")}
             </button>
           )}
         </div>
 
         <form onSubmit={handleSubmit} className="mt-5 grid gap-5 md:grid-cols-2">
           <label className="md:col-span-2">
-            <span className="block text-sm font-semibold text-ink">Title</span>
+            <span className="block text-sm font-semibold text-ink">{t("admin.common.title")}</span>
             <input
               required
               minLength={2}
@@ -169,7 +171,7 @@ export default function AdminPrograms() {
           </label>
 
           <label>
-            <span className="block text-sm font-semibold text-ink">Category</span>
+            <span className="block text-sm font-semibold text-ink">{t("admin.common.category")}</span>
             <input
               required
               minLength={2}
@@ -178,14 +180,14 @@ export default function AdminPrograms() {
               onChange={(e) =>
                 setForm((f) => ({ ...f, category: e.target.value }))
               }
-              placeholder="e.g. Education, Livelihoods"
+              placeholder={t("admin.programs.categoryPlaceholder")}
               className="mt-1 w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-ink outline-none focus:border-primary-500"
             />
           </label>
 
           <label>
             <span className="block text-sm font-semibold text-ink">
-              Image URL <span className="font-normal text-muted">(optional)</span>
+              {t("admin.programs.imageUrl")} <span className="font-normal text-muted">({t("admin.common.optional")})</span>
             </span>
             <input
               type="url"
@@ -197,7 +199,7 @@ export default function AdminPrograms() {
           </label>
 
           <label className="md:col-span-2">
-            <span className="block text-sm font-semibold text-ink">Description</span>
+            <span className="block text-sm font-semibold text-ink">{t("admin.common.description")}</span>
             <textarea
               required
               minLength={5}
@@ -220,7 +222,7 @@ export default function AdminPrograms() {
               }
               className="h-4 w-4 rounded border-line text-primary-600 focus:ring-primary-500"
             />
-            <span className="text-sm text-ink">Feature on the home page</span>
+            <span className="text-sm text-ink">{t("admin.programs.featureOnHome")}</span>
           </label>
 
           <div className="md:col-span-2">
@@ -230,10 +232,10 @@ export default function AdminPrograms() {
               className="rounded-md bg-primary-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary-600 disabled:opacity-60"
             >
               {isPending
-                ? "Saving…"
+                ? t("admin.common.saving")
                 : isEditing
-                ? "Save changes"
-                : "Create program"}
+                ? t("admin.programs.saveChanges")
+                : t("admin.programs.createProgram")}
             </button>
           </div>
         </form>
@@ -243,13 +245,13 @@ export default function AdminPrograms() {
       <section>
         <div className="flex flex-wrap items-end justify-between gap-3">
           <h2 className="font-display text-lg font-semibold text-ink">
-            Existing programs
+            {t("admin.programs.existing")}
           </h2>
           <input
             type="search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search…"
+            placeholder={t("admin.programs.searchPlaceholder")}
             className="w-full rounded-md border border-line bg-surface px-3 py-2 text-sm outline-none focus:border-primary-500 sm:w-64"
           />
         </div>
@@ -261,7 +263,7 @@ export default function AdminPrograms() {
             <div className="h-44 animate-pulse rounded-2xl border border-line bg-surface" />
           </div>
         ) : filtered.length === 0 ? (
-          <p className="mt-4 text-sm text-muted">No programs yet.</p>
+          <p className="mt-4 text-sm text-muted">{t("admin.programs.noPrograms")}</p>
         ) : (
           <ul className="mt-4 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {filtered.map((p) => (
@@ -281,7 +283,7 @@ export default function AdminPrograms() {
                   />
                 ) : (
                   <div className="flex aspect-video items-center justify-center bg-bg text-xs text-muted">
-                    No image
+                    {t("admin.programs.noImage")}
                   </div>
                 )}
                 <div className="flex flex-1 flex-col p-4">
@@ -291,7 +293,7 @@ export default function AdminPrograms() {
                     </h3>
                     {p.featured && (
                       <span className="rounded-full bg-amber-50 px-2 py-0.5 text-xs font-semibold text-amber-700">
-                        Featured
+                        {t("admin.programs.featuredBadge")}
                       </span>
                     )}
                   </div>
@@ -307,17 +309,17 @@ export default function AdminPrograms() {
                       onClick={() => setEditingId(p._id)}
                       className="rounded-md border border-line bg-surface px-3 py-1 font-semibold text-ink hover:border-primary-300 hover:text-primary-600"
                     >
-                      Edit
+                      {t("admin.common.edit")}
                     </button>
                     <button
                       type="button"
                       onClick={() => {
-                        if (confirm(`Delete "${p.title}"?`)) remove.mutate(p._id);
+                        if (confirm(t("admin.programs.confirmDelete", { title: p.title }))) remove.mutate(p._id);
                       }}
                       disabled={remove.isPending}
                       className="font-semibold text-red-600 hover:text-red-700"
                     >
-                      Delete
+                      {t("admin.common.delete")}
                     </button>
                   </div>
                 </div>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { login, signup } from "@/utils/auth";
 import { cn } from "@/utils/cn";
 import Section from "@/components/Section";
@@ -9,6 +10,7 @@ type Mode = "signin" | "signup";
 export default function Login() {
   const navigate = useNavigate();
   const location = useLocation();
+  const { t } = useTranslation();
   const redirectTo = (location.state as { from?: string } | null)?.from ?? "/admin";
 
   const [mode, setMode] = useState<Mode>("signin");
@@ -59,11 +61,9 @@ export default function Login() {
   return (
     <Section className="!pt-20">
       <div className="mx-auto max-w-md rounded-2xl border border-line bg-surface p-8 shadow-sm">
-        <h1 className="font-display text-2xl font-bold text-ink">Staff portal</h1>
+        <h1 className="font-display text-2xl font-bold text-ink">{t("login.staffPortal")}</h1>
         <p className="mt-2 text-sm text-muted">
-          {isSignin
-            ? "Welcome back. Sign in to manage content."
-            : "Create a staff account. New accounts default to editor access."}
+          {isSignin ? t("login.signinWelcome") : t("login.signupWelcome")}
         </p>
 
         {/* Tabs */}
@@ -78,7 +78,7 @@ export default function Login() {
                 : "text-muted hover:text-ink"
             )}
           >
-            Sign in
+            {t("login.signIn")}
           </button>
           <button
             type="button"
@@ -90,14 +90,14 @@ export default function Login() {
                 : "text-muted hover:text-ink"
             )}
           >
-            Sign up
+            {t("login.signUp")}
           </button>
         </div>
 
         <form onSubmit={handleSubmit} className="mt-6 space-y-4">
           {!isSignin && (
             <label className="block">
-              <span className="block text-sm font-semibold text-ink">Full name</span>
+              <span className="block text-sm font-semibold text-ink">{t("login.fullName")}</span>
               <input
                 type="text"
                 required
@@ -110,7 +110,7 @@ export default function Login() {
           )}
 
           <label className="block">
-            <span className="block text-sm font-semibold text-ink">Email</span>
+            <span className="block text-sm font-semibold text-ink">{t("login.emailLabel")}</span>
             <input
               type="email"
               required
@@ -122,7 +122,7 @@ export default function Login() {
           </label>
 
           <label className="block">
-            <span className="block text-sm font-semibold text-ink">Password</span>
+            <span className="block text-sm font-semibold text-ink">{t("login.passwordLabel")}</span>
             <input
               type="password"
               required
@@ -134,7 +134,7 @@ export default function Login() {
             />
             {!isSignin && (
               <span className="mt-1 block text-xs text-muted">
-                Minimum 8 characters.
+                {t("login.minPassword")}
               </span>
             )}
           </label>
@@ -155,17 +155,17 @@ export default function Login() {
           >
             {loading
               ? isSignin
-                ? "Signing in…"
-                : "Creating account…"
+                ? t("login.signingIn")
+                : t("login.creatingAccount")
               : isSignin
-              ? "Sign in"
-              : "Create account"}
+              ? t("login.signIn")
+              : t("login.createAccount")}
           </button>
         </form>
 
         <p className="mt-6 text-center text-xs text-muted">
           <Link to="/" className="hover:text-primary-600">
-            ← Back to site
+            {t("login.backToSite")}
           </Link>
         </p>
       </div>

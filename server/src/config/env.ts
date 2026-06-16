@@ -34,6 +34,11 @@ const schema = z.object({
 
   /** Upload size cap in megabytes. */
   UPLOAD_MAX_MB: z.coerce.number().int().positive().default(200),
+
+  /** Cloudinary credentials (required: uploads always go to Cloudinary). */
+  CLOUDINARY_CLOUD_NAME: z.string().min(1, "CLOUDINARY_CLOUD_NAME is required"),
+  CLOUDINARY_API_KEY: z.string().min(1, "CLOUDINARY_API_KEY is required"),
+  CLOUDINARY_API_SECRET: z.string().min(1, "CLOUDINARY_API_SECRET is required"),
 });
 
 const parsed = schema.safeParse(process.env);

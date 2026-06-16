@@ -1,8 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { api } from "@/api/client";
 import { cn } from "@/utils/cn";
+import ImageUploadField from "@/components/ImageUploadField";
 
 interface Story {
   _id: string;
@@ -11,6 +13,11 @@ interface Story {
   content: string;
   image: string;
   author: string;
+  slug?: string;
+  role?: string;
+  program?: string;
+  location?: string;
+  excerpt?: string;
   createdAt: string;
 }
 
@@ -20,6 +27,11 @@ interface StoryForm {
   content: string;
   image: string;
   author: string;
+  slug: string;
+  role: string;
+  program: string;
+  location: string;
+  excerpt: string;
 }
 
 const EMPTY: StoryForm = {
@@ -28,6 +40,11 @@ const EMPTY: StoryForm = {
   content: "",
   image: "",
   author: "",
+  slug: "",
+  role: "",
+  program: "",
+  location: "",
+  excerpt: "",
 };
 
 function getErrorMessage(err: unknown, fallback: string): string {
@@ -37,6 +54,7 @@ function getErrorMessage(err: unknown, fallback: string): string {
 
 export default function AdminStories() {
   const qc = useQueryClient();
+  const { t } = useTranslation();
   const [editingId, setEditingId] = useState<string | null>(null);
   const [form, setForm] = useState<StoryForm>(EMPTY);
   const [search, setSearch] = useState("");
@@ -72,6 +90,11 @@ export default function AdminStories() {
         content: s.content,
         image: s.image ?? "",
         author: s.author,
+        slug: s.slug ?? "",
+        role: s.role ?? "",
+        program: s.program ?? "",
+        location: s.location ?? "",
+        excerpt: s.excerpt ?? "",
       });
     }
   }, [editingId, stories]);
@@ -87,11 +110,11 @@ export default function AdminStories() {
       return data;
     },
     onSuccess: () => {
-      toast.success("Story created");
+      toast.success(t("admin.stories.created"));
       setForm(EMPTY);
       invalidate();
     },
-    onError: (err) => toast.error(getErrorMessage(err, "Create failed")),
+    onError: (err) => toast.error(getErrorMessage(err, t("admin.stories.createFailed"))),
   });
 
   const update = useMutation({
@@ -100,11 +123,11 @@ export default function AdminStories() {
       return data;
     },
     onSuccess: () => {
-      toast.success("Story updated");
+      toast.success(t("admin.stories.updated"));
       setEditingId(null);
       invalidate();
     },
-    onError: (err) => toast.error(getErrorMessage(err, "Update failed")),
+    onError: (err) => toast.error(getErrorMessage(err, t("admin.stories.updateFailed"))),
   });
 
   const remove = useMutation({
@@ -112,11 +135,11 @@ export default function AdminStories() {
       await api.delete(`/stories/${id}`);
     },
     onSuccess: () => {
-      toast.success("Story deleted");
+      toast.success(t("admin.stories.deleted"));
       if (editingId) setEditingId(null);
       invalidate();
     },
-    onError: (err) => toast.error(getErrorMessage(err, "Delete failed")),
+    onError: (err) => toast.error(getErrorMessage(err, t("admin.stories.deleteFailed"))),
   });
 
   function handleSubmit(e: React.FormEvent) {
@@ -131,9 +154,9 @@ export default function AdminStories() {
   return (
     <div className="space-y-10">
       <header>
-        <h1 className="font-display text-3xl font-bold text-ink">Stories</h1>
+        <h1 className="font-display text-3xl font-bold text-ink">{t("admin.stories.title")}</h1>
         <p className="mt-1 text-sm text-muted">
-          Personal stories from program participants and alumni.
+          {t("admin.stories.pageSubtitle")}
         </p>
       </header>
 
@@ -141,7 +164,7 @@ export default function AdminStories() {
       <section className="rounded-2xl border border-line bg-surface p-6 shadow-sm">
         <div className="flex items-center justify-between">
           <h2 className="font-display text-lg font-semibold text-ink">
-            {isEditing ? "Edit story" : "Add a new story"}
+            {isEditing ? t("admin.stories.editStory") : t("admin.stories.addNew")}
           </h2>
           {isEditing && (
             <button
@@ -149,14 +172,14 @@ export default function AdminStories() {
               onClick={() => setEditingId(null)}
               className="text-xs font-semibold text-muted hover:text-ink"
             >
-              Cancel edit
+              {t("admin.stories.cancelEdit")}
             </button>
           )}
         </div>
 
         <form onSubmit={handleSubmit} className="mt-5 grid gap-5 md:grid-cols-2">
           <label className="md:col-span-2">
-            <span className="block text-sm font-semibold text-ink">Title</span>
+            <span className="block text-sm font-semibold text-ink">{t("admin.common.title")}</span>
             <input
               required
               minLength={2}
@@ -167,34 +190,31 @@ export default function AdminStories() {
             />
           </label>
 
-          <label>
-            <span className="block text-sm font-semibold text-ink">Author</span>
+          <label className="md:col-span-2">
+            <span className="block text-sm font-semibold text-ink">{t("admin.common.author")}</span>
             <input
               required
               minLength={2}
               maxLength={120}
               value={form.author}
               onChange={(e) => setForm((f) => ({ ...f, author: e.target.value }))}
-              placeholder="Name of the person whose story this is"
+              placeholder={t("admin.stories.authorPlaceholder")}
               className="mt-1 w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-ink outline-none focus:border-primary-500"
             />
           </label>
 
-          <label>
-            <span className="block text-sm font-semibold text-ink">
-              Image URL <span className="font-normal text-muted">(optional)</span>
-            </span>
-            <input
-              type="url"
+          <div className="md:col-span-2">
+            <ImageUploadField
+              label={t("admin.common.image")}
               value={form.image}
-              onChange={(e) => setForm((f) => ({ ...f, image: e.target.value }))}
-              placeholder="https://…"
-              className="mt-1 w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-ink outline-none focus:border-primary-500"
+              onChange={(url) => setForm((f) => ({ ...f, image: url }))}
+              disabled={isPending}
+              hint={t("admin.stories.imageHint")}
             />
-          </label>
+          </div>
 
           <label className="md:col-span-2">
-            <span className="block text-sm font-semibold text-ink">Summary</span>
+            <span className="block text-sm font-semibold text-ink">{t("admin.common.summary")}</span>
             <textarea
               required
               minLength={10}
@@ -204,14 +224,81 @@ export default function AdminStories() {
               onChange={(e) =>
                 setForm((f) => ({ ...f, summary: e.target.value }))
               }
-              placeholder="One or two sentences shown on cards and previews."
+              placeholder={t("admin.stories.summaryPlaceholder")}
+              className="mt-1 w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-ink outline-none focus:border-primary-500"
+            />
+          </label>
+
+          {/* OPTIONAL DISPLAY FIELDS — used on the public Stories page. */}
+          <label>
+            <span className="block text-sm font-semibold text-ink">
+              {t("admin.common.role")} <span className="font-normal text-muted">({t("admin.common.optional")})</span>
+            </span>
+            <input
+              maxLength={120}
+              value={form.role}
+              onChange={(e) => setForm((f) => ({ ...f, role: e.target.value }))}
+              placeholder={t("admin.stories.rolePlaceholder")}
+              className="mt-1 w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-ink outline-none focus:border-primary-500"
+            />
+          </label>
+
+          <label>
+            <span className="block text-sm font-semibold text-ink">
+              {t("admin.nav.programs")} <span className="font-normal text-muted">({t("admin.common.optional")})</span>
+            </span>
+            <input
+              maxLength={120}
+              value={form.program}
+              onChange={(e) => setForm((f) => ({ ...f, program: e.target.value }))}
+              placeholder={t("admin.stories.programPlaceholder")}
+              className="mt-1 w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-ink outline-none focus:border-primary-500"
+            />
+          </label>
+
+          <label>
+            <span className="block text-sm font-semibold text-ink">
+              {t("admin.common.location")} <span className="font-normal text-muted">({t("admin.common.optional")})</span>
+            </span>
+            <input
+              maxLength={120}
+              value={form.location}
+              onChange={(e) => setForm((f) => ({ ...f, location: e.target.value }))}
+              placeholder={t("admin.stories.locationPlaceholder")}
+              className="mt-1 w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-ink outline-none focus:border-primary-500"
+            />
+          </label>
+
+          <label>
+            <span className="block text-sm font-semibold text-ink">
+              {t("admin.stories.slug")} <span className="font-normal text-muted">({t("admin.common.optional")})</span>
+            </span>
+            <input
+              maxLength={80}
+              value={form.slug}
+              onChange={(e) => setForm((f) => ({ ...f, slug: e.target.value }))}
+              placeholder={t("admin.stories.slugPlaceholder")}
               className="mt-1 w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-ink outline-none focus:border-primary-500"
             />
           </label>
 
           <label className="md:col-span-2">
             <span className="block text-sm font-semibold text-ink">
-              Full story
+              {t("admin.stories.shortExcerpt")} <span className="font-normal text-muted">({t("admin.common.optional")})</span>
+            </span>
+            <textarea
+              maxLength={300}
+              rows={2}
+              value={form.excerpt}
+              onChange={(e) => setForm((f) => ({ ...f, excerpt: e.target.value }))}
+              placeholder={t("admin.stories.excerptPlaceholder")}
+              className="mt-1 w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-ink outline-none focus:border-primary-500"
+            />
+          </label>
+
+          <label className="md:col-span-2">
+            <span className="block text-sm font-semibold text-ink">
+              {t("admin.stories.fullStory")}
             </span>
             <textarea
               required
@@ -221,6 +308,7 @@ export default function AdminStories() {
               onChange={(e) =>
                 setForm((f) => ({ ...f, content: e.target.value }))
               }
+              placeholder={t("admin.stories.fullStoryPlaceholder")}
               className="mt-1 w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-ink outline-none focus:border-primary-500"
             />
           </label>
@@ -232,10 +320,10 @@ export default function AdminStories() {
               className="rounded-md bg-primary-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary-600 disabled:opacity-60"
             >
               {isPending
-                ? "Saving…"
+                ? t("admin.common.saving")
                 : isEditing
-                ? "Save changes"
-                : "Publish story"}
+                ? t("admin.stories.saveChanges")
+                : t("admin.stories.publishStory")}
             </button>
           </div>
         </form>
@@ -245,13 +333,13 @@ export default function AdminStories() {
       <section>
         <div className="flex flex-wrap items-end justify-between gap-3">
           <h2 className="font-display text-lg font-semibold text-ink">
-            Existing stories
+            {t("admin.stories.existing")}
           </h2>
           <input
             type="search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search…"
+            placeholder={t("admin.stories.searchPlaceholder")}
             className="w-full rounded-md border border-line bg-surface px-3 py-2 text-sm outline-none focus:border-primary-500 sm:w-64"
           />
         </div>
@@ -263,7 +351,7 @@ export default function AdminStories() {
             <div className="h-44 animate-pulse rounded-2xl border border-line bg-surface" />
           </div>
         ) : filtered.length === 0 ? (
-          <p className="mt-4 text-sm text-muted">No stories yet.</p>
+          <p className="mt-4 text-sm text-muted">{t("admin.stories.noStories")}</p>
         ) : (
           <ul className="mt-4 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {filtered.map((s) => (
@@ -283,7 +371,7 @@ export default function AdminStories() {
                   />
                 ) : (
                   <div className="flex aspect-video items-center justify-center bg-bg text-xs text-muted">
-                    No image
+                    {t("admin.stories.noImage")}
                   </div>
                 )}
                 <div className="flex flex-1 flex-col p-4">
@@ -302,17 +390,17 @@ export default function AdminStories() {
                       onClick={() => setEditingId(s._id)}
                       className="rounded-md border border-line bg-surface px-3 py-1 font-semibold text-ink hover:border-primary-300 hover:text-primary-600"
                     >
-                      Edit
+                      {t("admin.common.edit")}
                     </button>
                     <button
                       type="button"
                       onClick={() => {
-                        if (confirm(`Delete "${s.title}"?`)) remove.mutate(s._id);
+                        if (confirm(t("admin.stories.confirmDelete", { title: s.title }))) remove.mutate(s._id);
                       }}
                       disabled={remove.isPending}
                       className="font-semibold text-red-600 hover:text-red-700"
                     >
-                      Delete
+                      {t("admin.common.delete")}
                     </button>
                   </div>
                 </div>

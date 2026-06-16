@@ -11,9 +11,10 @@ import contactRoutes from "./routes/contactRoutes";
 import authRoutes from "./routes/authRoutes";
 import videoRoutes from "./routes/videoRoutes";
 import photoRoutes from "./routes/photoRoutes";
+import postRoutes from "./routes/postRoutes";
 import adminRoutes from "./routes/adminRoutes";
+import uploadRoutes from "./routes/uploadRoutes";
 import { notFound, errorHandler } from "./middleware/error";
-import { UPLOADS_ROOT } from "./middleware/upload";
 import { apiLimiter } from "./middleware/rateLimit";
 
 const app = express();
@@ -49,9 +50,6 @@ app.use(express.json({ limit: "100kb" }));
 // Apply baseline rate-limit to all /api/* routes.
 app.use("/api", apiLimiter);
 
-// Serve uploaded media files (videos, posters).
-app.use("/uploads", express.static(UPLOADS_ROOT, { maxAge: "7d" }));
-
 app.get("/", (_req, res) => {
   res.json({ status: "ok", message: "Gn-aid API server is running" });
 });
@@ -78,6 +76,8 @@ app.use("/api/impact", impactRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/videos", videoRoutes);
 app.use("/api/photos", photoRoutes);
+app.use("/api/posts", postRoutes);
+app.use("/api/uploads", uploadRoutes);
 app.use("/api/admin", adminRoutes);
 
 app.use(notFound);

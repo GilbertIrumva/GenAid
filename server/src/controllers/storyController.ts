@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import mongoose from "mongoose";
 import { Story } from "../models/Story";
 
 export async function getStories(_req: Request, res: Response) {
@@ -10,9 +11,20 @@ export async function getStories(_req: Request, res: Response) {
   }
 }
 
+/**
+ * Look up a single story by either Mongo `_id` or `slug` so that public URLs
+ * can be friendly while admin tooling continues to work with `_id`.
+ */
 export async function getStoryById(req: Request, res: Response) {
   try {
-    const story = await Story.findById(req.params.id);
+    const { id } = req.params;
+    if (!id) return res.status(400).json({ error: "Missing id" });
+    const isObjectId = mongoose.isValidObjectId(id);
+    // Cast to satisfy Mongoose's strict filter typing for $or + slug lookups.
+    const filter = (
+      isObjectId ? { $or: [{ _id: id }, { slug: id }] } : { slug: id }
+    ) as Record<string, unknown>;
+    const story = await Story.findOne(filter);
     if (!story) return res.status(404).json({ error: "Story not found" });
     res.json(story);
   } catch (err) {

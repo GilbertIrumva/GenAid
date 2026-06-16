@@ -1,0 +1,1122 @@
+{
+  "common": {
+    "skipToContent": "Aller au contenu",
+    "donate": "Faire un don",
+    "donateNow": "Faire un don",
+    "loading": "Chargement…",
+    "readMore": "Lire la suite",
+    "readMoreArrow": "Lire la suite →",
+    "learnMore": "En savoir plus",
+    "viewAll": "Tout voir",
+    "viewAllArrow": "Tout voir →",
+    "getInvolved": "S'impliquer",
+    "getInTouch": "Nous contacter",
+    "contactUs": "Nous contacter",
+    "sendMessage": "Envoyer le message",
+    "sending": "Envoi…",
+    "thanks": "Merci — votre message nous est parvenu.",
+    "language": "Langue",
+    "english": "English",
+    "french": "Français",
+    "theme": "Thème",
+    "lightMode": "Mode clair",
+    "darkMode": "Mode sombre",
+    "search": "Rechercher",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "update": "Mettre à jour",
+    "create": "Créer",
+    "back": "Retour",
+    "submit": "Envoyer",
+    "close": "Fermer",
+    "name": "Nom",
+    "email": "Email",
+    "phone": "Téléphone",
+    "message": "Message",
+    "subject": "Objet",
+    "title": "Titre",
+    "description": "Description",
+    "address": "Camp de réfugiés de Kakuma, Turkana Ouest, Kenya",
+    "comingSoon": "Bientôt disponible",
+    "noResults": "Aucun résultat.",
+    "tryAgain": "Réessayer"
+  },
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "programs": "Programmes",
+    "impact": "Impact",
+    "stories": "Témoignages",
+    "blog": "Blog",
+    "partners": "Partenaires",
+    "contact": "Contact",
+    "volunteer": "Bénévolat",
+    "jobs": "Emplois",
+    "staffPortal": "Espace personnel",
+    "admin": "Admin",
+    "toggleMenu": "Ouvrir le menu"
+  },
+  "footer": {
+    "tagline": "Reformer et promouvoir l'éducation des réfugiés, créer des emplois de qualité et les intégrer à la communauté mondiale.",
+    "explore": "Explorer",
+    "getInvolved": "S'impliquer",
+    "contact": "Contact",
+    "donateGlobalGiving": "Faire un don via GlobalGiving",
+    "kenya": "Kenya :",
+    "international": "International :",
+    "rights": "Tous droits réservés.",
+    "adminDashboard": "Tableau de bord admin"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Dirigé par des réfugiés • Kakuma, Kenya",
+      "titleStart": "Construire l'avenir,",
+      "titleHighlight": "une opportunité",
+      "titleEnd": "à la fois.",
+      "subtitle": "Generation Aid forme les jeunes du camp de Kakuma aux compétences numériques, à l'entrepreneuriat et à l'emploi — pour qu'ils façonnent eux-mêmes leur avenir.",
+      "ctaDonate": "Faire un don",
+      "ctaPrograms": "Découvrir nos programmes"
+    },
+    "about": {
+      "eyebrow": "À propos",
+      "title": "Une organisation jeune dirigée par des réfugiés",
+      "body1": "Generation Aid est une organisation dirigée par des jeunes réfugiés (RLO), née en 2019 à Kakuma, qui transforme l'éducation en emploi afin que les réfugiés s'intègrent à l'économie mondiale.",
+      "body2": "Nous sommes construits, dirigés et portés par des réfugiés eux-mêmes — concevant des programmes adaptés à la réalité du camp et aux opportunités de l'économie numérique mondiale.",
+      "ourVision": "Notre Vision",
+      "visionTitle": "Un avenir sans barrières",
+      "visionBody": "Donner aux réfugiés négligés des programmes innovants qui réduisent le chômage et augmentent les revenus — pour qu'ils deviennent des membres actifs de la communauté et de l'économie mondiale.",
+      "ourMission": "Notre Mission",
+      "missionTitle": "Des compétences qui changent des vies",
+      "missionBody": "Transformer la vie des réfugiés grâce à des compétences professionnelles et des programmes EdTech qui ouvrent des voies vers l'éducation et l'emploi.",
+      "readFullStory": "Lire notre histoire complète →"
+    },
+    "programs": {
+      "eyebrow": "Notre travail",
+      "title": "Programmes phares",
+      "subtitle": "Un aperçu de ce que nous faisons sur le terrain.",
+      "viewAll": "Voir tous les programmes →"
+    },
+    "causes": {
+      "eyebrow": "Causes urgentes",
+      "title": "Des causes qui ont besoin de votre soutien",
+      "subtitle": "Chaque contribution fait avancer un projet concret.",
+      "donateLink": "Faire un don via GlobalGiving →",
+      "raised": "collectés",
+      "of": "sur",
+      "donateToCause": "Soutenir cette cause",
+      "items": {
+        "hub": {
+          "title": "Un foyer d'espoir au cœur de Kakuma",
+          "description": "Aidez-nous à développer notre Centre numérique communautaire — postes de travail, énergie solaire et Internet haut débit pour les jeunes réfugiés."
+        },
+        "jobs": {
+          "title": "Donner aux réfugiés des emplois de la nouvelle génération",
+          "description": "Formez les jeunes réfugiés au travail à distance et reliez-les à de vrais contrats internationaux rémunérés."
+        },
+        "artists": {
+          "title": "Soutenir les artistes réfugiés",
+          "description": "Soutenez le Kakuma Art Project et la galerie Senga — matériel, ateliers et expositions internationales."
+        }
+      }
+    },
+    "impact": {
+      "eyebrow": "Impact",
+      "title": "Notre impact en chiffres",
+      "subtitle": "Un vrai changement, mesuré par les personnes que nous avons accompagnées."
+    },
+    "team": {
+      "eyebrow": "Notre équipe",
+      "title": "Les personnes derrière Generation Aid",
+      "subtitle": "Une équipe dirigée par des réfugiés, passionnée, transparente et responsable.",
+      "connectLinkedIn": "Se connecter sur LinkedIn →",
+      "items": {
+        "hubert": {
+          "role": "Fondateur et PDG",
+          "bio": "Réfugié congolais, entrepreneur social et acteur du changement. A fondé Generation Aid en 2019 pour réécrire le destin des jeunes réfugiés de Kakuma."
+        },
+        "programs": {
+          "name": "Responsable des programmes",
+          "role": "Programmes professionnels et de subsistance",
+          "bio": "Conçoit et anime nos parcours professionnels, de subsistance et d'entrepreneuriat dans tout le camp de Kakuma."
+        },
+        "digital": {
+          "name": "Formatrice en compétences numériques",
+          "role": "Bootcamp Travail à distance",
+          "bio": "Accompagne les apprenants en graphisme, rédaction de contenu et assistance virtuelle vers des contrats rémunérés à distance."
+        },
+        "community": {
+          "name": "Responsable communauté",
+          "role": "Sensibilisation et bénévoles",
+          "bio": "Coordonne les bénévoles, les partenaires communautaires et l'accueil de chaque promotion arrivant au centre Generation Aid."
+        }
+      }
+    },
+    "stories": {
+      "eyebrow": "Témoignages",
+      "title": "Les dernières publications du blog",
+      "subtitle": "Actualités, lancements de projets et réflexions depuis Kakuma.",
+      "allArticles": "Tous les articles →"
+    },
+    "testimonials": {
+      "eyebrow": "Témoignages",
+      "title": "Ce que l'on dit de nous",
+      "items": {
+        "amani": {
+          "quote": "Generation Aid m'a offert mon premier contrat à distance. Aujourd'hui, je fais vivre ma famille en travaillant en ligne depuis Kakuma — ce que je n'aurais jamais cru possible.",
+          "role": "Diplômé du Bootcamp Travail à distance"
+        },
+        "mwangi": {
+          "quote": "La galerie Senga a tout changé. Pour la première fois, mes peintures sont vues — et elles racontent l'histoire d'où je viens.",
+          "role": "Artiste du Kakuma Art Project"
+        },
+        "partner": {
+          "quote": "Une organisation vraiment dirigée par des réfugiés. Leur travail relie apprentissage, moyens de subsistance et dignité — avec de vrais résultats.",
+          "name": "Organisation partenaire",
+          "role": "ONG éducative, Nairobi"
+        }
+      }
+    },
+    "videos": {
+      "eyebrow": "Regarder",
+      "title": "Vidéos et témoignages à l'écran",
+      "subtitle": "Visites de notre hub, témoignages de diplômés et nouvelles du terrain."
+    },
+    "donateBlock": {
+      "title": "Soutenez la prochaine génération.",
+      "subtitle": "Partenaire, donateur, mentor ou bénévole — votre soutien ouvre des portes pour la jeunesse réfugiée.",
+      "give": "Donner",
+      "giveBody": "Votre soutien fait avancer notre mission. Faites un don aujourd'hui pour un impact durable.",
+      "sponsor": "Parrainer",
+      "sponsorBody": "Devenez parrain et contribuez à un changement concret dans nos programmes.",
+      "sponsorCta": "Parrainer un programme",
+      "volunteer": "Bénévolat",
+      "volunteerBody": "Rejoignez-nous comme bénévole et participez à un impact durable."
+    },
+    "contact": {
+      "eyebrow": "Contact",
+      "title": "Construisons quelque chose ensemble",
+      "subtitle": "Une question, une idée de partenariat, envie de devenir bénévole ? Envoyez-nous un message et nous vous répondrons.",
+      "locationLabel": "Adresse :",
+      "locationValue": "Kakuma, comté de Turkana, Kenya",
+      "emailLabel": "Email :"
+    }
+  },
+  "about": {
+    "hero": {
+      "eyebrow": "Là où tout a commencé",
+      "title": "Qui sommes-nous ?",
+      "subtitle": "Generation Aid est une organisation dirigée par des jeunes réfugiés (RLO), dédiée à transformer les vies grâce à des programmes de compétences professionnelles, d'EdTech, d'éducation, de moyens de subsistance et d'entrepreneuriat — créant des voies d'éducation et d'emploi pour les communautés réfugiées."
+    },
+    "intro": {
+      "p1": "Nous transformons les systèmes éducation-vers-emploi — en préparant, plaçant et accompagnant les personnes vers des carrières qui changent leur vie et qui seraient autrement inaccessibles — afin que les réfugiés puissent s'intégrer dans l'économie mondiale.",
+      "p2": "Generation Aid est une organisation à but non lucratif dirigée par des jeunes réfugiés, basée dans le camp de réfugiés de Kakuma au Kenya, née en 2019 pendant la COVID-19. Au fil des ans, GAID a travaillé sans relâche pour offrir une gamme de services aux communautés déplacées — formation professionnelle, entrepreneuriat, distribution alimentaire et compétences numériques.",
+      "p3Prefix": "Le nom ",
+      "p3Brand": "Generation Aid",
+      "p3Middle": " a été donné par notre fondateur ",
+      "p3FounderName": "Hubert Senga",
+      "p3Suffix": " pour refléter notre ambition de servir les réfugiés et les personnes déplacées de la génération actuelle."
+    },
+    "objectivesTitle": "Nos objectifs",
+    "objectivesSubtitle": "Ce que Generation Aid s'efforce de réaliser.",
+    "objectives": [
+      "Donner aux réfugiés les connaissances et compétences — éducation, compétences numériques, moyens de subsistance et entrepreneuriat — pour gagner un revenu durable grâce aux opportunités de travail à distance.",
+      "Équiper les réfugiés des connaissances et compétences essentielles pour naviguer dans le monde numérique, en favorisant la créativité et la résolution de problèmes.",
+      "Développer des projets durables de développement communautaire à travers des initiatives à long terme en éducation, entrepreneuriat et soutien social."
+    ],
+    "focusedTitle": "Nos programmes phares",
+    "focusedEyebrow": "Ce que nous faisons",
+    "focusedPrograms": [
+      {
+        "title": "Compétences professionnelles et moyens de subsistance",
+        "body": "Formation professionnelle, soutien aux petites entreprises et projets générateurs de revenus qui aident les réfugiés à construire un avenir durable et autonome."
+      },
+      {
+        "title": "Éducation",
+        "body": "Outils d'apprentissage et programmes inclusifs qui soutiennent l'éducation pour tous — en particulier les filles et les enfants en situation de handicap — et qui ouvrent aux jeunes l'accès à l'enseignement supérieur."
+      },
+      {
+        "title": "EdTech",
+        "body": "Outils d'apprentissage numérique, éducation inclusive et formation aux compétences qui réduisent l'écart éducatif dans les contextes de déplacement."
+      },
+      {
+        "title": "Entrepreneuriat",
+        "body": "Formation, ressources et accès aux marchés pour aider les réfugiés à lancer des entreprises durables et à atteindre l'autonomie."
+      },
+      {
+        "title": "Emploi à distance",
+        "body": "Formation aux compétences numériques et notre Digital Community Hub — internet haut débit, énergie stable et appareils — reliant les réfugiés au travail à distance mondial."
+      }
+    ],
+    "valuesTitle": "Nos valeurs fondamentales",
+    "values": [
+      {
+        "title": "Dirigé par les réfugiés, porté par la communauté",
+        "body": "Nous travaillons en tant que groupe de réfugiés passionnés et veillons à ce que la voix des jeunes de la communauté soit entendue."
+      },
+      {
+        "title": "Responsabilité et transparence",
+        "body": "Nous assumons nos actions et menons chaque activité en toute transparence."
+      },
+      {
+        "title": "Autonomie",
+        "body": "Nous construisons des parcours autosuffisants afin que l'organisation puisse continuer à soutenir la communauté même sans soutien extérieur."
+      }
+    ],
+    "historyEyebrow": "Notre histoire",
+    "historyTitle": "Histoire — comment nous avons commencé",
+    "history": {
+      "p1Start": "Generation Aid est née en 2019 de la vision, de la détermination et de l'expérience vécue de notre fondateur ",
+      "p1FounderName": "Hubert Senga",
+      "p1End": " — entrepreneur social et acteur du changement, en mission pour transformer la vie des réfugiés grâce aux compétences numériques, à une éducation innovante et à l'autonomisation économique.",
+      "p2Start": "En tant que réfugié congolais vivant dans le camp de Kakuma depuis plus de neuf ans, Hubert a témoigné de première main des immenses obstacles auxquels les réfugiés font face : accès limité à l'éducation, chômage et lutte pour la dignité. Mais plutôt que d'accepter ces défis comme une fatalité, il a choisi de ",
+      "p2Emphasis": "réécrire le récit.",
+      "p3Start": "Le travail de GAID repose sur la conviction que les réfugiés et autres personnes déplacées ont le droit de vivre avec dignité et respect, et doivent avoir accès aux ressources et opportunités nécessaires pour reconstruire leur vie. Nous sommes devenus une organisation communautaire en 2019, avons adopté le nom ",
+      "p3Brand": "Generation Aid",
+      "p3End": " la même année, et avons reçu notre certificat gouvernemental en 2025.",
+      "p4": "Avec Generation Aid, nous ne nous contentons pas de réduire les écarts d'alphabétisation et de chômage — nous construisons un avenir où chaque réfugié dispose des outils, des connaissances et des opportunités pour façonner sa destinée. C'est plus qu'un mouvement ; c'est une révolution d'espoir, d'innovation et de résilience inarrêtable.",
+      "p5": "Nous sommes reconnaissants envers nos partenaires et donateurs qui ont joué un rôle essentiel dans ce parcours d'autonomisation des jeunes et de promotion des Objectifs de développement durable de l'ONU 2030 : Éducation de qualité, Réduction des inégalités, Travail décent et Croissance économique."
+    },
+    "founded": "Fondé en",
+    "certified": "Certifié en",
+    "basedIn": "Basé à",
+    "kakumaCamp": "Camp de réfugiés de Kakuma, Kenya",
+    "getInvolvedTitle": "Envie de vous impliquer ?",
+    "getInvolvedSubtitle": "Il y a plusieurs façons de nous soutenir — choisissez celle qui vous convient."
+  },
+  "programs": {
+    "hero": {
+      "eyebrow": "Subsistance numérique",
+      "title": "Éducation et renforcement des capacités",
+      "subtitle": "Programmes professionnels et éducatifs en TIC, couture et confection, anglais et autres formations innovantes qui jouent un rôle essentiel dans le développement économique et la subsistance des jeunes réfugiés du camp de Kakuma."
+    },
+    "programLabel": "Programme {{n}}",
+    "youthDigital": {
+      "tag": "Compétences numériques des jeunes",
+      "title": "Du camp à l'économie numérique mondiale",
+      "subtitle": "Donner aux jeunes réfugiés les compétences, outils et connexions pour gagner leur vie en ligne — un stagiaire à la fois."
+    },
+    "creativity": {
+      "tag": "Créativité",
+      "title": "L'art au-delà des frontières",
+      "subtitle": "Une seule toile a déclenché un mouvement — apportant du matériel, des ateliers et de la dignité aux artistes réfugiés de Kakuma."
+    },
+    "cta": {
+      "title": "Aidez-nous à toucher plus de jeunes réfugiés.",
+      "subtitle": "Parrainez un programme, donnez du matériel ou rejoignez-nous comme bénévole."
+    },
+    "overview": [
+      {
+        "title": "Initiation à l'informatique",
+        "body": "Formation aux TIC et à la culture numérique qui prépare les jeunes réfugiés à des carrières en ligne comme hors ligne."
+      },
+      {
+        "title": "Couture et confection",
+        "body": "Formation artisanale pratique combinée à un accompagnement entrepreneurial pour que les apprenants puissent lancer leur propre atelier de couture."
+      },
+      {
+        "title": "Cours d'anglais",
+        "body": "Cours d'anglais communicatif pour débutants, intermédiaires et avancés — axés sur les interactions de la vie quotidienne."
+      }
+    ],
+    "details": [
+      {
+        "title": "Initiation à l'informatique",
+        "body": "Les technologies de l'information et de la communication (TIC) sont des compétences essentielles pour toute carrière qu'un étudiant souhaite poursuivre. À GAID, nous proposons deux cours TIC adaptés aux besoins des jeunes de Kakuma — Initiation aux TIC et à la culture numérique, ainsi qu'une introduction à la programmation. Avec ces compétences, nous libérons la créativité des jeunes et leur permettons de transformer leurs communautés grâce à l'innovation et à l'entrepreneuriat virtuel, ouvrant la voie à des moyens de subsistance dignes et à une croissance économique en ligne comme hors ligne.",
+        "features": [
+          "Initiation aux TIC et à la culture numérique",
+          "Introduction à la programmation",
+          "Temps de pratique en laboratoire",
+          "Passerelle vers le travail à distance"
+        ]
+      },
+      {
+        "title": "Formation en couture et confection",
+        "body": "Notre programme de formation artisanale offre des compétences pratiques en couture et en confection grâce à une formation pratique et à des stages dans des ateliers locaux. Les participants suivent également une formation en entrepreneuriat pour acquérir les compétences nécessaires à la création et à la gestion de leur propre entreprise prospère — créant leurs propres opportunités et atteignant l'autonomie.",
+        "features": [
+          "Couture pratique et confection de vêtements",
+          "Stages dans des ateliers locaux",
+          "Accompagnement entrepreneurial",
+          "Kit de démarrage pour les meilleurs diplômés"
+        ]
+      },
+      {
+        "title": "Cours d'anglais",
+        "body": "Le programme d'anglais de GAID est conçu pour les apprenants débutants, intermédiaires et avancés. Nous proposons des cours d'anglais communicatif aux jeunes qui souhaitent améliorer leurs interactions quotidiennes et retourner dans leur communauté avec une meilleure maîtrise de l'anglais à l'écrit comme à l'oral.",
+        "features": [
+          "Niveaux débutant, intermédiaire et avancé",
+          "Accent mis sur l'expression orale",
+          "Bases de la lecture et de l'écriture",
+          "Pratique de conversation en situation réelle"
+        ]
+      }
+    ],
+    "bpo": {
+      "eyebrow": "1. Initiative phare",
+      "title": "Le travail à distance via le modèle BPO",
+      "p1": "L'une des initiatives phares de Generation Aid est le <b>Bootcamp de formation au travail à distance et au freelancing</b>, conçu pour doter les jeunes réfugiés des compétences numériques nécessaires pour accéder à des opportunités d'emploi en ligne. À Kakuma, où l'emploi traditionnel est rare, le travail à distance offre une bouée de sauvetage vers l'indépendance financière. Le programme forme les participants au <b>graphisme</b>, au <b>marketing digital</b>, à la <b>rédaction de contenu</b> et à <b>l'assistance virtuelle</b> — leur donnant des compétences recherchées sur le marché mondial et les connectant à des opportunités de travail à distance.",
+      "p2": "Le bootcamp comprend des ateliers pratiques, du mentorat par des freelances expérimentés et des postes de travail dédiés avec accès Internet pour que les participants puissent pratiquer leurs compétences et postuler à des emplois. À la fin de la formation, de nombreux diplômés décrochent des contrats à distance — leur permettant de gagner un revenu durable, de soutenir leur famille et de réduire leur dépendance à l'aide humanitaire."
+    },
+    "coding": {
+      "eyebrow": "2. Former la prochaine génération de développeurs",
+      "title": "Académie de programmation et de développement web",
+      "p1": "Au-delà de la formation technique, les participants travaillent sur des <b>projets concrets</b> — créant des sites e-commerce et des plateformes de narration numérique pour les artistes réfugiés. Hackathons et défis de programmation encouragent l'innovation en demandant aux étudiants de <b>résoudre des problèmes locaux grâce à la technologie</b>.",
+      "p2": "Le programme met également les développeurs en herbe en relation avec des <b>conseils en orientation</b>, des <b>bourses</b> et des <b>opportunités de stage</b> — offrant une voie claire vers l'industrie technologique mondiale.",
+      "p3": "Ces initiatives reflètent l'engagement de Generation Aid à réduire la fracture numérique et à veiller à ce que les jeunes réfugiés ne soient <b>pas laissés pour compte dans l'économie numérique</b>."
+    },
+    "kap": {
+      "howEyebrow": "Comment tout a commencé",
+      "howTitle": "Une peinture, une conversation",
+      "howP1": "<em>Boat</em> — le tableau à l'origine de tout — a amené Tara Dominick et Hubert à discuter de la place de l'art dans le camp de réfugiés de Kakuma. Ce qui s'en est suivi a été la fondation du <b>Kakuma Art Project (KAP)</b>.",
+      "howP2": "Une fois engagée dans le projet, tout semblait s'aligner. Tara offrait au départ deux heures par semaine, mais le projet occupe désormais trois ou quatre jours de sa semaine — et ses pensées en permanence.",
+      "howP3": "Dès la conception, Tara a vendu <strong>10 tirages signés en édition limitée</strong> de <em>Boat</em> pour financer la Phase 1 — faire parvenir peintures, pinceaux, couteaux à palette, papier, fusain et toiles dans le camp.",
+      "quote": "Une petite action peut se propager et créer un changement significatif.",
+      "quoteAttr": "— Bob Brimson, l'un des premiers à croire en ce projet. Il a inventé le slogan <span>« la puissance d'une seule peinture »</span>.",
+      "beautyEyebrow": "La beauté des programmes",
+      "beautyTitle": "Éducation, visibilité et opportunité",
+      "beautyBody": "Le projet offre aux artistes du camp une éducation, une visibilité et des opportunités — soutenus par une série continue d'ateliers organisés au <b>Centre Generation Aid</b> du camp de Kakuma.",
+      "paintingEyebrow": "L'histoire d'un artiste",
+      "paintingTitle": "Peindre la <em>Maison</em> de loin",
+      "paintingP1": "Mwangi, artiste de 52 ans vivant au camp de Kakuma, crée de magnifiques images de son pays natal. Pourtant, pendant des années, il a été limité par les ressources — pas de toile, pas de peinture, pas de pinceaux.",
+      "paintingP2": "Sa passion pour la peinture l'a poussé à récupérer de vieux t-shirts à la décharge, à les laver puis à les enduire de colle pour créer une toile de fortune. Son ingéniosité et sa passion ont profondément touché Tara lorsqu'elle a découvert son travail.",
+      "paintingP3": "Son œuvre est à la racine du programme et est désormais largement reconnue.",
+      "activitiesEyebrow": "Activités",
+      "activitiesTitle": "Coopérative d'artisans et d'artisanat réfugiés",
+      "activitiesP1": "De nombreux réfugiés de Kakuma sont issus de cultures riches dotées de <b>fortes traditions artistiques</b> en perlage, tissage, couture et sculpture sur bois. Cependant, l'accès limité aux marchés les empêche de transformer ces compétences en activités durables. Pour y remédier, Generation Aid a créé la <b>Coopérative d'artisans et d'artisanat réfugiés</b> — une plateforme qui aide les artisans réfugiés à produire et vendre leurs produits faits main sur les marchés locaux et internationaux.",
+      "activitiesP2": "L'initiative propose une formation spécialisée dans divers artisanats, aidant les artisans à améliorer la qualité de leurs produits, à développer des designs uniques et à augmenter leur production. Elle les met également en relation avec des acheteurs, des ONG et des places de marché en ligne où ils peuvent présenter et vendre leur travail. Grâce à des ateliers de narration et de branding, les artisans apprennent à partager leur parcours et leur héritage culturel — rendant leurs produits plus précieux sur les marchés mondiaux.",
+      "celebratingEyebrow": "Célébrer nos talents",
+      "celebratingTitle": "Un modèle coopératif qui rassemble les forces",
+      "celebratingP1": "Pour mieux soutenir les artisans, Generation Aid développe un <b>modèle coopératif</b> qui leur permet de mettre en commun leurs ressources, d'accéder à des micro-crédits et d'investir collectivement dans le matériel et l'équipement. Ainsi, même ceux aux moyens financiers limités peuvent participer et développer leur activité.",
+      "celebratingP2": "La Coopérative d'artisans et d'artisanat réfugiés ne se contente pas de préserver le patrimoine culturel : elle crée aussi des <b>emplois durables et des opportunités économiques</b> pour les artisans — en particulier les femmes et les jeunes. En leur offrant une plateforme pour monétiser leurs compétences, cette initiative permet aux réfugiés de bâtir des moyens de subsistance autonomes et dignes au-delà de l'aide humanitaire.",
+      "galleryEyebrow": "La galerie Senga",
+      "galleryTitle": "Plus qu'un bâtiment — une galerie d'art au cœur de Kakuma",
+      "galleryP1": "La toute première galerie d'art a été construite — devenant un phare d'espoir, un lieu où les réfugiés peuvent s'exprimer, s'inspirer mutuellement et avancer côte à côte avec fierté dans leur vie.",
+      "galleryP2": "Le KAP est dirigé par <b>Tara Dominick</b>, une artiste plasticienne du Devon, aux côtés de <b>Hubert Senga</b> et de Generation Aid qui assurent la mise en œuvre des programmes artistiques sur le terrain à Kakuma.",
+      "galleryCaption1": "L'atelier organisé par le projet Birgheter, pour promouvoir la beauté et la fierté des réfugiés.",
+      "galleryCaption2": "En menant des ateliers artistiques, Generation Aid découvre les véritables défis auxquels la communauté est confrontée et développe des solutions communautaires.",
+      "galleryP3": "Grâce à ces ateliers, la communauté réfugiée de Kakuma se rassemble pour défendre la paix, l'unité et le talent. C'est un programme unique qui offre aux réfugiés une plateforme pour partager ce qui est caché dans leurs cultures — des dons dont le monde entier peut apprendre.",
+      "galleryCaption3": "La toute première galerie d'art du camp de réfugiés de Kakuma — nommée <b>The Senga Gallery</b> en hommage au plaidoyer en faveur des réfugiés mené par Hubert Senga, fondateur de Generation Aid.",
+      "whyTitle": "Pourquoi cette galerie compte",
+      "whySubtitle": "La galerie est inclusive — conçue pour favoriser la créativité des réfugiés.",
+      "whyCards": [
+        {
+          "title": "Expression et identité",
+          "body": "Un espace sûr où les artistes réfugiés peuvent donner forme à leurs souvenirs de la maison, à leurs récits de voyage et à leurs visions de demain."
+        },
+        {
+          "title": "Galerie alimentée par l'énergie solaire",
+          "body": "Des panneaux solaires garantissent qu'il y a toujours de la lumière pour admirer les œuvres — rendant la galerie viable et durable sur le long terme."
+        },
+        {
+          "title": "Communauté et solidarité",
+          "body": "Les artistes se tiennent côte à côte, bâtissant fierté et connexion au sein d'une communauté qui a tant perdu."
+        },
+        {
+          "title": "Visibilité mondiale",
+          "body": "Grâce à des expositions comme celle du Wiltshire, les récits des réfugiés touchent de nouveaux publics — reliant les mondes par l'art."
+        }
+      ]
+    }
+  },
+  "impact": {
+    "hero": {
+      "eyebrow": "Notre impact",
+      "titleStart": "De vrais chiffres. De vraies vies.",
+      "titleHighlight": "Un vrai changement à Kakuma.",
+      "subtitle": "Nous mesurons ce qui compte — opportunités créées, moyens de subsistance restaurés, avenirs débloqués. Chaque chiffre ci-dessous représente une personne dont le potentiel est enfin reconnu."
+    },
+    "byTheNumbers": "En chiffres",
+    "byTheNumbersSubtitle": "Mis à jour à mesure que nos programmes grandissent.",
+    "metricsEmpty": "Les indicateurs d'impact apparaîtront ici dès leur publication.",
+    "outcomesEyebrow": "Ce que nous mesurons",
+    "outcomesTitle": "Quatre résultats, une mission",
+    "outcomesSubtitle": "Chaque programme est conçu autour de ces quatre axes — vous voyez exactement comment une formation, un placement ou un kit de démarrage se traduit en changement durable pour les jeunes réfugiés de Kakuma.",
+    "highlightsTitle": "Moments forts récents",
+    "highlightsSubtitle": "Quelques moments des douze derniers mois dont nous sommes fiers.",
+    "journeyEyebrow": "Notre parcours",
+    "journeyTitle": "D'une petite idée à un mouvement dirigé par des réfugiés",
+    "journeySubtitle": "Generation Aid s'est construit cohorte par cohorte, partenariat par partenariat, diplômé par diplômé.",
+    "behindNumbersTitle": "Derrière les chiffres",
+    "behindNumbersSubtitle": "Les personnes dont la vie a été transformée par nos programmes.",
+    "readAllStories": "Lire tous les témoignages →",
+    "ctaTitle": "Vous voulez faire grandir ces chiffres ?",
+    "ctaSubtitle": "Chaque don, chaque partenariat, chaque heure de bénévolat élargit ce que nous pouvons offrir l'an prochain.",
+    "partnerWithUs": "Devenir partenaire"
+  },
+  "stories": {
+    "hero": {
+      "eyebrow": "Témoignages",
+      "title": "Voix de notre communauté",
+      "titleStart": "De vrais parcours depuis",
+      "titleHighlight": "Kakuma",
+      "subtitle": "Les diplômés, formateurs et partenaires dont nos programmes ont façonné la vie — dans leurs propres mots.",
+      "subtitleAlt": "Chaque chiffre de notre page Impact est une personne. Voici quelques-unes des personnes derrière ces chiffres — dans leurs propres mots."
+    },
+    "empty": "Les témoignages apparaîtront ici à mesure que nous les publierons.",
+    "readStory": "Lire le témoignage →",
+    "featured": "Témoignage à la une",
+    "readPersonStory": "Lire le témoignage de {{name}} →",
+    "moreFromCommunity": "Plus de témoignages de la communauté",
+    "moreSubtitle": "Des premiers pas en code aux fondateurs de coopératives — découvrez les parcours que nos apprenants construisent.",
+    "shareTitle": "Êtes-vous diplômé ? Partagez votre témoignage.",
+    "shareBody": "Votre parcours peut inspirer le prochain apprenant qui entrera au Hub. Nous vous aiderons à l'écrire et à le publier — dans la langue de votre choix.",
+    "submitStory": "Soumettre votre témoignage",
+    "notFound": "Témoignage introuvable",
+    "notFoundSubtitle": "Nous n'avons trouvé aucun témoignage à cette adresse.",
+    "backToAll": "Retour à tous les témoignages",
+    "allStories": "← Tous les témoignages",
+    "moreStories": "Plus de témoignages"
+  },
+  "blog": {
+    "hero": {
+      "eyebrow": "Blog",
+      "eyebrowAlt": "Notre Blog",
+      "title": "Actualités, idées et mises à jour",
+      "titleAlt": "Actualités & nouveautés",
+      "subtitle": "Lancements de projets, partenariats, réflexions du terrain, et ce que nous apprenons en chemin.",
+      "subtitleAlt": "Histoires du terrain, lancements de projets et réflexions de l'équipe Generation Aid à Kakuma."
+    },
+    "seePhotos": "Voir nos photos ↓",
+    "watchVideos": "Voir nos vidéos ↓",
+    "photosTitle": "Photos",
+    "photosSubtitle": "Photos téléchargées par notre équipe — ateliers, remises de diplômes, quotidien à Kakuma.",
+    "videosTitle": "Vidéos et témoignages à l'écran",
+    "videosEyebrow": "Regarder",
+    "videosSubtitle": "Visites de notre hub, témoignages de diplômés, coulisses d'ateliers et nouvelles du terrain.",
+    "haveAStory": "Vous avez une histoire ? Contactez-nous",
+    "empty": "Aucun article publié pour le moment.",
+    "backToBlog": "← Retour au blog",
+    "byAuthor": "par {{author}}",
+    "aboutUsTitle": "À propos",
+    "aboutUsBody": "Au fil des ans, GAID a travaillé sans relâche pour fournir une gamme de services aux communautés déplacées — entrepreneuriat, éducation professionnelle et compétences numériques. Nous sommes devenus une Organisation Communautaire légale en 2019 et avons ensuite pris le nom de Generation Aid, avant de recevoir notre certificat gouvernemental en 2025. Ce nom reflète notre ambition de servir les réfugiés et les jeunes déplacés du camp de Kakuma.",
+    "recentArticles": "Articles récents",
+    "postCategories": "Catégories",
+    "uncategorized": "Non classé",
+    "gallery": "Galerie",
+    "momentsField": "Moments du terrain",
+    "momentsSubtitle": "Photos téléchargées par notre équipe — ateliers, remises de diplômes, quotidien au hub de Kakuma.",
+    "postNotFound": "Article introuvable",
+    "postNotFoundSubtitle": "L'article que vous cherchez n'existe pas.",
+    "moreArticles": "Plus d'articles"
+  },
+  "contact": {
+    "hero": {
+      "eyebrow": "Nous contacter",
+      "eyebrowAlt": "Contact",
+      "title": "Nous serions ravis d'avoir de vos nouvelles",
+      "titleAlt": "Discutons.",
+      "subtitle": "Questions, partenariats, presse, bénévolat — écrivez-nous et nous vous répondrons sous quelques jours ouvrés.",
+      "subtitleAlt": "Partenariat, don, bénévolat ou simple bonjour — nous lisons chaque message et répondons sous deux jours ouvrés."
+    },
+    "formTitle": "Envoyez-nous un message",
+    "allFieldsRequired": "Tous les champs sont requis sauf indication contraire.",
+    "namePlaceholder": "Votre nom",
+    "emailPlaceholder": "vous@email.com",
+    "subjectPlaceholder": "Quel est le sujet ?",
+    "messagePlaceholder": "Dites-nous-en un peu plus…",
+    "yourName": "Votre nom",
+    "subjectLabel": "Objet",
+    "send": "Envoyer le message",
+    "contactInfo": "Coordonnées",
+    "ourLocation": "Notre adresse",
+    "callUs": "Nous appeler",
+    "writeUs": "Nous écrire",
+    "office": "Bureau",
+    "officeHours": "Horaires",
+    "timesAreEAT": "Heure de l'Afrique de l'Est (UTC+3).",
+    "phone": "Téléphone",
+    "emailHeading": "Email",
+    "faq": "FAQ",
+    "faqTitle": "Questions fréquentes",
+    "faqs": {
+      "donate": {
+        "q": "Comment puis-je faire un don ?",
+        "a": "Utilisez le bouton Faire un don visible sur l'ensemble du site — il renvoie vers notre page GlobalGiving vérifiée. Pour des dons plus importants ou un abondement d'entreprise, écrivez à info@generationaid.org et nous organiserons un virement direct ou une facture."
+      },
+      "volunteer": {
+        "q": "Puis-je faire du bénévolat à distance ?",
+        "a": "Oui. Nous travaillons avec des mentors à distance en design, rédaction, développement logiciel, anglais et accompagnement professionnel. Envoyez-nous un mot avec vos compétences et vos disponibilités hebdomadaires via le formulaire ci-dessus."
+      },
+      "spend": {
+        "q": "Comment les dons sont-ils utilisés ?",
+        "a": "Environ 78 % de chaque don finance directement la mise en œuvre des programmes (formations, indemnités, équipement, internet). 14 % couvrent le fonctionnement du Hub et 8 % les frais généraux de l'organisation. Détail complet dans notre rapport annuel — demandez-en une copie par email."
+      },
+      "registered": {
+        "q": "Êtes-vous une organisation enregistrée ?",
+        "a": "Oui. Generation Aid est une organisation dirigée par des réfugiés, enregistrée et active dans le camp de Kakuma conformément à la réglementation du pays d'accueil, avec un parrainage fiscal international pour les dons."
+      }
+    },
+    "hours": {
+      "weekdays": { "days": "Lundi – Vendredi", "hours": "8h30 – 17h00 EAT" },
+      "saturday": { "days": "Samedi", "hours": "9h00 – 13h00 EAT" },
+      "sunday": { "days": "Dimanche et jours fériés", "hours": "Fermé" }
+    },
+    "messageSent": "Message envoyé — merci.",
+    "messageSentBody": "Nous avons reçu votre note et un membre de l'équipe vous répondra sous deux jours ouvrés. Si votre demande est urgente, appelez-nous aux numéros indiqués dans la barre latérale.",
+    "next": "Ensuite",
+    "nextBody": "Nous transmettrons votre message à la bonne équipe.",
+    "replyWindow": "Délai de réponse",
+    "replyWindowBody": "Sous 2 jours ouvrés (lun–ven, EAT).",
+    "needSooner": "Besoin plus rapide ?",
+    "sendAnother": "Envoyer un autre message",
+    "supportOurWork": "Soutenir notre travail →",
+    "errorName": "Veuillez saisir votre nom",
+    "errorEmail": "Veuillez saisir une adresse email valide",
+    "errorMessage": "Veuillez écrire un court message",
+    "errorSendFailed": "Impossible d'envoyer le message"
+  },
+  "volunteer": {
+    "hero": {
+      "eyebrow": "Bénévolat",
+      "title": "Devenez bénévole",
+      "subtitle": "Mettez vos compétences, votre temps ou votre réseau au service d'un changement dirigé par les réfugiés à Kakuma."
+    }
+  },
+  "partners": {
+    "hero": {
+      "eyebrow": "Partenaires",
+      "title": "Les organisations qui marchent à nos côtés",
+      "titleStart": "Devenez partenaire d'une organisation",
+      "titleHighlight": "dirigée par des réfugiés",
+      "titleEnd": "",
+      "subtitle": "Nous sommes fiers de travailler avec des financeurs, ONG et entreprises qui partagent notre conviction d'un changement dirigé par les réfugiés.",
+      "subtitleAlt": "Nous travaillons avec des ONG, gouvernements et entreprises qui veulent un impact mesurable et un lien direct avec la communauté qu'ils servent."
+    },
+    "becomeAPartner": "Devenir partenaire",
+    "emailPartnerships": "Écrire à l'équipe partenariats",
+    "whyPartner": "Pourquoi nous rejoindre",
+    "whyPartnerSubtitle": "Quatre choses que chaque partenaire reçoit, dès le premier jour.",
+    "currentPartners": "Nos partenaires actuels",
+    "currentPartnersSubtitle": "Un réseau grandissant d'organisations qui soutiennent l'innovation dirigée par les réfugiés.",
+    "getInvolved": "S'impliquer",
+    "threeWays": "Trois façons de devenir partenaire",
+    "threeWaysSubtitle": "Chaque partenariat est sur mesure — choisissez le point d'entrée qui vous convient et nous façonnerons le reste avec vous.",
+    "mostPopular": "Le plus populaire",
+    "readyToTalk": "Prêt à échanger ?",
+    "readyToTalkBody": "Envoyez-nous un mot sur votre organisation et ce que vous aimeriez construire ensemble. Nous répondons sous deux jours ouvrés.",
+    "emailUs": "Écrire à {{email}}",
+    "categories": {
+      "Strategic": "Stratégique",
+      "Funding": "Financement",
+      "Implementation": "Mise en œuvre",
+      "Corporate": "Entreprises"
+    },
+    "list": {
+      "unhcr": "Collaboration de longue date sur la protection, l'accès à l'éducation et les programmes menés par les réfugiés au sein du camp de Kakuma.",
+      "globalgiving": "Notre principale plateforme de dons internationale — elle permet le don individuel et les campagnes de contrepartie d'entreprise.",
+      "refugepoint": "Partenaire de mise en œuvre pour les solutions durables, la formation aux moyens de subsistance et les compétences préparant à la réinstallation.",
+      "salesforce": "Partenaire technologique — fournit le socle CRM pour le suivi des bénéficiaires, l'engagement des anciens élèves et la fidélisation des donateurs.",
+      "lwf": "Mise en œuvre conjointe de programmes éducatifs et partage d'infrastructures dans le complexe intégré de Kalobeyei.",
+      "konexio": "Partenaire panafricain reliant les organisations dirigées par des réfugiés à des cursus numériques, du mentorat et des échanges d'apprentissage transfrontaliers.",
+      "turkana": "Engagement de la communauté hôte, permis d'exploitation et initiatives conjointes pour l'emploi des jeunes dans tout le Turkana Ouest."
+    },
+    "benefits": {
+      "rooted": {
+        "title": "Mise en œuvre ancrée dans la communauté",
+        "body": "Chaque programme est conçu et mené par les réfugiés eux-mêmes — d'où une meilleure adhésion, un coût par bénéficiaire plus faible et des résultats durables."
+      },
+      "measured": {
+        "title": "Impact mesuré",
+        "body": "Nous suivons chaque apprenant de l'inscription à l'emploi en passant par l'obtention du diplôme. Rapports trimestriels liés à votre financement, sans exception."
+      },
+      "visibility": {
+        "title": "Visibilité marque et ESG",
+        "body": "Campagnes co-marquées, photographie sur le terrain et parrainage de salle nominative dans notre Centre numérique communautaire."
+      },
+      "talent": {
+        "title": "Vivier de talents",
+        "body": "Accès direct au recrutement de nos diplômés Generation Jobs — designers, rédacteurs, développeurs, assistants virtuels et spécialistes du support client."
+      }
+    },
+    "tiers": {
+      "programme": {
+        "name": "Partenaire de programme",
+        "tagline": "Financer ce que nous construisons",
+        "body": "Co-concevoir et co-mettre en œuvre un programme spécifique — compétences numériques, couture, anglais ou travail à distance — avec des rapports d'impact trimestriels liés à votre investissement.",
+        "from": "À partir de 10 000 $ / an",
+        "features": [
+          "Promotion ou module de programme à votre marque",
+          "Rapports trimestriels d'impact et financiers",
+          "Deux portraits co-marqués par an",
+          "Invitation au briefing annuel des partenaires"
+        ],
+        "ctaLabel": "Parrainer un programme"
+      },
+      "hub": {
+        "name": "Parrain du Hub",
+        "tagline": "Ancrer le Hub numérique",
+        "body": "Soutien pluriannuel au Centre numérique communautaire : parrainage de salle nominative, visibilité sur site et place permanente dans notre rapport annuel et sur le mur des donateurs.",
+        "from": "À partir de 25 000 $ / an",
+        "features": [
+          "Salle ou poste de travail nominatif au sein du Hub",
+          "Logo sur le mur des donateurs et la couverture du rapport annuel",
+          "Tableau de bord mensuel personnalisé des indicateurs d'usage",
+          "Appel exécutif trimestriel avec notre PDG",
+          "Visite du site organisée par l'équipe Generation Aid"
+        ],
+        "ctaLabel": "Devenir parrain du Hub"
+      },
+      "talent": {
+        "name": "Partenaire talent",
+        "tagline": "Recruter les talents réfugiés",
+        "body": "Recrutez directement les diplômés Generation Jobs sur des postes à distance — nous prenons en charge la présélection, l'intégration et le mentorat continu sans frais pour votre entreprise.",
+        "from": "Sans frais — partenariat de recrutement",
+        "features": [
+          "Liste de candidats vérifiés et prêts à prendre leur poste",
+          "Intégration gratuite et accompagnement par un mentor pendant 90 jours",
+          "Point trimestriel avec le partenaire de recrutement",
+          "Étude de cas conjointe en option après le premier recrutement"
+        ],
+        "ctaLabel": "Commencer à recruter"
+      }
+    }
+  },
+  "jobs": {
+    "hero": {
+      "eyebrow": "Emplois",
+      "title": "Travailler avec nous",
+      "subtitle": "Postes ouverts, stages et bénévolat — les candidatures de réfugiés sont vivement encouragées."
+    },
+    "empty": "Aucun poste ouvert pour le moment. Revenez bientôt ou contactez-nous."
+  },
+  "login": {
+    "title": "Connectez-vous à votre compte",
+    "subtitle": "Accès réservé au personnel et aux administrateurs.",
+    "emailLabel": "Email",
+    "passwordLabel": "Mot de passe",
+    "signIn": "Se connecter",
+    "signingIn": "Connexion…",
+    "staffPortal": "Espace personnel",
+    "signinWelcome": "Bon retour. Connectez-vous pour gérer le contenu.",
+    "signupWelcome": "Créez un compte personnel. Les nouveaux comptes ont par défaut un accès éditeur.",
+    "signUp": "S'inscrire",
+    "fullName": "Nom complet",
+    "minPassword": "8 caractères minimum.",
+    "createAccount": "Créer un compte",
+    "creatingAccount": "Création du compte…",
+    "backToSite": "← Retour au site"
+  },
+  "notFound": {
+    "title": "Page introuvable",
+    "subtitle": "La page que vous cherchez n'existe pas ou a été déplacée.",
+    "goHome": "Retour à l'accueil",
+    "error404": "Erreur 404",
+    "wandered": "Cette page s'est égarée.",
+    "explainer": "Le lien que vous avez suivi est peut-être cassé, ou la page a peut-être été déplacée. Reprenez le bon chemin — essayez l'un des liens ci-dessous.",
+    "reportLink": "Signaler un lien cassé",
+    "tryInstead": "Essayez plutôt l'une de ces pages",
+    "popularDestinations": "Destinations populaires sur le site Generation Aid.",
+    "go": "Aller →",
+    "linkPrograms": "Nos programmes",
+    "linkProgramsDesc": "Compétences numériques, couture, anglais et travail à distance.",
+    "linkStories": "Témoignages de diplômés",
+    "linkStoriesDesc": "Voix du Hub et de la cohorte Generation Jobs.",
+    "linkImpact": "Notre impact",
+    "linkImpactDesc": "Chiffres, jalons et les personnes derrière eux.",
+    "linkContact": "Nous contacter",
+    "linkContactDesc": "Partenariats, bénévolat ou demandes médias."
+  },
+  "pageStub": {
+    "comingSoon": "Cette page est en cours de préparation — le contenu arrive bientôt."
+  },
+  "programDetail": {
+    "backToPrograms": "← Retour aux programmes",
+    "notFound": "Programme introuvable."
+  },
+  "admin": {
+    "common": {
+      "newItem": "Nouveau",
+      "create": "Créer",
+      "creating": "Création…",
+      "update": "Mettre à jour",
+      "updating": "Mise à jour…",
+      "saved": "Enregistré",
+      "search": "Rechercher…",
+      "loading": "Chargement…",
+      "noItems": "Aucun élément.",
+      "add": "Ajouter",
+      "adding": "Ajout…",
+      "save": "Enregistrer",
+      "saving": "Enregistrement…",
+      "delete": "Supprimer",
+      "deleting": "Suppression…",
+      "edit": "Modifier",
+      "cancel": "Annuler",
+      "upload": "Téléverser",
+      "uploading": "Téléversement…",
+      "close": "Fermer",
+      "actions": "Actions",
+      "draft": "Brouillon",
+      "published": "Publié",
+      "yes": "Oui",
+      "no": "Non",
+      "confirmDelete": "Êtes-vous sûr de vouloir supprimer cet élément ?",
+      "selectFile": "Sélectionner un fichier",
+      "required": "Obligatoire",
+      "optional": "Facultatif",
+      "back": "Retour",
+      "openMenu": "Ouvrir le menu admin",
+      "menu": "Menu",
+      "title": "Titre",
+      "slug": "Slug",
+      "author": "Auteur",
+      "date": "Date",
+      "status": "Statut",
+      "order": "Ordre",
+      "image": "Image",
+      "caption": "Légende",
+      "name": "Nom",
+      "role": "Rôle",
+      "category": "Catégorie",
+      "url": "URL",
+      "description": "Description",
+      "summary": "Résumé",
+      "body": "Corps",
+      "location": "Lieu",
+      "label": "Libellé",
+      "value": "Valeur",
+      "email": "E-mail",
+      "approve": "Approuver",
+      "approving": "Approbation…",
+      "reject": "Rejeter",
+      "rejecting": "Rejet…",
+      "makeAdmin": "Promouvoir admin",
+      "makeEditor": "Passer en éditeur",
+      "viewSite": "Voir le site",
+      "signOut": "Déconnexion"
+    },
+    "nav": {
+      "dashboard": "Tableau de bord",
+      "messages": "Messages",
+      "videos": "Vidéos",
+      "photos": "Photos",
+      "programs": "Programmes",
+      "impact": "Impact",
+      "stories": "Témoignages",
+      "blog": "Blog",
+      "partners": "Partenaires",
+      "users": "Utilisateurs",
+      "viewSite": "Voir le site",
+      "signOut": "Déconnexion",
+      "adminLabel": "Admin"
+    },
+    "dashboard": {
+      "title": "Tableau de bord",
+      "welcome": "Bon retour",
+      "welcomeBack": "Bon retour, {{name}}",
+      "signedInAs": "Connecté en tant que {{email}}",
+      "overview": "Aperçu du site",
+      "snapshot": "Aperçu du contenu publié sur le site.",
+      "recentMessages": "Messages récents",
+      "recentMessagesSubtitle": "Les cinq derniers messages reçus via le formulaire de contact.",
+      "openInbox": "Ouvrir la boîte de réception",
+      "noMessages": "Aucun message.",
+      "viewAll": "Tout voir",
+      "unreadMessages": "Messages non lus",
+      "pendingUsers": "Utilisateurs en attente",
+      "published": "Publiés",
+      "totals": "Totaux",
+      "loadingStats": "Chargement des statistiques…",
+      "failedStats": "Impossible de charger les statistiques.",
+      "failedMessages": "Impossible de charger les messages.",
+      "quickPeek": "Un aperçu rapide de ce qui se passe sur le site.",
+      "failedStatsLoad": "Échec du chargement des statistiques : {{error}}",
+      "keyMetrics": "Indicateurs clés",
+      "draftsInProgress": "Brouillons en cours",
+      "pendingApprovals": "Approbations en attente",
+      "storiesPublished": "Témoignages publiés",
+      "totalAccounts": "{{count}} comptes au total",
+      "postsPublished": "{{count}} articles publiés",
+      "programsPartners": "{{programs}} programmes · {{partners}} partenaires",
+      "totalDot30d": "{{total}} au total · {{last30}} sur 30 j",
+      "contentOverview": "Aperçu du contenu",
+      "posts": "Articles",
+      "stories": "Témoignages",
+      "programs": "Programmes",
+      "partners": "Partenaires",
+      "videos": "Vidéos",
+      "photos": "Photos",
+      "viewAllArrow": "Tout voir →",
+      "manageBlog": "Gérer le blog →",
+      "manage": "Gérer →",
+      "draftLabel": "Brouillon",
+      "updatedAgo": "{{author}} · mis à jour {{ago}}",
+      "editArrow": "Modifier →",
+      "impactMetricsTitle": "Indicateurs d'impact",
+      "noDrafts": "Aucun brouillon. Tout est publié — beau travail.",
+      "justNow": "à l'instant",
+      "minAgo": "il y a {{count}} min",
+      "hrAgo": "il y a {{count}} h",
+      "dAgo": "il y a {{count}} j"
+    },
+    "videos": {
+      "title": "Vidéos",
+      "subtitle": "Téléverser, renommer et supprimer les vidéos affichées sur le site public.",
+      "newVideo": "Nouvelle vidéo",
+      "videoFile": "Fichier vidéo",
+      "posterImage": "Image de couverture",
+      "poster": "Couverture",
+      "file": "Fichier",
+      "published": "Publiée",
+      "unpublish": "Dépublier",
+      "publish": "Publier",
+      "noVideos": "Aucune vidéo téléversée.",
+      "pageSubtitle": "Téléverser des vidéos (avec une image de couverture facultative) pour les afficher sur la page Blog.",
+      "uploadNew": "Téléverser une nouvelle vidéo",
+      "maxFileNote": "Max 200 Mo. MP4 recommandé.",
+      "chooseVideoFile": "Veuillez choisir un fichier vidéo",
+      "uploadFailed": "Échec du téléversement",
+      "deleteFailed": "Échec de la suppression",
+      "updateFailed": "Échec de la mise à jour",
+      "uploaded": "Vidéo téléversée",
+      "deleted": "Vidéo supprimée",
+      "updated": "Vidéo mise à jour",
+      "uploadingPct": "Téléversement… {{pct}} %",
+      "uploadVideo": "Téléverser la vidéo",
+      "existing": "Vidéos existantes",
+      "searchPlaceholder": "Rechercher des vidéos…",
+      "noVideosFound": "Aucune vidéo trouvée.",
+      "confirmDelete": "Supprimer « {{title}} » ?"
+    },
+    "photos": {
+      "title": "Photos",
+      "subtitle": "Galerie du blog.",
+      "newPhoto": "Nouvelle photo",
+      "uploadPhoto": "Téléverser une photo",
+      "alt": "Texte alternatif",
+      "noPhotos": "Aucune photo téléversée.",
+      "pageSubtitle": "Téléverser des images avec un titre et une description. Elles apparaissent dans la galerie du blog public.",
+      "uploadNew": "Téléverser une nouvelle photo",
+      "subjectTitle": "Sujet / titre",
+      "subjectPlaceholder": "ex. Jour de remise des diplômes au Digital Hub",
+      "descPlaceholder": "Racontez l'histoire derrière la photo…",
+      "imageFile": "Fichier image",
+      "maxFileNote": "Max 10 Mo. JPG, PNG ou WebP.",
+      "preview": "Aperçu",
+      "previewAlt": "Aperçu du fichier sélectionné",
+      "uploadingPct": "Téléversement… {{pct}} %",
+      "uploadButton": "Téléverser la photo",
+      "uploaded": "Photo téléversée",
+      "deleted": "Photo supprimée",
+      "updated": "Photo mise à jour",
+      "chooseFile": "Veuillez choisir un fichier image",
+      "uploadFailed": "Échec du téléversement",
+      "deleteFailed": "Échec de la suppression",
+      "updateFailed": "Échec de la mise à jour",
+      "existing": "Photos téléversées",
+      "searchPlaceholder": "Rechercher des photos…",
+      "noPhotosYet": "Aucune photo.",
+      "confirmDelete": "Supprimer « {{title}} » ?"
+    },
+    "programs": {
+      "title": "Programmes",
+      "subtitle": "Gérer les programmes affichés publiquement.",
+      "newProgram": "Nouveau programme",
+      "noPrograms": "Aucun programme.",
+      "pageSubtitle": "Créer, modifier et mettre en avant les programmes affichés sur le site public.",
+      "editProgram": "Modifier le programme",
+      "addNew": "Ajouter un nouveau programme",
+      "cancelEdit": "Annuler la modification",
+      "categoryPlaceholder": "ex. Éducation, Moyens de subsistance",
+      "imageUrl": "URL de l'image",
+      "featureOnHome": "Mettre en avant sur la page d'accueil",
+      "saveChanges": "Enregistrer les modifications",
+      "createProgram": "Créer le programme",
+      "existing": "Programmes existants",
+      "searchPlaceholder": "Rechercher…",
+      "noImage": "Sans image",
+      "featuredBadge": "En vedette",
+      "created": "Programme créé",
+      "updated": "Programme mis à jour",
+      "deleted": "Programme supprimé",
+      "createFailed": "Échec de la création",
+      "updateFailed": "Échec de la mise à jour",
+      "deleteFailed": "Échec de la suppression",
+      "confirmDelete": "Supprimer « {{title}} » ?"
+    },
+    "impact": {
+      "title": "Indicateurs d'impact",
+      "subtitle": "Chiffres affichés sur la page d'accueil et la page Impact.",
+      "newMetric": "Nouvel indicateur",
+      "noMetrics": "Aucun indicateur.",
+      "pageSubtitle": "Chiffres affichés sur les pages Accueil et Impact. Utilisez des nombres entiers — ils sont formatés automatiquement (1500 → 1.5k+).",
+      "editMetric": "Modifier l'indicateur",
+      "addNew": "Ajouter un nouvel indicateur",
+      "cancelEdit": "Annuler la modification",
+      "labelPlaceholder": "ex. Jeunes formés",
+      "value": "Valeur",
+      "displayOrder": "Ordre d'affichage",
+      "icon": "Icône",
+      "iconPlaceholder": "Laisser vide",
+      "saveChanges": "Enregistrer les modifications",
+      "createMetric": "Créer l'indicateur",
+      "existing": "Indicateurs existants",
+      "searchPlaceholder": "Rechercher…",
+      "orderLabel": "Ordre : {{order}}",
+      "created": "Indicateur créé",
+      "updated": "Indicateur mis à jour",
+      "deleted": "Indicateur supprimé",
+      "createFailed": "Échec de la création",
+      "updateFailed": "Échec de la mise à jour",
+      "deleteFailed": "Échec de la suppression",
+      "confirmDelete": "Supprimer « {{title}} » ?"
+    },
+    "stories": {
+      "title": "Témoignages",
+      "subtitle": "Témoignages de diplômés et de la communauté.",
+      "newStory": "Nouveau témoignage",
+      "noStories": "Aucun témoignage.",
+      "pageSubtitle": "Témoignages personnels des participants et anciens des programmes.",
+      "editStory": "Modifier le témoignage",
+      "addNew": "Ajouter un nouveau témoignage",
+      "cancelEdit": "Annuler la modification",
+      "authorPlaceholder": "Nom de la personne dont il s'agit",
+      "imageHint": "JPG, PNG ou WebP. Max 10 Mo.",
+      "summaryPlaceholder": "Une ou deux phrases affichées sur les cartes et aperçus.",
+      "rolePlaceholder": "ex. Graphiste à distance",
+      "programPlaceholder": "ex. Bootcamp Travail à distance",
+      "locationPlaceholder": "ex. Kakuma, Kenya",
+      "slug": "Slug URL",
+      "slugPlaceholder": "généré automatiquement à partir du titre si vide",
+      "shortExcerpt": "Court extrait",
+      "excerptPlaceholder": "Plus percutant que le résumé — utilisé en tête de la page du témoignage.",
+      "fullStory": "Récit complet",
+      "fullStoryPlaceholder": "Laissez une ligne vide entre les paragraphes.",
+      "saveChanges": "Enregistrer les modifications",
+      "publishStory": "Publier le témoignage",
+      "existing": "Témoignages existants",
+      "searchPlaceholder": "Rechercher…",
+      "noImage": "Sans image",
+      "created": "Témoignage créé",
+      "updated": "Témoignage mis à jour",
+      "deleted": "Témoignage supprimé",
+      "createFailed": "Échec de la création",
+      "updateFailed": "Échec de la mise à jour",
+      "deleteFailed": "Échec de la suppression",
+      "confirmDelete": "Supprimer « {{title}} » ?"
+    },
+    "blog": {
+      "title": "Blog",
+      "subtitle": "Articles et annonces.",
+      "newPost": "Nouvel article",
+      "noPosts": "Aucun article.",
+      "pageTitle": "Articles du blog",
+      "pageSubtitle": "Actualités, annonces et réflexions pour la page Blog publique.",
+      "editPost": "Modifier l'article",
+      "addNew": "Ajouter un nouvel article",
+      "cancelEdit": "Annuler la modification",
+      "publishDate": "Date de publication",
+      "slug": "Slug URL",
+      "slugPlaceholder": "généré automatiquement à partir du titre si vide",
+      "coverImage": "Image de couverture",
+      "coverHint": "Apparaît en haut de l'article et sur l'index du blog. JPG/PNG/WebP, max 10 Mo.",
+      "excerpt": "Extrait",
+      "excerptPlaceholder": "Une ou deux phrases affichées sur la liste du blog.",
+      "fullContent": "Contenu complet",
+      "fullContentPlaceholder": "Laissez une ligne vide entre les paragraphes.",
+      "publishedLabel": "Publié",
+      "uncheckDraft": "(décochez pour enregistrer comme brouillon)",
+      "saveChanges": "Enregistrer les modifications",
+      "publishPost": "Publier l'article",
+      "saveDraft": "Enregistrer le brouillon",
+      "existing": "Articles existants",
+      "searchPlaceholder": "Rechercher…",
+      "noCover": "Sans couverture",
+      "draft": "Brouillon",
+      "created": "Article publié",
+      "updated": "Article mis à jour",
+      "deleted": "Article supprimé",
+      "createFailed": "Échec de la création",
+      "updateFailed": "Échec de la mise à jour",
+      "deleteFailed": "Échec de la suppression",
+      "confirmDelete": "Supprimer « {{title}} » ?"
+    },
+    "partners": {
+      "title": "Partenaires",
+      "subtitle": "Logos et liens affichés sur la page Partenaires.",
+      "newPartner": "Nouveau partenaire",
+      "noPartners": "Aucun partenaire.",
+      "pageSubtitle": "Organisations qui financent, collaborent avec ou soutiennent notre travail.",
+      "editPartner": "Modifier le partenaire",
+      "addNew": "Ajouter un nouveau partenaire",
+      "cancelEdit": "Annuler la modification",
+      "website": "Site web",
+      "logoUrl": "URL du logo",
+      "logoPlaceholder": "https://…/logo.svg",
+      "saveChanges": "Enregistrer les modifications",
+      "addPartner": "Ajouter le partenaire",
+      "existing": "Partenaires existants",
+      "searchPlaceholder": "Rechercher…",
+      "noLogo": "Sans logo",
+      "added": "Partenaire ajouté",
+      "updated": "Partenaire mis à jour",
+      "deleted": "Partenaire supprimé",
+      "createFailed": "Échec de la création",
+      "updateFailed": "Échec de la mise à jour",
+      "deleteFailed": "Échec de la suppression",
+      "confirmDelete": "Supprimer « {{name}} » ?"
+    },
+    "messages": {
+      "title": "Messages",
+      "subtitle": "Messages envoyés via le formulaire de contact.",
+      "from": "De",
+      "received": "Reçu",
+      "markRead": "Marquer comme lu",
+      "markUnread": "Marquer comme non lu",
+      "reply": "Répondre",
+      "unread": "Non lu",
+      "read": "Lu",
+      "noMessages": "Aucun message.",
+      "inboxSubtitle": "Boîte de réception des messages envoyés via le formulaire de contact public.",
+      "searchPlaceholder": "Rechercher par nom, e-mail ou sujet…",
+      "showOnlyUnread": "Afficher uniquement les non lus",
+      "noMessagesFound": "Aucun message trouvé.",
+      "replyByEmail": "Répondre par e-mail",
+      "markAsUnread": "Marquer comme non lu",
+      "markAsRead": "Marquer comme lu",
+      "markedAsRead": "Marqué comme lu",
+      "markedAsUnread": "Marqué comme non lu",
+      "updateFailed": "Échec de la mise à jour",
+      "deleteFailed": "Échec de la suppression",
+      "deleted": "Message supprimé",
+      "confirmDelete": "Supprimer le message de {{name}} ?"
+    },
+    "users": {
+      "title": "Utilisateurs",
+      "subtitle": "Approuver les nouvelles inscriptions et gérer les accès éditeur et admin.",
+      "pending": "En attente d'approbation",
+      "approved": "Approuvés",
+      "rejected": "Rejetés",
+      "noPending": "Aucun utilisateur en attente d'approbation.",
+      "noUsers": "Aucun utilisateur.",
+      "changeRole": "Changer le rôle",
+      "adminBadge": "Admin",
+      "editorBadge": "Éditeur",
+      "pageSubtitle": "Approuver les nouvelles inscriptions et gérer les rôles de l'équipe.",
+      "searchPlaceholder": "Rechercher par nom, e-mail ou rôle…",
+      "noUsersFound": "Aucun utilisateur trouvé.",
+      "colName": "Nom",
+      "colEmail": "E-mail",
+      "colRole": "Rôle",
+      "colStatus": "Statut",
+      "colJoined": "Inscrit le",
+      "colActions": "Actions",
+      "you": "vous",
+      "editor": "Éditeur",
+      "admin": "Admin",
+      "pendingShort": "En attente",
+      "approve": "Approuver",
+      "suspend": "Suspendre",
+      "userUpdated": "Utilisateur mis à jour",
+      "userDeleted": "Utilisateur supprimé",
+      "updateFailed": "Échec de la mise à jour",
+      "deleteFailed": "Échec de la suppression",
+      "confirmDelete": "Supprimer l'utilisateur « {{name}} » ? Cette action est irréversible."
+    },
+    "editModal": {
+      "subtitle": "Mettre à jour le titre et la description affichés sur le site public.",
+      "saveChanges": "Enregistrer les modifications"
+    }
+  }
+}

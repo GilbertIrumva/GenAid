@@ -10,12 +10,14 @@ type Props = {
 
 /**
  * Image with a branded gradient fallback shown when the network request fails
- * (e.g. external CDN unreachable). Keeps layouts intact even when images break.
+ * (e.g. external CDN unreachable) OR when no `src` was supplied. Keeps layouts
+ * intact even when images break or are missing.
  */
 export default function SmartImage({ src, alt, className, fallbackLabel }: Props) {
   const [failed, setFailed] = useState(false);
+  const missing = !src || src.trim() === "";
 
-  if (failed) {
+  if (failed || missing) {
     return (
       <div
         role="img"

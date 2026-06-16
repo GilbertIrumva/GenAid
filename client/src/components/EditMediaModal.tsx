@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export interface EditableItem {
   _id: string;
@@ -26,6 +27,7 @@ export default function EditMediaModal({
 }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const { t } = useTranslation();
 
   // Re-hydrate the form whenever a different item is opened.
   useEffect(() => {
@@ -62,7 +64,7 @@ export default function EditMediaModal({
     >
       <button
         type="button"
-        aria-label="Close"
+        aria-label={t("admin.common.close")}
         onClick={onClose}
         className="absolute inset-0 bg-ink/60"
       />
@@ -75,15 +77,15 @@ export default function EditMediaModal({
             id="edit-media-title"
             className="font-display text-xl font-semibold text-ink"
           >
-            Edit {label}
+            {t("admin.common.edit")} {label}
           </h2>
           <p className="mt-1 text-xs text-muted">
-            Update the subject and description shown on the public site.
+            {t("admin.editModal.subtitle")}
           </p>
         </header>
 
         <label className="block">
-          <span className="block text-sm font-semibold text-ink">Title</span>
+          <span className="block text-sm font-semibold text-ink">{t("admin.common.title")}</span>
           <input
             required
             autoFocus
@@ -97,7 +99,7 @@ export default function EditMediaModal({
 
         <label className="block">
           <span className="block text-sm font-semibold text-ink">
-            Description
+            {t("admin.common.description")}
           </span>
           <textarea
             required
@@ -116,14 +118,14 @@ export default function EditMediaModal({
             onClick={onClose}
             className="rounded-md border border-line bg-surface px-4 py-2 text-sm font-semibold text-ink hover:border-primary-300"
           >
-            Cancel
+            {t("admin.common.cancel")}
           </button>
           <button
             type="submit"
             disabled={!dirty || isSaving}
             className="rounded-md bg-primary-500 px-4 py-2 text-sm font-semibold text-white hover:bg-primary-600 disabled:opacity-60"
           >
-            {isSaving ? "Saving…" : "Save changes"}
+            {isSaving ? t("admin.common.saving") : t("admin.editModal.saveChanges")}
           </button>
         </footer>
       </form>

@@ -1,7 +1,7 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import Section from "@/components/Section";
 import SmartImage from "@/components/SmartImage";
-import SocialLinks from "@/components/SocialLinks";
 import { useSEO } from "@/utils/useSEO";
 import { SITE } from "@/data/site";
 import { api } from "@/api/client";
@@ -15,20 +15,31 @@ const subjects = [
   "Other",
 ];
 
+/** Office hours shown beside the form. East Africa Time. */
+const officeHours = [
+  { key: "weekdays", days: "Monday \u2013 Friday", hours: "8:30 \u2013 17:00 EAT" },
+  { key: "saturday", days: "Saturday", hours: "9:00 \u2013 13:00 EAT" },
+  { key: "sunday", days: "Sunday & public holidays", hours: "Closed" },
+];
+
 const faqs = [
   {
+    key: "donate",
     q: "How do I donate?",
     a: "Use the Donate button anywhere on the site — it links to our verified GlobalGiving page. For larger gifts or corporate matching, email info@generationaid.org and we'll arrange a direct transfer or invoice.",
   },
   {
+    key: "volunteer",
     q: "Can I volunteer remotely?",
     a: "Yes. We work with remote mentors in design, writing, software, English language and career coaching. Send us a note with your skills and weekly availability via the form above.",
   },
   {
+    key: "spend",
     q: "How are donations spent?",
     a: "Roughly 78% of every donation funds direct programme delivery (training, stipends, equipment, internet). 14% covers Hub operations, and 8% covers organisational overhead. Full breakdown in our annual report — request a copy via email.",
   },
   {
+    key: "registered",
     q: "Are you a registered organisation?",
     a: "Yes. Generation Aid is a registered refugee-led organisation operating in the Kakuma camp under host-country regulations, with international fiscal sponsorship for donations.",
   },
@@ -41,6 +52,7 @@ interface FieldErrors {
 }
 
 export default function Contact() {
+  const { t } = useTranslation();
   useSEO({
     title: "Contact",
     description:
@@ -61,11 +73,11 @@ export default function Contact() {
 
   function validate(): FieldErrors {
     const e: FieldErrors = {};
-    if (form.name.trim().length < 2) e.name = "Please enter your name";
+    if (form.name.trim().length < 2) e.name = t("contact.errorName");
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
-      e.email = "Please enter a valid email";
+      e.email = t("contact.errorEmail");
     if (form.message.trim().length < 5)
-      e.message = "Please write a short message";
+      e.message = t("contact.errorMessage");
     return e;
   }
 
@@ -87,10 +99,17 @@ export default function Contact() {
         message?: string;
       };
       setServerError(
-        e2.response?.data?.error ?? e2.message ?? "Could not send message"
+        e2.response?.data?.error ?? e2.message ?? t("contact.errorSendFailed")
       );
       setStatus("error");
     }
+  }
+
+  function resetForm() {
+    setForm({ name: "", email: "", subject: subjects[0]!, message: "" });
+    setErrors({});
+    setServerError(null);
+    setStatus("idle");
   }
 
   function update<K extends keyof typeof form>(key: K, value: string) {
@@ -118,14 +137,13 @@ export default function Contact() {
         <div className="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="max-w-2xl text-white">
             <span className="inline-block rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-300 backdrop-blur">
-              Contact
+              {t("contact.hero.eyebrowAlt")}
             </span>
             <h1 className="mt-4 text-4xl font-bold leading-tight sm:text-5xl">
-              Let&apos;s talk.
+              {t("contact.hero.titleAlt")}
             </h1>
             <p className="mt-5 max-w-xl text-lg text-white/85">
-              Whether you want to partner, donate, volunteer or just say hello
-              &mdash; we read every message and reply within two business days.
+              {t("contact.hero.subtitleAlt")}
             </p>
           </div>
         </div>
@@ -137,12 +155,92 @@ export default function Contact() {
           {/* FORM */}
           <div className="lg:col-span-2">
             <div className="rounded-3xl border border-line bg-surface p-6 shadow-sm sm:p-8">
-              <h2 className="font-display text-2xl font-bold text-ink">
-                Send us a message
-              </h2>
-              <p className="mt-1 text-sm text-muted">
-                All fields required unless marked optional.
-              </p>
+              {status === "sent" ? (
+                <div className="flex flex-col items-start gap-5 text-left">
+                  <span
+                    aria-hidden
+                    className="grid h-14 w-14 place-items-center rounded-full bg-primary-50 text-primary-600"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      width="28"
+                      height="28"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <polyline points="4 12 10 18 20 6" />
+                    </svg>
+                  </span>
+                  <div>
+                    <h2 className="font-display text-2xl font-bold text-ink">
+                      {t("contact.messageSent")}
+                    </h2>
+                    <p className="mt-2 text-sm text-muted sm:text-base">
+                      {t("contact.messageSentBody")}
+                    </p>
+                  </div>
+                  <ul className="mt-2 grid w-full gap-3 sm:grid-cols-3">
+                    <li className="rounded-xl border border-line bg-bg p-4">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-primary-600">
+                        {t("contact.next")}
+                      </p>
+                      <p className="mt-1 text-sm text-ink">
+                        {t("contact.nextBody")}
+                      </p>
+                    </li>
+                    <li className="rounded-xl border border-line bg-bg p-4">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-primary-600">
+                        {t("contact.replyWindow")}
+                      </p>
+                      <p className="mt-1 text-sm text-ink">
+                        {t("contact.replyWindowBody")}
+                      </p>
+                    </li>
+                    <li className="rounded-xl border border-line bg-bg p-4">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-primary-600">
+                        {t("contact.needSooner")}
+                      </p>
+                      <p className="mt-1 text-sm text-ink">
+                        Email{" "}
+                        <a
+                          href={`mailto:${SITE.email}`}
+                          className="text-primary-600 hover:underline"
+                        >
+                          {SITE.email}
+                        </a>
+                        .
+                      </p>
+                    </li>
+                  </ul>
+                  <div className="mt-2 flex flex-wrap gap-3">
+                    <button
+                      type="button"
+                      onClick={resetForm}
+                      className="rounded-md bg-primary-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary-600"
+                    >
+                      {t("contact.sendAnother")}
+                    </button>
+                    <a
+                      href={SITE.donateUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-md border border-line bg-bg px-5 py-2.5 text-sm font-semibold text-ink hover:border-primary-300 hover:text-primary-600"
+                    >
+                      {t("contact.supportOurWork")}
+                    </a>
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <h2 className="font-display text-2xl font-bold text-ink">
+                    {t("contact.formTitle")}
+                  </h2>
+                  <p className="mt-1 text-sm text-muted">
+                    {t("contact.allFieldsRequired")}
+                  </p>
 
               <form onSubmit={handleSubmit} className="mt-6 grid gap-5 sm:grid-cols-2">
                 <div className="sm:col-span-1">
@@ -150,7 +248,7 @@ export default function Contact() {
                     htmlFor="contact-name"
                     className="block text-sm font-semibold text-ink"
                   >
-                    Your name
+                    {t("contact.yourName")}
                   </label>
                   <input
                     id="contact-name"
@@ -178,7 +276,7 @@ export default function Contact() {
                     htmlFor="contact-email"
                     className="block text-sm font-semibold text-ink"
                   >
-                    Email
+                    {t("common.email")}
                   </label>
                   <input
                     id="contact-email"
@@ -206,7 +304,7 @@ export default function Contact() {
                     htmlFor="contact-subject"
                     className="block text-sm font-semibold text-ink"
                   >
-                    Subject
+                    {t("contact.subjectLabel")}
                   </label>
                   <select
                     id="contact-subject"
@@ -227,7 +325,7 @@ export default function Contact() {
                     htmlFor="contact-message"
                     className="block text-sm font-semibold text-ink"
                   >
-                    Message
+                    {t("common.message")}
                   </label>
                   <textarea
                     id="contact-message"
@@ -251,12 +349,6 @@ export default function Contact() {
                   )}
                 </div>
 
-                {status === "sent" && (
-                  <p className="sm:col-span-2 rounded-md bg-primary-50 px-3 py-2 text-sm text-primary-700">
-                    Thanks &mdash; your message is on its way. We&apos;ll be in
-                    touch shortly.
-                  </p>
-                )}
                 {status === "error" && serverError && (
                   <p className="sm:col-span-2 rounded-md bg-red-50 px-3 py-2 text-sm text-red-700">
                     {serverError}
@@ -269,10 +361,12 @@ export default function Contact() {
                     disabled={status === "sending"}
                     className="rounded-md bg-primary-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary-600 disabled:opacity-60"
                   >
-                    {status === "sending" ? "Sending…" : "Send message"}
+                    {status === "sending" ? t("common.sending") : t("contact.send")}
                   </button>
                 </div>
               </form>
+              </>
+              )}
             </div>
           </div>
 
@@ -280,18 +374,42 @@ export default function Contact() {
           <aside className="space-y-6">
             <div className="rounded-2xl border border-line bg-surface p-6 shadow-sm">
               <h3 className="font-display text-base font-semibold text-ink">
-                Office
+                {t("contact.office")}
               </h3>
-              <p className="mt-2 text-sm text-muted">{SITE.address}</p>
+              <p className="mt-2 text-sm text-muted">{t("common.address", SITE.address)}</p>
             </div>
 
             <div className="rounded-2xl border border-line bg-surface p-6 shadow-sm">
               <h3 className="font-display text-base font-semibold text-ink">
-                Phone
+                {t("contact.officeHours")}
+              </h3>
+              <ul className="mt-3 space-y-2 text-sm">
+                {officeHours.map((h) => (
+                  <li
+                    key={h.key}
+                    className="flex items-baseline justify-between gap-3 border-b border-line pb-2 last:border-0 last:pb-0"
+                  >
+                    <span className="text-ink">
+                      {t(`contact.hours.${h.key}.days`, h.days)}
+                    </span>
+                    <span className="text-muted">
+                      {t(`contact.hours.${h.key}.hours`, h.hours)}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-3 text-xs text-muted">
+                {t("contact.timesAreEAT")}
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-line bg-surface p-6 shadow-sm">
+              <h3 className="font-display text-base font-semibold text-ink">
+                {t("contact.phone")}
               </h3>
               <ul className="mt-2 space-y-2 text-sm">
                 <li>
-                  <span className="font-semibold text-ink">Kenya:</span>{" "}
+                  <span className="font-semibold text-ink">{t("footer.kenya")}</span>{" "}
                   <a
                     href={`tel:${SITE.phoneKenya.replace(/\s+/g, "")}`}
                     className="text-muted hover:text-primary-600"
@@ -300,7 +418,7 @@ export default function Contact() {
                   </a>
                 </li>
                 <li>
-                  <span className="font-semibold text-ink">International:</span>{" "}
+                  <span className="font-semibold text-ink">{t("footer.international")}</span>{" "}
                   <a
                     href={`tel:${SITE.phoneInternational.replace(/\s+/g, "")}`}
                     className="text-muted hover:text-primary-600"
@@ -313,7 +431,7 @@ export default function Contact() {
 
             <div className="rounded-2xl border border-line bg-surface p-6 shadow-sm">
               <h3 className="font-display text-base font-semibold text-ink">
-                Email
+                {t("contact.emailHeading")}
               </h3>
               <a
                 href={`mailto:${SITE.email}`}
@@ -321,13 +439,6 @@ export default function Contact() {
               >
                 {SITE.email}
               </a>
-            </div>
-
-            <div className="rounded-2xl border border-line bg-surface p-6 shadow-sm">
-              <h3 className="font-display text-base font-semibold text-ink">
-                Follow us
-              </h3>
-              <SocialLinks className="mt-3" />
             </div>
           </aside>
         </div>
@@ -338,19 +449,19 @@ export default function Contact() {
         <div className="mx-auto max-w-3xl">
           <div className="text-center">
             <span className="inline-block rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
-              FAQ
+              {t("contact.faq")}
             </span>
             <h2 className="mt-3 font-display text-3xl font-bold text-ink sm:text-4xl">
-              Frequently asked
+              {t("contact.faqTitle")}
             </h2>
           </div>
 
           <div className="mt-8 divide-y divide-line rounded-2xl border border-line bg-bg">
             {faqs.map((f) => (
-              <details key={f.q} className="group p-5">
+              <details key={f.key} className="group p-5">
                 <summary className="flex cursor-pointer items-center justify-between gap-4 list-none">
                   <h3 className="font-display text-base font-semibold text-ink">
-                    {f.q}
+                    {t(`contact.faqs.${f.key}.q`, f.q)}
                   </h3>
                   <span className="grid h-7 w-7 flex-shrink-0 place-items-center rounded-full bg-primary-50 text-primary-600 transition group-open:rotate-45">
                     <svg
@@ -366,7 +477,9 @@ export default function Contact() {
                     </svg>
                   </span>
                 </summary>
-                <p className="mt-3 text-sm text-muted">{f.a}</p>
+                <p className="mt-3 text-sm text-muted">
+                  {t(`contact.faqs.${f.key}.a`, f.a)}
+                </p>
               </details>
             ))}
           </div>

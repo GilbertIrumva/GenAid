@@ -1,4 +1,6 @@
 import { Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import PublicLayout from "./layouts/PublicLayout";
 import AdminLayout from "./layouts/AdminLayout";
 import RequireAuth from "./components/RequireAuth";
@@ -25,10 +27,27 @@ import AdminPrograms from "./pages/AdminPrograms";
 import AdminImpact from "./pages/AdminImpact";
 import AdminStories from "./pages/AdminStories";
 import AdminPartners from "./pages/AdminPartners";
+import AdminBlog from "./pages/AdminBlog";
 import AdminUsers from "./pages/AdminUsers";
 import NotFound from "./pages/NotFound";
 
 export default function App() {
+  const { i18n } = useTranslation();
+
+  // Keep <html lang> in sync with the active i18n language so assistive tech,
+  // browser translation prompts, and SEO crawlers see the correct locale.
+  useEffect(() => {
+    const apply = (lng: string) => {
+      const base = (lng || "en").split("-")[0];
+      document.documentElement.lang = base;
+    };
+    apply(i18n.language);
+    i18n.on("languageChanged", apply);
+    return () => {
+      i18n.off("languageChanged", apply);
+    };
+  }, [i18n]);
+
   return (
     <Routes>
       <Route element={<PublicLayout />}>
@@ -64,6 +83,7 @@ export default function App() {
         <Route path="/admin/impact" element={<AdminImpact />} />
         <Route path="/admin/stories" element={<AdminStories />} />
         <Route path="/admin/partners" element={<AdminPartners />} />
+        <Route path="/admin/blog" element={<AdminBlog />} />
         <Route
           path="/admin/users"
           element={

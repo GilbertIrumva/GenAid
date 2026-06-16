@@ -1,0 +1,29 @@
+# Render blueprint for the Generation Aid API.
+# https://render.com/docs/blueprint-spec
+#
+# To use: from the Render dashboard, create a new "Blueprint" and point it at
+# this repo. Render will pick up this file from the repo root.
+#
+# IMPORTANT: After the service is created, set the following secrets in the
+# Render dashboard (they are intentionally NOT defined here):
+#   MONGODB_URI, JWT_SECRET, CLIENT_ORIGIN,
+#   CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, CLOUDINARY_API_SECRET
+
+services:
+  - type: web
+    name: gn-aid-api
+    runtime: node
+    region: oregon
+    plan: free
+    rootDir: server
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: UPLOAD_MAX_MB
+        value: 200
