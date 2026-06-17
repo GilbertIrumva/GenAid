@@ -56,7 +56,14 @@
     "jobs": "Emplois",
     "staffPortal": "Espace personnel",
     "admin": "Admin",
-    "toggleMenu": "Ouvrir le menu"
+    "toggleMenu": "Ouvrir le menu",
+    "aboutMenu": {
+      "story": "Notre histoire",
+      "missionVision": "Mission et vision",
+      "team": "Notre équipe",
+      "board": "Notre conseil",
+      "partners": "Partenaires et donateurs"
+    }
   },
   "footer": {
     "tagline": "Reformer et promouvoir l'éducation des réfugiés, créer des emplois de qualité et les intégrer à la communauté mondiale.",
@@ -282,6 +289,29 @@
     "certified": "Certifié en",
     "basedIn": "Basé à",
     "kakumaCamp": "Camp de réfugiés de Kakuma, Kenya",
+    "teamEyebrow": "Notre équipe",
+    "teamTitle": "Les personnes derrière Generation Aid",
+    "teamSubtitle": "Une équipe dirigée par des réfugiés, passionnée, transparente et responsable.",
+    "boardEyebrow": "Notre conseil",
+    "boardTitle": "Gouvernance et supervision",
+    "boardSubtitle": "Notre conseil oriente la stratégie, garantit la redevabilité et accompagne la croissance de Generation Aid.",
+    "boardItems": {
+      "chair": {
+        "name": "Président·e du conseil",
+        "role": "Stratégie et gouvernance",
+        "bio": "Assure le leadership stratégique de l'organisation et préside le conseil d'administration."
+      },
+      "treasurer": {
+        "name": "Trésorier·ère",
+        "role": "Finances et supervision",
+        "bio": "Veille à la bonne gestion financière, aux audits et à la transparence vis-à-vis des partenaires et donateurs."
+      },
+      "secretary": {
+        "name": "Secrétaire du conseil",
+        "role": "Gouvernance et conformité",
+        "bio": "Tient à jour les dossiers du conseil, les politiques de gouvernance et garantit le respect des obligations légales."
+      }
+    },
     "getInvolvedTitle": "Envie de vous impliquer ?",
     "getInvolvedSubtitle": "Il y a plusieurs façons de nous soutenir — choisissez celle qui vous convient."
   },
@@ -548,9 +578,18 @@
       }
     },
     "hours": {
-      "weekdays": { "days": "Lundi – Vendredi", "hours": "8h30 – 17h00 EAT" },
-      "saturday": { "days": "Samedi", "hours": "9h00 – 13h00 EAT" },
-      "sunday": { "days": "Dimanche et jours fériés", "hours": "Fermé" }
+      "weekdays": {
+        "days": "Lundi – Vendredi",
+        "hours": "8h30 – 17h00 EAT"
+      },
+      "saturday": {
+        "days": "Samedi",
+        "hours": "9h00 – 13h00 EAT"
+      },
+      "sunday": {
+        "days": "Dimanche et jours fériés",
+        "hours": "Fermé"
+      }
     },
     "messageSent": "Message envoyé — merci.",
     "messageSentBody": "Nous avons reçu votre note et un membre de l'équipe vous répondra sous deux jours ouvrés. Si votre demande est urgente, appelez-nous aux numéros indiqués dans la barre latérale.",

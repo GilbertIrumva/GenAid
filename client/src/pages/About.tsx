@@ -4,6 +4,8 @@ import Section from "@/components/Section";
 import SmartImage from "@/components/SmartImage";
 import { useSEO } from "@/utils/useSEO";
 import { SITE } from "@/data/site";
+import { team } from "@/data/team";
+import { board } from "@/data/board";
 
 interface CardItem {
   title: string;
@@ -72,7 +74,7 @@ export default function About() {
       </section>
 
       {/* INTRO STORY */}
-      <Section>
+      <Section id="story" className="scroll-mt-24">
         <div className="mx-auto max-w-4xl space-y-5 text-base leading-relaxed text-muted">
           <p>{t("about.intro.p1")}</p>
           <p>{t("about.intro.p2")}</p>
@@ -95,7 +97,7 @@ export default function About() {
       </Section>
 
       {/* VISION + MISSION */}
-      <Section className="bg-surface">
+      <Section id="mission-vision" className="scroll-mt-24 bg-surface">
         <div className="grid gap-8 lg:grid-cols-[1fr_1.2fr] lg:items-stretch">
           <div className="overflow-hidden rounded-3xl shadow-lg">
             <SmartImage
@@ -180,6 +182,102 @@ export default function About() {
               <p className="mt-3 text-sm text-muted">{v.body}</p>
             </div>
           ))}
+        </div>
+      </Section>
+
+      {/* TEAM */}
+      <Section id="team" className="scroll-mt-24 bg-surface">
+        <div className="mx-auto max-w-3xl text-center">
+          <span className="inline-block rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
+            {t("about.teamEyebrow")}
+          </span>
+          <h2 className="mt-3 text-3xl font-bold text-ink sm:text-4xl">
+            {t("about.teamTitle")}
+          </h2>
+          <p className="mt-3 text-muted">{t("about.teamSubtitle")}</p>
+        </div>
+
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {team.map((m) => {
+            const name = t(`home.team.items.${m.key}.name`, m.name);
+            const role = t(`home.team.items.${m.key}.role`, m.role);
+            const bio = t(`home.team.items.${m.key}.bio`, m.bio);
+            return (
+              <article
+                key={m.key}
+                className="overflow-hidden rounded-2xl border border-line bg-bg text-center shadow-sm"
+              >
+                <div className="aspect-square w-full overflow-hidden bg-primary-50">
+                  <SmartImage src={m.image} alt={name} className="h-full w-full object-cover" />
+                </div>
+                <div className="p-5">
+                  <h3 className="font-display text-lg font-semibold text-ink">{name}</h3>
+                  <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
+                    {role}
+                  </p>
+                  <p className="mt-3 text-sm text-muted">{bio}</p>
+                  {m.linkedin && (
+                    <a
+                      href={m.linkedin}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-4 inline-block text-xs font-semibold text-primary-600 hover:underline"
+                    >
+                      {t("home.team.connectLinkedIn")}
+                    </a>
+                  )}
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </Section>
+
+      {/* BOARD */}
+      <Section id="board" className="scroll-mt-24">
+        <div className="mx-auto max-w-3xl text-center">
+          <span className="inline-block rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
+            {t("about.boardEyebrow")}
+          </span>
+          <h2 className="mt-3 text-3xl font-bold text-ink sm:text-4xl">
+            {t("about.boardTitle")}
+          </h2>
+          <p className="mt-3 text-muted">{t("about.boardSubtitle")}</p>
+        </div>
+
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {board.map((m) => {
+            const name = t(`about.boardItems.${m.key}.name`, m.name);
+            const role = t(`about.boardItems.${m.key}.role`, m.role);
+            const bio = t(`about.boardItems.${m.key}.bio`, m.bio);
+            return (
+              <article
+                key={m.key}
+                className="overflow-hidden rounded-2xl border border-line bg-surface text-center shadow-sm"
+              >
+                <div className="aspect-square w-full overflow-hidden bg-primary-50">
+                  <SmartImage src={m.image} alt={name} className="h-full w-full object-cover" />
+                </div>
+                <div className="p-5">
+                  <h3 className="font-display text-lg font-semibold text-ink">{name}</h3>
+                  <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
+                    {role}
+                  </p>
+                  <p className="mt-3 text-sm text-muted">{bio}</p>
+                  {m.linkedin && (
+                    <a
+                      href={m.linkedin}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-4 inline-block text-xs font-semibold text-primary-600 hover:underline"
+                    >
+                      {t("home.team.connectLinkedIn")}
+                    </a>
+                  )}
+                </div>
+              </article>
+            );
+          })}
         </div>
       </Section>
 

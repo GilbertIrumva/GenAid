@@ -56,7 +56,14 @@
     "jobs": "Jobs",
     "staffPortal": "Staff portal",
     "admin": "Admin",
-    "toggleMenu": "Toggle menu"
+    "toggleMenu": "Toggle menu",
+    "aboutMenu": {
+      "story": "Our story",
+      "missionVision": "Mission & vision",
+      "team": "Our team",
+      "board": "Our board",
+      "partners": "Partners & donors"
+    }
   },
   "footer": {
     "tagline": "Reskilling & promoting education for refugees, creating quality job opportunities and bringing them into the global community.",
@@ -282,6 +289,29 @@
     "certified": "Certified",
     "basedIn": "Based in",
     "kakumaCamp": "Kakuma Refugee Camp, Kenya",
+    "teamEyebrow": "Our team",
+    "teamTitle": "The people behind Generation Aid",
+    "teamSubtitle": "A refugee-led team of passionate, transparent and accountable changemakers.",
+    "boardEyebrow": "Our board",
+    "boardTitle": "Governance & oversight",
+    "boardSubtitle": "Our board provides strategic direction, ensures accountability, and supports Generation Aid as we grow.",
+    "boardItems": {
+      "chair": {
+        "name": "Board Chair",
+        "role": "Strategy & governance",
+        "bio": "Provides strategic leadership for the organisation and chairs the board of directors."
+      },
+      "treasurer": {
+        "name": "Treasurer",
+        "role": "Finance & oversight",
+        "bio": "Oversees financial stewardship, audits and transparent reporting to partners and donors."
+      },
+      "secretary": {
+        "name": "Board Secretary",
+        "role": "Governance & compliance",
+        "bio": "Maintains board records, governance policies and ensures compliance with statutory obligations."
+      }
+    },
     "getInvolvedTitle": "Want to get involved?",
     "getInvolvedSubtitle": "There are many ways to stand with us — choose what fits you best."
   },
