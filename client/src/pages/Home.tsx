@@ -33,19 +33,19 @@ const focusedPrograms = [
     tag: "Digital Livelihood",
     title: "Computer Literacy Skills",
     body: "ICT and digital literacy training that prepares refugee youth for both online and offline careers.",
-    image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&q=80",
+    image: "/img/team/programs.jpg",
   },
   {
     tag: "Youth Digital Skills",
     title: "Remote Work Bootcamp",
     body: "Graphic design, content writing and virtual assistance — connecting youth to global remote work.",
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&q=80",
+    image: "/img/causes/jobs.jpg",
   },
   {
     tag: "Creativity",
     title: "Kakuma Art Project",
     body: "A platform for refugee artists — workshops, materials and visibility through the Senga Gallery.",
-    image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=1200&q=80",
+    image: "/img/causes/artists.jpg",
   },
 ];
 
@@ -164,17 +164,18 @@ export default function Home() {
           src="/home.jpg"
           alt="Refugee youth in a Generation Aid training session in Kakuma"
           fallbackLabel=""
-          className="absolute inset-0 -z-20 h-full w-full object-cover"
+          className="absolute inset-0 -z-20 h-full w-full object-cover dark:opacity-85"
         />
         {/* Dark gradient overlay so white text stays readable */}
         <div
           aria-hidden
-          className="absolute inset-0 -z-10 bg-gradient-to-r from-ink/80 via-ink/60 to-ink/30"
+          className="absolute inset-0 -z-10 bg-gradient-to-r from-[#0b1729]/80 via-[#0b1729]/60 to-[#0b1729]/30 dark:from-black/85 dark:via-black/70 dark:to-black/45"
         />
 
         <div className="mx-auto w-full max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
           <div className="max-w-2xl text-white">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary-300">
+            <p className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-white">
+              <span aria-hidden className="inline-block h-1.5 w-6 rounded-full bg-brand-red-500" />
               {t("home.hero.eyebrow")}
             </p>
             <h1 className="mt-4 text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
@@ -211,7 +212,7 @@ export default function Home() {
           {/* TODO: replace with real Generation Aid photo */}
           <div className="order-2 overflow-hidden rounded-3xl shadow-lg lg:order-1">
             <SmartImage
-              src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1200&q=80"
+              src="/img/home/featured-banner.jpg"
               alt="Generation Aid staff and youth gathered together"
               fallbackLabel=""
               className="aspect-[4/5] w-full object-cover"
@@ -412,7 +413,7 @@ export default function Home() {
               key={m.label}
               className="rounded-2xl border border-line bg-bg p-6 text-center"
             >
-              <p className="font-display text-4xl font-bold text-primary-500">
+              <p className="font-display text-4xl font-bold text-brand-red-600">
                 {m.value}
               </p>
               <p className="mt-2 text-sm text-muted">{m.label}</p>
@@ -591,7 +592,7 @@ export default function Home() {
                   key={v._id}
                   className="overflow-hidden rounded-2xl border border-line bg-bg transition hover:border-primary-300 hover:shadow-md"
                 >
-                  <div className="relative aspect-video w-full overflow-hidden bg-ink">
+                  <div className="relative aspect-video w-full overflow-hidden bg-[#0b1729]">
                     <video
                       src={v.videoUrl}
                       poster={v.posterUrl || undefined}
@@ -613,7 +614,7 @@ export default function Home() {
                   key={v.title}
                   className="overflow-hidden rounded-2xl border border-line bg-bg"
                 >
-                  <div className="relative aspect-video w-full overflow-hidden bg-ink">
+                  <div className="relative aspect-video w-full overflow-hidden bg-[#0b1729]">
                     <div className="absolute inset-0 grid place-items-center bg-gradient-to-br from-primary-500/20 to-primary-900/40 text-white">
                       <div className="text-center">
                         <svg
@@ -649,7 +650,7 @@ export default function Home() {
       >
         {/* TODO: replace with real Generation Aid photo */}
         <SmartImage
-          src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=1600&q=80"
+          src="/img/heroes/about-team-cta.jpg"
           alt="Hands joining together in support"
           fallbackLabel=""
           className="absolute inset-0 -z-20 h-full w-full object-cover"
@@ -672,8 +673,9 @@ export default function Home() {
                 href={SITE.donateUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-5 inline-block rounded-md bg-accent-500 px-4 py-2 text-sm font-semibold text-ink hover:bg-accent-400"
+                className="mt-5 inline-flex items-center gap-1.5 rounded-md bg-brand-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-red-700"
               >
+                <svg aria-hidden width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7-4.534-9.5-9.07C.94 8.94 2.4 5.5 5.6 5.5c1.74 0 3.41 1 4.4 2.5 1-1.5 2.66-2.5 4.4-2.5 3.2 0 4.66 3.44 3.1 6.43C19 16.466 12 21 12 21z" /></svg>
                 {t("common.donateNow")}
               </a>
             </div>

@@ -1,11 +1,36 @@
 import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
+import mongoose from "mongoose";
 import { env } from "../config/env";
 import { User } from "../models/User";
 import { AuthRequest } from "../middleware/auth";
 
+/**
+ * Synthetic user id encoded in JWTs issued for the env-defined fallback
+ * admin. The auth middleware recognises this id and skips the DB lookup,
+ * constructing an in-memory user object instead.
+ */
+export const FALLBACK_ADMIN_ID = "__fallback_admin__";
+
 function signToken(id: string): string {
   return jwt.sign({ id }, env.JWT_SECRET, { expiresIn: "7d" });
+}
+
+function fallbackEnabled(): boolean {
+  return Boolean(env.FALLBACK_ADMIN_EMAIL && env.FALLBACK_ADMIN_PASSWORD);
+}
+
+function matchesFallback(email: string, password: string): boolean {
+  if (!fallbackEnabled()) return false;
+  return (
+    email.trim().toLowerCase() === env.FALLBACK_ADMIN_EMAIL!.toLowerCase() &&
+    password === env.FALLBACK_ADMIN_PASSWORD
+  );
+}
+
+function dbConnected(): boolean {
+  // 1 = connected. 2 = connecting (treat as up for our purposes), others down.
+  return mongoose.connection.readyState === 1 || mongoose.connection.readyState === 2;
 }
 
 export async function register(req: Request, res: Response) {
@@ -48,6 +73,31 @@ export async function login(req: Request, res: Response) {
   try {
     const { email, password } = req.body as { email: string; password: string };
 
+    // 1) Try the env-defined fallback admin first. This works even if Mongo
+    //    is unreachable, so a sysadmin can always recover access.
+    if (matchesFallback(email, password)) {
+      const token = signToken(FALLBACK_ADMIN_ID);
+      return res.json({
+        token,
+        user: {
+          id: FALLBACK_ADMIN_ID,
+          name: env.FALLBACK_ADMIN_NAME,
+          email: env.FALLBACK_ADMIN_EMAIL,
+          role: "admin",
+        },
+      });
+    }
+
+    // 2) Otherwise we need the database. If it isn't connected, give a clear
+    //    503 — much friendlier than the generic "Invalid credentials" the
+    //    Mongoose timeout would otherwise produce.
+    if (!dbConnected()) {
+      return res.status(503).json({
+        error:
+          "Database is currently unavailable. Please try again in a moment.",
+      });
+    }
+
     const user = await User.findOne({ email });
     // Use a constant-time-ish path regardless of whether the user exists.
     const valid = user ? await user.comparePassword(password) : false;
@@ -67,7 +117,18 @@ export async function login(req: Request, res: Response) {
       user: { id: user._id, name: user.name, email: user.email, role: user.role },
     });
   } catch (err) {
-    res.status(500).json({ error: (err as Error).message });
+    // Mongo network / timeout errors land here. Surface them as 503 so the
+    // client can show a "service unavailable" message instead of a generic 500.
+    const message = (err as Error).message || "Login failed";
+    const isNetwork =
+      /ECONN|ETIMEDOUT|ENOTFOUND|connect|timed? out|topology|MongoNetwork/i.test(
+        message
+      );
+    res.status(isNetwork ? 503 : 500).json({
+      error: isNetwork
+        ? "Database is currently unavailable. Please try again in a moment."
+        : message,
+    });
   }
 }
 

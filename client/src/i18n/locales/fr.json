@@ -63,6 +63,18 @@
       "team": "Notre équipe",
       "board": "Notre conseil",
       "partners": "Partenaires et donateurs"
+    },
+    "programsMenu": {
+      "all": "Tous les programmes",
+      "computerLiteracy": "Informatique",
+      "tailoring": "Couture et confection",
+      "english": "Anglais"
+    },
+    "impactMenu": {
+      "blog": "Blog",
+      "stories": "Histoires de changement",
+      "news": "Dans les médias",
+      "reports": "Rapports"
     }
   },
   "footer": {
@@ -75,6 +87,38 @@
     "international": "International :",
     "rights": "Tous droits réservés.",
     "adminDashboard": "Tableau de bord admin"
+  },
+  "news": {
+    "title": "Dans les médias",
+    "eyebrow": "Presse et médias",
+    "subtitle": "Articles, partenariats et reconnaissances publiques qui ont mis en lumière notre action menée par et pour les réfugiés à Kakuma.",
+    "description": "Couverture presse, distinctions et mentions publiques du travail de Generation Aid à Kakuma.",
+    "readArticle": "Lire l'article",
+    "linkComingSoon": "Lien à venir",
+    "latestLabel": "À la une",
+    "moreHeadlines": "Autres titres",
+    "allCoverage": "Toute la couverture",
+    "contactTitle": "Demandes presse ou média ?",
+    "contactBody": "Nous sommes disponibles pour des interviews, des reportages photo et un accès sur le terrain pour vos sujets sur l'éducation et les moyens de subsistance des réfugiés.",
+    "contactCta": "Contacter notre équipe"
+  },
+  "reports": {
+    "title": "Rapports",
+    "eyebrow": "Transparence",
+    "subtitle": "Rapports annuels, évaluations d'impact et états financiers — pour que vous voyiez exactement ce que nous réalisons et comment nous dépensons.",
+    "description": "Rapports annuels, évaluations d'impact et états financiers de Generation Aid.",
+    "download": "Télécharger le PDF",
+    "comingSoon": "Bientôt disponible",
+    "pages": "{{count}} pages",
+    "kinds": {
+      "annual": "Rapport annuel",
+      "impact": "Évaluation d'impact",
+      "financial": "État financier",
+      "brief": "Note de politique"
+    },
+    "requestTitle": "Besoin d'un rapport ou de données spécifiques ?",
+    "requestBody": "Bailleurs, chercheurs et partenaires peuvent demander des données programmatiques détaillées, une ventilation des coûts ou des notes méthodologiques.",
+    "requestCta": "Demander des informations"
   },
   "home": {
     "hero": {
@@ -724,6 +768,8 @@
     "subtitle": "Accès réservé au personnel et aux administrateurs.",
     "emailLabel": "Email",
     "passwordLabel": "Mot de passe",
+    "showPassword": "Afficher le mot de passe",
+    "hidePassword": "Masquer le mot de passe",
     "signIn": "Se connecter",
     "signingIn": "Connexion…",
     "staffPortal": "Espace personnel",
@@ -761,7 +807,19 @@
   },
   "programDetail": {
     "backToPrograms": "← Retour aux programmes",
-    "notFound": "Programme introuvable."
+    "notFound": "Programme introuvable.",
+    "notFoundBody": "Ce programme n'existe pas ou a été déplacé. Découvrez nos programmes actifs ci-dessous.",
+    "overviewTitle": "À propos de ce programme",
+    "whatYoullGain": "Ce que vous y gagnerez",
+    "forWhoTitle": "À qui s'adresse-t-il ?",
+    "forWhoBody": "Aux jeunes réfugiés vivant dans ou autour du camp de Kakuma, prêts à suivre l'intégralité du cycle de formation. Aucune expérience préalable requise — seulement de la curiosité et de la régularité.",
+    "howToJoinTitle": "Comment s'inscrire",
+    "howToJoinBody": "Les cohortes ouvrent plusieurs fois par an. Contactez-nous via le formulaire et notre coordinateur communauté reviendra vers vous avec les prochaines dates d'inscription.",
+    "relatedTitle": "Autres programmes",
+    "relatedSubtitle": "Les parcours que nous menons en parallèle.",
+    "ctaTitle": "Parrainez une cohorte ou devenez partenaire",
+    "ctaSubtitle": "Votre soutien finance les postes de travail, le matériel et les bourses afin que les apprenants puissent se consacrer pleinement à leur formation.",
+    "ctaContact": "Nous contacter"
   },
   "admin": {
     "common": {

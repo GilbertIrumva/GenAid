@@ -126,14 +126,14 @@ export default function Blog() {
       <section className="relative isolate flex min-h-[55vh] items-center overflow-hidden">
         {/* TODO: replace with real Generation Aid photo */}
         <SmartImage
-          src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1600&q=80"
+          src="/img/heroes/blog.jpg"
           alt="Laptop and notebook representing our blog"
           fallbackLabel=""
-          className="absolute inset-0 -z-20 h-full w-full object-cover"
+          className="absolute inset-0 -z-20 h-full w-full object-cover dark:opacity-80"
         />
         <div
           aria-hidden
-          className="absolute inset-0 -z-10 bg-gradient-to-r from-ink/85 via-ink/65 to-ink/40"
+          className="absolute inset-0 -z-10 bg-gradient-to-r from-[#0b1729]/85 via-[#0b1729]/65 to-[#0b1729]/40 dark:from-black/90 dark:via-black/75 dark:to-black/55"
         />
         <div className="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="max-w-2xl text-white">
@@ -310,7 +310,7 @@ export default function Blog() {
                   key={v._id}
                   className="overflow-hidden rounded-2xl border border-line bg-bg transition hover:border-primary-300 hover:shadow-md"
                 >
-                  <div className="relative aspect-video w-full overflow-hidden bg-ink">
+                  <div className="relative aspect-video w-full overflow-hidden bg-[#0b1729]">
                     <video
                       src={v.videoUrl}
                       poster={v.posterUrl || undefined}
@@ -339,7 +339,7 @@ export default function Blog() {
                   key={v.title}
                   className="overflow-hidden rounded-2xl border border-line bg-bg transition hover:border-primary-300 hover:shadow-md"
                 >
-                  <div className="relative aspect-video w-full overflow-hidden bg-ink">
+                  <div className="relative aspect-video w-full overflow-hidden bg-[#0b1729]">
                     {v.youtubeId ? (
                       <iframe
                         src={`https://www.youtube-nocookie.com/embed/${v.youtubeId}`}

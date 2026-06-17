@@ -257,7 +257,7 @@ export default function AdminImpact() {
                       {m.icon}
                     </div>
                   )}
-                  <div className="mt-2 font-display text-3xl font-bold text-primary-600">
+                  <div className="mt-2 font-display text-3xl font-bold text-brand-red-600">
                     {m.value.toLocaleString()}
                   </div>
                   <p className="mt-1 text-sm font-medium text-ink">{m.title}</p>

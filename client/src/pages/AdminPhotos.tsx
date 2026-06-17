@@ -270,7 +270,7 @@ export default function AdminPhotos() {
                 key={p._id}
                 className="overflow-hidden rounded-2xl border border-line bg-surface shadow-sm"
               >
-                <div className="aspect-video w-full overflow-hidden bg-ink">
+                <div className="aspect-video w-full overflow-hidden bg-[#0b1729]">
                   <img
                     src={p.imageUrl}
                     alt={p.title}

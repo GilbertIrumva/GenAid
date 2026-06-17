@@ -51,14 +51,14 @@ export default function About() {
       {/* HERO */}
       <section className="relative isolate flex min-h-[55vh] items-center overflow-hidden">
         <SmartImage
-          src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?w=1600&q=80"
+          src="/img/heroes/about.jpg"
           alt="Generation Aid community gathered together"
           fallbackLabel=""
-          className="absolute inset-0 -z-20 h-full w-full object-cover"
+          className="absolute inset-0 -z-20 h-full w-full object-cover dark:opacity-80"
         />
         <div
           aria-hidden
-          className="absolute inset-0 -z-10 bg-gradient-to-r from-ink/85 via-ink/65 to-ink/40"
+          className="absolute inset-0 -z-10 bg-gradient-to-r from-[#0b1729]/85 via-[#0b1729]/65 to-[#0b1729]/40 dark:from-black/90 dark:via-black/75 dark:to-black/55"
         />
         <div className="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="max-w-2xl text-white">
@@ -101,7 +101,7 @@ export default function About() {
         <div className="grid gap-8 lg:grid-cols-[1fr_1.2fr] lg:items-stretch">
           <div className="overflow-hidden rounded-3xl shadow-lg">
             <SmartImage
-              src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&q=80"
+              src="/img/heroes/about-history.jpg"
               alt="Students looking out toward a hopeful future"
               fallbackLabel=""
               className="h-full min-h-[320px] w-full object-cover"
@@ -314,7 +314,7 @@ export default function About() {
           <aside className="lg:sticky lg:top-24 lg:self-start">
             <div className="overflow-hidden rounded-3xl shadow-lg">
               <SmartImage
-                src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?w=1200&q=80"
+                src="/img/heroes/about-mission.jpg"
                 alt="Community gathered together, representing our journey"
                 fallbackLabel=""
                 className="aspect-[4/5] w-full object-cover"
@@ -349,7 +349,7 @@ export default function About() {
       {/* GET INVOLVED */}
       <section className="relative isolate overflow-hidden bg-primary-600 py-16 text-white sm:py-20">
         <SmartImage
-          src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=1600&q=80"
+          src="/img/heroes/about-team-cta.jpg"
           alt="Volunteers and supporters joining hands"
           fallbackLabel=""
           className="absolute inset-0 -z-20 h-full w-full object-cover"
@@ -371,8 +371,9 @@ export default function About() {
                 href={SITE.donateUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-5 inline-block rounded-md bg-accent-500 px-4 py-2 text-sm font-semibold text-ink hover:bg-accent-400"
+                className="mt-5 inline-flex items-center gap-1.5 rounded-md bg-brand-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-red-700"
               >
+                <svg aria-hidden width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7-4.534-9.5-9.07C.94 8.94 2.4 5.5 5.6 5.5c1.74 0 3.41 1 4.4 2.5 1-1.5 2.66-2.5 4.4-2.5 3.2 0 4.66 3.44 3.1 6.43C19 16.466 12 21 12 21z" /></svg>
                 {t("common.donateNow")}
               </a>
             </div>

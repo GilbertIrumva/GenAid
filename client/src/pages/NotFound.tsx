@@ -40,14 +40,14 @@ export default function NotFound() {
       {/* HERO */}
       <section className="relative isolate flex min-h-[70vh] items-center overflow-hidden">
         <SmartImage
-          src="https://images.unsplash.com/photo-1532274402911-5a369e4c4bb5?w=1600&q=80"
+          src="/img/heroes/not-found.jpg"
           alt="Sand dunes at sunset"
           fallbackLabel=""
-          className="absolute inset-0 -z-20 h-full w-full object-cover"
+          className="absolute inset-0 -z-20 h-full w-full object-cover dark:opacity-80"
         />
         <div
           aria-hidden
-          className="absolute inset-0 -z-10 bg-gradient-to-br from-ink/90 via-ink/70 to-ink/40"
+          className="absolute inset-0 -z-10 bg-gradient-to-br from-[#0b1729]/90 via-[#0b1729]/70 to-[#0b1729]/40 dark:from-black/95 dark:via-black/80 dark:to-black/55"
         />
 
         <div className="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">

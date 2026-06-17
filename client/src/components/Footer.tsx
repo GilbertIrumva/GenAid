@@ -10,21 +10,27 @@ export default function Footer() {
   const { t } = useTranslation();
 
   return (
-    <footer className="relative isolate overflow-hidden bg-ink text-white/80">
-      {/* Background photo — same treatment as the Impact hero */}
+    <footer className="relative isolate overflow-hidden bg-[#0b1729] text-white/80">
+      {/* Background photo — same treatment as the Impact hero.
+          We darken the image further in dark mode so the gradient overlay
+          doesn't get overpowered by the photo's highlights. */}
       <SmartImage
-        src="https://images.pexels.com/photos/9090820/pexels-photo-9090820.jpeg?auto=compress&cs=tinysrgb&w=1600"
+        src="/img/site/bg.jpg"
         alt=""
         fallbackLabel=""
-        className="absolute inset-0 -z-20 h-full w-full object-cover"
+        className="absolute inset-0 -z-20 h-full w-full object-cover opacity-90 dark:opacity-70"
+      />
+      {/* Wash overlay. Uses literal `#0b1729` (the light-mode `ink` color) so
+          the dark backdrop stays dark when the user switches to dark mode —
+          previously this used the semantic `ink` token which flips to a near-
+          white tint in dark mode, blowing out the photo's exposure. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-primary-900/95 via-[#0b1729]/85 to-[#0b1729]/75 dark:from-black/90 dark:via-black/85 dark:to-black/80"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-primary-900/90 via-ink/85 to-ink/70"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 opacity-20 [background-image:radial-gradient(circle_at_top_right,theme(colors.primary.400),transparent_60%)]"
+        className="pointer-events-none absolute inset-0 -z-10 opacity-20 [background-image:radial-gradient(circle_at_top_right,theme(colors.primary.400),transparent_60%)] dark:opacity-15"
       />
 
       {/* MAIN GRID */}

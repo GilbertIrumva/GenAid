@@ -19,6 +19,8 @@ import Jobs from "./pages/Jobs";
 import Volunteer from "./pages/Volunteer";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
+import News from "./pages/News";
+import Reports from "./pages/Reports";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminMessages from "./pages/AdminMessages";
 import AdminVideos from "./pages/AdminVideos";
@@ -60,6 +62,14 @@ export default function App() {
         <Route path="/stories/:id" element={<StoryDetail />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
+        <Route
+          path="/news"
+          element={<News />}
+        />
+        <Route
+          path="/reports"
+          element={<Reports />}
+        />
         <Route path="/partners" element={<Partners />} />
         <Route path="/jobs" element={<Jobs />} />
         <Route path="/volunteer" element={<Volunteer />} />

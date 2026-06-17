@@ -125,14 +125,14 @@ export default function Contact() {
       <section className="relative isolate flex min-h-[50vh] items-center overflow-hidden">
         {/* TODO: replace with real Generation Aid photo */}
         <SmartImage
-          src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1600&q=80"
+          src="/img/heroes/contact.jpg"
           alt="People writing and corresponding"
           fallbackLabel=""
-          className="absolute inset-0 -z-20 h-full w-full object-cover"
+          className="absolute inset-0 -z-20 h-full w-full object-cover dark:opacity-80"
         />
         <div
           aria-hidden
-          className="absolute inset-0 -z-10 bg-gradient-to-r from-ink/85 via-ink/65 to-ink/40"
+          className="absolute inset-0 -z-10 bg-gradient-to-r from-[#0b1729]/85 via-[#0b1729]/65 to-[#0b1729]/40 dark:from-black/90 dark:via-black/75 dark:to-black/55"
         />
         <div className="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="max-w-2xl text-white">

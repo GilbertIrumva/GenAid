@@ -17,8 +17,7 @@ export const stories: Story[] = [
     role: "Remote graphic designer",
     program: "Remote Work Bootcamp",
     location: "Kakuma, Kenya",
-    image:
-      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=900&q=80",
+    image: "/img/team/programs.jpg",
     excerpt:
       "From a six-month bootcamp to a long-term contract with a U.S. design studio — Amani now supports five family members from inside the camp.",
     content: [
@@ -34,8 +33,7 @@ export const stories: Story[] = [
     role: "Visual artist",
     program: "Kakuma Art Project",
     location: "Kakuma, Kenya",
-    image:
-      "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=900&q=80",
+    image: "/img/causes/artists.jpg",
     excerpt:
       "Through the Senga Gallery, Mwangi's paintings have travelled from Kakuma to exhibitions in Nairobi and beyond — telling stories the world rarely hears.",
     content: [
@@ -50,8 +48,7 @@ export const stories: Story[] = [
     role: "Community English tutor",
     program: "English Language Skills",
     location: "Kakuma, Kenya",
-    image:
-      "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=900&q=80",
+    image: "/img/stories/leila.jpg",
     excerpt:
       "Leila completed all three levels of our English program in 18 months — then came back to teach the next cohort of women in her block.",
     content: [
@@ -66,8 +63,7 @@ export const stories: Story[] = [
     role: "Tailoring cooperative founder",
     program: "Tailoring & Dressmaking",
     location: "Kakuma, Kenya",
-    image:
-      "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=900&q=80",
+    image: "/img/stories/yusuf.jpg",
     excerpt:
       "Yusuf turned a six-month tailoring course into a five-person cooperative that now fulfils school-uniform contracts across the camp.",
     content: [
@@ -82,8 +78,7 @@ export const stories: Story[] = [
     role: "Junior front-end developer",
     program: "Computer Literacy & Programming",
     location: "Kakuma, Kenya",
-    image:
-      "https://images.unsplash.com/photo-1573164574572-cb89e39749b4?w=900&q=80",
+    image: "/img/stories/fatima.jpg",
     excerpt:
       "Fatima discovered code at our Hub at 17. Two years later she ships React components for a remote agency — and is teaching her younger sister to do the same.",
     content: [

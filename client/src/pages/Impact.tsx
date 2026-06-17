@@ -119,17 +119,17 @@ export default function Impact() {
   return (
     <>
       {/* HERO */}
-      <section className="relative isolate overflow-hidden bg-ink text-white">
+      <section className="relative isolate overflow-hidden bg-[#0b1729] text-white">
         {/* TODO: replace with real Generation Aid photo */}
         <SmartImage
-          src="https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?w=1600&q=80"
+          src="/img/heroes/impact.jpg"
           alt="Celebrating achievement and learning"
           fallbackLabel=""
-          className="absolute inset-0 -z-20 h-full w-full object-cover"
+          className="absolute inset-0 -z-20 h-full w-full object-cover dark:opacity-80"
         />
         <div
           aria-hidden
-          className="absolute inset-0 -z-10 bg-gradient-to-br from-primary-900/90 via-ink/85 to-ink/70"
+          className="absolute inset-0 -z-10 bg-gradient-to-br from-primary-900/90 via-[#0b1729]/85 to-[#0b1729]/75 dark:from-black/90 dark:via-black/85 dark:to-black/80"
         />
         <div
           aria-hidden
@@ -180,7 +180,7 @@ export default function Impact() {
                 key={m._id}
                 className="rounded-2xl border border-line bg-surface p-6 shadow-sm transition hover:border-primary-300 hover:shadow-md"
               >
-                <div className="font-display text-4xl font-bold text-primary-600">
+                <div className="font-display text-4xl font-bold text-brand-red-600">
                   {formatValue(m.value)}
                 </div>
                 <p className="mt-2 text-sm font-medium text-ink">{m.title}</p>
@@ -345,8 +345,9 @@ export default function Impact() {
               href={SITE.donateUrl}
               target="_blank"
               rel="noreferrer"
-              className="rounded-md bg-accent-500 px-5 py-2.5 text-sm font-semibold text-ink hover:bg-accent-400"
+              className="inline-flex items-center gap-1.5 rounded-md bg-brand-red-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-red-700"
             >
+              <svg aria-hidden width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7-4.534-9.5-9.07C.94 8.94 2.4 5.5 5.6 5.5c1.74 0 3.41 1 4.4 2.5 1-1.5 2.66-2.5 4.4-2.5 3.2 0 4.66 3.44 3.1 6.43C19 16.466 12 21 12 21z" /></svg>
               {t("common.donate")}
             </a>
             <Link

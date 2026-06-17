@@ -5,23 +5,23 @@ import SmartImage from "@/components/SmartImage";
 import { useSEO } from "@/utils/useSEO";
 
 const overviewImages = [
-  "https://generationaid.org/wp-content/uploads/2025/10/WhatsApp-Image-2025-09-17-at-22.10.31_0778a7cc.jpg",
-  "https://generationaid.org/wp-content/uploads/2025/02/Dress-making.png",
-  "https://generationaid.org/wp-content/uploads/2025/02/English-skills.png",
+  "/img/programs/computer-literacy.jpg",
+  "/img/programs/tailoring.jpg",
+  "/img/programs/english.png",
 ];
 
 const detailMeta = [
   {
     id: "computer-literacy",
-    image: "https://generationaid.org/wp-content/uploads/2025/10/WhatsApp-Image-2025-09-17-at-22.10.31_0778a7cc.jpg",
+    image: "/img/programs/computer-literacy.jpg",
   },
   {
     id: "tailoring",
-    image: "https://generationaid.org/wp-content/uploads/2025/02/Dress-making.png",
+    image: "/img/programs/tailoring.jpg",
   },
   {
     id: "english",
-    image: "https://generationaid.org/wp-content/uploads/2025/02/English-skills.png",
+    image: "/img/programs/english.png",
   },
 ];
 
@@ -67,14 +67,14 @@ export default function Programs() {
       <section className="relative isolate flex min-h-[55vh] items-center overflow-hidden">
         {/* TODO: replace with real Generation Aid photo */}
         <SmartImage
-          src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=1600&q=80"
+          src="/img/programs/hero.jpg"
           alt="Learner in a vocational training session"
           fallbackLabel=""
-          className="absolute inset-0 -z-20 h-full w-full object-cover"
+          className="absolute inset-0 -z-20 h-full w-full object-cover dark:opacity-80"
         />
         <div
           aria-hidden
-          className="absolute inset-0 -z-10 bg-gradient-to-r from-ink/85 via-ink/65 to-ink/40"
+          className="absolute inset-0 -z-10 bg-gradient-to-r from-[#0b1729]/85 via-[#0b1729]/65 to-[#0b1729]/40 dark:from-black/90 dark:via-black/75 dark:to-black/55"
         />
         <div className="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="max-w-2xl text-white">
@@ -205,7 +205,7 @@ export default function Programs() {
             </div>
           </div>
           <figure className="overflow-hidden rounded-2xl border border-line bg-surface">
-            <SmartImage src="https://generationaid.org/wp-content/uploads/2025/03/1737728618417-1-1024x768.jpeg"
+            <SmartImage src="/img/programs/bpo.jpg"
               alt="Refugee youth at the Remote Work Bootcamp"
               className="h-full w-full object-cover" />
           </figure>
@@ -216,7 +216,7 @@ export default function Programs() {
       <Section className="bg-surface">
         <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[2fr_3fr]">
           <figure className="overflow-hidden rounded-2xl border border-line bg-bg">
-            <SmartImage src="https://generationaid.org/wp-content/uploads/2025/03/1717174384034.jpeg"
+            <SmartImage src="/img/programs/coding-academy.jpg"
               alt="Coding & Web Development Academy"
               className="h-full w-full object-cover" />
           </figure>
@@ -287,7 +287,7 @@ export default function Programs() {
           </blockquote>
 
           <figure className="mt-10 overflow-hidden rounded-2xl border border-line bg-surface">
-            <SmartImage src="https://generationaid.org/wp-content/uploads/2026/06/Screenshot-2026-06-01-174044-1024x585.png"
+            <SmartImage src="/img/programs/kap-hero.png"
               alt="Kakuma Art Project — early workshops"
               className="h-full w-full object-cover" />
           </figure>
@@ -309,7 +309,7 @@ export default function Programs() {
             </p>
           </div>
           <figure className="overflow-hidden rounded-2xl border border-line">
-            <SmartImage src="https://generationaid.org/wp-content/uploads/2026/06/image.png"
+            <SmartImage src="/img/programs/kap-1.png"
               alt="Artists at work in a Kakuma Art Project workshop"
               className="h-full w-full object-cover" />
           </figure>
@@ -320,7 +320,7 @@ export default function Programs() {
       <Section>
         <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[2fr_3fr]">
           <figure className="overflow-hidden rounded-2xl border border-line bg-surface">
-            <SmartImage src="https://generationaid.org/wp-content/uploads/2026/06/Screenshot-2026-06-01-175056-5-861x1024.png"
+            <SmartImage src="/img/programs/kap-2.png"
               alt="Mwangi, artist at Kakuma Refugee Camp"
               className="h-full w-full object-cover" />
           </figure>
@@ -351,7 +351,7 @@ export default function Programs() {
           </h3>
 
           <figure className="mt-8 overflow-hidden rounded-2xl border border-line bg-bg">
-            <SmartImage src="https://generationaid.org/wp-content/uploads/2026/06/image-1-1024x544.png"
+            <SmartImage src="/img/programs/kap-3.png"
               alt="Refugee artisan cooperative at work"
               className="h-full w-full object-cover" />
           </figure>
@@ -363,7 +363,7 @@ export default function Programs() {
           </div>
 
           <figure className="mt-8 overflow-hidden rounded-2xl border border-line bg-bg">
-            <SmartImage src="https://generationaid.org/wp-content/uploads/2025/03/1724447989836-1-1024x461.jpeg"
+            <SmartImage src="/img/programs/artists-painting.jpg"
               alt="Handicraft training session"
               className="h-full w-full object-cover" />
           </figure>
@@ -394,7 +394,7 @@ export default function Programs() {
             </div>
           </div>
           <figure className="overflow-hidden rounded-2xl border border-line bg-surface">
-            <SmartImage src="https://generationaid.org/wp-content/uploads/2026/06/WhatsApp-Image-2026-05-25-at-8.14.02-PM-768x1024.jpeg"
+            <SmartImage src="/img/programs/art-portrait.jpg"
               alt="Celebrating refugee artisan talents"
               className="h-full w-full object-cover" />
           </figure>
@@ -418,7 +418,7 @@ export default function Programs() {
           </div>
 
           <figure className="mt-10 overflow-hidden rounded-2xl border border-line bg-bg">
-            <SmartImage src="https://generationaid.org/wp-content/uploads/2026/06/WhatsApp-Image-2026-05-25-at-8.14.03-PM-1024x768.jpeg"
+            <SmartImage src="/img/programs/art-landscape.jpg"
               alt="Workshop promoting beauty and pride for refugees"
               className="h-full w-full object-cover" />
             <figcaption className="px-6 py-3 text-sm text-muted">
@@ -427,7 +427,7 @@ export default function Programs() {
           </figure>
 
           <figure className="mt-6 overflow-hidden rounded-2xl border border-line bg-bg">
-            <SmartImage src="https://generationaid.org/wp-content/uploads/2026/06/1747669564285-1-1024x454.jpg"
+            <SmartImage src="/img/programs/artisan-1.jpg"
               alt="Community art workshop"
               className="h-full w-full object-cover" />
             <figcaption className="px-6 py-3 text-sm text-muted">
@@ -440,7 +440,7 @@ export default function Programs() {
           </p>
 
           <figure className="mt-10 overflow-hidden rounded-2xl border border-line bg-bg">
-            <SmartImage src="https://generationaid.org/wp-content/uploads/2026/06/1747669567771-1024x454.jpg"
+            <SmartImage src="/img/programs/artisan-2.jpg"
               alt="The Senga Gallery — the first art gallery in Kakuma refugee camp"
               className="h-full w-full object-cover" />
             <figcaption className="px-6 py-3 text-sm text-muted">
@@ -472,7 +472,7 @@ export default function Programs() {
         </div>
 
         <figure className="mx-auto mt-12 max-w-4xl overflow-hidden rounded-2xl border border-line bg-surface">
-          <SmartImage src="https://generationaid.org/wp-content/uploads/2026/06/WhatsApp-Image-2026-05-25-at-8.43.05-PM-1024x768.jpeg"
+          <SmartImage src="/img/programs/senga-gallery.jpg"
             alt="The Senga Gallery interior"
             className="h-full w-full object-cover" />
         </figure>
@@ -486,8 +486,9 @@ export default function Programs() {
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <button
               type="button"
-              className="rounded-md bg-accent-500 px-5 py-3 text-sm font-semibold text-ink hover:bg-accent-400"
+              className="inline-flex items-center gap-1.5 rounded-md bg-brand-red-600 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-red-700"
             >
+              <svg aria-hidden width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7-4.534-9.5-9.07C.94 8.94 2.4 5.5 5.6 5.5c1.74 0 3.41 1 4.4 2.5 1-1.5 2.66-2.5 4.4-2.5 3.2 0 4.66 3.44 3.1 6.43C19 16.466 12 21 12 21z" /></svg>
               {t("common.donate")}
             </button>
             <Link

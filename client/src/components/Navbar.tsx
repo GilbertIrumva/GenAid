@@ -11,63 +11,100 @@ import LanguageSwitcher from "@/components/LanguageSwitcher";
  * Top-level routes shown in the primary nav. Labels are looked up at render
  * time from the active i18n bundle so a language change re-renders instantly.
  *
- * The "about" entry expands into a dropdown — its sub-items are defined in
- * ABOUT_LINKS below and rendered both in the desktop dropdown and the mobile
- * disclosure panel.
+ * Entries whose `key` appears in MENUS below expand into a hover dropdown.
+ * The dropdown sub-items are defined in MENUS and rendered both in the desktop
+ * dropdown panel and the mobile disclosure section.
  */
 const NAV_ROUTES: ReadonlyArray<{ to: string; key: string; end?: boolean }> = [
   { to: "/", key: "home", end: true },
   { to: "/about", key: "about" },
   { to: "/programs", key: "programs" },
   { to: "/impact", key: "impact" },
-  { to: "/stories", key: "stories" },
-  { to: "/blog", key: "blog" },
-  { to: "/partners", key: "partners" },
   { to: "/contact", key: "contact" },
 ];
 
-const ABOUT_LINKS: ReadonlyArray<{ to: string; key: string }> = [
-  { to: "/about#story", key: "story" },
-  { to: "/about#mission-vision", key: "missionVision" },
-  { to: "/about#team", key: "team" },
-  { to: "/about#board", key: "board" },
-  { to: "/partners", key: "partners" },
-];
+type MenuLink = { to: string; key: string };
+
+/**
+ * Dropdown configuration. Each entry is keyed by the parent nav route's `key`
+ * and lists its sub-links. i18n labels live under `nav.<menuKey>Menu.<key>`.
+ */
+const MENUS: Record<string, ReadonlyArray<MenuLink>> = {
+  about: [
+    { to: "/about#story", key: "story" },
+    { to: "/about#mission-vision", key: "missionVision" },
+    { to: "/about#team", key: "team" },
+    { to: "/about#board", key: "board" },
+    { to: "/partners", key: "partners" },
+  ],
+  programs: [
+    { to: "/programs", key: "all" },
+    { to: "/programs/computer-literacy", key: "computerLiteracy" },
+    { to: "/programs/tailoring", key: "tailoring" },
+    { to: "/programs/english", key: "english" },
+  ],
+  impact: [
+    { to: "/blog", key: "blog" },
+    { to: "/stories", key: "stories" },
+    { to: "/news", key: "news" },
+    { to: "/reports", key: "reports" },
+  ],
+};
+
+/** i18n key fragment for a menu's sub-items: e.g. `aboutMenu`, `impactMenu`. */
+const menuI18nKey = (menuKey: string) => `${menuKey}Menu`;
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const [aboutOpen, setAboutOpen] = useState(false);
-  const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
-  const aboutRef = useRef<HTMLDivElement | null>(null);
+  // Tracks which desktop dropdown is currently open (only one at a time).
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
+  // Tracks which mobile disclosure panel is expanded.
+  const [mobileOpenMenu, setMobileOpenMenu] = useState<string | null>(null);
+  // Pending close timer — gives the cursor a brief grace period to cross from
+  // the trigger to the absolute-positioned panel (or back) without the menu
+  // disappearing. Cleared whenever the cursor re-enters the trigger or panel.
+  const closeTimerRef = useRef<number | null>(null);
   const location = useLocation();
   const { t } = useTranslation();
   const loggedIn = isAuthenticated();
   const portalHref = loggedIn ? "/admin" : "/login";
   const portalLabel = loggedIn ? t("nav.admin") : t("nav.staffPortal");
 
-  // Close the About dropdown when clicking outside or pressing Escape.
+  const cancelClose = () => {
+    if (closeTimerRef.current !== null) {
+      window.clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+  };
+
+  const scheduleClose = (key: string) => {
+    cancelClose();
+    closeTimerRef.current = window.setTimeout(() => {
+      setOpenMenu((cur) => (cur === key ? null : cur));
+      closeTimerRef.current = null;
+    }, 150);
+  };
+
+  // Clean up any pending timer on unmount.
+  useEffect(() => () => cancelClose(), []);
+
+  // Close the open dropdown on Escape. The menus are hover-driven so the
+  // wrapper's `onMouseLeave` handles pointer-out — Escape covers keyboard.
   useEffect(() => {
-    if (!aboutOpen) return;
-    const onClick = (e: MouseEvent) => {
-      if (aboutRef.current && !aboutRef.current.contains(e.target as Node)) {
-        setAboutOpen(false);
-      }
-    };
+    if (!openMenu) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setAboutOpen(false);
+      if (e.key === "Escape") setOpenMenu(null);
     };
-    document.addEventListener("mousedown", onClick);
     document.addEventListener("keydown", onKey);
     return () => {
-      document.removeEventListener("mousedown", onClick);
       document.removeEventListener("keydown", onKey);
     };
-  }, [aboutOpen]);
+  }, [openMenu]);
 
   // Close dropdowns whenever the route changes (e.g. after picking a sub-link).
   useEffect(() => {
-    setAboutOpen(false);
-    setMobileAboutOpen(false);
+    setOpenMenu(null);
+    setMobileOpenMenu(null);
     setOpen(false);
   }, [location.pathname, location.hash]);
 
@@ -78,7 +115,35 @@ export default function Navbar() {
     );
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-surface/90 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-line backdrop-blur">
+      {/* Background layer — isolated and clipped here so the decorative
+          images can't bleed past the header, while the header itself
+          stays un-clipped so dropdown panels can overflow downward. */}
+      <div aria-hidden className="absolute inset-0 -z-10 isolate overflow-hidden">
+        {/* Background photo — keeps the header visually consistent with the
+            footer. Held to a low opacity so nav links stay legible; even
+            lower in dark mode to avoid over-brightening the chrome. */}
+        <img
+          src="/img/site/bg.jpg"
+          alt=""
+          aria-hidden
+          className="absolute inset-0 h-full w-full object-cover opacity-25 dark:opacity-15"
+        />
+        {/* Wash overlay using the semantic `surface` token, which flips between
+            white (light) and #0f1b2e (dark), so the header reads correctly in
+            both modes without needing a separate dark variant. */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-surface/95 via-surface/80 to-surface/95"
+        />
+        {/* Subtle brand-blue glow that adapts via primary-300 → still readable
+            in both themes. */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-25 [background-image:radial-gradient(ellipse_at_center,theme(colors.primary.300),transparent_65%)] dark:opacity-20"
+        />
+      </div>
+
       {/* Skip-to-content link for keyboard and screen-reader users. */}
       <a
         href="#main-content"
@@ -99,21 +164,42 @@ export default function Navbar() {
 
         <nav aria-label="Main" className="hidden items-center gap-6 lg:flex">
           {NAV_ROUTES.map((item) => {
-            if (item.key === "about") {
-              const isAboutActive = location.pathname === "/about";
+            const menu = MENUS[item.key];
+            if (menu) {
+              const isOpen = openMenu === item.key;
+              const isActive = location.pathname === item.to;
               return (
-                <div key={item.to} ref={aboutRef} className="relative">
-                  <button
-                    type="button"
+                <div
+                  key={item.to}
+                  // Trigger wrapper is intentionally not `relative` — the
+                  // dropdown panel below uses absolute positioning anchored
+                  // to the header so it can span the full viewport width.
+                  onMouseEnter={() => {
+                    cancelClose();
+                    setOpenMenu(item.key);
+                  }}
+                  onMouseLeave={() => scheduleClose(item.key)}
+                  onFocus={() => {
+                    cancelClose();
+                    setOpenMenu(item.key);
+                  }}
+                  onBlur={(e) => {
+                    // Only close when focus leaves the whole wrapper.
+                    if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+                      setOpenMenu((cur) => (cur === item.key ? null : cur));
+                    }
+                  }}
+                >
+                  <Link
+                    to={item.to}
                     aria-haspopup="menu"
-                    aria-expanded={aboutOpen}
-                    onClick={() => setAboutOpen((o) => !o)}
+                    aria-expanded={isOpen}
                     className={cn(
                       "inline-flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary-600",
-                      isAboutActive ? "text-primary-600" : "text-ink/80"
+                      isActive ? "text-primary-600" : "text-ink/80"
                     )}
                   >
-                    {t("nav.about")}
+                    {t(`nav.${item.key}`)}
                     <svg
                       width="14"
                       height="14"
@@ -122,35 +208,41 @@ export default function Navbar() {
                       stroke="currentColor"
                       strokeWidth="2"
                       aria-hidden
-                      className={cn("transition-transform", aboutOpen && "rotate-180")}
+                      className={cn("transition-transform", isOpen && "rotate-180")}
                     >
                       <path d="M6 8l4 4 4-4" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
-                  </button>
+                  </Link>
 
-                  {aboutOpen && (
+                  {isOpen && (
                     <div
                       role="menu"
-                      aria-label={t("nav.about")}
-                      className="absolute left-0 top-full mt-2 w-60 overflow-hidden rounded-xl border border-line bg-surface shadow-lg ring-1 ring-black/5"
+                      aria-label={t(`nav.${item.key}`)}
+                      // Absolute against the sticky <header> (sticky elements
+                      // act as positioning parents for absolute children), so
+                      // the panel spans the full header width = full viewport
+                      // width. `z-50` keeps it above page content.
+                      className="absolute inset-x-0 top-full z-50"
+                      // Hovering the panel keeps it open (cancels the pending
+                      // close timer scheduled by the trigger's mouseleave),
+                      // and leaving the panel re-arms the close.
+                      onMouseEnter={cancelClose}
+                      onMouseLeave={() => scheduleClose(item.key)}
                     >
-                      <Link
-                        to="/about"
-                        role="menuitem"
-                        className="block border-b border-line px-4 py-3 text-sm font-semibold text-ink hover:bg-bg"
-                      >
-                        {t("nav.about")}
-                      </Link>
-                      {ABOUT_LINKS.map((link) => (
-                        <Link
-                          key={link.to}
-                          to={link.to}
-                          role="menuitem"
-                          className="block px-4 py-2 text-sm text-ink/80 hover:bg-bg hover:text-primary-600"
-                        >
-                          {t(`nav.aboutMenu.${link.key}`)}
-                        </Link>
-                      ))}
+                      <div className="border-b border-line bg-surface shadow-lg ring-1 ring-black/5">
+                        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-1 whitespace-nowrap px-4 py-3 sm:px-6 lg:px-8">
+                          {menu.map((link) => (
+                            <Link
+                              key={link.to}
+                              to={link.to}
+                              role="menuitem"
+                              className="rounded-md px-4 py-2 text-sm font-medium text-ink/80 transition-colors hover:bg-bg hover:text-primary-600"
+                            >
+                              {t(`nav.${menuI18nKey(item.key)}.${link.key}`)}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -179,8 +271,17 @@ export default function Navbar() {
             href={SITE.donateUrl}
             target="_blank"
             rel="noreferrer"
-            className="rounded-md bg-accent-500 px-4 py-2 text-sm font-semibold text-ink shadow-sm transition hover:bg-accent-600 hover:text-white"
+            className="inline-flex items-center gap-1.5 rounded-md bg-brand-red-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-red-700"
           >
+            <svg
+              aria-hidden
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M12 21s-7-4.534-9.5-9.07C.94 8.94 2.4 5.5 5.6 5.5c1.74 0 3.41 1 4.4 2.5 1-1.5 2.66-2.5 4.4-2.5 3.2 0 4.66 3.44 3.1 6.43C19 16.466 12 21 12 21z" />
+            </svg>
             {t("common.donate")}
           </a>
         </div>
@@ -215,16 +316,20 @@ export default function Navbar() {
         >
           <div className="space-y-1 px-4 py-3">
             {NAV_ROUTES.map((item) => {
-              if (item.key === "about") {
+              const menu = MENUS[item.key];
+              if (menu) {
+                const expanded = mobileOpenMenu === item.key;
                 return (
                   <div key={item.to}>
                     <button
                       type="button"
-                      aria-expanded={mobileAboutOpen}
-                      onClick={() => setMobileAboutOpen((o) => !o)}
+                      aria-expanded={expanded}
+                      onClick={() =>
+                        setMobileOpenMenu((cur) => (cur === item.key ? null : item.key))
+                      }
                       className="flex w-full items-center justify-between rounded-md px-3 py-2 text-sm font-medium text-ink/80 hover:bg-bg"
                     >
-                      {t("nav.about")}
+                      {t(`nav.${item.key}`)}
                       <svg
                         width="14"
                         height="14"
@@ -233,28 +338,28 @@ export default function Navbar() {
                         stroke="currentColor"
                         strokeWidth="2"
                         aria-hidden
-                        className={cn("transition-transform", mobileAboutOpen && "rotate-180")}
+                        className={cn("transition-transform", expanded && "rotate-180")}
                       >
                         <path d="M6 8l4 4 4-4" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     </button>
-                    {mobileAboutOpen && (
+                    {expanded && (
                       <div className="mt-1 space-y-1 border-l border-line pl-3">
                         <Link
-                          to="/about"
+                          to={item.to}
                           onClick={() => setOpen(false)}
                           className="block rounded-md px-3 py-2 text-sm font-semibold text-ink hover:bg-bg"
                         >
-                          {t("nav.about")}
+                          {t(`nav.${item.key}`)}
                         </Link>
-                        {ABOUT_LINKS.map((link) => (
+                        {menu.map((link) => (
                           <Link
                             key={link.to}
                             to={link.to}
                             onClick={() => setOpen(false)}
                             className="block rounded-md px-3 py-2 text-sm text-ink/80 hover:bg-bg hover:text-primary-600"
                           >
-                            {t(`nav.aboutMenu.${link.key}`)}
+                            {t(`nav.${menuI18nKey(item.key)}.${link.key}`)}
                           </Link>
                         ))}
                       </div>
@@ -300,13 +405,25 @@ export default function Navbar() {
               target="_blank"
               rel="noreferrer"
               onClick={() => setOpen(false)}
-              className="mt-2 block w-full rounded-md bg-accent-500 px-4 py-2 text-center text-sm font-semibold text-ink"
+              className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-md bg-brand-red-600 px-4 py-2 text-center text-sm font-semibold text-white"
             >
+              <svg
+                aria-hidden
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path d="M12 21s-7-4.534-9.5-9.07C.94 8.94 2.4 5.5 5.6 5.5c1.74 0 3.41 1 4.4 2.5 1-1.5 2.66-2.5 4.4-2.5 3.2 0 4.66 3.44 3.1 6.43C19 16.466 12 21 12 21z" />
+              </svg>
               {t("common.donate")}
             </a>
           </div>
         </nav>
       )}
+      {/* Brand stripe — the only place red appears in the chrome. Ties the
+          logo's red into the global header without overpowering blue. */}
+      <div aria-hidden className="h-[2px] w-full bg-brand-red-600" />
     </header>
   );
 }

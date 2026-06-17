@@ -17,10 +17,19 @@
   --color-primary-800: #00428c;
   --color-primary-900: #002d66;
 
-  /* Warm accent for CTAs (donate, etc.) */
+  /* Warm accent — secondary highlight (eyebrows, soft chips, etc.) */
   --color-accent-400: #fbbf24;
   --color-accent-500: #f59e0b;
   --color-accent-600: #d97706;
+
+  /* Brand red (from logo) — used deliberately for Donate CTA, brand
+     stripe, and small attention accents. Keep usage sparse; blue stays
+     the dominant brand colour. */
+  --color-brand-red-50: #fff1f3;
+  --color-brand-red-100: #ffe1e6;
+  --color-brand-red-500: #e11d48;
+  --color-brand-red-600: #be123c;
+  --color-brand-red-700: #9f0f33;
 
   /* Neutrals */
   --color-surface: #ffffff;
@@ -54,6 +63,12 @@ html.dark {
   --color-line: #1f2d44;
   --color-primary-50: #0a223f;
   --color-primary-100: #0d2c54;
+  /* Slightly muted reds for dark mode so they don't glow. */
+  --color-brand-red-50: #2a0a14;
+  --color-brand-red-100: #3d0f1c;
+  --color-brand-red-500: #f43f5e;
+  --color-brand-red-600: #e11d48;
+  --color-brand-red-700: #be123c;
 }
 
 html {
@@ -68,12 +83,27 @@ body,
   height: 100%;
 }
 
+/* Mobile safety net: prevent any rogue child element (oversized image, long
+   unbroken word, decorative blob with negative margins, etc.) from causing a
+   horizontal scrollbar on small viewports. We use `overflow-x: clip` (not
+   `hidden`) because `clip` does NOT create a scroll container, so `position:
+   sticky` on descendants (e.g. the site navbar) keeps working on iOS Safari.
+   Internal scrollers (e.g. tables wrapped in overflow-x-auto) still work. */
+html,
+body {
+  overflow-x: clip;
+}
+
 body {
   font-family: var(--font-sans);
   color: var(--color-ink);
   background: var(--color-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Prevent iOS Safari from inflating font sizes in landscape. */
+  -webkit-text-size-adjust: 100%;
+  /* Wrap long unbroken words (URLs, emails) instead of overflowing. */
+  overflow-wrap: break-word;
 }
 
 h1,

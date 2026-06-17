@@ -17,6 +17,7 @@ export default function Login() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [info, setInfo] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -26,6 +27,7 @@ export default function Login() {
     setError(null);
     setInfo(null);
     setPassword("");
+    setShowPassword(false);
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -48,9 +50,26 @@ export default function Login() {
         setPassword("");
       }
     } catch (err) {
-      const e = err as { response?: { data?: { error?: string } }; message?: string };
+      const e = err as {
+        response?: { status?: number; data?: { error?: string } };
+        message?: string;
+        code?: string;
+      };
       const fallback = mode === "signin" ? "Sign in failed" : "Sign up failed";
-      setError(e.response?.data?.error ?? e.message ?? fallback);
+      // Network failure (server not running, DNS, CORS) — axios sets no `response`.
+      if (!e.response) {
+        setError(
+          "Cannot reach the server. Check your connection and that the API is running."
+        );
+      } else if (e.response.status === 503) {
+        // Server is up but Mongo is down. Show whatever message the server sent.
+        setError(
+          e.response.data?.error ??
+            "Service temporarily unavailable. Please try again in a moment."
+        );
+      } else {
+        setError(e.response.data?.error ?? e.message ?? fallback);
+      }
     } finally {
       setLoading(false);
     }
@@ -123,15 +142,77 @@ export default function Login() {
 
           <label className="block">
             <span className="block text-sm font-semibold text-ink">{t("login.passwordLabel")}</span>
-            <input
-              type="password"
-              required
-              minLength={isSignin ? undefined : 8}
-              autoComplete={isSignin ? "current-password" : "new-password"}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="mt-1 w-full rounded-md border border-line bg-bg px-3 py-2 text-sm text-ink outline-none focus:border-primary-500"
-            />
+            <div className="relative mt-1">
+              <input
+                type={showPassword ? "text" : "password"}
+                required
+                minLength={isSignin ? undefined : 8}
+                autoComplete={isSignin ? "current-password" : "new-password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                // `pr-20` reserves room for the Show/Hide toggle.
+                // `[&::-ms-reveal]:hidden` suppresses Edge/IE's built-in
+                // password-reveal eye so it doesn't overlap our custom button.
+                className="w-full rounded-md border border-line bg-bg px-3 py-2 pr-20 text-sm text-ink outline-none focus:border-primary-500 [&::-ms-reveal]:hidden"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword((v) => !v)}
+                aria-label={
+                  showPassword
+                    ? t("login.hidePassword", "Hide password")
+                    : t("login.showPassword", "Show password")
+                }
+                aria-pressed={showPassword}
+                title={
+                  showPassword
+                    ? t("login.hidePassword", "Hide password")
+                    : t("login.showPassword", "Show password")
+                }
+                className="absolute inset-y-0 right-0 my-1 mr-1 inline-flex items-center gap-1 rounded-md border border-line bg-surface px-2 text-xs font-semibold text-ink/80 transition hover:border-primary-300 hover:text-primary-600"
+              >
+                {showPassword ? (
+                  /* Eye-off icon — shown while password is visible */
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden
+                  >
+                    <path d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a19.6 19.6 0 0 1 5.06-5.94" />
+                    <path d="M9.9 4.24A10.94 10.94 0 0 1 12 4c7 0 11 8 11 8a19.55 19.55 0 0 1-3.07 4.13" />
+                    <path d="M1 1l22 22" />
+                    <path d="M14.12 14.12a3 3 0 1 1-4.24-4.24" />
+                  </svg>
+                ) : (
+                  /* Eye icon — shown while password is hidden */
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden
+                  >
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                )}
+                <span>
+                  {showPassword
+                    ? t("login.hidePassword", "Hide")
+                    : t("login.showPassword", "Show")}
+                </span>
+              </button>
+            </div>
             {!isSignin && (
               <span className="mt-1 block text-xs text-muted">
                 {t("login.minPassword")}
