@@ -108,6 +108,18 @@ export default function Navbar() {
     setOpen(false);
   }, [location.pathname, location.hash]);
 
+  // Lock body scroll while the mobile drawer is open so the page underneath
+  // doesn't scroll when the user pans the menu. The flag is removed on close
+  // and on unmount so we never leave the document in a frozen state.
+  useEffect(() => {
+    if (!open) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [open]);
+
   const linkClass = (isActive: boolean) =>
     cn(
       "text-sm font-medium transition-colors hover:text-primary-600",
@@ -152,14 +164,20 @@ export default function Navbar() {
         {t("common.skipToContent")}
       </a>
 
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <Link to="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-3 py-3 sm:px-6 sm:py-4 lg:px-8">
+        <Link
+          to="/"
+          className="flex min-w-0 items-center gap-2"
+          onClick={() => setOpen(false)}
+        >
           <img
             src="/logo.jpg"
             alt="Generation Aid"
-            className="h-10 w-10 rounded-md object-contain"
+            className="h-9 w-9 shrink-0 rounded-md object-contain sm:h-10 sm:w-10"
           />
-          <span className="font-display text-xl font-semibold text-ink">Generation Aid</span>
+          <span className="truncate font-display text-base font-semibold text-ink sm:text-lg lg:text-xl">
+            Generation Aid
+          </span>
         </Link>
 
         <nav aria-label="Main" className="hidden items-center gap-6 lg:flex">
@@ -286,7 +304,7 @@ export default function Navbar() {
           </a>
         </div>
 
-        <div className="flex items-center gap-2 lg:hidden">
+        <div className="flex shrink-0 items-center gap-1 sm:gap-2 lg:hidden">
           <LanguageSwitcher />
           <ThemeToggle />
           <button
@@ -294,7 +312,7 @@ export default function Navbar() {
             aria-label={t("nav.toggleMenu")}
             aria-expanded={open}
             aria-controls="mobile-nav"
-            className="rounded-md p-2 text-ink"
+            className="-mr-1 inline-flex h-11 w-11 items-center justify-center rounded-md text-ink hover:bg-bg"
             onClick={() => setOpen((o) => !o)}
           >
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -312,7 +330,7 @@ export default function Navbar() {
         <nav
           id="mobile-nav"
           aria-label="Mobile"
-          className="border-t border-line bg-surface lg:hidden"
+          className="max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-line bg-surface lg:hidden"
         >
           <div className="space-y-1 px-4 py-3">
             {NAV_ROUTES.map((item) => {
