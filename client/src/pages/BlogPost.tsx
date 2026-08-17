@@ -1,26 +1,15 @@
 import { useParams, Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { AxiosError } from "axios";
 import { useTranslation } from "react-i18next";
 import Section from "@/components/Section";
-import { api } from "@/api/client";
+import SmartImage from "@/components/SmartImage";
 import { posts as seedPosts, type BlogPost as SeedPost } from "@/data/posts";
 import { useSEO } from "@/utils/useSEO";
+import {
+  getPublishedPostBySlug,
+  mapSanityPostToDisplayPost,
+} from "@/lib/sanity";
 
-interface ApiPost {
-  _id: string;
-  title: string;
-  excerpt: string;
-  content: string;
-  author: string;
-  cover: string;
-  slug?: string;
-  published: boolean;
-  publishedAt: string;
-  createdAt: string;
-}
-
-/** Unified display shape for the page. */
 interface DisplayPost {
   slug: string;
   title: string;
@@ -29,36 +18,6 @@ interface DisplayPost {
   excerpt: string;
   cover: string | undefined;
   content: string[];
-}
-
-function formatDate(input: string, locale: string): string {
-  const d = new Date(input);
-  if (Number.isNaN(d.getTime())) return input;
-  return d.toLocaleDateString(locale, {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-}
-
-/** Server stores content as a single string with blank-line paragraph breaks. */
-function splitParagraphs(text: string): string[] {
-  return text
-    .split(/\n{2,}/)
-    .map((p) => p.trim())
-    .filter(Boolean);
-}
-
-function fromApi(p: ApiPost, locale: string): DisplayPost {
-  return {
-    slug: p.slug ?? p._id,
-    title: p.title,
-    date: formatDate(p.publishedAt ?? p.createdAt, locale),
-    author: p.author,
-    excerpt: p.excerpt,
-    cover: p.cover || undefined,
-    content: splitParagraphs(p.content),
-  };
 }
 
 function fromSeed(p: SeedPost): DisplayPost {
@@ -75,31 +34,21 @@ function fromSeed(p: SeedPost): DisplayPost {
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const seedMatch = seedPosts.find((p) => p.slug === slug);
 
-  const query = useQuery<ApiPost | null>({
-    queryKey: ["public", "posts", slug],
+  const { data: sanityPost, isLoading } = useQuery({
+    queryKey: ["public", "sanity", "post", slug],
     enabled: Boolean(slug),
-    queryFn: async () => {
-      try {
-        const { data } = await api.get<ApiPost>(`/posts/${slug}`);
-        return data;
-      } catch (err) {
-        if (err instanceof AxiosError && err.response?.status === 404) {
-          return null;
-        }
-        throw err;
-      }
-    },
+    queryFn: () => getPublishedPostBySlug(slug ?? ""),
+    retry: false,
   });
 
-  // API result wins; seed copy is the fallback so the page never feels empty in dev.
-  const post: DisplayPost | null = query.data
-    ? fromApi(query.data, i18n.language)
+  const post: DisplayPost | null = sanityPost
+    ? mapSanityPostToDisplayPost(sanityPost)
     : seedMatch
-    ? fromSeed(seedMatch)
-    : null;
+      ? fromSeed(seedMatch)
+      : null;
 
   useSEO({
     title: post?.title ?? "Blog post",
@@ -108,16 +57,16 @@ export default function BlogPost() {
     type: "article",
   });
 
-  if (query.isLoading && !seedMatch) {
+  if (isLoading && !seedMatch) {
     return (
-      <Section>
+      <Section pattern="canvas">
         <div className="mx-auto max-w-3xl animate-pulse space-y-4">
-          <div className="h-4 w-24 rounded bg-surface" />
-          <div className="h-10 w-3/4 rounded bg-surface" />
-          <div className="aspect-video w-full rounded-2xl bg-surface" />
-          <div className="h-4 w-full rounded bg-surface" />
-          <div className="h-4 w-11/12 rounded bg-surface" />
-          <div className="h-4 w-10/12 rounded bg-surface" />
+          <div className="h-4 w-24 rounded bg-brand-100 dark:bg-slate-800" />
+          <div className="h-10 w-3/4 rounded bg-brand-100 dark:bg-slate-800" />
+          <div className="aspect-video w-full rounded-2xl bg-brand-100 dark:bg-slate-800" />
+          <div className="h-4 w-full rounded bg-brand-100 dark:bg-slate-800" />
+          <div className="h-4 w-11/12 rounded bg-brand-100 dark:bg-slate-800" />
+          <div className="h-4 w-10/12 rounded bg-brand-100 dark:bg-slate-800" />
         </div>
       </Section>
     );
@@ -125,13 +74,15 @@ export default function BlogPost() {
 
   if (!post) {
     return (
-      <Section>
+      <Section pattern="canvas">
         <div className="mx-auto max-w-md text-center">
-          <h1 className="text-2xl font-bold text-ink">{t("blog.postNotFound")}</h1>
-          <p className="mt-2 text-muted">{t("blog.postNotFoundSubtitle")}</p>
+          <h1 className="text-2xl font-bold text-neutral-heading dark:text-slate-50">
+            {t("blog.postNotFound")}
+          </h1>
+          <p className="mt-2 text-neutral-body dark:text-slate-300">{t("blog.postNotFoundSubtitle")}</p>
           <Link
             to="/blog"
-            className="mt-6 inline-block rounded-md bg-primary-500 px-5 py-3 text-sm font-semibold text-white hover:bg-primary-600"
+            className="mt-6 inline-block rounded-lg bg-brand-600 dark:bg-brand-500 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-700 dark:hover:bg-brand-400 transition"
           >
             {t("blog.backToBlog")}
           </Link>
@@ -140,46 +91,44 @@ export default function BlogPost() {
     );
   }
 
-  // "More articles" is sourced from the seed list — keeps the section lively
-  // while we only fetch the single post on this route.
   const others = seedPosts
     .filter((p) => p.slug !== post.slug)
     .slice(0, 3)
     .map(fromSeed);
 
   return (
-    <>
-      <Section className="!pt-20 !pb-10">
+    <div className="bg-white dark:bg-slate-900 transition-colors">
+      <Section pattern="canvas" className="!pt-20 !pb-10">
         <article className="mx-auto max-w-3xl">
           <Link
             to="/blog"
-            className="text-sm font-semibold text-primary-600 hover:underline"
+            className="text-sm font-semibold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 hover:underline underline-offset-4"
           >
             {t("blog.backToBlog")}
           </Link>
-          <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-muted">
-            <time className="font-semibold uppercase tracking-wider text-primary-600">
+          <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-neutral-body dark:text-slate-400">
+            <time className="font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
               {post.date}
             </time>
             <span>&middot;</span>
             <span>{t("blog.byAuthor", { author: post.author })}</span>
           </div>
-          <h1 className="mt-3 text-3xl font-bold leading-tight text-ink sm:text-4xl lg:text-5xl">
+          <h1 className="mt-3 text-3xl font-bold leading-tight text-neutral-heading dark:text-slate-50 sm:text-4xl lg:text-5xl">
             {post.title}
           </h1>
 
           {post.cover && (
-            <figure className="mt-8 overflow-hidden rounded-2xl border border-line">
-              <img
+            <figure className="mt-8 overflow-hidden rounded-2xl border border-neutral-border dark:border-slate-700 shadow-sm">
+              <SmartImage
                 src={post.cover}
                 alt={post.title}
-                loading="lazy"
                 className="h-full w-full object-cover"
+                fallbackLabel="Blog post cover"
               />
             </figure>
           )}
 
-          <div className="mt-8 space-y-5 text-base leading-relaxed text-muted sm:text-lg">
+          <div className="mt-8 space-y-5 text-base leading-relaxed text-neutral-body dark:text-slate-300 sm:text-lg">
             {post.content.map((para, i) => (
               <p key={i}>{para}</p>
             ))}
@@ -188,29 +137,33 @@ export default function BlogPost() {
       </Section>
 
       {others.length > 0 && (
-        <Section className="bg-surface !pt-12">
+        <Section pattern="soft" className="!pt-12">
           <div className="mx-auto max-w-5xl">
-            <h2 className="font-display text-2xl font-bold text-ink">{t("blog.moreArticles")}</h2>
+            <h2 className="font-display text-2xl font-bold text-neutral-heading dark:text-slate-50">
+              {t("blog.moreArticles")}
+            </h2>
             <div className="mt-6 grid gap-6 md:grid-cols-3">
               {others.map((o) => (
                 <Link
                   key={o.slug}
                   to={`/blog/${o.slug}`}
-                  className="rounded-2xl border border-line bg-bg p-5 transition hover:border-primary-300 hover:shadow-md"
+                  className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
                 >
-                  <time className="text-xs font-semibold uppercase tracking-wider text-primary-600">
+                  <time className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
                     {o.date}
                   </time>
-                  <h3 className="mt-2 font-display text-base font-semibold text-ink">
+                  <h3 className="mt-2 font-display text-base font-semibold text-neutral-heading dark:text-slate-100">
                     {o.title}
                   </h3>
-                  <p className="mt-2 text-sm text-muted line-clamp-3">{o.excerpt}</p>
+                  <p className="mt-2 text-sm text-neutral-body dark:text-slate-300 line-clamp-3">
+                    {o.excerpt}
+                  </p>
                 </Link>
               ))}
             </div>
           </div>
         </Section>
       )}
-    </>
+    </div>
   );
 }

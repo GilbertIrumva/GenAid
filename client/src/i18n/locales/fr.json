@@ -51,10 +51,10 @@
     "stories": "Témoignages",
     "blog": "Blog",
     "partners": "Partenaires",
-    "contact": "Contact",
+    "getInvolved": "S'engager",
     "volunteer": "Bénévolat",
-    "jobs": "Emplois",
-    "staffPortal": "Espace personnel",
+    "jobs": "Generation Jobs",
+    "staffPortal": "Studio",
     "admin": "Admin",
     "toggleMenu": "Ouvrir le menu",
     "aboutMenu": {
@@ -75,6 +75,11 @@
       "stories": "Histoires de changement",
       "news": "Dans les médias",
       "reports": "Rapports"
+    },
+    "getInvolvedMenu": {
+      "volunteer": "Bénévolat & Stage",
+      "hireRefugee": "Recruter un Réfugié",
+      "contact": "Contactez-nous"
     }
   },
   "footer": {
@@ -133,14 +138,14 @@
     "about": {
       "eyebrow": "À propos",
       "title": "Une organisation jeune dirigée par des réfugiés",
-      "body1": "Generation Aid est une organisation dirigée par des jeunes réfugiés (RLO), née en 2019 à Kakuma, qui transforme l'éducation en emploi afin que les réfugiés s'intègrent à l'économie mondiale.",
-      "body2": "Nous sommes construits, dirigés et portés par des réfugiés eux-mêmes — concevant des programmes adaptés à la réalité du camp et aux opportunités de l'économie numérique mondiale.",
+      "body1": "Generation Aid est une organisation à but non lucratif dirigée par des réfugiés, basée dans le camp de réfugiés de Kakuma au Kenya, et dédiée à transformer les vies grâce à l'éducation, aux moyens de subsistance et à l'innovation. Nous croyons que les réfugiés et les communautés vulnérables possèdent un potentiel extraordinaire lorsqu'ils ont accès à une éducation de qualité, à des compétences numériques, à un emploi significatif et à des opportunités d'épanouissement.",
+      "body2": "Fondée par Hubert Senga, un réfugié congolais vivant dans le camp de Kakuma, Generation Aid œuvre à combler le fossé entre l'aide humanitaire et l'autonomisation économique à long terme. Grâce à la formation aux compétences numériques, à l'enseignement professionnel, à l'apprentissage des langues, à l'entrepreneuriat et aux parcours d'emploi, nous donnons aux jeunes et aux femmes les outils nécessaires pour bâtir des avenirs durables. Au-delà de la formation, nous mettons en relation les diplômés talentueux avec des opportunités de travail à distance, des entreprises et des partenaires internationaux, afin que les compétences se traduisent en moyens de subsistance réels et en impact durable. Chez Generation Aid, nous ne nous contentons pas de soutenir les communautés : nous leur donnons les moyens de devenir des leaders, des innovateurs et des contributeurs à l'économie mondiale.",
       "ourVision": "Notre Vision",
       "visionTitle": "Un avenir sans barrières",
-      "visionBody": "Donner aux réfugiés négligés des programmes innovants qui réduisent le chômage et augmentent les revenus — pour qu'ils deviennent des membres actifs de la communauté et de l'économie mondiale.",
+      "visionBody": "Un monde où les réfugiés et les communautés marginalisées ont un accès égal à l'éducation, à un emploi significatif et aux opportunités nécessaires pour atteindre leur plein potentiel.",
       "ourMission": "Notre Mission",
       "missionTitle": "Des compétences qui changent des vies",
-      "missionBody": "Transformer la vie des réfugiés grâce à des compétences professionnelles et des programmes EdTech qui ouvrent des voies vers l'éducation et l'emploi.",
+      "missionBody": "Autonomiser les réfugiés et les communautés marginalisées grâce à l'éducation, à l'innovation numérique, à la formation professionnelle et à des parcours d'emploi qui créent des moyens de subsistance durables et l'indépendance économique. Nous collaborons avec des partenaires locaux et mondiaux pour développer des solutions pratiques qui transforment le talent en opportunité et la dépendance en autonomie.",
       "readFullStory": "Lire notre histoire complète →"
     },
     "programs": {
@@ -258,7 +263,7 @@
     "hero": {
       "eyebrow": "Là où tout a commencé",
       "title": "Qui sommes-nous ?",
-      "subtitle": "Generation Aid est une organisation dirigée par des jeunes réfugiés (RLO), dédiée à transformer les vies grâce à des programmes de compétences professionnelles, d'EdTech, d'éducation, de moyens de subsistance et d'entrepreneuriat — créant des voies d'éducation et d'emploi pour les communautés réfugiées."
+      "subtitle": "Generation Aid est une organisation à but non lucratif dirigée par des réfugiés, basée dans le camp de réfugiés de Kakuma au Kenya, et dédiée à transformer les vies grâce à l'éducation, aux moyens de subsistance et à l'innovation. Nous croyons que les réfugiés et les communautés vulnérables possèdent un potentiel extraordinaire lorsqu'ils ont accès à une éducation de qualité, à des compétences numériques, à un emploi significatif et à des opportunités d'épanouissement. Fondée par Hubert Senga, un réfugié congolais vivant dans le camp de Kakuma, Generation Aid œuvre à combler le fossé entre l'aide humanitaire et l'autonomisation économique à long terme. Grâce à la formation aux compétences numériques, à l'enseignement professionnel, à l'apprentissage des langues, à l'entrepreneuriat et aux parcours d'emploi, nous donnons aux jeunes et aux femmes les outils nécessaires pour bâtir des avenirs durables. Au-delà de la formation, nous mettons en relation les diplômés talentueux avec des opportunités de travail à distance, des entreprises et des partenaires internationaux, afin que les compétences se traduisent en moyens de subsistance réels et en impact durable. Chez Generation Aid, nous ne nous contentons pas de soutenir les communautés : nous leur donnons les moyens de devenir des leaders, des innovateurs et des contributeurs à l'économie mondiale."
     },
     "intro": {
       "p1": "Nous transformons les systèmes éducation-vers-emploi — en préparant, plaçant et accompagnant les personnes vers des carrières qui changent leur vie et qui seraient autrement inaccessibles — afin que les réfugiés puissent s'intégrer dans l'économie mondiale.",
@@ -386,8 +391,8 @@
         "body": "Formation aux TIC et à la culture numérique qui prépare les jeunes réfugiés à des carrières en ligne comme hors ligne."
       },
       {
-        "title": "Couture et confection",
-        "body": "Formation artisanale pratique combinée à un accompagnement entrepreneurial pour que les apprenants puissent lancer leur propre atelier de couture."
+        "title": "Formation aux compétences professionnelles",
+        "body": "La formation aux compétences professionnelles est un programme qui dote les réfugiés et autres personnes vulnérables de compétences pratiques et concrètes menant à l'emploi, au travail indépendant et à des moyens de subsistance durables. Le programme se concentre sur le développement de compétences prêtes à l'emploi qui répondent aux besoins du marché local tout en promouvant l'entrepreneuriat et la résilience économique."
       },
       {
         "title": "Cours d'anglais",
@@ -406,13 +411,13 @@
         ]
       },
       {
-        "title": "Formation en couture et confection",
-        "body": "Notre programme de formation artisanale offre des compétences pratiques en couture et en confection grâce à une formation pratique et à des stages dans des ateliers locaux. Les participants suivent également une formation en entrepreneuriat pour acquérir les compétences nécessaires à la création et à la gestion de leur propre entreprise prospère — créant leurs propres opportunités et atteignant l'autonomie.",
+        "title": "Formation aux compétences professionnelles",
+        "body": "Ce programme dote les réfugiés et autres personnes vulnérables de compétences pratiques et concrètes menant à l'emploi, au travail indépendant et à des moyens de subsistance durables. Il se concentre sur le développement de compétences prêtes à l'emploi qui répondent aux besoins du marché local tout en promouvant l'entrepreneuriat et la résilience économique.",
         "features": [
-          "Couture pratique et confection de vêtements",
-          "Stages dans des ateliers locaux",
-          "Accompagnement entrepreneurial",
-          "Kit de démarrage pour les meilleurs diplômés"
+          "Compétences pratiques et concrètes",
+          "Formation adaptée aux besoins du marché local",
+          "Parcours vers l'entrepreneuriat et le travail indépendant",
+          "Résilience économique et moyens de subsistance durables"
         ]
       },
       {
@@ -428,9 +433,9 @@
     ],
     "bpo": {
       "eyebrow": "1. Initiative phare",
-      "title": "Le travail à distance via le modèle BPO",
-      "p1": "L'une des initiatives phares de Generation Aid est le <b>Bootcamp de formation au travail à distance et au freelancing</b>, conçu pour doter les jeunes réfugiés des compétences numériques nécessaires pour accéder à des opportunités d'emploi en ligne. À Kakuma, où l'emploi traditionnel est rare, le travail à distance offre une bouée de sauvetage vers l'indépendance financière. Le programme forme les participants au <b>graphisme</b>, au <b>marketing digital</b>, à la <b>rédaction de contenu</b> et à <b>l'assistance virtuelle</b> — leur donnant des compétences recherchées sur le marché mondial et les connectant à des opportunités de travail à distance.",
-      "p2": "Le bootcamp comprend des ateliers pratiques, du mentorat par des freelances expérimentés et des postes de travail dédiés avec accès Internet pour que les participants puissent pratiquer leurs compétences et postuler à des emplois. À la fin de la formation, de nombreux diplômés décrochent des contrats à distance — leur permettant de gagner un revenu durable, de soutenir leur famille et de réduire leur dépendance à l'aide humanitaire."
+      "title": "Generation Jobs",
+      "p1": "Generation Jobs est le programme d'emploi et de développement de la main-d'œuvre de Generation Aid qui met en relation des réfugiés formés et des talents issus de communautés défavorisées avec des opportunités de travail significatives. Le programme comble le fossé entre les employeurs à la recherche de professionnels à distance fiables et les personnes talentueuses confrontées à des obstacles à l'emploi.",
+      "p2": "Ce qu'est Generation Jobs : Generation Jobs prépare, met en relation et accompagne des professionnels prêts à l'emploi pour des postes à distance et sur site, tout en aidant les entreprises à constituer des équipes qualifiées et rentables. Le programme combine la formation aux compétences, la préparation à la carrière et le placement professionnel pour créer des moyens de subsistance durables."
     },
     "coding": {
       "eyebrow": "2. Former la prochaine génération de développeurs",
@@ -765,15 +770,15 @@
   },
   "login": {
     "title": "Connectez-vous à votre compte",
-    "subtitle": "Accès réservé au personnel et aux administrateurs.",
+    "subtitle": "Accès à la gestion de contenu.",
     "emailLabel": "Email",
     "passwordLabel": "Mot de passe",
     "showPassword": "Afficher le mot de passe",
     "hidePassword": "Masquer le mot de passe",
     "signIn": "Se connecter",
     "signingIn": "Connexion…",
-    "staffPortal": "Espace personnel",
-    "signinWelcome": "Bon retour. Connectez-vous pour gérer le contenu.",
+    "staffPortal": "Studio",
+    "signinWelcome": "Bon retour. Ouvrez le Studio pour gérer le contenu.",
     "signupWelcome": "Créez un compte personnel. Les nouveaux comptes ont par défaut un accès éditeur.",
     "signUp": "S'inscrire",
     "fullName": "Nom complet",

@@ -5,7 +5,7 @@
     <link rel="icon" type="image/jpeg" href="/logo.jpg" />
     <link rel="apple-touch-icon" href="/logo.jpg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0088ff" />
+    <meta name="theme-color" content="#2563eb" />
     <meta name="description" content="Generation Aid empowers refugee-led innovation, education, and economic opportunity in Kakuma." />
 
     <!-- Open Graph / Twitter defaults (per-page values are set by useSEO). -->
@@ -15,6 +15,21 @@
     <meta property="og:description" content="Refugee-led innovation, education, and economic opportunity in Kakuma." />
     <meta property="og:image" content="/logo.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- FOUC Prevention Script -->
+    <script>
+      (function() {
+        try {
+          var t = localStorage.getItem('generation-app-theme');
+          var isDark = t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches) || (t === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          if (isDark) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

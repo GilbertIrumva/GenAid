@@ -23,7 +23,7 @@ export default function SmartImage({ src, alt, className, fallbackLabel }: Props
         role="img"
         aria-label={alt}
         className={
-          "flex items-center justify-center bg-gradient-to-br from-primary-100 via-primary-300 to-primary-600 text-white " +
+          "flex items-center justify-center bg-gradient-to-br from-brand-100 via-brand-300 to-brand-600 dark:from-slate-800 dark:via-brand-900 dark:to-slate-950 text-white " +
           (className ?? "")
         }
       >

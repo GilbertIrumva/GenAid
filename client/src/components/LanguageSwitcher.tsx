@@ -1,10 +1,5 @@
 import { useTranslation } from "react-i18next";
 
-/**
- * Tiny inline-SVG flag for the United Kingdom — used to represent English.
- * We use SVG (not emoji) because emoji flags don't render on Windows and
- * not all OS fonts include them. The viewBox is a 60×30 (2:1) flag canvas.
- */
 function FlagGB({ className = "" }: { className?: string }) {
   return (
     <svg
@@ -32,9 +27,6 @@ function FlagGB({ className = "" }: { className?: string }) {
   );
 }
 
-/**
- * Tiny inline-SVG French tricolor flag.
- */
 function FlagFR({ className = "" }: { className?: string }) {
   return (
     <svg
@@ -70,7 +62,7 @@ export default function LanguageSwitcher({ className = "" }: { className?: strin
     <div
       role="group"
       aria-label={t("common.language")}
-      className={`inline-flex items-center rounded-md border border-line bg-bg p-0.5 text-xs font-semibold ${className}`}
+      className={`inline-flex items-center rounded-lg border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-1 text-xs font-semibold shadow-sm ${className}`}
     >
       {LANGS.map(({ code, label, short, Flag }) => {
         const active = current === code;
@@ -83,10 +75,10 @@ export default function LanguageSwitcher({ className = "" }: { className?: strin
             aria-label={label}
             title={label}
             className={
-              "inline-flex items-center gap-1.5 rounded px-2 py-1 transition " +
+              "inline-flex items-center gap-1.5 rounded-md px-2.5 py-1 transition " +
               (active
-                ? "bg-primary-500 text-white"
-                : "text-ink/70 hover:text-primary-600")
+                ? "bg-brand-600 dark:bg-brand-500 text-white shadow-sm"
+                : "text-neutral-heading dark:text-slate-200 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-brand-50 dark:hover:bg-slate-700")
             }
           >
             <Flag className="h-3.5 w-[18px] rounded-[2px] ring-1 ring-black/10" />

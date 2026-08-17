@@ -51,10 +51,10 @@
     "stories": "Stories",
     "blog": "Blog",
     "partners": "Partners",
-    "contact": "Contact",
+    "getInvolved": "Get Involved",
     "volunteer": "Volunteer",
-    "jobs": "Jobs",
-    "staffPortal": "Staff portal",
+    "jobs": "Generation Jobs",
+    "staffPortal": "Studio",
     "admin": "Admin",
     "toggleMenu": "Toggle menu",
     "aboutMenu": {
@@ -75,6 +75,11 @@
       "stories": "Stories of change",
       "news": "In the news",
       "reports": "Reports"
+    },
+    "getInvolvedMenu": {
+      "volunteer": "Volunteer & Internship",
+      "hireRefugee": "Hire a Refugee",
+      "contact": "Contact Us"
     }
   },
   "footer": {
@@ -133,14 +138,14 @@
     "about": {
       "eyebrow": "About us",
       "title": "A youth refugee-led organisation",
-      "body1": "Generation Aid is a youth Refugee-Led Organisation (RLO) born in 2019 in Kakuma, transforming education-into-employment systems so refugees can integrate into the global economy.",
-      "body2": "We are built, led and delivered by refugees themselves — designing programs that match the realities of camp life and the opportunities of the global digital economy.",
+      "body1": "Generation Aid is a refugee-led nonprofit organization based in Kakuma Refugee Camp, Kenya, dedicated to transforming lives through education, livelihoods, and innovation. We believe that refugees and vulnerable communities possess extraordinary potential when given access to quality education, digital skills, meaningful employment, and opportunities to thrive.",
+      "body2": "Founded by Hubert Senga, a Congolese refugee living in the Kakuma refugee camp, Generation Aid works to bridge the gap between humanitarian assistance and long-term economic empowerment. Through digital skills training, vocational education, language learning, entrepreneurship, and employment pathways, we equip young people and women with the tools they need to build sustainable futures. Beyond training, we connect talented graduates with remote work opportunities, businesses, and global partners, ensuring that skills translate into real livelihoods and lasting impact. At Generation Aid, we don't just support communities we empower them to become leaders, innovators, and contributors to the global economy.",
       "ourVision": "Our Vision",
       "visionTitle": "A future without barriers",
-      "visionBody": "Empowering neglected refugees with innovative programs that reduce unemployment and increase income — so they can become active members of the global community and economy.",
+      "visionBody": "A world where refugees and marginalized communities have equal access to education, meaningful employment, and opportunities to reach their full potential.",
       "ourMission": "Our Mission",
       "missionTitle": "Skills that change lives",
-      "missionBody": "To transform refugees' lives by providing vocational skills and EdTech programs that create educational and employment pathways.",
+      "missionBody": "To empower refugees and vulnerable communities through education, digital innovation, vocational training, and employment pathways that create sustainable livelihoods and economic independence. We collaborate with local and global partners to develop practical solutions that transform talent into opportunity and dependence into self-reliance.",
       "readFullStory": "Read our full story →"
     },
     "programs": {
@@ -258,7 +263,7 @@
     "hero": {
       "eyebrow": "Where it all began",
       "title": "Who are we?",
-      "subtitle": "Generation Aid is a youth Refugee-Led Organisation (RLO) dedicated to transforming lives through vocational skills, EdTech, education, livelihood and entrepreneurship programs — creating educational and employment pathways for refugee communities."
+      "subtitle": "Generation Aid is a refugee-led nonprofit organization based in Kakuma Refugee Camp, Kenya, dedicated to transforming lives through education, livelihoods, and innovation. We believe that refugees and vulnerable communities possess extraordinary potential when given access to quality education, digital skills, meaningful employment, and opportunities to thrive. Founded by Hubert Senga, a Congolese refugee living in the Kakuma refugee camp, Generation Aid works to bridge the gap between humanitarian assistance and long-term economic empowerment. Through digital skills training, vocational education, language learning, entrepreneurship, and employment pathways, we equip young people and women with the tools they need to build sustainable futures. Beyond training, we connect talented graduates with remote work opportunities, businesses, and global partners, ensuring that skills translate into real livelihoods and lasting impact. At Generation Aid, we don't just support communities we empower them to become leaders, innovators, and contributors to the global economy."
     },
     "intro": {
       "p1": "We are transforming education-into-employment systems — preparing, placing and supporting people into life-changing careers that would otherwise be inaccessible — so refugees can integrate into the global economy.",
@@ -386,12 +391,12 @@
         "body": "ICT and digital literacy training that prepares refugee youth for both online and offline careers."
       },
       {
-        "title": "Tailoring & Dressmaking",
-        "body": "Hands-on craft training paired with entrepreneurship coaching so learners can launch their own tailoring businesses."
+        "title": "Vocational Skills Training",
+        "body": "Vocational Skills Training is a program that equips refugees and other vulnerable individuals with practical, hands-on skills that lead to employment, self-employment, and sustainable livelihoods. The program focuses on developing job-ready skills that meet local market needs while promoting entrepreneurship and economic resilience."
       },
       {
-        "title": "English Language Skills",
-        "body": "Communicative English classes for beginner, intermediate and advanced learners — built around real daily interactions."
+        "title": "English Language & Professional Development",
+        "body": "English Language & Professional Development is a program that equips refugees and other marginalized individuals with the English communication and workplace skills needed to access education, employment, and leadership opportunities. The program recognizes that language proficiency and professional skills are often major barriers to employment. It combines practical English learning with career readiness to prepare participants for success in local and international workplaces."
       }
     ],
     "details": [
@@ -406,31 +411,31 @@
         ]
       },
       {
-        "title": "Tailoring & Dressmaking Craft Training",
-        "body": "Our craft training program provides practical tailoring and dressmaking skills through hands-on training and attachments with local tailoring businesses. Participants also take part in entrepreneurship training to equip them with the skills needed to start and run their own successful businesses — creating their own opportunities and achieving self-sufficiency.",
+        "title": "Vocational Skills Training",
+        "body": "This program equips refugees and other vulnerable individuals with practical, hands-on skills that lead to employment, self-employment, and sustainable livelihoods. It focuses on developing job-ready skills that meet local market needs while promoting entrepreneurship and economic resilience.",
         "features": [
-          "Practical sewing & garment construction",
-          "Industry attachments with local tailors",
-          "Entrepreneurship coaching",
-          "Start-up kit for top graduates"
+          "Hands-on practical skills",
+          "Job-ready training for local market needs",
+          "Entrepreneurship and self-employment pathways",
+          "Economic resilience and sustainable livelihoods"
         ]
       },
       {
-        "title": "English Language Skills",
-        "body": "GAID's English language program is designed for beginners, intermediates and advanced learners. We offer Communicative English classes for youth who need to improve day-to-day interactions and return to their communities with a better understanding of English in both written and oral forms.",
+        "title": "English Language & Professional Development",
+        "body": "This program equips refugees and other marginalized individuals with the English communication and workplace skills needed to access education, employment, and leadership opportunities. It recognizes that language proficiency and professional skills are often major barriers to employment, and combines practical English learning with career readiness to prepare participants for success in local and international workplaces.",
         "features": [
-          "Beginner, intermediate & advanced tracks",
-          "Communicative speaking focus",
-          "Reading & writing fundamentals",
-          "Real-world conversation practice"
+          "English communication for work and study",
+          "Career readiness and professional development",
+          "Leadership and workplace skills",
+          "Preparation for local and international workplaces"
         ]
       }
     ],
     "bpo": {
       "eyebrow": "1. Flagship initiative",
-      "title": "Remote Work through the BPO Model",
-      "p1": "One of Generation Aid's flagship initiatives is the <b>Remote Work Training & Freelancing Bootcamp</b>, designed to equip refugee youth with the digital skills needed to access online job opportunities. In Kakuma, where traditional employment is scarce, remote work offers a lifeline to financial independence. The program trains participants in <b>graphic design</b>, <b>digital marketing</b>, <b>content writing</b> and <b>virtual assistance</b> — giving them marketable skills for a global market and connecting them to remote work opportunities.",
-      "p2": "The bootcamp includes hands-on workshops, mentorship from experienced freelancers, and dedicated workstations with internet access so participants can practise their skills and apply for jobs. By the end of the training, many graduates secure remote contracts — enabling them to earn a sustainable income, support their families and reduce reliance on humanitarian aid."
+      "title": "Generation Jobs",
+      "p1": "Generation Jobs is Generation Aid's employment and workforce development program that connects trained refugee and underserved talent with meaningful work opportunities. The program bridges the gap between employers seeking reliable remote professionals and talented individuals facing barriers to employment.",
+      "p2": "What Generation Jobs is all about: Generation Jobs prepares, matches, and supports job-ready professionals for remote and on-site employment while helping businesses build skilled, cost-effective teams. The program combines skills training, career readiness, and job placement to create sustainable livelihoods."
     },
     "coding": {
       "eyebrow": "2. Building the next generation of developers",
@@ -622,9 +627,18 @@
       }
     },
     "hours": {
-      "weekdays": { "days": "Monday – Friday", "hours": "8:30 – 17:00 EAT" },
-      "saturday": { "days": "Saturday", "hours": "9:00 – 13:00 EAT" },
-      "sunday": { "days": "Sunday & public holidays", "hours": "Closed" }
+      "weekdays": {
+        "days": "Monday – Friday",
+        "hours": "8:30 – 17:00 EAT"
+      },
+      "saturday": {
+        "days": "Saturday",
+        "hours": "9:00 – 13:00 EAT"
+      },
+      "sunday": {
+        "days": "Sunday & public holidays",
+        "hours": "Closed"
+      }
     },
     "messageSent": "Message sent — thank you.",
     "messageSentBody": "We've received your note and a team member will reply within two business days. If your matter is urgent, please call us on the numbers in the sidebar.",
@@ -756,15 +770,15 @@
   },
   "login": {
     "title": "Sign in to your account",
-    "subtitle": "Staff & admin access only.",
+    "subtitle": "Content management access.",
     "emailLabel": "Email",
     "passwordLabel": "Password",
     "showPassword": "Show password",
     "hidePassword": "Hide password",
     "signIn": "Sign in",
     "signingIn": "Signing in…",
-    "staffPortal": "Staff portal",
-    "signinWelcome": "Welcome back. Sign in to manage content.",
+    "staffPortal": "Studio",
+    "signinWelcome": "Welcome back. Open Studio to manage content.",
     "signupWelcome": "Create a staff account. New accounts default to editor access.",
     "signUp": "Sign up",
     "fullName": "Full name",

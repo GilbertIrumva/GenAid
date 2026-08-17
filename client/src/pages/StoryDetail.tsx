@@ -3,24 +3,12 @@ import { useQuery } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import Section from "@/components/Section";
 import SmartImage from "@/components/SmartImage";
-import { api } from "@/api/client";
 import { useSEO } from "@/utils/useSEO";
-import { stories as fallbackStories, type Story as FallbackStory } from "@/data/stories";
-
-interface ApiStory {
-  _id: string;
-  title: string;
-  summary: string;
-  content: string;
-  image: string;
-  author: string;
-  slug?: string;
-  role?: string;
-  program?: string;
-  location?: string;
-  excerpt?: string;
-  createdAt: string;
-}
+import {
+  stories as fallbackStories,
+  type Story as FallbackStory,
+} from "@/data/stories";
+import { getStoryBySlug, mapSanityStoryToDisplayStory } from "@/lib/sanity";
 
 interface DisplayStory {
   key: string;
@@ -32,26 +20,6 @@ interface DisplayStory {
   image: string;
   excerpt: string;
   paragraphs: string[];
-}
-
-function fromApi(s: ApiStory): DisplayStory {
-  // Treat blank lines as paragraph breaks, keeping the UI consistent with the
-  // static seed data which is already an array of paragraphs.
-  const paragraphs = s.content
-    .split(/\n{2,}/)
-    .map((p) => p.trim())
-    .filter(Boolean);
-  return {
-    key: s._id,
-    href: `/stories/${s.slug ?? s._id}`,
-    name: s.title || s.author,
-    role: s.role || s.author,
-    program: s.program || "",
-    location: s.location || "",
-    image: s.image,
-    excerpt: s.excerpt || s.summary,
-    paragraphs,
-  };
 }
 
 function fromFallback(s: FallbackStory): DisplayStory {
@@ -72,28 +40,21 @@ export default function StoryDetail() {
   const { id } = useParams<{ id: string }>();
   const { t } = useTranslation();
 
-  const { data: apiStory, isLoading } = useQuery<ApiStory | null>({
-    queryKey: ["public", "story", id],
+  const { data: sanityStory, isLoading } = useQuery({
+    queryKey: ["public", "sanity", "story", id],
     enabled: Boolean(id),
-    queryFn: async () => {
-      try {
-        const { data } = await api.get<ApiStory>(`/stories/${id}`);
-        return data;
-      } catch {
-        // Fall back to local seed data below — surfaces "not found" if neither has it.
-        return null;
-      }
-    },
+    queryFn: () => getStoryBySlug(id ?? ""),
+    retry: false,
   });
 
-  const story: DisplayStory | undefined = apiStory
-    ? fromApi(apiStory)
-    : fallbackStories
-        .filter((s) => s.slug === id)
-        .map(fromFallback)[0];
+  const story: DisplayStory | undefined = sanityStory
+    ? mapSanityStoryToDisplayStory(sanityStory)
+    : fallbackStories.filter((s) => s.slug === id).map(fromFallback)[0];
 
   useSEO({
-    title: story ? `${story.name}${story.role ? ` — ${story.role}` : ""}` : "Story not found",
+    title: story
+      ? `${story.name}${story.role ? ` — ${story.role}` : ""}`
+      : "Story not found",
     description: story?.excerpt,
     type: "article",
     image: story?.image,
@@ -101,13 +62,13 @@ export default function StoryDetail() {
 
   if (isLoading && !story) {
     return (
-      <Section>
+      <Section pattern="canvas">
         <div className="mx-auto max-w-3xl space-y-4">
-          <div className="h-4 w-32 animate-pulse rounded bg-primary-100" />
-          <div className="h-12 w-3/4 animate-pulse rounded bg-primary-100" />
-          <div className="aspect-[16/10] w-full animate-pulse rounded-3xl bg-primary-100" />
-          <div className="h-4 w-full animate-pulse rounded bg-primary-100" />
-          <div className="h-4 w-5/6 animate-pulse rounded bg-primary-100" />
+          <div className="h-4 w-32 animate-pulse rounded bg-brand-100 dark:bg-slate-800" />
+          <div className="h-12 w-3/4 animate-pulse rounded bg-brand-100 dark:bg-slate-800" />
+          <div className="aspect-[16/10] w-full animate-pulse rounded-2xl bg-brand-100 dark:bg-slate-800" />
+          <div className="h-4 w-full animate-pulse rounded bg-brand-100 dark:bg-slate-800" />
+          <div className="h-4 w-5/6 animate-pulse rounded bg-brand-100 dark:bg-slate-800" />
         </div>
       </Section>
     );
@@ -115,17 +76,15 @@ export default function StoryDetail() {
 
   if (!story) {
     return (
-      <Section>
+      <Section pattern="canvas">
         <div className="mx-auto max-w-md text-center">
-          <h1 className="font-display text-3xl font-bold text-ink">
+          <h1 className="font-display text-3xl font-bold text-neutral-heading dark:text-slate-50">
             {t("stories.notFound")}
           </h1>
-          <p className="mt-3 text-muted">
-            {t("stories.notFoundSubtitle")}
-          </p>
+          <p className="mt-3 text-neutral-body dark:text-slate-300">{t("stories.notFoundSubtitle")}</p>
           <Link
             to="/stories"
-            className="mt-6 inline-block rounded-md bg-primary-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary-600"
+            className="mt-6 inline-block rounded-lg bg-brand-600 dark:bg-brand-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-700 dark:hover:bg-brand-400 transition"
           >
             {t("stories.backToAll")}
           </Link>
@@ -134,41 +93,41 @@ export default function StoryDetail() {
     );
   }
 
-  // Build the "more stories" rail: prefer real API data when available; otherwise
-  // pad with the fallback seed.
-  const others: DisplayStory[] = (apiStory ? [] : fallbackStories.map(fromFallback))
+  const others: DisplayStory[] = (
+    sanityStory ? [] : fallbackStories.map(fromFallback)
+  )
     .filter((s) => s.key !== story.key)
     .slice(0, 3);
 
   const meta = [story.program, story.location].filter(Boolean).join(" · ");
 
   return (
-    <>
-      <Section className="!pt-20 !pb-10">
+    <div className="bg-white dark:bg-slate-900 transition-colors">
+      <Section pattern="canvas" className="!pt-20 !pb-10">
         <article className="mx-auto max-w-3xl">
           <Link
             to="/stories"
-            className="text-sm font-semibold text-primary-600 hover:underline"
+            className="text-sm font-semibold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 hover:underline underline-offset-4"
           >
             {t("stories.allStories")}
           </Link>
 
           <header className="mt-6">
             {meta && (
-              <p className="text-xs font-semibold uppercase tracking-wider text-primary-600">
+              <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
                 {meta}
               </p>
             )}
-            <h1 className="mt-2 font-display text-4xl font-bold text-ink sm:text-5xl">
+            <h1 className="mt-2 font-display text-4xl font-bold text-neutral-heading dark:text-slate-50 sm:text-5xl">
               {story.name}
             </h1>
             {story.role && (
-              <p className="mt-2 text-lg text-muted">{story.role}</p>
+              <p className="mt-2 text-lg text-neutral-body dark:text-slate-300">{story.role}</p>
             )}
           </header>
 
           {story.image && (
-            <div className="mt-8 aspect-[16/10] w-full overflow-hidden rounded-3xl bg-primary-100">
+            <div className="mt-8 aspect-[16/10] w-full overflow-hidden rounded-2xl border border-neutral-border dark:border-slate-700 bg-brand-50 dark:bg-slate-800 shadow-sm">
               <SmartImage
                 src={story.image}
                 alt={`${story.name}${story.role ? ` — ${story.role}` : ""}`}
@@ -177,9 +136,9 @@ export default function StoryDetail() {
             </div>
           )}
 
-          <div className="prose prose-lg mt-10 max-w-none space-y-5 text-ink">
+          <div className="prose prose-lg mt-10 max-w-none space-y-5 text-neutral-body dark:text-slate-300">
             {story.paragraphs.map((para, i) => (
-              <p key={i} className="text-base leading-relaxed text-ink/90">
+              <p key={i} className="text-base leading-relaxed text-neutral-body dark:text-slate-300">
                 {para}
               </p>
             ))}
@@ -188,41 +147,41 @@ export default function StoryDetail() {
       </Section>
 
       {others.length > 0 && (
-        <Section className="bg-surface">
-          <h2 className="font-display text-2xl font-bold text-ink">
+        <Section pattern="soft">
+          <h2 className="font-display text-2xl font-bold text-neutral-heading dark:text-slate-50">
             {t("stories.moreStories")}
           </h2>
           <div className="mt-6 grid gap-6 md:grid-cols-3">
             {others.map((s) => (
               <article
                 key={s.key}
-                className="flex flex-col overflow-hidden rounded-2xl border border-line bg-bg shadow-sm transition hover:border-primary-300 hover:shadow-md"
+                className="flex flex-col overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
               >
-                <div className="aspect-[4/3] w-full overflow-hidden bg-primary-50">
+                <div className="aspect-[4/3] w-full overflow-hidden bg-brand-50 dark:bg-slate-900">
                   <SmartImage
                     src={s.image}
                     alt={`${s.name}${s.role ? ` — ${s.role}` : ""}`}
                     className="h-full w-full object-cover"
                   />
                 </div>
-                <div className="flex flex-1 flex-col p-5">
+                <div className="flex flex-1 flex-col p-6">
                   {s.program && (
-                    <p className="text-xs font-semibold uppercase tracking-wider text-primary-600">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
                       {s.program}
                     </p>
                   )}
-                  <h3 className="mt-2 font-display text-lg font-semibold text-ink">
-                    <Link to={s.href} className="hover:text-primary-600">
+                  <h3 className="mt-2 font-display text-lg font-semibold text-neutral-heading dark:text-slate-100">
+                    <Link to={s.href} className="hover:text-brand-600 dark:hover:text-brand-400">
                       {s.name}
                     </Link>
                   </h3>
-                  <p className="mt-2 flex-1 text-sm text-muted">{s.excerpt}</p>
+                  <p className="mt-2 flex-1 text-sm text-neutral-body dark:text-slate-300">{s.excerpt}</p>
                 </div>
               </article>
             ))}
           </div>
         </Section>
       )}
-    </>
+    </div>
   );
 }

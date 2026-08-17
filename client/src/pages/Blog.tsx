@@ -6,23 +6,16 @@ import SmartImage from "@/components/SmartImage";
 import { posts as seedPosts, type BlogPost as SeedPost } from "@/data/posts";
 import { videos as fallbackVideos } from "@/data/videos";
 
-import { api } from "@/api/client";
 import { useSEO } from "@/utils/useSEO";
+import {
+  getPhotos,
+  getPublishedPosts,
+  getVideos,
+  mapSanityPhotoToDisplayPhoto,
+  mapSanityPostToDisplayPost,
+  mapSanityVideoToDisplayVideo,
+} from "@/lib/sanity";
 
-interface ApiPost {
-  _id: string;
-  title: string;
-  excerpt: string;
-  content: string;
-  author: string;
-  cover: string;
-  slug?: string;
-  published: boolean;
-  publishedAt: string;
-  createdAt: string;
-}
-
-/** Shape consumed by the page — both API and seed posts are mapped to this. */
 interface DisplayPost {
   slug: string;
   title: string;
@@ -30,27 +23,6 @@ interface DisplayPost {
   author: string;
   excerpt: string;
   cover: string | undefined;
-}
-
-function formatDate(input: string): string {
-  const d = new Date(input);
-  if (Number.isNaN(d.getTime())) return input;
-  return d.toLocaleDateString(undefined, {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-}
-
-function fromApi(p: ApiPost): DisplayPost {
-  return {
-    slug: p.slug ?? p._id,
-    title: p.title,
-    date: formatDate(p.publishedAt ?? p.createdAt),
-    author: p.author,
-    excerpt: p.excerpt,
-    cover: p.cover || undefined,
-  };
 }
 
 function fromSeed(p: SeedPost): DisplayPost {
@@ -64,98 +36,77 @@ function fromSeed(p: SeedPost): DisplayPost {
   };
 }
 
-interface ApiVideo {
-  _id: string;
-  title: string;
-  description: string;
-  videoUrl: string;
-  posterUrl: string;
-  createdAt: string;
-}
-
-interface ApiPhoto {
-  _id: string;
-  title: string;
-  description: string;
-  imageUrl: string;
-  createdAt: string;
-}
-
-async function fetchPosts(): Promise<ApiPost[]> {
-  const { data } = await api.get<ApiPost[]>("/posts");
-  return data;
-}
-
-async function fetchVideos(): Promise<ApiVideo[]> {
-  const { data } = await api.get<ApiVideo[]>("/videos");
-  return data;
-}
-
-async function fetchPhotos(): Promise<ApiPhoto[]> {
-  const { data } = await api.get<ApiPhoto[]>("/photos");
-  return data;
-}
-
 export default function Blog() {
   const { t } = useTranslation();
   useSEO({
     title: "Blog",
-    description: "News, project launches and reflections from Generation Aid in Kakuma.",
+    description:
+      "News, project launches and reflections from Generation Aid in Kakuma.",
   });
-  const { data: apiPosts = [] } = useQuery({
-    queryKey: ["public", "posts"],
-    queryFn: fetchPosts,
-  });
-  const { data: apiVideos = [] } = useQuery({
-    queryKey: ["public", "videos"],
-    queryFn: fetchVideos,
-  });
-  const { data: photos = [] } = useQuery({
-    queryKey: ["public", "photos"],
-    queryFn: fetchPhotos,
+  const { data: sanityPosts = [] } = useQuery({
+    queryKey: ["public", "sanity", "posts"],
+    queryFn: getPublishedPosts,
+    retry: false,
   });
 
-  // API wins when present, otherwise seed keeps the page populated.
   const posts: DisplayPost[] =
-    apiPosts.length > 0 ? apiPosts.map(fromApi) : seedPosts.map(fromSeed);
+    sanityPosts.length > 0
+      ? sanityPosts.map(mapSanityPostToDisplayPost)
+      : seedPosts.map(fromSeed);
+
+  const { data: sanityPhotos = [] } = useQuery({
+    queryKey: ["public", "sanity", "photos"],
+    queryFn: getPhotos,
+    retry: false,
+  });
+
+  const { data: sanityVideos = [] } = useQuery({
+    queryKey: ["public", "sanity", "videos"],
+    queryFn: getVideos,
+    retry: false,
+  });
+
   const recent = posts.slice(0, 3);
+  const photos = sanityPhotos.map(mapSanityPhotoToDisplayPhoto);
+  const apiVideos = sanityVideos
+    .map(mapSanityVideoToDisplayVideo)
+    .filter((v) => Boolean(v.videoUrl));
 
   return (
-    <>
-      {/* HERO */}
-      <section className="relative isolate flex min-h-[55vh] items-center overflow-hidden">
-        {/* TODO: replace with real Generation Aid photo */}
+    <div className="bg-white dark:bg-slate-900 transition-colors">
+      {/* HERO (Pattern C: Solid Primary Blue Impact) */}
+      <section className="relative isolate flex min-h-[55vh] items-center overflow-hidden bg-brand-900 dark:bg-slate-950 text-white transition-colors">
         <SmartImage
           src="/img/heroes/blog.jpg"
-          alt="Laptop and notebook representing our blog"
+          alt="Hands writing in a journal"
           fallbackLabel=""
-          className="absolute inset-0 -z-20 h-full w-full object-cover dark:opacity-80"
+          className="absolute inset-0 -z-20 h-full w-full object-cover"
         />
         <div
           aria-hidden
-          className="absolute inset-0 -z-10 bg-gradient-to-r from-[#0b1729]/85 via-[#0b1729]/65 to-[#0b1729]/40 dark:from-black/90 dark:via-black/75 dark:to-black/55"
+          className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-950/90 via-brand-900/75 to-brand-900/45 dark:from-slate-950/95 dark:via-slate-900/90 dark:to-slate-950/85"
         />
         <div className="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="max-w-2xl text-white">
-            <span className="inline-block rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-300 backdrop-blur">
+            <span className="inline-block rounded-full bg-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white backdrop-blur">
               {t("blog.hero.eyebrowAlt")}
             </span>
-            <h1 className="mt-4 text-4xl font-bold leading-tight sm:text-5xl">
+            <h1 className="mt-4 text-4xl font-bold leading-tight sm:text-5xl !text-white dark:!text-white">
               {t("blog.hero.titleAlt")}
             </h1>
-            <p className="mt-5 max-w-xl text-lg text-white/85">
+            <p className="mt-5 max-w-xl text-lg text-brand-100">
               {t("blog.hero.subtitleAlt")}
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <a
                 href="#gallery"
-                className="rounded-md bg-primary-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary-600"
+                className="rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-brand-600 shadow-sm transition hover:bg-brand-50"
               >
                 {t("blog.seePhotos")}
               </a>
               <a
                 href="#videos"
-                className="rounded-md border border-white/40 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur hover:bg-white/20"
+                className="rounded-lg border border-white/70 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur hover:bg-white/20 transition"
               >
                 {t("blog.watchVideos")}
               </a>
@@ -164,34 +115,37 @@ export default function Blog() {
         </div>
       </section>
 
-      {/* MAIN GRID */}
-      <Section>
+      {/* MAIN GRID (Pattern A: Canvas) */}
+      <Section pattern="canvas">
         <div className="grid gap-10 lg:grid-cols-[2fr_1fr]">
           {/* Posts list */}
           <div className="space-y-8">
             {posts.map((p) => (
               <article
                 key={p.slug}
-                className="rounded-2xl border border-line bg-surface p-6 transition hover:border-primary-300 hover:shadow-md sm:p-8"
+                className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md sm:p-8"
               >
-                <div className="flex flex-wrap items-center gap-3 text-xs text-muted">
-                  <time className="font-semibold uppercase tracking-wider text-primary-600">
+                <div className="flex flex-wrap items-center gap-3 text-xs text-neutral-body dark:text-slate-400">
+                  <time className="font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
                     {p.date}
                   </time>
                   <span>&middot;</span>
                   <span>{t("blog.byAuthor", { author: p.author })}</span>
                 </div>
-                <h2 className="mt-3 font-display text-xl font-semibold text-ink sm:text-2xl">
-                  <Link to={`/blog/${p.slug}`} className="hover:text-primary-600">
+                <h2 className="mt-3 font-display text-xl font-semibold text-neutral-heading dark:text-slate-100 sm:text-2xl">
+                  <Link
+                    to={`/blog/${p.slug}`}
+                    className="hover:text-brand-600 dark:hover:text-brand-400"
+                  >
                     {p.title}
                   </Link>
                 </h2>
-                <p className="mt-3 text-sm leading-relaxed text-muted sm:text-base">
+                <p className="mt-3 text-sm leading-relaxed text-neutral-body dark:text-slate-300 sm:text-base">
                   {p.excerpt}
                 </p>
                 <Link
                   to={`/blog/${p.slug}`}
-                  className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-primary-600 hover:underline"
+                  className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 hover:underline underline-offset-4"
                 >
                   {t("common.readMoreArrow")}
                 </Link>
@@ -201,27 +155,32 @@ export default function Blog() {
 
           {/* Sidebar */}
           <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
-            <div className="rounded-2xl border border-line bg-surface p-6">
-              <h3 className="font-display text-lg font-semibold text-ink">{t("blog.aboutUsTitle")}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted">
+            <div className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm">
+              <h3 className="font-display text-lg font-semibold text-neutral-heading dark:text-slate-100">
+                {t("blog.aboutUsTitle")}
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-neutral-body dark:text-slate-300">
                 {t("blog.aboutUsBody")}
               </p>
             </div>
 
-            <div className="rounded-2xl border border-line bg-surface p-6">
-              <h3 className="font-display text-lg font-semibold text-ink">
+            <div className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm">
+              <h3 className="font-display text-lg font-semibold text-neutral-heading dark:text-slate-100">
                 {t("blog.recentArticles")}
               </h3>
               <ul className="mt-4 space-y-4">
                 {recent.map((r) => (
-                  <li key={r.slug} className="border-b border-line pb-4 last:border-0 last:pb-0">
+                  <li
+                    key={r.slug}
+                    className="border-b border-neutral-border dark:border-slate-700 pb-4 last:border-0 last:pb-0"
+                  >
                     <Link
                       to={`/blog/${r.slug}`}
-                      className="block text-sm font-semibold text-ink hover:text-primary-600"
+                      className="block text-sm font-semibold text-neutral-heading dark:text-slate-100 hover:text-brand-600 dark:hover:text-brand-400"
                     >
                       {r.title}
                     </Link>
-                    <p className="mt-1 text-xs text-muted">
+                    <p className="mt-1 text-xs text-neutral-body dark:text-slate-400">
                       {r.date} &middot; {r.author}
                     </p>
                   </li>
@@ -229,13 +188,13 @@ export default function Blog() {
               </ul>
             </div>
 
-            <div className="rounded-2xl border border-line bg-surface p-6">
-              <h3 className="font-display text-lg font-semibold text-ink">
+            <div className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm">
+              <h3 className="font-display text-lg font-semibold text-neutral-heading dark:text-slate-100">
                 {t("blog.postCategories")}
               </h3>
               <ul className="mt-4 space-y-2 text-sm">
                 <li>
-                  <span className="text-muted">{t("blog.uncategorized")}</span>
+                  <span className="text-neutral-body dark:text-slate-400">{t("blog.uncategorized")}</span>
                 </li>
               </ul>
             </div>
@@ -243,41 +202,41 @@ export default function Blog() {
         </div>
       </Section>
 
-      {/* PHOTO GALLERY */}
+      {/* PHOTO GALLERY (Pattern B: Soft Contrast) */}
       {photos.length > 0 && (
-        <Section id="gallery" className="!pt-0">
+        <Section id="gallery" pattern="soft">
           <div className="mx-auto max-w-3xl text-center">
-            <span className="inline-block rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
+            <span className="inline-block rounded-full bg-white dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
               {t("blog.gallery")}
             </span>
-            <h2 className="mt-4 text-3xl font-bold text-ink sm:text-4xl">
+            <h2 className="mt-4 text-3xl font-bold text-neutral-heading dark:text-slate-50 sm:text-4xl">
               {t("blog.momentsField")}
             </h2>
-            <p className="mt-3 text-muted">{t("blog.momentsSubtitle")}</p>
+            <p className="mt-3 text-neutral-body dark:text-slate-300">{t("blog.momentsSubtitle")}</p>
           </div>
 
           <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {photos.map((p) => (
               <li
                 key={p._id}
-                className="overflow-hidden rounded-2xl border border-line bg-surface transition hover:border-primary-300 hover:shadow-md"
+                className="overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
               >
-                <div className="aspect-video w-full overflow-hidden bg-bg">
-                  <img
+                <div className="aspect-video w-full overflow-hidden bg-brand-50 dark:bg-slate-900">
+                  <SmartImage
                     src={p.imageUrl}
                     alt={p.title}
-                    loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+                    fallbackLabel="Gallery photo"
                   />
                 </div>
-                <div className="p-5">
-                  <h3 className="font-display text-lg font-semibold text-ink">
+                <div className="p-6">
+                  <h3 className="font-display text-lg font-semibold text-neutral-heading dark:text-slate-100">
                     {p.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">
+                  <p className="mt-2 text-sm leading-relaxed text-neutral-body dark:text-slate-300">
                     {p.description}
                   </p>
-                  <p className="mt-3 text-xs font-semibold uppercase tracking-wider text-primary-600">
+                  <p className="mt-3 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
                     {new Date(p.createdAt).toLocaleDateString(undefined, {
                       year: "numeric",
                       month: "long",
@@ -291,16 +250,16 @@ export default function Blog() {
         </Section>
       )}
 
-      {/* VIDEOS */}
-      <Section id="videos" className="bg-surface">
+      {/* VIDEOS (Pattern A: Canvas) */}
+      <Section id="videos" pattern="canvas">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-block rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
+          <span className="inline-block rounded-full bg-brand-50 dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
             {t("blog.videosEyebrow")}
           </span>
-          <h2 className="mt-4 text-3xl font-bold text-ink sm:text-4xl">
+          <h2 className="mt-4 text-3xl font-bold text-neutral-heading dark:text-slate-50 sm:text-4xl">
             {t("blog.videosTitle")}
           </h2>
-          <p className="mt-3 text-muted">{t("blog.videosSubtitle")}</p>
+          <p className="mt-3 text-neutral-body dark:text-slate-300">{t("blog.videosSubtitle")}</p>
         </div>
 
         <div className="mt-10 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -308,9 +267,9 @@ export default function Blog() {
             ? apiVideos.map((v) => (
                 <article
                   key={v._id}
-                  className="overflow-hidden rounded-2xl border border-line bg-bg transition hover:border-primary-300 hover:shadow-md"
+                  className="overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
                 >
-                  <div className="relative aspect-video w-full overflow-hidden bg-[#0b1729]">
+                  <div className="relative aspect-video w-full overflow-hidden bg-brand-100 dark:bg-slate-900">
                     <video
                       src={v.videoUrl}
                       poster={v.posterUrl || undefined}
@@ -319,12 +278,12 @@ export default function Blog() {
                       className="absolute inset-0 h-full w-full object-cover"
                     />
                   </div>
-                  <div className="p-5">
-                    <h3 className="font-display text-lg font-semibold text-ink">
+                  <div className="p-6">
+                    <h3 className="font-display text-lg font-semibold text-neutral-heading dark:text-slate-100">
                       {v.title}
                     </h3>
-                    <p className="mt-2 text-sm text-muted">{v.description}</p>
-                    <p className="mt-3 text-xs font-semibold uppercase tracking-wider text-primary-600">
+                    <p className="mt-2 text-sm text-neutral-body dark:text-slate-300">{v.description}</p>
+                    <p className="mt-3 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
                       {new Date(v.createdAt).toLocaleDateString(undefined, {
                         year: "numeric",
                         month: "long",
@@ -337,9 +296,9 @@ export default function Blog() {
             : fallbackVideos.map((v) => (
                 <article
                   key={v.title}
-                  className="overflow-hidden rounded-2xl border border-line bg-bg transition hover:border-primary-300 hover:shadow-md"
+                  className="overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
                 >
-                  <div className="relative aspect-video w-full overflow-hidden bg-[#0b1729]">
+                  <div className="relative aspect-video w-full overflow-hidden bg-brand-100 dark:bg-slate-900">
                     {v.youtubeId ? (
                       <iframe
                         src={`https://www.youtube-nocookie.com/embed/${v.youtubeId}`}
@@ -350,7 +309,7 @@ export default function Blog() {
                         className="absolute inset-0 h-full w-full"
                       />
                     ) : (
-                      <div className="absolute inset-0 grid place-items-center bg-gradient-to-br from-primary-500/20 to-primary-900/40 text-white">
+                      <div className="absolute inset-0 grid place-items-center bg-brand-600/30 text-white">
                         <div className="text-center">
                           <svg
                             width="56"
@@ -361,20 +320,20 @@ export default function Blog() {
                           >
                             <path d="M8 5v14l11-7z" />
                           </svg>
-                          <p className="mt-2 text-xs font-semibold uppercase tracking-wider">
+                          <p className="mt-2 text-xs font-semibold uppercase tracking-wider text-white">
                             {t("common.comingSoon")}
                           </p>
                         </div>
                       </div>
                     )}
                   </div>
-                  <div className="p-5">
-                    <h3 className="font-display text-lg font-semibold text-ink">
+                  <div className="p-6">
+                    <h3 className="font-display text-lg font-semibold text-neutral-heading dark:text-slate-100">
                       {v.title}
                     </h3>
-                    <p className="mt-2 text-sm text-muted">{v.description}</p>
+                    <p className="mt-2 text-sm text-neutral-body dark:text-slate-300">{v.description}</p>
                     {v.date && (
-                      <p className="mt-3 text-xs font-semibold uppercase tracking-wider text-primary-600">
+                      <p className="mt-3 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
                         {v.date}
                       </p>
                     )}
@@ -386,12 +345,12 @@ export default function Blog() {
         <div className="mt-10 text-center">
           <Link
             to="/contact"
-            className="inline-block rounded-md bg-primary-500 px-5 py-3 text-sm font-semibold text-white hover:bg-primary-600"
+            className="inline-block rounded-lg bg-brand-600 dark:bg-brand-500 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-700 dark:hover:bg-brand-400 transition"
           >
             {t("blog.haveAStory")}
           </Link>
         </div>
       </Section>
-    </>
+    </div>
   );
 }

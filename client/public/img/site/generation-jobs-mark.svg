@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-labelledby="title desc">
+  <title id="title">Generation Jobs mark</title>
+  <desc id="desc">A bold circular mark with the initials GJ for Generation Jobs.</desc>
+  <defs>
+    <linearGradient id="g" x1="20" y1="20" x2="220" y2="220" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ef4444"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+  </defs>
+  <circle cx="120" cy="120" r="108" fill="url(#g)"/>
+  <circle cx="120" cy="120" r="90" fill="none" stroke="#ffffff" stroke-opacity="0.18" stroke-width="4"/>
+  <path d="M72 148c0-30 19-54 48-54 16 0 28 6 37 16l-15 15c-6-6-12-9-22-9-15 0-26 13-26 30 0 18 11 31 27 31 13 0 21-6 25-17H123v-20h46v11c0 30-19 51-49 51-29 0-48-21-48-54z" fill="#fff"/>
+  <path d="M163 74h22v61c0 28-15 43-40 43-12 0-24-4-31-12l14-14c4 5 9 7 16 7 11 0 19-7 19-23V74z" fill="#fff"/>
+</svg>

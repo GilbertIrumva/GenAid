@@ -22,7 +22,6 @@ export default class ErrorBoundary extends Component<Props, State> {
   }
 
   componentDidCatch(error: Error, info: ErrorInfo): void {
-    // TODO: forward to Sentry / your logging service when configured.
     console.error("ErrorBoundary caught:", error, info);
   }
 
@@ -36,19 +35,19 @@ export default class ErrorBoundary extends Component<Props, State> {
     if (this.props.fallback) return this.props.fallback;
 
     return (
-      <div className="grid min-h-screen place-items-center bg-bg px-4">
-        <div className="max-w-md rounded-2xl border border-line bg-surface p-8 text-center shadow-sm">
-          <h1 className="font-display text-2xl font-bold text-ink">
+      <div className="grid min-h-screen place-items-center bg-white dark:bg-slate-900 px-4 transition-colors">
+        <div className="max-w-md rounded-xl border border-neutral-border dark:border-slate-800 bg-white dark:bg-slate-800 p-8 text-center shadow-sm">
+          <h1 className="font-display text-2xl font-bold text-neutral-heading dark:text-slate-50">
             Something went wrong
           </h1>
-          <p className="mt-3 text-sm text-muted">
+          <p className="mt-3 text-sm text-neutral-body dark:text-slate-300">
             An unexpected error broke this page. Reloading usually fixes it.
             If it keeps happening, please contact us.
           </p>
           <button
             type="button"
             onClick={this.handleReload}
-            className="mt-6 rounded-md bg-primary-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary-600"
+            className="mt-6 rounded-lg bg-brand-600 dark:bg-brand-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-700 dark:hover:bg-brand-400 transition shadow-sm"
           >
             Reload page
           </button>

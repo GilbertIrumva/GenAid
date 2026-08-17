@@ -1,79 +1,96 @@
 @import "tailwindcss";
 
-/* Enable Tailwind v4's class-based dark variant: `dark:bg-...` activates when
-   the <html> element carries the `.dark` class (toggled by ThemeProvider). */
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  /* Brand blue (from logo #0088ff) */
-  --color-primary-50: #e6f4ff;
-  --color-primary-100: #cce9ff;
-  --color-primary-200: #99d3ff;
-  --color-primary-300: #66bdff;
-  --color-primary-400: #33a7ff;
-  --color-primary-500: #0088ff;
-  --color-primary-600: #0070d9;
-  --color-primary-700: #0058b3;
-  --color-primary-800: #00428c;
-  --color-primary-900: #002d66;
+  /* Brand Blue Scale */
+  --color-brand-50: #eff6ff;
+  --color-brand-100: #dbeafe;
+  --color-brand-200: #bfdbfe;
+  --color-brand-300: #93c5fd;
+  --color-brand-400: #60a5fa;
+  --color-brand-500: #3b82f6;
+  --color-brand-600: #2563eb;
+  --color-brand-700: #1d4ed8;
+  --color-brand-800: #1e40af;
+  --color-brand-900: #1e3a8a;
 
-  /* Warm accent — secondary highlight (eyebrows, soft chips, etc.) */
-  --color-accent-400: #fbbf24;
-  --color-accent-500: #f59e0b;
-  --color-accent-600: #d97706;
+  /* Strict Neutrals */
+  --color-neutral-white: #ffffff;
+  --color-neutral-heading: #111827;
+  --color-neutral-body: #4b5563;
+  --color-neutral-border: #e5e7eb;
 
-  /* Brand red (from logo) — used deliberately for Donate CTA, brand
-     stripe, and small attention accents. Keep usage sparse; blue stays
-     the dominant brand colour. */
-  --color-brand-red-50: #fff1f3;
-  --color-brand-red-100: #ffe1e6;
-  --color-brand-red-500: #e11d48;
-  --color-brand-red-600: #be123c;
-  --color-brand-red-700: #9f0f33;
+  /* Dark Mode Slate Scale */
+  --color-dark-canvas: #0f172a;
+  --color-dark-surface: #1e293b;
+  --color-dark-border: #334155;
+  --color-dark-heading: #f8fafc;
+  --color-dark-body: #cbd5e1;
 
-  /* Neutrals */
-  --color-surface: #ffffff;
-  --color-bg: #f7fbff;
-  --color-ink: #0b1729;
-  --color-muted: #5b6776;
-  --color-line: #e3eaf2;
+  /* Backwards Compatibility Aliases */
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
 
-  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --color-brand-red-50: #eff6ff;
+  --color-brand-red-100: #dbeafe;
+  --color-brand-red-500: #3b82f6;
+  --color-brand-red-600: #2563eb;
+  --color-brand-red-700: #1d4ed8;
 
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
+  --color-surface: var(--color-surface-base);
+  --color-bg: var(--color-canvas);
+  --color-ink: var(--color-text-primary);
+  --color-muted: var(--color-text-secondary);
+  --color-line: var(--color-border-subtle);
+
+  --font-sans:
+    "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  --font-display:
+    "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
 }
 
 :root {
   color-scheme: light;
+  --color-canvas: #ffffff;
+  --color-surface-base: #ffffff;
+  --color-surface-subtle: #eff6ff;
+  --color-brand-primary: #2563eb;
+  --color-brand-hover: #1d4ed8;
+  --color-text-primary: #111827;
+  --color-text-secondary: #4b5563;
+  --color-border-subtle: #e5e7eb;
 }
 
-/* ---------- Dark theme ----------
-   We override only the semantic neutrals (surface / bg / ink / muted / line)
-   plus a softened primary so existing utility classes (`bg-bg`, `text-ink`,
-   `border-line`, etc.) automatically adapt without touching component code. */
-html.dark {
+.dark {
   color-scheme: dark;
-  --color-surface: #0f1b2e;
-  --color-bg: #0a1322;
-  --color-ink: #e7eef7;
-  --color-muted: #98a4b3;
-  --color-line: #1f2d44;
-  --color-primary-50: #0a223f;
-  --color-primary-100: #0d2c54;
-  /* Slightly muted reds for dark mode so they don't glow. */
-  --color-brand-red-50: #2a0a14;
-  --color-brand-red-100: #3d0f1c;
-  --color-brand-red-500: #f43f5e;
-  --color-brand-red-600: #e11d48;
-  --color-brand-red-700: #be123c;
+  --color-canvas: #0f172a;
+  --color-surface-base: #1e293b;
+  --color-surface-subtle: #1e293b;
+  --color-brand-primary: #3b82f6;
+  --color-brand-hover: #60a5fa;
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #cbd5e1;
+  --color-border-subtle: #334155;
 }
 
 html {
   scroll-behavior: smooth;
-  /* Offset for sticky 73px header so anchor jumps don't hide under it. */
   scroll-padding-top: 80px;
 }
 
@@ -83,12 +100,6 @@ body,
   height: 100%;
 }
 
-/* Mobile safety net: prevent any rogue child element (oversized image, long
-   unbroken word, decorative blob with negative margins, etc.) from causing a
-   horizontal scrollbar on small viewports. We use `overflow-x: clip` (not
-   `hidden`) because `clip` does NOT create a scroll container, so `position:
-   sticky` on descendants (e.g. the site navbar) keeps working on iOS Safari.
-   Internal scrollers (e.g. tables wrapped in overflow-x-auto) still work. */
 html,
 body {
   overflow-x: clip;
@@ -96,14 +107,33 @@ body {
 
 body {
   font-family: var(--font-sans);
-  color: var(--color-ink);
-  background: var(--color-bg);
+  color: var(--color-text-secondary);
+  background-color: var(--color-canvas);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Prevent iOS Safari from inflating font sizes in landscape. */
   -webkit-text-size-adjust: 100%;
-  /* Wrap long unbroken words (URLs, emails) instead of overflowing. */
   overflow-wrap: break-word;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.jobs-experience {
+  --color-bg: var(--color-canvas);
+  --color-surface: var(--color-surface-base);
+  --color-ink: var(--color-text-primary);
+  --color-muted: var(--color-text-secondary);
+  --color-line: var(--color-border-subtle);
+}
+
+.jobs-experience h1,
+.jobs-experience h2,
+.jobs-experience h3,
+.jobs-experience h4 {
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.jobs-experience p {
+  text-wrap: pretty;
 }
 
 h1,
@@ -113,14 +143,11 @@ h4,
 h5,
 h6 {
   font-family: var(--font-display);
+  color: var(--color-text-primary);
   letter-spacing: -0.02em;
 }
 
-/* ---------- Accessibility baseline ---------- */
-
-/* Visible keyboard focus on every interactive element. We use `:focus-visible`
-   (not `:focus`) so the ring only appears for keyboard / a11y users, never on
-   mouse clicks where it would be visual noise. */
+/* Accessibility baseline */
 a:focus-visible,
 button:focus-visible,
 [role="button"]:focus-visible,
@@ -128,13 +155,13 @@ input:focus-visible,
 textarea:focus-visible,
 select:focus-visible,
 summary:focus-visible {
-  outline: 2px solid var(--color-primary-500);
+  outline: 2px solid var(--color-brand-primary);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
-/* Honour the user's OS-level "reduce motion" preference. */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
