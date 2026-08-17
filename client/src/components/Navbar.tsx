@@ -75,9 +75,12 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    setOpenMenu(null);
-    setMobileOpenMenu(null);
-    setOpen(false);
+    const timer = setTimeout(() => {
+      setOpenMenu(null);
+      setMobileOpenMenu(null);
+      setOpen(false);
+    }, 0);
+    return () => clearTimeout(timer);
   }, [location.pathname, location.hash]);
 
   useEffect(() => {

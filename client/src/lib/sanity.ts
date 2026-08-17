@@ -531,10 +531,27 @@ export async function createPlacementRequest(
   return { _id: payload._id };
 }
 
-export async function getJobsContent(): Promise<any> {
+export interface SanityJobsContent {
+  _id?: string;
+  jobsLogo?: string;
+  overviewHeroTitle?: string;
+  overviewHeroSubtitle?: string;
+  overviewHeroImage?: string;
+  leadershipImage?: string;
+  pipelineImage?: string;
+  marketNeedTitle?: string;
+  marketProblems?: string[];
+  pipelineTitle?: string;
+  pipelineSteps?: string[];
+  talentCategories?: string[];
+  howHiringWorks?: string[];
+  [key: string]: unknown;
+}
+
+export async function getJobsContent(): Promise<SanityJobsContent | null> {
   if (!sanityClient) return null;
 
-  return sanityClient.fetch<any>(
+  return sanityClient.fetch<SanityJobsContent>(
     `*[_type == "jobsContent"][0] {
       _id,
       "jobsLogo": coalesce(jobsLogo.asset->url, ""),
