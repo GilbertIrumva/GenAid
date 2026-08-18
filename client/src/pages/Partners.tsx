@@ -20,6 +20,7 @@ const categories: PartnerCategory[] = [
   "Corporate",
 ];
 
+
 interface TierAccent {
   badgeBg: string;
   badgeText: string;
@@ -224,15 +225,15 @@ export default function Partners() {
           const cmsInCat =
             sanityPartners.length > 0
               ? sanityPartners
-                  .filter((p) => (p.category || "Strategic") === cat)
-                  .map(mapSanityPartnerToDisplayPartner)
+                .filter((p) => (p.category || "Strategic") === cat)
+                .map(mapSanityPartnerToDisplayPartner)
               : [];
           const inCat = cmsInCat.length > 0 ? cmsInCat : fallbackInCat;
           if (inCat.length === 0) return null;
           return (
             <div key={cat} className="mt-10">
               <h3 className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-                {t(`partners.categories.${cat}`, cat)}
+                {t(`partners.categories.${cat}`, { defaultValue: cat })}
               </h3>
               <div className="mt-4 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
                 {inCat.map((p) => (
@@ -270,11 +271,10 @@ export default function Partners() {
             return (
               <div
                 key={meta.key}
-                className={`relative flex flex-col rounded-xl border bg-white dark:bg-slate-800 p-6 shadow-sm transition hover:shadow-md ${meta.accent.border} ${
-                  meta.featured
-                    ? "ring-2 ring-brand-600 dark:ring-brand-500 md:-mt-4 md:mb-0 md:scale-[1.03] md:p-7 md:shadow-lg"
-                    : ""
-                }`}
+                className={`relative flex flex-col rounded-xl border bg-white dark:bg-slate-800 p-6 shadow-sm transition hover:shadow-md ${meta.accent.border} ${meta.featured
+                  ? "ring-2 ring-brand-600 dark:ring-brand-500 md:-mt-4 md:mb-0 md:scale-[1.03] md:p-7 md:shadow-lg"
+                  : ""
+                  }`}
               >
                 {meta.featured && (
                   <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-brand-600 dark:bg-brand-500 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white shadow">
@@ -332,11 +332,10 @@ export default function Partners() {
                   </p>
                   <a
                     href={`mailto:${SITE.email}?subject=${meta.ctaSubject}`}
-                    className={`mt-3 inline-flex w-full items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold transition ${
-                      meta.featured
-                        ? "bg-brand-600 dark:bg-brand-500 text-white hover:bg-brand-700 dark:hover:bg-brand-400 shadow-sm"
-                        : "border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-900 text-neutral-heading dark:text-slate-100 hover:border-brand-600 dark:hover:border-brand-400 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-brand-50 dark:hover:bg-slate-800"
-                    }`}
+                    className={`mt-3 inline-flex w-full items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold transition ${meta.featured
+                      ? "bg-brand-600 dark:bg-brand-500 text-white hover:bg-brand-700 dark:hover:bg-brand-400 shadow-sm"
+                      : "border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-900 text-neutral-heading dark:text-slate-100 hover:border-brand-600 dark:hover:border-brand-400 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-brand-50 dark:hover:bg-slate-800"
+                      }`}
                   >
                     {ctaLabel} →
                   </a>

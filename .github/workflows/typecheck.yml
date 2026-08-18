@@ -24,9 +24,12 @@ jobs:
         run: npm run lint
       - name: Build frontend
         run: npm run build
+        env:
+          VITE_SANITY_PROJECT_ID: fr1v7hol
+          VITE_SANITY_DATASET: production
 
   sanity:
-    name: Sanity (Typecheck)
+    name: Sanity (Typecheck & Build)
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -40,4 +43,10 @@ jobs:
           cache-dependency-path: sanity/package-lock.json
       - run: npm ci
       - name: Sanity typecheck
+        run: npm run typecheck
+      - name: Build Sanity Studio
         run: npm run build
+        env:
+          SANITY_STUDIO_PROJECT_ID: fr1v7hol
+          SANITY_STUDIO_DATASET: production
+

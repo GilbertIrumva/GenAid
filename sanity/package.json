@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "sanity dev",
-    "build": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
+    "build": "sanity build",
     "seed:content": "node --import tsx scripts/seedContent.ts",
     "seed:posts": "node --import tsx scripts/seedPosts.ts"
   },
