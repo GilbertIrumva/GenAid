@@ -19,7 +19,7 @@ jobs:
           node-version: "22"
           cache: "npm"
           cache-dependency-path: client/package-lock.json
-      - run: npm ci
+      - run: npm install
       - name: Lint frontend
         run: npm run lint
       - name: Build frontend
@@ -41,7 +41,7 @@ jobs:
           node-version: "22"
           cache: "npm"
           cache-dependency-path: sanity/package-lock.json
-      - run: npm ci
+      - run: npm install
       - name: Sanity typecheck
         run: npm run typecheck
       - name: Build Sanity Studio
