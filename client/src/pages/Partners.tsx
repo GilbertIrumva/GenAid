@@ -83,7 +83,7 @@ function initials(name: string) {
     .toUpperCase();
 }
 
-function PartnerCard({ partner }: { partner: Partner }) {
+function PartnerCard({ partner }: { partner: Partner; key?: React.Key }) {
   const { t } = useTranslation();
   const [logoFailed, setLogoFailed] = useState(false);
   const showLogo = Boolean(partner.logo) && !logoFailed;
