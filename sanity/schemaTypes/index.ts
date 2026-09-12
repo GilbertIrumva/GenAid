@@ -8,8 +8,6 @@ import { videoType } from "./videoType";
 import { newsType } from "./newsType";
 import { reportType } from "./reportType";
 import { teamMemberType } from "./teamMemberType";
-import { talentProfileType } from "./talentProfileType";
-import { placementRequestType } from "./placementRequestType";
 import { homepageTrustContentType } from "./homepageTrustContentType";
 import { jobsContentType } from "./jobsContentType";
 
@@ -24,8 +22,6 @@ export const schemaTypes = [
   newsType,
   reportType,
   teamMemberType,
-  talentProfileType,
-  placementRequestType,
   homepageTrustContentType,
   jobsContentType,
 ];

@@ -21,20 +21,20 @@ export default function JobsLayout() {
   }, [location.pathname, location.hash]);
 
   return (
-    <div className="jobs-experience flex min-h-screen flex-col bg-white dark:bg-slate-900 text-neutral-body dark:text-slate-300 transition-colors">
-      <header className="sticky top-0 z-40 border-b border-neutral-border dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md">
+    <div className="jobs-experience flex min-h-screen flex-col bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 transition-colors">
+      <header className="sticky top-0 z-40 border-b border-slate-200/80 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-xs">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 overflow-x-auto px-4 py-3 sm:px-6 lg:px-8">
-          <Link to="/jobs" className="flex shrink-0 items-center gap-2.5">
+          <Link to="/jobs" className="flex shrink-0 items-center gap-3 group">
             <img
               src="/logo.jpg"
               alt="Generation Jobs logo"
-              className="h-10 w-10 shrink-0 rounded-xl border border-neutral-border dark:border-slate-700 object-cover shadow-xs"
+              className="h-10 w-10 shrink-0 rounded-xl border border-brand-200 dark:border-slate-700 object-cover shadow-xs group-hover:scale-105 transition-transform"
             />
             <div className="hidden sm:block">
-              <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-brand-600 dark:text-brand-400 leading-none">
+              <p className="text-[10px] font-extrabold uppercase tracking-[0.25em] text-brand-600 dark:text-brand-400 leading-none">
                 Generation Jobs
               </p>
-              <p className="text-xs font-semibold text-neutral-heading dark:text-slate-100 mt-0.5 whitespace-nowrap">
+              <p className="text-xs font-extrabold text-slate-900 dark:text-slate-100 mt-1 whitespace-nowrap">
                 Talent Placement Arm
               </p>
             </div>
@@ -51,10 +51,10 @@ export default function JobsLayout() {
                 end={item.end}
                 className={({ isActive }) =>
                   cn(
-                    "whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors sm:px-4 sm:text-sm",
+                    "whitespace-nowrap rounded-lg px-3.5 py-1.5 text-xs sm:text-sm font-bold tracking-tight transition-all",
                     isActive
-                      ? "border-brand-600 dark:border-brand-500 bg-brand-600 dark:bg-brand-500 text-white shadow-xs"
-                      : "border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 text-neutral-heading dark:text-slate-200 hover:border-brand-600 dark:hover:border-brand-400 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-brand-50 dark:hover:bg-slate-700",
+                      ? "bg-brand-600 dark:bg-brand-500 text-white shadow-xs"
+                      : "text-slate-700 dark:text-slate-200 hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600 dark:hover:text-brand-400",
                   )
                 }
               >
@@ -67,11 +67,20 @@ export default function JobsLayout() {
             <LanguageSwitcher />
             <ThemeToggle />
             <Link
-              to="/"
-              className="whitespace-nowrap rounded-full border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-neutral-heading dark:text-slate-200 transition-colors hover:border-brand-600 dark:hover:border-brand-400 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-brand-50 dark:hover:bg-slate-700 sm:px-4"
+              to="/contact?subject=Talent+Request"
+              className="sir-btn-primary px-3 py-1 text-[11px] font-extrabold uppercase tracking-wider hidden sm:inline-flex"
             >
-              Main Site
+              <span>Request Talent</span>
+              <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
             </Link>
+            <Link
+              to="/"
+              className="sir-btn-secondary px-2.5 py-1 text-[11px] font-extrabold uppercase tracking-wider"
+            >
+              <span>Main Site</span>
+            </Link>
+
+
           </div>
         </div>
       </header>
@@ -84,3 +93,4 @@ export default function JobsLayout() {
     </div>
   );
 }
+

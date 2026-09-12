@@ -15,7 +15,6 @@ import BlogPost from "./pages/BlogPost";
 import Partners from "./pages/Partners";
 import Jobs from "./pages/Jobs";
 import JobsTalent from "./pages/JobsTalent";
-import JobsTalentProfile from "./pages/JobsTalentProfile";
 import JobsEmployers from "./pages/JobsEmployers";
 import JobsOpportunities from "./pages/JobsOpportunities";
 import Volunteer from "./pages/Volunteer";
@@ -64,7 +63,6 @@ export default function App() {
       <Route path="/jobs" element={<JobsLayout />}>
         <Route index element={<Jobs />} />
         <Route path="talent" element={<JobsTalent />} />
-        <Route path="talent/:slug" element={<JobsTalentProfile />} />
         <Route path="employers" element={<JobsEmployers />} />
         <Route path="opportunities" element={<JobsOpportunities />} />
       </Route>

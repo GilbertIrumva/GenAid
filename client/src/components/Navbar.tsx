@@ -22,7 +22,6 @@ const MENUS: Record<string, ReadonlyArray<MenuLink>> = {
     { to: "/about#story", key: "story" },
     { to: "/about#mission-vision", key: "missionVision" },
     { to: "/about#team", key: "team" },
-    { to: "/about#board", key: "board" },
     { to: "/partners", key: "partners" },
   ],
   programs: [
@@ -94,14 +93,14 @@ export default function Navbar() {
 
   const linkClass = (isActive: boolean) =>
     cn(
-      "text-sm font-medium transition-colors hover:text-brand-600 dark:hover:text-brand-400",
+      "relative text-sm font-bold tracking-tight transition-colors py-1",
       isActive
-        ? "text-brand-600 dark:text-brand-400 font-semibold"
-        : "text-neutral-heading/90 dark:text-slate-200",
+        ? "text-brand-600 dark:text-brand-400 after:absolute after:bottom-0 after:left-0 after:h-[2.5px] after:w-full after:bg-brand-600 dark:after:bg-brand-400"
+        : "text-slate-800 dark:text-slate-200 hover:text-brand-600 dark:hover:text-brand-400 after:absolute after:bottom-0 after:left-0 after:h-[2.5px] after:w-full after:scale-x-0 after:bg-brand-600 dark:after:bg-brand-400 hover:after:scale-x-100 after:transition-transform after:duration-300",
     );
 
   return (
-    <header className="sticky top-0 z-40 border-b border-neutral-border dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-slate-200/80 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-xs transition-colors">
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
@@ -109,30 +108,33 @@ export default function Navbar() {
         {t("common.skipToContent")}
       </a>
 
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-4 py-3.5 sm:px-6 lg:px-8">
-        <Link
-          to="/"
-          className="flex min-w-0 items-center gap-2.5"
-          onClick={() => setOpen(false)}
-        >
-          <GenerationAidLogo />
-        </Link>
-
-        <div className="hidden items-center gap-2 rounded-full border border-neutral-border dark:border-slate-800 bg-brand-50/80 dark:bg-slate-800/80 px-2 py-1 shadow-sm md:flex">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3.5 sm:px-6 lg:px-8">
+        <div className="flex items-center gap-4">
           <Link
-            to="/jobs"
-            className={cn(
-              "flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-widest transition-colors",
-              location.pathname.startsWith("/jobs")
-                ? "bg-brand-600 dark:bg-brand-500 text-white shadow-sm"
-                : "text-neutral-heading/80 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-700 hover:text-brand-600 dark:hover:text-brand-400",
-            )}
+            to="/"
+            className="flex min-w-0 items-center gap-2.5 transition-transform hover:opacity-90"
+            onClick={() => setOpen(false)}
           >
-            Generation Jobs
+            <GenerationAidLogo />
           </Link>
+
+          <div className="hidden items-center gap-1.5 rounded-full border border-brand-200/80 dark:border-slate-800 bg-brand-50/80 dark:bg-slate-800/80 p-1 shadow-2xs md:flex">
+            <Link
+              to="/jobs"
+              className={cn(
+                "flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-extrabold uppercase tracking-wider transition-all",
+                location.pathname.startsWith("/jobs")
+                  ? "bg-brand-600 dark:bg-brand-500 text-white shadow-xs"
+                  : "text-slate-700 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-700 hover:text-brand-600 dark:hover:text-brand-400",
+              )}
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-brand-400 animate-pulse" />
+              Generation Jobs
+            </Link>
+          </div>
         </div>
 
-        <nav aria-label="Main" className="hidden items-center gap-6 lg:flex">
+        <nav aria-label="Main" className="hidden items-center gap-7 lg:flex">
           {NAV_ROUTES.map((item) => {
             const menu = MENUS[item.key];
             if (menu) {
@@ -141,6 +143,7 @@ export default function Navbar() {
               return (
                 <div
                   key={item.to}
+                  className="relative py-1"
                   onMouseEnter={() => {
                     cancelClose();
                     setOpenMenu(item.key);
@@ -161,8 +164,10 @@ export default function Navbar() {
                     aria-haspopup="menu"
                     aria-expanded={isOpen}
                     className={cn(
-                      "inline-flex items-center gap-1 text-sm font-medium transition-colors hover:text-brand-600 dark:hover:text-brand-400",
-                      isActive ? "text-brand-600 dark:text-brand-400 font-semibold" : "text-neutral-heading/90 dark:text-slate-200",
+                      "inline-flex items-center gap-1 text-sm font-bold tracking-tight transition-colors",
+                      isActive
+                        ? "text-brand-600 dark:text-brand-400"
+                        : "text-slate-800 dark:text-slate-200 hover:text-brand-600 dark:hover:text-brand-400",
                     )}
                   >
                     {t(`nav.${item.key}`)}
@@ -172,10 +177,10 @@ export default function Navbar() {
                       viewBox="0 0 20 20"
                       fill="none"
                       stroke="currentColor"
-                      strokeWidth="2"
+                      strokeWidth="2.5"
                       aria-hidden
                       className={cn(
-                        "transition-transform",
+                        "transition-transform duration-200 text-brand-600 dark:text-brand-400",
                         isOpen && "rotate-180",
                       )}
                     >
@@ -191,23 +196,24 @@ export default function Navbar() {
                     <div
                       role="menu"
                       aria-label={t(`nav.${item.key}`)}
-                      className="absolute inset-x-0 top-full z-50"
+                      className="absolute left-1/2 -translate-x-1/2 top-full pt-2 z-50 min-w-[220px]"
                       onMouseEnter={cancelClose}
                       onMouseLeave={() => scheduleClose(item.key)}
                     >
-                      <div className="border-b border-neutral-border dark:border-slate-800 bg-white dark:bg-slate-900 shadow-lg">
-                        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-1 whitespace-nowrap px-4 py-3 sm:px-6 lg:px-8">
-                          {menu.map((link) => (
-                            <Link
-                              key={link.to}
-                              to={link.to}
-                              role="menuitem"
-                              className="rounded-lg px-4 py-2 text-sm font-medium text-neutral-heading/90 dark:text-slate-200 transition-colors hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600 dark:hover:text-brand-400"
-                            >
-                              {t(`nav.${menuI18nKey(item.key)}.${link.key}`)}
-                            </Link>
-                          ))}
-                        </div>
+                      <div className="overflow-hidden rounded-xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xl border-t-4 border-t-brand-600 dark:border-t-brand-500 p-2 space-y-1">
+                        {menu.map((link) => (
+                          <Link
+                            key={link.to}
+                            to={link.to}
+                            role="menuitem"
+                            className="flex items-center justify-between rounded-lg px-3.5 py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 transition-colors hover:bg-brand-50/80 dark:hover:bg-slate-800 hover:text-brand-600 dark:hover:text-brand-400 group/item"
+                          >
+                            <span>{t(`nav.${menuI18nKey(item.key)}.${link.key}`)}</span>
+                            <span className="text-brand-600 dark:text-brand-400 opacity-0 -translate-x-1 transition-all group-hover/item:opacity-100 group-hover/item:translate-x-0">
+                              →
+                            </span>
+                          </Link>
+                        ))}
                       </div>
                     </div>
                   )}
@@ -234,8 +240,10 @@ export default function Navbar() {
             href={SITE.donateUrl}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-lg bg-brand-600 dark:bg-brand-500 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-700 dark:hover:bg-brand-400 active:bg-brand-800"
+            className="sir-btn-primary px-3 py-1 text-[11px] font-extrabold uppercase tracking-wider"
           >
+
+
             <svg
               aria-hidden
               width="14"
@@ -245,7 +253,8 @@ export default function Navbar() {
             >
               <path d="M12 21s-7-4.534-9.5-9.07C.94 8.94 2.4 5.5 5.6 5.5c1.74 0 3.41 1 4.4 2.5 1-1.5 2.66-2.5 4.4-2.5 3.2 0 4.66 3.44 3.1 6.43C19 16.466 12 21 12 21z" />
             </svg>
-            {t("common.donate")}
+            <span>{t("common.donate")}</span>
+            <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
           </a>
         </div>
 
@@ -257,7 +266,7 @@ export default function Navbar() {
             aria-label={t("nav.toggleMenu")}
             aria-expanded={open}
             aria-controls="mobile-nav"
-            className="-mr-1 inline-flex h-10 w-10 items-center justify-center rounded-lg text-neutral-heading dark:text-slate-100 hover:bg-brand-50 dark:hover:bg-slate-800"
+            className="-mr-1 inline-flex h-10 w-10 items-center justify-center rounded-lg text-slate-800 dark:text-slate-100 hover:bg-brand-50 dark:hover:bg-slate-800"
             onClick={() => setOpen((o) => !o)}
           >
             <svg
@@ -266,7 +275,7 @@ export default function Navbar() {
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              strokeWidth="2"
+              strokeWidth="2.5"
             >
               {open ? (
                 <path d="M6 6l12 12M6 18L18 6" strokeLinecap="round" />
@@ -282,9 +291,19 @@ export default function Navbar() {
         <nav
           id="mobile-nav"
           aria-label="Mobile"
-          className="max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-neutral-border dark:border-slate-800 bg-white dark:bg-slate-900 lg:hidden"
+          className="max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 lg:hidden"
         >
-          <div className="space-y-1 px-4 py-3">
+          <div className="space-y-1 px-4 py-4">
+            <div className="mb-3 pb-3 border-b border-slate-100 dark:border-slate-800">
+              <Link
+                to="/jobs"
+                onClick={() => setOpen(false)}
+                className="flex items-center justify-between rounded-lg bg-brand-50 dark:bg-slate-800 p-3 text-xs font-bold text-brand-600 dark:text-brand-400 uppercase tracking-wider"
+              >
+                <span>Explore Generation Jobs</span>
+                <span>→</span>
+              </Link>
+            </div>
             {NAV_ROUTES.map((item) => {
               const menu = MENUS[item.key];
               if (menu) {
@@ -299,7 +318,7 @@ export default function Navbar() {
                           cur === item.key ? null : item.key,
                         )
                       }
-                      className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-medium text-neutral-heading dark:text-slate-200 hover:bg-brand-50 dark:hover:bg-slate-800"
+                      className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-bold text-slate-800 dark:text-slate-200 hover:bg-brand-50 dark:hover:bg-slate-800"
                     >
                       {t(`nav.${item.key}`)}
                       <svg
@@ -308,10 +327,10 @@ export default function Navbar() {
                         viewBox="0 0 20 20"
                         fill="none"
                         stroke="currentColor"
-                        strokeWidth="2"
+                        strokeWidth="2.5"
                         aria-hidden
                         className={cn(
-                          "transition-transform",
+                          "transition-transform text-brand-600 dark:text-brand-400",
                           expanded && "rotate-180",
                         )}
                       >
@@ -323,20 +342,20 @@ export default function Navbar() {
                       </svg>
                     </button>
                     {expanded && (
-                      <div className="mt-1 space-y-1 border-l-2 border-brand-100 dark:border-slate-700 pl-3">
+                      <div className="mt-1 space-y-1 border-l-2 border-brand-600 dark:border-brand-500 pl-3 ml-2">
                         <Link
                           to={item.to}
                           onClick={() => setOpen(false)}
-                          className="block rounded-lg px-3 py-2 text-sm font-semibold text-neutral-heading dark:text-slate-100 hover:bg-brand-50 dark:hover:bg-slate-800"
+                          className="block rounded-lg px-3 py-2 text-sm font-bold text-brand-600 dark:text-brand-400 hover:bg-brand-50 dark:hover:bg-slate-800"
                         >
-                          {t(`nav.${item.key}`)}
+                          {t(`nav.${item.key}`)} Overview
                         </Link>
                         {menu.map((link) => (
                           <Link
                             key={link.to}
                             to={link.to}
                             onClick={() => setOpen(false)}
-                            className="block rounded-lg px-3 py-2 text-sm text-neutral-body dark:text-slate-300 hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600 dark:hover:text-brand-400"
+                            className="block rounded-lg px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600 dark:hover:text-brand-400"
                           >
                             {t(`nav.${menuI18nKey(item.key)}.${link.key}`)}
                           </Link>
@@ -354,10 +373,10 @@ export default function Navbar() {
                   onClick={() => setOpen(false)}
                   className={({ isActive }) =>
                     cn(
-                      "block rounded-lg px-3 py-2 text-sm font-medium",
+                      "block rounded-lg px-3 py-2.5 text-sm font-bold",
                       isActive
-                        ? "bg-brand-50 dark:bg-slate-800 text-brand-600 dark:text-brand-400 font-semibold"
-                        : "text-neutral-heading dark:text-slate-200 hover:bg-brand-50 dark:hover:bg-slate-800",
+                        ? "bg-brand-50 dark:bg-slate-800 text-brand-600 dark:text-brand-400"
+                        : "text-slate-800 dark:text-slate-200 hover:bg-brand-50 dark:hover:bg-slate-800",
                     )
                   }
                 >
@@ -370,7 +389,7 @@ export default function Navbar() {
               target="_blank"
               rel="noreferrer"
               onClick={() => setOpen(false)}
-              className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-lg bg-brand-600 dark:bg-brand-500 px-4 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-brand-700 dark:hover:bg-brand-400"
+              className="gatsby-btn-primary w-full mt-3 py-3 text-xs uppercase tracking-wider"
             >
               <svg
                 aria-hidden
@@ -381,7 +400,8 @@ export default function Navbar() {
               >
                 <path d="M12 21s-7-4.534-9.5-9.07C.94 8.94 2.4 5.5 5.6 5.5c1.74 0 3.41 1 4.4 2.5 1-1.5 2.66-2.5 4.4-2.5 3.2 0 4.66 3.44 3.1 6.43C19 16.466 12 21 12 21z" />
               </svg>
-              {t("common.donate")}
+              <span>{t("common.donate")}</span>
+              <span>→</span>
             </a>
           </div>
         </nav>
@@ -389,3 +409,4 @@ export default function Navbar() {
     </header>
   );
 }
+

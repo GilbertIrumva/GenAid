@@ -161,7 +161,7 @@ export default function Partners() {
               </span>{" "}
               {t("partners.hero.titleEnd")}
             </h1>
-            <p className="mt-5 max-w-xl text-lg text-brand-100">
+            <p className="mt-5 max-w-xl text-lg text-white">
               {t("partners.hero.subtitleAlt")}
             </p>
             <div className="mt-7 flex flex-wrap gap-3">

@@ -6,7 +6,6 @@ import SmartImage from "@/components/SmartImage";
 import { useSEO } from "@/utils/useSEO";
 import { SITE } from "@/data/site";
 import { team } from "@/data/team";
-import { board } from "@/data/board";
 import { useQuery } from "@tanstack/react-query";
 import {
   getTeamMembers,
@@ -304,91 +303,29 @@ export default function About() {
         <TeamSlider members={teamMembers} />
       </Section>
 
-      {/* BOARD (Pattern A: Canvas) */}
-      <Section id="board" pattern="canvas" className="scroll-mt-24">
-        <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-block rounded-full bg-brand-50 dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
-            {t("about.boardEyebrow")}
-          </span>
-          <h2 className="mt-3 text-3xl font-bold text-neutral-heading dark:text-slate-50 sm:text-4xl">
-            {t("about.boardTitle")}
-          </h2>
-          <p className="mt-3 text-neutral-body dark:text-slate-300">{t("about.boardSubtitle")}</p>
-        </div>
-
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {board.map((m) => {
-            const name = t(`about.boardItems.${m.key}.name`, m.name);
-            const role = t(`about.boardItems.${m.key}.role`, m.role);
-            const bio = t(`about.boardItems.${m.key}.bio`, m.bio);
-            return (
-              <article
-                key={m.key}
-                className="overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 text-center shadow-sm"
-              >
-                <div className="aspect-square w-full overflow-hidden bg-brand-50 dark:bg-slate-900">
-                  <SmartImage
-                    src={m.image}
-                    alt={name}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="font-display text-lg font-semibold text-neutral-heading dark:text-slate-100">
-                    {name}
-                  </h3>
-                  <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-                    {role}
-                  </p>
-                  <p className="mt-3 text-sm text-neutral-body dark:text-slate-300">{bio}</p>
-                  {m.linkedin && (
-                    <a
-                      href={m.linkedin}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="mt-4 inline-block text-xs font-semibold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 hover:underline underline-offset-4"
-                    >
-                      {t("home.team.connectLinkedIn")}
-                    </a>
-                  )}
-                </div>
-              </article>
-            );
-          })}
-        </div>
-      </Section>
-
-
-
-      {/* GET INVOLVED */}
-      <section className="relative isolate overflow-hidden bg-brand-600 dark:bg-brand-900 py-16 text-white sm:py-20 transition-colors border-y border-brand-700 dark:border-brand-800">
-        <SmartImage
-          src="/img/heroes/about-team-cta.jpg"
-          alt="Volunteers and supporters joining hands"
-          fallbackLabel=""
-          className="absolute inset-0 -z-20 h-full w-full object-cover contrast-[1.1] brightness-[0.9]"
-        />
-        <div
-          aria-hidden
-          className="absolute inset-0 -z-10 bg-gradient-to-br from-slate-950/90 via-slate-900/80 to-slate-950/85"
-        />
+      {/* GET INVOLVED (White background with rich blue cards) */}
+      <section className="relative isolate overflow-hidden bg-white dark:bg-slate-900 py-16 text-slate-900 dark:text-white sm:py-20 transition-colors border-t border-slate-200 dark:border-slate-800">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-3xl font-extrabold !text-white dark:!text-white sm:text-4xl lg:text-5xl font-display">
+          <div className="mx-auto max-w-3xl text-center space-y-3">
+            <span className="sir-tag">
+              Get Involved
+            </span>
+            <h2 className="text-3xl font-extrabold text-slate-900 dark:text-slate-50 sm:text-4xl lg:text-5xl font-serif">
               {t("about.getInvolvedTitle")}
             </h2>
-            <p className="mt-3 text-brand-100 dark:text-slate-300 text-base sm:text-lg">
+            <p className="mx-auto max-w-2xl text-slate-600 dark:text-slate-300 text-base sm:text-lg">
               {t("about.getInvolvedSubtitle")}
             </p>
           </div>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
+
+          <div className="mx-auto mt-12 grid max-w-5xl gap-6 md:grid-cols-3">
             {/* Card 1: Give */}
-            <div className="flex flex-col justify-between rounded-2xl bg-white dark:bg-slate-800 p-8 shadow-xl border border-slate-200/80 dark:border-slate-700/80">
+            <div className="relative rounded-2xl bg-brand-600 dark:bg-brand-700 text-white p-8 flex flex-col justify-between border border-brand-500/50 shadow-xl overflow-hidden">
               <div>
-                <h3 className="font-display text-xl font-bold text-slate-900 dark:text-white">
+                <h3 className="font-serif text-2xl font-extrabold !text-white">
                   {t("home.donateBlock.give")}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                <p className="mt-3 text-sm leading-relaxed text-white">
                   {t("home.donateBlock.giveBody")}
                 </p>
               </div>
@@ -396,7 +333,7 @@ export default function About() {
                 href={SITE.donateUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-6 inline-flex items-center justify-center gap-2 rounded-xl bg-brand-600 dark:bg-brand-500 px-5 py-3 text-sm font-bold text-white shadow-md hover:bg-brand-700 dark:hover:bg-brand-400 transition"
+                className="mt-6 inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-white px-4 py-3 text-xs font-extrabold uppercase tracking-wider text-brand-700 shadow-md transition hover:bg-brand-50 hover:text-brand-800"
               >
                 <svg
                   aria-hidden
@@ -404,46 +341,50 @@ export default function About() {
                   height="16"
                   viewBox="0 0 24 24"
                   fill="currentColor"
+                  className="text-brand-600"
                 >
                   <path d="M12 21s-7-4.534-9.5-9.07C.94 8.94 2.4 5.5 5.6 5.5c1.74 0 3.41 1 4.4 2.5 1-1.5 2.66-2.5 4.4-2.5 3.2 0 4.66 3.44 3.1 6.43C19 16.466 12 21 12 21z" />
                 </svg>
-                {t("common.donateNow")}
+                <span>{t("common.donateNow")}</span>
+                <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
               </a>
             </div>
 
             {/* Card 2: Sponsor */}
-            <div className="flex flex-col justify-between rounded-2xl bg-white dark:bg-slate-800 p-8 shadow-xl border border-slate-200/80 dark:border-slate-700/80">
+            <div className="relative rounded-2xl bg-brand-600 dark:bg-brand-700 text-white p-8 flex flex-col justify-between border border-brand-500/50 shadow-xl overflow-hidden">
               <div>
-                <h3 className="font-display text-xl font-bold text-slate-900 dark:text-white">
+                <h3 className="font-serif text-2xl font-extrabold !text-white">
                   {t("home.donateBlock.sponsor")}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                <p className="mt-3 text-sm leading-relaxed text-white">
                   {t("home.donateBlock.sponsorBody")}
                 </p>
               </div>
               <Link
                 to="/programs"
-                className="mt-6 inline-flex items-center justify-center gap-2 rounded-xl bg-brand-50 dark:bg-slate-700/70 border border-brand-200 dark:border-slate-600 px-5 py-3 text-sm font-bold text-brand-700 dark:text-brand-300 hover:bg-brand-100 dark:hover:bg-slate-700 transition"
+                className="mt-6 inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-white px-4 py-3 text-xs font-extrabold uppercase tracking-wider text-brand-700 shadow-md transition hover:bg-brand-50 hover:text-brand-800"
               >
-                {t("home.donateBlock.sponsorCta")}
+                <span>{t("home.donateBlock.sponsorCta")}</span>
+                <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
               </Link>
             </div>
 
             {/* Card 3: Volunteer */}
-            <div className="flex flex-col justify-between rounded-2xl bg-white dark:bg-slate-800 p-8 shadow-xl border border-slate-200/80 dark:border-slate-700/80">
+            <div className="relative rounded-2xl bg-brand-600 dark:bg-brand-700 text-white p-8 flex flex-col justify-between border border-brand-500/50 shadow-xl overflow-hidden">
               <div>
-                <h3 className="font-display text-xl font-bold text-slate-900 dark:text-white">
+                <h3 className="font-serif text-2xl font-extrabold !text-white">
                   {t("home.donateBlock.volunteer")}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                <p className="mt-3 text-sm leading-relaxed text-white">
                   {t("home.donateBlock.volunteerBody")}
                 </p>
               </div>
               <Link
                 to="/contact"
-                className="mt-6 inline-flex items-center justify-center gap-2 rounded-xl bg-brand-50 dark:bg-slate-700/70 border border-brand-200 dark:border-slate-600 px-5 py-3 text-sm font-bold text-brand-700 dark:text-brand-300 hover:bg-brand-100 dark:hover:bg-slate-700 transition"
+                className="mt-6 inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-white px-4 py-3 text-xs font-extrabold uppercase tracking-wider text-brand-700 shadow-md transition hover:bg-brand-50 hover:text-brand-800"
               >
-                {t("common.contactUs", "Contact us")}
+                <span>{t("common.contactUs", "Contact us")}</span>
+                <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
               </Link>
             </div>
           </div>

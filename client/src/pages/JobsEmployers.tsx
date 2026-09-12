@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Section from "@/components/Section";
 import JobsShell from "@/components/JobsShell";
+import SmartImage from "@/components/SmartImage";
 import { useSEO } from "@/utils/useSEO";
 
 const valuePillars = [
@@ -117,38 +118,70 @@ export default function JobsEmployers() {
     >
       {/* VALUE PILLARS (Pattern A: Canvas) */}
       <Section pattern="canvas">
-        <div className="grid gap-6 lg:grid-cols-2">
-          {valuePillars.map((pillar) => (
-            <article
-              key={pillar.title}
-              className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
-            >
-              <h2 className="font-display text-xl font-semibold text-neutral-heading dark:text-slate-100">{pillar.title}</h2>
-              <p className="mt-3 text-sm leading-relaxed text-neutral-body dark:text-slate-300">{pillar.body}</p>
-            </article>
-          ))}
+        <div className="grid gap-8 lg:grid-cols-2 items-center">
+          <div className="space-y-6">
+            <span className="sir-tag">
+              Why Hire Through Generation Jobs
+            </span>
+            <h2 className="font-serif text-3xl font-extrabold text-slate-900 dark:text-slate-50 sm:text-4xl">
+              Competitive delivery economics with built-in social impact
+            </h2>
+            <div className="sir-callout-border !my-3">
+              <p className="text-base leading-relaxed text-slate-700 dark:text-slate-300 font-medium">
+                Employers access cost-effective, managed remote teams with EOR compliance support, rapid onboarding, and reliable retention.
+              </p>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {valuePillars.map((pillar) => (
+                <article
+                  key={pillar.title}
+                  className="sir-card-accent p-5"
+                >
+                  <h3 className="font-serif text-lg font-bold text-slate-900 dark:text-slate-100">{pillar.title}</h3>
+                  <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-300">{pillar.body}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-md aspect-[4/3] group">
+              <SmartImage
+                src="/Capacity building.png"
+                alt="Capacity building and digital work session in Kakuma"
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+            <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm aspect-[16/7] group">
+              <SmartImage
+                src="/blog generation jobs launch.webp"
+                alt="Generation Jobs initiative launch"
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+          </div>
         </div>
       </Section>
 
       {/* SERVICE LINES (Pattern B: Soft Contrast) */}
       <Section pattern="soft">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-block rounded-full bg-white dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
+          <span className="sir-tag">
             Comprehensive service portfolio
           </span>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-neutral-heading dark:text-slate-50 sm:text-4xl">
-            Built for growth operations, support, and digital delivery.
+          <h2 className="mt-3 font-serif text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl">
+            Built for growth operations, support, and digital delivery
           </h2>
         </div>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-3">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {serviceLines.map((line) => (
             <article
               key={line.title}
-              className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
+              className="sir-card p-6 border-t-4 border-t-brand-600 dark:border-t-brand-500"
             >
-              <h3 className="font-display text-xl font-semibold text-neutral-heading dark:text-slate-100">{line.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-neutral-body dark:text-slate-300">{line.body}</p>
+              <h3 className="font-serif text-xl font-extrabold text-slate-900 dark:text-slate-100">{line.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{line.body}</p>
             </article>
           ))}
         </div>
@@ -157,10 +190,10 @@ export default function JobsEmployers() {
       {/* STRATEGIC IMPACT SOURCING (Pattern A: Canvas) */}
       <Section pattern="canvas">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-block rounded-full bg-brand-50 dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
+          <span className="sir-tag">
             Strategic impact sourcing
           </span>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-neutral-heading dark:text-slate-50 sm:text-4xl">
+          <h2 className="mt-3 font-serif text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl">
             High-performance business investment, not charity
           </h2>
         </div>
@@ -169,10 +202,10 @@ export default function JobsEmployers() {
           {esgPillars.map((pillar) => (
             <article
               key={pillar.title}
-              className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
+              className="sir-card-accent p-6"
             >
-              <h3 className="font-display text-xl font-semibold text-neutral-heading dark:text-slate-100">{pillar.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-neutral-body dark:text-slate-300">{pillar.body}</p>
+              <h3 className="font-serif text-xl font-extrabold text-slate-900 dark:text-slate-100">{pillar.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{pillar.body}</p>
             </article>
           ))}
         </div>
@@ -181,22 +214,22 @@ export default function JobsEmployers() {
       {/* OPERATIONAL EXCELLENCE (Pattern B: Soft Contrast) */}
       <Section pattern="soft">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-block rounded-full bg-white dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
+          <span className="sir-tag">
             Operational excellence
           </span>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-neutral-heading dark:text-slate-50 sm:text-4xl">
+          <h2 className="mt-3 font-serif text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl">
             Quality assurance embedded in every delivery
           </h2>
         </div>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-3">
+        <div className="mt-10 grid gap-6 sm:grid-cols-3">
           {qualityPillars.map((pillar) => (
             <article
               key={pillar.title}
-              className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
+              className="sir-card p-6"
             >
-              <h3 className="font-display text-xl font-semibold text-neutral-heading dark:text-slate-100">{pillar.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-neutral-body dark:text-slate-300">{pillar.body}</p>
+              <h3 className="font-serif text-xl font-extrabold text-slate-900 dark:text-slate-100">{pillar.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{pillar.body}</p>
             </article>
           ))}
         </div>
@@ -204,47 +237,51 @@ export default function JobsEmployers() {
 
       {/* PARTNERSHIP MODELS (Pattern A: Canvas) */}
       <Section pattern="canvas">
-        <div className="rounded-2xl border border-neutral-border dark:border-slate-700 bg-brand-50/50 dark:bg-slate-800/50 p-6 shadow-sm sm:p-8 lg:p-10">
-          <span className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+        <div className="sir-card-accent p-6 sm:p-8 lg:p-10">
+          <span className="sir-tag">
             Flexible partnership models
           </span>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-neutral-heading dark:text-slate-50 sm:text-4xl">
+          <h2 className="mt-3 font-serif text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl">
             Adaptable engagement, transparent accountability
           </h2>
-          <p className="mt-4 max-w-3xl text-base leading-relaxed text-neutral-body dark:text-slate-300">
-            Choose the model that matches your stage and goals. Every model is
-            supported by KPI reporting, delivery supervision, and transparent
-            monthly billing.
-          </p>
+          <div className="sir-callout-border !my-3">
+            <p className="max-w-3xl text-base leading-relaxed text-slate-700 dark:text-slate-300 font-medium">
+              Choose the model that matches your stage and goals. Every model is
+              supported by KPI reporting, delivery supervision, and transparent
+              monthly billing.
+            </p>
+          </div>
 
-          <div className="mt-8 grid gap-6 lg:grid-cols-4">
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {partnershipModels.map((model) => (
               <article
                 key={model.title}
-                className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm"
+                className="sir-card p-5"
               >
-                <h3 className="font-display text-lg font-semibold text-neutral-heading dark:text-slate-100">
+                <h3 className="font-serif text-lg font-extrabold text-slate-900 dark:text-slate-100">
                   {model.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-neutral-body dark:text-slate-300">
+                <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
                   {model.body}
                 </p>
               </article>
             ))}
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-wrap gap-4">
             <Link
               to="/jobs/opportunities"
-              className="inline-flex items-center rounded-lg bg-brand-600 dark:bg-brand-500 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-700 dark:hover:bg-brand-400"
+              className="sir-btn-primary py-3 px-6 text-sm"
             >
-              View services and pricing
+              <span>View Services and Pricing</span>
+              <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
             </Link>
             <Link
               to="/contact"
-              className="inline-flex items-center rounded-lg border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 px-5 py-3 text-sm font-semibold text-neutral-heading dark:text-slate-100 transition hover:border-brand-600 dark:hover:border-brand-400 hover:text-brand-600 dark:hover:text-brand-400"
+              className="sir-btn-secondary py-3 px-6 text-sm"
             >
-              Book a discovery call
+              <span>Book a Discovery Call</span>
+              <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
             </Link>
           </div>
         </div>
@@ -252,3 +289,4 @@ export default function JobsEmployers() {
     </JobsShell>
   );
 }
+

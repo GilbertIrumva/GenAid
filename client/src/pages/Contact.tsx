@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Section from "@/components/Section";
 import SmartImage from "@/components/SmartImage";
@@ -7,6 +8,7 @@ import { SITE } from "@/data/site";
 
 const subjects = [
   "General enquiry",
+  "Talent Request / Hiring",
   "Partnership",
   "Donation question",
   "Volunteer",
@@ -55,18 +57,37 @@ interface FieldErrors {
 
 export default function Contact() {
   const { t } = useTranslation();
+  const [searchParams] = useSearchParams();
+
   useSEO({
     title: "Contact",
     description:
-      "Get in touch with Generation Aid — partnerships, donations, volunteering, or media enquiries.",
+      "Get in touch with Generation Aid — talent requests, partnerships, donations, volunteering, or media enquiries.",
   });
+
+  const initialSubject = searchParams.get("subject") || "General enquiry";
+  const matchedSubject = subjects.find(
+    (s) => s.toLowerCase() === initialSubject.toLowerCase() || (initialSubject.includes("Talent") && s.includes("Talent"))
+  ) || "General enquiry";
 
   const [form, setForm] = useState({
     name: "",
     email: "",
-    subject: subjects[0],
+    subject: matchedSubject,
     message: "",
   });
+
+  useEffect(() => {
+    const subjParam = searchParams.get("subject");
+    if (subjParam) {
+      const match = subjects.find(
+        (s) => s.toLowerCase() === subjParam.toLowerCase() || (subjParam.includes("Talent") && s.includes("Talent"))
+      );
+      if (match) {
+        setForm((f) => ({ ...f, subject: match }));
+      }
+    }
+  }, [searchParams]);
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
     "idle",
   );
@@ -142,7 +163,7 @@ export default function Contact() {
             <h1 className="mt-4 text-4xl font-bold leading-tight sm:text-5xl !text-white dark:!text-white">
               {t("contact.hero.titleAlt")}
             </h1>
-            <p className="mt-5 max-w-xl text-lg text-brand-100">
+            <p className="mt-5 max-w-xl text-lg text-white">
               {t("contact.hero.subtitleAlt")}
             </p>
           </div>

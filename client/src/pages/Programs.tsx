@@ -77,7 +77,7 @@ export default function Programs() {
             <h1 className="mt-4 text-4xl font-bold leading-tight sm:text-5xl !text-white dark:!text-white">
               {t("programs.hero.title", "Refugee-Led Education & Livelihood Programs")}
             </h1>
-            <p className="mt-5 max-w-xl text-lg text-brand-100">
+            <p className="mt-5 max-w-xl text-lg text-white">
               {t("programs.hero.subtitle", "Building practical digital, language, and vocational skills to unlock self-reliance.")}
             </p>
           </div>
@@ -553,10 +553,10 @@ export default function Programs() {
       {/* CTA (Pattern C: Neutral Dark Impact Surface) */}
       <Section pattern="impact">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-bold sm:text-4xl text-white">
+          <h2 className="text-3xl font-bold sm:text-4xl !text-white">
             {t("programs.cta.title")}
           </h2>
-          <p className="mt-3 text-slate-300">{t("programs.cta.subtitle")}</p>
+          <p className="mt-3 text-white">{t("programs.cta.subtitle")}</p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <a
               href={SITE.donateUrl}

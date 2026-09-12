@@ -62,7 +62,7 @@ export default function Volunteer() {
             <h1 className="mt-4 text-4xl font-bold leading-tight sm:text-5xl !text-white dark:!text-white">
               Become a Volunteer & Intern
             </h1>
-            <p className="mt-5 max-w-2xl text-lg text-brand-100 dark:text-slate-200">
+            <p className="mt-5 max-w-2xl text-lg text-white">
               Together we can restore hope and dignity to young refugee youth while building practical educational and employment pathways.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -260,10 +260,10 @@ export default function Volunteer() {
 
           {/* APPLICATION CTAS */}
           <div className="mt-12 rounded-2xl border border-brand-200 dark:border-slate-700 bg-brand-600 dark:bg-slate-950 p-8 text-center text-white shadow-md">
-            <h3 className="font-display text-2xl font-bold text-white sm:text-3xl">
+            <h3 className="font-display text-2xl font-bold !text-white sm:text-3xl">
               Ready to Make a Difference?
             </h3>
-            <p className="mt-3 text-sm text-brand-100 dark:text-slate-300 max-w-xl mx-auto">
+            <p className="mt-3 text-sm text-white max-w-xl mx-auto">
               Before applying, please read the full program description, then submit your application via Google Forms. We can’t wait to receive your application!
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-3">

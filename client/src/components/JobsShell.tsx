@@ -1,7 +1,4 @@
 import type { ReactNode } from "react";
-import { useQuery } from "@tanstack/react-query";
-import SmartImage from "@/components/SmartImage";
-import { getJobsContent } from "@/lib/sanity";
 
 interface JobsShellProps {
   title: string;
@@ -16,33 +13,20 @@ export default function JobsShell({
   eyebrow = "Generation Jobs",
   children,
 }: JobsShellProps) {
-  const { data: jobsContent } = useQuery({
-    queryKey: ["jobs", "sanity", "content"],
-    queryFn: getJobsContent,
-    staleTime: 1000 * 60 * 5,
-  });
 
   return (
     <>
-      <section className="border-b border-neutral-border dark:border-slate-800 bg-white dark:bg-slate-900 transition-colors">
+      <section className="border-b border-blue-100 dark:border-blue-900 bg-brand-50/40 dark:bg-blue-950/60 sir-hero-bg transition-colors py-4">
         <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-4">
-            <div className="h-14 w-14 shrink-0 overflow-hidden rounded-2xl border border-neutral-border dark:border-slate-700 bg-brand-600 dark:bg-brand-500 p-0.5 shadow-sm">
-              <SmartImage
-                src={jobsContent?.jobsLogo || "/img/site/generation-jobs-mark.svg"}
-                alt="Generation Jobs logo"
-                className="h-full w-full object-cover"
-                fallbackLabel="Jobs"
-              />
-            </div>
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-600 dark:text-brand-400">
-                {eyebrow}
-              </p>
-              <h1 className="mt-1 text-2xl font-bold tracking-tight text-neutral-heading dark:text-slate-50 sm:text-3xl">
-                {title}
-              </h1>
-              <p className="mt-1 max-w-2xl text-sm leading-6 text-neutral-body dark:text-slate-300 sm:text-base">
+          <div>
+            <span className="sir-tag text-[10px]">
+              {eyebrow}
+            </span>
+            <h1 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 font-serif">
+              {title}
+            </h1>
+            <div className="sir-callout-border !my-2 !py-0 !pl-4">
+              <p className="text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-300 font-medium">
                 {subtitle}
               </p>
             </div>
@@ -50,7 +34,10 @@ export default function JobsShell({
         </div>
       </section>
 
+
       {children}
     </>
   );
 }
+
+

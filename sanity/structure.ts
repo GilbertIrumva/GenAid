@@ -13,12 +13,6 @@ export const structure: StructureResolver = (S) =>
             .documentId("jobsContent")
             .title("Generation Jobs Content & Imagery")
         ),
-      S.listItem()
-        .title("👨‍💼 Talent Profiles")
-        .child(S.documentTypeList("talentProfile").title("Talent Profiles")),
-      S.listItem()
-        .title("📥 Placement Requests")
-        .child(S.documentTypeList("placementRequest").title("Placement Requests")),
 
       S.divider(),
 

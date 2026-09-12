@@ -22,43 +22,16 @@ export const partners: Partner[] = [
     description:
       "Long-standing collaboration on protection, education access and refugee-led programming inside the Kakuma camp.",
     url: "https://www.unhcr.org/",
-    logo: "https://www.google.com/s2/favicons?domain=unhcr.org&sz=128",
+    logo: "/UN HCR.png",
   },
   {
     key: "globalgiving",
-    name: "GlobalGiving",
+    name: "Global Giving",
     category: "Funding",
     description:
       "Our primary international donation platform — providing the rails for individual giving and corporate matching campaigns.",
     url: "https://www.globalgiving.org/",
-    logo: "https://www.google.com/s2/favicons?domain=globalgiving.org&sz=128",
-  },
-  {
-    key: "refugepoint",
-    name: "RefugePoint",
-    category: "Implementation",
-    description:
-      "Implementing partner on durable solutions, livelihoods training and resettlement-ready skills programmes.",
-    url: "https://www.refugepoint.org/",
-    logo: "https://www.google.com/s2/favicons?domain=refugepoint.org&sz=128",
-  },
-  {
-    key: "salesforce",
-    name: "Salesforce.org",
-    category: "Corporate",
-    description:
-      "Technology partner — providing the CRM backbone for our beneficiary tracking, alumni engagement and donor stewardship.",
-    url: "https://www.salesforce.org/",
-    logo: "https://www.google.com/s2/favicons?domain=salesforce.com&sz=128",
-  },
-  {
-    key: "lwf",
-    name: "Lutheran World Federation",
-    category: "Implementation",
-    description:
-      "Joint delivery of education programming and shared infrastructure across the Kalobeyei integrated settlement.",
-    url: "https://www.lutheranworld.org/",
-    logo: "https://www.google.com/s2/favicons?domain=lutheranworld.org&sz=128",
+    logo: "/GlobalGiving-logo.png",
   },
   {
     key: "konexio",
@@ -67,16 +40,88 @@ export const partners: Partner[] = [
     description:
       "Pan-African network partner connecting refugee-led organisations with digital-skills curricula, mentorship and cross-border learning exchanges.",
     url: "https://www.konexio.eu/",
-    logo: "https://www.google.com/s2/favicons?domain=konexio.eu&sz=128",
+    logo: "/konexio.png",
   },
   {
-    key: "turkana",
-    name: "Turkana County Government",
+    key: "refugepoint",
+    name: "Refugee Point",
+    category: "Implementation",
+    description:
+      "Implementing partner on durable solutions, livelihoods training and resettlement-ready skills programmes.",
+    url: "https://www.refugepoint.org/",
+    logo: "/refugee point.png",
+  },
+  {
+    key: "svcf",
+    name: "Silicon Valley Community Foundation",
+    category: "Funding",
+    description:
+      "Philanthropic partner supporting community-driven solutions, capacity building and economic inclusion initiatives.",
+    url: "https://www.siliconvalleycf.org/",
+    logo: "/SVCF.png",
+  },
+  {
+    key: "stem-access",
+    name: "Stem Access Foundation",
     category: "Strategic",
     description:
-      "Host-community engagement, business permits and joint youth-employment initiatives across Turkana West.",
-    url: "https://www.turkana.go.ke/",
-    logo: "https://www.google.com/s2/favicons?domain=turkana.go.ke&sz=128",
+      "Advancing science, technology, engineering and math education and digital pathways for underserved refugee youth.",
+    url: "https://stemaccessfoundation.org/",
+    logo: "/Stem Access.png",
+  },
+  {
+    key: "tawingo",
+    name: "Tawingo Fund",
+    category: "Funding",
+    description:
+      "Catalytic grantmaker and philanthropic partner empowering grassroots community development and resilience.",
+    url: "https://tawingofund.org/",
+    logo: "/Tawingo.jpeg",
+  },
+  {
+    key: "mama-hope",
+    name: "MAMA Hope",
+    category: "Strategic",
+    description:
+      "Global advocate and partner championing community-led development, self-reliance and sustainable local leadership.",
+    url: "https://www.mamahope.org/",
+    logo: "/mama hope.jpeg",
+  },
+  {
+    key: "accountability-lab",
+    name: "Accountability Lab",
+    category: "Implementation",
+    description:
+      "Partner in fostering integrity, good governance, youth civic engagement and transparent accountability practices.",
+    url: "https://accountabilitylab.org/",
+    logo: "/Accountability Lab.jpeg",
+  },
+  {
+    key: "close-the-gap",
+    name: "Close the Gap",
+    category: "Corporate",
+    description:
+      "Social enterprise bridging the digital divide by providing quality refurbished IT equipment and digital infrastructure.",
+    url: "https://www.close-the-gap.org/",
+    logo: "/Close-the-gap.png",
+  },
+  {
+    key: "icdl",
+    name: "ICDL",
+    category: "Strategic",
+    description:
+      "International certification body delivering globally recognized digital skills standards and workforce readiness.",
+    url: "https://icdl.org/",
+    logo: "/ICDL.png",
+  },
+  {
+    key: "my-little-zen",
+    name: "My Little Zen",
+    category: "Funding",
+    description:
+      "Dedicated partner advancing mental health, wellbeing and creative empowerment for youth and vulnerable communities.",
+    url: "https://mylittlezen.com/",
+    logo: "/My little zen.jpeg",
   },
 ];
 

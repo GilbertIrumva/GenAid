@@ -83,7 +83,7 @@ export default function ProgramDetail() {
           <div className="max-w-2xl text-white">
             <Link
               to="/programs"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-brand-100 transition hover:text-white"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-white transition hover:underline"
             >
               {t("programDetail.backToPrograms")}
             </Link>
@@ -209,10 +209,10 @@ export default function ProgramDetail() {
       {/* CTA (Pattern C: Neutral Dark Impact Surface) */}
       <Section pattern="impact">
         <div className="mx-auto flex max-w-4xl flex-col items-center gap-4 text-center">
-          <h2 className="font-display text-2xl font-bold sm:text-3xl text-white">
+          <h2 className="font-display text-2xl font-bold sm:text-3xl !text-white">
             {t("programDetail.ctaTitle")}
           </h2>
-          <p className="max-w-xl text-sm text-slate-300">
+          <p className="max-w-xl text-sm text-white">
             {t("programDetail.ctaSubtitle")}
           </p>
           <div className="mt-4 flex flex-wrap justify-center gap-3">

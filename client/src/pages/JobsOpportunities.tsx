@@ -58,10 +58,12 @@ export default function JobsOpportunities() {
     >
       {/* PACKAGES (Pattern A: Canvas) */}
       <Section pattern="canvas">
-        <div className="mb-6 rounded-xl border border-neutral-border dark:border-slate-700 bg-brand-50/50 dark:bg-slate-800/50 p-4 text-sm text-neutral-body dark:text-slate-300 shadow-sm">
-          Choose the service package that fits your needs. Start with a 2-month
-          trial at $150/month, then continue at $399/month. No hidden fees,
-          cancel anytime.
+        <div className="sir-callout-border mb-6">
+          <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 font-medium">
+            Choose the service package that fits your needs. Start with a 2-month
+            trial at $150/month, then continue at $399/month. No hidden fees,
+            cancel anytime.
+          </p>
         </div>
 
         <div className="mb-8 flex flex-wrap items-center gap-2">
@@ -72,8 +74,8 @@ export default function JobsOpportunities() {
               onClick={() => setActiveFilter(filter)}
               className={
                 activeFilter === filter
-                  ? "rounded-full border border-brand-600 dark:border-brand-500 bg-brand-600 dark:bg-brand-500 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white shadow-sm"
-                  : "rounded-full border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-neutral-heading dark:text-slate-200 hover:border-brand-600 dark:hover:border-brand-400 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-brand-50 dark:hover:bg-slate-700"
+                  ? "rounded-full bg-brand-600 dark:bg-brand-500 px-4 py-2 text-xs font-extrabold uppercase tracking-wider text-white shadow-sm"
+                  : "rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-2 text-xs font-extrabold uppercase tracking-wider text-slate-700 dark:text-slate-300 hover:border-brand-600 dark:hover:border-brand-400 hover:text-brand-600 dark:hover:text-brand-400"
               }
             >
               {filter}
@@ -85,22 +87,22 @@ export default function JobsOpportunities() {
           {packages.map((pkg) => (
             <article
               key={pkg.slug}
-              className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md flex flex-col justify-between"
+              className="sir-card-accent p-6 flex flex-col justify-between"
             >
               <div>
-                <span className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+                <span className="sir-tag">
                   {pkg.category}
                 </span>
-                <h2 className="mt-3 font-display text-2xl font-semibold text-neutral-heading dark:text-slate-100">
+                <h2 className="mt-3 font-serif text-2xl font-extrabold text-slate-900 dark:text-slate-100">
                   {pkg.title}
                 </h2>
-                <p className="mt-3 text-sm leading-relaxed text-neutral-body dark:text-slate-300">
+                <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
                   {pkg.description}
                 </p>
-                <ul className="mt-4 space-y-2 text-sm text-neutral-body dark:text-slate-300">
+                <ul className="mt-4 space-y-2 text-sm text-slate-700 dark:text-slate-300 font-medium">
                   {pkg.deliverables.map((item) => (
                     <li key={item} className="flex items-start gap-2">
-                      <span className="mt-2 h-1.5 w-1.5 rounded-full bg-brand-600 dark:bg-brand-400" />
+                      <span className="mt-2 h-1.5 w-1.5 rounded-full bg-brand-600 dark:bg-brand-400 shrink-0" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -108,27 +110,27 @@ export default function JobsOpportunities() {
               </div>
 
               <div>
-                <div className="mt-6 rounded-xl border border-neutral-border dark:border-slate-700 bg-brand-50/50 dark:bg-slate-900/50 p-4">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+                <div className="mt-6 rounded-xl border border-blue-100 dark:border-slate-800 bg-brand-50/60 dark:bg-slate-950/60 p-4">
+                  <p className="text-xs font-extrabold uppercase tracking-wider text-brand-600 dark:text-brand-400">
                     Pricing
                   </p>
-                  <p className="mt-2 text-sm text-neutral-body dark:text-slate-300">
+                  <p className="mt-2 text-sm text-slate-700 dark:text-slate-300 font-medium">
                     Pilot:{" "}
-                    <span className="font-semibold text-neutral-heading dark:text-slate-100">
+                    <span className="font-extrabold text-slate-900 dark:text-slate-100">
                       ${pkg.trialPrice}/month
                     </span>{" "}
                     for the first two months
                   </p>
-                  <p className="mt-1 text-sm text-neutral-body dark:text-slate-300">
+                  <p className="mt-1 text-sm text-slate-700 dark:text-slate-300 font-medium">
                     Standard:{" "}
-                    <span className="font-semibold text-neutral-heading dark:text-slate-100">
+                    <span className="font-extrabold text-slate-900 dark:text-slate-100">
                       ${pkg.monthlyPrice}/month
                     </span>{" "}
                     after pilot
                   </p>
                 </div>
 
-                <p className="mt-4 text-sm font-medium text-neutral-heading dark:text-slate-200">
+                <p className="mt-4 text-sm font-extrabold text-slate-900 dark:text-slate-200">
                   Impact: {pkg.impact}
                 </p>
               </div>
@@ -137,60 +139,69 @@ export default function JobsOpportunities() {
         </div>
 
         {packages.length === 0 && (
-          <div className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-8 text-center text-neutral-body dark:text-slate-400 shadow-sm">
+          <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 text-center text-slate-500 shadow-sm">
             No packages match this filter yet.
           </div>
         )}
       </Section>
 
-      {/* ROADMAP (Pattern B: Soft Contrast) */}
-      <Section pattern="soft">
-        <div className="rounded-2xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm sm:p-8 lg:p-10">
-          <span className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-            Your 3-week roadmap
-          </span>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-neutral-heading dark:text-slate-50 sm:text-4xl">
-            Start your impact journey with us
-          </h2>
+      {/* ROADMAP (White background with blue container card) */}
+      <section className="relative isolate overflow-hidden bg-white dark:bg-slate-900 py-16 sm:py-20 transition-colors border-t border-slate-200 dark:border-slate-800">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="rounded-3xl bg-brand-600 dark:bg-brand-900 p-6 sm:p-8 lg:p-12 border border-brand-700 shadow-2xl text-white">
+            <span className="inline-block rounded-md bg-white/20 px-3.5 py-1 text-xs font-extrabold uppercase tracking-widest text-white border border-white/30 backdrop-blur-sm">
+              Your 3-week roadmap
+            </span>
+            <h2 className="mt-4 font-serif text-3xl font-extrabold tracking-tight !text-white dark:!text-white sm:text-4xl lg:text-5xl">
+              Start your impact journey with us
+            </h2>
 
-          <div className="mt-8 grid gap-6 lg:grid-cols-3">
-            {roadmap.map((item) => (
-              <article
-                key={item.week}
-                className="rounded-xl border border-neutral-border dark:border-slate-700 bg-brand-50/50 dark:bg-slate-900/50 p-5"
+            <div className="mt-10 grid gap-6 sm:grid-cols-3">
+              {roadmap.map((item) => (
+                <article
+                  key={item.week}
+                  className="relative rounded-2xl bg-white text-slate-900 p-6 sm:p-8 shadow-xl border border-white flex flex-col justify-between"
+                >
+                  <div>
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-extrabold uppercase tracking-widest text-brand-700 bg-brand-50 border border-brand-200">
+                      {item.week}
+                    </span>
+                    <h3 className="mt-4 font-serif text-xl font-extrabold text-slate-900">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-slate-600 font-medium">
+                      {item.body}
+                    </p>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <div className="mt-10 flex flex-wrap items-center gap-4">
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 text-xs font-extrabold uppercase tracking-wider text-brand-700 shadow-md transition hover:bg-brand-50 hover:text-brand-800"
               >
-                <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-                  {item.week}
-                </p>
-                <h3 className="mt-2 font-display text-lg font-semibold text-neutral-heading dark:text-slate-100">
-                  {item.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-neutral-body dark:text-slate-300">{item.body}</p>
-              </article>
-            ))}
-          </div>
+                <span>Start Pilot</span>
+                <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+              </Link>
+              <Link
+                to="/jobs/employers"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/70 bg-white/10 px-6 py-3.5 text-xs font-extrabold uppercase tracking-wider text-white backdrop-blur-sm transition hover:bg-white hover:text-brand-800"
+              >
+                <span>Review Employer Model</span>
+                <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+              </Link>
+            </div>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              to="/contact"
-              className="inline-flex items-center rounded-lg bg-brand-600 dark:bg-brand-500 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-700 dark:hover:bg-brand-400"
-            >
-              Start pilot
-            </Link>
-            <Link
-              to="/jobs/employers"
-              className="inline-flex items-center rounded-lg border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-900 px-5 py-3 text-sm font-semibold text-neutral-heading dark:text-slate-100 transition hover:border-brand-600 dark:hover:border-brand-400 hover:text-brand-600 dark:hover:text-brand-400"
-            >
-              Review employer model
-            </Link>
+            <p className="mt-6 text-sm font-medium text-white">
+              Hiring refugee talent through Generation Jobs is a strategic
+              impact-sourcing investment powered by Generation Aid training.
+            </p>
           </div>
-
-          <p className="mt-4 text-sm font-medium text-neutral-body dark:text-slate-400">
-            Hiring refugee talent through Generation Jobs is a strategic
-            impact-sourcing investment powered by Generation Aid training.
-          </p>
         </div>
-      </Section>
+      </section>
     </JobsShell>
   );
 }
+

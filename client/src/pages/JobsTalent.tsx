@@ -3,12 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import Section from "@/components/Section";
 import JobsShell from "@/components/JobsShell";
 import SmartImage from "@/components/SmartImage";
-import { talentProfiles as fallbackProfiles } from "@/data/talentProfiles";
-import {
-  getTalentProfiles,
-  getJobsContent,
-  mapSanityTalentProfileToRecord,
-} from "@/lib/sanity";
+import { getJobsContent } from "@/lib/sanity";
 import { useSEO } from "@/utils/useSEO";
 
 const profilePillars = [
@@ -56,22 +51,11 @@ export default function JobsTalent() {
       "See how Generation Aid training, vetting, and support produce multilingual, remote-ready professionals through Generation Jobs.",
   });
 
-  const { data: sanityProfiles = [] } = useQuery({
-    queryKey: ["jobs", "sanity", "talent-profiles"],
-    queryFn: getTalentProfiles,
-    retry: false,
-  });
-
   const { data: jobsContent } = useQuery({
     queryKey: ["sanity", "jobs-content"],
     queryFn: getJobsContent,
     retry: false,
   });
-
-  const profiles =
-    sanityProfiles.length > 0
-      ? sanityProfiles.map(mapSanityTalentProfileToRecord)
-      : fallbackProfiles;
 
   return (
     <JobsShell
@@ -81,47 +65,88 @@ export default function JobsTalent() {
     >
       {/* PROFILE PILLARS (Pattern A: Canvas) */}
       <Section pattern="canvas">
-        <div className="grid gap-6 lg:grid-cols-2">
-          {profilePillars.map((pillar) => (
-            <article
-              key={pillar.title}
-              className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
-            >
-              <h2 className="font-display text-xl font-semibold text-neutral-heading dark:text-slate-100">{pillar.title}</h2>
-              <p className="mt-3 text-sm leading-relaxed text-neutral-body dark:text-slate-300">{pillar.body}</p>
-            </article>
-          ))}
+        <div className="grid gap-8 lg:grid-cols-2 items-center">
+          <div className="space-y-6">
+            <span className="sir-tag">
+              Profile Pillars
+            </span>
+            <h2 className="font-serif text-3xl font-extrabold text-slate-900 dark:text-slate-50 sm:text-4xl">
+              Vetted digital professionals built for global delivery
+            </h2>
+            <div className="sir-callout-border !my-3">
+              <p className="text-base leading-relaxed text-slate-700 dark:text-slate-300 font-medium">
+                Our talent pool in Kakuma is equipped with multilingual communication, technical proficiency, and high commitment to long-term operational success.
+              </p>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {profilePillars.map((pillar) => (
+                <article
+                  key={pillar.title}
+                  className="sir-card-accent p-5"
+                >
+                  <h3 className="font-serif text-lg font-bold text-slate-900 dark:text-slate-100">{pillar.title}</h3>
+                  <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-300">{pillar.body}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-md aspect-[4/3] group">
+              <SmartImage
+                src="/remote employee.webp"
+                alt="Generation Jobs remote digital professional at workstation"
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm aspect-video group">
+                <SmartImage
+                  src="/digital class.jpeg"
+                  alt="Digital training classroom session in Kakuma"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm aspect-video group">
+                <SmartImage
+                  src="/Gradutes.webp"
+                  alt="Generation Aid graduates with certificates"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </Section>
 
       {/* THE TALENT JOURNEY (Pattern B: Soft Contrast) */}
       <Section pattern="soft">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-block rounded-full bg-white dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
+          <span className="sir-tag">
             The talent journey
           </span>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-neutral-heading dark:text-slate-50 sm:text-4xl">
+          <h2 className="mt-3 font-serif text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl">
             Training and vetting for global standards
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-neutral-body dark:text-slate-300">
+          <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-slate-300">
             A robust four-step flow that converts dedicated learners into
             professionals prepared for immediate contribution.
           </p>
         </div>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-4">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {journey.map((step, index) => (
             <article
               key={step.title}
-              className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
+              className="sir-card p-6 border-t-4 border-t-brand-600 dark:border-t-brand-500"
             >
-              <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+              <span className="sir-tag">
                 Step {index + 1}
-              </p>
-              <h3 className="mt-3 font-display text-xl font-semibold text-neutral-heading dark:text-slate-100">
+              </span>
+              <h3 className="mt-3 font-serif text-xl font-extrabold text-slate-900 dark:text-slate-100">
                 {step.title}
               </h3>
-              <p className="mt-3 text-sm leading-relaxed text-neutral-body dark:text-slate-300">{step.body}</p>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{step.body}</p>
             </article>
           ))}
         </div>
@@ -129,90 +154,90 @@ export default function JobsTalent() {
 
       {/* LEADERSHIP (Pattern A: Canvas) */}
       <Section pattern="canvas">
-        <div className="grid gap-6 rounded-2xl border border-neutral-border dark:border-slate-700 bg-brand-50/50 dark:bg-slate-800/50 p-6 shadow-sm sm:p-8 lg:grid-cols-[1.1fr_0.9fr] lg:p-10">
+        <div className="sir-card-accent p-6 sm:p-8 lg:p-10 lg:grid-cols-[1.1fr_0.9fr] grid gap-8 items-center">
           <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+            <span className="sir-tag">
               Youth-refugee-led leadership
             </span>
-            <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-neutral-heading dark:text-slate-50 sm:text-4xl">
+            <h2 className="mt-3 font-serif text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl">
               Rooted in Kakuma, built for global collaboration.
             </h2>
-            <p className="mt-4 max-w-2xl text-base leading-relaxed text-neutral-body dark:text-slate-300">
-              Founded in Kakuma by refugee leader Hubert Senga, Generation Aid
-              and Generation Jobs combine local trust, authentic leadership, and
-              global execution standards.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
+            <div className="sir-callout-border !my-3">
+              <p className="max-w-2xl text-base leading-relaxed text-slate-700 dark:text-slate-300 font-medium">
+                Founded in Kakuma by refugee leader Hubert Senga, Generation Aid
+                and Generation Jobs combine local trust, authentic leadership, and
+                global execution standards.
+              </p>
+            </div>
+            <div className="mt-6 flex flex-wrap gap-4">
               <Link
                 to="/jobs/employers"
-                className="inline-flex items-center rounded-lg bg-brand-600 dark:bg-brand-500 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-700 dark:hover:bg-brand-400"
+                className="sir-btn-primary py-3 px-6 text-sm"
               >
-                See employer value
+                <span>See Employer Value</span>
+                <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
               </Link>
               <Link
                 to="/about"
-                className="inline-flex items-center rounded-lg border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 px-5 py-3 text-sm font-semibold text-neutral-heading dark:text-slate-100 transition hover:border-brand-600 dark:hover:border-brand-400 hover:text-brand-600 dark:hover:text-brand-400"
+                className="sir-btn-secondary py-3 px-6 text-sm"
               >
-                About Generation Aid
+                <span>About Generation Aid</span>
+                <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
               </Link>
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm aspect-[4/3] relative">
+          <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-md aspect-[4/3] relative group">
             <SmartImage
               src={jobsContent?.leadershipImage || "/hubert.jpg"}
               alt="Hubert Senga — Founder and Refugee Leader"
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
           </div>
         </div>
       </Section>
 
-      {/* SAMPLE TALENT PROFILES (Pattern B: Soft Contrast) */}
+      {/* TALENT MATCHING MODEL & REQUEST CTA (Pattern B: Soft Contrast) */}
       <Section pattern="soft">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-block rounded-full bg-white dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
-            User profiles
+          <span className="sir-tag">
+            Talent Sourcing & Placement
           </span>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-neutral-heading dark:text-slate-50 sm:text-4xl">
-            Sample talent profiles
+          <h2 className="mt-3 font-serif text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl">
+            Custom Talent Matching for Your Business
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-neutral-body dark:text-slate-300">
-            View profile pages for candidates currently in the Generation Jobs
-            placement pipeline.
+          <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-slate-300">
+            Generation Aid maintains a managed internal database of trained, vetted refugee professionals.
+            Tell us what skills you need, and our team will match qualified candidates tailored to your requirements.
           </p>
         </div>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-3">
-          {profiles.map((profile) => (
-            <article
-              key={profile.slug}
-              className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md flex flex-col justify-between"
+        <div className="mt-10 sir-card-accent p-8 text-center max-w-3xl mx-auto">
+          <h3 className="font-serif text-2xl font-extrabold text-slate-900 dark:text-slate-100">
+            Ready to hire trained digital talent?
+          </h3>
+          <p className="mt-3 text-sm sm:text-base leading-relaxed text-slate-600 dark:text-slate-300">
+            Submit a talent request with your role requirements, team size, and timeline. Our team will review our database and connect with you to discuss candidate placement.
+          </p>
+          <div className="mt-6 flex flex-wrap justify-center gap-4">
+            <Link
+              to="/contact?subject=Talent+Request"
+              className="sir-btn-primary py-3.5 px-6 text-sm"
             >
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-                  {profile.readiness}
-                </p>
-                <h3 className="mt-3 font-display text-xl font-semibold text-neutral-heading dark:text-slate-100">
-                  {profile.name}
-                </h3>
-                <p className="mt-1 text-sm font-medium text-neutral-heading/80 dark:text-slate-300">
-                  {profile.title}
-                </p>
-                <p className="mt-3 text-sm leading-relaxed text-neutral-body dark:text-slate-300">
-                  {profile.location}
-                </p>
-              </div>
-              <Link
-                to={`/jobs/talent/${profile.slug}`}
-                className="mt-5 inline-flex items-center text-sm font-semibold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 hover:underline underline-offset-4"
-              >
-                Open profile →
-              </Link>
-            </article>
-          ))}
+              <span>Submit Talent Request</span>
+              <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+            </Link>
+            <Link
+              to="/jobs/employers"
+              className="sir-btn-secondary py-3 px-6 text-sm"
+            >
+              <span>For Employers</span>
+              <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+            </Link>
+          </div>
         </div>
       </Section>
     </JobsShell>
   );
 }
+

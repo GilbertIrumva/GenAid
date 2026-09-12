@@ -179,7 +179,7 @@ export default function Impact() {
               {t("impact.hero.titleHighlight")}
             </span>
           </h1>
-          <p className="mt-5 max-w-2xl text-base text-brand-100 sm:text-lg">
+          <p className="mt-5 max-w-2xl text-base text-white sm:text-lg">
             {t("impact.hero.subtitle")}
           </p>
         </div>
@@ -225,10 +225,10 @@ export default function Impact() {
           <span className="inline-block rounded-full bg-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white backdrop-blur">
             {t("impact.outcomesEyebrow")}
           </span>
-          <h2 className="mt-4 font-display text-3xl font-bold text-white sm:text-4xl">
+          <h2 className="mt-4 font-display text-3xl font-bold !text-white sm:text-4xl">
             {t("impact.outcomesTitle")}
           </h2>
-          <p className="mt-4 text-base text-brand-100 dark:text-slate-300">
+          <p className="mt-4 text-base text-white">
             {t("impact.outcomesSubtitle")}
           </p>
         </div>
@@ -288,10 +288,10 @@ export default function Impact() {
           <span className="inline-block rounded-full bg-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white backdrop-blur">
             {t("impact.journeyEyebrow")}
           </span>
-          <h2 className="mt-4 font-display text-3xl font-bold text-white sm:text-4xl">
+          <h2 className="mt-4 font-display text-3xl font-bold !text-white sm:text-4xl">
             {t("impact.journeyTitle")}
           </h2>
-          <p className="mt-4 text-base text-brand-100 dark:text-slate-300">
+          <p className="mt-4 text-base text-white">
             {t("impact.journeySubtitle")}
           </p>
         </div>
@@ -305,13 +305,13 @@ export default function Impact() {
               >
                 ●
               </span>
-              <p className="text-xs font-extrabold uppercase tracking-wider text-cyan-300 dark:text-brand-400">
+              <p className="text-xs font-extrabold uppercase tracking-wider text-white">
                 {t.year}
               </p>
-              <h3 className="mt-1 font-display text-xl font-bold text-white">
+              <h3 className="mt-1 font-display text-xl font-bold !text-white">
                 {t.title}
               </h3>
-              <p className="mt-1 text-sm text-brand-100 dark:text-slate-300">{t.body}</p>
+              <p className="mt-1 text-sm text-white">{t.body}</p>
             </li>
           ))}
         </ol>
@@ -377,10 +377,10 @@ export default function Impact() {
       <Section pattern="impact">
         <div className="grid items-center gap-6 md:grid-cols-[1fr_auto]">
           <div>
-            <h2 className="font-display text-2xl font-bold sm:text-3xl text-white">
+            <h2 className="font-display text-2xl font-bold sm:text-3xl !text-white">
               {t("impact.ctaTitle")}
             </h2>
-            <p className="mt-2 max-w-xl text-sm text-slate-300">
+            <p className="mt-2 max-w-xl text-sm text-white">
               {t("impact.ctaSubtitle")}
             </p>
           </div>

@@ -101,44 +101,6 @@ export interface SanityReport {
   slug?: string;
 }
 
-export interface SanityTalentProfile {
-  _id: string;
-  name: string;
-  slug?: string;
-  title?: string;
-  location?: string;
-  languages?: string[];
-  expertise?: string[];
-  bio?: string;
-  readiness?: string;
-  image?: string;
-  order?: number;
-  active?: boolean;
-}
-
-export interface TalentProfileRecord {
-  _id: string;
-  slug: string;
-  name: string;
-  title: string;
-  location: string;
-  languages: string[];
-  expertise: string[];
-  bio: string;
-  readiness: string;
-  image?: string;
-}
-
-export interface PlacementRequestInput {
-  clientName: string;
-  clientEmail: string;
-  company?: string;
-  roleType?: string;
-  subject: string;
-  message: string;
-  talentProfileSlug: string;
-  talentProfileName?: string;
-}
 
 export interface DisplayPost {
   slug: string;
@@ -459,77 +421,6 @@ export async function getReports(): Promise<SanityReport[]> {
   }`);
 }
 
-export async function getTalentProfiles(): Promise<SanityTalentProfile[]> {
-  if (!sanityClient) return [];
-
-  return sanityClient.fetch<
-    SanityTalentProfile[]
-  >(`*[_type == "talentProfile" && active == true && defined(slug.current)] | order(coalesce(order, 9999) asc, name asc) {
-    _id,
-    name,
-    "slug": slug.current,
-    title,
-    location,
-    languages,
-    expertise,
-    bio,
-    readiness,
-    "image": coalesce(image.asset->url, ""),
-    order,
-    active
-  }`);
-}
-
-export async function getTalentProfileBySlug(
-  slug: string,
-): Promise<SanityTalentProfile | null> {
-  if (!sanityClient || !slug) return null;
-
-  return sanityClient.fetch<SanityTalentProfile | null>(
-    `*[_type == "talentProfile" && active == true && slug.current == $slug][0] {
-      _id,
-      name,
-      "slug": slug.current,
-      title,
-      location,
-      languages,
-      expertise,
-      bio,
-      readiness,
-      "image": coalesce(image.asset->url, ""),
-      order,
-      active
-    }`,
-    { slug },
-  );
-}
-
-export async function createPlacementRequest(
-  input: PlacementRequestInput,
-): Promise<{ _id: string }> {
-  const response = await fetch("/api/placement-requests", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(input),
-  });
-
-  const payload = (await response.json().catch(() => null)) as {
-    _id?: string;
-    error?: string;
-  } | null;
-
-  if (!response.ok) {
-    throw new Error(payload?.error || "Unable to submit request right now.");
-  }
-
-  if (!payload?._id) {
-    throw new Error("Unable to submit request right now.");
-  }
-
-  return { _id: payload._id };
-}
 
 export interface SanityJobsContent {
   _id?: string;
@@ -704,22 +595,6 @@ export function mapSanityReportToDisplayReport(
   };
 }
 
-export function mapSanityTalentProfileToRecord(
-  profile: SanityTalentProfile,
-): TalentProfileRecord {
-  return {
-    _id: profile._id,
-    slug: profile.slug ?? profile._id,
-    name: profile.name,
-    title: profile.title || "Professional",
-    location: profile.location || "Kakuma, Kenya",
-    languages: profile.languages || [],
-    expertise: profile.expertise || [],
-    bio: profile.bio || "",
-    readiness: profile.readiness || "Ready for Placement",
-    image: profile.image || undefined,
-  };
-}
 
 export interface SanitySiteSettings {
   title?: string;

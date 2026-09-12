@@ -87,7 +87,7 @@ export default function Stories() {
                 {t("stories.hero.titleHighlight")}
               </span>
             </h1>
-            <p className="mt-5 max-w-xl text-lg text-brand-100">
+            <p className="mt-5 max-w-xl text-lg text-white">
               {t("stories.hero.subtitleAlt")}
             </p>
           </div>

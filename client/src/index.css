@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Nunito:ital,wght@0,300..900;1,300..900&display=swap');
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+
 @theme {
-  /* Brand Blue Scale */
+  /* Strict SIR Africa Blue Scale */
   --color-brand-50: #eff6ff;
   --color-brand-100: #dbeafe;
   --color-brand-200: #bfdbfe;
@@ -14,21 +16,24 @@
   --color-brand-700: #1d4ed8;
   --color-brand-800: #1e40af;
   --color-brand-900: #1e3a8a;
+  --color-brand-950: #0f172a;
 
-  /* Strict Neutrals */
+  /* SIR Navy & Strict Blue-White Neutrals */
   --color-neutral-white: #ffffff;
-  --color-neutral-heading: #111827;
-  --color-neutral-body: #4b5563;
-  --color-neutral-border: #e5e7eb;
+  --color-neutral-heading: #000000;
+  --color-neutral-body: #18181b;
+  --color-neutral-border: #dbeafe;
 
-  /* Dark Mode Slate Scale */
-  --color-dark-canvas: #0f172a;
-  --color-dark-surface: #1e293b;
-  --color-dark-border: #334155;
-  --color-dark-heading: #f8fafc;
-  --color-dark-body: #cbd5e1;
+  /* Strict Blue Scale Neutrals */
+  --color-dark-canvas: #172554;
+  --color-dark-surface: #1e3a8a;
+  --color-dark-border: #1d4ed8;
+  --color-dark-heading: #ffffff;
+  --color-dark-body: #eff6ff;
 
-  /* Backwards Compatibility Aliases */
+
+
+  /* Backwards Compatibility Aliases - Strictly Blue Palette */
   --color-primary-50: #eff6ff;
   --color-primary-100: #dbeafe;
   --color-primary-200: #bfdbfe;
@@ -42,9 +47,9 @@
 
   --color-brand-red-50: #eff6ff;
   --color-brand-red-100: #dbeafe;
-  --color-brand-red-500: #3b82f6;
-  --color-brand-red-600: #2563eb;
-  --color-brand-red-700: #1d4ed8;
+  --color-brand-red-500: #2563eb;
+  --color-brand-red-600: #1d4ed8;
+  --color-brand-red-700: #1e40af;
 
   --color-surface: var(--color-surface-base);
   --color-bg: var(--color-canvas);
@@ -52,14 +57,11 @@
   --color-muted: var(--color-text-secondary);
   --color-line: var(--color-border-subtle);
 
-  --font-sans:
-    "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
-    sans-serif;
-  --font-display:
-    "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
-    sans-serif;
+  --font-sans: "Nunito", "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: "Lora", Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-display: "Lora", Georgia, Cambria, "Times New Roman", Times, serif;
 
-  --radius-sm: 6px;
+  --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
   --radius-xl: 16px;
@@ -72,22 +74,24 @@
   --color-surface-subtle: #eff6ff;
   --color-brand-primary: #2563eb;
   --color-brand-hover: #1d4ed8;
-  --color-text-primary: #111827;
-  --color-text-secondary: #4b5563;
-  --color-border-subtle: #e5e7eb;
+  --color-text-primary: #000000;
+  --color-text-secondary: #18181b;
+  --color-border-subtle: #bfdbfe;
 }
+
 
 .dark {
   color-scheme: dark;
-  --color-canvas: #0f172a;
-  --color-surface-base: #1e293b;
-  --color-surface-subtle: #1e293b;
-  --color-brand-primary: #3b82f6;
-  --color-brand-hover: #60a5fa;
-  --color-text-primary: #f8fafc;
-  --color-text-secondary: #cbd5e1;
-  --color-border-subtle: #334155;
+  --color-canvas: #172554;
+  --color-surface-base: #1e3a8a;
+  --color-surface-subtle: #1e40af;
+  --color-brand-primary: #60a5fa;
+  --color-brand-hover: #93c5fd;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #eff6ff;
+  --color-border-subtle: #3b82f6;
 }
+
 
 html {
   scroll-behavior: smooth;
@@ -127,25 +131,103 @@ body {
 .jobs-experience h1,
 .jobs-experience h2,
 .jobs-experience h3,
-.jobs-experience h4 {
-  letter-spacing: -0.03em;
-  text-wrap: balance;
-}
-
-.jobs-experience p {
-  text-wrap: pretty;
-}
-
+.jobs-experience h4,
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-display);
+  font-family: var(--font-serif);
   color: var(--color-text-primary);
   letter-spacing: -0.02em;
+  font-weight: 700;
 }
+
+/* Ensure all headings on blue backgrounds default to crisp white */
+.bg-brand-600 h1, .bg-brand-600 h2, .bg-brand-600 h3, .bg-brand-600 h4,
+.bg-brand-700 h1, .bg-brand-700 h2, .bg-brand-700 h3, .bg-brand-700 h4,
+.bg-brand-800 h1, .bg-brand-800 h2, .bg-brand-800 h3, .bg-brand-800 h4,
+.bg-brand-900 h1, .bg-brand-900 h2, .bg-brand-900 h3, .bg-brand-900 h4,
+.bg-brand-950 h1, .bg-brand-950 h2, .bg-brand-950 h3, .bg-brand-950 h4,
+[class*="bg-[#172554]"] h1, [class*="bg-[#172554]"] h2, [class*="bg-[#172554]"] h3,
+[class*="from-brand-950"] h1, [class*="from-brand-950"] h2, [class*="from-brand-950"] h3 {
+  color: #ffffff !important;
+}
+
+/* Ensure nested white cards preserve dark heading text */
+.bg-white h1, .bg-white h2, .bg-white h3, .bg-white h4,
+.sir-card h1, .sir-card h2, .sir-card h3, .sir-card h4,
+.sir-card-accent h1, .sir-card-accent h2, .sir-card-accent h3, .sir-card-accent h4 {
+  color: var(--color-text-primary) !important;
+}
+
+/* SIR Africa Utility Components & Aesthetics */
+.sir-serif-heading {
+  font-family: var(--font-serif);
+  @apply tracking-tight font-bold text-black dark:text-white;
+}
+
+.sir-callout-border {
+  @apply border-l-4 border-brand-600 dark:border-brand-500 pl-6 my-6 text-black dark:text-slate-100 font-medium text-base sm:text-lg leading-relaxed;
+}
+
+
+.sir-card {
+  @apply relative rounded-xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs hover:shadow-xl hover:border-brand-500/50 transition-all duration-300 overflow-hidden flex flex-col;
+}
+
+.sir-card-accent {
+  @apply relative rounded-xl border border-blue-100 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col border-t-4 border-t-brand-600 dark:border-t-brand-500;
+}
+
+.sir-tag {
+  @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-[11px] font-extrabold uppercase tracking-widest text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-950/80 border border-brand-200/80 dark:border-brand-800/60;
+}
+
+.sir-btn-primary {
+  @apply inline-flex items-center justify-center gap-1.5 rounded-md bg-brand-600 dark:bg-brand-500 px-3.5 py-1.5 text-xs font-bold text-white shadow-xs transition-all duration-200 hover:bg-brand-700 dark:hover:bg-brand-400 hover:shadow-md active:translate-y-0.5;
+  cursor: pointer;
+}
+
+.sir-btn-secondary {
+  @apply inline-flex items-center justify-center gap-1.5 rounded-md border border-brand-600 dark:border-brand-500 bg-transparent px-3 py-1.5 text-xs font-bold text-brand-600 dark:text-brand-400 transition-all duration-200 hover:bg-brand-600 hover:text-white dark:hover:bg-brand-500 dark:hover:text-white active:translate-y-0.5;
+  cursor: pointer;
+}
+
+
+.sir-link-underline {
+  @apply relative font-bold text-brand-600 dark:text-brand-400 inline-flex items-center gap-1.5 transition-colors;
+}
+
+.sir-link-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.sir-link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.sir-hero-bg {
+  background-image: radial-gradient(circle at 80% 20%, rgba(37, 99, 235, 0.12) 0%, transparent 50%),
+                    radial-gradient(circle at 10% 80%, rgba(30, 58, 138, 0.08) 0%, transparent 40%);
+}
+
+.dark .sir-hero-bg {
+  background-image: radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.18) 0%, transparent 50%),
+                    radial-gradient(circle at 10% 80%, rgba(15, 23, 42, 0.6) 0%, transparent 40%);
+}
+
 
 /* Accessibility baseline */
 a:focus-visible,
@@ -161,7 +243,6 @@ summary:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
-
   *,
   *::before,
   *::after {

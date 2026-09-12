@@ -146,54 +146,57 @@ export default function Jobs() {
     >
       {/* HERO BANNER (Pattern A: Canvas) */}
       <Section pattern="canvas" className="!pt-6">
-        <div className="grid gap-6 rounded-2xl border border-neutral-border dark:border-slate-700 bg-brand-50/50 dark:bg-slate-800/50 p-6 shadow-sm sm:p-8 lg:grid-cols-[1.1fr_0.9fr] lg:p-10">
-          <div>
-            <span className="inline-block rounded-full bg-brand-100 dark:bg-slate-700 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-700 dark:text-brand-300">
+        <div className="sir-card-accent p-6 sm:p-8 lg:p-10 lg:grid-cols-[1.1fr_0.9fr] grid gap-8 items-center">
+          <div className="space-y-4">
+            <span className="sir-tag">
               Overview
             </span>
-            <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-neutral-heading dark:text-slate-50 sm:text-4xl">
+            <h2 className="font-serif text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">
               {jobsContent?.overviewHeroTitle || "Reliable remote talent from Kakuma, ready for global employers."}
             </h2>
-            <p className="mt-4 max-w-2xl text-base leading-relaxed text-neutral-body dark:text-slate-300">
-              {jobsContent?.overviewHeroSubtitle || "Generation Jobs connects international employers to trained, vetted, and supported talent through a clear pipeline that serves both business needs and human opportunity."}
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
+            <div className="sir-callout-border !my-2">
+              <p className="max-w-2xl text-base leading-relaxed text-slate-700 dark:text-slate-300 font-medium">
+                {jobsContent?.overviewHeroSubtitle || "Generation Jobs connects international employers to trained, vetted, and supported talent through a clear pipeline that serves both business needs and human opportunity."}
+              </p>
+            </div>
+            <div className="pt-2 flex flex-wrap gap-4">
               <Link
                 to="/jobs/employers"
-                className="inline-flex items-center rounded-lg bg-brand-600 dark:bg-brand-500 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-700 dark:hover:bg-brand-400"
+                className="sir-btn-primary py-3 px-6 text-sm"
               >
-                Employer inquiries
+                <span>Employer Inquiries</span>
+                <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
               </Link>
               <Link
                 to="/jobs/talent"
-                className="inline-flex items-center rounded-lg border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 px-5 py-3 text-sm font-semibold text-neutral-heading dark:text-slate-100 transition hover:border-brand-600 dark:hover:border-brand-400 hover:text-brand-600 dark:hover:text-brand-400"
+                className="sir-btn-secondary py-3 px-6 text-sm"
               >
-                Talent consultation request
+                <span>Talent Consultation Request</span>
+                <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
               </Link>
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm aspect-[4/3]">
+          <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-md aspect-[4/3] group">
             <SmartImage
-              src={jobsContent?.overviewHeroImage || "/img/home/featured-banner.jpg"}
-              alt="Skilled remote talent at Kakuma workstation"
-              className="h-full w-full object-cover"
+              src="/genjob.jpg"
+              alt="Generation Jobs remote professionals at Kakuma workstation"
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
           </div>
         </div>
       </Section>
 
-      {/* MARKET PROBLEM (Pattern B: Soft Contrast) */}
+      {/* MARKET PROBLEM */}
       <Section pattern="soft">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-block rounded-full bg-white dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
+          <span className="sir-tag">
             Market Need
           </span>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-neutral-heading dark:text-slate-50 sm:text-4xl">
-            Global demand is growing, but qualified remote talent remains hard
-            to access
+          <h2 className="mt-3 font-serif text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl">
+            Global demand is growing, but qualified remote talent remains hard to access
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-neutral-body dark:text-slate-300">
+          <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-slate-300">
             Employers need dependable remote workers who are ready, responsive,
             and consistent. Kakuma holds capable, trained people who need access
             to those opportunities.
@@ -204,25 +207,25 @@ export default function Jobs() {
           {marketProblems.map((item) => (
             <article
               key={item.title}
-              className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm"
+              className="sir-card p-7 border-t-4 border-t-brand-600 dark:border-t-brand-500"
             >
-              <h3 className="font-display text-xl font-semibold text-neutral-heading dark:text-slate-100">{item.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-neutral-body dark:text-slate-300">{item.body}</p>
+              <h3 className="font-serif text-xl font-extrabold text-slate-900 dark:text-slate-100">{item.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{item.body}</p>
             </article>
           ))}
         </div>
       </Section>
 
-      {/* WHAT IS GENERATION JOBS (Pattern A: Canvas) */}
+      {/* WHAT IS GENERATION JOBS */}
       <Section pattern="canvas">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-block rounded-full bg-brand-50 dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
+          <span className="sir-tag">
             What is Generation Jobs
           </span>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-neutral-heading dark:text-slate-50 sm:text-4xl">
+          <h2 className="mt-3 font-serif text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl">
             The talent placement arm under Generation Aid
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-neutral-body dark:text-slate-300">
+          <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-slate-300">
             Generation Jobs is the employer-facing bridge between training and
             placement, designed to help global teams hire with confidence.
           </p>
@@ -232,55 +235,61 @@ export default function Jobs() {
           {generationJobsDefinition.map((signal) => (
             <article
               key={signal.title}
-              className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
+              className="sir-card-accent p-7"
             >
-              <h3 className="font-display text-xl font-semibold text-neutral-heading dark:text-slate-100">{signal.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-neutral-body dark:text-slate-300">{signal.body}</p>
+              <h3 className="font-serif text-xl font-extrabold text-slate-900 dark:text-slate-100">{signal.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{signal.body}</p>
             </article>
           ))}
         </div>
       </Section>
 
-      {/* PIPELINE (Pattern B: Soft Contrast) */}
-      <Section pattern="soft">
-        <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-block rounded-full bg-white dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
-            Training-to-Placement Pipeline
-          </span>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-neutral-heading dark:text-slate-50 sm:text-4xl">
-            A clear path from skills development to employer placement
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-neutral-body dark:text-slate-300">
-            The pipeline is intentionally simple: train talent, vet readiness,
-            place the right people, and support retention.
-          </p>
-        </div>
+      {/* PIPELINE (BRAND BLUE PALETTE) */}
+      <section className="bg-brand-600 dark:bg-brand-900 text-white py-16 sm:py-20 border-y border-brand-700 dark:border-brand-800">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="inline-block rounded-md bg-white/20 px-3.5 py-1 text-xs font-extrabold uppercase tracking-widest text-white border border-white/30 backdrop-blur-sm">
+              Training-to-Placement Pipeline
+            </span>
+            <h2 className="mt-3 font-serif text-3xl font-extrabold tracking-tight !text-white sm:text-4xl">
+              A clear path from skills development to employer placement
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-white">
+              The pipeline is intentionally simple: train talent, vet readiness,
+              place the right people, and support retention.
+            </p>
+          </div>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-3">
-          {pipelineSteps.map((step) => (
-            <article
-              key={step.step}
-              className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md sm:p-7"
-            >
-              <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-                Step {step.step}
-              </p>
-              <h3 className="mt-3 font-display text-xl font-semibold text-neutral-heading dark:text-slate-100">
-                {step.title}
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-neutral-body dark:text-slate-300">{step.body}</p>
-            </article>
-          ))}
+          <div className="mt-10 grid gap-6 lg:grid-cols-3">
+            {pipelineSteps.map((step) => (
+              <article
+                key={step.step}
+                className="relative rounded-2xl bg-white text-slate-900 p-7 shadow-xl border border-white flex flex-col justify-between"
+              >
+                <div>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-extrabold uppercase tracking-widest text-brand-700 bg-brand-50 border border-brand-200">
+                    Step {step.step}
+                  </span>
+                  <h3 className="mt-4 font-serif text-xl font-extrabold text-slate-900">
+                    {step.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600 font-medium">
+                    {step.body}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
-      </Section>
+      </section>
 
-      {/* TALENT CATEGORIES (Pattern A: Canvas) */}
+      {/* TALENT CATEGORIES */}
       <Section pattern="canvas">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-block rounded-full bg-brand-50 dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
+          <span className="sir-tag">
             Talent Categories
           </span>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-neutral-heading dark:text-slate-50 sm:text-4xl">
+          <h2 className="mt-3 font-serif text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl">
             Roles employers can hire through Generation Jobs
           </h2>
         </div>
@@ -289,22 +298,22 @@ export default function Jobs() {
           {talentCategories.map((pillar) => (
             <article
               key={pillar.title}
-              className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
+              className="sir-card-accent p-7"
             >
-              <h3 className="font-display text-xl font-semibold text-neutral-heading dark:text-slate-100">{pillar.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-neutral-body dark:text-slate-300">{pillar.body}</p>
+              <h3 className="font-serif text-xl font-extrabold text-slate-900 dark:text-slate-100">{pillar.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{pillar.body}</p>
             </article>
           ))}
         </div>
       </Section>
 
-      {/* HOW HIRING WORKS (Pattern B: Soft Contrast) */}
+      {/* HOW HIRING WORKS */}
       <Section pattern="soft">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-block rounded-full bg-white dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
+          <span className="sir-tag">
             How Hiring Works
           </span>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-neutral-heading dark:text-slate-50 sm:text-4xl">
+          <h2 className="mt-3 font-serif text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl">
             A guided hiring process for employers
           </h2>
         </div>
@@ -313,27 +322,27 @@ export default function Jobs() {
           {howHiringWorks.map((item, index) => (
             <article
               key={item.title}
-              className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
+              className="sir-card p-7"
             >
-              <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+              <span className="sir-tag">
                 Step {String(index + 1).padStart(2, "0")}
-              </p>
-              <h3 className="mt-3 font-display text-xl font-semibold text-neutral-heading dark:text-slate-100">
+              </span>
+              <h3 className="mt-4 font-serif text-xl font-extrabold text-slate-900 dark:text-slate-100">
                 {item.title}
               </h3>
-              <p className="mt-3 text-sm leading-relaxed text-neutral-body dark:text-slate-300">{item.body}</p>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{item.body}</p>
             </article>
           ))}
         </div>
       </Section>
 
-      {/* EMPLOYER BENEFITS (Pattern A: Canvas) */}
+      {/* EMPLOYER BENEFITS */}
       <Section pattern="canvas">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-block rounded-full bg-brand-50 dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
+          <span className="sir-tag">
             Employer Benefits
           </span>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-neutral-heading dark:text-slate-50 sm:text-4xl">
+          <h2 className="mt-3 font-serif text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl">
             Why employers choose Generation Jobs
           </h2>
         </div>
@@ -342,22 +351,22 @@ export default function Jobs() {
           {employerBenefits.map((item) => (
             <article
               key={item.title}
-              className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
+              className="sir-card-accent p-7"
             >
-              <h3 className="font-display text-xl font-semibold text-neutral-heading dark:text-slate-100">{item.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-neutral-body dark:text-slate-300">{item.body}</p>
+              <h3 className="font-serif text-xl font-extrabold text-slate-900 dark:text-slate-100">{item.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{item.body}</p>
             </article>
           ))}
         </div>
       </Section>
 
-      {/* PROOF & TRUST (Pattern B: Soft Contrast) */}
+      {/* PROOF & TRUST */}
       <Section pattern="soft">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-block rounded-full bg-white dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
+          <span className="sir-tag">
             Proof & Trust
           </span>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-neutral-heading dark:text-slate-50 sm:text-4xl">
+          <h2 className="mt-3 font-serif text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl">
             Built on local leadership and structured support
           </h2>
         </div>
@@ -366,28 +375,28 @@ export default function Jobs() {
           {proofAndTrust.map((item) => (
             <article
               key={item.title}
-              className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
+              className="sir-card p-7"
             >
-              <h3 className="font-display text-xl font-semibold text-neutral-heading dark:text-slate-100">{item.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-neutral-body dark:text-slate-300">{item.body}</p>
+              <h3 className="font-serif text-xl font-extrabold text-slate-900 dark:text-slate-100">{item.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{item.body}</p>
             </article>
           ))}
         </div>
       </Section>
 
-      {/* IMPACT METRICS (Pattern A: Canvas) */}
+      {/* IMPACT METRICS */}
       <Section pattern="canvas">
-        <div className="rounded-2xl border border-neutral-border dark:border-slate-700 bg-brand-50/50 dark:bg-slate-800/50 p-6 shadow-sm sm:p-8 lg:p-10">
+        <div className="sir-card-accent p-6 sm:p-8 lg:p-10">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <span className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+              <span className="sir-tag">
                 Impact Metrics
               </span>
-              <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-neutral-heading dark:text-slate-50 sm:text-4xl">
+              <h2 className="mt-3 font-serif text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl">
                 Outcomes that matter to employers and communities
               </h2>
             </div>
-            <p className="text-sm font-medium text-neutral-body dark:text-slate-300">
+            <p className="text-sm font-bold text-brand-600 dark:text-brand-400">
               Target by 2030: empower 10,000 individuals
             </p>
           </div>
@@ -396,64 +405,71 @@ export default function Jobs() {
             {impactStats.map((item) => (
               <article
                 key={item.label}
-                className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm"
+                className="sir-card p-6 text-center border-t-4 border-t-brand-600 dark:border-t-brand-500"
               >
-                <p className="font-display text-3xl font-bold tracking-tight text-brand-600 dark:text-brand-400">
+                <p className="font-serif text-4xl font-extrabold tracking-tight text-brand-600 dark:text-brand-400">
                   {item.value}
                 </p>
-                <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-neutral-heading dark:text-slate-200">
+                <p className="mt-2 text-xs font-extrabold uppercase tracking-wider text-slate-700 dark:text-slate-300">
                   {item.label}
                 </p>
               </article>
             ))}
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-wrap gap-4">
             <Link
               to="/jobs/employers"
-              className="inline-flex items-center rounded-lg bg-brand-600 dark:bg-brand-500 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-700 dark:hover:bg-brand-400"
+              className="sir-btn-primary py-3 px-6 text-sm"
             >
-              Generate employer inquiry
+              <span>Generate Employer Inquiry</span>
+              <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
             </Link>
             <Link
               to="/contact"
-              className="inline-flex items-center rounded-lg border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 px-5 py-3 text-sm font-semibold text-neutral-heading dark:text-slate-100 transition hover:border-brand-600 dark:hover:border-brand-400 hover:text-brand-600 dark:hover:text-brand-400"
+              className="sir-btn-secondary py-3 px-6 text-sm"
             >
-              Request a talent consultation
+              <span>Request a Talent Consultation</span>
+              <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
             </Link>
           </div>
         </div>
       </Section>
 
-      {/* FINAL CTA (Pattern C: Impact) */}
-      <Section pattern="impact">
-        <div className="mx-auto max-w-4xl text-center text-white">
-          <span className="text-xs font-semibold uppercase tracking-wider text-brand-100 dark:text-brand-300">
+      {/* FINAL CTA (BRAND BLUE PALETTE) */}
+      <section className="bg-brand-600 dark:bg-brand-900 text-white py-16 sm:py-20 border-y border-brand-700 dark:border-brand-800">
+        <div className="mx-auto max-w-4xl text-center px-4 space-y-4">
+          <span className="inline-block rounded-md bg-white/20 px-3.5 py-1 text-xs font-extrabold uppercase tracking-widest text-white border border-white/30 backdrop-blur-sm">
             Final CTA
           </span>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
+          <h2 className="font-serif text-3xl font-extrabold tracking-tight !text-white sm:text-4xl lg:text-5xl">
             Ready to hire reliable remote talent?
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-brand-100 dark:text-slate-300 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg leading-relaxed text-white max-w-2xl mx-auto">
             Start with an employer inquiry or request a consultation for talent
             matching, and we’ll guide the next step.
           </p>
-          <div className="mt-6 flex flex-wrap justify-center gap-3">
+          <div className="pt-4 flex flex-wrap justify-center gap-4">
             <Link
               to="/jobs/employers"
-              className="inline-flex items-center rounded-lg bg-white dark:bg-brand-500 px-5 py-3 text-sm font-semibold text-brand-600 dark:text-white shadow-sm transition hover:bg-brand-50 dark:hover:bg-brand-400"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 text-xs font-extrabold uppercase tracking-wider text-brand-700 shadow-md transition hover:bg-brand-50 hover:text-brand-800"
             >
-              Book an employer call
+              <span>Book an Employer Call</span>
+              <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
             </Link>
             <Link
               to="/jobs/talent"
-              className="inline-flex items-center rounded-lg border border-white/70 dark:border-slate-700 bg-white/10 dark:bg-slate-800 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/20 dark:hover:bg-slate-700"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/70 bg-white/10 px-6 py-3.5 text-xs font-extrabold uppercase tracking-wider text-white backdrop-blur-sm transition hover:bg-white hover:text-brand-800"
             >
-              Request matched candidates
+              <span>Request Matched Candidates</span>
+              <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
             </Link>
           </div>
         </div>
-      </Section>
+      </section>
+
+
     </JobsShell>
   );
 }
+

@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-import { ArrowRight, Heart } from "lucide-react";
+import { Heart } from "lucide-react";
 import Section from "@/components/Section";
 import SmartImage from "@/components/SmartImage";
-import Button from "@/components/ui/Button";
+
 import { posts } from "@/data/posts";
 import { videos as fallbackVideos } from "@/data/videos";
 import { causes } from "@/data/causes";
@@ -186,18 +186,17 @@ export default function Home() {
 
   return (
     <div className="bg-white dark:bg-slate-900 transition-colors">
-      {/* ============ HERO SECTION (FULL VIEWPORT-WIDTH HERO BANNER) ============ */}
-      <section id="home" className="relative w-full overflow-hidden min-h-[600px] sm:min-h-[650px] lg:min-h-[700px] flex items-center bg-slate-950">
-        {/* Edge-to-Edge Full Width Swinging Image Background */}
+      {/* ============ HERO SECTION (SIR AFRICA STYLE HERO BANNER) ============ */}
+      <section id="home" className="relative w-full overflow-hidden min-h-[600px] sm:min-h-[650px] lg:min-h-[700px] flex items-center bg-[#172554] gatsby-hero-bg">
+        {/* Edge-to-Edge Full Width Image Background with Soft Parallax */}
         <motion.div
           animate={{
-            scale: [1, 1.08, 1.03, 1],
-            rotate: [0, 1.5, -1.5, 0],
-            x: [0, -20, 20, 0],
-            y: [0, -10, 10, 0],
+            scale: [1, 1.06, 1.02, 1],
+            rotate: [0, 1, -1, 0],
+            x: [0, -15, 15, 0],
           }}
           transition={{
-            duration: 20,
+            duration: 22,
             ease: "easeInOut",
             repeat: Infinity,
             repeatType: "mirror",
@@ -208,96 +207,100 @@ export default function Home() {
             src="/home.jpg"
             alt="Refugee youth in a Generation Aid training session in Kakuma"
             fallbackLabel=""
-            className="h-full w-full object-cover contrast-[1.12] brightness-[0.92] saturate-[1.08]"
+            className="h-full w-full object-cover contrast-[1.15] brightness-[0.88] saturate-[1.1]"
           />
         </motion.div>
 
-        {/* High Contrast Gradient Overlay for Perfect Readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/80 to-slate-950/50 pointer-events-none" />
+        {/* Deep Royal Blue Gradient Overlay (No Black) */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#172554]/95 via-[#172554]/85 to-[#172554]/60 pointer-events-none" />
 
-        {/* Hero Text Directly on Full-Width Image Background */}
+
+        {/* Hero Content Box */}
         <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="max-w-2xl text-white"
+            transition={{ duration: 0.6 }}
+            className="max-w-2xl text-white space-y-6"
           >
-            {/* White & Blue H1 Title */}
-            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl font-display leading-[1.15]">
-              <span className="text-white">{t("home.hero.titleStart")}</span>{" "}
-              <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-400 bg-clip-text text-transparent">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-3.5 py-1 text-xs font-extrabold uppercase tracking-widest text-white backdrop-blur-md">
+              <span className="h-2 w-2 rounded-full bg-white animate-pulse" />
+              <span>Refugee-Led Innovation Hub</span>
+            </div>
+
+            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl font-serif leading-[1.12] !text-white">
+              <span className="!text-white">{t("home.hero.titleStart")}</span>{" "}
+              <span className="!text-white italic font-normal">
                 {t("home.hero.titleHighlight")}
               </span>{" "}
-              <span className="text-white">{t("home.hero.titleEnd")}</span>
+              <span className="!text-white">{t("home.hero.titleEnd")}</span>
             </h1>
 
-            <p className="mt-5 text-base sm:text-lg leading-relaxed text-slate-200 max-w-xl">
-              {t("home.hero.subtitle")}
-            </p>
+            <div className="sir-callout-border border-l-white !text-white !my-4">
+              <p className="text-base sm:text-lg leading-relaxed font-medium !text-white">
+                {t("home.hero.subtitle")}
+              </p>
+            </div>
 
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <a href="#programs">
-                <Button variant="primary" size="xl" rightIcon={<ArrowRight className="w-5 h-5" />}>
-                  {t("home.hero.ctaPrograms")}
-                </Button>
+            <div className="flex flex-wrap items-center gap-4 pt-2">
+              <a href="#programs" className="sir-btn-primary py-3.5 px-6 text-sm">
+                <span>{t("home.hero.ctaPrograms")}</span>
+                <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
               </a>
-              <a href={SITE.donateUrl} target="_blank" rel="noreferrer">
-                <Button
-                  size="xl"
-                  variant="outline"
-                  leftIcon={<Heart className="w-5 h-5 fill-blue-400 text-blue-400" />}
-                  className="border-white/50 bg-white/10 hover:bg-white/20 text-white font-bold backdrop-blur-md dark:border-white/50 dark:text-white"
-                >
-                  {t("home.hero.ctaDonate")}
-                </Button>
+              <a href={SITE.donateUrl} target="_blank" rel="noreferrer" className="sir-btn-secondary py-3 px-6 text-sm border-white/60 text-white hover:bg-white hover:text-slate-950 dark:border-white/60 dark:text-white">
+                <Heart className="w-4 h-4 fill-brand-400 text-brand-400" />
+                <span>{t("home.hero.ctaDonate")}</span>
               </a>
             </div>
+
           </motion.div>
         </div>
       </section>
 
-      {/* ============ ABOUT (Pattern A: Canvas) ============ */}
+      {/* ============ ABOUT SECTION (SIR AFRICA STYLED CANVAS) ============ */}
       <Section id="about" pattern="canvas">
         <div className="mx-auto max-w-4xl text-center">
-          <span className="inline-block rounded-full bg-brand-50 dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
+          <span className="sir-tag">
+
             {t("home.about.eyebrow")}
           </span>
-          <h2 className="mt-4 text-3xl font-bold text-neutral-heading dark:text-slate-50 sm:text-4xl">
+          <h2 className="mt-4 text-3xl font-extrabold text-slate-900 dark:text-slate-50 sm:text-4xl lg:text-5xl font-serif">
             {t("home.about.title")}
           </h2>
-          <p className="mt-5 text-lg text-neutral-body dark:text-slate-300">{t("home.about.body1")}</p>
-          <p className="mt-4 text-neutral-body dark:text-slate-300">{t("home.about.body2")}</p>
+          <div className="sir-callout-border mx-auto max-w-3xl text-left border-l-brand-600">
+            <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300">{t("home.about.body1")}</p>
+            <p className="mt-3 text-slate-600 dark:text-slate-400">{t("home.about.body2")}</p>
+          </div>
         </div>
 
         <div className="mx-auto mt-12 grid max-w-6xl gap-6 md:grid-cols-2">
-          <div className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-8 shadow-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+          <div className="sir-card-accent p-8">
+            <span className="sir-tag">
               {t("home.about.ourVision")}
             </span>
-            <h3 className="mt-3 text-2xl font-bold text-neutral-heading dark:text-slate-100">
+            <h3 className="mt-3 text-2xl font-extrabold text-slate-900 dark:text-slate-100 font-serif">
               {t("home.about.visionTitle")}
             </h3>
-            <p className="mt-4 text-neutral-body dark:text-slate-300">{t("home.about.visionBody")}</p>
+            <p className="mt-4 leading-relaxed text-slate-700 dark:text-slate-300">{t("home.about.visionBody")}</p>
           </div>
-          <div className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-8 shadow-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+          <div className="sir-card-accent p-8">
+            <span className="sir-tag">
               {t("home.about.ourMission")}
             </span>
-            <h3 className="mt-3 text-2xl font-bold text-neutral-heading dark:text-slate-100">
+            <h3 className="mt-3 text-2xl font-extrabold text-slate-900 dark:text-slate-100 font-serif">
               {t("home.about.missionTitle")}
             </h3>
-            <p className="mt-4 text-neutral-body dark:text-slate-300">{t("home.about.missionBody")}</p>
+            <p className="mt-4 leading-relaxed text-slate-700 dark:text-slate-300">{t("home.about.missionBody")}</p>
           </div>
         </div>
 
-        <ol className="mx-auto mt-12 grid max-w-6xl gap-5 md:grid-cols-3">
+        <ol className="mx-auto mt-12 grid max-w-6xl gap-6 md:grid-cols-3">
           {objectives.map((o, i) => (
-            <li key={i} className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm">
-              <span className="grid h-9 w-9 place-items-center rounded-full bg-brand-600 dark:bg-brand-500 font-display text-sm font-bold text-white">
-                {i + 1}
+            <li key={i} className="sir-card p-6 border-t-4 border-t-brand-600 dark:border-t-brand-500">
+              <span className="inline-flex items-center justify-center h-10 w-10 rounded-lg bg-brand-600 dark:bg-brand-500 font-extrabold text-sm text-white shadow-xs">
+                0{i + 1}
               </span>
-              <p className="mt-4 text-sm text-neutral-body dark:text-slate-300">{o}</p>
+              <p className="mt-4 text-sm leading-relaxed text-slate-700 dark:text-slate-300 font-medium">{o}</p>
             </li>
           ))}
         </ol>
@@ -305,83 +308,95 @@ export default function Home() {
         <div className="mt-10 text-center">
           <Link
             to="/about"
-            className="inline-block text-sm font-semibold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 hover:underline underline-offset-4"
+            className="sir-link-underline font-extrabold text-sm uppercase tracking-wider"
           >
-            {t("home.about.readFullStory")}
+            <span>{t("home.about.readFullStory")}</span>
+            <span>→</span>
           </Link>
         </div>
+
       </Section>
 
-      {/* ============ PROGRAMS (Pattern C: Solid Primary Blue Impact) ============ */}
+      {/* ============ PROGRAMS SECTION (GATSBY DEEP BLUE IMPACT) ============ */}
       <Section id="programs" pattern="impact">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <span className="inline-block rounded-full bg-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white">
+            <span className="inline-block rounded-md bg-white/20 px-3 py-1 text-xs font-extrabold uppercase tracking-widest text-white border border-white/30">
               {t("home.programs.eyebrow")}
             </span>
-            <h2 className="mt-3 text-3xl font-bold text-white sm:text-4xl">
+            <h2 className="mt-3 text-3xl font-extrabold !text-white sm:text-4xl lg:text-5xl">
               {t("home.programs.title")}
             </h2>
-            <p className="mt-2 text-brand-100">{t("home.programs.subtitle")}</p>
+            <p className="mt-2 text-white text-base">{t("home.programs.subtitle")}</p>
           </div>
           <Link
             to="/programs"
-            className="text-sm font-semibold text-white hover:text-brand-100 hover:underline underline-offset-4"
+            className="inline-flex items-center gap-1 text-sm font-extrabold text-white hover:text-brand-200 transition-colors uppercase tracking-wider"
           >
-            {t("home.programs.viewAll")}
+            <span>{t("home.programs.viewAll")}</span>
+            <span>→</span>
           </Link>
         </div>
 
-        <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {focusedPrograms.map((p) => (
             <article
               key={p.title}
-              className="group overflow-hidden rounded-xl border border-white/20 bg-white dark:bg-slate-800 transition hover:border-white/40 hover:shadow-lg"
+              className="sir-card border-slate-200/40 bg-white dark:bg-slate-900"
             >
-              <div className="aspect-video w-full overflow-hidden bg-brand-50 dark:bg-slate-900">
+              <div className="aspect-video w-full overflow-hidden bg-brand-50 dark:bg-slate-950 relative">
                 <SmartImage
                   src={p.image}
                   alt={p.title}
-                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-              </div>
-              <div className="p-6">
-                <span className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+                <span className="absolute top-3 left-3 sir-tag bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-xs">
                   {p.tag}
                 </span>
-                <h3 className="mt-2 font-display text-lg font-semibold text-neutral-heading dark:text-slate-100">
-                  {p.title}
-                </h3>
-                <p className="mt-2 text-sm text-neutral-body dark:text-slate-300">{p.body}</p>
+              </div>
+              <div className="p-6 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="font-serif text-xl font-extrabold text-slate-900 dark:text-slate-100">
+                    {p.title}
+                  </h3>
+                  <p className="mt-3 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{p.body}</p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
+                  <Link to="/programs" className="sir-link-underline text-xs uppercase tracking-wider font-extrabold">
+                    <span>Learn Program Details</span>
+                    <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+                  </Link>
+                </div>
               </div>
             </article>
           ))}
         </div>
       </Section>
 
-      {/* ============ CAUSES (Pattern A: Canvas) ============ */}
+      {/* ============ CAUSES SECTION ============ */}
       <Section id="causes" pattern="canvas">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <span className="inline-block rounded-full bg-brand-50 dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
+            <span className="sir-tag">
               {t("home.causes.eyebrow")}
             </span>
-            <h2 className="mt-3 text-3xl font-bold text-neutral-heading dark:text-slate-50 sm:text-4xl">
+            <h2 className="mt-3 text-3xl font-extrabold text-slate-900 dark:text-slate-50 sm:text-4xl lg:text-5xl font-serif">
               {t("home.causes.title")}
             </h2>
-            <p className="mt-2 text-neutral-body dark:text-slate-300">{t("home.causes.subtitle")}</p>
+            <p className="mt-2 text-slate-600 dark:text-slate-300">{t("home.causes.subtitle")}</p>
           </div>
           <a
             href={SITE.donateUrl}
             target="_blank"
             rel="noreferrer"
-            className="text-sm font-semibold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 hover:underline underline-offset-4"
+            className="sir-link-underline text-xs uppercase tracking-wider font-extrabold"
           >
-            {t("home.causes.donateLink")}
+            <span>{t("home.causes.donateLink")}</span>
+            <span>→</span>
           </a>
         </div>
 
-        <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {causes.map((c) => {
             const pct = Math.min(100, Math.round((c.raised / c.goal) * 100));
             const title = t(`home.causes.items.${c.key}.title`, c.title);
@@ -392,35 +407,37 @@ export default function Home() {
             return (
               <article
                 key={c.key}
-                className="overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
+                className="sir-card-accent"
               >
-                <div className="aspect-video w-full overflow-hidden bg-brand-50 dark:bg-slate-900">
+                <div className="aspect-video w-full overflow-hidden bg-brand-50 dark:bg-slate-950">
                   <SmartImage
                     src={c.image}
                     alt={title}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-                <div className="p-6">
-                  <h3 className="font-display text-lg font-semibold text-neutral-heading dark:text-slate-100">
-                    {title}
-                  </h3>
-                  <p className="mt-2 text-sm text-neutral-body dark:text-slate-300">{description}</p>
+                <div className="p-6 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="font-serif text-lg font-extrabold text-slate-900 dark:text-slate-100">
+                      {title}
+                    </h3>
+                    <p className="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{description}</p>
 
-                  <div className="mt-5">
-                    <div className="flex items-center justify-between text-xs font-semibold">
-                      <span className="text-brand-600 dark:text-brand-400">
-                        ${c.raised.toLocaleString()} {t("home.causes.raised")}
-                      </span>
-                      <span className="text-neutral-body dark:text-slate-400">
-                        {t("home.causes.of")} ${c.goal.toLocaleString()}
-                      </span>
-                    </div>
-                    <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-brand-100 dark:bg-slate-700">
-                      <div
-                        className="h-full rounded-full bg-brand-600 dark:bg-brand-500"
-                        style={{ width: pct + "%" }}
-                      />
+                    <div className="mt-5">
+                      <div className="flex items-center justify-between text-xs font-bold">
+                        <span className="text-brand-600 dark:text-brand-400">
+                          ${c.raised.toLocaleString()} {t("home.causes.raised")}
+                        </span>
+                        <span className="text-slate-500 dark:text-slate-400">
+                          {t("home.causes.of")} ${c.goal.toLocaleString()}
+                        </span>
+                      </div>
+                      <div className="mt-2 h-2.5 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
+                        <div
+                          className="h-full rounded-full bg-brand-600 dark:bg-brand-500 transition-all duration-500"
+                          style={{ width: pct + "%" }}
+                        />
+                      </div>
                     </div>
                   </div>
 
@@ -428,9 +445,10 @@ export default function Home() {
                     href={c.donateUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="mt-5 inline-block rounded-lg bg-brand-600 dark:bg-brand-500 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700 dark:hover:bg-brand-400 transition"
+                    className="sir-btn-primary mt-6 w-full py-2.5 text-xs uppercase tracking-wider"
                   >
-                    {t("home.causes.donateToCause")}
+                    <span>{t("home.causes.donateToCause")}</span>
+                    <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
                   </a>
                 </div>
               </article>
@@ -439,60 +457,61 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* ============ IMPACT (Pattern C: Solid Primary Blue Impact) ============ */}
+
+      {/* ============ IMPACT METRICS SECTION ============ */}
       <Section id="impact" pattern="impact">
         <div className="text-center">
-          <span className="inline-block rounded-full bg-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white">
+          <span className="inline-block rounded-md bg-white/20 px-3 py-1 text-xs font-extrabold uppercase tracking-widest text-white border border-white/30">
             {t("home.impact.eyebrow")}
           </span>
-          <h2 className="mt-3 text-3xl font-bold text-white sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-extrabold !text-white sm:text-4xl lg:text-5xl">
             {t("home.impact.title")}
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-brand-100">
+          <p className="mx-auto mt-3 max-w-2xl text-white text-base sm:text-lg">
             {t("home.impact.subtitle")}
           </p>
         </div>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {displayedStats.map((m) => (
             <div
               key={m.label}
-              className="rounded-xl border border-white/20 bg-white/10 p-6 text-center backdrop-blur"
+              className="rounded-xl border border-white/20 bg-white/10 p-6 text-center backdrop-blur-md"
             >
-              <p className="font-display text-4xl font-bold text-white">
+              <p className="font-display text-4xl sm:text-5xl font-extrabold !text-white tracking-tight">
                 {m.value}
               </p>
-              <p className="mt-2 text-sm text-brand-100">{m.label}</p>
+              <p className="mt-2 text-xs font-bold uppercase tracking-wider !text-white">{m.label}</p>
             </div>
           ))}
         </div>
 
-        <div className="mx-auto mt-14 grid max-w-6xl gap-6 md:grid-cols-3 text-neutral-body dark:text-slate-300">
+        <div className="mx-auto mt-14 grid max-w-6xl gap-6 md:grid-cols-3">
           {values.map((v) => (
             <div
               key={v.title}
-              className="rounded-xl border-l-4 border-white dark:border-brand-400 bg-white dark:bg-slate-800 p-6 shadow-md"
+              className="gatsby-quote-box my-0"
             >
-              <h3 className="font-display text-lg font-semibold text-neutral-heading dark:text-slate-100">
+              <h3 className="font-display text-lg font-extrabold text-slate-900 dark:text-slate-100 not-italic">
                 {v.title}
               </h3>
-              <p className="mt-3 text-sm text-neutral-body dark:text-slate-300">{v.body}</p>
+              <p className="mt-3 text-sm text-slate-700 dark:text-slate-300 not-italic font-normal">{v.body}</p>
             </div>
           ))}
         </div>
       </Section>
 
-      {/* ============ TEAM (Pattern A: Canvas) ============ */}
+      {/* ============ TEAM SECTION ============ */}
       <Section id="team" pattern="canvas">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-block rounded-full bg-brand-50 dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
+          <span className="sir-tag">
             {t("home.team.eyebrow")}
           </span>
-          <h2 className="mt-3 text-3xl font-bold text-neutral-heading dark:text-slate-50 sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-extrabold text-slate-900 dark:text-slate-50 sm:text-4xl lg:text-5xl font-serif">
             {t("home.team.title")}
           </h2>
-          <p className="mt-3 text-neutral-body dark:text-slate-300">{t("home.team.subtitle")}</p>
-          <p className="mt-3 inline-flex rounded-full bg-brand-50 dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
+          <p className="mt-3 text-slate-600 dark:text-slate-300">{t("home.team.subtitle")}</p>
+          <p className="mt-3 inline-flex rounded-md bg-brand-50 dark:bg-slate-800 px-3 py-1 text-xs font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400 border border-brand-200 dark:border-slate-700">
             {teamSourceLabel}
           </p>
         </div>
@@ -500,59 +519,65 @@ export default function Home() {
         <TeamSlider members={teamMembers} />
       </Section>
 
-      {/* ============ STORIES / BLOG (Pattern B: Soft Contrast) ============ */}
+      {/* ============ STORIES / BLOG SECTION ============ */}
       <Section id="stories" pattern="soft">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <span className="inline-block rounded-full bg-white dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
+            <span className="sir-tag">
               {t("home.stories.eyebrow")}
             </span>
-            <h2 className="mt-3 text-3xl font-bold text-neutral-heading dark:text-slate-50 sm:text-4xl">
+            <h2 className="mt-3 text-3xl font-extrabold text-slate-900 dark:text-slate-50 sm:text-4xl lg:text-5xl font-serif">
               {t("home.stories.title")}
             </h2>
-            <p className="mt-2 text-neutral-body dark:text-slate-300">{t("home.stories.subtitle")}</p>
+            <p className="mt-2 text-slate-600 dark:text-slate-300">{t("home.stories.subtitle")}</p>
           </div>
           <Link
             to="/blog"
-            className="text-sm font-semibold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 hover:underline underline-offset-4"
+            className="sir-link-underline text-xs uppercase tracking-wider font-extrabold"
           >
-            {t("home.stories.allArticles")}
+            <span>{t("home.stories.allArticles")}</span>
+            <span>→</span>
           </Link>
         </div>
 
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
           {recentPosts.map((p) => (
             <article
               key={p.slug}
-              className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
+              className="sir-card-accent p-6 flex flex-col justify-between"
             >
-              <time className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-                {p.date}
-              </time>
-              <h3 className="mt-3 font-display text-lg font-semibold text-neutral-heading dark:text-slate-100">
-                <Link to={`/blog/${p.slug}`} className="hover:text-brand-600 dark:hover:text-brand-400">
-                  {p.title}
+              <div>
+                <time className="text-[11px] font-extrabold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+                  {p.date}
+                </time>
+                <h3 className="mt-3 font-serif text-lg font-extrabold text-slate-900 dark:text-slate-100">
+                  <Link to={`/blog/${p.slug}`} className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">
+                    {p.title}
+                  </Link>
+                </h3>
+                <p className="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{p.excerpt}</p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
+                <Link
+                  to={`/blog/${p.slug}`}
+                  className="sir-link-underline text-xs uppercase tracking-wider font-extrabold"
+                >
+                  <span>{t("common.readMoreArrow")}</span>
+                  <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
                 </Link>
-              </h3>
-              <p className="mt-2 text-sm text-neutral-body dark:text-slate-300">{p.excerpt}</p>
-              <Link
-                to={`/blog/${p.slug}`}
-                className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 hover:underline underline-offset-4"
-              >
-                {t("common.readMoreArrow")}
-              </Link>
+              </div>
             </article>
           ))}
         </div>
       </Section>
 
-      {/* ============ TESTIMONIALS (Pattern A: Canvas) ============ */}
+      {/* ============ TESTIMONIALS SECTION ============ */}
       <Section id="testimonials" pattern="canvas">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-block rounded-full bg-brand-50 dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
+          <span className="sir-tag">
             {t("home.testimonials.eyebrow")}
           </span>
-          <h2 className="mt-3 text-3xl font-bold text-neutral-heading dark:text-slate-50 sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-extrabold text-slate-900 dark:text-slate-50 sm:text-4xl lg:text-5xl font-serif">
             {t("home.testimonials.title")}
           </h2>
         </div>
@@ -574,24 +599,24 @@ export default function Home() {
             return (
               <figure
                 key={item.key}
-                className="flex h-full flex-col rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm"
+                className="sir-card p-6 flex flex-col justify-between"
               >
                 <svg
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className="h-7 w-7 text-brand-300 dark:text-brand-500"
+                  className="h-8 w-8 text-brand-500 dark:text-brand-400"
                   aria-hidden="true"
                 >
                   <path d="M9.4 5.5C6.3 6.3 4 9.2 4 12.6V19h6.4v-6.4H7.3c0-2.1 1.4-3.8 3.4-4.4l-1.3-2.7zm10 0c-3.1.8-5.4 3.7-5.4 7.1V19h6.4v-6.4h-3.1c0-2.1 1.4-3.8 3.4-4.4l-1.3-2.7z" />
                 </svg>
-                <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-neutral-heading dark:text-slate-100">
+                <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-slate-800 dark:text-slate-200 font-medium italic">
                   &ldquo;{quote}&rdquo;
                 </blockquote>
-                <figcaption className="mt-6 border-t border-neutral-border dark:border-slate-700 pt-4">
-                  <p className="font-display text-sm font-semibold text-neutral-heading dark:text-slate-100">
+                <figcaption className="mt-6 border-t border-slate-100 dark:border-slate-800 pt-4">
+                  <p className="font-serif text-sm font-extrabold text-slate-900 dark:text-slate-100">
                     {name}
                   </p>
-                  <p className="text-xs text-neutral-body dark:text-slate-400">{role}</p>
+                  <p className="text-xs font-semibold text-brand-600 dark:text-brand-400 mt-0.5">{role}</p>
                 </figcaption>
               </figure>
             );
@@ -599,76 +624,79 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* ============ VIDEOS (Pattern B: Soft Contrast) ============ */}
+      {/* ============ VIDEOS SECTION ============ */}
       <Section id="videos" pattern="soft">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-block rounded-full bg-white dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
+          <span className="sir-tag">
             {t("home.videos.eyebrow")}
           </span>
-          <h2 className="mt-3 text-3xl font-bold text-neutral-heading dark:text-slate-50 sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-extrabold text-slate-900 dark:text-slate-50 sm:text-4xl lg:text-5xl font-serif">
             {t("home.videos.title")}
           </h2>
-          <p className="mt-3 text-neutral-body dark:text-slate-300">{t("home.videos.subtitle")}</p>
+          <p className="mt-3 text-slate-600 dark:text-slate-300">{t("home.videos.subtitle")}</p>
         </div>
 
         <div className="mt-10 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {fallbackVideos.map((v) => (
             <article
               key={v.title}
-              className="overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm"
+              className="sir-card"
             >
-              <div className="relative aspect-video w-full overflow-hidden bg-brand-100 dark:bg-slate-900">
-                <div className="absolute inset-0 grid place-items-center bg-brand-600/30 text-white">
+              <div className="relative aspect-video w-full overflow-hidden bg-slate-900">
+                <div className="absolute inset-0 grid place-items-center bg-brand-900/40 text-white">
                   <div className="text-center">
                     <svg
                       width="56"
                       height="56"
                       viewBox="0 0 24 24"
                       fill="currentColor"
-                      className="mx-auto"
+                      className="mx-auto text-brand-400"
                     >
                       <path d="M8 5v14l11-7z" />
                     </svg>
-                    <p className="mt-2 text-xs font-semibold uppercase tracking-wider text-white">
+                    <p className="mt-2 text-xs font-extrabold uppercase tracking-wider text-white">
                       {t("common.comingSoon")}
                     </p>
                   </div>
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="font-display text-lg font-semibold text-neutral-heading dark:text-slate-100">
+                <h3 className="font-serif text-lg font-extrabold text-slate-900 dark:text-slate-100">
                   {v.title}
                 </h3>
-                <p className="mt-2 text-sm text-neutral-body dark:text-slate-300">{v.description}</p>
+                <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">{v.description}</p>
               </div>
             </article>
           ))}
         </div>
       </Section>
 
-      {/* ============ DONATE / GET INVOLVED ============ */}
+      {/* ============ DONATE / GET INVOLVED (DEEP ROYAL BLUE BANNER) ============ */}
       <section
         id="donate"
-        className="relative isolate overflow-hidden bg-brand-600 dark:bg-brand-900 py-16 text-white sm:py-20 transition-colors border-y border-brand-700 dark:border-brand-800"
+        className="relative isolate overflow-hidden bg-brand-600 dark:bg-blue-900 py-16 text-white sm:py-20 transition-colors border-y border-brand-700 dark:border-blue-800"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl font-display">
+          <div className="mx-auto max-w-3xl text-center space-y-3">
+            <span className="inline-block rounded-md bg-white/20 px-3 py-1 text-xs font-extrabold uppercase tracking-widest text-white border border-white/30 backdrop-blur-sm">
+              Transform Futures
+            </span>
+            <h2 className="text-3xl font-extrabold !text-white dark:!text-white sm:text-4xl lg:text-5xl font-serif">
               {t("home.donateBlock.title")}
             </h2>
-            <p className="mx-auto mt-3 max-w-2xl text-brand-100 text-base sm:text-lg">
+            <p className="mx-auto max-w-2xl text-blue-100 dark:text-blue-100 text-base sm:text-lg">
               {t("home.donateBlock.subtitle")}
             </p>
           </div>
 
           <div className="mx-auto mt-12 grid max-w-5xl gap-6 md:grid-cols-3">
             {/* Card 1: Give */}
-            <div className="flex flex-col justify-between rounded-2xl bg-white dark:bg-slate-800 p-8 shadow-xl border border-slate-200/80 dark:border-slate-700/80">
+            <div className="relative rounded-2xl bg-white text-slate-900 p-8 flex flex-col justify-between border border-white shadow-xl overflow-hidden">
               <div>
-                <h3 className="font-display text-xl font-bold text-slate-900 dark:text-white">
+                <h3 className="font-serif text-2xl font-extrabold text-slate-900">
                   {t("home.donateBlock.give")}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                <p className="mt-3 text-sm leading-relaxed text-slate-600">
                   {t("home.donateBlock.giveBody")}
                 </p>
               </div>
@@ -676,7 +704,7 @@ export default function Home() {
                 href={SITE.donateUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-6 inline-flex items-center justify-center gap-2 rounded-xl bg-brand-600 dark:bg-brand-500 px-5 py-3 text-sm font-bold text-white shadow-md hover:bg-brand-700 dark:hover:bg-brand-400 transition"
+                className="mt-6 inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-brand-600 px-4 py-3 text-xs font-extrabold uppercase tracking-wider text-white shadow-md transition hover:bg-brand-700"
               >
                 <svg
                   aria-hidden
@@ -687,75 +715,79 @@ export default function Home() {
                 >
                   <path d="M12 21s-7-4.534-9.5-9.07C.94 8.94 2.4 5.5 5.6 5.5c1.74 0 3.41 1 4.4 2.5 1-1.5 2.66-2.5 4.4-2.5 3.2 0 4.66 3.44 3.1 6.43C19 16.466 12 21 12 21z" />
                 </svg>
-                {t("common.donateNow")}
+                <span>{t("common.donateNow")}</span>
+                <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
               </a>
             </div>
 
             {/* Card 2: Sponsor */}
-            <div className="flex flex-col justify-between rounded-2xl bg-white dark:bg-slate-800 p-8 shadow-xl border border-slate-200/80 dark:border-slate-700/80">
+            <div className="relative rounded-2xl bg-white text-slate-900 p-8 flex flex-col justify-between border border-white shadow-xl overflow-hidden">
               <div>
-                <h3 className="font-display text-xl font-bold text-slate-900 dark:text-white">
+                <h3 className="font-serif text-2xl font-extrabold text-slate-900">
                   {t("home.donateBlock.sponsor")}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                <p className="mt-3 text-sm leading-relaxed text-slate-600">
                   {t("home.donateBlock.sponsorBody")}
                 </p>
               </div>
               <a
                 href="#programs"
-                className="mt-6 inline-flex items-center justify-center gap-2 rounded-xl bg-brand-50 dark:bg-slate-700/70 border border-brand-200 dark:border-slate-600 px-5 py-3 text-sm font-bold text-brand-700 dark:text-brand-300 hover:bg-brand-100 dark:hover:bg-slate-700 transition"
+                className="mt-6 inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-brand-600 px-4 py-3 text-xs font-extrabold uppercase tracking-wider text-white shadow-md transition hover:bg-brand-700"
               >
-                {t("home.donateBlock.sponsorCta")}
+                <span>{t("home.donateBlock.sponsorCta")}</span>
+                <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
               </a>
             </div>
 
             {/* Card 3: Volunteer */}
-            <div className="flex flex-col justify-between rounded-2xl bg-white dark:bg-slate-800 p-8 shadow-xl border border-slate-200/80 dark:border-slate-700/80">
+            <div className="relative rounded-2xl bg-white text-slate-900 p-8 flex flex-col justify-between border border-white shadow-xl overflow-hidden">
               <div>
-                <h3 className="font-display text-xl font-bold text-slate-900 dark:text-white">
+                <h3 className="font-serif text-2xl font-extrabold text-slate-900">
                   {t("home.donateBlock.volunteer")}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                <p className="mt-3 text-sm leading-relaxed text-slate-600">
                   {t("home.donateBlock.volunteerBody")}
                 </p>
               </div>
               <Link
                 to="/contact"
-                className="mt-6 inline-flex items-center justify-center gap-2 rounded-xl bg-brand-50 dark:bg-slate-700/70 border border-brand-200 dark:border-slate-600 px-5 py-3 text-sm font-bold text-brand-700 dark:text-brand-300 hover:bg-brand-100 dark:hover:bg-slate-700 transition"
+                className="mt-6 inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-brand-600 px-4 py-3 text-xs font-extrabold uppercase tracking-wider text-white shadow-md transition hover:bg-brand-700"
               >
-                {t("common.contactUs", "Contact us")}
+                <span>{t("common.contactUs", "Contact us")}</span>
+                <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
               </Link>
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* ============ CONTACT (Pattern A: Canvas) ============ */}
+      {/* ============ CONTACT SECTION ============ */}
       <Section id="contact" pattern="canvas">
         <div className="grid gap-12 lg:grid-cols-2">
           <div>
-            <span className="inline-block rounded-full bg-brand-50 dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
+            <span className="sir-tag">
               {t("home.contact.eyebrow")}
             </span>
-            <h2 className="mt-3 text-3xl font-bold text-neutral-heading dark:text-slate-50 sm:text-4xl">
+            <h2 className="mt-3 text-3xl font-extrabold text-slate-900 dark:text-slate-50 sm:text-4xl lg:text-5xl font-serif">
               {t("home.contact.title")}
             </h2>
-            <p className="mt-4 text-neutral-body dark:text-slate-300">{t("home.contact.subtitle")}</p>
+            <p className="mt-4 text-slate-600 dark:text-slate-300">{t("home.contact.subtitle")}</p>
 
-            <ul className="mt-8 space-y-3 text-sm text-neutral-body dark:text-slate-300">
-              <li>
-                <span className="font-semibold text-neutral-heading dark:text-slate-200">
+            <ul className="mt-8 space-y-4 text-sm text-slate-700 dark:text-slate-300">
+              <li className="flex items-start gap-3">
+                <span className="font-extrabold text-slate-900 dark:text-slate-200 min-w-[90px]">
                   {t("home.contact.locationLabel")}
-                </span>{" "}
-                {t("home.contact.locationValue")}
+                </span>
+                <span>{t("home.contact.locationValue")}</span>
               </li>
-              <li>
-                <span className="font-semibold text-neutral-heading dark:text-slate-200">
+              <li className="flex items-center gap-3">
+                <span className="font-extrabold text-slate-900 dark:text-slate-200 min-w-[90px]">
                   {t("home.contact.emailLabel")}
-                </span>{" "}
+                </span>
                 <a
                   href="mailto:hello@generationaid.org"
-                  className="text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 hover:underline underline-offset-4"
+                  className="text-brand-600 dark:text-brand-400 font-extrabold hover:underline"
                 >
                   hello@generationaid.org
                 </a>
@@ -765,10 +797,10 @@ export default function Home() {
 
           <form
             onSubmit={handleContactSubmit}
-            className="space-y-4 rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm sm:p-8"
+            className="space-y-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm sm:p-8"
           >
             <label className="block">
-              <span className="block text-sm font-semibold text-neutral-heading dark:text-slate-200">
+              <span className="block text-xs font-extrabold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1">
                 {t("common.name")}
               </span>
               <input
@@ -777,12 +809,12 @@ export default function Home() {
                 onChange={(e) =>
                   setContact({ ...contact, name: e.target.value })
                 }
-                className="mt-1 w-full rounded-lg border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-sm text-neutral-heading dark:text-slate-50 outline-none focus:border-brand-600 dark:focus:border-brand-500 focus:ring-1 focus:ring-brand-600 dark:focus:ring-brand-500"
+                className="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 px-3.5 py-2.5 text-sm text-slate-900 dark:text-slate-50 outline-none focus:border-brand-600 dark:focus:border-brand-500 focus:ring-1 focus:ring-brand-600"
               />
             </label>
 
             <label className="block">
-              <span className="block text-sm font-semibold text-neutral-heading dark:text-slate-200">
+              <span className="block text-xs font-extrabold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1">
                 {t("common.email")}
               </span>
               <input
@@ -792,12 +824,12 @@ export default function Home() {
                 onChange={(e) =>
                   setContact({ ...contact, email: e.target.value })
                 }
-                className="mt-1 w-full rounded-lg border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-sm text-neutral-heading dark:text-slate-50 outline-none focus:border-brand-600 dark:focus:border-brand-500 focus:ring-1 focus:ring-brand-600 dark:focus:ring-brand-500"
+                className="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 px-3.5 py-2.5 text-sm text-slate-900 dark:text-slate-50 outline-none focus:border-brand-600 dark:focus:border-brand-500 focus:ring-1 focus:ring-brand-600"
               />
             </label>
 
             <label className="block">
-              <span className="block text-sm font-semibold text-neutral-heading dark:text-slate-200">
+              <span className="block text-xs font-extrabold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1">
                 {t("common.message")}
               </span>
               <textarea
@@ -807,17 +839,17 @@ export default function Home() {
                 onChange={(e) =>
                   setContact({ ...contact, message: e.target.value })
                 }
-                className="mt-1 w-full rounded-lg border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-sm text-neutral-heading dark:text-slate-50 outline-none focus:border-brand-600 dark:focus:border-brand-500 focus:ring-1 focus:ring-brand-600 dark:focus:ring-brand-500"
+                className="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 px-3.5 py-2.5 text-sm text-slate-900 dark:text-slate-50 outline-none focus:border-brand-600 dark:focus:border-brand-500 focus:ring-1 focus:ring-brand-600"
               />
             </label>
 
             {contactState === "sent" && (
-              <p className="rounded-lg bg-brand-50 dark:bg-slate-700 px-3 py-2 text-sm font-medium text-brand-700 dark:text-brand-300">
+              <p className="rounded-lg bg-brand-50 dark:bg-brand-950/80 border border-brand-200 px-3.5 py-2.5 text-sm font-bold text-brand-700 dark:text-brand-300">
                 {t("common.thanks")}
               </p>
             )}
             {contactState === "error" && contactError && (
-              <p className="rounded-lg bg-red-50 dark:bg-red-950/60 border border-red-200 dark:border-red-800 px-3 py-2 text-sm font-medium text-red-700 dark:text-red-300">
+              <p className="rounded-lg bg-blue-50 dark:bg-slate-800 border border-brand-300 px-3.5 py-2.5 text-sm font-bold text-brand-700 dark:text-brand-300">
                 {contactError}
               </p>
             )}
@@ -825,15 +857,19 @@ export default function Home() {
             <button
               type="submit"
               disabled={contactState === "sending"}
-              className="w-full rounded-lg bg-brand-600 dark:bg-brand-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-700 dark:hover:bg-brand-400 disabled:opacity-60 transition"
+              className="sir-btn-primary w-full py-3 text-xs uppercase tracking-wider disabled:opacity-60"
             >
-              {contactState === "sending"
-                ? t("common.sending")
-                : t("common.sendMessage")}
+              <span>
+                {contactState === "sending"
+                  ? t("common.sending")
+                  : t("common.sendMessage")}
+              </span>
+              <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
             </button>
           </form>
         </div>
       </Section>
+
     </div>
   );
 }

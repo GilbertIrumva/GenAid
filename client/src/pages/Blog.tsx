@@ -94,7 +94,7 @@ export default function Blog() {
             <h1 className="mt-4 text-4xl font-bold leading-tight sm:text-5xl !text-white dark:!text-white">
               {t("blog.hero.titleAlt")}
             </h1>
-            <p className="mt-5 max-w-xl text-lg text-brand-100">
+            <p className="mt-5 max-w-xl text-lg text-white">
               {t("blog.hero.subtitleAlt")}
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
