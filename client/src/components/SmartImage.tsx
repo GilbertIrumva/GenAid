@@ -6,6 +6,8 @@ type Props = {
   className?: string;
   /** Short label shown inside the fallback placeholder. */
   fallbackLabel?: string;
+  /** Set to true for hero banners and above-the-fold images to load immediately */
+  priority?: boolean;
 };
 
 /**
@@ -13,8 +15,15 @@ type Props = {
  * (e.g. external CDN unreachable) OR when no `src` was supplied. Keeps layouts
  * intact even when images break or are missing.
  */
-export default function SmartImage({ src, alt, className, fallbackLabel }: Props) {
+export default function SmartImage({
+  src,
+  alt,
+  className = "",
+  fallbackLabel,
+  priority = false,
+}: Props) {
   const [failed, setFailed] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   const missing = !src || src.trim() === "";
 
   if (failed || missing) {
@@ -24,7 +33,7 @@ export default function SmartImage({ src, alt, className, fallbackLabel }: Props
         aria-label={alt}
         className={
           "flex items-center justify-center bg-gradient-to-br from-brand-100 via-brand-300 to-brand-600 dark:from-slate-800 dark:via-brand-900 dark:to-slate-950 text-white " +
-          (className ?? "")
+          className
         }
       >
         <div className="px-4 text-center">
@@ -54,8 +63,12 @@ export default function SmartImage({ src, alt, className, fallbackLabel }: Props
     <img
       src={src}
       alt={alt}
-      loading="lazy"
-      className={className}
+      loading={priority ? "eager" : "lazy"}
+      decoding="async"
+      // @ts-expect-error fetchpriority is standard in modern HTML and browsers
+      fetchpriority={priority ? "high" : "auto"}
+      className={`${className} transition-opacity duration-300 ${loaded ? "opacity-100" : "opacity-90"}`}
+      onLoad={() => setLoaded(true)}
       onError={() => setFailed(true)}
     />
   );

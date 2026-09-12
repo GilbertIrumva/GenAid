@@ -110,6 +110,7 @@ body {
 }
 
 body {
+  zoom: 0.9;
   font-family: var(--font-sans);
   color: var(--color-text-secondary);
   background-color: var(--color-canvas);
