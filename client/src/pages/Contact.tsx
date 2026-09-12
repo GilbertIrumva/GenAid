@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Section from "@/components/Section";
@@ -77,17 +77,11 @@ export default function Contact() {
     message: "",
   });
 
-  useEffect(() => {
-    const subjParam = searchParams.get("subject");
-    if (subjParam) {
-      const match = subjects.find(
-        (s) => s.toLowerCase() === subjParam.toLowerCase() || (subjParam.includes("Talent") && s.includes("Talent"))
-      );
-      if (match) {
-        setForm((f) => ({ ...f, subject: match }));
-      }
-    }
-  }, [searchParams]);
+  const [prevParam, setPrevParam] = useState(initialSubject);
+  if (initialSubject !== prevParam) {
+    setPrevParam(initialSubject);
+    setForm((f) => ({ ...f, subject: matchedSubject }));
+  }
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
     "idle",
   );
