@@ -19,7 +19,6 @@ export default function JobsLayout() {
   useEffect(() => {
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
-    setOpen(false);
   }, [location.pathname, location.hash]);
 
   useEffect(() => {
