@@ -187,16 +187,20 @@ export interface DisplayReport {
   pages?: number;
 }
 
-const projectId = (
-  import.meta.env.VITE_SANITY_PROJECT_ID ||
-  import.meta.env.VITE_SANITY_STUDIO_PROJECT_ID ||
-  ""
-).trim();
+const useSanity = import.meta.env.VITE_USE_SANITY !== "false";
+
+const projectId = useSanity
+  ? (
+      import.meta.env.VITE_SANITY_PROJECT_ID ||
+      import.meta.env.VITE_SANITY_STUDIO_PROJECT_ID ||
+      ""
+    ).trim()
+  : "";
 
 const dataset = (import.meta.env.VITE_SANITY_DATASET || "production").trim();
 
 export const sanityClient =
-  projectId && dataset
+  useSanity && projectId && dataset
     ? createClient({
         projectId,
         dataset,
@@ -442,42 +446,47 @@ export interface SanityJobsContent {
 export async function getJobsContent(): Promise<SanityJobsContent | null> {
   if (!sanityClient) return null;
 
-  return sanityClient.fetch<SanityJobsContent>(
-    `*[_type == "jobsContent"][0] {
-      _id,
-      "jobsLogo": coalesce(jobsLogo.asset->url, ""),
-      overviewHeroTitle,
-      overviewHeroSubtitle,
-      "overviewHeroImage": coalesce(overviewHeroImage.asset->url, ""),
-      marketNeedTitle,
-      marketProblems,
-      pipelineTitle,
-      pipelineSteps,
-      "pipelineImage": coalesce(pipelineImage.asset->url, ""),
-      talentCategories,
-      howHiringWorks,
-      employerBenefits,
-      proofAndTrust,
-      impactStats,
-      talentHeroTitle,
-      talentHeroSubtitle,
-      "talentHeroImage": coalesce(talentHeroImage.asset->url, ""),
-      profilePillars,
-      journeySteps,
-      leadershipTitle,
-      leadershipBody,
-      "leadershipImage": coalesce(leadershipImage.asset->url, ""),
-      employerHeroTitle,
-      employerHeroSubtitle,
-      "employerHeroImage": coalesce(employerHeroImage.asset->url, ""),
-      valuePillars,
-      serviceLines,
-      esgPillars,
-      "esgImpactImage": coalesce(esgImpactImage.asset->url, ""),
-      qualityPillars,
-      "employerInfraImage": coalesce(employerInfraImage.asset->url, "")
-    }`
-  );
+  try {
+    return await sanityClient.fetch<SanityJobsContent>(
+      `*[_type == "jobsContent"][0] {
+        _id,
+        "jobsLogo": coalesce(jobsLogo.asset->url, ""),
+        overviewHeroTitle,
+        overviewHeroSubtitle,
+        "overviewHeroImage": coalesce(overviewHeroImage.asset->url, ""),
+        marketNeedTitle,
+        marketProblems,
+        pipelineTitle,
+        pipelineSteps,
+        "pipelineImage": coalesce(pipelineImage.asset->url, ""),
+        talentCategories,
+        howHiringWorks,
+        employerBenefits,
+        proofAndTrust,
+        impactStats,
+        talentHeroTitle,
+        talentHeroSubtitle,
+        "talentHeroImage": coalesce(talentHeroImage.asset->url, ""),
+        profilePillars,
+        journeySteps,
+        leadershipTitle,
+        leadershipBody,
+        "leadershipImage": coalesce(leadershipImage.asset->url, ""),
+        employerHeroTitle,
+        employerHeroSubtitle,
+        "employerHeroImage": coalesce(employerHeroImage.asset->url, ""),
+        valuePillars,
+        serviceLines,
+        esgPillars,
+        "esgImpactImage": coalesce(esgImpactImage.asset->url, ""),
+        qualityPillars,
+        "employerInfraImage": coalesce(employerInfraImage.asset->url, "")
+      }`
+    );
+  } catch (error) {
+    console.warn("Could not fetch Sanity jobsContent (using static fallback):", error);
+    return null;
+  }
 }
 
 export function mapSanityPostToDisplayPost(post: SanityPost): DisplayPost {

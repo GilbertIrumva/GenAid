@@ -38,7 +38,7 @@
     "subject": "Subject",
     "title": "Title",
     "description": "Description",
-    "address": "Kakuma Refugee Camp, Turkana West, Kenya",
+    "address": "Kakuma Refugee Camp and Kalobeyei Settlement, Kenya",
     "comingSoon": "Coming soon",
     "noResults": "No results found.",
     "tryAgain": "Try again"
@@ -66,9 +66,16 @@
     },
     "programsMenu": {
       "all": "All programs",
-      "computerLiteracy": "Computer literacy",
-      "tailoring": "Tailoring & dressmaking",
-      "english": "English language"
+      "learningThroughPlay": "Learning Through Play",
+      "womenInAi": "Women in AI",
+      "storytelling": "Storytelling",
+      "creativeArts": "Creative Art",
+      "climateAction": "Climate Action",
+      "socialEmotionalLearning": "Social-Emotional Learning",
+      "advocacy": "Global Refugee Advocacy",
+      "englishLanguageLiteracy": "English & Literacy Skills",
+      "womensDigitalSkills": "Women's Digital Skills",
+      "computerLiteracySkills": "Computer Literacy Skills"
     },
     "impactMenu": {
       "blog": "Blog",
@@ -138,7 +145,7 @@
     "about": {
       "eyebrow": "About us",
       "title": "A youth refugee-led organisation",
-      "body1": "Generation Aid is a refugee-led nonprofit organization based in Kakuma Refugee Camp, Kenya, dedicated to transforming lives through education, livelihoods, and innovation. We believe that refugees and vulnerable communities possess extraordinary potential when given access to quality education, digital skills, meaningful employment, and opportunities to thrive.",
+      "body1": "Generation Aid is a refugee-led nonprofit organization based in Kakuma Refugee Camp and Kalobeyei Settlement, Kenya, dedicated to transforming lives through education, livelihoods, and innovation. We believe that refugees and vulnerable communities possess extraordinary potential when given access to quality education, digital skills, meaningful employment, and opportunities to thrive.",
       "body2": "Founded by Hubert Senga, a Congolese refugee living in the Kakuma refugee camp, Generation Aid works to bridge the gap between humanitarian assistance and long-term economic empowerment. Through digital skills training, vocational education, language learning, entrepreneurship, and employment pathways, we equip young people and women with the tools they need to build sustainable futures. Beyond training, we connect talented graduates with remote work opportunities, businesses, and global partners, ensuring that skills translate into real livelihoods and lasting impact. At Generation Aid, we don't just support communities we empower them to become leaders, innovators, and contributors to the global economy.",
       "ourVision": "Our Vision",
       "visionTitle": "A future without barriers",
@@ -163,24 +170,32 @@
       "of": "of",
       "donateToCause": "Donate to this cause",
       "items": {
-        "hub": {
-          "title": "A Hub of Hope in the Heart of Kakuma",
-          "description": "Help us expand our Digital Community Hub — workstations, solar power and high-speed internet for refugee youth."
+        "empoweringRefugees": {
+          "title": "Empowering Refugees in Kakuma with Generation Aid",
+          "description": "Refugees in Kakuma face limited access to quality education, digital skills, vocational training, and employment opportunities, leaving many trapped in poverty and dependency. We equip refugees with vocational, digital, entrepreneurship, and English language skills through practical training, mentorship, and youth-focused programs, empowering them to build sustainable livelihoods."
         },
-        "jobs": {
-          "title": "Empowering Refugees with Generation Jobs",
-          "description": "Train refugee youth in remote work skills and connect them to real, paying international contracts."
+        "createJobsWomen": {
+          "title": "Create Jobs for Refugees & Women's Empowerment",
+          "description": "Support employment pathways that connect talented refugee professionals with remote jobs and income opportunities around the world. Invest in refugee women through vocational training, entrepreneurship programs, and leadership development."
         },
-        "artists": {
-          "title": "Empowering Refugee Artists",
-          "description": "Support the Kakuma Art Project and the Senga Gallery — materials, workshops and global exhibitions."
+        "emergencyFoodMedical": {
+          "title": "Emergency Food & Medical Support",
+          "description": "Help vulnerable refugee families in Kakuma and Kalobeyei access life-saving food assistance and essential healthcare when emergencies arise."
+        },
+        "languageOfHope": {
+          "title": "Language of Hope for African & Afghan Refugees",
+          "description": "Refugees in Kalobeyei, especially women, girls, and children from Pakistan, Afghanistan, and other African countries, face serious challenges due to limited English skills. This initiative delivers structured English training, literacy, and community integration to reduce isolation and unlock education and livelihoods."
+        },
+        "agrihopeInitiative": {
+          "title": "AgriHope Initiative for Resilience and Livelihood",
+          "description": "Addressing chronic food insecurity and climate shocks in Kakuma through permaculture, micro-drip irrigation, climate-smart agriculture, and kitchen gardens for youth, women, and teenage mothers."
         }
       }
     },
     "impact": {
       "eyebrow": "Impact",
-      "title": "Our impact in numbers",
-      "subtitle": "Real change, measured by the people we've walked alongside."
+      "title": "Our Impact in Numbers",
+      "subtitle": "Real change is measured through transformed lives."
     },
     "team": {
       "eyebrow": "Our team",
@@ -211,26 +226,33 @@
     },
     "stories": {
       "eyebrow": "Stories",
-      "title": "Latest from the blog",
-      "subtitle": "News, project launches and reflections from Kakuma.",
+      "title": "Latest From the Blog",
+      "subtitle": "Stay connected with the stories, innovations, and impact happening across our community.",
       "allArticles": "All articles →"
     },
     "testimonials": {
       "eyebrow": "Testimonials",
       "title": "What people say about us",
       "items": {
-        "amani": {
-          "quote": "Generation Aid gave me my first remote contract. Today I support my family by working online from Kakuma — something I never thought possible.",
-          "role": "Remote Work Bootcamp graduate"
+        "sietske": {
+          "quote": "When I first heard about Generation Aid's vision in my conversation with Hubert, I was struck by its simplicity, humanity, and power. Young refugees, eager to contribute meaningfully to the world while supporting their families—without having to depend on others. Building a grassroots organization from the ground up is incredibly challenging, especially when trying to gain the attention needed to grow. But Hubert and his team persevered, and I see them making strides every day. I feel privileged to have witnessed the birth of this organization—one that, without a doubt, will become a formidable force in the future.",
+          "name": "Sietske Istvan",
+          "role": "Founder of Story Bridge"
         },
-        "mwangi": {
-          "quote": "The Senga Gallery changed everything. For the first time, my paintings are seen — and they tell the story of where I come from.",
-          "role": "Kakuma Art Project artist"
+        "fabien": {
+          "quote": "We met Generation Aid through social networks. After an initial exchange of posts, we finally met in the field in Kakuma. We got to know each other very quickly and for the last 6 months we've been working together to develop sustainable jobs within the camp itself, thanks to digital technology in the BPO field. Their energy and resilience are both inspiring and motivating.",
+          "name": "Fabien de Castilla",
+          "role": "Director of Konexio Africa"
         },
-        "partner": {
-          "quote": "A truly refugee-led organisation. Their work bridges learning, livelihoods and dignity — and they deliver real outcomes.",
-          "name": "Partner organisation",
-          "role": "Education NGO, Nairobi"
+        "chris": {
+          "quote": "Hubert Senga and Generation Aid empower refugees with digital skills and economic opportunities. His visionary leadership has transformed lives, helping refugees integrate into the global economy and achieve self-reliance. His dedication showcases the power of community-driven initiatives in fostering resilience and hope among displaced populations.",
+          "name": "Chris Fryburger",
+          "role": "Founder at nReach / Amazon Matchmaker"
+        },
+        "nyadieng": {
+          "quote": "When I first joined this course, I felt both excitement and uncertainty. I was stepping into unfamiliar territory, facing a language that would open doors to countless opportunities but also present challenges along the way. Yet, with each passing day, I grew more confident.",
+          "name": "Nyadieng Dim Chany",
+          "role": "Beneficiary & English Course Graduate"
         }
       }
     },
@@ -255,7 +277,7 @@
       "title": "Let's build something together",
       "subtitle": "Have a question, partnership idea, or want to volunteer? Send us a message and we'll get back to you.",
       "locationLabel": "Location:",
-      "locationValue": "Kakuma, Turkana County, Kenya",
+      "locationValue": "Kakuma Refugee Camp and Kalobeyei Settlement, Kenya",
       "emailLabel": "Email:"
     }
   },
@@ -263,81 +285,38 @@
     "hero": {
       "eyebrow": "Where it all began",
       "title": "Who are we?",
-      "subtitle": "Generation Aid is a refugee-led nonprofit organization based in Kakuma Refugee Camp, Kenya, dedicated to transforming lives through education, livelihoods, and innovation. We believe that refugees and vulnerable communities possess extraordinary potential when given access to quality education, digital skills, meaningful employment, and opportunities to thrive. Founded by Hubert Senga, a Congolese refugee living in the Kakuma refugee camp, Generation Aid works to bridge the gap between humanitarian assistance and long-term economic empowerment. Through digital skills training, vocational education, language learning, entrepreneurship, and employment pathways, we equip young people and women with the tools they need to build sustainable futures. Beyond training, we connect talented graduates with remote work opportunities, businesses, and global partners, ensuring that skills translate into real livelihoods and lasting impact. At Generation Aid, we don't just support communities we empower them to become leaders, innovators, and contributors to the global economy."
+      "subtitle": "Generation Aid is a refugee-led nonprofit organization based in Kakuma Refugee Camp and Kalobeyei Settlement, Kenya, dedicated to transforming lives through education, livelihoods, and innovation. We believe that refugees and vulnerable communities possess extraordinary potential when given access to quality education, digital skills, meaningful employment, and opportunities to thrive."
     },
-    "intro": {
-      "p1": "We are transforming education-into-employment systems — preparing, placing and supporting people into life-changing careers that would otherwise be inaccessible — so refugees can integrate into the global economy.",
-      "p2": "Generation Aid is a youth-led refugee nonprofit based in Kenya's Kakuma Refugee Camp, born in 2019 during COVID-19. Over the years, GAID has worked tirelessly to provide a range of services to displaced communities — vocational education, entrepreneurship, food distribution and digital skills.",
-      "p3Prefix": "The name ",
-      "p3Brand": "Generation Aid",
-      "p3Middle": " was given by our founder ",
-      "p3FounderName": "Hubert Senga",
-      "p3Suffix": " to reflect our ambition of serving refugees and displaced people in this current generation."
-    },
-    "objectivesTitle": "Our objectives",
+    "whoWeAreTitle": "Who We Are",
+    "whoWeAreBody": "Generation Aid is a refugee-led, youth-driven nonprofit organization transforming lives through education, technology, and economic empowerment. Founded in Kakuma Refugee Camp, Kenya, we believe that displacement should never define a person's future. We equip refugees and vulnerable host community members with the skills, opportunities, and resources they need to become self-reliant and contribute meaningfully to their communities. Through digital skills training, vocational education, entrepreneurship support, career development, and innovation, we help people move beyond humanitarian assistance toward sustainable livelihoods. At Generation Aid, we don't just respond to crises we invest in people's potential, creating pathways to dignity, opportunity, and lasting impact for the refugees.",
+    "whereItAllBeganTitle": "Where It All Began",
+    "whereItAllBeganBody": "Generation Aid was founded by Hubert Senga, a Congolese refugee who arrived in Kakuma Refugee Camp in 2016 after fleeing conflict in the Democratic Republic of the Congo. Like many refugees, he experienced firsthand the barriers to education, employment, and opportunity. Recognizing that thousands of talented young people were being left behind despite their resilience and ambition, Hubert established Generation Aid to create practical solutions that empower refugees with the skills needed to thrive in the modern world. What started as a small community initiative has grown into a trusted refugee-led organization serving refugees and host communities through education, digital innovation, vocational training, and employment pathways. Today, Generation Aid continues to build a future where every displaced person has the opportunity to learn, work, lead, and rebuild their life with dignity.",
+    "objectivesTitle": "Our Objectives",
     "objectivesSubtitle": "What Generation Aid works to achieve.",
     "objectives": [
-      "Empower refugees with knowledge and skills — education, digital skills, livelihood and entrepreneurship — so they can earn a sustainable income through remote work opportunities.",
-      "Equip refugees with the essential knowledge and competencies to navigate the digital world, fostering creativity and problem-solving.",
-      "Build sustainable community development projects through long-term initiatives in education, entrepreneurship and social support."
+      "Expand access to quality education and digital skills by providing inclusive training that prepares refugees and host community members for the digital economy.",
+      "Promote sustainable livelihoods and decent employment through entrepreneurship, vocational training, job readiness, and connections to local and global work opportunities.",
+      "Empower women, youth, and persons with disabilities by creating inclusive programs that reduce barriers to education, leadership, and economic participation.",
+      "Strengthen community resilience through innovation and partnerships by collaborating with governments, NGOs, the private sector, and local communities to develop scalable, locally led solutions."
     ],
-    "focusedTitle": "Our focused programs",
-    "focusedEyebrow": "What we do",
-    "focusedPrograms": [
-      {
-        "title": "Vocational & Livelihood skills",
-        "body": "Vocational training, small-business support and income-generating projects that help refugees build sustainable, self-reliant futures."
-      },
-      {
-        "title": "Education",
-        "body": "Learning tools and inclusive programs that support education for all — especially girls and children with disabilities — and bridge youth into higher education."
-      },
-      {
-        "title": "EdTech",
-        "body": "Digital learning tools, inclusive education and skills training that close the education gap in displacement settings."
-      },
-      {
-        "title": "Entrepreneurship",
-        "body": "Training, resources and market access that help refugees launch sustainable businesses and achieve self-reliance."
-      },
-      {
-        "title": "Remote Employment",
-        "body": "Digital-skills training plus our Digital Community Hub — high-speed internet, stable power and devices — connecting refugees to global remote work."
-      }
-    ],
-    "valuesTitle": "Our core values",
+    "whatWeWorkToAchieveTitle": "What Generation Aid Works to Achieve",
+    "whatWeWorkToAchieveBody": "Generation Aid works to build a future where refugees are recognized not for their displacement, but for their potential. We strive to create thriving, self-reliant communities by ensuring that refugees and vulnerable host community members have access to education, digital technology, meaningful employment, entrepreneurship opportunities, and leadership development. Our goal is to bridge the gap between humanitarian assistance and long-term development by equipping individuals with the knowledge, skills, and confidence to shape their own futures. Through innovation, collaboration, and locally led solutions, we are helping transform refugee communities into centers of opportunity, resilience, and sustainable economic growth.",
+    "valuesTitle": "Our Core Values",
     "values": [
       {
-        "title": "Refugee-led, community-driven",
-        "body": "We work as a group of passionate refugees and make sure youth voices in the community are heard."
+        "title": "Empowerment",
+        "body": "We equip refugees and vulnerable communities with the knowledge, skills, and opportunities they need to become self-reliant and create lasting change."
       },
       {
-        "title": "Accountability & Transparency",
-        "body": "We are answerable for our actions and conduct every activity with full transparency."
+        "title": "Innovation",
+        "body": "We embrace technology, creativity, and locally led solutions to address complex challenges and expand access to education, livelihoods, and opportunity."
       },
       {
-        "title": "Self-reliance",
-        "body": "We build self-sustaining pathways so the organisation can keep supporting the community even without external support."
+        "title": "Integrity",
+        "body": "We act with honesty, transparency, accountability, and respect, building trust with the communities we serve and the partners we work with."
       }
     ],
-    "historyEyebrow": "Our story",
-    "historyTitle": "History — how we began",
-    "history": {
-      "p1Start": "Generation Aid was born in 2019 from the vision, determination and lived experience of our founder ",
-      "p1FounderName": "Hubert Senga",
-      "p1End": " — a social entrepreneur and changemaker on a mission to transform the lives of refugees through digital skills, innovative education and economic empowerment.",
-      "p2Start": "As a Congolese refugee who has lived in Kakuma refugee camp for over nine years, Hubert has witnessed firsthand the immense barriers refugees face: limited access to education, unemployment and the struggle for dignity. But rather than accept these challenges as fate, he chose to ",
-      "p2Emphasis": "rewrite the narrative.",
-      "p3Start": "GAID's work is grounded in the belief that refugees and other displaced individuals have the right to live with dignity and respect, and should have access to the resources and opportunities they need to rebuild their lives. We became a Community Based Organisation in 2019, transitioned to the name ",
-      "p3Brand": "Generation Aid",
-      "p3End": " the same year, and received our Government certificate in 2025.",
-      "p4": "Through Generation Aid we are not just closing literacy and unemployment gaps — we are building a future where every refugee has the tools, knowledge and opportunities to shape their destiny. This is more than a movement; it is a revolution of hope, innovation and unstoppable resilience.",
-      "p5": "We are grateful to our partners and donors who have been instrumental in this journey of empowering youth and advancing the UN Strategic Development Goals 2030 of Quality Education, Reduced Inequality, Decent Work and Economic Growth."
-    },
-    "founded": "Founded",
-    "certified": "Certified",
-    "basedIn": "Based in",
-    "kakumaCamp": "Kakuma Refugee Camp, Kenya",
+    "kakumaCamp": "Kakuma Refugee Camp and Kalobeyei Settlement, Kenya",
     "teamEyebrow": "Our team",
     "teamTitle": "The people behind Generation Aid",
     "teamSubtitle": "A refugee-led team of passionate, transparent and accountable changemakers.",
@@ -366,136 +345,14 @@
   },
   "programs": {
     "hero": {
-      "eyebrow": "Digital Livelihood",
-      "title": "Education & Capacity Building",
-      "subtitle": "Vocational and education programs in ICT, tailoring & dressmaking craft training, English language skills, and other innovative education that plays a critical role in the economic and livelihood development of refugee youth in the Kakuma refugee camp."
+      "eyebrow": "Our Core Initiatives",
+      "title": "Refugee-Led Education, Technology & Livelihood Programs",
+      "subtitle": "Equipping youth, women, and children in Kakuma with digital innovation, playful learning, creative arts, climate-smart agriculture, and emotional wellbeing."
     },
     "programLabel": "Program {{n}}",
-    "youthDigital": {
-      "tag": "Youth Digital Skills",
-      "title": "From the camp to the global digital economy",
-      "subtitle": "Equipping refugee youth with the skills, tools and connections to earn online — closing the digital divide one trainee at a time."
-    },
-    "creativity": {
-      "tag": "Creativity",
-      "title": "Art crossing borders",
-      "subtitle": "A single canvas sparked a movement — bringing materials, workshops and dignity to refugee artists in Kakuma Camp."
-    },
     "cta": {
-      "title": "Help us reach more refugee youth.",
-      "subtitle": "Sponsor a program, donate equipment or join us as a volunteer."
-    },
-    "overview": [
-      {
-        "title": "Computer Literacy Skills",
-        "body": "ICT and digital literacy training that prepares refugee youth for both online and offline careers."
-      },
-      {
-        "title": "Vocational Skills Training",
-        "body": "Vocational Skills Training is a program that equips refugees and other vulnerable individuals with practical, hands-on skills that lead to employment, self-employment, and sustainable livelihoods. The program focuses on developing job-ready skills that meet local market needs while promoting entrepreneurship and economic resilience."
-      },
-      {
-        "title": "English Language & Professional Development",
-        "body": "English Language & Professional Development is a program that equips refugees and other marginalized individuals with the English communication and workplace skills needed to access education, employment, and leadership opportunities. The program recognizes that language proficiency and professional skills are often major barriers to employment. It combines practical English learning with career readiness to prepare participants for success in local and international workplaces."
-      }
-    ],
-    "details": [
-      {
-        "title": "Computer Literacy Skills",
-        "body": "Information and Communication Technologies (ICT) are essential skills for any career a student may want to pursue. At GAID we offer two ICT courses tailored to the needs of youth in Kakuma — Basic ICT & Digital Literacy and an introduction to programming. With these skills we unlock the creativity of youth and enable them to transform their communities through innovation and virtual entrepreneurship, paving the way for decent livelihoods and economic growth both online and offline.",
-        "features": [
-          "Basic ICT & digital literacy",
-          "Introduction to programming",
-          "Hands-on lab time",
-          "Pathway to remote work"
-        ]
-      },
-      {
-        "title": "Vocational Skills Training",
-        "body": "This program equips refugees and other vulnerable individuals with practical, hands-on skills that lead to employment, self-employment, and sustainable livelihoods. It focuses on developing job-ready skills that meet local market needs while promoting entrepreneurship and economic resilience.",
-        "features": [
-          "Hands-on practical skills",
-          "Job-ready training for local market needs",
-          "Entrepreneurship and self-employment pathways",
-          "Economic resilience and sustainable livelihoods"
-        ]
-      },
-      {
-        "title": "English Language & Professional Development",
-        "body": "This program equips refugees and other marginalized individuals with the English communication and workplace skills needed to access education, employment, and leadership opportunities. It recognizes that language proficiency and professional skills are often major barriers to employment, and combines practical English learning with career readiness to prepare participants for success in local and international workplaces.",
-        "features": [
-          "English communication for work and study",
-          "Career readiness and professional development",
-          "Leadership and workplace skills",
-          "Preparation for local and international workplaces"
-        ]
-      }
-    ],
-    "bpo": {
-      "eyebrow": "1. Flagship initiative",
-      "title": "Generation Jobs",
-      "p1": "Generation Jobs is Generation Aid's employment and workforce development program that connects trained refugee and underserved talent with meaningful work opportunities. The program bridges the gap between employers seeking reliable remote professionals and talented individuals facing barriers to employment.",
-      "p2": "What Generation Jobs is all about: Generation Jobs prepares, matches, and supports job-ready professionals for remote and on-site employment while helping businesses build skilled, cost-effective teams. The program combines skills training, career readiness, and job placement to create sustainable livelihoods."
-    },
-    "coding": {
-      "eyebrow": "2. Building the next generation of developers",
-      "title": "Coding & Web Development Academy",
-      "p1": "Beyond technical training, participants work on real-world projects — building e-commerce websites and digital storytelling platforms for refugee artists. Hackathons and coding challenges encourage innovation by tasking students with solving local problems through technology.",
-      "p2": "The program also connects aspiring developers with career guidance, scholarships and internship opportunities — providing a clear pathway into the global tech industry.",
-      "p3": "These initiatives reflect Generation Aid's commitment to bridging the digital divide and ensuring that refugee youth are not left behind in the digital economy."
-    },
-    "kap": {
-      "howEyebrow": "How it began",
-      "howTitle": "One painting, one conversation",
-      "howP1": "Boat — the painting that started all of this — led Tara Dominick and Hubert into a conversation about the existence of art in the Kakuma Refugee Camp. What followed was the founding of the Kakuma Art Project (KAP).",
-      "howP2": "Once committed to the project, it was as if everything started to align. Tara initially offered two hours a week, but the project now occupies three or four days of her week — and her thoughts constantly.",
-      "howP3": "From conception, Tara sold 10 limited edition signed prints of Boat to fund Phase 1 — getting paints, brushes, palette knives, paper, charcoal and canvasses into the camp.",
-      "quote": "One small action can ripple out to create significant change.",
-      "quoteAttr": "— Bob Brimson, one of the first believers in the project. He coined the tagline “the power of one painting”.",
-      "beautyEyebrow": "The beauty of the programs",
-      "beautyTitle": "Education, visibility and opportunity",
-      "beautyBody": "The project provides artists at the camp with education, visibility and opportunity — supported by a continuing series of workshops run through the Generation Aid Centre in Kakuma Camp.",
-      "paintingEyebrow": "An artist's story",
-      "paintingTitle": "Painting Home from afar",
-      "paintingP1": "Mwangi, a 52-year-old artist living at the Kakuma Camp, creates beautiful images of his homeland. Yet for years he was limited by resources — no canvas, no paint, no brushes.",
-      "paintingP2": "His passion to paint meant salvaging old t-shirts from the dump, washing them, and coating them with glue to create a makeshift canvas. His ingenuity and passion moved Tara deeply when she first saw his work.",
-      "paintingP3": "His work has given the root of the program and is now well recognised.",
-      "activitiesEyebrow": "Activities",
-      "activitiesTitle": "Refugee Artisan & Handicraft Cooperative",
-      "activitiesP1": "Many refugees in Kakuma come from rich cultural backgrounds with strong artistic traditions in beading, weaving, tailoring and wood carving. However, limited market access prevents them from turning these skills into sustainable businesses. To address this, Generation Aid established the Refugee Artisan & Handicraft Cooperative — a platform that supports refugee artisans in producing and selling their handmade products to local and international markets.",
-      "activitiesP2": "The initiative provides specialised training in various handicrafts, helping artisans improve product quality, develop unique designs and scale their production. It also connects them with buyers, NGOs and online marketplaces where they can showcase and sell their work. Through storytelling and branding workshops, artisans learn how to share their journey and cultural heritage — making their products more valuable in global markets.",
-      "celebratingEyebrow": "Celebrating our talents",
-      "celebratingTitle": "A cooperative model that pools strength",
-      "celebratingP1": "To further support artisans, Generation Aid is developing a cooperative model that lets artisans pool resources, access small business loans and collectively invest in materials and equipment. This ensures that even those with limited financial means can participate and grow their businesses.",
-      "celebratingP2": "The Refugee Artisan & Handicraft Cooperative not only preserves cultural heritage but also creates sustainable jobs and economic opportunities for artisans — particularly women and youth. By giving them a platform to monetise their skills, this initiative empowers refugees to build independent and dignified livelihoods beyond humanitarian aid.",
-      "galleryEyebrow": "The Senga Gallery",
-      "galleryTitle": "More than a building — an art gallery at the heart of Kakuma",
-      "galleryP1": "The first ever art gallery has been built — becoming a beacon of hope, a place for refugees to express themselves, to inspire one another, and to stand proud alongside each other as they move forward with their lives.",
-      "galleryP2": "KAP is run by Tara Dominick, a fine artist from Devon, together with Hubert Senga and Generation Aid who manage delivery of the art programmes on the ground in Kakuma.",
-      "galleryCaption1": "The workshop organised by the Birgheter project, to promote beauty and pride for the refugees.",
-      "galleryCaption2": "Through running art workshops, Generation Aid learns the real challenges the community is facing and develops community-based solutions.",
-      "galleryP3": "Through running workshops the refugee community in Kakuma comes together to advocate for peace, unity and talent. It is a unique program giving refugees a platform to share what's hidden in their cultures — gifts the wider world can learn from.",
-      "galleryCaption3": "The first ever art gallery in Kakuma refugee camp — named The Senga Gallery to honour the refugee advocacy of Hubert Senga, founder of Generation Aid.",
-      "whyTitle": "Why this gallery matters",
-      "whySubtitle": "The gallery is inclusive — built to promote creativity among refugees.",
-      "whyCards": [
-        {
-          "title": "Expression & Identity",
-          "body": "A safe space where refugee artists can give form to memories of home, stories of journey, and visions of tomorrow."
-        },
-        {
-          "title": "Solar-Powered Gallery",
-          "body": "Solar panels ensure there's always light to see the artwork — making the gallery viable and sustainable long-term."
-        },
-        {
-          "title": "Community & Solidarity",
-          "body": "Artists stand alongside one another, building pride and connection within a community that has lost so much."
-        },
-        {
-          "title": "Global Visibility",
-          "body": "Through exhibitions like the one in Wiltshire, refugee stories reach new audiences — bridging worlds through art."
-        }
-      ]
+      "title": "Help us reach more refugee youth & children.",
+      "subtitle": "Sponsor a program cohort, donate equipment or partner with us to expand refugee-led opportunities."
     }
   },
   "impact": {

@@ -4,7 +4,7 @@ export const SITE = {
   phoneKenya: "+254 721 763 200",
   phoneInternational: "+1 (513) 440-6780",
   email: "info@generationaid.org",
-  address: "Kakuma Refugee Camp, Turkana West, Kenya",
+  address: "Kakuma Refugee Camp and Kalobeyei Settlement, Kenya",
   socials: {
     facebook: "https://www.facebook.com/profile.php?id=61556075543152",
     linkedin: "https://www.linkedin.com/company/generation-aid",

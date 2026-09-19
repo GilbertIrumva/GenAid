@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
@@ -12,59 +12,78 @@ import { causes } from "@/data/causes";
 import { team } from "@/data/team";
 import { testimonials } from "@/data/testimonials";
 import { SITE } from "@/data/site";
+import { defaultPrograms } from "@/data/programsData";
 import { useSEO } from "@/utils/useSEO";
 import { useQuery } from "@tanstack/react-query";
 import {
+  getPrograms,
   getTeamMembers,
+  mapSanityProgramToDisplayProgram,
   mapSanityTeamMemberToDisplayTeamMember,
 } from "@/lib/sanity";
 
 const objectives = [
-  "Empower refugees with knowledge and skills — education, digital skills, livelihood and entrepreneurship — so they can earn a sustainable income through remote work.",
-  "Equip refugees with the essential competencies to navigate the digital world, fostering creativity and problem-solving.",
-  "Build sustainable community development through long-term initiatives in education, entrepreneurship and social support.",
-];
-
-const focusedPrograms = [
-  {
-    tag: "Digital Livelihood",
-    title: "Computer Literacy Skills",
-    body: "ICT and digital literacy training that prepares refugee youth for both online and offline careers.",
-    image: "/img/team/programs.jpg",
-  },
-  {
-    tag: "Youth Digital Skills",
-    title: "Remote Work Bootcamp",
-    body: "Graphic design, content writing and virtual assistance — connecting youth to global remote work.",
-    image: "/img/causes/jobs.jpg",
-  },
-  {
-    tag: "Creativity",
-    title: "Kakuma Art Project",
-    body: "A platform for refugee artists — workshops, materials and visibility through the Senga Gallery.",
-    image: "/img/causes/artists.jpg",
-  },
+  "Expand access to quality education and digital skills by providing inclusive training that prepares refugees and host community members for the digital economy.",
+  "Promote sustainable livelihoods and decent employment through entrepreneurship, vocational training, job readiness, and connections to local and global work opportunities.",
+  "Empower women, youth, and persons with disabilities by creating inclusive programs that reduce barriers to education, leadership, and economic participation.",
+  "Strengthen community resilience through innovation and partnerships by collaborating with governments, NGOs, the private sector, and local communities to develop scalable, locally led solutions.",
 ];
 
 const impactStats = [
-  { value: "2,400+", label: "Youth trained" },
-  { value: "85%", label: "Employment rate" },
-  { value: "60+", label: "Partner organisations" },
-  { value: "12", label: "Active programs" },
+  {
+    value: "1,600+",
+    label: "People Directly Impacted",
+    description: "Through our education, livelihood, and humanitarian programs.",
+  },
+  {
+    value: "1,200+",
+    label: "Indirect Community Reach",
+    description: "People reached through indirect community impact.",
+  },
+  {
+    value: "700+",
+    label: "Refugees & Youth Trained",
+    description: "Equipped in digital and professional skills for self-reliance.",
+  },
+  {
+    value: "50+",
+    label: "Graduates Employed",
+    description: "Connected to employment and income-generating opportunities.",
+  },
+  {
+    value: "210",
+    label: "Emergency Aid Recipients",
+    description: "Vulnerable individuals supported with emergency food & medical assistance.",
+  },
+  {
+    value: "Global",
+    label: "Partner Collaboration",
+    description: "Multiple local and international partners expanding opportunities.",
+  },
+];
+
+const impactBullets = [
+  "1,600+ people directly impacted through our education, livelihood, and humanitarian programs.",
+  "1,200+ people reached through indirect community impact.",
+  "700+ refugees and vulnerable youth trained in digital and professional skills.",
+  "50+ graduates connected to employment and income opportunities.",
+  "210 vulnerable individuals supported with emergency food and medical assistance.",
+  "Multiple local and international partners collaborating to expand opportunities for refugees.",
+  "Programs serving refugees and host communities in Kakuma Refugee Camp, Kenya.",
 ];
 
 const values = [
   {
-    title: "Refugee-led, community-driven",
-    body: "We work as a group of passionate refugees and make sure youth voices in the community are heard.",
+    title: "Empowerment",
+    body: "We equip refugees and vulnerable communities with the knowledge, skills, and opportunities they need to become self-reliant and create lasting change.",
   },
   {
-    title: "Accountability & Transparency",
-    body: "We are answerable for our actions and conduct every activity with full transparency.",
+    title: "Innovation",
+    body: "We embrace technology, creativity, and locally led solutions to address complex challenges and expand access to education, livelihoods, and opportunity.",
   },
   {
-    title: "Self-reliance",
-    body: "We build self-sustaining pathways so the organisation can keep supporting the community.",
+    title: "Integrity",
+    body: "We act with honesty, transparency, accountability, and respect, building trust with the communities we serve and the partners we work with.",
   },
 ];
 
@@ -142,6 +161,22 @@ export default function Home() {
 
   const displayedStats = impactStats;
 
+  const { data: sanityPrograms = [] } = useQuery({
+    queryKey: ["public", "sanity", "programs"],
+    queryFn: getPrograms,
+    retry: false,
+  });
+
+  const cmsPrograms = useMemo(
+    () => sanityPrograms.map((item) => mapSanityProgramToDisplayProgram(item)),
+    [sanityPrograms],
+  );
+
+  const displayPrograms = useMemo(() => {
+    if (cmsPrograms && cmsPrograms.length > 0) return cmsPrograms;
+    return defaultPrograms;
+  }, [cmsPrograms]);
+
   const { data: sanityTeam = [] } = useQuery({
     queryKey: ["public", "sanity", "teamMembers"],
     queryFn: getTeamMembers,
@@ -187,7 +222,7 @@ export default function Home() {
   return (
     <div className="bg-white dark:bg-slate-900 transition-colors">
       {/* ============ HERO SECTION (SIR AFRICA STYLE HERO BANNER) ============ */}
-      <section id="home" className="relative w-full overflow-hidden min-h-[600px] sm:min-h-[650px] lg:min-h-[700px] flex items-center bg-[#172554] gatsby-hero-bg">
+      <section id="home" className="relative w-full overflow-hidden min-h-[360px] sm:min-h-[400px] lg:min-h-[440px] flex items-center bg-[#172554] gatsby-hero-bg">
         {/* Edge-to-Edge Full Width Image Background with Soft Parallax */}
         <motion.div
           animate={{
@@ -216,19 +251,14 @@ export default function Home() {
 
 
         {/* Hero Content Box */}
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="max-w-2xl text-white space-y-6"
+            className="max-w-2xl text-white space-y-4"
           >
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-3.5 py-1 text-xs font-extrabold uppercase tracking-widest text-white backdrop-blur-md">
-              <span className="h-2 w-2 rounded-full bg-white animate-pulse" />
-              <span>Refugee-Led Innovation Hub</span>
-            </div>
-
-            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl font-serif leading-[1.12] !text-white">
+            <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl font-serif leading-[1.12] !text-white">
               <span className="!text-white">{t("home.hero.titleStart")}</span>{" "}
               <span className="!text-white italic font-normal">
                 {t("home.hero.titleHighlight")}
@@ -236,19 +266,19 @@ export default function Home() {
               <span className="!text-white">{t("home.hero.titleEnd")}</span>
             </h1>
 
-            <div className="sir-callout-border border-l-white !text-white !my-4">
-              <p className="text-base sm:text-lg leading-relaxed font-medium !text-white">
+            <div className="sir-callout-border border-l-white !text-white !my-3">
+              <p className="text-sm sm:text-base leading-relaxed font-medium !text-white">
                 {t("home.hero.subtitle")}
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center gap-4 pt-2">
-              <a href="#programs" className="sir-btn-primary py-3.5 px-6 text-sm">
+            <div className="flex flex-wrap items-center gap-2.5 pt-1">
+              <a href="#programs" className="sir-btn-primary py-1 px-3 text-[11px] font-extrabold uppercase tracking-wider">
                 <span>{t("home.hero.ctaPrograms")}</span>
                 <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
               </a>
-              <a href={SITE.donateUrl} target="_blank" rel="noreferrer" className="sir-btn-secondary py-3 px-6 text-sm border-white/60 text-white hover:bg-white hover:text-slate-950 dark:border-white/60 dark:text-white">
-                <Heart className="w-4 h-4 fill-brand-400 text-brand-400" />
+              <a href={SITE.donateUrl} target="_blank" rel="noreferrer" className="sir-btn-secondary py-1 px-3 text-[11px] font-extrabold uppercase tracking-wider border-white/60 text-white hover:bg-white hover:text-slate-950 dark:border-white/60 dark:text-white">
+                <Heart className="w-3 h-3 fill-brand-400 text-brand-400" />
                 <span>{t("home.hero.ctaDonate")}</span>
               </a>
             </div>
@@ -294,7 +324,7 @@ export default function Home() {
           </div>
         </div>
 
-        <ol className="mx-auto mt-12 grid max-w-6xl gap-6 md:grid-cols-3">
+        <ol className="mx-auto mt-12 grid max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {objectives.map((o, i) => (
             <li key={i} className="sir-card p-6 border-t-4 border-t-brand-600 dark:border-t-brand-500">
               <span className="inline-flex items-center justify-center h-10 w-10 rounded-lg bg-brand-600 dark:bg-brand-500 font-extrabold text-sm text-white shadow-xs">
@@ -322,54 +352,61 @@ export default function Home() {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <span className="inline-block rounded-md bg-white/20 px-3 py-1 text-xs font-extrabold uppercase tracking-widest text-white border border-white/30">
-              {t("home.programs.eyebrow")}
+              {t("home.programs.eyebrow", "Our Core Initiatives")}
             </span>
             <h2 className="mt-3 text-3xl font-extrabold !text-white sm:text-4xl lg:text-5xl">
-              {t("home.programs.title")}
+              {t("home.programs.title", "Refugee-Led Impact Programs")}
             </h2>
-            <p className="mt-2 text-white text-base">{t("home.programs.subtitle")}</p>
+            <p className="mt-2 text-white text-base max-w-2xl">{t("home.programs.subtitle", "Explore our full spectrum of educational, technical, creative, and climate resilience initiatives designed by and for displaced communities.")}</p>
           </div>
           <Link
             to="/programs"
             className="inline-flex items-center gap-1 text-sm font-extrabold text-white hover:text-brand-200 transition-colors uppercase tracking-wider"
           >
-            <span>{t("home.programs.viewAll")}</span>
+            <span>{t("home.programs.viewAll", "View All Programs")}</span>
             <span>→</span>
           </Link>
         </div>
 
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {focusedPrograms.map((p) => (
-            <article
-              key={p.title}
-              className="sir-card border-slate-200/40 bg-white dark:bg-slate-900"
-            >
-              <div className="aspect-video w-full overflow-hidden bg-brand-50 dark:bg-slate-950 relative">
-                <SmartImage
-                  src={p.image}
-                  alt={p.title}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <span className="absolute top-3 left-3 sir-tag bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-xs">
-                  {p.tag}
-                </span>
-              </div>
-              <div className="p-6 flex-1 flex flex-col justify-between">
-                <div>
-                  <h3 className="font-serif text-xl font-extrabold text-slate-900 dark:text-slate-100">
-                    {p.title}
-                  </h3>
-                  <p className="mt-3 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{p.body}</p>
+          {displayPrograms.map((p) => {
+            const targetId = ("id" in p && p.id) || ("slug" in p && p.slug) || "";
+            return (
+              <article
+                key={p.title}
+                className="sir-card border-slate-200/40 bg-white dark:bg-slate-900 flex flex-col justify-between overflow-hidden group hover:border-brand-300 dark:hover:border-brand-500 transition shadow-sm hover:shadow-md"
+              >
+                <div className="aspect-video w-full overflow-hidden bg-brand-50 dark:bg-slate-950 relative">
+                  <SmartImage
+                    src={p.image}
+                    alt={p.title}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
                 </div>
-                <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
-                  <Link to="/programs" className="sir-link-underline text-xs uppercase tracking-wider font-extrabold">
-                    <span>Learn Program Details</span>
-                    <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
-                  </Link>
+                <div className="p-6 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="font-serif text-xl font-extrabold text-slate-900 dark:text-slate-100 line-clamp-2">
+                      <Link to={`/programs/${targetId}`} className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">
+                        {p.title}
+                      </Link>
+                    </h3>
+                    <p className="mt-3 text-sm text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-3">
+                      {p.body}
+                    </p>
+                  </div>
+                  <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
+                    <Link
+                      to={`/programs/${targetId}`}
+                      className="sir-link-underline text-xs uppercase tracking-wider font-extrabold text-brand-600 dark:text-brand-400 inline-flex items-center gap-1.5"
+                    >
+                      <span>Explore Program</span>
+                      <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
       </Section>
 
@@ -407,7 +444,7 @@ export default function Home() {
             return (
               <article
                 key={c.key}
-                className="sir-card-accent"
+                className="sir-card-accent flex flex-col justify-between overflow-hidden"
               >
                 <div className="aspect-video w-full overflow-hidden bg-brand-50 dark:bg-slate-950">
                   <SmartImage
@@ -445,7 +482,7 @@ export default function Home() {
                     href={c.donateUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="sir-btn-primary mt-6 w-full py-2.5 text-xs uppercase tracking-wider"
+                    className="sir-btn-primary mt-5 w-1/2 py-2 px-3 text-[11px] font-extrabold uppercase tracking-wider"
                   >
                     <span>{t("home.causes.donateToCause")}</span>
                     <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
@@ -461,41 +498,63 @@ export default function Home() {
       {/* ============ IMPACT METRICS SECTION ============ */}
       <Section id="impact" pattern="impact">
         <div className="text-center">
-          <span className="inline-block rounded-md bg-white/20 px-3 py-1 text-xs font-extrabold uppercase tracking-widest text-white border border-white/30">
+          <span className="inline-block rounded-md bg-white/20 px-3 py-1 text-xs font-extrabold uppercase tracking-widest !text-white border border-white/30">
             {t("home.impact.eyebrow")}
           </span>
           <h2 className="mt-3 text-3xl font-extrabold !text-white sm:text-4xl lg:text-5xl">
             {t("home.impact.title")}
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-white text-base sm:text-lg">
+          <p className="mx-auto mt-3 max-w-2xl !text-white text-base sm:text-lg">
             {t("home.impact.subtitle")}
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {displayedStats.map((m) => (
             <div
               key={m.label}
-              className="rounded-xl border border-white/20 bg-white/10 p-6 text-center backdrop-blur-md"
+              className="rounded-2xl border border-slate-100 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 text-center shadow-lg hover:shadow-xl transition-all flex flex-col justify-between"
             >
-              <p className="font-display text-4xl sm:text-5xl font-extrabold !text-white tracking-tight">
-                {m.value}
-              </p>
-              <p className="mt-2 text-xs font-bold uppercase tracking-wider !text-white">{m.label}</p>
+              <div>
+                <p className="font-display text-4xl sm:text-5xl font-extrabold text-brand-600 dark:text-brand-400 tracking-tight">
+                  {m.value}
+                </p>
+                <p className="mt-2 text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100">{m.label}</p>
+                <p className="mt-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-normal">{m.description}</p>
+              </div>
             </div>
           ))}
+        </div>
+
+        {/* Detailed Impact Highlights */}
+        <div className="mx-auto mt-12 max-w-4xl rounded-2xl border border-white/20 bg-white/10 p-6 sm:p-8 backdrop-blur-md">
+          <h3 className="font-display text-lg sm:text-xl font-bold !text-white text-center mb-6">
+            Real Change Measured Through Transformed Lives
+          </h3>
+          <div className="grid gap-3">
+            {impactBullets.map((bullet, idx) => (
+              <div
+                key={idx}
+                className="rounded-xl bg-white dark:bg-slate-800 px-5 py-4 border border-slate-100 dark:border-slate-700 shadow-sm text-center sm:text-left transition-all"
+              >
+                <p className="text-sm sm:text-base text-slate-800 dark:text-slate-100 leading-relaxed font-medium">
+                  {bullet}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="mx-auto mt-14 grid max-w-6xl gap-6 md:grid-cols-3">
           {values.map((v) => (
             <div
               key={v.title}
-              className="gatsby-quote-box my-0"
+              className="rounded-2xl border border-slate-100 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-lg transition-all"
             >
               <h3 className="font-display text-lg font-extrabold text-slate-900 dark:text-slate-100 not-italic">
                 {v.title}
               </h3>
-              <p className="mt-3 text-sm text-slate-700 dark:text-slate-300 not-italic font-normal">{v.body}</p>
+              <p className="mt-3 text-sm text-slate-600 dark:text-slate-300 not-italic font-normal leading-relaxed">{v.body}</p>
             </div>
           ))}
         </div>
@@ -522,14 +581,17 @@ export default function Home() {
       {/* ============ STORIES / BLOG SECTION ============ */}
       <Section id="stories" pattern="soft">
         <div className="flex flex-wrap items-end justify-between gap-4">
-          <div>
+          <div className="max-w-3xl">
             <span className="sir-tag">
               {t("home.stories.eyebrow")}
             </span>
             <h2 className="mt-3 text-3xl font-extrabold text-slate-900 dark:text-slate-50 sm:text-4xl lg:text-5xl font-serif">
               {t("home.stories.title")}
             </h2>
-            <p className="mt-2 text-slate-600 dark:text-slate-300">{t("home.stories.subtitle")}</p>
+            <p className="mt-2 text-base font-medium text-slate-800 dark:text-slate-200">{t("home.stories.subtitle")}</p>
+            <p className="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Our blog shares project updates, inspiring stories, partnership announcements, and lessons from the field as we work toward creating sustainable opportunities for refugees and marginalized communities.
+            </p>
           </div>
           <Link
             to="/blog"
@@ -582,7 +644,7 @@ export default function Home() {
           </h2>
         </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {testimonials.map((item) => {
             const quote = t(
               `home.testimonials.items.${item.key}.quote`,
@@ -601,22 +663,34 @@ export default function Home() {
                 key={item.key}
                 className="sir-card p-6 flex flex-col justify-between"
               >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="h-8 w-8 text-brand-500 dark:text-brand-400"
-                  aria-hidden="true"
-                >
-                  <path d="M9.4 5.5C6.3 6.3 4 9.2 4 12.6V19h6.4v-6.4H7.3c0-2.1 1.4-3.8 3.4-4.4l-1.3-2.7zm10 0c-3.1.8-5.4 3.7-5.4 7.1V19h6.4v-6.4h-3.1c0-2.1 1.4-3.8 3.4-4.4l-1.3-2.7z" />
-                </svg>
-                <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-slate-800 dark:text-slate-200 font-medium italic">
-                  &ldquo;{quote}&rdquo;
-                </blockquote>
-                <figcaption className="mt-6 border-t border-slate-100 dark:border-slate-800 pt-4">
-                  <p className="font-serif text-sm font-extrabold text-slate-900 dark:text-slate-100">
-                    {name}
-                  </p>
-                  <p className="text-xs font-semibold text-brand-600 dark:text-brand-400 mt-0.5">{role}</p>
+                <div>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="h-8 w-8 text-brand-500 dark:text-brand-400 opacity-80"
+                    aria-hidden="true"
+                  >
+                    <path d="M9.4 5.5C6.3 6.3 4 9.2 4 12.6V19h6.4v-6.4H7.3c0-2.1 1.4-3.8 3.4-4.4l-1.3-2.7zm10 0c-3.1.8-5.4 3.7-5.4 7.1V19h6.4v-6.4h-3.1c0-2.1 1.4-3.8 3.4-4.4l-1.3-2.7z" />
+                  </svg>
+                  <blockquote className="mt-4 text-sm leading-relaxed text-slate-800 dark:text-slate-200 font-medium italic">
+                    &ldquo;{quote}&rdquo;
+                  </blockquote>
+                </div>
+                <figcaption className="mt-6 border-t border-slate-100 dark:border-slate-800 pt-4 flex items-center gap-3.5">
+                  <img
+                    src={item.image}
+                    alt={name}
+                    className="h-12 w-12 rounded-full object-cover border-2 border-brand-500/20 dark:border-brand-400/30 flex-shrink-0 shadow-sm"
+                    loading="lazy"
+                  />
+                  <div className="min-w-0">
+                    <p className="font-serif text-sm font-extrabold text-slate-900 dark:text-slate-100 truncate">
+                      {name}
+                    </p>
+                    <p className="text-xs font-semibold text-brand-600 dark:text-brand-400 mt-0.5 line-clamp-2">
+                      {role}
+                    </p>
+                  </div>
                 </figcaption>
               </figure>
             );
@@ -704,12 +778,12 @@ export default function Home() {
                 href={SITE.donateUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-6 inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-brand-600 px-4 py-3 text-xs font-extrabold uppercase tracking-wider text-white shadow-md transition hover:bg-brand-700"
+                className="mt-6 inline-flex w-1/2 items-center justify-center gap-1.5 rounded-lg bg-brand-600 px-3.5 py-2 text-[11px] font-extrabold uppercase tracking-wider text-white shadow-sm transition hover:bg-brand-700"
               >
                 <svg
                   aria-hidden
-                  width="16"
-                  height="16"
+                  width="14"
+                  height="14"
                   viewBox="0 0 24 24"
                   fill="currentColor"
                 >
@@ -732,7 +806,7 @@ export default function Home() {
               </div>
               <a
                 href="#programs"
-                className="mt-6 inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-brand-600 px-4 py-3 text-xs font-extrabold uppercase tracking-wider text-white shadow-md transition hover:bg-brand-700"
+                className="mt-6 inline-flex w-1/2 items-center justify-center gap-1.5 rounded-lg bg-brand-600 px-3.5 py-2 text-[11px] font-extrabold uppercase tracking-wider text-white shadow-sm transition hover:bg-brand-700"
               >
                 <span>{t("home.donateBlock.sponsorCta")}</span>
                 <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
@@ -751,7 +825,7 @@ export default function Home() {
               </div>
               <Link
                 to="/contact"
-                className="mt-6 inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-brand-600 px-4 py-3 text-xs font-extrabold uppercase tracking-wider text-white shadow-md transition hover:bg-brand-700"
+                className="mt-6 inline-flex w-1/2 items-center justify-center gap-1.5 rounded-lg bg-brand-600 px-3.5 py-2 text-[11px] font-extrabold uppercase tracking-wider text-white shadow-sm transition hover:bg-brand-700"
               >
                 <span>{t("common.contactUs", "Contact us")}</span>
                 <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
@@ -857,7 +931,7 @@ export default function Home() {
             <button
               type="submit"
               disabled={contactState === "sending"}
-              className="sir-btn-primary w-full py-3 text-xs uppercase tracking-wider disabled:opacity-60"
+              className="sir-btn-primary w-1/2 py-2 px-4 text-xs font-extrabold uppercase tracking-wider disabled:opacity-60"
             >
               <span>
                 {contactState === "sending"

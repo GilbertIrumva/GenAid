@@ -38,7 +38,7 @@
     "subject": "Objet",
     "title": "Titre",
     "description": "Description",
-    "address": "Camp de réfugiés de Kakuma, Turkana Ouest, Kenya",
+    "address": "Camp de réfugiés de Kakuma et camp de Kalobeyei, Kenya",
     "comingSoon": "Bientôt disponible",
     "noResults": "Aucun résultat.",
     "tryAgain": "Réessayer"
@@ -66,9 +66,16 @@
     },
     "programsMenu": {
       "all": "Tous les programmes",
-      "computerLiteracy": "Informatique",
-      "tailoring": "Couture et confection",
-      "english": "Anglais"
+      "learningThroughPlay": "Apprentissage par le Jeu",
+      "womenInAi": "Femmes et IA",
+      "storytelling": "Récit d'Histoires",
+      "creativeArts": "Arts Créatifs",
+      "climateAction": "Action Climat",
+      "socialEmotionalLearning": "Apprentissage Socio-Émotionnel",
+      "advocacy": "Plaidoyer Mondial des Réfugiés",
+      "englishLanguageLiteracy": "Compétences en Anglais & Littératie",
+      "womensDigitalSkills": "Compétences Numériques des Femmes",
+      "computerLiteracySkills": "Compétences Informatiques de Base"
     },
     "impactMenu": {
       "blog": "Blog",
@@ -138,7 +145,7 @@
     "about": {
       "eyebrow": "À propos",
       "title": "Une organisation jeune dirigée par des réfugiés",
-      "body1": "Generation Aid est une organisation à but non lucratif dirigée par des réfugiés, basée dans le camp de réfugiés de Kakuma au Kenya, et dédiée à transformer les vies grâce à l'éducation, aux moyens de subsistance et à l'innovation. Nous croyons que les réfugiés et les communautés vulnérables possèdent un potentiel extraordinaire lorsqu'ils ont accès à une éducation de qualité, à des compétences numériques, à un emploi significatif et à des opportunités d'épanouissement.",
+      "body1": "Generation Aid est une organisation à but non lucratif dirigée par des réfugiés, basée dans le camp de réfugiés de Kakuma et le camp de Kalobeyei au Kenya, et dédiée à transformer les vies grâce à l'éducation, aux moyens de subsistance et à l'innovation. Nous croyons que les réfugiés et les communautés vulnérables possèdent un potentiel extraordinaire lorsqu'ils ont accès à une éducation de qualité, à des compétences numériques, à un emploi significatif et à des opportunités d'épanouissement.",
       "body2": "Fondée par Hubert Senga, un réfugié congolais vivant dans le camp de Kakuma, Generation Aid œuvre à combler le fossé entre l'aide humanitaire et l'autonomisation économique à long terme. Grâce à la formation aux compétences numériques, à l'enseignement professionnel, à l'apprentissage des langues, à l'entrepreneuriat et aux parcours d'emploi, nous donnons aux jeunes et aux femmes les outils nécessaires pour bâtir des avenirs durables. Au-delà de la formation, nous mettons en relation les diplômés talentueux avec des opportunités de travail à distance, des entreprises et des partenaires internationaux, afin que les compétences se traduisent en moyens de subsistance réels et en impact durable. Chez Generation Aid, nous ne nous contentons pas de soutenir les communautés : nous leur donnons les moyens de devenir des leaders, des innovateurs et des contributeurs à l'économie mondiale.",
       "ourVision": "Notre Vision",
       "visionTitle": "Un avenir sans barrières",
@@ -163,24 +170,32 @@
       "of": "sur",
       "donateToCause": "Soutenir cette cause",
       "items": {
-        "hub": {
-          "title": "Un foyer d'espoir au cœur de Kakuma",
-          "description": "Aidez-nous à développer notre Centre numérique communautaire — postes de travail, énergie solaire et Internet haut débit pour les jeunes réfugiés."
+        "empoweringRefugees": {
+          "title": "Autonomiser les réfugiés à Kakuma avec Generation Aid",
+          "description": "Les réfugiés de Kakuma font face à un accès limité à une éducation de qualité et à l'emploi. Nous équipons les réfugiés en compétences professionnelles, numériques, entrepreneuriales et en anglais grâce à des formations pratiques et un mentorat adapté pour bâtir des moyens de subsistance durables."
         },
-        "jobs": {
-          "title": "Donner aux réfugiés des emplois de la nouvelle génération",
-          "description": "Formez les jeunes réfugiés au travail à distance et reliez-les à de vrais contrats internationaux rémunérés."
+        "createJobsWomen": {
+          "title": "Créer des emplois pour les réfugiés et autonomiser les femmes",
+          "description": "Soutenir les parcours d'emploi reliant les talents réfugiés à des emplois à distance dans le monde. Investir dans les femmes réfugiées à travers la formation professionnelle, les programmes d'entrepreneuriat et le leadership."
         },
-        "artists": {
-          "title": "Soutenir les artistes réfugiés",
-          "description": "Soutenez le Kakuma Art Project et la galerie Senga — matériel, ateliers et expositions internationales."
+        "emergencyFoodMedical": {
+          "title": "Aide alimentaire et médicale d'urgence",
+          "description": "Aider les familles de réfugiés vulnérables de Kakuma et Kalobeyei à accéder à une aide alimentaire d'urgence vitale et aux soins de santé essentiels lors des situations de crise."
+        },
+        "languageOfHope": {
+          "title": "Langue d'espoir pour les réfugiés africains et afghans",
+          "description": "À Kalobeyei, les réfugiés, en particulier les femmes et les filles fuyant les persécutions, font face à des barrières linguistiques majeures. Cette initiative offre une formation structurée en anglais pour rompre l'isolement et ouvrir les portes de l'éducation et de l'emploi."
+        },
+        "agrihopeInitiative": {
+          "title": "Initiative AgriHope pour la résilience et les moyens de subsistance",
+          "description": "Lutter contre l'insécurité alimentaire chronique et les chocs climatiques à Kakuma grâce à la permaculture, la micro-irrigation au goutte-à-goutte et les potagers pour les jeunes et les femmes."
         }
       }
     },
     "impact": {
       "eyebrow": "Impact",
       "title": "Notre impact en chiffres",
-      "subtitle": "Un vrai changement, mesuré par les personnes que nous avons accompagnées."
+      "subtitle": "Le véritable changement se mesure à travers des vies transformées."
     },
     "team": {
       "eyebrow": "Notre équipe",
@@ -210,27 +225,34 @@
       }
     },
     "stories": {
-      "eyebrow": "Témoignages",
-      "title": "Les dernières publications du blog",
-      "subtitle": "Actualités, lancements de projets et réflexions depuis Kakuma.",
+      "eyebrow": "Blog",
+      "title": "Les Dernières Publications du Blog",
+      "subtitle": "Restez connecté avec les récits, innovations et impacts qui transforment notre communauté.",
       "allArticles": "Tous les articles →"
     },
     "testimonials": {
       "eyebrow": "Témoignages",
       "title": "Ce que l'on dit de nous",
       "items": {
-        "amani": {
-          "quote": "Generation Aid m'a offert mon premier contrat à distance. Aujourd'hui, je fais vivre ma famille en travaillant en ligne depuis Kakuma — ce que je n'aurais jamais cru possible.",
-          "role": "Diplômé du Bootcamp Travail à distance"
+        "sietske": {
+          "quote": "Quand j'ai découvert la vision de Generation Aid lors de mon échange avec Hubert, j'ai été frappée par sa simplicité, son humanité et sa force. De jeunes réfugiés désireux de contribuer de manière significative au monde tout en subvenant aux besoins de leurs familles, sans dépendre de personne. Bâtir une organisation communautaire à partir de zéro est un défi immense... Mais Hubert et son équipe ont persévéré et progressent chaque jour. C'est un privilège d'avoir assisté à la naissance de cette organisation qui deviendra sans nul doute une force majeure à l'avenir.",
+          "name": "Sietske Istvan",
+          "role": "Fondatrice de Story Bridge"
         },
-        "mwangi": {
-          "quote": "La galerie Senga a tout changé. Pour la première fois, mes peintures sont vues — et elles racontent l'histoire d'où je viens.",
-          "role": "Artiste du Kakuma Art Project"
+        "fabien": {
+          "quote": "Nous avons rencontré Generation Aid sur les réseaux sociaux. Après un premier échange de publications, nous nous sommes finalement rencontrés sur le terrain à Kakuma. Nous nous sommes très vite compris et, depuis 6 mois, nous travaillons ensemble pour développer des emplois durables au sein même du camp grâce au numérique dans le domaine du BPO. Leur énergie et leur résilience sont à la fois inspirantes et motivantes.",
+          "name": "Fabien de Castilla",
+          "role": "Directeur de Konexio Africa"
         },
-        "partner": {
-          "quote": "Une organisation vraiment dirigée par des réfugiés. Leur travail relie apprentissage, moyens de subsistance et dignité — avec de vrais résultats.",
-          "name": "Organisation partenaire",
-          "role": "ONG éducative, Nairobi"
+        "chris": {
+          "quote": "Hubert Senga et Generation Aid donnent aux réfugiés les moyens d'agir grâce aux compétences numériques et aux opportunités économiques. Son leadership visionnaire a transformé des vies, aidant les réfugiés à s'intégrer dans l'économie mondiale et à devenir autonomes. Son dévouement démontre la force des initiatives communautaires pour susciter la résilience et l'espoir parmi les populations déplacées.",
+          "name": "Chris Fryburger",
+          "role": "Fondateur de nReach / Amazon Matchmaker"
+        },
+        "nyadieng": {
+          "quote": "Lorsque j'ai rejoint ce cours pour la première fois, je ressentais à la fois de l'enthousiasme et de l'incertitude. J'entrais dans un domaine inconnu, face à une langue qui ouvrirait les portes d'innombrables opportunités mais poserait aussi des défis. Pourtant, jour après jour, j'ai gagné en confiance.",
+          "name": "Nyadieng Dim Chany",
+          "role": "Bénéficiaire et diplômée du cours d'anglais"
         }
       }
     },
@@ -255,7 +277,7 @@
       "title": "Construisons quelque chose ensemble",
       "subtitle": "Une question, une idée de partenariat, envie de devenir bénévole ? Envoyez-nous un message et nous vous répondrons.",
       "locationLabel": "Adresse :",
-      "locationValue": "Kakuma, comté de Turkana, Kenya",
+      "locationValue": "Camp de réfugiés de Kakuma et camp de Kalobeyei, Kenya",
       "emailLabel": "Email :"
     }
   },
@@ -263,81 +285,38 @@
     "hero": {
       "eyebrow": "Là où tout a commencé",
       "title": "Qui sommes-nous ?",
-      "subtitle": "Generation Aid est une organisation à but non lucratif dirigée par des réfugiés, basée dans le camp de réfugiés de Kakuma au Kenya, et dédiée à transformer les vies grâce à l'éducation, aux moyens de subsistance et à l'innovation. Nous croyons que les réfugiés et les communautés vulnérables possèdent un potentiel extraordinaire lorsqu'ils ont accès à une éducation de qualité, à des compétences numériques, à un emploi significatif et à des opportunités d'épanouissement. Fondée par Hubert Senga, un réfugié congolais vivant dans le camp de Kakuma, Generation Aid œuvre à combler le fossé entre l'aide humanitaire et l'autonomisation économique à long terme. Grâce à la formation aux compétences numériques, à l'enseignement professionnel, à l'apprentissage des langues, à l'entrepreneuriat et aux parcours d'emploi, nous donnons aux jeunes et aux femmes les outils nécessaires pour bâtir des avenirs durables. Au-delà de la formation, nous mettons en relation les diplômés talentueux avec des opportunités de travail à distance, des entreprises et des partenaires internationaux, afin que les compétences se traduisent en moyens de subsistance réels et en impact durable. Chez Generation Aid, nous ne nous contentons pas de soutenir les communautés : nous leur donnons les moyens de devenir des leaders, des innovateurs et des contributeurs à l'économie mondiale."
+      "subtitle": "Generation Aid est une organisation à but non lucratif dirigée par des réfugiés, basée dans le camp de réfugiés de Kakuma et le camp de Kalobeyei au Kenya, et dédiée à transformer les vies grâce à l'éducation, aux moyens de subsistance et à l'innovation. Nous croyons que les réfugiés et les communautés vulnérables possèdent un potentiel extraordinaire lorsqu'ils ont accès à une éducation de qualité, à des compétences numériques, à un emploi significatif et à des opportunités d'épanouissement."
     },
-    "intro": {
-      "p1": "Nous transformons les systèmes éducation-vers-emploi — en préparant, plaçant et accompagnant les personnes vers des carrières qui changent leur vie et qui seraient autrement inaccessibles — afin que les réfugiés puissent s'intégrer dans l'économie mondiale.",
-      "p2": "Generation Aid est une organisation à but non lucratif dirigée par des jeunes réfugiés, basée dans le camp de réfugiés de Kakuma au Kenya, née en 2019 pendant la COVID-19. Au fil des ans, GAID a travaillé sans relâche pour offrir une gamme de services aux communautés déplacées — formation professionnelle, entrepreneuriat, distribution alimentaire et compétences numériques.",
-      "p3Prefix": "Le nom ",
-      "p3Brand": "Generation Aid",
-      "p3Middle": " a été donné par notre fondateur ",
-      "p3FounderName": "Hubert Senga",
-      "p3Suffix": " pour refléter notre ambition de servir les réfugiés et les personnes déplacées de la génération actuelle."
-    },
-    "objectivesTitle": "Nos objectifs",
-    "objectivesSubtitle": "Ce que Generation Aid s'efforce de réaliser.",
+    "whoWeAreTitle": "Qui Sommes-Nous",
+    "whoWeAreBody": "Generation Aid est une organisation à but non lucratif dirigée par des jeunes réfugiés qui transforme des vies grâce à l'éducation, à la technologie et à l'autonomisation économique. Fondée dans le camp de réfugiés de Kakuma, au Kenya, nous croyons que le déplacement ne devrait jamais définir l'avenir d'une personne. Nous équipons les réfugiés et les membres vulnérables des communautés d'accueil des compétences, opportunités et ressources nécessaires pour devenir autonomes et contribuer de manière significative à leur communauté. À travers la formation aux compétences numériques, la formation professionnelle, le soutien à l'entrepreneuriat, le développement de carrière et l'innovation, nous aidons les populations à aller au-delà de l'aide humanitaire vers des moyens de subsistance durables. Chez Generation Aid, nous ne nous contentons pas de répondre aux crises : nous investissons dans le potentiel des personnes, créant des voies vers la dignité, l'opportunité et un impact durable pour les réfugiés.",
+    "whereItAllBeganTitle": "Là Où Tout a Commencé",
+    "whereItAllBeganBody": "Generation Aid a été fondée par Hubert Senga, un réfugié congolais arrivé dans le camp de réfugiés de Kakuma en 2016 après avoir fui le conflit en République Démocratique du Congo. Comme de nombreux réfugiés, il a fait l'expérience directe des obstacles à l'éducation, à l'emploi et aux opportunités. Conscient que des milliers de jeunes talentueux étaient laissés de côté malgré leur résilience et leur ambition, Hubert a créé Generation Aid pour concevoir des solutions pratiques qui permettent aux réfugiés d'acquérir les compétences nécessaires pour s'épanouir dans le monde moderne. Ce qui a commencé comme une modeste initiative communautaire est devenu une organisation respectée dirigée par des réfugiés, au service des réfugiés et des communautés d'accueil grâce à l'éducation, l'innovation numérique, la formation professionnelle et les voies vers l'emploi. Aujourd'hui, Generation Aid continue de bâtir un avenir où chaque personne déplacée a la possibilité d'apprendre, de travailler, de diriger et de reconstruire sa vie dans la dignité.",
+    "objectivesTitle": "Nos Objectifs",
+    "objectivesSubtitle": "Ce que Generation Aid s'efforce d'accomplir.",
     "objectives": [
-      "Donner aux réfugiés les connaissances et compétences — éducation, compétences numériques, moyens de subsistance et entrepreneuriat — pour gagner un revenu durable grâce aux opportunités de travail à distance.",
-      "Équiper les réfugiés des connaissances et compétences essentielles pour naviguer dans le monde numérique, en favorisant la créativité et la résolution de problèmes.",
-      "Développer des projets durables de développement communautaire à travers des initiatives à long terme en éducation, entrepreneuriat et soutien social."
+      "Élargir l'accès à une éducation de qualité et aux compétences numériques en dispensant des formations inclusives qui préparent les réfugiés et les membres des communautés d'accueil à l'économie numérique.",
+      "Promouvoir des moyens de subsistance durables et des emplois décents grâce à l'entrepreneuriat, la formation professionnelle, la préparation à l'emploi et la connexion aux opportunités locales et internationales.",
+      "Autonomiser les femmes, les jeunes et les personnes handicapées en créant des programmes inclusifs qui réduisent les barrières à l'éducation, au leadership et à la participation économique.",
+      "Renforcer la résilience communautaire par l'innovation et les partenariats en collaborant avec les gouvernements, les ONG, le secteur privé et les communautés locales pour élaborer des solutions adaptables et dirigées localement."
     ],
-    "focusedTitle": "Nos programmes phares",
-    "focusedEyebrow": "Ce que nous faisons",
-    "focusedPrograms": [
-      {
-        "title": "Compétences professionnelles et moyens de subsistance",
-        "body": "Formation professionnelle, soutien aux petites entreprises et projets générateurs de revenus qui aident les réfugiés à construire un avenir durable et autonome."
-      },
-      {
-        "title": "Éducation",
-        "body": "Outils d'apprentissage et programmes inclusifs qui soutiennent l'éducation pour tous — en particulier les filles et les enfants en situation de handicap — et qui ouvrent aux jeunes l'accès à l'enseignement supérieur."
-      },
-      {
-        "title": "EdTech",
-        "body": "Outils d'apprentissage numérique, éducation inclusive et formation aux compétences qui réduisent l'écart éducatif dans les contextes de déplacement."
-      },
-      {
-        "title": "Entrepreneuriat",
-        "body": "Formation, ressources et accès aux marchés pour aider les réfugiés à lancer des entreprises durables et à atteindre l'autonomie."
-      },
-      {
-        "title": "Emploi à distance",
-        "body": "Formation aux compétences numériques et notre Digital Community Hub — internet haut débit, énergie stable et appareils — reliant les réfugiés au travail à distance mondial."
-      }
-    ],
-    "valuesTitle": "Nos valeurs fondamentales",
+    "whatWeWorkToAchieveTitle": "Ce que Generation Aid S'efforce d'Accomplir",
+    "whatWeWorkToAchieveBody": "Generation Aid travaille pour bâtir un avenir où les réfugiés sont reconnus non pas pour leur déplacement, mais pour leur potentiel. Nous nous efforçons de créer des communautés prospères et autonomes en veillant à ce que les réfugiés et les membres vulnérables de la communauté d'accueil aient accès à l'éducation, à la technologie numérique, à un emploi significatif, aux opportunités entrepreneuriales et au développement du leadership. Notre objectif est de combler le fossé entre l'aide humanitaire et le développement à long terme en dotant les individus des connaissances, des compétences et de la confiance nécessaires pour façonner leur propre avenir. Grâce à l'innovation, à la collaboration et à des solutions locales, nous contribuons à transformer les communautés de réfugiés en centres d'opportunités, de résilience et de croissance économique durable.",
+    "valuesTitle": "Nos Valeurs Fondamentales",
     "values": [
       {
-        "title": "Dirigé par les réfugiés, porté par la communauté",
-        "body": "Nous travaillons en tant que groupe de réfugiés passionnés et veillons à ce que la voix des jeunes de la communauté soit entendue."
+        "title": "Autonomisation",
+        "body": "Nous équipons les réfugiés et les communautés vulnérables des connaissances, des compétences et des opportunités dont ils ont besoin pour devenir autonomes et créer un changement durable."
       },
       {
-        "title": "Responsabilité et transparence",
-        "body": "Nous assumons nos actions et menons chaque activité en toute transparence."
+        "title": "Innovation",
+        "body": "Nous adoptons la technologie, la créativité et les solutions menées localement pour relever des défis complexes et élargir l'accès à l'éducation, aux moyens de subsistance et aux opportunités."
       },
       {
-        "title": "Autonomie",
-        "body": "Nous construisons des parcours autosuffisants afin que l'organisation puisse continuer à soutenir la communauté même sans soutien extérieur."
+        "title": "Intégrité",
+        "body": "Nous agissons avec honnêteté, transparence, responsabilité et respect, en établissant la confiance avec les communautés que nous servons et les partenaires avec lesquels nous travaillons."
       }
     ],
-    "historyEyebrow": "Notre histoire",
-    "historyTitle": "Histoire — comment nous avons commencé",
-    "history": {
-      "p1Start": "Generation Aid est née en 2019 de la vision, de la détermination et de l'expérience vécue de notre fondateur ",
-      "p1FounderName": "Hubert Senga",
-      "p1End": " — entrepreneur social et acteur du changement, en mission pour transformer la vie des réfugiés grâce aux compétences numériques, à une éducation innovante et à l'autonomisation économique.",
-      "p2Start": "En tant que réfugié congolais vivant dans le camp de Kakuma depuis plus de neuf ans, Hubert a témoigné de première main des immenses obstacles auxquels les réfugiés font face : accès limité à l'éducation, chômage et lutte pour la dignité. Mais plutôt que d'accepter ces défis comme une fatalité, il a choisi de ",
-      "p2Emphasis": "réécrire le récit.",
-      "p3Start": "Le travail de GAID repose sur la conviction que les réfugiés et autres personnes déplacées ont le droit de vivre avec dignité et respect, et doivent avoir accès aux ressources et opportunités nécessaires pour reconstruire leur vie. Nous sommes devenus une organisation communautaire en 2019, avons adopté le nom ",
-      "p3Brand": "Generation Aid",
-      "p3End": " la même année, et avons reçu notre certificat gouvernemental en 2025.",
-      "p4": "Avec Generation Aid, nous ne nous contentons pas de réduire les écarts d'alphabétisation et de chômage — nous construisons un avenir où chaque réfugié dispose des outils, des connaissances et des opportunités pour façonner sa destinée. C'est plus qu'un mouvement ; c'est une révolution d'espoir, d'innovation et de résilience inarrêtable.",
-      "p5": "Nous sommes reconnaissants envers nos partenaires et donateurs qui ont joué un rôle essentiel dans ce parcours d'autonomisation des jeunes et de promotion des Objectifs de développement durable de l'ONU 2030 : Éducation de qualité, Réduction des inégalités, Travail décent et Croissance économique."
-    },
-    "founded": "Fondé en",
-    "certified": "Certifié en",
-    "basedIn": "Basé à",
-    "kakumaCamp": "Camp de réfugiés de Kakuma, Kenya",
+    "kakumaCamp": "Camp de réfugiés de Kakuma et camp de Kalobeyei, Kenya",
     "teamEyebrow": "Notre équipe",
     "teamTitle": "Les personnes derrière Generation Aid",
     "teamSubtitle": "Une équipe dirigée par des réfugiés, passionnée, transparente et responsable.",
@@ -366,136 +345,14 @@
   },
   "programs": {
     "hero": {
-      "eyebrow": "Subsistance numérique",
-      "title": "Éducation et renforcement des capacités",
-      "subtitle": "Programmes professionnels et éducatifs en TIC, couture et confection, anglais et autres formations innovantes qui jouent un rôle essentiel dans le développement économique et la subsistance des jeunes réfugiés du camp de Kakuma."
+      "eyebrow": "Nos Initiatives Clés",
+      "title": "Programmes d'Éducation, de Technologie et de Subsistance Portés par les Réfugiés",
+      "subtitle": "Former les jeunes, les femmes et les enfants de Kakuma aux compétences numériques, aux arts créatifs, à l'agriculture durable et au bien-être émotionnel."
     },
     "programLabel": "Programme {{n}}",
-    "youthDigital": {
-      "tag": "Compétences numériques des jeunes",
-      "title": "Du camp à l'économie numérique mondiale",
-      "subtitle": "Donner aux jeunes réfugiés les compétences, outils et connexions pour gagner leur vie en ligne — un stagiaire à la fois."
-    },
-    "creativity": {
-      "tag": "Créativité",
-      "title": "L'art au-delà des frontières",
-      "subtitle": "Une seule toile a déclenché un mouvement — apportant du matériel, des ateliers et de la dignité aux artistes réfugiés de Kakuma."
-    },
     "cta": {
-      "title": "Aidez-nous à toucher plus de jeunes réfugiés.",
-      "subtitle": "Parrainez un programme, donnez du matériel ou rejoignez-nous comme bénévole."
-    },
-    "overview": [
-      {
-        "title": "Initiation à l'informatique",
-        "body": "Formation aux TIC et à la culture numérique qui prépare les jeunes réfugiés à des carrières en ligne comme hors ligne."
-      },
-      {
-        "title": "Formation aux compétences professionnelles",
-        "body": "La formation aux compétences professionnelles est un programme qui dote les réfugiés et autres personnes vulnérables de compétences pratiques et concrètes menant à l'emploi, au travail indépendant et à des moyens de subsistance durables. Le programme se concentre sur le développement de compétences prêtes à l'emploi qui répondent aux besoins du marché local tout en promouvant l'entrepreneuriat et la résilience économique."
-      },
-      {
-        "title": "Cours d'anglais",
-        "body": "Cours d'anglais communicatif pour débutants, intermédiaires et avancés — axés sur les interactions de la vie quotidienne."
-      }
-    ],
-    "details": [
-      {
-        "title": "Initiation à l'informatique",
-        "body": "Les technologies de l'information et de la communication (TIC) sont des compétences essentielles pour toute carrière qu'un étudiant souhaite poursuivre. À GAID, nous proposons deux cours TIC adaptés aux besoins des jeunes de Kakuma — Initiation aux TIC et à la culture numérique, ainsi qu'une introduction à la programmation. Avec ces compétences, nous libérons la créativité des jeunes et leur permettons de transformer leurs communautés grâce à l'innovation et à l'entrepreneuriat virtuel, ouvrant la voie à des moyens de subsistance dignes et à une croissance économique en ligne comme hors ligne.",
-        "features": [
-          "Initiation aux TIC et à la culture numérique",
-          "Introduction à la programmation",
-          "Temps de pratique en laboratoire",
-          "Passerelle vers le travail à distance"
-        ]
-      },
-      {
-        "title": "Formation aux compétences professionnelles",
-        "body": "Ce programme dote les réfugiés et autres personnes vulnérables de compétences pratiques et concrètes menant à l'emploi, au travail indépendant et à des moyens de subsistance durables. Il se concentre sur le développement de compétences prêtes à l'emploi qui répondent aux besoins du marché local tout en promouvant l'entrepreneuriat et la résilience économique.",
-        "features": [
-          "Compétences pratiques et concrètes",
-          "Formation adaptée aux besoins du marché local",
-          "Parcours vers l'entrepreneuriat et le travail indépendant",
-          "Résilience économique et moyens de subsistance durables"
-        ]
-      },
-      {
-        "title": "Cours d'anglais",
-        "body": "Le programme d'anglais de GAID est conçu pour les apprenants débutants, intermédiaires et avancés. Nous proposons des cours d'anglais communicatif aux jeunes qui souhaitent améliorer leurs interactions quotidiennes et retourner dans leur communauté avec une meilleure maîtrise de l'anglais à l'écrit comme à l'oral.",
-        "features": [
-          "Niveaux débutant, intermédiaire et avancé",
-          "Accent mis sur l'expression orale",
-          "Bases de la lecture et de l'écriture",
-          "Pratique de conversation en situation réelle"
-        ]
-      }
-    ],
-    "bpo": {
-      "eyebrow": "1. Initiative phare",
-      "title": "Generation Jobs",
-      "p1": "Generation Jobs est le programme d'emploi et de développement de la main-d'œuvre de Generation Aid qui met en relation des réfugiés formés et des talents issus de communautés défavorisées avec des opportunités de travail significatives. Le programme comble le fossé entre les employeurs à la recherche de professionnels à distance fiables et les personnes talentueuses confrontées à des obstacles à l'emploi.",
-      "p2": "Ce qu'est Generation Jobs : Generation Jobs prépare, met en relation et accompagne des professionnels prêts à l'emploi pour des postes à distance et sur site, tout en aidant les entreprises à constituer des équipes qualifiées et rentables. Le programme combine la formation aux compétences, la préparation à la carrière et le placement professionnel pour créer des moyens de subsistance durables."
-    },
-    "coding": {
-      "eyebrow": "2. Former la prochaine génération de développeurs",
-      "title": "Académie de programmation et de développement web",
-      "p1": "Au-delà de la formation technique, les participants travaillent sur des projets concrets — créant des sites e-commerce et des plateformes de narration numérique pour les artistes réfugiés. Hackathons et défis de programmation encouragent l'innovation en demandant aux étudiants de résoudre des problèmes locaux grâce à la technologie.",
-      "p2": "Le programme met également les développeurs en herbe en relation avec des conseils en orientation, des bourses et des opportunités de stage — offrant une voie claire vers l'industrie technologique mondiale.",
-      "p3": "Ces initiatives reflètent l'engagement de Generation Aid à réduire la fracture numérique et à veiller à ce que les jeunes réfugiés ne soient pas laissés pour compte dans l'économie numérique."
-    },
-    "kap": {
-      "howEyebrow": "Comment tout a commencé",
-      "howTitle": "Une peinture, une conversation",
-      "howP1": "Boat — le tableau à l'origine de tout — a amené Tara Dominick et Hubert à discuter de la place de l'art dans le camp de réfugiés de Kakuma. Ce qui s'en est suivi a été la fondation du Kakuma Art Project (KAP).",
-      "howP2": "Une fois engagée dans le projet, tout semblait s'aligner. Tara offrait au départ deux heures par semaine, mais le projet occupe désormais trois ou quatre jours de sa semaine — et ses pensées en permanence.",
-      "howP3": "Dès la conception, Tara a vendu 10 tirages signés en édition limitée de Boat pour financer la Phase 1 — faire parvenir peintures, pinceaux, couteaux à palette, papier, fusain et toiles dans le camp.",
-      "quote": "Une petite action peut se propager et créer un changement significatif.",
-      "quoteAttr": "— Bob Brimson, l'un des premiers à croire en ce projet. Il a inventé le slogan « la puissance d'une seule peinture ».",
-      "beautyEyebrow": "La beauté des programmes",
-      "beautyTitle": "Éducation, visibilité et opportunité",
-      "beautyBody": "Le projet offre aux artistes du camp une éducation, une visibilité et des opportunités — soutenus par une série continue d'ateliers organisés au Centre Generation Aid du camp de Kakuma.",
-      "paintingEyebrow": "L'histoire d'un artiste",
-      "paintingTitle": "Peindre la Maison de loin",
-      "paintingP1": "Mwangi, artiste de 52 ans vivant au camp de Kakuma, crée de magnifiques images de son pays natal. Pourtant, pendant des années, il a été limité par les ressources — pas de toile, pas de peinture, pas de pinceaux.",
-      "paintingP2": "Sa passion pour la peinture l'a poussé à récupérer de vieux t-shirts à la décharge, à les laver puis à les enduire de colle pour créer une toile de fortune. Son ingéniosité et sa passion ont profondément touché Tara lorsqu'elle a découvert son travail.",
-      "paintingP3": "Son œuvre est à la racine du programme et est désormais largement reconnue.",
-      "activitiesEyebrow": "Activités",
-      "activitiesTitle": "Coopérative d'artisans et d'artisanat réfugiés",
-      "activitiesP1": "De nombreux réfugiés de Kakuma sont issus de cultures riches dotées de fortes traditions artistiques en perlage, tissage, couture et sculpture sur bois. Cependant, l'accès limité aux marchés les empêche de transformer ces compétences en activités durables. Pour y remédier, Generation Aid a créé la Coopérative d'artisans et d'artisanat réfugiés — une plateforme qui aide les artisans réfugiés à produire et vendre leurs produits faits main sur les marchés locaux et internationaux.",
-      "activitiesP2": "L'initiative propose une formation spécialisée dans divers artisanats, aidant les artisans à améliorer la qualité de leurs produits, à développer des designs uniques et à augmenter leur production. Elle les met également en relation avec des acheteurs, des ONG et des places de marché en ligne où ils peuvent présenter et vendre leur travail. Grâce à des ateliers de narration et de branding, les artisans apprennent à partager leur parcours et leur héritage culturel — rendant leurs produits plus précieux sur les marchés mondiaux.",
-      "celebratingEyebrow": "Célébrer nos talents",
-      "celebratingTitle": "Un modèle coopératif qui rassemble les forces",
-      "celebratingP1": "Pour mieux soutenir les artisans, Generation Aid développe un modèle coopératif qui leur permet de mettre en commun leurs ressources, d'accéder à des micro-crédits et d'investir collectivement dans le matériel et l'équipement. Ainsi, même ceux aux moyens financiers limités peuvent participer et développer leur activité.",
-      "celebratingP2": "La Coopérative d'artisans et d'artisanat réfugiés ne se contente pas de préserver le patrimoine culturel : elle crée aussi des emplois durables et des opportunités économiques pour les artisans — en particulier les femmes et les jeunes. En leur offrant une plateforme pour monétiser leurs compétences, cette initiative permet aux réfugiés de bâtir des moyens de subsistance autonomes et dignes au-delà de l'aide humanitaire.",
-      "galleryEyebrow": "La galerie Senga",
-      "galleryTitle": "Plus qu'un bâtiment — une galerie d'art au cœur de Kakuma",
-      "galleryP1": "La toute première galerie d'art a été construite — devenant un phare d'espoir, un lieu où les réfugiés peuvent s'exprimer, s'inspirer mutuellement et avancer côte à côte avec fierté dans leur vie.",
-      "galleryP2": "Le KAP est dirigé par Tara Dominick, une artiste plasticienne du Devon, aux côtés de Hubert Senga et de Generation Aid qui assurent la mise en œuvre des programmes artistiques sur le terrain à Kakuma.",
-      "galleryCaption1": "L'atelier organisé par le projet Birgheter, pour promouvoir la beauté et la fierté des réfugiés.",
-      "galleryCaption2": "En menant des ateliers artistiques, Generation Aid découvre les véritables défis auxquels la communauté est confrontée et développe des solutions communautaires.",
-      "galleryP3": "Grâce à ces ateliers, la communauté réfugiée de Kakuma se rassemble pour défendre la paix, l'unité et le talent. C'est un programme unique qui offre aux réfugiés une plateforme pour partager ce qui est caché dans leurs cultures — des dons dont le monde entier peut apprendre.",
-      "galleryCaption3": "La toute première galerie d'art du camp de réfugiés de Kakuma — nommée The Senga Gallery en hommage au plaidoyer en faveur des réfugiés mené par Hubert Senga, fondateur de Generation Aid.",
-      "whyTitle": "Pourquoi cette galerie compte",
-      "whySubtitle": "La galerie est inclusive — conçue pour favoriser la créativité des réfugiés.",
-      "whyCards": [
-        {
-          "title": "Expression et identité",
-          "body": "Un espace sûr où les artistes réfugiés peuvent donner forme à leurs souvenirs de la maison, à leurs récits de voyage et à leurs visions de demain."
-        },
-        {
-          "title": "Galerie alimentée par l'énergie solaire",
-          "body": "Des panneaux solaires garantissent qu'il y a toujours de la lumière pour admirer les œuvres — rendant la galerie viable et durable sur le long terme."
-        },
-        {
-          "title": "Communauté et solidarité",
-          "body": "Les artistes se tiennent côte à côte, bâtissant fierté et connexion au sein d'une communauté qui a tant perdu."
-        },
-        {
-          "title": "Visibilité mondiale",
-          "body": "Grâce à des expositions comme celle du Wiltshire, les récits des réfugiés touchent de nouveaux publics — reliant les mondes par l'art."
-        }
-      ]
+      "title": "Aidez-nous à toucher plus de jeunes et d'enfants réfugiés.",
+      "subtitle": "Parrainez une cohorte de programme, donnez du matériel ou devenez partenaire pour étendre les opportunités portées par les réfugiés."
     }
   },
   "impact": {

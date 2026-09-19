@@ -265,81 +265,81 @@ export default function Blog() {
         <div className="mt-10 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {apiVideos.length > 0
             ? apiVideos.map((v) => (
-                <article
-                  key={v._id}
-                  className="overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
-                >
-                  <div className="relative aspect-video w-full overflow-hidden bg-brand-100 dark:bg-slate-900">
-                    <video
-                      src={v.videoUrl}
-                      poster={v.posterUrl || undefined}
-                      controls
-                      preload="metadata"
-                      className="absolute inset-0 h-full w-full object-cover"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="font-display text-lg font-semibold text-neutral-heading dark:text-slate-100">
-                      {v.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-neutral-body dark:text-slate-300">{v.description}</p>
-                    <p className="mt-3 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-                      {new Date(v.createdAt).toLocaleDateString(undefined, {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                      })}
-                    </p>
-                  </div>
-                </article>
-              ))
+              <article
+                key={v._id}
+                className="overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
+              >
+                <div className="relative aspect-video w-full overflow-hidden bg-brand-100 dark:bg-slate-900">
+                  <video
+                    src={v.videoUrl}
+                    poster={v.posterUrl || undefined}
+                    controls
+                    preload="metadata"
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="font-display text-lg font-semibold text-neutral-heading dark:text-slate-100">
+                    {v.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-neutral-body dark:text-slate-300">{v.description}</p>
+                  <p className="mt-3 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+                    {new Date(v.createdAt).toLocaleDateString(undefined, {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </p>
+                </div>
+              </article>
+            ))
             : fallbackVideos.map((v) => (
-                <article
-                  key={v.title}
-                  className="overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
-                >
-                  <div className="relative aspect-video w-full overflow-hidden bg-brand-100 dark:bg-slate-900">
-                    {v.youtubeId ? (
-                      <iframe
-                        src={`https://www.youtube-nocookie.com/embed/${v.youtubeId}`}
-                        title={v.title}
-                        loading="lazy"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowFullScreen
-                        className="absolute inset-0 h-full w-full"
-                      />
-                    ) : (
-                      <div className="absolute inset-0 grid place-items-center bg-brand-600/30 text-white">
-                        <div className="text-center">
-                          <svg
-                            width="56"
-                            height="56"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                            className="mx-auto"
-                          >
-                            <path d="M8 5v14l11-7z" />
-                          </svg>
-                          <p className="mt-2 text-xs font-semibold uppercase tracking-wider text-white">
-                            {t("common.comingSoon")}
-                          </p>
-                        </div>
+              <article
+                key={v.title}
+                className="overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
+              >
+                <div className="relative aspect-video w-full overflow-hidden bg-brand-100 dark:bg-slate-900">
+                  {v.youtubeId ? (
+                    <iframe
+                      src={`https://www.youtube-nocookie.com/embed/${v.youtubeId}`}
+                      title={v.title}
+                      loading="lazy"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      className="absolute inset-0 h-full w-full"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 grid place-items-center bg-brand-600/30 text-white">
+                      <div className="text-center">
+                        <svg
+                          width="56"
+                          height="56"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          className="mx-auto"
+                        >
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                        <p className="mt-2 text-xs font-semibold uppercase tracking-wider text-white">
+                          {t("common.comingSoon")}
+                        </p>
                       </div>
-                    )}
-                  </div>
-                  <div className="p-6">
-                    <h3 className="font-display text-lg font-semibold text-neutral-heading dark:text-slate-100">
-                      {v.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-neutral-body dark:text-slate-300">{v.description}</p>
-                    {v.date && (
-                      <p className="mt-3 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-                        {v.date}
-                      </p>
-                    )}
-                  </div>
-                </article>
-              ))}
+                    </div>
+                  )}
+                </div>
+                <div className="p-6">
+                  <h3 className="font-display text-lg font-semibold text-neutral-heading dark:text-slate-100">
+                    {v.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-neutral-body dark:text-slate-300">{v.description}</p>
+                  {v.date && (
+                    <p className="mt-3 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+                      {v.date}
+                    </p>
+                  )}
+                </div>
+              </article>
+            ))}
         </div>
 
         <div className="mt-10 text-center">

@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
-import { useTranslation, Trans } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import Section from "@/components/Section";
 import SmartImage from "@/components/SmartImage";
 import { useSEO } from "@/utils/useSEO";
@@ -9,17 +9,12 @@ import { useQuery } from "@tanstack/react-query";
 import { getPrograms, mapSanityProgramToDisplayProgram } from "@/lib/sanity";
 import { defaultPrograms, type DetailedProgram } from "@/data/programsData";
 
-interface WhyCard {
-  title: string;
-  body: string;
-}
-
 export default function Programs() {
   const { t } = useTranslation();
   useSEO({
     title: "Programs",
     description:
-      "Digital Livelihoods, Youth Digital Skills, and Kakuma Art Project — Generation Aid's core initiatives in Kakuma Refugee Camp.",
+      "Explore Generation Aid's core refugee-led programs in Kakuma: Learning Through Play, Women in AI, Storytelling, Creative Arts, Climate Action, Social-Emotional Learning, Global Advocacy, English Literacy, and Computer Literacy.",
   });
 
   const { data: sanityPrograms = [] } = useQuery({
@@ -39,21 +34,8 @@ export default function Programs() {
   }, [cmsPrograms]);
 
   const programDetails = useMemo(() => {
-    const raw = t("programs.details", { returnObjects: true });
-    if (Array.isArray(raw) && raw.length > 0) return raw as DetailedProgram[];
-    return defaultPrograms;
-  }, [t]);
-
-  const whyCards = useMemo(() => {
-    const raw = t("programs.kap.whyCards", { returnObjects: true });
-    if (Array.isArray(raw) && raw.length > 0) return raw as WhyCard[];
-    return [];
-  }, [t]);
-
-  const transComponents = {
-    strong: <strong className="font-bold text-neutral-heading dark:text-slate-100" />,
-    span: <span className="text-brand-600 dark:text-brand-400" />,
-  };
+    return displayPrograms as DetailedProgram[];
+  }, [displayPrograms]);
 
   return (
     <div className="bg-white dark:bg-slate-900 transition-colors">
@@ -87,40 +69,52 @@ export default function Programs() {
       {/* OVERVIEW CARDS (Pattern A: Canvas) */}
       <Section pattern="canvas">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {displayPrograms.map((p) => (
-            <article
-              key={p.title}
-              className="overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
-            >
-              <div className="aspect-video w-full overflow-hidden bg-brand-50 dark:bg-slate-900">
-                <SmartImage
-                  src={p.image}
-                  alt={p.title}
-                  className="h-full w-full object-cover transition duration-500 hover:scale-105"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="font-display text-lg font-semibold text-neutral-heading dark:text-slate-100">
-                  {p.title}
-                </h3>
-                <p className="mt-2 text-sm text-neutral-body dark:text-slate-300">{p.body}</p>
-                {"slug" in p && p.slug ? (
-                  <Link
-                    to={`/programs/${p.slug}`}
-                    className="mt-4 inline-flex items-center text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 hover:underline"
-                  >
-                    View program details →
-                  </Link>
-                ) : null}
-              </div>
-            </article>
-          ))}
+          {displayPrograms.map((p) => {
+            const targetId = ("slug" in p && p.slug) || ("id" in p && p.id) || "";
+            return (
+              <article
+                key={p.title}
+                className="flex flex-col overflow-hidden rounded-2xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
+              >
+                <div className="aspect-video w-full overflow-hidden bg-brand-50 dark:bg-slate-900">
+                  <SmartImage
+                    src={p.image}
+                    alt={p.title}
+                    className="h-full w-full object-cover transition duration-500 hover:scale-105"
+                  />
+                </div>
+                <div className="flex flex-1 flex-col p-6">
+                  {"category" in p && p.category && (
+                    <span className="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+                      {p.category}
+                    </span>
+                  )}
+                  <h3 className="mt-1 font-display text-lg font-semibold text-neutral-heading dark:text-slate-100">
+                    {p.title}
+                  </h3>
+                  <p className="mt-2 line-clamp-3 text-sm text-neutral-body dark:text-slate-300">{p.body}</p>
+                  {targetId ? (
+                    <div className="mt-auto pt-4">
+                      <Link
+                        to={`/programs/${targetId}`}
+                        className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400 hover:underline"
+                      >
+                        <span>View program details</span>
+                        <span>→</span>
+                      </Link>
+                    </div>
+                  ) : null}
+                </div>
+              </article>
+            );
+          })}
         </div>
       </Section>
 
       {/* DETAILED SECTIONS */}
       {programDetails.map((p, i) => {
         const imageFirst = i % 2 === 1;
+        const targetId = p.slug || p.id;
         return (
           <Section
             key={p.id}
@@ -139,17 +133,24 @@ export default function Programs() {
                 />
               </figure>
               <div className={imageFirst ? "lg:order-2" : "lg:order-1"}>
-                <span className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-                  {t("programs.programLabel", { n: i + 1 })}
-                </span>
-                <h2 className="mt-4 text-3xl font-bold text-neutral-heading dark:text-slate-50 sm:text-4xl">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+                    {t("programs.programLabel", { n: i + 1 })}
+                  </span>
+                  {p.category && (
+                    <span className="rounded-full bg-brand-50 dark:bg-slate-800 px-2.5 py-0.5 text-xs font-semibold text-brand-700 dark:text-brand-300 border border-brand-100 dark:border-slate-700">
+                      {p.category}
+                    </span>
+                  )}
+                </div>
+                <h2 className="mt-3 text-2xl font-bold text-neutral-heading dark:text-slate-50 sm:text-3xl">
                   {p.title}
                 </h2>
-                <p className="mt-5 text-base leading-relaxed text-neutral-body dark:text-slate-300">
+                <p className="mt-4 text-base leading-relaxed text-neutral-body dark:text-slate-300">
                   {p.body}
                 </p>
 
-                <ul className="mt-6 grid gap-2 sm:grid-cols-2">
+                <ul className="mt-5 grid gap-2 sm:grid-cols-2">
                   {p.features.map((f) => (
                     <li
                       key={f}
@@ -173,390 +174,36 @@ export default function Programs() {
                     </li>
                   ))}
                 </ul>
+
+                {targetId && (
+                  <div className="mt-6">
+                    <Link
+                      to={`/programs/${targetId}`}
+                      className="inline-flex items-center gap-2 rounded-xl bg-brand-600 dark:bg-brand-500 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white shadow-sm transition hover:bg-brand-700 dark:hover:bg-brand-400"
+                    >
+                      <span>Explore Full Curriculum & Details</span>
+                      <span>→</span>
+                    </Link>
+                  </div>
+                )}
               </div>
             </div>
           </Section>
         );
       })}
 
-      {/* YOUTH DIGITAL SKILLS HERO (Pattern B: Soft Contrast) */}
-      <Section pattern="soft" className="!pb-12">
-        <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-block rounded-full bg-white dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
-            {t("programs.youthDigital.tag")}
-          </span>
-          <h2 className="mt-4 text-4xl font-bold leading-tight text-neutral-heading dark:text-slate-50 sm:text-5xl">
-            {t("programs.youthDigital.title")}
-          </h2>
-          <p className="mt-6 text-lg text-neutral-body dark:text-slate-300">
-            {t("programs.youthDigital.subtitle")}
-          </p>
-        </div>
-      </Section>
-
-      {/* REMOTE WORK / BPO MODEL (Pattern A: Canvas) */}
-      <Section pattern="canvas" className="!pt-0">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[3fr_2fr]">
-          <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-              {t("programs.bpo.eyebrow")}
-            </span>
-            <h3 className="mt-3 text-3xl font-bold text-neutral-heading dark:text-slate-50 sm:text-4xl">
-              {t("programs.bpo.title")}
-            </h3>
-            <div className="mt-6 space-y-5 text-base leading-relaxed text-neutral-body dark:text-slate-300">
-              <p>
-                <Trans i18nKey="programs.bpo.p1" components={transComponents} />
-              </p>
-              <p>
-                <Trans i18nKey="programs.bpo.p2" components={transComponents} />
-              </p>
-            </div>
-          </div>
-          <figure className="overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
-            <SmartImage
-              src="/img/programs/bpo.jpg"
-              alt="Refugee youth at the Remote Work Bootcamp"
-              className="h-full w-full object-cover"
-            />
-          </figure>
-        </div>
-      </Section>
-
-      {/* CODING & WEB DEV ACADEMY (Pattern B: Soft Contrast) */}
-      <Section pattern="soft">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[2fr_3fr]">
-          <figure className="overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
-            <SmartImage
-              src="/img/programs/coding-academy.jpg"
-              alt="Coding & Web Development Academy"
-              className="h-full w-full object-cover"
-            />
-          </figure>
-          <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-              {t("programs.coding.eyebrow")}
-            </span>
-            <h3 className="mt-3 text-3xl font-bold text-neutral-heading dark:text-slate-50 sm:text-4xl">
-              {t("programs.coding.title")}
-            </h3>
-            <div className="mt-6 space-y-5 text-base leading-relaxed text-neutral-body dark:text-slate-300">
-              <p>
-                <Trans
-                  i18nKey="programs.coding.p1"
-                  components={transComponents}
-                />
-              </p>
-              <p>
-                <Trans
-                  i18nKey="programs.coding.p2"
-                  components={transComponents}
-                />
-              </p>
-              <p>
-                <Trans
-                  i18nKey="programs.coding.p3"
-                  components={transComponents}
-                />
-              </p>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* CREATIVITY HERO (Pattern A: Canvas) */}
-      <Section pattern="canvas" className="!pb-12">
-        <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-block rounded-full bg-brand-50 dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
-            {t("programs.creativity.tag")}
-          </span>
-          <h2 className="mt-4 text-4xl font-bold leading-tight text-neutral-heading dark:text-slate-50 sm:text-5xl">
-            {t("programs.creativity.title")}
-          </h2>
-          <p className="mt-6 text-lg text-neutral-body dark:text-slate-300">
-            {t("programs.creativity.subtitle")}
-          </p>
-        </div>
-      </Section>
-
-      {/* HOW IT BEGAN (Pattern A: Canvas continued) */}
-      <Section pattern="canvas" className="!pt-0">
-        <div className="mx-auto max-w-4xl">
-          <span className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-            {t("programs.kap.howEyebrow")}
-          </span>
-          <h3 className="mt-3 text-3xl font-bold text-neutral-heading dark:text-slate-50 sm:text-4xl">
-            {t("programs.kap.howTitle")}
-          </h3>
-
-          <div className="mt-6 space-y-5 text-base leading-relaxed text-neutral-body dark:text-slate-300">
-            <p>
-              <Trans
-                i18nKey="programs.kap.howP1"
-                components={transComponents}
-              />
-            </p>
-            <p>{t("programs.kap.howP2")}</p>
-            <p>
-              <Trans
-                i18nKey="programs.kap.howP3"
-                components={transComponents}
-              />
-            </p>
-          </div>
-
-          <blockquote className="mt-8 rounded-xl border-l-4 border-brand-600 dark:border-brand-400 bg-brand-50 dark:bg-slate-800 p-6 italic text-neutral-heading dark:text-slate-100 shadow-sm">
-            &ldquo;{t("programs.kap.quote")}&rdquo;
-            <footer className="mt-3 text-sm font-semibold not-italic text-neutral-body dark:text-slate-300">
-              <Trans
-                i18nKey="programs.kap.quoteAttr"
-                components={transComponents}
-              />
-            </footer>
-          </blockquote>
-
-          <figure className="mt-10 overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
-            <SmartImage
-              src="/img/programs/kap-hero.png"
-              alt="Kakuma Art Project — early workshops"
-              className="h-full w-full object-cover"
-            />
-          </figure>
-        </div>
-      </Section>
-
-      {/* BEAUTY OF THE PROGRAMS (Pattern B: Soft Contrast) */}
-      <Section pattern="soft">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2">
-          <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-              {t("programs.kap.beautyEyebrow")}
-            </span>
-            <h3 className="mt-3 text-3xl font-bold text-neutral-heading dark:text-slate-50 sm:text-4xl">
-              {t("programs.kap.beautyTitle")}
-            </h3>
-            <p className="mt-5 text-base leading-relaxed text-neutral-body dark:text-slate-300">
-              <Trans
-                i18nKey="programs.kap.beautyBody"
-                components={transComponents}
-              />
-            </p>
-          </div>
-          <figure className="overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 shadow-sm">
-            <SmartImage
-              src="/img/programs/kap-1.png"
-              alt="Artists at work in a Kakuma Art Project workshop"
-              className="h-full w-full object-cover"
-            />
-          </figure>
-        </div>
-      </Section>
-
-      {/* PAINTING HOME FROM AFAR (Pattern A: Canvas) */}
-      <Section pattern="canvas">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[2fr_3fr]">
-          <figure className="overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
-            <SmartImage
-              src="/img/programs/kap-2.png"
-              alt="Mwangi, artist at Kakuma Refugee Camp"
-              className="h-full w-full object-cover"
-            />
-          </figure>
-          <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-              {t("programs.kap.paintingEyebrow")}
-            </span>
-            <h3 className="mt-3 text-3xl font-bold text-neutral-heading dark:text-slate-50 sm:text-4xl">
-              <Trans
-                i18nKey="programs.kap.paintingTitle"
-                components={transComponents}
-              />
-            </h3>
-            <div className="mt-6 space-y-5 text-base leading-relaxed text-neutral-body dark:text-slate-300">
-              <p>{t("programs.kap.paintingP1")}</p>
-              <p>{t("programs.kap.paintingP2")}</p>
-              <p>{t("programs.kap.paintingP3")}</p>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* ACTIVITIES (Pattern B: Soft Contrast) */}
-      <Section pattern="soft">
-        <div className="mx-auto max-w-5xl">
-          <span className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-            {t("programs.kap.activitiesEyebrow")}
-          </span>
-          <h3 className="mt-3 text-3xl font-bold text-neutral-heading dark:text-slate-50 sm:text-4xl">
-            {t("programs.kap.activitiesTitle")}
-          </h3>
-
-          <figure className="mt-8 overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
-            <SmartImage
-              src="/img/programs/kap-3.png"
-              alt="Refugee artisan cooperative at work"
-              className="h-full w-full object-cover"
-            />
-          </figure>
-
-          <div className="mt-8 space-y-5 text-base leading-relaxed text-neutral-body dark:text-slate-300">
-            <p>
-              <Trans
-                i18nKey="programs.kap.activitiesP1"
-                components={transComponents}
-              />
-            </p>
-          </div>
-
-          <figure className="mt-8 overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
-            <SmartImage
-              src="/img/programs/artists-painting.jpg"
-              alt="Handicraft training session"
-              className="h-full w-full object-cover"
-            />
-          </figure>
-
-          <div className="mt-8 space-y-5 text-base leading-relaxed text-neutral-body dark:text-slate-300">
-            <p>{t("programs.kap.activitiesP2")}</p>
-          </div>
-        </div>
-      </Section>
-
-      {/* CELEBRATING OUR TALENTS (Pattern A: Canvas) */}
-      <Section pattern="canvas">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[3fr_2fr]">
-          <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-              {t("programs.kap.celebratingEyebrow")}
-            </span>
-            <h3 className="mt-3 text-3xl font-bold text-neutral-heading dark:text-slate-50 sm:text-4xl">
-              {t("programs.kap.celebratingTitle")}
-            </h3>
-            <div className="mt-6 space-y-5 text-base leading-relaxed text-neutral-body dark:text-slate-300">
-              <p>
-                <Trans
-                  i18nKey="programs.kap.celebratingP1"
-                  components={transComponents}
-                />
-              </p>
-              <p>
-                <Trans
-                  i18nKey="programs.kap.celebratingP2"
-                  components={transComponents}
-                />
-              </p>
-            </div>
-          </div>
-          <figure className="overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
-            <SmartImage
-              src="/img/programs/art-portrait.jpg"
-              alt="Celebrating refugee artisan talents"
-              className="h-full w-full object-cover"
-            />
-          </figure>
-        </div>
-      </Section>
-
-      {/* GALLERY HERO (Pattern B: Soft Contrast) */}
-      <Section pattern="soft">
-        <div className="mx-auto max-w-4xl">
-          <span className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-            {t("programs.kap.galleryEyebrow")}
-          </span>
-          <h3 className="mt-3 text-3xl font-bold text-neutral-heading dark:text-slate-50 sm:text-4xl">
-            {t("programs.kap.galleryTitle")}
-          </h3>
-          <div className="mt-6 space-y-5 text-base leading-relaxed text-neutral-body dark:text-slate-300">
-            <p>{t("programs.kap.galleryP1")}</p>
-            <p>
-              <Trans
-                i18nKey="programs.kap.galleryP2"
-                components={transComponents}
-              />
-            </p>
-          </div>
-
-          <figure className="mt-10 overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
-            <SmartImage
-              src="/img/programs/art-landscape.jpg"
-              alt="Workshop promoting beauty and pride for refugees"
-              className="h-full w-full object-cover"
-            />
-            <figcaption className="px-6 py-3 text-sm text-neutral-body dark:text-slate-400">
-              {t("programs.kap.galleryCaption1")}
-            </figcaption>
-          </figure>
-
-          <figure className="mt-6 overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
-            <SmartImage
-              src="/img/programs/artisan-1.jpg"
-              alt="Community art workshop"
-              className="h-full w-full object-cover"
-            />
-            <figcaption className="px-6 py-3 text-sm text-neutral-body dark:text-slate-400">
-              {t("programs.kap.galleryCaption2")}
-            </figcaption>
-          </figure>
-
-          <p className="mt-8 text-base leading-relaxed text-neutral-body dark:text-slate-300">
-            {t("programs.kap.galleryP3")}
-          </p>
-
-          <figure className="mt-10 overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
-            <SmartImage
-              src="/img/programs/artisan-2.jpg"
-              alt="The Senga Gallery — the first art gallery in Kakuma refugee camp"
-              className="h-full w-full object-cover"
-            />
-            <figcaption className="px-6 py-3 text-sm text-neutral-body dark:text-slate-400">
-              <Trans
-                i18nKey="programs.kap.galleryCaption3"
-                components={transComponents}
-              />
-            </figcaption>
-          </figure>
-        </div>
-      </Section>
-
-      {/* WHY THIS GALLERY MATTERS (Pattern A: Canvas) */}
-      <Section pattern="canvas">
-        <div className="mx-auto max-w-3xl text-center">
-          <h3 className="text-3xl font-bold text-neutral-heading dark:text-slate-50 sm:text-4xl">
-            {t("programs.kap.whyTitle")}
-          </h3>
-          <p className="mt-3 text-neutral-body dark:text-slate-300">{t("programs.kap.whySubtitle")}</p>
-        </div>
-
-        <div className="mx-auto mt-10 grid max-w-5xl gap-6 md:grid-cols-2">
-          {whyCards.map((card) => (
-            <div
-              key={card.title}
-              className="rounded-xl border-l-4 border-brand-600 dark:border-brand-400 bg-white dark:bg-slate-800 p-6 shadow-sm border border-neutral-border dark:border-slate-700"
-            >
-              <h4 className="font-display text-lg font-semibold text-neutral-heading dark:text-slate-100">
-                {card.title}
-              </h4>
-              <p className="mt-3 text-sm text-neutral-body dark:text-slate-300">{card.body}</p>
-            </div>
-          ))}
-        </div>
-
-        <figure className="mx-auto mt-12 max-w-4xl overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
-          <SmartImage
-            src="/img/programs/senga-gallery.jpg"
-            alt="The Senga Gallery interior"
-            className="h-full w-full object-cover"
-          />
-        </figure>
-      </Section>
-
       {/* CTA (Pattern C: Neutral Dark Impact Surface) */}
       <Section pattern="impact">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-bold sm:text-4xl !text-white">
-            {t("programs.cta.title")}
+            {t("programs.cta.title", "Help us reach more refugee youth & children.")}
           </h2>
-          <p className="mt-3 text-white">{t("programs.cta.subtitle")}</p>
+          <p className="mt-3 text-white">
+            {t(
+              "programs.cta.subtitle",
+              "Sponsor a program cohort, donate equipment, or partner with us to expand refugee-led opportunities.",
+            )}
+          </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <a
               href={SITE.donateUrl}
@@ -573,13 +220,13 @@ export default function Programs() {
               >
                 <path d="M12 21s-7-4.534-9.5-9.07C.94 8.94 2.4 5.5 5.6 5.5c1.74 0 3.41 1 4.4 2.5 1-1.5 2.66-2.5 4.4-2.5 3.2 0 4.66 3.44 3.1 6.43C19 16.466 12 21 12 21z" />
               </svg>
-              {t("common.donate")}
+              {t("common.donate", "Donate Now")}
             </a>
             <Link
               to="/contact"
               className="rounded-lg border border-white/70 dark:border-slate-700 bg-white/10 dark:bg-slate-800 px-5 py-3 text-sm font-semibold text-white hover:bg-white/20 dark:hover:bg-slate-700 transition"
             >
-              {t("common.getInTouch")}
+              {t("common.contactUs", "Get in Touch")}
             </Link>
           </div>
         </div>

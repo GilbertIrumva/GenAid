@@ -9,16 +9,9 @@ import {
   partners,
   partnershipBenefits,
   type Partner,
-  type PartnerCategory,
 } from "@/data/partners";
 import { getPartners, mapSanityPartnerToDisplayPartner } from "@/lib/sanity";
 
-const categories: PartnerCategory[] = [
-  "Strategic",
-  "Funding",
-  "Implementation",
-  "Corporate",
-];
 
 
 interface TierAccent {
@@ -220,29 +213,19 @@ export default function Partners() {
           </div>
         </div>
 
-        {categories.map((cat) => {
-          const fallbackInCat = partners.filter((p) => p.category === cat);
-          const cmsInCat =
+        {(() => {
+          const displayedPartners =
             sanityPartners.length > 0
-              ? sanityPartners
-                .filter((p) => (p.category || "Strategic") === cat)
-                .map(mapSanityPartnerToDisplayPartner)
-              : [];
-          const inCat = cmsInCat.length > 0 ? cmsInCat : fallbackInCat;
-          if (inCat.length === 0) return null;
+              ? sanityPartners.map(mapSanityPartnerToDisplayPartner)
+              : partners;
           return (
-            <div key={cat} className="mt-10">
-              <h3 className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-                {t(`partners.categories.${cat}`, { defaultValue: cat })}
-              </h3>
-              <div className="mt-4 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-                {inCat.map((p) => (
-                  <PartnerCard key={p.name} partner={p as Partner} />
-                ))}
-              </div>
+            <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {displayedPartners.map((p) => (
+                <PartnerCard key={p.key || p.name} partner={p as Partner} />
+              ))}
             </div>
           );
-        })}
+        })()}
       </Section>
 
       {/* TIERS (Pattern A: Canvas) */}

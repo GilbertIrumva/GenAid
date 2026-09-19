@@ -57,7 +57,7 @@ export default function JobsOpportunities() {
       subtitle="Start with a two-month pilot at $150/month, then continue at $399/month with transparent scope and measurable KPIs."
     >
       {/* PACKAGES (Pattern A: Canvas) */}
-      <Section pattern="canvas">
+      <Section pattern="canvas" className="!pt-4 sm:!pt-6">
         <div className="sir-callout-border mb-6">
           <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 font-medium">
             Choose the service package that fits your needs. Start with a 2-month
@@ -66,7 +66,7 @@ export default function JobsOpportunities() {
           </p>
         </div>
 
-        <div className="mb-8 flex flex-wrap items-center gap-2">
+        <div className="mb-6 sm:mb-8 flex items-center gap-2 overflow-x-auto pb-2 w-full max-w-full sm:flex-wrap no-scrollbar">
           {filters.map((filter) => (
             <button
               key={filter}
@@ -74,8 +74,8 @@ export default function JobsOpportunities() {
               onClick={() => setActiveFilter(filter)}
               className={
                 activeFilter === filter
-                  ? "rounded-full bg-brand-600 dark:bg-brand-500 px-4 py-2 text-xs font-extrabold uppercase tracking-wider text-white shadow-sm"
-                  : "rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-2 text-xs font-extrabold uppercase tracking-wider text-slate-700 dark:text-slate-300 hover:border-brand-600 dark:hover:border-brand-400 hover:text-brand-600 dark:hover:text-brand-400"
+                  ? "whitespace-nowrap shrink-0 rounded-full bg-brand-600 dark:bg-brand-500 px-4 py-2 text-xs font-extrabold uppercase tracking-wider text-white shadow-sm"
+                  : "whitespace-nowrap shrink-0 rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-2 text-xs font-extrabold uppercase tracking-wider text-slate-700 dark:text-slate-300 hover:border-brand-600 dark:hover:border-brand-400 hover:text-brand-600 dark:hover:text-brand-400"
               }
             >
               {filter}
@@ -87,22 +87,22 @@ export default function JobsOpportunities() {
           {packages.map((pkg) => (
             <article
               key={pkg.slug}
-              className="sir-card-accent p-6 flex flex-col justify-between"
+              className="sir-card-accent p-5 sm:p-6 flex flex-col justify-between"
             >
               <div>
                 <span className="sir-tag">
                   {pkg.category}
                 </span>
-                <h2 className="mt-3 font-serif text-2xl font-extrabold text-slate-900 dark:text-slate-100">
+                <h2 className="mt-3 font-serif text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-slate-100">
                   {pkg.title}
                 </h2>
                 <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
                   {pkg.description}
                 </p>
-                <ul className="mt-4 space-y-2 text-sm text-slate-700 dark:text-slate-300 font-medium">
+                <ul className="mt-4 space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-medium">
                   {pkg.deliverables.map((item) => (
                     <li key={item} className="flex items-start gap-2">
-                      <span className="mt-2 h-1.5 w-1.5 rounded-full bg-brand-600 dark:bg-brand-400 shrink-0" />
+                      <span className="mt-1.5 sm:mt-2 h-1.5 w-1.5 rounded-full bg-brand-600 dark:bg-brand-400 shrink-0" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -110,18 +110,18 @@ export default function JobsOpportunities() {
               </div>
 
               <div>
-                <div className="mt-6 rounded-xl border border-blue-100 dark:border-slate-800 bg-brand-50/60 dark:bg-slate-950/60 p-4">
+                <div className="mt-6 rounded-xl border border-blue-100 dark:border-slate-800 bg-brand-50/60 dark:bg-slate-950/60 p-3.5 sm:p-4">
                   <p className="text-xs font-extrabold uppercase tracking-wider text-brand-600 dark:text-brand-400">
                     Pricing
                   </p>
-                  <p className="mt-2 text-sm text-slate-700 dark:text-slate-300 font-medium">
+                  <p className="mt-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-medium">
                     Pilot:{" "}
                     <span className="font-extrabold text-slate-900 dark:text-slate-100">
                       ${pkg.trialPrice}/month
                     </span>{" "}
                     for the first two months
                   </p>
-                  <p className="mt-1 text-sm text-slate-700 dark:text-slate-300 font-medium">
+                  <p className="mt-1 text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-medium">
                     Standard:{" "}
                     <span className="font-extrabold text-slate-900 dark:text-slate-100">
                       ${pkg.monthlyPrice}/month
@@ -130,7 +130,7 @@ export default function JobsOpportunities() {
                   </p>
                 </div>
 
-                <p className="mt-4 text-sm font-extrabold text-slate-900 dark:text-slate-200">
+                <p className="mt-4 text-xs sm:text-sm font-extrabold text-slate-900 dark:text-slate-200">
                   Impact: {pkg.impact}
                 </p>
               </div>
@@ -146,27 +146,27 @@ export default function JobsOpportunities() {
       </Section>
 
       {/* ROADMAP (White background with blue container card) */}
-      <section className="relative isolate overflow-hidden bg-white dark:bg-slate-900 py-16 sm:py-20 transition-colors border-t border-slate-200 dark:border-slate-800">
+      <section className="relative isolate overflow-hidden bg-white dark:bg-slate-900 py-12 sm:py-20 transition-colors border-t border-slate-200 dark:border-slate-800">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-3xl bg-brand-600 dark:bg-brand-900 p-6 sm:p-8 lg:p-12 border border-brand-700 shadow-2xl text-white">
+          <div className="rounded-3xl bg-brand-600 dark:bg-brand-900 p-5 sm:p-8 lg:p-12 border border-brand-700 shadow-2xl text-white">
             <span className="inline-block rounded-md bg-white/20 px-3.5 py-1 text-xs font-extrabold uppercase tracking-widest text-white border border-white/30 backdrop-blur-sm">
               Your 3-week roadmap
             </span>
-            <h2 className="mt-4 font-serif text-3xl font-extrabold tracking-tight !text-white dark:!text-white sm:text-4xl lg:text-5xl">
+            <h2 className="mt-4 font-serif text-2xl sm:text-3xl font-extrabold tracking-tight !text-white sm:text-4xl lg:text-5xl break-words">
               Start your impact journey with us
             </h2>
 
-            <div className="mt-10 grid gap-6 sm:grid-cols-3">
+            <div className="mt-8 sm:mt-10 grid gap-5 sm:gap-6 sm:grid-cols-3">
               {roadmap.map((item) => (
                 <article
                   key={item.week}
-                  className="relative rounded-2xl bg-white text-slate-900 p-6 sm:p-8 shadow-xl border border-white flex flex-col justify-between"
+                  className="relative rounded-2xl bg-white text-slate-900 p-5 sm:p-8 shadow-xl border border-white flex flex-col justify-between"
                 >
                   <div>
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-extrabold uppercase tracking-widest text-brand-700 bg-brand-50 border border-brand-200">
                       {item.week}
                     </span>
-                    <h3 className="mt-4 font-serif text-xl font-extrabold text-slate-900">
+                    <h3 className="mt-4 font-serif text-lg sm:text-xl font-extrabold text-slate-900">
                       {item.title}
                     </h3>
                     <p className="mt-3 text-sm leading-relaxed text-slate-600 font-medium">
@@ -177,24 +177,24 @@ export default function JobsOpportunities() {
               ))}
             </div>
 
-            <div className="mt-10 flex flex-wrap items-center gap-4">
+            <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 text-xs font-extrabold uppercase tracking-wider text-brand-700 shadow-md transition hover:bg-brand-50 hover:text-brand-800"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 text-xs font-extrabold uppercase tracking-wider text-brand-700 shadow-md transition hover:bg-brand-50 hover:text-brand-800 w-full sm:w-auto"
               >
                 <span>Start Pilot</span>
                 <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
               </Link>
               <Link
                 to="/jobs/employers"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/70 bg-white/10 px-6 py-3.5 text-xs font-extrabold uppercase tracking-wider text-white backdrop-blur-sm transition hover:bg-white hover:text-brand-800"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/70 bg-white/10 px-6 py-3.5 text-xs font-extrabold uppercase tracking-wider text-white backdrop-blur-sm transition hover:bg-white hover:text-brand-800 w-full sm:w-auto"
               >
                 <span>Review Employer Model</span>
                 <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
               </Link>
             </div>
 
-            <p className="mt-6 text-sm font-medium text-white">
+            <p className="mt-6 text-xs sm:text-sm font-medium text-white/90">
               Hiring refugee talent through Generation Jobs is a strategic
               impact-sourcing investment powered by Generation Aid training.
             </p>

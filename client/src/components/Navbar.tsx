@@ -26,15 +26,20 @@ const MENUS: Record<string, ReadonlyArray<MenuLink>> = {
   ],
   programs: [
     { to: "/programs", key: "all" },
-    { to: "/programs/computer-literacy", key: "computerLiteracy" },
-    { to: "/programs/tailoring", key: "tailoring" },
-    { to: "/programs/english", key: "english" },
+    { to: "/programs/learning-through-play", key: "learningThroughPlay" },
+    { to: "/programs/women-in-ai", key: "womenInAi" },
+    { to: "/programs/storytelling", key: "storytelling" },
+    { to: "/programs/creative-arts", key: "creativeArts" },
+    { to: "/programs/climate-action", key: "climateAction" },
+    { to: "/programs/social-emotional-learning", key: "socialEmotionalLearning" },
+    { to: "/programs/advocacy", key: "advocacy" },
+    { to: "/programs/english-language-literacy", key: "englishLanguageLiteracy" },
+    { to: "/programs/womens-digital-skills", key: "womensDigitalSkills" },
+    { to: "/programs/computer-literacy-skills", key: "computerLiteracySkills" },
   ],
   impact: [
     { to: "/blog", key: "blog" },
     { to: "/stories", key: "stories" },
-    { to: "/news", key: "news" },
-    { to: "/reports", key: "reports" },
   ],
   getInvolved: [
     { to: "/volunteer", key: "volunteer" },
@@ -128,7 +133,6 @@ export default function Navbar() {
                   : "text-slate-700 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-700 hover:text-brand-600 dark:hover:text-brand-400",
               )}
             >
-              <span className="h-1.5 w-1.5 rounded-full bg-brand-400 animate-pulse" />
               Generation Jobs
             </Link>
           </div>

@@ -96,31 +96,45 @@ const timeline = [
 const metrics: ImpactMetric[] = [
   {
     _id: "impact-1",
-    title: "Learners supported",
-    value: 500,
+    title: "Directly Impacted",
+    value: 1600,
     icon: "🎓",
     order: 1,
   },
   {
     _id: "impact-2",
-    title: "Volunteer hours logged",
-    value: 1800,
-    icon: "🤝",
+    title: "Indirect Community Reach",
+    value: 1200,
+    icon: "🌍",
     order: 2,
   },
   {
     _id: "impact-3",
-    title: "Community partners",
-    value: 24,
-    icon: "🌍",
+    title: "Refugees & Youth Trained",
+    value: 700,
+    icon: "💻",
     order: 3,
   },
   {
     _id: "impact-4",
-    title: "Refugee-led initiatives",
-    value: 8,
+    title: "Graduates Employed",
+    value: 50,
     icon: "🚀",
     order: 4,
+  },
+  {
+    _id: "impact-5",
+    title: "Emergency Food & Medical Aid",
+    value: 210,
+    icon: "🏥",
+    order: 5,
+  },
+  {
+    _id: "impact-6",
+    title: "Partner Collaborations",
+    value: 15,
+    icon: "🤝",
+    order: 6,
   },
 ];
 
@@ -150,7 +164,7 @@ export default function Impact() {
   useSEO({
     title: "Our impact",
     description:
-      "Numbers, reports, and stories that show what refugee-led innovation is delivering in Kakuma.",
+      "Numbers, data, and stories that show what refugee-led innovation is delivering in Kakuma.",
   });
 
   const featuredStories = fallbackStories.slice(0, 3);
@@ -203,7 +217,7 @@ export default function Impact() {
             {t("impact.metricsEmpty")}
           </p>
         ) : (
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {metrics.map((m) => (
               <div
                 key={m._id}

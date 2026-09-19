@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import PublicLayout from "./layouts/PublicLayout";
@@ -19,8 +19,6 @@ import JobsEmployers from "./pages/JobsEmployers";
 import JobsOpportunities from "./pages/JobsOpportunities";
 import Volunteer from "./pages/Volunteer";
 import Contact from "./pages/Contact";
-import News from "./pages/News";
-import Reports from "./pages/Reports";
 import NotFound from "./pages/NotFound";
 
 export default function App() {
@@ -52,8 +50,8 @@ export default function App() {
         <Route path="/stories/:id" element={<StoryDetail />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
-        <Route path="/news" element={<News />} />
-        <Route path="/reports" element={<Reports />} />
+        <Route path="/news" element={<Navigate to="/impact" replace />} />
+        <Route path="/reports" element={<Navigate to="/impact" replace />} />
         <Route path="/partners" element={<Partners />} />
         <Route path="/volunteer" element={<Volunteer />} />
         <Route path="/contact" element={<Contact />} />

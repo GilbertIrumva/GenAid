@@ -86,9 +86,6 @@ export default function About() {
   });
 
   const objectives = t("about.objectives", { returnObjects: true }) as string[];
-  const focusedPrograms = t("about.focusedPrograms", {
-    returnObjects: true,
-  }) as CardItem[];
   const values = t("about.values", { returnObjects: true }) as CardItem[];
 
   const { data: sanityTeam = [] } = useQuery({
@@ -133,19 +130,19 @@ export default function About() {
         </div>
       </section>
 
-      {/* WHERE IT ALL BEGAN / WHO ARE WE (Pattern A: Canvas - First Section) */}
+      {/* ABOUT US & WHO WE ARE (Pattern A: Canvas - First Section) */}
       <Section id="story" pattern="canvas" className="scroll-mt-24">
         <div className="mx-auto max-w-4xl">
           <span className="inline-block rounded-full bg-brand-50 dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
-            Where it all began
+            About Us
           </span>
           <h2 className="mt-3 text-3xl font-bold text-neutral-heading dark:text-slate-50 sm:text-4xl">
-            Who are we?
+            Who We Are
           </h2>
 
           <div className="mt-6 space-y-4 text-base leading-relaxed text-neutral-body dark:text-slate-300">
             <p>
-              <strong className="font-semibold text-neutral-heading dark:text-slate-100">Generation Aid</strong> is a refugee-led nonprofit organization based in Kakuma Refugee Camp, Kenya, dedicated to transforming lives through education, livelihoods, and innovation. We believe that refugees and vulnerable communities possess extraordinary potential when given access to quality education, digital skills, meaningful employment, and opportunities to thrive.
+              <strong className="font-semibold text-neutral-heading dark:text-slate-100">Generation Aid</strong> is a refugee-led nonprofit organization based in Kakuma Refugee Camp and Kalobeyei Settlement, Kenya, dedicated to transforming lives through education, livelihoods, and innovation. We believe that refugees and vulnerable communities possess extraordinary potential when given access to quality education, digital skills, meaningful employment, and opportunities to thrive.
             </p>
             <p>
               Founded by{" "}
@@ -161,6 +158,16 @@ export default function About() {
             </p>
             <p>
               Beyond training, we connect talented graduates with remote work opportunities, businesses, and global partners, ensuring that skills translate into real livelihoods and lasting impact. At Generation Aid, we don't just support communities — we empower them to become leaders, innovators, and contributors to the global economy.
+            </p>
+          </div>
+
+          {/* Dedicated Who We Are Callout */}
+          <div className="mt-8 rounded-2xl border border-brand-200 dark:border-slate-700 bg-brand-50/50 dark:bg-slate-800/80 p-6 sm:p-8">
+            <h3 className="font-serif text-xl font-bold text-slate-900 dark:text-slate-100">
+              Investing in Human Potential
+            </h3>
+            <p className="mt-3 text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-300">
+              Generation Aid is a refugee-led, youth-driven nonprofit organization transforming lives through education, technology, and economic empowerment. Founded in Kakuma Refugee Camp, Kenya, we believe that displacement should never define a person's future. We equip refugees and vulnerable host community members with the skills, opportunities, and resources they need to become self-reliant and contribute meaningfully to their communities. At Generation Aid, we don't just respond to crises — we invest in people's potential, creating pathways to dignity, opportunity, and lasting impact for the refugees.
             </p>
           </div>
 
@@ -181,8 +188,31 @@ export default function About() {
         </div>
       </Section>
 
-      {/* VISION + MISSION (Pattern B: Soft Contrast) */}
-      <Section id="mission-vision" pattern="soft" className="scroll-mt-24">
+      {/* WHERE IT ALL BEGAN (Pattern B: Soft Contrast) */}
+      <Section id="origin" pattern="soft" className="scroll-mt-24">
+        <div className="mx-auto max-w-4xl">
+          <span className="inline-block rounded-full bg-white dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
+            Our Story
+          </span>
+          <h2 className="mt-3 text-3xl font-bold text-neutral-heading dark:text-slate-50 sm:text-4xl">
+            Where It All Began
+          </h2>
+          <div className="mt-6 space-y-4 text-base leading-relaxed text-neutral-body dark:text-slate-300">
+            <p>
+              Generation Aid was founded by Hubert Senga, a Congolese refugee who arrived in Kakuma Refugee Camp in 2016 after fleeing conflict in the Democratic Republic of the Congo. Like many refugees, he experienced firsthand the barriers to education, employment, and opportunity.
+            </p>
+            <p>
+              Recognizing that thousands of talented young people were being left behind despite their resilience and ambition, Hubert established Generation Aid to create practical solutions that empower refugees with the skills needed to thrive in the modern world.
+            </p>
+            <p>
+              What started as a small community initiative has grown into a trusted refugee-led organization serving refugees and host communities through education, digital innovation, vocational training, and employment pathways. Today, Generation Aid continues to build a future where every displaced person has the opportunity to learn, work, lead, and rebuild their life with dignity.
+            </p>
+          </div>
+        </div>
+      </Section>
+
+      {/* VISION + MISSION (Pattern A: Canvas) */}
+      <Section id="mission-vision" pattern="canvas" className="scroll-mt-24">
         <div className="grid gap-8 lg:grid-cols-[1fr_1.2fr] lg:items-stretch">
           <div className="overflow-hidden rounded-2xl border border-neutral-border dark:border-slate-700 shadow-md">
             <SmartImage
@@ -200,7 +230,7 @@ export default function About() {
               <h2 className="mt-4 text-2xl font-bold text-neutral-heading dark:text-slate-100">
                 {t("home.about.visionTitle")}
               </h2>
-              <p className="mt-4 text-neutral-body dark:text-slate-300">{t("home.about.visionBody")}</p>
+              <p className="mt-4 text-neutral-body dark:text-slate-300 leading-relaxed">{t("home.about.visionBody")}</p>
             </div>
             <div className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-8 shadow-sm">
               <span className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
@@ -209,57 +239,52 @@ export default function About() {
               <h2 className="mt-4 text-2xl font-bold text-neutral-heading dark:text-slate-100">
                 {t("home.about.missionTitle")}
               </h2>
-              <p className="mt-4 text-neutral-body dark:text-slate-300">{t("home.about.missionBody")}</p>
+              <p className="mt-4 text-neutral-body dark:text-slate-300 leading-relaxed">{t("home.about.missionBody")}</p>
             </div>
           </div>
         </div>
       </Section>
 
-      {/* OBJECTIVES (Pattern A: Canvas) */}
-      <Section pattern="canvas">
+      {/* OBJECTIVES (Pattern B: Soft Contrast) */}
+      <Section pattern="soft">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-bold text-neutral-heading dark:text-slate-50 sm:text-4xl">
+          <span className="inline-block rounded-full bg-brand-50 dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
+            Strategic Pillars
+          </span>
+          <h2 className="mt-3 text-3xl font-bold text-neutral-heading dark:text-slate-50 sm:text-4xl">
             {t("about.objectivesTitle")}
           </h2>
           <p className="mt-3 text-neutral-body dark:text-slate-300">{t("about.objectivesSubtitle")}</p>
         </div>
-        <ol className="mx-auto mt-10 grid max-w-5xl gap-5 md:grid-cols-3">
+        <ol className="mx-auto mt-10 grid max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {objectives.map((o, i) => (
             <li
               key={i}
-              className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm"
+              className="flex flex-col rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm"
             >
-              <span className="grid h-9 w-9 place-items-center rounded-full bg-brand-600 dark:bg-brand-500 font-display text-sm font-bold text-white">
-                {i + 1}
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-brand-600 dark:bg-brand-500 font-display text-sm font-bold text-white shadow-xs">
+                0{i + 1}
               </span>
-              <p className="mt-4 text-sm text-neutral-body dark:text-slate-300">{o}</p>
+              <p className="mt-4 text-sm leading-relaxed text-neutral-body dark:text-slate-300 font-medium">{o}</p>
             </li>
           ))}
         </ol>
       </Section>
 
-      {/* FOCUSED PROGRAMS (Pattern C: Solid Primary Blue Impact) */}
+      {/* WHAT GENERATION AID WORKS TO ACHIEVE (Pattern C: Solid Primary Blue Impact) */}
       <Section pattern="impact">
-        <div className="mx-auto max-w-3xl text-center">
-          <span className="text-xs font-semibold uppercase tracking-wider text-white">
-            {t("about.focusedEyebrow")}
+        <div className="mx-auto max-w-4xl text-center">
+          <span className="inline-block rounded-md bg-white/20 px-3 py-1 text-xs font-extrabold uppercase tracking-widest text-white border border-white/30">
+            Our Commitment
           </span>
-          <h2 className="mt-3 text-3xl font-bold !text-white dark:!text-white sm:text-4xl">
-            {t("about.focusedTitle")}
+          <h2 className="mt-3 text-3xl font-bold !text-white sm:text-4xl lg:text-5xl font-serif">
+            {t("about.whatWeWorkToAchieveTitle", "What Generation Aid Works to Achieve")}
           </h2>
-        </div>
-        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {focusedPrograms.map((p) => (
-            <article
-              key={p.title}
-              className="rounded-xl border border-white/20 bg-white dark:bg-slate-800 p-6 shadow-md transition hover:border-white/40 hover:shadow-lg"
-            >
-              <h3 className="font-display text-lg font-semibold text-neutral-heading dark:text-slate-100">
-                {p.title}
-              </h3>
-              <p className="mt-3 text-sm text-neutral-body dark:text-slate-300">{p.body}</p>
-            </article>
-          ))}
+          <div className="mt-8 rounded-2xl bg-white/10 p-8 sm:p-10 border border-white/20 text-left backdrop-blur-md">
+            <p className="text-base sm:text-lg leading-relaxed text-white">
+              {t("about.whatWeWorkToAchieveBody", "Generation Aid works to build a future where refugees are recognized not for their displacement, but for their potential. We strive to create thriving, self-reliant communities by ensuring that refugees and vulnerable host community members have access to education, digital technology, meaningful employment, entrepreneurship opportunities, and leadership development. Our goal is to bridge the gap between humanitarian assistance and long-term development by equipping individuals with the knowledge, skills, and confidence to shape their own futures. Through innovation, collaboration, and locally led solutions, we are helping transform refugee communities into centers of opportunity, resilience, and sustainable economic growth.")}
+            </p>
+          </div>
         </div>
       </Section>
 

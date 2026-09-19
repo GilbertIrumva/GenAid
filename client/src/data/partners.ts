@@ -7,7 +7,7 @@ export type PartnerCategory =
 export interface Partner {
   key: string;
   name: string;
-  category: PartnerCategory;
+  category?: string;
   description: string;
   url?: string;
   /** Optional logo URL. If omitted, the card renders an initials avatar. */

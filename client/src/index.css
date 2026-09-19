@@ -146,20 +146,48 @@ h6 {
 }
 
 /* Ensure all headings on blue backgrounds default to crisp white */
-.bg-brand-600 h1, .bg-brand-600 h2, .bg-brand-600 h3, .bg-brand-600 h4,
-.bg-brand-700 h1, .bg-brand-700 h2, .bg-brand-700 h3, .bg-brand-700 h4,
-.bg-brand-800 h1, .bg-brand-800 h2, .bg-brand-800 h3, .bg-brand-800 h4,
-.bg-brand-900 h1, .bg-brand-900 h2, .bg-brand-900 h3, .bg-brand-900 h4,
-.bg-brand-950 h1, .bg-brand-950 h2, .bg-brand-950 h3, .bg-brand-950 h4,
-[class*="bg-[#172554]"] h1, [class*="bg-[#172554]"] h2, [class*="bg-[#172554]"] h3,
-[class*="from-brand-950"] h1, [class*="from-brand-950"] h2, [class*="from-brand-950"] h3 {
+.bg-brand-600 h1,
+.bg-brand-600 h2,
+.bg-brand-600 h3,
+.bg-brand-600 h4,
+.bg-brand-700 h1,
+.bg-brand-700 h2,
+.bg-brand-700 h3,
+.bg-brand-700 h4,
+.bg-brand-800 h1,
+.bg-brand-800 h2,
+.bg-brand-800 h3,
+.bg-brand-800 h4,
+.bg-brand-900 h1,
+.bg-brand-900 h2,
+.bg-brand-900 h3,
+.bg-brand-900 h4,
+.bg-brand-950 h1,
+.bg-brand-950 h2,
+.bg-brand-950 h3,
+.bg-brand-950 h4,
+[class*="bg-[#172554]"] h1,
+[class*="bg-[#172554]"] h2,
+[class*="bg-[#172554]"] h3,
+[class*="from-brand-950"] h1,
+[class*="from-brand-950"] h2,
+[class*="from-brand-950"] h3 {
   color: #ffffff !important;
 }
 
 /* Ensure nested white cards preserve dark heading text */
-.bg-white h1, .bg-white h2, .bg-white h3, .bg-white h4,
-.sir-card h1, .sir-card h2, .sir-card h3, .sir-card h4,
-.sir-card-accent h1, .sir-card-accent h2, .sir-card-accent h3, .sir-card-accent h4 {
+.bg-white h1,
+.bg-white h2,
+.bg-white h3,
+.bg-white h4,
+.sir-card h1,
+.sir-card h2,
+.sir-card h3,
+.sir-card h4,
+.sir-card-accent h1,
+.sir-card-accent h2,
+.sir-card-accent h3,
+.sir-card-accent h4 {
   color: var(--color-text-primary) !important;
 }
 
@@ -187,12 +215,12 @@ h6 {
 }
 
 .sir-btn-primary {
-  @apply inline-flex items-center justify-center gap-1.5 rounded-md bg-brand-600 dark:bg-brand-500 px-3.5 py-1.5 text-xs font-bold text-white shadow-xs transition-all duration-200 hover:bg-brand-700 dark:hover:bg-brand-400 hover:shadow-md active:translate-y-0.5;
+  @apply inline-flex items-center justify-center gap-1.5 rounded-md bg-brand-600 dark:bg-brand-500 px-2.5 py-1 text-[11px] font-bold text-white shadow-xs transition-all duration-200 hover:bg-brand-700 dark:hover:bg-brand-400 hover:shadow-md active:translate-y-0.5;
   cursor: pointer;
 }
 
 .sir-btn-secondary {
-  @apply inline-flex items-center justify-center gap-1.5 rounded-md border border-brand-600 dark:border-brand-500 bg-transparent px-3 py-1.5 text-xs font-bold text-brand-600 dark:text-brand-400 transition-all duration-200 hover:bg-brand-600 hover:text-white dark:hover:bg-brand-500 dark:hover:text-white active:translate-y-0.5;
+  @apply inline-flex items-center justify-center gap-1.5 rounded-md border border-brand-600 dark:border-brand-500 bg-transparent px-2.5 py-1 text-[11px] font-bold text-brand-600 dark:text-brand-400 transition-all duration-200 hover:bg-brand-600 hover:text-white dark:hover:bg-brand-500 dark:hover:text-white active:translate-y-0.5;
   cursor: pointer;
 }
 
@@ -221,12 +249,12 @@ h6 {
 
 .sir-hero-bg {
   background-image: radial-gradient(circle at 80% 20%, rgba(37, 99, 235, 0.12) 0%, transparent 50%),
-                    radial-gradient(circle at 10% 80%, rgba(30, 58, 138, 0.08) 0%, transparent 40%);
+    radial-gradient(circle at 10% 80%, rgba(30, 58, 138, 0.08) 0%, transparent 40%);
 }
 
 .dark .sir-hero-bg {
   background-image: radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.18) 0%, transparent 50%),
-                    radial-gradient(circle at 10% 80%, rgba(15, 23, 42, 0.6) 0%, transparent 40%);
+    radial-gradient(circle at 10% 80%, rgba(15, 23, 42, 0.6) 0%, transparent 40%);
 }
 
 
@@ -244,6 +272,7 @@ summary:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {

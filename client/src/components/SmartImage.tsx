@@ -65,8 +65,7 @@ export default function SmartImage({
       alt={alt}
       loading={priority ? "eager" : "lazy"}
       decoding="async"
-      // @ts-expect-error fetchpriority is standard in modern HTML and browsers
-      fetchpriority={priority ? "high" : "auto"}
+      fetchPriority={priority ? "high" : "auto"}
       className={`${className} transition-opacity duration-300 ${loaded ? "opacity-100" : "opacity-90"}`}
       onLoad={() => setLoaded(true)}
       onError={() => setFailed(true)}

@@ -8,7 +8,7 @@ export default function JobsFooter() {
   return (
     <footer className="border-t border-slate-300 dark:border-slate-800 bg-slate-200 dark:bg-slate-900 text-black dark:text-slate-100 transition-colors">
       {/* MAIN CONTENT GRID */}
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-4 lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-8 sm:gap-10 px-4 py-10 sm:py-16 sm:px-6 lg:grid-cols-4 lg:px-8">
         {/* BRAND COLUMN */}
         <div className="space-y-4">
           <Link to="/jobs" className="flex items-center gap-3 group">
@@ -142,9 +142,9 @@ export default function JobsFooter() {
 
       {/* BOTTOM LEGAL STRIP */}
       <div className="border-t border-slate-300 dark:border-slate-800 bg-slate-300/80 dark:bg-slate-950 py-6 text-xs text-slate-900 dark:text-slate-300 font-medium">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 sm:flex-row sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 text-center sm:text-left sm:flex-row sm:px-6 lg:px-8">
           <p>© {currentYear} Generation Jobs by Generation Aid. Refugee-Led Innovation & Global Livelihoods.</p>
-          <div className="flex gap-6 font-semibold">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-6 font-semibold">
             <Link to="/contact" className="hover:text-brand-700 dark:hover:text-white transition-colors">
               Contact & Inquiries
             </Link>

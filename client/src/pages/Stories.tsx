@@ -38,26 +38,26 @@ export default function Stories() {
   const usingFallback = sanityStories.length === 0;
   const displayStories: DisplayStory[] = usingFallback
     ? fallbackStories.map((s) => ({
-        key: s.slug,
-        href: `/stories/${s.slug}`,
-        name: s.name,
-        role: s.role,
-        program: s.program,
-        image: s.image,
-        excerpt: s.excerpt,
-      }))
+      key: s.slug,
+      href: `/stories/${s.slug}`,
+      name: s.name,
+      role: s.role,
+      program: s.program,
+      image: s.image,
+      excerpt: s.excerpt,
+    }))
     : sanityStories.map((story) => {
-        const mapped = mapSanityStoryToDisplayStory(story);
-        return {
-          key: mapped.key,
-          href: mapped.href,
-          name: mapped.name,
-          role: mapped.role,
-          program: mapped.program,
-          image: mapped.image,
-          excerpt: mapped.excerpt,
-        };
-      });
+      const mapped = mapSanityStoryToDisplayStory(story);
+      return {
+        key: mapped.key,
+        href: mapped.href,
+        name: mapped.name,
+        role: mapped.role,
+        program: mapped.program,
+        image: mapped.image,
+        excerpt: mapped.excerpt,
+      };
+    });
 
   const featured = displayStories[0];
   const rest = displayStories.slice(1);
