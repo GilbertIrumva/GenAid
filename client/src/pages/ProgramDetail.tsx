@@ -65,29 +65,13 @@ export default function ProgramDetail() {
           <div className="max-w-3xl text-white">
             <Link
               to="/programs"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-brand-200 hover:text-white transition"
+              className="inline-flex items-center gap-2 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 px-3.5 py-1.5 text-xs font-bold text-white transition backdrop-blur-sm"
             >
               <span>←</span>
-              <span>{t("programDetail.backToPrograms", "All Initiatives")}</span>
+              <span>{t("programDetail.backToPrograms", "Back to Programs")}</span>
             </Link>
 
-            <div className="mt-4 flex flex-wrap items-center gap-2">
-              <span className="rounded-full bg-brand-600/60 dark:bg-brand-500/40 backdrop-blur border border-white/20 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">
-                {detail.category}
-              </span>
-              {detail.speaker && (
-                <span className="rounded-full bg-brand-400/20 backdrop-blur border border-brand-300/30 px-3 py-1 text-xs font-semibold text-brand-100">
-                  🎙️ {detail.speaker}
-                </span>
-              )}
-              {detail.partner && (
-                <span className="rounded-full bg-white/15 backdrop-blur border border-white/10 px-3 py-1 text-xs font-medium text-brand-100">
-                  {detail.partner}
-                </span>
-              )}
-            </div>
-
-            <h1 className="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl !text-white dark:!text-white">
+            <h1 className="mt-6 text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl !text-white dark:!text-white font-serif">
               {detail.title}
             </h1>
 

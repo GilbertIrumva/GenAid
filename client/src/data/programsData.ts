@@ -499,13 +499,13 @@ export const defaultPrograms: DetailedProgram[] = [
     whyItMatters:
       "Participants will gain practical computer and digital skills that can be immediately applied in school, work, business, and daily life. Participants will learn how to confidently operate a computer, create and manage documents and files, use Microsoft Office tools, navigate the internet, communicate through email, conduct online research, and practice safe and responsible digital habits. The program also provides a foundation for progressing into advanced digital skills, programming, AI, freelancing, remote work, and other digital livelihood opportunities.",
     gains: [
-      "💻 Computer Skills: Learn to confidently use computers and essential software.",
-      "📝 Office Skills: Develop practical skills in Word, Excel, and PowerPoint.",
-      "🌐 Internet & Email: Learn to browse, research, communicate, and use online platforms.",
-      "🔐 Digital Safety: Learn how to protect your accounts, data, and personal information online.",
-      "💼 Job Readiness: Build digital skills needed for modern workplaces and employment opportunities.",
-      "🚀 Digital Career Pathways: Gain a foundation for freelancing, remote work, entrepreneurship, programming, and AI.",
-      "🌍 Confidence & Opportunity: Become a confident digital user and gain greater access to education, work, and the global digital economy.",
+      "Computer Skills: Learn to confidently use computers and essential software.",
+      "Office Skills: Develop practical skills in Word, Excel, and PowerPoint.",
+      "Internet & Email: Learn to browse, research, communicate, and use online platforms.",
+      "Digital Safety: Learn how to protect your accounts, data, and personal information online.",
+      "Job Readiness: Build digital skills needed for modern workplaces and employment opportunities.",
+      "Digital Career Pathways: Gain a foundation for freelancing, remote work, entrepreneurship, programming, and AI.",
+      "Confidence & Opportunity: Become a confident digital user and gain greater access to education, work, and the global digital economy.",
     ],
     components: [
       {

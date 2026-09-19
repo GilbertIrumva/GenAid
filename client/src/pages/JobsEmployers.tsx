@@ -25,28 +25,36 @@ const valuePillars = [
 
 const serviceLines = [
   {
-    title: "Data and AI services",
-    body: "Data annotation, dataset preparation, cleaning, enrichment, and AI prompt testing.",
+    title: "Sales and Outbound",
+    body: "Lead generation and qualification, CRM and database management, email and LinkedIn outreach.",
   },
   {
-    title: "Customer experience support",
-    body: "Multilingual front-office and back-office operations, CRM management, and ticketing workflows.",
+    title: "Social Engagement",
+    body: "Content scheduling, community management, and digital brand engagement.",
   },
   {
-    title: "Digital marketing and outreach",
-    body: "Lead generation, social media operations, content moderation, and campaign execution.",
+    title: "Social and SEO",
+    body: "Social media marketing and blog strategy, keyword optimization, and on-page SEO checks.",
   },
   {
-    title: "Virtual assistance and admin",
-    body: "Calendar coordination, web research, database updates, and executive support for growth teams.",
+    title: "Campaigns",
+    body: "Paid ads performance management, marketing automation, and conversion A/B testing.",
   },
   {
-    title: "Web support and maintenance",
-    body: "CMS updates, on-page optimization checks, troubleshooting, and platform reliability support.",
+    title: "Web Support & Maintenance",
+    body: "CMS and content updates, speed and performance enhancements, and technical troubleshooting.",
   },
   {
-    title: "Operations and quality assurance",
-    body: "Dedicated project managers and QA officers ensure precision workflows and security-first delivery.",
+    title: "E-Commerce",
+    body: "Order management, catalog updates, payment verification, security, and routine backups.",
+  },
+  {
+    title: "Data and AI Services",
+    body: "Data annotation and dataset preparation, AI prompt testing, and human-in-the-loop operations.",
+  },
+  {
+    title: "Virtual Assistance & Admin",
+    body: "Operational focus, key admin tasks, executive scheduling, and strategic workflow value.",
   },
 ];
 
@@ -65,7 +73,7 @@ const partnershipModels = [
   },
   {
     title: "Pilot-first",
-    body: "Start with a focused two-month pilot to validate value and scale with confidence.",
+    body: "Start risk-free with Month 1 at $0 and Month 2 at $250 to validate value and scale with confidence.",
   },
 ];
 

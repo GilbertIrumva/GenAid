@@ -189,7 +189,7 @@ export default function JobsTalent() {
 
           <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-md aspect-[4/3] relative group">
             <SmartImage
-              src={jobsContent?.leadershipImage || "/hubert.jpg"}
+              src={jobsContent?.leadershipImage || "/Hubert Senga.jpg"}
               alt="Hubert Senga — Founder and Refugee Leader"
               className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />

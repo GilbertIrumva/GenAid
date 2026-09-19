@@ -200,24 +200,41 @@ export default function Navbar() {
                     <div
                       role="menu"
                       aria-label={t(`nav.${item.key}`)}
-                      className="absolute left-1/2 -translate-x-1/2 top-full pt-2 z-50 min-w-[220px]"
+                      className={cn(
+                        "absolute top-full pt-2.5 z-50",
+                        item.key === "programs"
+                          ? "left-1/2 -translate-x-1/2 min-w-[660px] max-w-4xl"
+                          : "left-1/2 -translate-x-1/2 min-w-max",
+                      )}
                       onMouseEnter={cancelClose}
                       onMouseLeave={() => scheduleClose(item.key)}
                     >
-                      <div className="overflow-hidden rounded-xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xl border-t-4 border-t-brand-600 dark:border-t-brand-500 p-2 space-y-1">
-                        {menu.map((link) => (
-                          <Link
-                            key={link.to}
-                            to={link.to}
-                            role="menuitem"
-                            className="flex items-center justify-between rounded-lg px-3.5 py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 transition-colors hover:bg-brand-50/80 dark:hover:bg-slate-800 hover:text-brand-600 dark:hover:text-brand-400 group/item"
-                          >
-                            <span>{t(`nav.${menuI18nKey(item.key)}.${link.key}`)}</span>
-                            <span className="text-brand-600 dark:text-brand-400 opacity-0 -translate-x-1 transition-all group-hover/item:opacity-100 group-hover/item:translate-x-0">
-                              →
-                            </span>
-                          </Link>
-                        ))}
+                      <div className="overflow-hidden rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white/98 dark:bg-slate-900/98 backdrop-blur-xl shadow-2xl border-t-4 border-t-brand-600 dark:border-t-brand-500 p-2.5">
+                        <div
+                          className={cn(
+                            item.key === "programs"
+                              ? "grid grid-cols-2 lg:grid-cols-3 gap-1.5"
+                              : "flex flex-row items-center gap-1.5",
+                          )}
+                        >
+                          {menu.map((link) => (
+                            <Link
+                              key={link.to}
+                              to={link.to}
+                              role="menuitem"
+                              className={cn(
+                                "flex items-center gap-2 rounded-xl px-3 py-2 text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100 transition-all hover:bg-brand-50/90 dark:hover:bg-slate-800 hover:text-brand-600 dark:hover:text-brand-400 group/item border border-transparent hover:border-brand-200/60 dark:hover:border-slate-700 whitespace-nowrap",
+                                item.key !== "programs" && "shrink-0",
+                              )}
+                            >
+                              <span className="h-1.5 w-1.5 rounded-full bg-brand-500 group-hover/item:scale-125 transition-transform shrink-0" />
+                              <span>{t(`nav.${menuI18nKey(item.key)}.${link.key}`)}</span>
+                              <span className="text-brand-600 dark:text-brand-400 opacity-0 -translate-x-1 transition-all group-hover/item:opacity-100 group-hover/item:translate-x-0 ml-auto">
+                                →
+                              </span>
+                            </Link>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   )}
@@ -346,22 +363,23 @@ export default function Navbar() {
                       </svg>
                     </button>
                     {expanded && (
-                      <div className="mt-1 space-y-1 border-l-2 border-brand-600 dark:border-brand-500 pl-3 ml-2">
+                      <div className="mt-2 pl-2 grid grid-cols-1 sm:grid-cols-2 gap-1.5">
                         <Link
                           to={item.to}
                           onClick={() => setOpen(false)}
-                          className="block rounded-lg px-3 py-2 text-sm font-bold text-brand-600 dark:text-brand-400 hover:bg-brand-50 dark:hover:bg-slate-800"
+                          className="col-span-full block rounded-lg bg-brand-50 dark:bg-slate-800 px-3 py-2 text-xs font-bold text-brand-600 dark:text-brand-400 uppercase tracking-wider"
                         >
-                          {t(`nav.${item.key}`)} Overview
+                          {t(`nav.${item.key}`)} Overview →
                         </Link>
                         {menu.map((link) => (
                           <Link
                             key={link.to}
                             to={link.to}
                             onClick={() => setOpen(false)}
-                            className="block rounded-lg px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600 dark:hover:text-brand-400"
+                            className="flex items-center gap-1.5 rounded-lg border border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-2 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600 dark:hover:text-brand-400 shadow-2xs"
                           >
-                            {t(`nav.${menuI18nKey(item.key)}.${link.key}`)}
+                            <span className="h-1 w-1 rounded-full bg-brand-500" />
+                            <span className="truncate">{t(`nav.${menuI18nKey(item.key)}.${link.key}`)}</span>
                           </Link>
                         ))}
                       </div>

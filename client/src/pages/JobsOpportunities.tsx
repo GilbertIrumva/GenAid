@@ -7,11 +7,14 @@ import { useSEO } from "@/utils/useSEO";
 
 const filters: Array<"All" | ServiceCategory> = [
   "All",
-  "Data & AI",
-  "Customer Support",
-  "Digital Marketing",
-  "Virtual Assistance",
+  "Sales & Outbound",
+  "Social Engagement",
+  "Social & SEO",
+  "Campaigns",
   "Web Support",
+  "E-Commerce",
+  "Data & AI",
+  "Virtual Assistance",
 ];
 
 const roadmap = [
@@ -47,22 +50,20 @@ export default function JobsOpportunities() {
   useSEO({
     title: "Generation Jobs | Services and Pricing",
     description:
-      "Explore Generation Jobs service packages, pilot-first pricing, and the 3-week onboarding roadmap for global employers.",
+      "Explore Generation Jobs service packages, pilot pricing ($0 Month 1, $250 Month 2), and the 3-week onboarding roadmap for global employers.",
   });
 
   return (
     <JobsShell
       eyebrow="Services and pricing"
       title="Operational packages built for growth"
-      subtitle="Start with a two-month pilot at $150/month, then continue at $399/month with transparent scope and measurable KPIs."
+      subtitle="Start with Month 1 at $0 and Month 2 at $250 with transparent scope and measurable KPIs."
     >
       {/* PACKAGES (Pattern A: Canvas) */}
       <Section pattern="canvas" className="!pt-4 sm:!pt-6">
         <div className="sir-callout-border mb-6">
           <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 font-medium">
-            Choose the service package that fits your needs. Start with a 2-month
-            trial at $150/month, then continue at $399/month. No hidden fees,
-            cancel anytime.
+            Choose the service package that fits your needs. Start with <strong className="text-brand-700 dark:text-brand-400">Month 1 at $0 (Free)</strong> and <strong className="text-brand-700 dark:text-brand-400">Month 2 at $250</strong>. No hidden fees, cancel anytime.
           </p>
         </div>
 
@@ -110,24 +111,25 @@ export default function JobsOpportunities() {
               </div>
 
               <div>
-                <div className="mt-6 rounded-xl border border-blue-100 dark:border-slate-800 bg-brand-50/60 dark:bg-slate-950/60 p-3.5 sm:p-4">
-                  <p className="text-xs font-extrabold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-                    Pricing
-                  </p>
-                  <p className="mt-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-medium">
-                    Pilot:{" "}
-                    <span className="font-extrabold text-slate-900 dark:text-slate-100">
-                      ${pkg.trialPrice}/month
-                    </span>{" "}
-                    for the first two months
-                  </p>
-                  <p className="mt-1 text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-medium">
-                    Standard:{" "}
-                    <span className="font-extrabold text-slate-900 dark:text-slate-100">
-                      ${pkg.monthlyPrice}/month
-                    </span>{" "}
-                    after pilot
-                  </p>
+                <div className="mt-6 rounded-2xl border border-blue-100 dark:border-slate-800 bg-gradient-to-br from-brand-50/80 to-blue-50/40 dark:from-slate-950/80 dark:to-slate-900/60 p-4">
+                  <div className="flex items-center justify-between">
+                    <p className="text-xs font-extrabold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+                      Pilot Pricing
+                    </p>
+                  </div>
+
+                  <div className="mt-3 grid grid-cols-2 gap-3 text-center">
+                    <div className="rounded-xl bg-white dark:bg-slate-900 p-3 border border-slate-100 dark:border-slate-800 shadow-sm flex flex-col justify-center">
+                      <p className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-tight">Month 1</p>
+                      <p className="text-base sm:text-lg font-black text-brand-600 dark:text-brand-400">${pkg.firstMonthPrice}</p>
+                      <p className="text-[10px] font-bold text-brand-700 dark:text-brand-400">100% Free</p>
+                    </div>
+                    <div className="rounded-xl bg-white dark:bg-slate-900 p-3 border border-slate-100 dark:border-slate-800 shadow-sm flex flex-col justify-center">
+                      <p className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-tight">Month 2</p>
+                      <p className="text-base sm:text-lg font-black text-brand-600 dark:text-brand-400">${pkg.secondMonthPrice}</p>
+                      <p className="text-[10px] font-medium text-slate-500 dark:text-slate-400">Pilot Rate</p>
+                    </div>
+                  </div>
                 </div>
 
                 <p className="mt-4 text-xs sm:text-sm font-extrabold text-slate-900 dark:text-slate-200">

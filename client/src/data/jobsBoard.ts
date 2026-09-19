@@ -1,15 +1,19 @@
 export type ServiceCategory =
+  | "Sales & Outbound"
+  | "Social Engagement"
+  | "Social & SEO"
+  | "Campaigns"
+  | "Web Support"
+  | "E-Commerce"
   | "Data & AI"
-  | "Customer Support"
-  | "Digital Marketing"
-  | "Virtual Assistance"
-  | "Web Support";
+  | "Virtual Assistance";
 
 export interface ServicePackage {
   slug: string;
   category: ServiceCategory;
   title: string;
-  trialPrice: number;
+  firstMonthPrice: number;
+  secondMonthPrice: number;
   monthlyPrice: number;
   description: string;
   deliverables: string[];
@@ -18,78 +22,131 @@ export interface ServicePackage {
 
 export const servicePackages: ServicePackage[] = [
   {
-    slug: "data-ai-services",
-    category: "Data & AI",
-    title: "Data Annotation and AI Ops",
-    trialPrice: 150,
+    slug: "sales-and-outbound",
+    category: "Sales & Outbound",
+    title: "Sales and Outbound (Outbound Engine)",
+    firstMonthPrice: 0,
+    secondMonthPrice: 250,
     monthlyPrice: 399,
     description:
-      "Structured support for data preparation and human-in-the-loop AI workflows for growing teams.",
+      "Outbound pipeline generation and targeted prospecting engine to scale discovery and outreach.",
     deliverables: [
-      "Text, image, and video annotation",
-      "Dataset cleaning and enrichment",
-      "AI prompt testing and validation",
+      "Lead generation and qualification",
+      "CRM and database management",
+      "Email and LinkedIn outreach",
     ],
-    impact: "Reliable model inputs and quality-controlled outputs.",
+    impact: "Consistent lead flow and high-intent qualified pipeline.",
   },
   {
-    slug: "customer-support-ops",
-    category: "Customer Support",
-    title: "Customer Experience Operations",
-    trialPrice: 150,
+    slug: "social-engagement",
+    category: "Social Engagement",
+    title: "Social Engagement",
+    firstMonthPrice: 0,
+    secondMonthPrice: 250,
     monthlyPrice: 399,
     description:
-      "Multilingual support operations for front-office and back-office customer workflows.",
+      "Active digital community stewardship, consistent content distribution, and responsive social engagement.",
     deliverables: [
-      "Email and chat support",
-      "CRM workflow and ticketing management",
-      "Multilingual outreach in English, French, Swahili, and Arabic",
+      "Content scheduling",
+      "Community management",
+      "Digital marketing",
     ],
-    impact: "Improved response quality and stronger customer retention.",
+    impact: "Vibrant community presence and higher organic brand engagement.",
   },
   {
-    slug: "digital-growth-engine",
-    category: "Digital Marketing",
-    title: "Growth and Outreach Engine",
-    trialPrice: 150,
+    slug: "social-and-seo",
+    category: "Social & SEO",
+    title: "Social and SEO",
+    firstMonthPrice: 0,
+    secondMonthPrice: 250,
     monthlyPrice: 399,
     description:
-      "Execution support for demand generation, social operations, and content moderation.",
+      "Unified organic strategy combining search engine optimization and social content to expand brand discoverability.",
     deliverables: [
-      "Lead database building and qualification",
-      "LinkedIn and email outreach execution",
-      "Social media scheduling and moderation",
+      "Social media marketing and blog strategy",
+      "Keyword optimization",
+      "On-page SEO checks",
     ],
-    impact: "Consistent pipeline growth and safer community engagement.",
+    impact: "Higher search rankings and sustained inbound website traffic.",
   },
   {
-    slug: "va-admin-support",
-    category: "Virtual Assistance",
-    title: "Executive and Admin Support",
-    trialPrice: 150,
+    slug: "campaigns",
+    category: "Campaigns",
+    title: "Campaigns",
+    firstMonthPrice: 0,
+    secondMonthPrice: 250,
     monthlyPrice: 399,
     description:
-      "Reliable operations support that reduces coordination overhead and protects leadership focus.",
+      "Data-driven advertising campaigns, marketing automation funnels, and continuous conversion optimization.",
     deliverables: [
-      "Calendar and scheduling coordination",
-      "Database maintenance and documentation",
-      "Web research and reporting assistance",
+      "Paid ads performance",
+      "Automation",
+      "A/B testing",
     ],
-    impact: "Higher internal productivity and cleaner operational cadence.",
+    impact: "Maximized ROI on advertising spend and scalable conversion funnels.",
   },
   {
     slug: "web-support-maintenance",
     category: "Web Support",
-    title: "Web Operations and Maintenance",
-    trialPrice: 150,
+    title: "Web Support (Technical Maintenance)",
+    firstMonthPrice: 0,
+    secondMonthPrice: 250,
     monthlyPrice: 399,
     description:
-      "Hands-on website support for content updates, stability, and technical upkeep.",
+      "Reliable website maintenance, performance tuning, content updates, and technical troubleshooting.",
     deliverables: [
       "CMS and content updates",
-      "On-page SEO checks",
-      "Troubleshooting, backups, and security routines",
+      "Speed and performance enhancements",
+      "Troubleshooting and fixes",
     ],
-    impact: "Stable digital presence and lower maintenance risk.",
+    impact: "Fast, secure web presence with zero downtime headaches.",
+  },
+  {
+    slug: "ecommerce-operations",
+    category: "E-Commerce",
+    title: "E-Commerce",
+    firstMonthPrice: 0,
+    secondMonthPrice: 250,
+    monthlyPrice: 399,
+    description:
+      "Complete online store operations, product inventory updates, order fulfillment workflows, and security routines.",
+    deliverables: [
+      "Order management",
+      "Security",
+      "Backups",
+    ],
+    impact: "Smooth checkout operations and secure e-commerce fulfillment.",
+  },
+  {
+    slug: "data-and-ai-services",
+    category: "Data & AI",
+    title: "Data and AI Services",
+    firstMonthPrice: 0,
+    secondMonthPrice: 250,
+    monthlyPrice: 399,
+    description:
+      "Human-in-the-loop data labeling, AI dataset cleaning, prompt engineering validation, and operations.",
+    deliverables: [
+      "Data annotation and preparation",
+      "AI prompt testing",
+      "Operations and management",
+    ],
+    impact: "Accurate model training data and high-quality AI operations.",
+  },
+  {
+    slug: "virtual-assistance-admin",
+    category: "Virtual Assistance",
+    title: "Virtual Assistance and Admin Support",
+    firstMonthPrice: 0,
+    secondMonthPrice: 250,
+    monthlyPrice: 399,
+    description:
+      "Dedicated administrative support, calendar management, and operational assistance to free leadership bandwidth.",
+    deliverables: [
+      "Operational focus",
+      "Key admin tasks",
+      "Strategic value",
+    ],
+    impact: "Reduced overhead and increased focus on core growth priorities.",
   },
 ];

@@ -13,8 +13,7 @@ export const team: TeamMember[] = [
     name: "Hubert Senga",
     role: "Founder & CEO",
     bio: "Congolese refugee, social entrepreneur and changemaker. Founded Generation Aid in 2019 to rewrite the narrative for refugee youth in Kakuma.",
-    image: "/hubert.jpg",
-    linkedin: "https://www.linkedin.com/in/hubert-sengap/",
+    image: "/Hubert Senga.jpg",
   },
   {
     key: "charles",
@@ -22,13 +21,6 @@ export const team: TeamMember[] = [
     role: "Operations Manager",
     bio: "Leads day-to-day operations, logistical planning and program delivery across the Generation Aid hub in Kakuma.",
     image: "/Cherles P.jpg",
-  },
-  {
-    key: "kwot",
-    name: "Kwot Ajak",
-    role: "Center Admin",
-    bio: "Oversees center administration, facility management and student coordination for all training cohorts.",
-    image: "/Kwot Ajak A.jpg",
   },
   {
     key: "melodie",
@@ -58,11 +50,30 @@ export const team: TeamMember[] = [
     bio: "Supports financial tracking, expenditure reporting and compliance across all active community projects.",
     image: "/bernard.png",
   },
+];
+
+export const advisors: TeamMember[] = [
   {
     key: "carla",
     name: "Carla Sinatra",
-    role: "Adviser",
-    bio: "Provides strategic guidance, governance advisory and mentorship to executive leadership.",
+    role: "Strategic Advisory Board Member",
+    bio: "Global development advisor guiding institutional partnerships and sustainable growth across international programs. Dedicated to empowering refugee-led leadership and community innovation.",
     image: "/Carla Sinatra.jpg",
   },
+  {
+    key: "mollie",
+    name: "Mollie Bi",
+    role: "Operations & Finance Advisor",
+    bio: "Operations and finance leader with 8+ years of experience building scalable systems across East Africa. Holds a BA from San José State University with cross-sector expertise in microfinance, e-mobility, and nonprofit growth.",
+    image: "/Mollie.jpg",
+  },
+  {
+    key: "arturo",
+    name: "Arturo Osorio",
+    role: "Strategy & Governance Advisor",
+    bio: "Professor of Practice and executive advisor specializing in social entrepreneurship, strategy, and governance. Focuses on scalable organizational models and impactful community development.",
+    image: "/Arturo Osorio.jpg",
+  },
 ];
+
+
