@@ -109,7 +109,7 @@ export default function Reports() {
           <p className="mt-4 text-lg text-neutral-body dark:text-slate-300">
             {t(
               "reports.subtitle",
-              "Annual reports, impact assessments and financial statements — so you can see exactly what we deliver and how we spend.",
+              "Annual reports, impact assessments and financial statements, so you can see exactly what we deliver and how we spend.",
             )}
           </p>
         </div>

@@ -67,14 +67,15 @@ export default function Stories() {
       {/* HERO (Pattern C: Solid Primary Blue Impact) */}
       <section className="relative isolate flex min-h-[55vh] items-center overflow-hidden bg-brand-900 dark:bg-slate-950 text-white transition-colors">
         <SmartImage
-          src="/img/heroes/stories.jpg"
+          src="/programs/stories.jpg"
           alt="Learners sharing stories in Kakuma"
           fallbackLabel=""
+          priority={true}
           className="absolute inset-0 -z-20 h-full w-full object-cover"
         />
         <div
           aria-hidden
-          className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-950/90 via-brand-900/75 to-brand-900/45 dark:from-slate-950/95 dark:via-slate-900/90 dark:to-slate-950/85"
+          className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-950/80 via-brand-900/60 to-brand-900/35 dark:from-slate-950/85 dark:via-slate-900/70 dark:to-slate-950/50"
         />
         <div className="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="max-w-2xl text-white">
@@ -113,7 +114,7 @@ export default function Stories() {
             <div className="aspect-[4/3] w-full overflow-hidden rounded-2xl border border-neutral-border dark:border-slate-700 bg-brand-50 dark:bg-slate-800 shadow-sm">
               <SmartImage
                 src={featured.image}
-                alt={`${featured.name}${featured.role ? ` — ${featured.role}` : ""}`}
+                alt={`${featured.name}${featured.role ? ` · ${featured.role}` : ""}`}
                 className="h-full w-full object-cover"
               />
             </div>
@@ -143,64 +144,69 @@ export default function Stories() {
         </Section>
       ) : null}
 
-      {/* STORY GRID (Pattern B: Soft Contrast) */}
-      <Section pattern="soft">
-        <div className="text-center">
-          <h2 className="font-display text-3xl font-bold text-neutral-heading dark:text-slate-50 sm:text-4xl">
-            {t("stories.moreFromCommunity")}
-          </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-neutral-body dark:text-slate-300">
-            {t("stories.moreSubtitle")}
-          </p>
-        </div>
-
-        {rest.length > 0 ? (
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {rest.map((s) => (
-              <article
-                key={s.key}
-                className="flex flex-col overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
-              >
-                <div className="aspect-[4/3] w-full overflow-hidden bg-brand-50 dark:bg-slate-900">
-                  <SmartImage
-                    src={s.image}
-                    alt={`${s.name}${s.role ? ` — ${s.role}` : ""}`}
-                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
-                <div className="flex flex-1 flex-col p-6">
-                  {s.program && (
-                    <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-                      {s.program}
-                    </p>
-                  )}
-                  <h3 className="mt-2 font-display text-lg font-semibold text-neutral-heading dark:text-slate-100">
-                    <Link to={s.href} className="hover:text-brand-600 dark:hover:text-brand-400">
-                      {s.name}
-                    </Link>
-                  </h3>
-                  {s.role && (
-                    <p className="mt-1 text-xs text-neutral-body dark:text-slate-400">{s.role}</p>
-                  )}
-                  <p className="mt-3 flex-1 text-sm text-neutral-body dark:text-slate-300">{s.excerpt}</p>
-                  <Link
-                    to={s.href}
-                    className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 hover:underline underline-offset-4"
-                  >
-                    {t("stories.readStory")}
-                  </Link>
-                </div>
-              </article>
-            ))}
-          </div>
-        ) : (
-          !featured && (
-            <p className="mt-10 rounded-xl border border-dashed border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-10 text-center text-sm text-neutral-body dark:text-slate-400">
-              {t("stories.empty")}
+      {/* STORY GRID (Brand Blue Palette) */}
+      <section className="bg-brand-600 dark:bg-brand-700 py-16 sm:py-20 text-white transition-colors border-t border-brand-500/50">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="font-display text-3xl font-bold !text-white sm:text-4xl">
+              {t("stories.moreFromCommunity")}
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-white/90">
+              {t("stories.moreSubtitle")}
             </p>
-          )
-        )}
-      </Section>
+          </div>
+
+          {rest.length > 0 ? (
+            <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {rest.map((s) => (
+                <article
+                  key={s.key}
+                  className="flex flex-col overflow-hidden rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md shadow-sm transition hover:border-white/50 hover:bg-white/15 hover:shadow-lg group"
+                >
+                  <div className="aspect-[4/3] w-full overflow-hidden bg-brand-700/60">
+                    <SmartImage
+                      src={s.image}
+                      alt={`${s.name}${s.role ? ` · ${s.role}` : ""}`}
+                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="flex flex-1 flex-col p-6 text-white">
+                    {s.program && (
+                      <p className="text-xs font-bold uppercase tracking-wider text-brand-100">
+                        {s.program}
+                      </p>
+                    )}
+                    <h3 className="mt-2 font-display text-lg font-bold !text-white group-hover:text-brand-100 transition">
+                      <Link to={s.href}>
+                        {s.name}
+                      </Link>
+                    </h3>
+                    {s.role && (
+                      <p className="mt-1 text-xs text-brand-100">{s.role}</p>
+                    )}
+                    <p className="mt-3 flex-1 text-sm text-white/90 line-clamp-3 leading-relaxed">{s.excerpt}</p>
+                    <div className="mt-4 pt-3 border-t border-white/15">
+                      <Link
+                        to={s.href}
+                        className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-white group-hover:text-brand-100 transition"
+                      >
+                        <span>{t("stories.readStory")}</span>
+                        <span>&rarr;</span>
+                      </Link>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          ) : (
+            !featured && (
+              <p className="mt-10 rounded-xl border border-dashed border-white/30 bg-white/10 p-10 text-center text-sm text-white/80">
+                {t("stories.empty")}
+              </p>
+            )
+          )}
+        </div>
+      </section>
 
       {/* SHARE A STORY CTA (Pattern A: Canvas) */}
       <Section pattern="canvas">

@@ -62,7 +62,7 @@
       "missionVision": "Mission et vision",
       "team": "Notre équipe",
       "board": "Notre conseil",
-      "partners": "Partenaires et donateurs"
+      "partners": "Partenaires"
     },
     "programsMenu": {
       "all": "Tous les programmes",
@@ -274,7 +274,7 @@
     },
     "contact": {
       "eyebrow": "Contact",
-      "title": "Construisons quelque chose ensemble",
+      "title": "Connectons-nous",
       "subtitle": "Une question, une idée de partenariat, envie de devenir bénévole ? Envoyez-nous un message et nous vous répondrons.",
       "locationLabel": "Adresse :",
       "locationValue": "Camp de réfugiés de Kakuma et camp de Kalobeyei, Kenya",
@@ -360,14 +360,14 @@
       "eyebrow": "Notre impact",
       "titleStart": "De vrais chiffres. De vraies vies.",
       "titleHighlight": "Un vrai changement à Kakuma.",
-      "subtitle": "Nous mesurons ce qui compte — opportunités créées, moyens de subsistance restaurés, avenirs débloqués. Chaque chiffre ci-dessous représente une personne dont le potentiel est enfin reconnu."
+      "subtitle": "Nous mesurons ce qui compte: opportunités créées, moyens de subsistance restaurés, avenirs débloqués. Chaque chiffre ci-dessous représente une personne dont le potentiel est enfin reconnu."
     },
     "byTheNumbers": "En chiffres",
     "byTheNumbersSubtitle": "Mis à jour à mesure que nos programmes grandissent.",
     "metricsEmpty": "Les indicateurs d'impact apparaîtront ici dès leur publication.",
     "outcomesEyebrow": "Ce que nous mesurons",
     "outcomesTitle": "Quatre résultats, une mission",
-    "outcomesSubtitle": "Chaque programme est conçu autour de ces quatre axes — vous voyez exactement comment une formation, un placement ou un kit de démarrage se traduit en changement durable pour les jeunes réfugiés de Kakuma.",
+    "outcomesSubtitle": "Chaque programme est conçu autour de ces quatre axes, vous voyez exactement comment une formation, un placement ou un kit de démarrage se traduit en changement durable pour les jeunes réfugiés de Kakuma.",
     "highlightsTitle": "Moments forts récents",
     "highlightsSubtitle": "Quelques moments des douze derniers mois dont nous sommes fiers.",
     "journeyEyebrow": "Notre parcours",
@@ -386,8 +386,8 @@
       "title": "Voix de notre communauté",
       "titleStart": "De vrais parcours depuis",
       "titleHighlight": "Kakuma",
-      "subtitle": "Les diplômés, formateurs et partenaires dont nos programmes ont façonné la vie — dans leurs propres mots.",
-      "subtitleAlt": "Chaque chiffre de notre page Impact est une personne. Voici quelques-unes des personnes derrière ces chiffres — dans leurs propres mots."
+      "subtitle": "Les diplômés, formateurs et partenaires dont nos programmes ont façonné la vie, dans leurs propres mots.",
+      "subtitleAlt": "Chaque chiffre de notre page Impact est une personne. Voici quelques-unes des personnes derrière ces chiffres, dans leurs propres mots."
     },
     "empty": "Les témoignages apparaîtront ici à mesure que nous les publierons.",
     "readStory": "Lire le témoignage →",
@@ -679,7 +679,7 @@
     "overviewTitle": "À propos de ce programme",
     "whatYoullGain": "Ce que vous y gagnerez",
     "forWhoTitle": "À qui s'adresse-t-il ?",
-    "forWhoBody": "Aux jeunes réfugiés vivant dans ou autour du camp de Kakuma, prêts à suivre l'intégralité du cycle de formation. Aucune expérience préalable requise — seulement de la curiosité et de la régularité.",
+    "forWhoBody": "Aux jeunes réfugiés vivant dans ou autour du camp de Kakuma, prêts à suivre l'intégralité du cycle de formation. Aucune expérience préalable requise, seulement de la curiosité et de la régularité.",
     "howToJoinTitle": "Comment s'inscrire",
     "howToJoinBody": "Les cohortes ouvrent plusieurs fois par an. Contactez-nous via le formulaire et notre coordinateur communauté reviendra vers vous avec les prochaines dates d'inscription.",
     "relatedTitle": "Autres programmes",

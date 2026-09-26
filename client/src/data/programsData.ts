@@ -24,6 +24,7 @@ export interface DetailedProgram {
   partner?: string;
   body: string;
   image: string;
+  gallery?: string[];
   features: string[];
   problemStatement?: string;
   goals?: ProgramGoal[];
@@ -51,7 +52,13 @@ export const defaultPrograms: DetailedProgram[] = [
     category: "Playful Learning & SEL",
     partner: "Humanitarian Resilience Aid (HRA)",
     body: '"Learning through Play: Empowering Kakuma\'s Children" is a transformative project designed by Humanitarian Resilience Aid (HRA) to address the educational and psychological needs of children in the Kakuma Refugee Camp. This project integrates playful learning, social and emotional learning (SEL), and basic computer skills training, targeting children whose educational journeys have been disrupted by war and conflict.',
-    image: "/img/programs/hero.jpg",
+    image: "/programs/L through play.jpg",
+    gallery: [
+      "/programs/L through play.jpg",
+      "/programs/L through play (2).jpg",
+      "/programs/L through play (3).jpg",
+      "/programs/L through play.jpeg",
+    ],
     problemStatement:
       "The children of Kakuma refugee camp have faced significant disruption due to war and conflict, affecting their educational and emotional development. Traditional educational approaches often fail to address the trauma and unique needs of refugee children, hindering their ability to learn and thrive.",
     goals: [
@@ -72,7 +79,7 @@ export const defaultPrograms: DetailedProgram[] = [
       },
     ],
     targetAudience:
-      "Children aged 6–12 residing in the Kakuma refugee camp, with a special focus on those who have had limited or no access to formal education.",
+      "Children aged 6 to 12 residing in the Kakuma refugee camp, with a special focus on those who have had limited or no access to formal education.",
     components: [
       {
         title: "Playful Learning Curriculum",
@@ -82,19 +89,19 @@ export const defaultPrograms: DetailedProgram[] = [
       {
         title: "Social and Emotional Learning (SEL) Workshops",
         description:
-          "Regular workshops focusing on foundational SEL competencies: self-awareness, self-management, social awareness, relationship skills, and responsible decision-making.",
+          "Regular workshops focusing on foundational SEL competencies: self awareness, self management, social awareness, relationship skills, and responsible decision making.",
       },
       {
         title: "Basic Computer Skills Training",
         description:
-          "Weekly hands-on computer classes using engaging, interactive software to teach typing, digital literacy, internet navigation, and basic software use.",
+          "Weekly hands on computer classes using engaging, interactive software to teach typing, digital literacy, internet navigation, and basic software use.",
       },
     ],
     features: [
-      "Play-Based Literacy & Numeracy",
+      "Play Based Literacy & Numeracy",
       "Social & Emotional Learning (SEL)",
       "Interactive Digital & Computer Skills",
-      "Trauma-Informed Safe Learning Spaces",
+      "Trauma Informed Safe Learning Spaces",
     ],
     howToJoin:
       "Enrollment is open through Generation Aid community learning centres and local partner schools. Parents, guardians, and educators can register eligible children during intake periods.",
@@ -105,15 +112,20 @@ export const defaultPrograms: DetailedProgram[] = [
     title: "Women in AI Program",
     category: "Emerging Tech & AI",
     partner: "Generation Aid Tech Initiative",
-    body: "Generation Aid’s Women in AI Program is a three-month learning and fellowship initiative designed to equip refugee women with practical knowledge, confidence, and opportunities in Artificial Intelligence and emerging technologies. The program introduces participants to AI concepts, Generative AI, prompt engineering, responsible AI, digital innovation, and practical AI applications.",
-    image: "/img/programs/coding-academy.jpg",
+    body: "Generation Aid’s Women in AI Program is a three month learning and fellowship initiative designed to equip refugee women with practical knowledge, confidence, and opportunities in Artificial Intelligence and emerging technologies. The program introduces participants to AI concepts, Generative AI, prompt engineering, responsible AI, digital innovation, and practical AI applications.",
+    image: "/programs/Women in Ai.jpg",
+    gallery: [
+      "/programs/Women in Ai.jpg",
+      "/programs/women in AI (2).jpg",
+      "/programs/women in AI.png",
+    ],
     targetAudience:
-      "Primarily for refugee women and young women in Kakuma and surrounding communities interested in technology, innovation, and the future of work. Participants do not need advanced technical backgrounds—just basic digital literacy and an eager commitment to learn.",
+      "Primarily for refugee women and young women in Kakuma and surrounding communities interested in technology, innovation, and the future of work. Participants do not need advanced technical backgrounds, just basic digital literacy and an eager commitment to learn.",
     whyItMatters:
       "By increasing women’s access to AI knowledge and networks, Generation Aid aims to reduce the digital and gender gap and ensure that refugee women are not left behind in the rapidly growing AI economy.",
     gains: [
       "Practical skills in Generative AI, prompt engineering, and digital tools",
-      "Responsible AI frameworks and technology-driven problem solving",
+      "Responsible AI frameworks and technology driven problem solving",
       "Application of AI for education, research, content creation, and business",
       "Confidence, leadership, and connection with global tech mentors and networks",
     ],
@@ -121,23 +133,23 @@ export const defaultPrograms: DetailedProgram[] = [
       {
         title: "Foundations of AI & Generative Tools",
         description:
-          "Hands-on immersion into modern AI models, prompt craft, image generation, and productivity acceleration.",
+          "Hands on immersion into modern AI models, prompt craft, image generation, and productivity acceleration.",
       },
       {
         title: "Responsible AI & Ethics",
         description:
-          "Critical evaluation of bias, data privacy, safety, and community-centered ethical AI practices.",
+          "Critical evaluation of bias, data privacy, safety, and community centered ethical AI practices.",
       },
       {
         title: "Fellowship & Community Capstone",
         description:
-          "Collaborative capstone projects designing AI-powered solutions for challenges in refugee communities.",
+          "Collaborative capstone projects designing AI powered solutions for challenges in refugee communities.",
       },
     ],
     features: [
       "Generative AI & Prompt Engineering",
       "Responsible AI & Digital Ethics",
-      "3-Month Fellowship & Mentorship",
+      "3 Month Fellowship & Mentorship",
       "Community Innovation Capstone Projects",
     ],
     howToJoin:
@@ -150,9 +162,17 @@ export const defaultPrograms: DetailedProgram[] = [
     category: "Media & Narrative",
     partner: "Shared Studios & HOME Storytellers",
     body: "Generation Aid’s Storytelling Program, in partnership with Shared Studios and HOME Storytellers, creates a platform for refugees in Kakuma to share their stories, experiences, talents, culture, challenges, and dreams directly with audiences around the world. The program uses storytelling and digital connection to help change the global narrative about refugees.",
-    image: "/img/programs/bpo.jpg",
+    image: "/programs/stories.jpg",
+    gallery: [
+      "/programs/stories.jpg",
+      "/programs/stories (2).jpg",
+      "/programs/stories (3).jpg",
+      "/programs/stories (4).jpg",
+      "/programs/stories.jpeg",
+      "/programs/stories (2).jpeg",
+    ],
     targetAudience:
-      "Open to refugees and community members in Kakuma who have a story, talent, experience, or message they want to share. You do not need to be a professional storyteller—lived experience and creativity are what matter.",
+      "Open to refugees and community members in Kakuma who have a story, talent, experience, or message they want to share. You do not need to be a professional storyteller, lived experience and creativity are what matter.",
     whyItMatters:
       "Shifts the global narrative from people defined merely by displacement to individuals with voices, skills, vision, and agency. It enables refugees to tell their own stories rather than having others speak for them.",
     gains: [
@@ -179,7 +199,7 @@ export const defaultPrograms: DetailedProgram[] = [
       },
     ],
     features: [
-      "First-Person Narrative Workshops",
+      "First Person Narrative Workshops",
       "Global Live Portals & Dialogues",
       "Multimedia & Digital Content Creation",
       "Advocacy & International Reach",
@@ -194,9 +214,14 @@ export const defaultPrograms: DetailedProgram[] = [
     category: "Arts & Culture",
     partner: "Kakuma Art Project (KAP)",
     body: "Generation Aid’s Creative Art Program, developed in collaboration with the Kakuma Art Project, creates opportunities for refugees to use art for self-expression, storytelling, cultural preservation, and economic empowerment. It gives refugee artists a platform to share their talents and perspectives with local and international audiences.",
-    image: "/img/programs/artists-painting.jpg",
+    image: "/programs/galary.jpg",
+    gallery: [
+      "/programs/galary.jpg",
+      "/programs/galary (2).jpg",
+      "/programs/galary (3).jpg",
+    ],
     targetAudience:
-      "Refugees and displaced individuals in Kakuma interested in creative arts—including painting, drawing, photography, crafts, poetry, creative writing, music, and performance. Both emerging and experienced artists are welcome.",
+      "Refugees and displaced individuals in Kakuma interested in creative arts including painting, drawing, photography, crafts, poetry, creative writing, music, and performance. Both emerging and experienced artists are welcome.",
     whyItMatters:
       "Refugees are often portrayed only through displacement and hardship. Creative arts provide a narrative of talent, identity, resilience, and beauty, transforming artistic passion into sustainable livelihoods.",
     specialHighlight: {
@@ -205,7 +230,7 @@ export const defaultPrograms: DetailedProgram[] = [
         "A dedicated cultural venue in Kakuma where refugee artists exhibit their original work, engage with visitors, and sell artwork to international collectors and partners.",
     },
     gains: [
-      "Fine arts and mixed-media technique refinement",
+      "Fine arts and mixed media technique refinement",
       "Portfolio development and professional artist branding",
       "Exhibition opportunities at Senga Gallery and global partner galleries",
       "Direct income generation through art sales, commissions, and craft licensing",
@@ -214,7 +239,7 @@ export const defaultPrograms: DetailedProgram[] = [
       {
         title: "Studio Workshops & Masterclasses",
         description:
-          "Hands-on sessions with experienced guest artists covering painting, sculpture, sketching, and traditional textile crafts.",
+          "Hands on sessions with experienced guest artists covering painting, sculpture, sketching, and traditional textile crafts.",
       },
       {
         title: "Curated Exhibitions & Senga Gallery",
@@ -222,7 +247,7 @@ export const defaultPrograms: DetailedProgram[] = [
           "Regular physical and digital exhibitions showcasing refugee artists to buyers, NGOs, and art enthusiasts globally.",
       },
       {
-        title: "Art Business & Fair-Trade Pricing",
+        title: "Art Business & Fair Trade Pricing",
         description:
           "Practical guidance on artwork valuation, shipping logistics, copyright, and ethical marketplace representation.",
       },
@@ -231,7 +256,7 @@ export const defaultPrograms: DetailedProgram[] = [
       "Painting, Drawing & Sculpture Studios",
       "Senga Gallery Exhibitions & Sales",
       "Masterclasses with International Artists",
-      "Fair-Trade Creative Livelihoods",
+      "Fair Trade Creative Livelihoods",
     ],
     howToJoin:
       "Artists can bring samples of their work to Senga Gallery or sign up for upcoming masterclasses during community open calls.",
@@ -242,52 +267,64 @@ export const defaultPrograms: DetailedProgram[] = [
     title: "Climate Action & Sustainable Agriculture",
     category: "Environment & Green Livelihoods",
     partner: "Kakuma Green Resilience Initiative",
-    body: "Generation Aid’s Climate Action program is a refugee-led initiative that combines environmental restoration, climate-smart agriculture, and sustainable livelihood development. The program supports refugees and host communities in Kakuma and Kalobeyei to respond to ecological challenges while creating reliable food production and income generation.",
-    image: "/img/programs/art-landscape.jpg",
+    body: "Generation Aid’s Climate Action program is a refugee led initiative that combines environmental restoration, climate smart agriculture, and sustainable livelihood development. The program supports refugees and host communities in Kakuma and Kalobeyei to respond to ecological challenges while creating reliable food production and income generation.",
+    image: "/programs/climate actions (1).jpg",
+    gallery: [
+      "/programs/climate actions (1).jpg",
+      "/programs/climate actions (2).jpg",
+      "/programs/climate actions (3).jpg",
+      "/programs/climate actions (4).jpg",
+      "/programs/climate actions (5).jpg",
+    ],
     targetAudience:
-      "Refugees, women, youth, local farmers, aspiring green entrepreneurs, and host-community members, especially those vulnerable to food insecurity and drought.",
+      "Refugees, women, youth, local farmers, aspiring green entrepreneurs, and host community members, especially those vulnerable to food insecurity and drought.",
     whyItMatters:
       "Kakuma faces severe climatic stress, including recurring drought, soil degradation, and water scarcity. Empowering community members with regenerative practices ensures self-sufficiency and environmental regeneration.",
     gains: [
-      "Climate-smart farming techniques and permaculture design",
+      "Climate smart farming techniques and permaculture design",
       "Drip irrigation, water harvesting, and organic composting skills",
       "Tree nursery management and agroforestry practices",
       "Green enterprise setup, produce marketing, and cooperatives management",
     ],
     components: [
       {
-        title: "Climate-Smart Farming & Kitchen Gardens",
+        title: "Climate Smart Farming & Kitchen Gardens",
         description:
-          "Training in drought-resilient crops, micro-gardening, soil enrichment, and water-conserving drip irrigation.",
+          "Training in drought resilient crops, micro gardening, soil enrichment, and water conserving drip irrigation.",
       },
       {
         title: "Tree Nurseries & Reforestation",
         description:
-          "Community seedbeds propagating indigenous shade, fruit, and nitrogen-fixing trees for camp-wide greening.",
+          "Community seedbeds propagating indigenous shade, fruit, and nitrogen fixing trees for camp wide greening.",
       },
       {
         title: "Green Entrepreneurship & Cooperatives",
         description:
-          "Supporting farmers with seedling sales, vegetable markets, and sustainable bio-waste composting businesses.",
+          "Supporting farmers with seedling sales, vegetable markets, and sustainable bio waste composting businesses.",
       },
     ],
     features: [
-      "Climate-Smart Agriculture & Permaculture",
-      "Micro-Drip Irrigation & Water Harvesting",
+      "Climate Smart Agriculture & Permaculture",
+      "Micro Drip Irrigation & Water Harvesting",
       "Indigenous Tree Nurseries & Reforestation",
       "Green Agribusiness & Food Security",
     ],
     howToJoin:
-      "Join as a trainee farmer, volunteer nursery keeper, or community climate champion by connecting with the Generation Aid eco-hub.",
+      "Join as a trainee farmer, volunteer nursery keeper, or community climate champion by connecting with the Generation Aid eco hub.",
   },
   {
     id: "social-emotional-learning",
     slug: "social-emotional-learning",
-    title: "Children’s Social-Emotional Learning & Yoga Programme",
+    title: "Children’s Social and Emotional Learning & Yoga Programme",
     category: "Child Wellbeing & Mindfulness",
     partner: "My Little Zen & The LEGO Foundation",
-    body: "The Generation Aid Children’s Social-Emotional Learning (SEL) and Yoga Programme, implemented with My Little Zen and in partnership with the LEGO Foundation, creates a safe, playful, and supportive environment where refugee children develop emotional, social, and physical wellbeing through yoga, mindfulness, breathing exercises, movement, and play.",
-    image: "/img/programs/hero.jpg",
+    body: "The Generation Aid Children’s Social and Emotional Learning (SEL) and Yoga Programme, implemented with My Little Zen and in partnership with the LEGO Foundation, creates a safe, playful, and supportive environment where refugee children develop emotional, social, and physical wellbeing through yoga, mindfulness, breathing exercises, movement, and play.",
+    image: "/programs/S E L.jpg",
+    gallery: [
+      "/programs/S E L.jpg",
+      "/programs/S E L (2).jpg",
+      "/programs/S E L.jpeg",
+    ],
     targetAudience:
       "Refugee and vulnerable children in Kakuma and surrounding communities, especially those coping with displacement, disrupted education, and challenging camp conditions.",
     whyItMatters:
@@ -295,7 +332,7 @@ export const defaultPrograms: DetailedProgram[] = [
     vision:
       "To raise a generation of confident, resilient, compassionate, and emotionally healthy refugee children who are better prepared to learn, build positive relationships, and contribute to their communities.",
     gains: [
-      "Emotional self-awareness, stress reduction, and healthy coping tools",
+      "Emotional self awareness, stress reduction, and healthy coping tools",
       "Improved focus, concentration, and classroom readiness",
       "Physical flexibility, balance, motor coordination, and body awareness",
       "Empathy, kindness, conflict resolution, and teamwork skills",
@@ -304,24 +341,24 @@ export const defaultPrograms: DetailedProgram[] = [
       {
         title: "Mindfulness & Yoga Play Sessions",
         description:
-          "Child-friendly movement, stretching, and guided mindfulness activities that make emotional regulation fun.",
+          "Child friendly movement, stretching, and guided mindfulness activities that make emotional regulation fun.",
       },
       {
-        title: "Breathwork & Calm-Down Strategies",
+        title: "Breathwork & Calm Down Strategies",
         description:
           "Teaching simple breathing techniques that children can use anytime they feel overwhelmed, scared, or anxious.",
       },
       {
-        title: "Lego-Powered Playful Learning",
+        title: "Lego Powered Playful Learning",
         description:
-          "Cooperative building exercises that foster teamwork, creative problem-solving, and emotional expression.",
+          "Cooperative building exercises that foster teamwork, creative problem solving, and emotional expression.",
       },
     ],
     features: [
       "Mindful Movement & Children's Yoga",
-      "Breathwork & Emotional Self-Regulation",
+      "Breathwork & Emotional Self Regulation",
       "LEGO® Playful Teamwork Workshops",
-      "Safe, Trauma-Informed Community Spaces",
+      "Safe, Trauma Informed Community Spaces",
     ],
     howToJoin:
       "Children participate through Generation Aid learning centers. Parents, caregivers, schools, and community partners can register children at the start of each term.",
@@ -333,14 +370,20 @@ export const defaultPrograms: DetailedProgram[] = [
     category: "Advocacy & Thought Leadership",
     speaker: "Hubert Senga | Founder & CEO, Generation Aid",
     partner: "International Alliances & Global Platforms",
-    body: "Hubert Senga is a refugee advocate, social entrepreneur, and digital inclusion leader dedicated to empowering displaced communities through digital skills, innovative education, and pathways to meaningful employment. As a Congolese refugee and founder of Generation Aid in Kakuma, Kenya, Hubert works to bridge literacy, digital access, and unemployment gaps while connecting refugees to opportunities in the global economy. A recognized voice on refugee-led solutions and economic inclusion, Hubert has advocated for refugees and Refugee-Led Organizations through platforms including PBS News, FRANCE 24, the International Labour Organization (ILO), and Accountability Lab East & Southern Africa (ALESA).",
-    image: "/img/heroes/about.jpg",
+    body: "Hubert Senga is a refugee advocate, social entrepreneur, and digital inclusion leader dedicated to empowering displaced communities through digital skills, innovative education, and pathways to meaningful employment. As a Congolese refugee and founder of Generation Aid in Kakuma, Kenya, Hubert works to bridge literacy, digital access, and unemployment gaps while connecting refugees to opportunities in the global economy. A recognized voice on refugee led solutions and economic inclusion, Hubert has advocated for refugees and Refugee Led Organizations through platforms including PBS News, FRANCE 24, the International Labour Organization (ILO), and Accountability Lab East & Southern Africa (ALESA).",
+    image: "/programs/GL advocacy.jpg",
+    gallery: [
+      "/programs/GL advocacy.jpg",
+      "/programs/GL advocacy (2).jpg",
+      "/programs/GL advocacy (3).jpg",
+      "/programs/GL advocacy (4).jpg",
+    ],
     problemStatement:
-      "Traditional humanitarian approaches often view refugees merely as recipients of emergency aid rather than professionals, innovators, and contributors. In the wake of critical funding cuts, the need for refugee self-reliance, cross-border remote work rights, and direct support for Refugee-Led Organizations (RLOs) is more urgent than ever.",
+      "Traditional humanitarian approaches often view refugees merely as recipients of emergency aid rather than professionals, innovators, and contributors. In the wake of critical funding cuts, the need for refugee self reliance, cross border remote work rights, and direct support for Refugee Led Organizations (RLOs) is more urgent than ever.",
     whyItMatters:
-      "Refugees bring immense talent, resilience, and vision. Hubert’s advocacy moves the conversation from 'How do we help refugees?' to 'How do we remove the structural barriers preventing refugees from contributing?' Connecting lived experience from Kakuma directly with global decision-making spaces ensures sustainable and dignity-centered policies.",
+      "Refugees bring immense talent, resilience, and vision. Hubert’s advocacy moves the conversation from 'How do we help refugees?' to 'How do we remove the structural barriers preventing refugees from contributing?' Connecting lived experience from Kakuma directly with global decision making spaces ensures sustainable and dignity centered policies.",
     quote: {
-      text: "I am not advocating for refugees because I feel sorry for them. I advocate because I have seen what refugees can accomplish when they are given access to opportunity. The problem is not a lack of talent in refugee communities; it is a lack of access to education, technology, employment, capital, networks and decision-making spaces. My work is about changing that.",
+      text: "I am not advocating for refugees because I feel sorry for them. I advocate because I have seen what refugees can accomplish when they are given access to opportunity. The problem is not a lack of talent in refugee communities; it is a lack of access to education, technology, employment, capital, networks and decision making spaces. My work is about changing that.",
       author: "Hubert Senga",
       role: "Founder & CEO, Generation Aid",
     },
@@ -358,11 +401,11 @@ export const defaultPrograms: DetailedProgram[] = [
       {
         title: "Strategic Corporate & Donor Alliances",
         description:
-          "Foster cross-border partnerships for inclusive remote employment, digital infrastructure, and direct funding for refugee-led initiatives.",
+          "Foster cross border partnerships for inclusive remote employment, digital infrastructure, and direct funding for refugee led initiatives.",
       },
     ],
     targetAudience:
-      "UN & multilateral forums, international refugee conferences, TED-style platforms, technology summits, universities, think tanks, global journalists, corporate leaders, and impact investors looking for authentic lived-experience leadership.",
+      "UN & multilateral forums, international refugee conferences, TED style platforms, technology summits, universities, think tanks, global journalists, corporate leaders, and impact investors looking for authentic lived experience leadership.",
     components: [
       {
         title: "Keynote Speaking & Panel Leadership",
@@ -387,9 +430,9 @@ export const defaultPrograms: DetailedProgram[] = [
       "Corporate Remote Hiring Consultations",
     ],
     howToJoin:
-      "Book a speaking engagement, media interview, or 15-minute introductory partnership call with Hubert Senga to explore strategic collaborations.",
+      "Book a speaking engagement, media interview, or 15 minute introductory partnership call with Hubert Senga to explore strategic collaborations.",
     bookingUrl: "/contact?subject=Speaking+or+Partnership+with+Hubert+Senga",
-    ctaText: "Book a 15-min Call with Hubert",
+    ctaText: "Book a 15 min Call with Hubert",
     ctaLink: "/contact?subject=Speaking+or+Partnership+with+Hubert+Senga",
   },
   {
@@ -398,8 +441,13 @@ export const defaultPrograms: DetailedProgram[] = [
     title: "English Language & Literacy Skills Program",
     category: "Language & Career Readiness",
     partner: "Kakuma Community Education Hub",
-    body: "Generation Aid’s English Language & Literacy Skills Program is designed for refugees and displaced young people in Kakuma and Kalobeyei who want to strengthen their ability to communicate in English. The program supports learners at all levels—beginners, intermediate, and advanced—focusing on practical speaking, reading, writing, and professional workplace communication.",
-    image: "/img/programs/english.png",
+    body: "Generation Aid’s English Language & Literacy Skills Program is designed for refugees and displaced young people in Kakuma and Kalobeyei who want to strengthen their ability to communicate in English. The program supports learners at all levels: beginners, intermediate, and advanced, focusing on practical speaking, reading, writing, and professional workplace communication.",
+    image: "/programs/english (1).jpg",
+    gallery: [
+      "/programs/english (1).jpg",
+      "/programs/english (2).jpg",
+      "/programs/english (3).jpg",
+    ],
     targetAudience:
       "Refugee youth, women, and community members facing language barriers when trying to access education, vocational training, digital opportunities, freelancing, and essential services.",
     whyItMatters:
@@ -444,10 +492,15 @@ export const defaultPrograms: DetailedProgram[] = [
     title: "Women’s Digital Skills for Economic Empowerment",
     category: "Women & Digital Livelihoods",
     partner: "In partnership with RefugePoint",
-    body: "Generation Aid’s Women’s Digital Skills for Economic Empowerment Program is a 12-week initiative designed to equip refugee women in Kakuma with practical digital skills that open pathways to employment, entrepreneurship, freelancing, remote work, and active participation in the global digital economy. Implemented in partnership with RefugePoint, the program connects digital training with structured career mentorship and economic opportunities.",
-    image: "/img/programs/computer-literacy.jpg",
+    body: "Generation Aid’s Women’s Digital Skills for Economic Empowerment Program is a 12 week initiative designed to equip refugee women in Kakuma with practical digital skills that open pathways to employment, entrepreneurship, freelancing, remote work, and active participation in the global digital economy. Implemented in partnership with RefugePoint, the program connects digital training with structured career mentorship and economic opportunities.",
+    image: "/programs/Women in digital skills (1).jpg",
+    gallery: [
+      "/programs/Women in digital skills (1).jpg",
+      "/programs/Women in digital skills (2).jpg",
+      "/programs/Women in digital skills (3).jpg",
+    ],
     targetAudience:
-      "Refugee women aged 18–35 living in Kakuma Refugee Camp who have basic computer literacy and English skills, motivated to build careers, launch businesses, or access digital work.",
+      "Refugee women aged 18 to 35 living in Kakuma Refugee Camp who have basic computer literacy and English skills, motivated to build careers, launch businesses, or access digital work.",
     whyItMatters:
       "Refugee women often face steep barriers to economic opportunity, including limited access to technology, digital skills, and professional networks. Equipping women with digital proficiency bridges this gender divide and creates direct pathways from learning to sustainable income generation.",
     gains: [
@@ -455,12 +508,12 @@ export const defaultPrograms: DetailedProgram[] = [
       "💻 Practical Digital, Office & Cloud Tools Mastery",
       "🌍 Remote Work & Freelancing Market Exposure",
       "🚀 Entrepreneurship & Small Business Management",
-      "🧑‍💼 1-on-1 Career Guidance & Mentorship",
+      "🧑‍💼 One on one Career Guidance & Mentorship",
       "🤝 Connection to Global Professional Networks & Job Linkages",
     ],
     components: [
       {
-        title: "12-Week Core Digital Skills & Cloud Productivity",
+        title: "12 Week Core Digital Skills & Cloud Productivity",
         description:
           "Comprehensive training in essential office applications, cloud collaboration, data management, and digital research.",
       },
@@ -470,19 +523,19 @@ export const defaultPrograms: DetailedProgram[] = [
           "Setting up freelance profiles, client communication, task execution, time management, and online payments.",
       },
       {
-        title: "Mentorship & Job-Linkage Support",
+        title: "Mentorship & Job Linkage Support",
         description:
           "Direct mentorship from tech professionals, portfolio building, and connections to inclusive employers and partners.",
       },
     ],
     features: [
-      "12-Week Intensive Curriculum",
+      "12 Week Intensive Curriculum",
       "RefugePoint Partnership & Mentorship",
       "Remote Work & Freelancing Exposure",
-      "Direct Job-Linkage Opportunities",
+      "Direct Job Linkage Opportunities",
     ],
     howToJoin:
-      "Eligible refugee women aged 18–35 can register during upcoming cohort intake calls announced jointly by Generation Aid and RefugePoint.",
+      "Eligible refugee women aged 18 to 35 can register during upcoming cohort intake calls announced jointly by Generation Aid and RefugePoint.",
   },
   {
     id: "computer-literacy-skills",
@@ -490,8 +543,13 @@ export const defaultPrograms: DetailedProgram[] = [
     title: "Computer Literacy Skills Program for Inclusivity",
     category: "Digital Literacy & Inclusion",
     tagline: "Equipping refugees and underserved communities with essential digital foundations for life, school, and work.",
-    body: "Generation Aid’s Computer Literacy Skills Program equips refugees and underserved community members with essential digital skills needed for education, employment, entrepreneurship, and everyday life. The program provides practical, hands-on training in computer use, digital tools, internet navigation, communication, online safety, and workplace applications. It serves as an entry point for refugees who want to build confidence with technology and progress toward more advanced digital skills and economic opportunities.",
-    image: "/img/programs/coding-academy.jpg",
+    body: "Generation Aid’s Computer Literacy Skills Program equips refugees and underserved community members with essential digital skills needed for education, employment, entrepreneurship, and everyday life. The program provides practical, hands on training in computer use, digital tools, internet navigation, communication, online safety, and workplace applications. It serves as an entry point for refugees who want to build confidence with technology and progress toward more advanced digital skills and economic opportunities.",
+    image: "/programs/computer.jpg",
+    gallery: [
+      "/programs/computer.jpg",
+      "/programs/computer (2).jpg",
+      "/programs/computer.png",
+    ],
     problemStatement:
       "In displaced settings like Kakuma, the digital divide remains one of the largest obstacles to education, job readiness, and economic inclusion. Many community members lack basic computer access and foundational digital skills, locking them out of online services, employment platforms, and global learning opportunities.",
     targetAudience:
@@ -509,7 +567,7 @@ export const defaultPrograms: DetailedProgram[] = [
     ],
     components: [
       {
-        title: "Hands-on Computer & Operating System Fundamentals",
+        title: "Hands on Computer & Operating System Fundamentals",
         description:
           "Learn keyboard navigation, file management, operating system settings, and core computer troubleshooting.",
       },

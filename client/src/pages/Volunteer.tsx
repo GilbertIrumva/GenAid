@@ -7,10 +7,10 @@ const FULL_PDF_URL = "https://drive.google.com/file/d/1r5EdJ4tH_3QMEqiVIq7O7dlru
 
 const requirements = [
   "Strong English communication skills",
-  "Current university student or recent graduate (specialization in humanitarian, development, or policy-related fields preferred but not required)",
+  "Current university student or recent graduate (specialization in humanitarian, development, or policy related fields preferred but not required)",
   "Relevant skills or experience aligned with your chosen track (communications, digital skills, education, fundraising, etc.)",
-  "Demonstrated passion for refugee empowerment and community-led initiatives",
-  "Commitment to ethical, community-led engagement",
+  "Demonstrated passion for refugee empowerment and community led initiatives",
+  "Commitment to ethical, community led engagement",
   "Minimum availability of 4 weeks",
   "Respect for cultural diversity and sensitivity to refugee contexts",
 ];
@@ -24,7 +24,7 @@ const programHighlights = [
   {
     title: "Deadline",
     value: "No deadline",
-    desc: "Rolling submissions — apply whenever you are ready.",
+    desc: "Rolling submissions. Apply whenever you are ready.",
   },
   {
     title: "Working Hours",
@@ -35,7 +35,7 @@ const programHighlights = [
 
 export default function Volunteer() {
   useSEO({
-    title: "Get Involved — Volunteer & Internship Program",
+    title: "Get Involved: Volunteer & Internship Program",
     description:
       "Join Generation Aid as a volunteer or intern in Kakuma Refugee Camp. Equip refugee youth with digital skills, education, and social impact pathways.",
   });
@@ -94,7 +94,7 @@ export default function Volunteer() {
             Join Our Community
           </span>
           <h2 className="mt-3 text-3xl font-bold text-neutral-heading dark:text-slate-50 sm:text-4xl">
-            Become a Volunteer — Together We Can
+            Become a Volunteer: Together We Can
           </h2>
           <p className="mt-4 text-base leading-relaxed text-neutral-body dark:text-slate-300">
             Are you looking for an internship or volunteering opportunity? Join <strong className="font-semibold text-neutral-heading dark:text-slate-100">Generation Aid</strong>! We are a youth-led nonprofit organization based in Kenya’s{" "}
@@ -134,101 +134,101 @@ export default function Volunteer() {
         </div>
       </Section>
 
-      {/* ONSITE YOUTH INTERNSHIP PROGRAM */}
-      <Section pattern="soft">
-        <div className="mx-auto max-w-5xl">
+      {/* ONSITE YOUTH INTERNSHIP PROGRAM (Brand Blue Palette) */}
+      <section className="bg-brand-600 dark:bg-brand-700 py-16 sm:py-20 text-white transition-colors border-t border-brand-500/50">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <span className="inline-block rounded-full bg-white dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
-              Community-Led Initiative
+            <span className="inline-block rounded-full bg-white/20 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-white backdrop-blur mb-2 border border-white/25">
+              Community Led Initiative
             </span>
-            <h2 className="mt-3 text-3xl font-bold text-neutral-heading dark:text-slate-50 sm:text-4xl">
+            <h2 className="mt-2 text-3xl font-bold !text-white sm:text-4xl">
               Generation Aid’s Onsite Youth Internship Program
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-neutral-body dark:text-slate-300">
+            <p className="mt-4 text-base leading-relaxed text-white/90">
               The{" "}
               <a
                 href="https://generationaid.org/"
                 target="_blank"
                 rel="noreferrer"
-                className="text-brand-600 dark:text-brand-400 hover:underline font-semibold"
+                className="text-white hover:text-brand-100 underline underline-offset-2 font-bold"
               >
                 Generation Aid
               </a>{" "}
-              Internship Program is designed to equip young people with practical skills, real-world experience, and opportunities to contribute to meaningful social impact. As a refugee-led organization, we prioritize local leadership and ensure that all internship opportunities directly benefit the communities we serve.
+              Internship Program is designed to equip young people with practical skills, real world experience, and opportunities to contribute to meaningful social impact. As a refugee led organization, we prioritize local leadership and ensure that all internship opportunities directly benefit the communities we serve.
             </p>
           </div>
 
           <div className="mt-10 grid gap-8 md:grid-cols-2">
-            <div className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm">
-              <h3 className="font-display text-xl font-bold text-neutral-heading dark:text-slate-100">
+            <div className="rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md p-6 sm:p-8 shadow-sm">
+              <h3 className="font-display text-xl font-bold !text-white">
                 Mentorship & Field Exposure
               </h3>
-              <p className="mt-3 text-sm leading-relaxed text-neutral-body dark:text-slate-300">
-                Interns work directly under a mentor, receiving guidance and support while contributing to real projects, developing practical advocacy skills, and gaining hands-on experience in community-led initiatives.
+              <p className="mt-3 text-sm leading-relaxed text-white/90">
+                Interns work directly under a mentor, receiving guidance and support while contributing to real projects, developing practical advocacy skills, and gaining hands-on experience in community led initiatives.
               </p>
-              <p className="mt-3 text-sm leading-relaxed text-neutral-body dark:text-slate-300">
+              <p className="mt-3 text-sm leading-relaxed text-white/90">
                 For international interns, the program offers valuable field exposure through direct engagement with grassroots community initiatives right in Kakuma.
               </p>
             </div>
 
-            <div className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm">
-              <h3 className="font-display text-xl font-bold text-neutral-heading dark:text-slate-100">
+            <div className="rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md p-6 sm:p-8 shadow-sm">
+              <h3 className="font-display text-xl font-bold !text-white">
                 Program Information
               </h3>
-              <ul className="mt-3 space-y-2 text-sm text-neutral-body dark:text-slate-300">
+              <ul className="mt-3 space-y-2 text-sm text-white/90">
                 <li>
-                  <strong className="text-neutral-heading dark:text-slate-100">Duration:</strong> 4 weeks minimum
+                  <strong className="text-white font-semibold">Duration:</strong> 4 weeks minimum
                 </li>
                 <li>
-                  <strong className="text-neutral-heading dark:text-slate-100">Deadline:</strong> No deadline — submit at your convenience
+                  <strong className="text-white font-semibold">Deadline:</strong> No deadline, submit at your convenience
                 </li>
                 <li>
-                  <strong className="text-neutral-heading dark:text-slate-100">Working Hours:</strong> 9 AM – 5 PM (Mon – Fri), with optional Saturday activities
+                  <strong className="text-white font-semibold">Working Hours:</strong> 9 AM to 5 PM (Mon to Fri), with optional Saturday activities
                 </li>
               </ul>
             </div>
           </div>
 
           {/* FINANCIAL STIPEND & FEES */}
-          <div className="mt-8 rounded-2xl border border-brand-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm sm:p-8">
-            <h3 className="font-display text-2xl font-bold text-neutral-heading dark:text-slate-100">
+          <div className="mt-8 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md p-6 sm:p-8 shadow-sm">
+            <h3 className="font-display text-2xl font-bold !text-white">
               Stipend & Fee Structure
             </h3>
 
             <div className="mt-6 grid gap-6 md:grid-cols-2">
-              <div className="rounded-xl border border-brand-100 dark:border-slate-700 bg-brand-50/50 dark:bg-slate-900/50 p-5">
-                <span className="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+              <div className="rounded-xl border border-white/15 bg-white/10 backdrop-blur-sm p-5 text-white">
+                <span className="text-xs font-bold uppercase tracking-wider text-brand-100">
                   Local & Regional Interns
                 </span>
-                <p className="mt-2 font-display text-2xl font-bold text-neutral-heading dark:text-slate-100">
+                <p className="mt-2 font-display text-2xl font-bold !text-white">
                   5,000 KSH / month
                 </p>
-                <p className="mt-2 text-xs text-neutral-body dark:text-slate-300">
+                <p className="mt-2 text-xs text-white/90">
                   Stipend provided for refugee interns and interns originating from Kenya territories.
                 </p>
               </div>
 
-              <div className="rounded-xl border border-brand-100 dark:border-slate-700 bg-brand-50/50 dark:bg-slate-900/50 p-5">
-                <span className="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+              <div className="rounded-xl border border-white/15 bg-white/10 backdrop-blur-sm p-5 text-white">
+                <span className="text-xs font-bold uppercase tracking-wider text-brand-100">
                   International Interns
                 </span>
-                <p className="mt-2 font-display text-2xl font-bold text-neutral-heading dark:text-slate-100">
+                <p className="mt-2 font-display text-2xl font-bold !text-white">
                   $620 USD / month
                 </p>
-                <ul className="mt-3 space-y-1 text-xs text-neutral-body dark:text-slate-300">
-                  <li>• <strong>$540 USD</strong> — Accommodation fee</li>
-                  <li>• <strong>$40 USD</strong> — Transportation fee (compound to field & return)</li>
-                  <li>• <strong>$40 USD</strong> — Donation to support Generation Aid program activities</li>
+                <ul className="mt-3 space-y-1 text-xs text-white/90">
+                  <li>• <strong className="text-white font-semibold">$540 USD</strong>: Accommodation fee</li>
+                  <li>• <strong className="text-white font-semibold">$40 USD</strong>: Transportation fee (compound to field & return)</li>
+                  <li>• <strong className="text-white font-semibold">$40 USD</strong>: Donation to support Generation Aid program activities</li>
                 </ul>
               </div>
             </div>
 
-            <div className="mt-6 rounded-xl border border-amber-200 dark:border-amber-900/50 bg-amber-50 dark:bg-amber-950/30 p-4 text-xs leading-relaxed text-amber-900 dark:text-amber-200">
+            <div className="mt-6 rounded-xl border border-white/20 bg-white/15 backdrop-blur-sm p-4 text-xs leading-relaxed text-white">
               <strong>NOTE ON MEALS:</strong> Interns are responsible for their own food. Accommodation is fully equipped with an outdoor kitchen, and there are grocery stores and local restaurants nearby in Kakuma town.
             </div>
           </div>
         </div>
-      </Section>
+      </section>
 
       {/* REQUIREMENTS FOR INTERNATIONAL INTERNS */}
       <Section pattern="canvas">

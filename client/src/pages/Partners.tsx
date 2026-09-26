@@ -77,40 +77,32 @@ function initials(name: string) {
 }
 
 function PartnerCard({ partner }: { partner: Partner; key?: React.Key }) {
-  const { t } = useTranslation();
   const [logoFailed, setLogoFailed] = useState(false);
   const showLogo = Boolean(partner.logo) && !logoFailed;
-  const description = t(`partners.list.${partner.key}`, partner.description);
 
   return (
-    <a
-      href={partner.url ?? "#"}
-      target={partner.url ? "_blank" : undefined}
-      rel={partner.url ? "noreferrer" : undefined}
-      className="flex gap-4 rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
-    >
-      <div className="grid h-14 w-14 flex-shrink-0 place-items-center overflow-hidden rounded-xl bg-white p-1.5 font-display text-lg font-bold text-brand-600 ring-1 ring-neutral-border dark:ring-slate-700 shadow-xs">
+    <div className="flex items-center gap-4 rounded-2xl bg-white p-4 sm:p-5 shadow-sm border border-white/80 transition hover:shadow-md">
+      <div className="grid h-16 w-16 flex-shrink-0 place-items-center overflow-hidden rounded-xl bg-slate-50 p-2 ring-1 ring-neutral-200/70 shadow-xs">
         {showLogo ? (
           <img
             src={partner.logo}
             alt={`${partner.name} logo`}
             loading="lazy"
-            className="h-12 w-12 object-contain"
+            className="h-full w-full object-contain"
             onError={() => setLogoFailed(true)}
           />
         ) : (
-          <span className="bg-brand-50 dark:bg-slate-800 grid h-full w-full place-items-center">
+          <span className="bg-brand-50 text-brand-600 font-display text-base font-bold grid h-full w-full place-items-center">
             {initials(partner.name)}
           </span>
         )}
       </div>
-      <div className="min-w-0">
-        <p className="font-display text-base font-semibold text-neutral-heading dark:text-slate-100">
+      <div className="min-w-0 flex-1">
+        <p className="font-display text-base font-bold text-neutral-heading leading-snug">
           {partner.name}
         </p>
-        <p className="mt-1 text-sm text-neutral-body dark:text-slate-300">{description}</p>
       </div>
-    </a>
+    </div>
   );
 }
 
@@ -200,33 +192,36 @@ export default function Partners() {
         </div>
       </Section>
 
-      {/* CURRENT PARTNERS (Pattern B: Soft Contrast) */}
-      <Section pattern="soft">
-        <div className="flex flex-wrap items-end justify-between gap-4">
+      {/* CURRENT PARTNERS (Brand Blue Palette) */}
+      <section className="bg-brand-600 dark:bg-brand-700 py-16 sm:py-20 text-white transition-colors border-t border-brand-500/50">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div>
-            <h2 className="font-display text-3xl font-bold text-neutral-heading dark:text-slate-50 sm:text-4xl">
+            <h2 className="font-display text-3xl font-bold !text-white sm:text-4xl">
               {t("partners.currentPartners")}
             </h2>
-            <p className="mt-2 text-neutral-body dark:text-slate-300">
+            <p className="mt-2 text-white/90">
               {t("partners.currentPartnersSubtitle")}
             </p>
           </div>
-        </div>
 
-        {(() => {
-          const displayedPartners =
-            sanityPartners.length > 0
-              ? sanityPartners.map(mapSanityPartnerToDisplayPartner)
-              : partners;
-          return (
-            <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {displayedPartners.map((p) => (
-                <PartnerCard key={p.key || p.name} partner={p as Partner} />
-              ))}
-            </div>
-          );
-        })()}
-      </Section>
+          {(() => {
+            const rawPartners =
+              sanityPartners.length > 0
+                ? sanityPartners.map(mapSanityPartnerToDisplayPartner)
+                : partners;
+            const displayedPartners = rawPartners.filter(
+              (p) => !p.name.toLowerCase().includes("tawingo") && p.key !== "tawingo"
+            );
+            return (
+              <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                {displayedPartners.map((p) => (
+                  <PartnerCard key={p.key || p.name} partner={p as Partner} />
+                ))}
+              </div>
+            );
+          })()}
+        </div>
+      </section>
 
       {/* TIERS (Pattern A: Canvas) */}
       <Section id="become-a-partner" pattern="canvas">
@@ -328,17 +323,22 @@ export default function Partners() {
           })}
         </div>
 
-        <div className="mx-auto mt-12 max-w-3xl rounded-xl border border-neutral-border dark:border-slate-700 bg-brand-50/50 dark:bg-slate-800/50 p-10 text-center shadow-sm">
-          <h2 className="font-display text-2xl font-bold text-neutral-heading dark:text-slate-50 sm:text-3xl">
+        <div className="mx-auto mt-14 max-w-3xl rounded-2xl border border-brand-500/40 bg-brand-600 dark:bg-brand-700 p-8 sm:p-12 text-center text-white shadow-xl">
+          <h2 className="font-display text-2xl font-bold !text-white sm:text-3xl">
             {t("partners.readyToTalk")}
           </h2>
-          <p className="mt-3 text-neutral-body dark:text-slate-300">{t("partners.readyToTalkBody")}</p>
-          <a
-            href={`mailto:${SITE.email}?subject=Partnership%20enquiry`}
-            className="mt-6 inline-block rounded-lg bg-brand-600 dark:bg-brand-500 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-700 dark:hover:bg-brand-400 transition"
-          >
-            {t("partners.emailUs", { email: SITE.email })}
-          </a>
+          <p className="mt-3 text-sm sm:text-base text-white/90 max-w-xl mx-auto">
+            {t("partners.readyToTalkBody")}
+          </p>
+          <div className="mt-6">
+            <a
+              href={`mailto:${SITE.email}?subject=Partnership%20enquiry`}
+              className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-bold text-brand-600 shadow-md transition hover:bg-brand-50 hover:shadow-lg"
+            >
+              <span>{t("partners.emailUs", { email: SITE.email })}</span>
+              <span>&rarr;</span>
+            </a>
+          </div>
         </div>
       </Section>
     </div>

@@ -30,7 +30,7 @@ const faqs = [
   {
     key: "donate",
     q: "How do I donate?",
-    a: "Use the Donate button anywhere on the site — it links to our verified GlobalGiving page. For larger gifts or corporate matching, email info@generationaid.org and we'll arrange a direct transfer or invoice.",
+    a: "Use the Donate button anywhere on the site; it links to our verified GlobalGiving page. For larger gifts or corporate matching, email info@generationaid.org and we'll arrange a direct transfer or invoice.",
   },
   {
     key: "volunteer",
@@ -40,12 +40,12 @@ const faqs = [
   {
     key: "spend",
     q: "How are donations spent?",
-    a: "Roughly 78% of every donation funds direct programme delivery (training, stipends, equipment, internet). 14% covers Hub operations, and 8% covers organisational overhead. Full breakdown in our annual report — request a copy via email.",
+    a: "Roughly 78% of every donation funds direct programme delivery (training, stipends, equipment, internet). 14% covers Hub operations, and 8% covers organisational overhead. Full breakdown in our annual report, available upon request via email.",
   },
   {
     key: "registered",
     q: "Are you a registered organisation?",
-    a: "Yes. Generation Aid is a registered refugee-led organisation operating in the Kakuma camp under host-country regulations, with international fiscal sponsorship for donations.",
+    a: "Yes. Generation Aid is a registered refugee led organisation operating in the Kakuma camp under host country regulations, with international fiscal sponsorship for donations.",
   },
 ];
 
@@ -62,7 +62,7 @@ export default function Contact() {
   useSEO({
     title: "Contact",
     description:
-      "Get in touch with Generation Aid — talent requests, partnerships, donations, volunteering, or media enquiries.",
+      "Get in touch with Generation Aid for talent requests, partnerships, donations, volunteering, or media enquiries.",
   });
 
   const initialSubject = searchParams.get("subject") || "General enquiry";
@@ -381,7 +381,7 @@ export default function Contact() {
                       <button
                         type="submit"
                         disabled={status === "sending"}
-                        className="rounded-lg bg-brand-600 dark:bg-brand-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-700 dark:hover:bg-brand-400 disabled:opacity-60 transition"
+                        className="rounded-xl bg-brand-600 dark:bg-brand-500 px-8 py-3.5 min-h-[48px] text-sm sm:text-base font-bold text-white shadow-sm hover:bg-brand-700 dark:hover:bg-brand-400 disabled:opacity-60 transition"
                       >
                         {status === "sending"
                           ? t("common.sending")
@@ -396,7 +396,7 @@ export default function Contact() {
 
           {/* DETAILS */}
           <aside className="space-y-6">
-            <div className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm">
+            <div className="rounded-xl border border-brand-200/80 dark:border-brand-900/60 bg-white dark:bg-slate-800 p-6 shadow-sm">
               <h3 className="font-display text-base font-semibold text-neutral-heading dark:text-slate-50">
                 {t("contact.office")}
               </h3>
@@ -405,7 +405,7 @@ export default function Contact() {
               </p>
             </div>
 
-            <div className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm">
+            <div className="rounded-xl border border-brand-200/80 dark:border-brand-900/60 bg-white dark:bg-slate-800 p-6 shadow-sm">
               <h3 className="font-display text-base font-semibold text-neutral-heading dark:text-slate-50">
                 {t("contact.officeHours")}
               </h3>
@@ -413,7 +413,7 @@ export default function Contact() {
                 {officeHours.map((h) => (
                   <li
                     key={h.key}
-                    className="flex items-baseline justify-between gap-3 border-b border-neutral-border dark:border-slate-700 pb-2 last:border-0 last:pb-0"
+                    className="flex items-baseline justify-between gap-3 border-b border-brand-200 dark:border-brand-800/80 pb-2.5 last:border-0 last:pb-0"
                   >
                     <span className="text-neutral-heading dark:text-slate-200 font-medium">
                       {t(`contact.hours.${h.key}.days`, h.days)}
@@ -429,7 +429,7 @@ export default function Contact() {
               </p>
             </div>
 
-            <div className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm">
+            <div className="rounded-xl border border-brand-200/80 dark:border-brand-900/60 bg-white dark:bg-slate-800 p-6 shadow-sm">
               <h3 className="font-display text-base font-semibold text-neutral-heading dark:text-slate-50">
                 {t("contact.phone")}
               </h3>
@@ -459,7 +459,7 @@ export default function Contact() {
               </ul>
             </div>
 
-            <div className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm">
+            <div className="rounded-xl border border-brand-200/80 dark:border-brand-900/60 bg-white dark:bg-slate-800 p-6 shadow-sm">
               <h3 className="font-display text-base font-semibold text-neutral-heading dark:text-slate-50">
                 {t("contact.emailHeading")}
               </h3>
@@ -474,26 +474,26 @@ export default function Contact() {
         </div>
       </Section>
 
-      {/* FAQ (Pattern B: Soft Contrast) */}
-      <Section pattern="soft">
-        <div className="mx-auto max-w-3xl">
+      {/* FAQ (Brand Blue Palette) */}
+      <section className="bg-brand-600 dark:bg-brand-700 py-16 sm:py-20 text-white transition-colors border-t border-brand-500/50">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <span className="inline-block rounded-full bg-white dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
+            <span className="inline-block rounded-full bg-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white backdrop-blur mb-2 border border-white/25">
               {t("contact.faq")}
             </span>
-            <h2 className="mt-3 font-display text-3xl font-bold text-neutral-heading dark:text-slate-50 sm:text-4xl">
+            <h2 className="mt-2 font-display text-3xl font-bold !text-white sm:text-4xl">
               {t("contact.faqTitle")}
             </h2>
           </div>
 
-          <div className="mt-8 divide-y divide-neutral-border dark:divide-slate-700 rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
+          <div className="mt-10 divide-y divide-white/15 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md shadow-sm">
             {faqs.map((f) => (
-              <details key={f.key} className="group p-5">
+              <details key={f.key} className="group p-5 sm:p-6">
                 <summary className="flex cursor-pointer items-center justify-between gap-4 list-none">
-                  <h3 className="font-display text-base font-semibold text-neutral-heading dark:text-slate-100">
+                  <h3 className="font-display text-base font-semibold !text-white group-hover:text-brand-100 transition">
                     {t(`contact.faqs.${f.key}.q`, f.q)}
                   </h3>
-                  <span className="grid h-7 w-7 flex-shrink-0 place-items-center rounded-full bg-brand-50 dark:bg-slate-700 text-brand-600 dark:text-brand-400 transition group-open:rotate-45">
+                  <span className="grid h-7 w-7 flex-shrink-0 place-items-center rounded-full bg-white/15 text-white group-hover:bg-white/25 transition group-open:rotate-45">
                     <svg
                       viewBox="0 0 24 24"
                       width="16"
@@ -507,14 +507,14 @@ export default function Contact() {
                     </svg>
                   </span>
                 </summary>
-                <p className="mt-3 text-sm text-neutral-body dark:text-slate-300 leading-relaxed">
+                <p className="mt-3 text-sm text-white/90 leading-relaxed">
                   {t(`contact.faqs.${f.key}.a`, f.a)}
                 </p>
               </details>
             ))}
           </div>
         </div>
-      </Section>
+      </section>
     </div>
   );
 }

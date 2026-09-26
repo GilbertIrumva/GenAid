@@ -26,3 +26,9 @@ Thumbs.db
 .vscode/*
 !.vscode/extensions.json
 .idea/
+
+# Archives & Temporary Scripts
+*.zip
+dash_report.json
+scan_dashes.js
+summarize_dashes.js

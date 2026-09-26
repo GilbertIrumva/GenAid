@@ -94,8 +94,8 @@ export default function JobsTalent() {
           <div className="space-y-4 sm:space-y-6">
             <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-md aspect-[4/3] group">
               <SmartImage
-                src="/remote employee.webp"
-                alt="Generation Jobs remote digital professional at workstation"
+                src="/gen jobs/IMG-20260529-WA0065.jpg"
+                alt="Generation Jobs remote digital professional at workstation in Kakuma"
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </div>
@@ -164,9 +164,10 @@ export default function JobsTalent() {
             </h2>
             <div className="sir-callout-border !my-3">
               <p className="max-w-2xl text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-300 font-medium">
-                Founded in Kakuma by refugee leader Hubert Senga, Generation Aid
-                and Generation Jobs combine local trust, authentic leadership, and
-                global execution standards.
+                Generation Jobs, founded by Hubert Senga under Generation Aid, is Generation Aid’s employment and sustainability arm connecting skilled refugees and host-community professionals to global work while generating revenue to strengthen the organization’s long-term sustainability.
+              </p>
+              <p className="max-w-2xl text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-300 font-medium mt-2">
+                Generation Aid and Generation Jobs combine local trust, authentic leadership, and global execution standards.
               </p>
             </div>
             <div className="mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4">
@@ -190,8 +191,35 @@ export default function JobsTalent() {
           <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-md aspect-[4/3] relative group">
             <SmartImage
               src={jobsContent?.leadershipImage || "/Hubert Senga.jpg"}
-              alt="Hubert Senga — Founder and Refugee Leader"
+              alt="Hubert Senga, Founder and Refugee Leader"
               className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          </div>
+        </div>
+      </Section>
+
+      {/* FEATURED TESTIMONIAL VIDEO (MICHELLE LEE) */}
+      <Section pattern="canvas">
+        <div className="mx-auto max-w-4xl">
+          <div className="text-center mb-8">
+            <span className="sir-tag">
+              Partner &amp; Client Testimonial
+            </span>
+            <h2 className="mt-3 font-serif text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">
+              Listen to the inspiring reflection shared by Michelle Lee
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+              Hear firsthand feedback on the talent caliber, dedication, and transformative global collaboration delivered by Generation Jobs.
+            </p>
+          </div>
+
+          <div className="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-950 shadow-xl aspect-video w-full">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/VRoXjJpB854?rel=0&modestbranding=1"
+              title="Testimonial: Inspiring reflection shared by Michelle Lee"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="h-full w-full border-0"
             />
           </div>
         </div>

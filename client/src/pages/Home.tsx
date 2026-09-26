@@ -9,7 +9,7 @@ import SmartImage from "@/components/SmartImage";
 import { posts } from "@/data/posts";
 import { videos as fallbackVideos } from "@/data/videos";
 import { causes } from "@/data/causes";
-import { team } from "@/data/team";
+import { team, advisors } from "@/data/team";
 import { testimonials } from "@/data/testimonials";
 import { SITE } from "@/data/site";
 import { defaultPrograms } from "@/data/programsData";
@@ -75,81 +75,37 @@ function MemberCard({ member }: { member: DisplayTeamMember }) {
 }
 
 function TeamSlider({ members }: { members: DisplayTeamMember[] }) {
-  const [activeIndex, setActiveIndex] = useState(0);
+  if (!members || members.length === 0) return null;
 
-  useEffect(() => {
-    if (members.length <= 1) return undefined;
-    const interval = window.setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % members.length);
-    }, 3500);
-    return () => window.clearInterval(interval);
-  }, [members.length]);
-
-  const prevSlide = () => {
-    setActiveIndex((prev) => (prev === 0 ? members.length - 1 : prev - 1));
-  };
-
-  const nextSlide = () => {
-    setActiveIndex((prev) => (prev + 1) % members.length);
-  };
-
-  const cardWidth = 336; // 312px card + 24px gap
-  const trackOffset = activeIndex * cardWidth;
+  const duplicated = [...members, ...members, ...members];
 
   return (
-    <div className="relative mx-auto mt-12 max-w-7xl px-4 sm:px-6">
+    <div className="relative mx-auto mt-12 max-w-7xl px-4 sm:px-6 overflow-hidden">
+      {/* Soft gradient edge masks for cinematic video-like flow */}
+      <div className="pointer-events-none absolute left-0 top-0 bottom-0 z-10 w-12 sm:w-20 bg-gradient-to-r from-white dark:from-slate-900 to-transparent" />
+      <div className="pointer-events-none absolute right-0 top-0 bottom-0 z-10 w-12 sm:w-20 bg-gradient-to-l from-white dark:from-slate-900 to-transparent" />
+
       <div className="overflow-hidden py-4">
-        <div
-          className="flex gap-6 transition-transform duration-700 ease-in-out"
-          style={{ transform: `translateX(-${trackOffset}px)` }}
+        <motion.div
+          className="flex gap-6 w-max"
+          animate={{
+            x: ["0%", "-33.333333%"],
+          }}
+          transition={{
+            x: {
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: Math.max(members.length * 6, 25),
+              ease: "linear",
+            },
+          }}
         >
-          {members.map((member) => (
-            <div key={member.key} className="w-[312px] shrink-0">
+          {duplicated.map((member, idx) => (
+            <div key={`${member.key}-${idx}`} className="w-[312px] shrink-0">
               <MemberCard member={member} />
             </div>
           ))}
-        </div>
-      </div>
-
-      {/* Slider Controls & Indicators */}
-      <div className="mt-8 flex items-center justify-center gap-4">
-        <button
-          type="button"
-          onClick={prevSlide}
-          aria-label="Previous slide"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white dark:bg-slate-800 border border-brand-200 dark:border-slate-700 text-brand-700 dark:text-brand-300 shadow-sm hover:bg-brand-50 dark:hover:bg-slate-700 transition-all hover:scale-105 active:scale-95"
-        >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
-
-        <div className="flex gap-2">
-          {members.map((_, idx) => (
-            <button
-              key={idx}
-              type="button"
-              onClick={() => setActiveIndex(idx)}
-              aria-label={`Go to slide ${idx + 1}`}
-              className={`h-2.5 rounded-full transition-all duration-300 ${
-                activeIndex === idx
-                  ? "w-8 bg-brand-600 dark:bg-brand-400"
-                  : "w-2.5 bg-brand-200 dark:bg-slate-700 hover:bg-brand-400"
-              }`}
-            />
-          ))}
-        </div>
-
-        <button
-          type="button"
-          onClick={nextSlide}
-          aria-label="Next slide"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white dark:bg-slate-800 border border-brand-200 dark:border-slate-700 text-brand-700 dark:text-brand-300 shadow-sm hover:bg-brand-50 dark:hover:bg-slate-700 transition-all hover:scale-105 active:scale-95"
-        >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
+        </motion.div>
       </div>
     </div>
   );
@@ -231,10 +187,33 @@ async function submitContact(payload: {
   return { ok: true, message: "Thank you for reaching out!", payload };
 }
 
+const homeHeroSlides = [
+  {
+    src: "/img/home/Main image.jpg",
+    alt: "Refugee youth and community in Kakuma with Generation Aid",
+  },
+  {
+    src: "/img/home/1.jpg",
+    alt: "Digital skills training and education program",
+  },
+  {
+    src: "/img/home/2.jpg",
+    alt: "Empowerment, entrepreneurship and community sessions",
+  },
+  {
+    src: "/img/home/3.jpg",
+    alt: "Hands-on tech learning and innovation cohorts",
+  },
+  {
+    src: "/img/home/4.jpg",
+    alt: "Youth collaboration and leadership in Kakuma",
+  },
+];
+
 export default function Home() {
   const { t } = useTranslation();
   useSEO({
-    title: "Generation Aid — Refugee-led innovation in Kakuma",
+    title: "Generation Aid: Refugee-Led Innovation in Kakuma",
     description:
       "Generation Aid equips youth in Kakuma refugee camp with digital skills, entrepreneurship training and pathways to employment.",
   });
@@ -279,6 +258,15 @@ export default function Home() {
   >("idle");
   const [contactError, setContactError] = useState<string | null>(null);
 
+  const [heroSlideIndex, setHeroSlideIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setHeroSlideIndex((prev) => (prev + 1) % homeHeroSlides.length);
+    }, 5500);
+    return () => clearInterval(timer);
+  }, []);
+
   async function handleContactSubmit(e: React.FormEvent) {
     e.preventDefault();
     setContactState("sending");
@@ -301,34 +289,43 @@ export default function Home() {
 
   return (
     <div className="bg-white dark:bg-slate-900 transition-colors">
-      {/* ============ HERO SECTION (SIR AFRICA STYLE HERO BANNER) ============ */}
-      <section id="home" className="relative w-full overflow-hidden min-h-[360px] sm:min-h-[400px] lg:min-h-[440px] flex items-center bg-[#172554] gatsby-hero-bg">
-        {/* Edge-to-Edge Full Width Image Background with Soft Parallax */}
-        <motion.div
-          animate={{
-            scale: [1, 1.06, 1.02, 1],
-            rotate: [0, 1, -1, 0],
-            x: [0, -15, 15, 0],
-          }}
-          transition={{
-            duration: 22,
-            ease: "easeInOut",
-            repeat: Infinity,
-            repeatType: "mirror",
-          }}
-          className="absolute -inset-6 h-[calc(100%+3rem)] w-[calc(100%+3rem)] pointer-events-none"
-        >
-          <SmartImage
-            src="/home.jpg"
-            alt="Refugee youth in a Generation Aid training session in Kakuma"
-            fallbackLabel=""
-            className="h-full w-full object-cover contrast-[1.15] brightness-[0.88] saturate-[1.1]"
-          />
-        </motion.div>
+      {/* ============ HERO SECTION (CINEMATIC MOTION VIDEO-LIKE HERO) ============ */}
+      <section id="home" className="relative w-full overflow-hidden min-h-[380px] sm:min-h-[440px] lg:min-h-[480px] flex items-center bg-[#172554] gatsby-hero-bg">
+        {/* Full Width Cinematic Sliding Video-Like Reel */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {homeHeroSlides.map((slide, index) => {
+            const isActive = index === heroSlideIndex;
+            return (
+              <motion.div
+                key={slide.src}
+                initial={false}
+                animate={{
+                  opacity: isActive ? 1 : 0,
+                  scale: isActive ? [1, 1.08] : 1,
+                  x: isActive ? [0, index % 2 === 0 ? -12 : 12] : 0,
+                }}
+                transition={{
+                  opacity: { duration: 1.8, ease: "easeInOut" },
+                  scale: { duration: 6.5, ease: "linear" },
+                  x: { duration: 6.5, ease: "linear" },
+                }}
+                className={`absolute -inset-4 h-[calc(100%+2rem)] w-[calc(100%+2rem)] ${
+                  isActive ? "z-[1]" : "z-0"
+                }`}
+              >
+                <SmartImage
+                  src={slide.src}
+                  alt={slide.alt}
+                  fallbackLabel=""
+                  className="h-full w-full object-cover contrast-[1.15] brightness-[0.88] saturate-[1.1]"
+                />
+              </motion.div>
+            );
+          })}
+        </div>
 
-        {/* Deep Royal Blue Gradient Overlay (No Black) */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#172554]/95 via-[#172554]/85 to-[#172554]/60 pointer-events-none" />
-
+        {/* Deep Royal Blue Gradient Overlay */}
+        <div className="absolute inset-0 z-[2] bg-gradient-to-r from-[#172554]/95 via-[#172554]/85 to-[#172554]/55 pointer-events-none" />
 
         {/* Hero Content Box */}
         <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
@@ -658,60 +655,83 @@ export default function Home() {
         <TeamSlider members={teamMembers} />
       </Section>
 
-      {/* ============ STORIES / BLOG SECTION ============ */}
-      <Section id="stories" pattern="soft">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <div className="max-w-3xl">
-            <span className="sir-tag">
-              {t("home.stories.eyebrow")}
-            </span>
-            <h2 className="mt-3 text-3xl font-extrabold text-slate-900 dark:text-slate-50 sm:text-4xl lg:text-5xl font-serif">
-              {t("home.stories.title")}
-            </h2>
-            <p className="mt-2 text-base font-medium text-slate-800 dark:text-slate-200">{t("home.stories.subtitle")}</p>
-            <p className="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-              Our blog shares project updates, inspiring stories, partnership announcements, and lessons from the field as we work toward creating sustainable opportunities for refugees and marginalized communities.
-            </p>
-          </div>
-          <Link
-            to="/blog"
-            className="sir-link-underline text-xs uppercase tracking-wider font-extrabold"
-          >
-            <span>{t("home.stories.allArticles")}</span>
-            <span>→</span>
-          </Link>
+      {/* ============ BOARD OF DIRECTORS SECTION ============ */}
+      <Section id="board" pattern="soft" className="border-t border-neutral-border dark:border-slate-800">
+        <div className="mx-auto max-w-3xl text-center">
+          <span className="sir-tag">
+            Governance & Guidance
+          </span>
+          <h2 className="mt-3 text-3xl font-extrabold text-slate-900 dark:text-slate-50 sm:text-4xl lg:text-5xl font-serif">
+            Board of Directors
+          </h2>
+          <p className="mt-3 text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+            Experienced leaders and governance experts guiding Generation Aid’s strategic direction, institutional integrity, and sustainable global impact.
+          </p>
         </div>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {recentPosts.map((p) => (
-            <article
-              key={p.slug}
-              className="sir-card-accent p-6 flex flex-col justify-between"
-            >
-              <div>
-                <time className="text-[11px] font-extrabold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-                  {p.date}
-                </time>
-                <h3 className="mt-3 font-serif text-lg font-extrabold text-slate-900 dark:text-slate-100">
-                  <Link to={`/blog/${p.slug}`} className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">
-                    {p.title}
-                  </Link>
-                </h3>
-                <p className="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{p.excerpt}</p>
-              </div>
-              <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
-                <Link
-                  to={`/blog/${p.slug}`}
-                  className="sir-link-underline text-xs uppercase tracking-wider font-extrabold"
-                >
-                  <span>{t("common.readMoreArrow")}</span>
-                  <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
-                </Link>
-              </div>
-            </article>
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto px-4 sm:px-6">
+          {advisors.map((advisor) => (
+            <MemberCard key={advisor.key} member={advisor} />
           ))}
         </div>
       </Section>
+
+      {/* ============ STORIES / BLOG SECTION (Brand Blue Palette) ============ */}
+      <section id="stories" className="bg-brand-600 dark:bg-brand-700 py-16 sm:py-20 text-white transition-colors border-t border-brand-500/50">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div className="max-w-3xl">
+              <span className="inline-block rounded-full bg-white/20 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-white backdrop-blur mb-2 border border-white/25">
+                {t("home.stories.eyebrow")}
+              </span>
+              <h2 className="mt-2 text-3xl font-extrabold !text-white sm:text-4xl lg:text-5xl font-serif">
+                {t("home.stories.title")}
+              </h2>
+              <p className="mt-2 text-base font-semibold text-white/95">{t("home.stories.subtitle")}</p>
+              <p className="mt-2 text-sm text-white/90 leading-relaxed">
+                Our blog shares project updates, inspiring stories, partnership announcements, and lessons from the field as we work toward creating sustainable opportunities for refugees and marginalized communities.
+              </p>
+            </div>
+            <Link
+              to="/blog"
+              className="inline-flex items-center gap-1.5 rounded-xl bg-white px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-brand-600 shadow-sm transition hover:bg-brand-50 hover:shadow-md"
+            >
+              <span>{t("home.stories.allArticles")}</span>
+              <span>→</span>
+            </Link>
+          </div>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {recentPosts.map((p) => (
+              <article
+                key={p.slug}
+                className="flex flex-col justify-between rounded-2xl bg-white p-6 sm:p-7 shadow-md border border-white/80 transition hover:shadow-xl hover:-translate-y-0.5 group"
+              >
+                <div>
+                  <time className="text-[11px] font-extrabold uppercase tracking-wider text-brand-600">
+                    {p.date}
+                  </time>
+                  <h3 className="mt-3 font-serif text-lg font-bold text-neutral-heading group-hover:text-brand-600 transition-colors">
+                    <Link to={`/blog/${p.slug}`}>
+                      {p.title}
+                    </Link>
+                  </h3>
+                  <p className="mt-2 text-sm text-neutral-body leading-relaxed line-clamp-3">{p.excerpt}</p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-neutral-100">
+                  <Link
+                    to={`/blog/${p.slug}`}
+                    className="inline-flex items-center gap-1 text-xs uppercase tracking-wider font-extrabold text-brand-600 group-hover:text-brand-700 transition"
+                  >
+                    <span>{t("common.readMoreArrow")}</span>
+                    <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ============ TESTIMONIALS SECTION ============ */}
       <Section id="testimonials" pattern="canvas">
@@ -790,29 +810,48 @@ export default function Home() {
           <p className="mt-3 text-slate-600 dark:text-slate-300">{t("home.videos.subtitle")}</p>
         </div>
 
-        <div className="mt-10 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {fallbackVideos.map((v) => (
             <article
               key={v.title}
               className="sir-card"
             >
               <div className="relative aspect-video w-full overflow-hidden bg-slate-900">
-                <div className="absolute inset-0 grid place-items-center bg-brand-900/40 text-white">
-                  <div className="text-center">
-                    <svg
-                      width="56"
-                      height="56"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      className="mx-auto text-brand-400"
-                    >
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                    <p className="mt-2 text-xs font-extrabold uppercase tracking-wider text-white">
-                      {t("common.comingSoon")}
-                    </p>
+                {v.youtubeId ? (
+                  <iframe
+                    src={`https://www.youtube-nocookie.com/embed/${v.youtubeId}`}
+                    title={v.title}
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    className="absolute inset-0 h-full w-full"
+                  />
+                ) : v.videoUrl ? (
+                  <video
+                    src={v.videoUrl}
+                    poster={v.poster}
+                    controls
+                    preload="metadata"
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                ) : (
+                  <div className="absolute inset-0 grid place-items-center bg-brand-900/40 text-white">
+                    <div className="text-center">
+                      <svg
+                        width="56"
+                        height="56"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        className="mx-auto text-brand-400"
+                      >
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                      <p className="mt-2 text-xs font-extrabold uppercase tracking-wider text-white">
+                        {t("common.comingSoon")}
+                      </p>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
               <div className="p-6">
                 <h3 className="font-serif text-lg font-extrabold text-slate-900 dark:text-slate-100">
@@ -920,22 +959,19 @@ export default function Home() {
       <Section id="contact" pattern="canvas">
         <div className="grid gap-12 lg:grid-cols-2">
           <div>
-            <span className="sir-tag">
-              {t("home.contact.eyebrow")}
-            </span>
-            <h2 className="mt-3 text-3xl font-extrabold text-slate-900 dark:text-slate-50 sm:text-4xl lg:text-5xl font-serif">
-              {t("home.contact.title")}
+            <h2 className="text-3xl font-extrabold text-slate-900 dark:text-slate-50 sm:text-4xl lg:text-5xl font-serif">
+              Let's Connect
             </h2>
             <p className="mt-4 text-slate-600 dark:text-slate-300">{t("home.contact.subtitle")}</p>
 
             <ul className="mt-8 space-y-4 text-sm text-slate-700 dark:text-slate-300">
-              <li className="flex items-start gap-3">
+              <li className="flex items-start gap-3 border-b border-brand-200 dark:border-brand-800/80 pb-3">
                 <span className="font-extrabold text-slate-900 dark:text-slate-200 min-w-[90px]">
                   {t("home.contact.locationLabel")}
                 </span>
                 <span>{t("home.contact.locationValue")}</span>
               </li>
-              <li className="flex items-center gap-3">
+              <li className="flex items-center gap-3 border-b border-brand-200 dark:border-brand-800/80 pb-3">
                 <span className="font-extrabold text-slate-900 dark:text-slate-200 min-w-[90px]">
                   {t("home.contact.emailLabel")}
                 </span>
@@ -1011,7 +1047,7 @@ export default function Home() {
             <button
               type="submit"
               disabled={contactState === "sending"}
-              className="sir-btn-primary w-1/2 py-2 px-4 text-xs font-extrabold uppercase tracking-wider disabled:opacity-60"
+              className="sir-btn-primary w-full sm:w-auto py-3.5 px-8 min-h-[50px] text-sm font-extrabold uppercase tracking-wider disabled:opacity-60"
             >
               <span>
                 {contactState === "sending"

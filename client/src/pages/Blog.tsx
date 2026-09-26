@@ -120,35 +120,65 @@ export default function Blog() {
         <div className="grid gap-10 lg:grid-cols-[2fr_1fr]">
           {/* Posts list */}
           <div className="space-y-8">
-            {posts.map((p) => (
+            {posts.map((p, idx) => (
               <article
                 key={p.slug}
-                className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md sm:p-8"
+                className="overflow-hidden rounded-2xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
               >
-                <div className="flex flex-wrap items-center gap-3 text-xs text-neutral-body dark:text-slate-400">
-                  <time className="font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-                    {p.date}
-                  </time>
-                  <span>&middot;</span>
-                  <span>{t("blog.byAuthor", { author: p.author })}</span>
+                {p.cover && (
+                  <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-900 group">
+                    <SmartImage
+                      src={p.cover}
+                      alt={p.title}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                    {idx === 0 && (
+                      <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+                        <span className="inline-flex items-center gap-1 rounded-full bg-brand-600 px-3 py-1 text-xs font-semibold text-white shadow">
+                          ★ Featured Analysis
+                        </span>
+                        <span className="inline-flex items-center rounded-full bg-red-600/90 px-2.5 py-1 text-xs font-medium text-white shadow">
+                          PBS News Feature
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                )}
+                <div className="p-6 sm:p-8">
+                  <div className="flex flex-wrap items-center gap-3 text-xs text-neutral-body dark:text-slate-400">
+                    <time className="font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+                      {p.date}
+                    </time>
+                    <span>&middot;</span>
+                    <span>{t("blog.byAuthor", { author: p.author })}</span>
+                  </div>
+                  <h2 className="mt-3 font-display text-xl font-semibold text-neutral-heading dark:text-slate-100 sm:text-2xl">
+                    <Link
+                      to={`/blog/${p.slug}`}
+                      className="hover:text-brand-600 dark:hover:text-brand-400 transition"
+                    >
+                      {p.title}
+                    </Link>
+                  </h2>
+                  <p className="mt-3 text-sm leading-relaxed text-neutral-body dark:text-slate-300 sm:text-base">
+                    {p.excerpt}
+                  </p>
+                  <div className="mt-5 flex items-center justify-between">
+                    <Link
+                      to={`/blog/${p.slug}`}
+                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 hover:underline underline-offset-4"
+                    >
+                      <span>{t("common.readMoreArrow")}</span>
+                      <span aria-hidden="true">&rarr;</span>
+                    </Link>
+                    {idx === 0 && (
+                      <span className="text-xs text-neutral-muted dark:text-slate-400 font-medium">
+                        5 min read
+                      </span>
+                    )}
+                  </div>
                 </div>
-                <h2 className="mt-3 font-display text-xl font-semibold text-neutral-heading dark:text-slate-100 sm:text-2xl">
-                  <Link
-                    to={`/blog/${p.slug}`}
-                    className="hover:text-brand-600 dark:hover:text-brand-400"
-                  >
-                    {p.title}
-                  </Link>
-                </h2>
-                <p className="mt-3 text-sm leading-relaxed text-neutral-body dark:text-slate-300 sm:text-base">
-                  {p.excerpt}
-                </p>
-                <Link
-                  to={`/blog/${p.slug}`}
-                  className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 hover:underline underline-offset-4"
-                >
-                  {t("common.readMoreArrow")}
-                </Link>
               </article>
             ))}
           </div>
@@ -262,7 +292,7 @@ export default function Blog() {
           <p className="mt-3 text-neutral-body dark:text-slate-300">{t("blog.videosSubtitle")}</p>
         </div>
 
-        <div className="mt-10 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {apiVideos.length > 0
             ? apiVideos.map((v) => (
               <article
@@ -307,6 +337,14 @@ export default function Blog() {
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                       allowFullScreen
                       className="absolute inset-0 h-full w-full"
+                    />
+                  ) : v.videoUrl ? (
+                    <video
+                      src={v.videoUrl}
+                      poster={v.poster}
+                      controls
+                      preload="metadata"
+                      className="absolute inset-0 h-full w-full object-cover"
                     />
                   ) : (
                     <div className="absolute inset-0 grid place-items-center bg-brand-600/30 text-white">

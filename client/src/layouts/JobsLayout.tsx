@@ -40,9 +40,9 @@ export default function JobsLayout() {
             onClick={() => setOpen(false)}
           >
             <img
-              src="/logo.jpg"
+              src="/gen jobs/Generation job's logo.png"
               alt="Generation Jobs logo"
-              className="h-8 w-8 sm:h-10 sm:w-10 shrink-0 rounded-xl border border-brand-200 dark:border-slate-700 object-cover shadow-xs group-hover:scale-105 transition-transform"
+              className="h-8 w-auto sm:h-10 shrink-0 object-contain group-hover:scale-105 transition-transform"
             />
             <div className="min-w-0">
               <p className="text-[10px] sm:text-xs font-extrabold uppercase tracking-[0.16em] sm:tracking-[0.25em] text-brand-600 dark:text-brand-400 leading-tight truncate">

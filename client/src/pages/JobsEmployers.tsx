@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Section from "@/components/Section";
 import JobsShell from "@/components/JobsShell";
 import SmartImage from "@/components/SmartImage";
+import SatisfiedClients from "@/components/SatisfiedClients";
 import { useSEO } from "@/utils/useSEO";
 
 const valuePillars = [
@@ -11,7 +12,7 @@ const valuePillars = [
   },
   {
     title: "Employer of record support",
-    body: "Generation Jobs handles HR, payroll, compliance, and work-permit administration to reduce legal and operational burden.",
+    body: "Generation Jobs handles HR, payroll, compliance, and work permit administration to reduce legal and operational burden.",
   },
   {
     title: "Rapid onboarding",
@@ -29,12 +30,32 @@ const serviceLines = [
     body: "Lead generation and qualification, CRM and database management, email and LinkedIn outreach.",
   },
   {
+    title: "Google Ads & Meta Ads",
+    body: "Paid advertising campaign setup, audience targeting, budget optimization, copy & creative testing, and multichannel performance tracking across Google and Meta platforms.",
+  },
+  {
+    title: "Customer Support (Email, Chat & CRM)",
+    body: "Multichannel customer service, ticket resolution, live chat assistance, CRM management, and customer satisfaction optimization.",
+  },
+  {
+    title: "Graphic Design",
+    body: "Brand identity assets, marketing collateral, social media creatives, ad banners, presentations, and visual design solutions.",
+  },
+  {
+    title: "Transcripts",
+    body: "Accurate, timely audio and video transcription, speaker identification, timestamping, and formatted transcripts for interviews, media, and corporate meetings.",
+  },
+  {
+    title: "Translation",
+    body: "Professional multi language translation and localization services bridging language barriers with cultural nuance and linguistic precision.",
+  },
+  {
     title: "Social Engagement",
     body: "Content scheduling, community management, and digital brand engagement.",
   },
   {
     title: "Social and SEO",
-    body: "Social media marketing and blog strategy, keyword optimization, and on-page SEO checks.",
+    body: "Social media marketing and blog strategy, keyword optimization, and on page SEO checks.",
   },
   {
     title: "Campaigns",
@@ -45,16 +66,34 @@ const serviceLines = [
     body: "CMS and content updates, speed and performance enhancements, and technical troubleshooting.",
   },
   {
-    title: "E-Commerce",
+    title: "Ecommerce",
     body: "Order management, catalog updates, payment verification, security, and routine backups.",
   },
   {
     title: "Data and AI Services",
-    body: "Data annotation and dataset preparation, AI prompt testing, and human-in-the-loop operations.",
+    body: "Data annotation and dataset preparation, AI prompt testing, and human in the loop operations.",
   },
   {
     title: "Virtual Assistance & Admin",
     body: "Operational focus, key admin tasks, executive scheduling, and strategic workflow value.",
+  },
+];
+
+const amazonAgencyServices = [
+  {
+    title: "Brands/suppliers Acquisition",
+    body: "We identify, attract, and close new business accounts including brands and suppliers. Instead of buying assets, the focus here is on generating high-value leads and converting them into long-term retainers.",
+    tag: "Lead Generation & Deals",
+  },
+  {
+    title: "Total Account Management",
+    body: "We manage your Amazon business end to end: catalog, advertising, operations, and execution. Nothing slips through the cracks and decisions aren't made in silos.",
+    tag: "End-to-End Operations",
+  },
+  {
+    title: "Catalog & Case Management",
+    body: "From listings and variations to suppressions and Seller Support cases, we keep your catalog clean, compliant, and built to support advertising and conversion.",
+    tag: "Listing & Compliance Health",
   },
 ];
 
@@ -124,6 +163,9 @@ export default function JobsEmployers() {
       title="Hiring through Generation Jobs is a strategic decision"
       subtitle="Secure high-performing digital talent while advancing ESG and social-impact mandates through a structured, measurable sourcing model."
     >
+      {/* SERVED CLIENTS SOCIAL PROOF */}
+      <SatisfiedClients showTitle={true} />
+
       {/* VALUE PILLARS (Pattern A: Canvas) */}
       <Section pattern="canvas" className="!pt-4 sm:!pt-6">
         <div className="grid gap-6 sm:gap-8 lg:grid-cols-2 items-center">
@@ -155,8 +197,8 @@ export default function JobsEmployers() {
           <div className="space-y-4 min-w-0 w-full">
             <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-md aspect-[4/3] group">
               <SmartImage
-                src="/Capacity building.png"
-                alt="Capacity building and digital work session in Kakuma"
+                src="/gen jobs/Copy of IMG_20260611_111051_050.jpg"
+                alt="Generation Jobs BPO Delivery Hub and Workstations in Kakuma with UNHCR and Australian Aid partners"
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </div>
@@ -171,27 +213,89 @@ export default function JobsEmployers() {
         </div>
       </Section>
 
-      {/* SERVICE LINES (Pattern B: Soft Contrast) */}
-      <Section pattern="soft">
-        <div className="mx-auto max-w-3xl text-center">
-          <span className="sir-tag">
-            Comprehensive service portfolio
-          </span>
-          <h2 className="mt-3 font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">
-            Built for growth operations, support, and digital delivery
-          </h2>
-        </div>
+      {/* SERVICE LINES (Blue Palette) */}
+      <section className="bg-brand-600 dark:bg-brand-700 py-16 sm:py-20 text-white transition-colors border-t border-brand-500/50">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="inline-block rounded-full bg-white/20 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-white backdrop-blur mb-2 border border-white/25">
+              Comprehensive service portfolio
+            </span>
+            <h2 className="mt-2 font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight !text-white">
+              Built for growth operations, support, and digital delivery
+            </h2>
+          </div>
 
-        <div className="mt-8 sm:mt-10 grid gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {serviceLines.map((line) => (
-            <article
-              key={line.title}
-              className="sir-card p-5 sm:p-6 border-t-4 border-t-brand-600 dark:border-t-brand-500"
+          <div className="mt-8 sm:mt-10 grid gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {serviceLines.map((line) => (
+              <article
+                key={line.title}
+                className="flex flex-col justify-between rounded-2xl bg-white p-6 shadow-md border border-white/80 transition hover:shadow-xl hover:-translate-y-0.5"
+              >
+                <div>
+                  <h3 className="font-serif text-lg sm:text-xl font-extrabold text-neutral-heading">
+                    {line.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-neutral-body">
+                    {line.body}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FULL AMAZON GROWTH AGENCY SUPPORT (Pattern A: Canvas) */}
+      <Section pattern="canvas" id="amazon-growth-agency">
+        <div className="sir-card-accent p-6 sm:p-10 lg:p-12 border-2 border-brand-500/30 dark:border-brand-500/20">
+          <div className="max-w-3xl">
+            <span className="sir-tag">
+              FOR FULL AMAZON GROWTH AGENCY
+            </span>
+            <h2 className="mt-3 font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">
+              Specialized Support for Amazon Growth Agencies
+            </h2>
+            <p className="mt-4 text-base sm:text-lg font-medium text-slate-800 dark:text-slate-200 leading-relaxed">
+              Are you a full channel Amazon Growth Agency founded to help brands scale profitably through advertising, creative optimization, and marketplace strategy?
+            </p>
+            <p className="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+              We got you covered too. We specialize in researching and finding brands/suppliers that agencies like yours would be excited to work with.
+            </p>
+          </div>
+
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
+            {amazonAgencyServices.map((service) => (
+              <div
+                key={service.title}
+                className="sir-card p-6 border-t-4 border-t-brand-600 dark:border-t-brand-500 flex flex-col justify-between"
+              >
+                <div>
+                  <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wider text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-950/60 border border-brand-200 dark:border-brand-800">
+                    {service.tag}
+                  </span>
+                  <h3 className="mt-4 font-serif text-lg font-bold text-slate-900 dark:text-slate-100">
+                    {service.title}
+                  </h3>
+                  <p className="mt-3 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    {service.body}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 pt-6 border-t border-slate-200/80 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="text-sm font-medium text-slate-700 dark:text-slate-300">
+              Need dedicated Amazon operators, account managers, or catalog specialists?
+            </p>
+            <Link
+              to="/contact?subject=Amazon+Growth+Agency+Inquiry"
+              className="sir-btn-primary py-2.5 px-5 text-xs uppercase tracking-wider font-extrabold whitespace-nowrap"
             >
-              <h3 className="font-serif text-lg sm:text-xl font-extrabold text-slate-900 dark:text-slate-100">{line.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{line.body}</p>
-            </article>
-          ))}
+              <span>Partner With Us</span>
+              <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+            </Link>
+          </div>
         </div>
       </Section>
 

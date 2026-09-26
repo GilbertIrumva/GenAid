@@ -62,7 +62,7 @@
       "missionVision": "Mission & vision",
       "team": "Our team",
       "board": "Our board",
-      "partners": "Partners & donors"
+      "partners": "Partners"
     },
     "programsMenu": {
       "all": "All programs",
@@ -144,15 +144,15 @@
     },
     "about": {
       "eyebrow": "About us",
-      "title": "A youth refugee-led organisation",
-      "body1": "Generation Aid is a refugee-led nonprofit organization based in Kakuma Refugee Camp and Kalobeyei Settlement, Kenya, dedicated to transforming lives through education, livelihoods, and innovation. We believe that refugees and vulnerable communities possess extraordinary potential when given access to quality education, digital skills, meaningful employment, and opportunities to thrive.",
+      "title": "A youth refugee led organisation",
+      "body1": "Generation Aid is a refugee led nonprofit organization based in Kakuma Refugee Camp and Kalobeyei Settlement, Kenya, dedicated to transforming lives through education, livelihoods, and innovation. We believe that refugees and vulnerable communities possess extraordinary potential when given access to quality education, digital skills, meaningful employment, and opportunities to thrive.",
       "body2": "Founded by Hubert Senga, a Congolese refugee living in the Kakuma refugee camp, Generation Aid works to bridge the gap between humanitarian assistance and long-term economic empowerment. Through digital skills training, vocational education, language learning, entrepreneurship, and employment pathways, we equip young people and women with the tools they need to build sustainable futures. Beyond training, we connect talented graduates with remote work opportunities, businesses, and global partners, ensuring that skills translate into real livelihoods and lasting impact. At Generation Aid, we don't just support communities we empower them to become leaders, innovators, and contributors to the global economy.",
       "ourVision": "Our Vision",
       "visionTitle": "A future without barriers",
       "visionBody": "A world where refugees and marginalized communities have equal access to education, meaningful employment, and opportunities to reach their full potential.",
       "ourMission": "Our Mission",
       "missionTitle": "Skills that change lives",
-      "missionBody": "To empower refugees and vulnerable communities through education, digital innovation, vocational training, and employment pathways that create sustainable livelihoods and economic independence. We collaborate with local and global partners to develop practical solutions that transform talent into opportunity and dependence into self-reliance.",
+      "missionBody": "To empower refugees and vulnerable communities through education, digital innovation, vocational training, and employment pathways that create sustainable livelihoods and economic independence. We collaborate with local and global partners to develop practical solutions that transform talent into opportunity and dependence into self reliance.",
       "readFullStory": "Read our full story →"
     },
     "programs": {
@@ -188,7 +188,7 @@
         },
         "agrihopeInitiative": {
           "title": "AgriHope Initiative for Resilience and Livelihood",
-          "description": "Addressing chronic food insecurity and climate shocks in Kakuma through permaculture, micro-drip irrigation, climate-smart agriculture, and kitchen gardens for youth, women, and teenage mothers."
+          "description": "Addressing chronic food insecurity and climate shocks in Kakuma through permaculture, micro drip irrigation, climate smart agriculture, and kitchen gardens for youth, women, and teenage mothers."
         }
       }
     },
@@ -274,7 +274,7 @@
     },
     "contact": {
       "eyebrow": "Contact",
-      "title": "Let's build something together",
+      "title": "Let's Connect",
       "subtitle": "Have a question, partnership idea, or want to volunteer? Send us a message and we'll get back to you.",
       "locationLabel": "Location:",
       "locationValue": "Kakuma Refugee Camp and Kalobeyei Settlement, Kenya",
@@ -290,7 +290,7 @@
     "whoWeAreTitle": "Who We Are",
     "whoWeAreBody": "Generation Aid is a refugee-led, youth-driven nonprofit organization transforming lives through education, technology, and economic empowerment. Founded in Kakuma Refugee Camp, Kenya, we believe that displacement should never define a person's future. We equip refugees and vulnerable host community members with the skills, opportunities, and resources they need to become self-reliant and contribute meaningfully to their communities. Through digital skills training, vocational education, entrepreneurship support, career development, and innovation, we help people move beyond humanitarian assistance toward sustainable livelihoods. At Generation Aid, we don't just respond to crises we invest in people's potential, creating pathways to dignity, opportunity, and lasting impact for the refugees.",
     "whereItAllBeganTitle": "Where It All Began",
-    "whereItAllBeganBody": "Generation Aid was founded by Hubert Senga, a Congolese refugee who arrived in Kakuma Refugee Camp in 2016 after fleeing conflict in the Democratic Republic of the Congo. Like many refugees, he experienced firsthand the barriers to education, employment, and opportunity. Recognizing that thousands of talented young people were being left behind despite their resilience and ambition, Hubert established Generation Aid to create practical solutions that empower refugees with the skills needed to thrive in the modern world. What started as a small community initiative has grown into a trusted refugee-led organization serving refugees and host communities through education, digital innovation, vocational training, and employment pathways. Today, Generation Aid continues to build a future where every displaced person has the opportunity to learn, work, lead, and rebuild their life with dignity.",
+    "whereItAllBeganBody": "Generation Aid was founded with that one fundamental question: In 2019, Our Founder, Hubert Senga asked himself a very simple question, “What if, instead of preparing the over 300,000 refugees in Kakuma to depend on aid, we could prepare them to participate in the global economy?” That question became our mission as Generation Aid. Hubert Senga is a Congolese refugee, social entrepreneur, and founder of Generation Aid. His leadership journey began with a displacement story in 2016. He was forced to flee the Democratic Republic of Congo after to political instability, war and violence consuming his home country. When he arrived in Kakuma Refugee Camp, like many refugees, he experienced firsthand the barriers to education, employment, and opportunity. He had to rebuild his life from almost nothing. But living in Kakuma taught him something important: being displaced does not mean being without talent, ambition, or potential. Around him are teachers, entrepreneurs, young innovators and skilled people ready to work but disconnected from opportunity. Refugees face barriers to livelihood skills, formal employment, documentation, technology and global markets. So in 2019, he founded Generation Aid with that one fundamental question to create practical solutions that empower refugees with the skills needed to thrive in the modern world. What started as a small community initiative has grown into a trusted refugee-led organization serving refugees and host communities through education, digital innovation, vocational training, and employment pathways. Today, Generation Aid continues to build a future where every displaced person has the opportunity to learn, work, lead, and rebuild their life with dignity.",
     "objectivesTitle": "Our Objectives",
     "objectivesSubtitle": "What Generation Aid works to achieve.",
     "objectives": [
@@ -346,13 +346,13 @@
   "programs": {
     "hero": {
       "eyebrow": "Our Core Initiatives",
-      "title": "Refugee-Led Education, Technology & Livelihood Programs",
-      "subtitle": "Equipping youth, women, and children in Kakuma with digital innovation, playful learning, creative arts, climate-smart agriculture, and emotional wellbeing."
+      "title": "Refugee Led Education, Technology & Livelihood Programs",
+      "subtitle": "Equipping youth, women, and children in Kakuma with digital innovation, playful learning, creative arts, climate smart agriculture, and emotional wellbeing."
     },
     "programLabel": "Program {{n}}",
     "cta": {
       "title": "Help us reach more refugee youth & children.",
-      "subtitle": "Sponsor a program cohort, donate equipment or partner with us to expand refugee-led opportunities."
+      "subtitle": "Sponsor a program cohort, donate equipment or partner with us to expand refugee led opportunities."
     }
   },
   "impact": {
@@ -360,18 +360,18 @@
       "eyebrow": "Our impact",
       "titleStart": "Real numbers. Real lives.",
       "titleHighlight": "Real change in Kakuma.",
-      "subtitle": "We measure what matters — opportunities created, livelihoods restored, and futures unlocked. Every number below represents a person whose potential is finally being met."
+      "subtitle": "We measure what matters: opportunities created, livelihoods restored, and futures unlocked. Every number below represents a person whose potential is finally being met."
     },
     "byTheNumbers": "By the numbers",
     "byTheNumbersSubtitle": "Updated as our programs grow.",
     "metricsEmpty": "Impact metrics will appear here as we publish them.",
     "outcomesEyebrow": "What we measure",
     "outcomesTitle": "Four outcomes, one mission",
-    "outcomesSubtitle": "Every program we run is designed against these four outcome areas — so you can see exactly how a class, a placement or a seed kit translates into long-term change for refugee youth in Kakuma.",
+    "outcomesSubtitle": "Every program we run is designed against these four outcome areas so you can see exactly how a class, a placement or a seed kit translates into long term change for refugee youth in Kakuma.",
     "highlightsTitle": "Recent highlights",
     "highlightsSubtitle": "A few moments from the last twelve months we're proud of.",
     "journeyEyebrow": "Our journey",
-    "journeyTitle": "From a small idea to a refugee-led movement",
+    "journeyTitle": "From a small idea to a refugee led movement",
     "journeySubtitle": "Generation Aid has been built one cohort, one partnership and one graduate at a time.",
     "behindNumbersTitle": "Behind the numbers",
     "behindNumbersSubtitle": "The people whose lives our programs have shaped.",
@@ -386,17 +386,17 @@
       "title": "Voices from our community",
       "titleStart": "Real journeys from",
       "titleHighlight": "Kakuma",
-      "subtitle": "The graduates, trainers and partners whose lives our programs have shaped — in their own words.",
-      "subtitleAlt": "Every number on our impact page is a person. These are some of the people behind the numbers — in their own words."
+      "subtitle": "The graduates, trainers and partners whose lives our programs have shaped, in their own words.",
+      "subtitleAlt": "Every number on our impact page is a person. These are some of the people behind the numbers, in their own words."
     },
     "empty": "Stories will appear here as we publish them.",
     "readStory": "Read story →",
     "featured": "Featured story",
     "readPersonStory": "Read {{name}}'s story →",
     "moreFromCommunity": "More stories from the community",
-    "moreSubtitle": "From first-time coders to cooperative founders — explore the paths our learners are building.",
+    "moreSubtitle": "From first time coders to cooperative founders, explore the paths our learners are building.",
     "shareTitle": "Are you a graduate? Share your story.",
-    "shareBody": "Your journey can inspire the next learner who walks into the Hub. We'll help you write and publish it — in any language you're comfortable with.",
+    "shareBody": "Your journey can inspire the next learner who walks into the Hub. We'll help you write and publish it, in any language you're comfortable with.",
     "submitStory": "Submit your story",
     "notFound": "Story not found",
     "notFoundSubtitle": "We couldn't find a story at this URL.",
@@ -679,7 +679,7 @@
     "overviewTitle": "About this program",
     "whatYoullGain": "What you'll gain",
     "forWhoTitle": "Who it's for",
-    "forWhoBody": "Refugee youth living in or around the Kakuma camp who are committed to attending the full training cycle. No prior experience is required — just curiosity and consistency.",
+    "forWhoBody": "Refugee youth living in or around the Kakuma camp who are committed to attending the full training cycle. No prior experience is required, just curiosity and consistency.",
     "howToJoinTitle": "How to join",
     "howToJoinBody": "Cohorts open several times a year. Reach out through our contact form and our community lead will get back to you with the next intake dates.",
     "relatedTitle": "Other programs",

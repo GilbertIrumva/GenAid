@@ -13,7 +13,7 @@ export const causes: Cause[] = [
     key: "empoweringRefugees",
     title: "Empowering Refugees in Kakuma with Generation Aid",
     description:
-      "Equipping refugees with vocational, digital, entrepreneurship, and English language skills through practical training, mentorship, and youth-focused programs to achieve self-reliance.",
+      "Equipping refugees with vocational, digital, entrepreneurship, and English language skills through practical training, mentorship, and youth focused programs to achieve self reliance.",
     image: "/img/causes/hub.jpg",
     goal: 50000,
     raised: 28400,
@@ -47,7 +47,7 @@ export const causes: Cause[] = [
     title: "Language of Hope for African & Afghan Refugees",
     description:
       "Providing structured English literacy and communication training to overcome language barriers for women, girls, and children from Afghanistan, Pakistan, and across Africa.",
-    image: "/img/programs/english.png",
+    image: "/programs/english (1).jpg",
     goal: 25000,
     raised: 12200,
     donateUrl:
@@ -57,7 +57,7 @@ export const causes: Cause[] = [
     key: "agrihopeInitiative",
     title: "AgriHope Initiative for Resilience and Livelihood",
     description:
-      "Combating chronic food insecurity in Kakuma through permaculture, micro-drip irrigation, climate-smart agriculture, and kitchen gardens for youth and women.",
+      "Combating chronic food insecurity in Kakuma through permaculture, micro drip irrigation, climate smart agriculture, and kitchen gardens for youth and women.",
     image: "/img/heroes/about-history.jpg",
     goal: 35000,
     raised: 18900,

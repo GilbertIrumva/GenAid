@@ -1,10 +1,33 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import { motion } from "framer-motion";
 import Section from "@/components/Section";
 import JobsShell from "@/components/JobsShell";
 import SmartImage from "@/components/SmartImage";
+import SatisfiedClients from "@/components/SatisfiedClients";
+import GenJobsVideos from "@/components/GenJobsVideos";
 import { getJobsContent } from "@/lib/sanity";
 import { useSEO } from "@/utils/useSEO";
+
+const genJobsHeroSlides = [
+  {
+    src: "/gen jobs/home slide images (1).jpg",
+    alt: "Generation Jobs remote professionals at work in Kakuma",
+  },
+  {
+    src: "/gen jobs/home slide images (2).jpg",
+    alt: "Refugee talent providing global digital services",
+  },
+  {
+    src: "/gen jobs/home slide images (3).jpg",
+    alt: "Tech and BPO operations at Generation Aid hub",
+  },
+  {
+    src: "/gen jobs/home slide images (1).jpeg",
+    alt: "High-performance digital delivery from Kakuma",
+  },
+];
 
 const marketProblems = [
   {
@@ -56,20 +79,36 @@ const pipelineSteps = [
 
 const talentCategories = [
   {
-    title: "Customer support",
-    body: "Email, chat, ticket handling, and CRM support for client-facing teams.",
+    title: "Customer Support (Email, Chat & CRM)",
+    body: "Multi-channel ticket handling, live chat, customer retention, and CRM management for client-facing teams.",
   },
   {
-    title: "Virtual assistance",
-    body: "Scheduling, inbox management, research, and administrative support.",
+    title: "Google Ads & Meta Ads",
+    body: "Paid performance advertising, audience targeting, ROAS optimization, and multi-channel campaign funnels.",
   },
   {
-    title: "Data operations",
-    body: "Data entry, annotation, spreadsheet tasks, and process-driven back office work.",
+    title: "Graphic Design",
+    body: "Brand visual assets, social media creatives, ad banners, marketing decks, and design production.",
   },
   {
-    title: "Other remote roles",
-    body: "Flexible placements can be scoped around specific employer needs and team structures.",
+    title: "Transcripts & Translation",
+    body: "Accurate multi-speaker transcription, timecoding, and professional multi-language translation and localization.",
+  },
+  {
+    title: "Full Amazon Growth Agency Support",
+    body: "Brands/suppliers acquisition, total account management, catalog hygiene, variations, and Seller Support case handling.",
+  },
+  {
+    title: "Virtual Assistance & Admin",
+    body: "Scheduling, inbox management, operational research, executive support, and workflow coordination.",
+  },
+  {
+    title: "Data & AI Operations",
+    body: "Data entry, human-in-the-loop annotation, AI prompt evaluation, and back-office process management.",
+  },
+  {
+    title: "Custom Remote Placements",
+    body: "Flexible placements tailored around your company's specific stack, workflow demands, and team structure.",
   },
 ];
 
@@ -138,18 +177,195 @@ export default function Jobs() {
     retry: false,
   });
 
+  const [heroSlideIndex, setHeroSlideIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setHeroSlideIndex((prev) => (prev + 1) % genJobsHeroSlides.length);
+    }, 5500);
+    return () => clearInterval(timer);
+  }, []);
+
+  const heroTitle = jobsContent?.overviewHeroTitle || "Empowering Global Growth with Remote Talent from Kakuma";
+  const heroSubtitle =
+    jobsContent?.overviewHeroSubtitle ||
+    "For international employers seeking reliable remote talent: access vetted candidates through a trusted training-to-placement pipeline built by Generation Aid.";
+
   return (
     <JobsShell
       eyebrow="Generation Jobs Initiative"
-      title={jobsContent?.overviewHeroTitle || "Empowering global growth with remote talent from Kakuma"}
-      subtitle={jobsContent?.overviewHeroSubtitle || "For international employers seeking reliable remote talent: access vetted candidates through a trusted training-to-placement pipeline built by Generation Aid."}
+      title={heroTitle}
+      subtitle={heroSubtitle}
+      customHero={
+        <section className="relative w-full overflow-hidden min-h-[380px] sm:min-h-[440px] lg:min-h-[480px] flex items-center bg-[#172554] gatsby-hero-bg">
+          {/* Full Width Cinematic Sliding Video-Like Reel (No dots, no arrows, continuous flow) */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {genJobsHeroSlides.map((slide, index) => {
+              const isActive = index === heroSlideIndex;
+              return (
+                <motion.div
+                  key={slide.src}
+                  initial={false}
+                  animate={{
+                    opacity: isActive ? 1 : 0,
+                    scale: isActive ? [1, 1.08] : 1,
+                    x: isActive ? [0, index % 2 === 0 ? -12 : 12] : 0,
+                  }}
+                  transition={{
+                    opacity: { duration: 1.8, ease: "easeInOut" },
+                    scale: { duration: 6.5, ease: "linear" },
+                    x: { duration: 6.5, ease: "linear" },
+                  }}
+                  className={`absolute -inset-4 h-[calc(100%+2rem)] w-[calc(100%+2rem)] ${isActive ? "z-[1]" : "z-0"
+                    }`}
+                >
+                  <SmartImage
+                    src={slide.src}
+                    alt={slide.alt}
+                    fallbackLabel=""
+                    className="h-full w-full object-cover contrast-[1.12] brightness-[0.85] saturate-[1.08]"
+                  />
+                </motion.div>
+              );
+            })}
+          </div>
+
+          {/* Deep Royal Blue Gradient Overlay */}
+          <div className="absolute inset-0 z-[2] bg-gradient-to-r from-[#172554]/95 via-[#172554]/85 to-[#172554]/55 pointer-events-none" />
+
+          {/* Hero Content Box */}
+          <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="max-w-3xl text-white space-y-4"
+            >
+              <span className="inline-block rounded-md bg-white/20 px-3.5 py-1 text-xs font-extrabold uppercase tracking-widest text-white border border-white/30 backdrop-blur-sm">
+                Generation Jobs Initiative
+              </span>
+
+              <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl font-serif leading-[1.12] !text-white">
+                Empowering Global Growth with Remote Talent from Kakuma
+              </h1>
+
+              <div className="sir-callout-border border-l-white !text-white !my-3">
+                <p className="text-sm sm:text-base leading-relaxed font-medium !text-white">
+                  {heroSubtitle}
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-3 pt-2">
+                <Link
+                  to="/jobs/employers"
+                  className="sir-btn-primary py-2.5 px-5 text-xs sm:text-sm font-extrabold uppercase tracking-wider"
+                >
+                  <span>Employer Inquiries</span>
+                  <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+                </Link>
+                <Link
+                  to="/jobs/talent"
+                  className="sir-btn-secondary py-2.5 px-5 text-xs sm:text-sm font-extrabold uppercase tracking-wider border-white/60 text-white hover:bg-white hover:text-slate-950 dark:border-white/60 dark:text-white"
+                >
+                  <span>Talent Consultation</span>
+                  <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+                </Link>
+                <a
+                  href="#about-jobs"
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold text-white/80 hover:text-white transition-colors"
+                >
+                  <span>Learn Overview</span>
+                  <span>↓</span>
+                </a>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      }
     >
-      {/* HERO BANNER (Pattern A: Canvas) */}
-      <Section pattern="canvas" className="!pt-4 sm:!pt-6">
+      {/* SATISFIED CLIENTS / SERVED CLIENTS TICKER */}
+      <SatisfiedClients showTitle={true} />
+
+      {/* OVERVIEW: ABOUT GENERATION JOBS (FIRST SECTION) */}
+      <Section id="about-jobs" pattern="canvas" className="!pt-4 sm:!pt-6 scroll-mt-24">
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-6">
+            <span className="sir-tag">
+              Overview
+            </span>
+            <h2 className="mt-3 font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 uppercase">
+              About Generation Jobs
+            </h2>
+          </div>
+
+          <div className="sir-card-accent p-6 sm:p-10 space-y-6 text-base leading-relaxed text-slate-700 dark:text-slate-300">
+            <p className="text-base sm:text-lg font-medium text-slate-900 dark:text-slate-100 leading-relaxed">
+              Generation Jobs is positioned as Generation Aid’s employment and sustainability arm but its role is broader than simply generating revenue. Generation Jobs is the employment and social-enterprise arm of Generation Aid, created to turn skills into income while building a sustainable revenue engine for Generation Aid’s non profit mission.
+            </p>
+
+            <div className="grid sm:grid-cols-2 gap-5 pt-2">
+              <div className="rounded-xl border border-brand-200/80 dark:border-brand-900/60 bg-white/90 dark:bg-slate-900/80 p-5 shadow-sm">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-950/60 border border-brand-200 dark:border-brand-800">
+                  Generation Aid
+                </span>
+                <h3 className="mt-3 font-serif font-bold text-slate-900 dark:text-slate-100 text-base">
+                  Nonprofit &amp; Impact Engine
+                </h3>
+                <p className="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                  Provides education, digital skills, language training, entrepreneurship, and career preparation.
+                </p>
+              </div>
+
+              <div className="rounded-xl border border-emerald-200/80 dark:border-emerald-900/60 bg-white/90 dark:bg-slate-900/80 p-5 shadow-sm">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800">
+                  Generation Jobs
+                </span>
+                <h3 className="mt-3 font-serif font-bold text-slate-900 dark:text-slate-100 text-base">
+                  Economic &amp; Sustainability Engine
+                </h3>
+                <p className="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                  Converts those skills into paid work. This is consistent with Generation Aid’s public description of Generation Jobs as connecting trained refugees and host-community members with remote and global clients through BPO and digital services.
+                </p>
+              </div>
+            </div>
+
+            <p className="pt-2 text-sm sm:text-base border-t border-slate-200/80 dark:border-slate-800 leading-relaxed">
+              Generation Aid is the nonprofit and impact engine. It provides education, digital skills, language training, entrepreneurship, and career preparation. Generation Jobs is the economic engine that converts those skills into paid work. This is consistent with Generation Aid’s public description of Generation Jobs as connecting trained refugees and host-community members with remote and global clients through BPO and digital services.
+            </p>
+
+            <div className="rounded-xl border-l-4 border-brand-600 bg-brand-50/70 dark:bg-slate-800/80 p-5 sm:p-6 mt-4 grid lg:grid-cols-[1.2fr_0.8fr] gap-6 items-center">
+              <div>
+                <span className="sir-tag mb-2">
+                  Youth-refugee-led leadership
+                </span>
+                <h3 className="font-serif text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-slate-100">
+                  Rooted in Kakuma, built for global collaboration.
+                </h3>
+                <p className="mt-3 text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-300 font-medium">
+                  Generation Jobs, founded by Hubert Senga under Generation Aid, is Generation Aid’s employment and sustainability arm connecting skilled refugees and host-community professionals to global work while generating revenue to strengthen the organization’s long-term sustainability.
+                </p>
+                <p className="mt-2 text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-300 font-medium">
+                  Generation Aid and Generation Jobs combine local trust, authentic leadership, and global execution standards.
+                </p>
+              </div>
+              <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm aspect-[4/3] group">
+                <SmartImage
+                  src="/gen jobs/IMG-20260318-WA0031 - Copy.jpg"
+                  alt="Generation Jobs team and global collaboration partners in Kakuma"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* HERO BANNER (Pattern B: Soft) */}
+      <Section pattern="soft">
         <div className="sir-card-accent p-4 sm:p-8 lg:p-10 lg:grid-cols-[1.1fr_0.9fr] grid gap-6 sm:gap-8 items-center">
           <div className="space-y-4 min-w-0">
             <span className="sir-tag">
-              Overview
+              Connect With Us
             </span>
             <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 break-words">
               {jobsContent?.overviewHeroTitle || "Reliable remote talent from Kakuma, ready for global employers."}
@@ -179,8 +395,8 @@ export default function Jobs() {
 
           <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-md aspect-[4/3] group w-full min-w-0 max-w-lg mx-auto lg:max-w-none">
             <SmartImage
-              src="/genjob.jpg"
-              alt="Generation Jobs remote professionals at Kakuma workstation"
+              src="/gen jobs/Copy of IMG_20260611_111051_050.jpg"
+              alt="BPO Delivery Center and Workstations in Kakuma with UNHCR and Australian Aid partners"
               className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
           </div>
@@ -188,7 +404,7 @@ export default function Jobs() {
       </Section>
 
       {/* MARKET PROBLEM */}
-      <Section pattern="soft">
+      <Section pattern="canvas">
         <div className="mx-auto max-w-3xl text-center">
           <span className="sir-tag">
             Market Need
@@ -280,6 +496,28 @@ export default function Jobs() {
               </article>
             ))}
           </div>
+
+          {/* Partnership Banner with Konexio & Generation Aid */}
+          <div className="mt-10 rounded-2xl overflow-hidden border border-white/20 bg-white/10 p-5 sm:p-7 backdrop-blur-sm grid md:grid-cols-[1fr_1.1fr] gap-6 items-center">
+            <div className="space-y-3">
+              <span className="inline-block rounded-md bg-white/20 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white border border-white/30">
+                Partners in Enabling Impact
+              </span>
+              <h3 className="font-serif text-xl sm:text-2xl font-extrabold text-white">
+                Konexio Africa &amp; Generation Aid
+              </h3>
+              <p className="text-sm text-white/90 leading-relaxed font-medium">
+                Our training and economic empowerment pathways are powered through robust on-the-ground collaboration with Konexio Africa and global facilitators, preparing high-caliber digital professionals directly in Kakuma.
+              </p>
+            </div>
+            <div className="overflow-hidden rounded-xl border border-white/20 shadow-md aspect-[16/10] group">
+              <SmartImage
+                src="/gen jobs/IMG_20260630_104952_312.jpg"
+                alt="Generation Aid and Konexio Africa partnership team in Kakuma"
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -335,6 +573,9 @@ export default function Jobs() {
           ))}
         </div>
       </Section>
+
+      {/* ============ GENERATION JOBS VIDEO SHOWCASE & TESTIMONIALS ============ */}
+      <GenJobsVideos />
 
       {/* EMPLOYER BENEFITS */}
       <Section pattern="canvas">

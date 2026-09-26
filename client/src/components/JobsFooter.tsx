@@ -13,9 +13,9 @@ export default function JobsFooter() {
         <div className="space-y-4">
           <Link to="/jobs" className="flex items-center gap-3 group">
             <img
-              src="/logo.jpg"
+              src="/gen jobs/Generation job's logo.png"
               alt="Generation Jobs logo"
-              className="h-10 w-10 shrink-0 rounded-xl border border-slate-300 object-cover shadow-sm group-hover:scale-105 transition-transform"
+              className="h-10 w-auto shrink-0 object-contain group-hover:scale-105 transition-transform"
             />
             <div>
               <p className="text-[10px] font-extrabold uppercase tracking-[0.25em] text-slate-900 dark:text-brand-400 leading-none">
@@ -143,7 +143,7 @@ export default function JobsFooter() {
       {/* BOTTOM LEGAL STRIP */}
       <div className="border-t border-slate-300 dark:border-slate-800 bg-slate-300/80 dark:bg-slate-950 py-6 text-xs text-slate-900 dark:text-slate-300 font-medium">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 text-center sm:text-left sm:flex-row sm:px-6 lg:px-8">
-          <p>© {currentYear} Generation Jobs by Generation Aid. Refugee-Led Innovation & Global Livelihoods.</p>
+          <p>© {currentYear} Generation Jobs by Generation Aid. Refugee Led Innovation & Global Livelihoods.</p>
           <div className="flex flex-wrap justify-center gap-4 sm:gap-6 font-semibold">
             <Link to="/contact" className="hover:text-brand-700 dark:hover:text-white transition-colors">
               Contact & Inquiries

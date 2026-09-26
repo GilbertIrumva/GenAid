@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
 import Section from "@/components/Section";
 import SmartImage from "@/components/SmartImage";
 import { useSEO } from "@/utils/useSEO";
@@ -70,81 +70,37 @@ function MemberCard({ member }: { member: DisplayTeamMember }) {
 }
 
 function TeamSlider({ members }: { members: DisplayTeamMember[] }) {
-  const [activeIndex, setActiveIndex] = useState(0);
+  if (!members || members.length === 0) return null;
 
-  useEffect(() => {
-    if (members.length <= 1) return undefined;
-    const interval = window.setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % members.length);
-    }, 3500);
-    return () => window.clearInterval(interval);
-  }, [members.length]);
-
-  const prevSlide = () => {
-    setActiveIndex((prev) => (prev === 0 ? members.length - 1 : prev - 1));
-  };
-
-  const nextSlide = () => {
-    setActiveIndex((prev) => (prev + 1) % members.length);
-  };
-
-  const cardWidth = 336; // 312px card + 24px gap
-  const trackOffset = activeIndex * cardWidth;
+  const duplicated = [...members, ...members, ...members];
 
   return (
-    <div className="relative mx-auto mt-12 max-w-7xl px-4 sm:px-6">
+    <div className="relative mx-auto mt-12 max-w-7xl px-4 sm:px-6 overflow-hidden">
+      {/* Soft gradient edge masks for cinematic video-like flow */}
+      <div className="pointer-events-none absolute left-0 top-0 bottom-0 z-10 w-12 sm:w-20 bg-gradient-to-r from-white dark:from-slate-900 to-transparent" />
+      <div className="pointer-events-none absolute right-0 top-0 bottom-0 z-10 w-12 sm:w-20 bg-gradient-to-l from-white dark:from-slate-900 to-transparent" />
+
       <div className="overflow-hidden py-4">
-        <div
-          className="flex gap-6 transition-transform duration-700 ease-in-out"
-          style={{ transform: `translateX(-${trackOffset}px)` }}
+        <motion.div
+          className="flex gap-6 w-max"
+          animate={{
+            x: ["0%", "-33.333333%"],
+          }}
+          transition={{
+            x: {
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: Math.max(members.length * 6, 25),
+              ease: "linear",
+            },
+          }}
         >
-          {members.map((member) => (
-            <div key={member.key} className="w-[312px] shrink-0">
+          {duplicated.map((member, idx) => (
+            <div key={`${member.key}-${idx}`} className="w-[312px] shrink-0">
               <MemberCard member={member} />
             </div>
           ))}
-        </div>
-      </div>
-
-      {/* Slider Controls & Indicators */}
-      <div className="mt-8 flex items-center justify-center gap-4">
-        <button
-          type="button"
-          onClick={prevSlide}
-          aria-label="Previous slide"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white dark:bg-slate-800 border border-brand-200 dark:border-slate-700 text-brand-700 dark:text-brand-300 shadow-sm hover:bg-brand-50 dark:hover:bg-slate-700 transition-all hover:scale-105 active:scale-95"
-        >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
-
-        <div className="flex gap-2">
-          {members.map((_, idx) => (
-            <button
-              key={idx}
-              type="button"
-              onClick={() => setActiveIndex(idx)}
-              aria-label={`Go to slide ${idx + 1}`}
-              className={`h-2.5 rounded-full transition-all duration-300 ${
-                activeIndex === idx
-                  ? "w-8 bg-brand-600 dark:bg-brand-400"
-                  : "w-2.5 bg-brand-200 dark:bg-slate-700 hover:bg-brand-400"
-              }`}
-            />
-          ))}
-        </div>
-
-        <button
-          type="button"
-          onClick={nextSlide}
-          aria-label="Next slide"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white dark:bg-slate-800 border border-brand-200 dark:border-slate-700 text-brand-700 dark:text-brand-300 shadow-sm hover:bg-brand-50 dark:hover:bg-slate-700 transition-all hover:scale-105 active:scale-95"
-        >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
+        </motion.div>
       </div>
     </div>
   );
@@ -182,8 +138,8 @@ export default function About() {
       {/* HERO (Pattern C: Solid Primary Blue Impact) */}
       <section className="relative isolate flex min-h-[55vh] items-center overflow-hidden bg-brand-900 dark:bg-slate-950 text-white transition-colors">
         <SmartImage
-          src="/img/heroes/about.jpg"
-          alt="Generation Aid community gathered together"
+          src="/who we are.jpg"
+          alt="Generation Aid community collaborating and learning together in Kakuma"
           fallbackLabel=""
           className="absolute inset-0 -z-20 h-full w-full object-cover"
         />
@@ -205,7 +161,7 @@ export default function About() {
 
       {/* ABOUT US & WHO WE ARE (Pattern A: Canvas - First Section) */}
       <Section id="story" pattern="canvas" className="scroll-mt-24">
-        <div className="mx-auto max-w-4xl">
+        <div className="mx-auto max-w-5xl">
           <span className="inline-block rounded-full bg-brand-50 dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
             About Us
           </span>
@@ -221,7 +177,7 @@ export default function About() {
               Founded by <strong className="font-semibold text-neutral-heading dark:text-slate-100">Hubert Senga</strong>, a Congolese refugee living in the Kakuma refugee camp, Generation Aid works to bridge the gap between humanitarian assistance and long-term economic empowerment. Through digital skills training, vocational education, language learning, entrepreneurship, and employment pathways, we equip young people and women with the tools they need to build sustainable futures.
             </p>
             <p>
-              Beyond training, we connect talented graduates with remote work opportunities, businesses, and global partners, ensuring that skills translate into real livelihoods and lasting impact. At Generation Aid, we don't just support communities — we empower them to become leaders, innovators, and contributors to the global economy.
+              Beyond training, we connect talented graduates with remote work opportunities, businesses, and global partners, ensuring that skills translate into real livelihoods and lasting impact. At Generation Aid, we don't just support communities; we empower them to become leaders, innovators, and contributors to the global economy.
             </p>
           </div>
 
@@ -231,7 +187,7 @@ export default function About() {
               Investing in Human Potential
             </h3>
             <p className="mt-3 text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-300">
-              Generation Aid is a refugee-led, youth-driven nonprofit organization transforming lives through education, technology, and economic empowerment. Founded in Kakuma Refugee Camp, Kenya, we believe that displacement should never define a person's future. We equip refugees and vulnerable host community members with the skills, opportunities, and resources they need to become self-reliant and contribute meaningfully to their communities. At Generation Aid, we don't just respond to crises — we invest in people's potential, creating pathways to dignity, opportunity, and lasting impact for the refugees.
+              Generation Aid is a refugee-led, youth-driven nonprofit organization transforming lives through education, technology, and economic empowerment. Founded in Kakuma Refugee Camp, Kenya, we believe that displacement should never define a person's future. We equip refugees and vulnerable host community members with the skills, opportunities, and resources they need to become self-reliant and contribute meaningfully to their communities. At Generation Aid, we don't just respond to crises; we invest in people's potential, creating pathways to dignity, opportunity, and lasting impact for the refugees.
             </p>
           </div>
 
@@ -249,12 +205,21 @@ export default function About() {
               {t("common.contactUs")}
             </Link>
           </div>
+
+          {/* Full-width image under the words */}
+          <div className="mt-10 overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-xl group aspect-[16/9] sm:aspect-[21/9]">
+            <SmartImage
+              src="/who we are.jpg"
+              alt="Generation Aid team and community collaborating on strategic planning in Kakuma"
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          </div>
         </div>
       </Section>
 
       {/* WHERE IT ALL BEGAN (Pattern B: Soft Contrast) */}
       <Section id="origin" pattern="soft" className="scroll-mt-24">
-        <div className="mx-auto max-w-4xl">
+        <div className="mx-auto max-w-5xl">
           <span className="inline-block rounded-full bg-white dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
             Our Story
           </span>
@@ -262,48 +227,95 @@ export default function About() {
             Where It All Began
           </h2>
           <div className="mt-6 space-y-4 text-base leading-relaxed text-neutral-body dark:text-slate-300">
-            <p>
-              Generation Aid was founded by Hubert Senga, a Congolese refugee who arrived in Kakuma Refugee Camp in 2016 after fleeing conflict in the Democratic Republic of the Congo. Like many refugees, he experienced firsthand the barriers to education, employment, and opportunity.
+            <p className="font-medium text-neutral-heading dark:text-slate-200">
+              Generation Aid was founded with that one fundamental question:
             </p>
             <p>
-              Recognizing that thousands of talented young people were being left behind despite their resilience and ambition, Hubert established Generation Aid to create practical solutions that empower refugees with the skills needed to thrive in the modern world.
+              In 2019, Our Founder, Hubert Senga asked himself a very simple question:
+            </p>
+            <blockquote className="border-l-4 border-brand-500 bg-white/70 dark:bg-slate-800/80 p-4 rounded-r-xl italic font-medium text-lg text-neutral-heading dark:text-slate-100 shadow-sm my-2">
+              &ldquo;What if, instead of preparing the over 300,000 refugees in Kakuma to depend on aid, we could prepare them to participate in the global economy?&rdquo;
+            </blockquote>
+            <p className="font-medium text-brand-700 dark:text-brand-300">
+              That question became our mission as Generation Aid.
+            </p>
+            <p>
+              Hubert Senga is a Congolese refugee, social entrepreneur, and founder of Generation Aid.
+            </p>
+            <p>
+              His leadership journey began with a displacement story in 2016. He was forced to flee the Democratic Republic of Congo due to political instability, war and violence consuming his home country. When he arrived in Kakuma Refugee Camp, like many refugees, he experienced firsthand the barriers to education, employment, and opportunity. He had to rebuild his life from almost nothing.
+            </p>
+            <p>
+              But living in Kakuma taught him something important: being displaced does not mean being without talent, ambition, or potential.
+            </p>
+            <p>
+              Around him are teachers, entrepreneurs, young innovators and skilled people ready to work but disconnected from opportunity. Refugees face barriers to livelihood skills, formal employment, documentation, technology and global markets.
+            </p>
+            <p>
+              So in 2019, he founded Generation Aid with that one fundamental question to create practical solutions that empower refugees with the skills needed to thrive in the modern world.
             </p>
             <p>
               What started as a small community initiative has grown into a trusted refugee-led organization serving refugees and host communities through education, digital innovation, vocational training, and employment pathways. Today, Generation Aid continues to build a future where every displaced person has the opportunity to learn, work, lead, and rebuild their life with dignity.
             </p>
           </div>
+
+          {/* Full-width image under the words */}
+          <div className="mt-10 overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-xl group aspect-[16/9] sm:aspect-[21/9]">
+            <SmartImage
+              src="/Our Story.jpg"
+              alt="Hubert Senga speaking on refugee empowerment, digital inclusion, and global collaboration"
+              className="h-full w-full object-cover object-[center_20%] transition-transform duration-500 group-hover:scale-105"
+            />
+          </div>
         </div>
       </Section>
 
-      {/* VISION + MISSION (Pattern A: Canvas) */}
+      {/* VISION + MISSION */}
       <Section id="mission-vision" pattern="canvas" className="scroll-mt-24">
-        <div className="grid gap-8 lg:grid-cols-[1fr_1.2fr] lg:items-stretch">
-          <div className="overflow-hidden rounded-2xl border border-neutral-border dark:border-slate-700 shadow-md">
-            <SmartImage
-              src="/img/heroes/about-history.jpg"
-              alt="Students looking out toward a hopeful future"
-              fallbackLabel=""
-              className="h-full min-h-[320px] w-full object-cover"
-            />
-          </div>
-          <div className="grid gap-6 sm:grid-cols-1">
-            <div className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-8 shadow-sm">
-              <span className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+        <div className="mx-auto max-w-5xl space-y-6 sm:space-y-8">
+          {/* Vision: Starts first with its image and content side by side */}
+          <div className="grid gap-6 md:grid-cols-[260px_1fr] lg:grid-cols-[290px_1fr] items-stretch min-h-[200px] rounded-2xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 sm:p-7 shadow-sm transition hover:shadow-md">
+            <div className="overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 shadow-sm shrink-0 min-h-[180px]">
+              <SmartImage
+                src="/vission2.jpg"
+                alt="Generation Aid Vision"
+                fallbackLabel="Generation Aid Vision"
+                className="h-full min-h-[180px] w-full object-cover transition-transform duration-500 hover:scale-105"
+              />
+            </div>
+            <div className="flex flex-col justify-center">
+              <span className="inline-block w-fit rounded-full bg-brand-50 dark:bg-slate-700/60 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-600">
                 {t("home.about.ourVision")}
               </span>
-              <h2 className="mt-4 text-2xl font-bold text-neutral-heading dark:text-slate-100">
+              <h2 className="mt-2 text-xl sm:text-2xl font-bold text-neutral-heading dark:text-slate-100">
                 {t("home.about.visionTitle")}
               </h2>
-              <p className="mt-4 text-neutral-body dark:text-slate-300 leading-relaxed">{t("home.about.visionBody")}</p>
+              <p className="mt-2 text-sm sm:text-base text-neutral-body dark:text-slate-300 leading-relaxed">
+                {t("home.about.visionBody")}
+              </p>
             </div>
-            <div className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-8 shadow-sm">
-              <span className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+          </div>
+
+          {/* Mission: Follows next with its image and content side by side */}
+          <div className="grid gap-6 md:grid-cols-[260px_1fr] lg:grid-cols-[290px_1fr] items-stretch min-h-[200px] rounded-2xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 sm:p-7 shadow-sm transition hover:shadow-md">
+            <div className="overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 shadow-sm shrink-0 min-h-[180px]">
+              <SmartImage
+                src="/mission.jpg"
+                alt="Generation Aid Mission"
+                fallbackLabel="Generation Aid Mission"
+                className="h-full min-h-[180px] w-full object-cover transition-transform duration-500 hover:scale-105"
+              />
+            </div>
+            <div className="flex flex-col justify-center">
+              <span className="inline-block w-fit rounded-full bg-brand-50 dark:bg-slate-700/60 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-600">
                 {t("home.about.ourMission")}
               </span>
-              <h2 className="mt-4 text-2xl font-bold text-neutral-heading dark:text-slate-100">
+              <h2 className="mt-2 text-xl sm:text-2xl font-bold text-neutral-heading dark:text-slate-100">
                 {t("home.about.missionTitle")}
               </h2>
-              <p className="mt-4 text-neutral-body dark:text-slate-300 leading-relaxed">{t("home.about.missionBody")}</p>
+              <p className="mt-2 text-sm sm:text-base text-neutral-body dark:text-slate-300 leading-relaxed">
+                {t("home.about.missionBody")}
+              </p>
             </div>
           </div>
         </div>
@@ -399,14 +411,14 @@ export default function About() {
             Governance & Guidance
           </span>
           <h2 className="mt-3 text-3xl font-bold text-neutral-heading dark:text-slate-50 sm:text-4xl font-serif">
-            Board of Advisors
+            Board of Directors & Advisors
           </h2>
           <p className="mt-3 text-neutral-body dark:text-slate-300 max-w-2xl mx-auto">
             Distinguished leaders and domain experts guiding Generation Aid's strategic trajectory, organizational excellence, and sustainable global impact.
           </p>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {advisors.map((advisor) => (
             <MemberCard key={advisor.key} member={advisor} />
           ))}

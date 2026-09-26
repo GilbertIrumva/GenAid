@@ -8,6 +8,11 @@ import { useSEO } from "@/utils/useSEO";
 const filters: Array<"All" | ServiceCategory> = [
   "All",
   "Sales & Outbound",
+  "Google & Meta Ads",
+  "Customer Support",
+  "Graphic Design",
+  "Transcripts & Translation",
+  "Amazon Growth Agency",
   "Social Engagement",
   "Social & SEO",
   "Campaigns",

@@ -1,5 +1,10 @@
 export type ServiceCategory =
   | "Sales & Outbound"
+  | "Google & Meta Ads"
+  | "Customer Support"
+  | "Graphic Design"
+  | "Transcripts & Translation"
+  | "Amazon Growth Agency"
   | "Social Engagement"
   | "Social & SEO"
   | "Campaigns"
@@ -36,6 +41,134 @@ export const servicePackages: ServicePackage[] = [
       "Email and LinkedIn outreach",
     ],
     impact: "Consistent lead flow and high-intent qualified pipeline.",
+  },
+  {
+    slug: "google-ads-meta-ads",
+    category: "Google & Meta Ads",
+    title: "Google Ads & Meta Ads",
+    firstMonthPrice: 0,
+    secondMonthPrice: 250,
+    monthlyPrice: 399,
+    description:
+      "Multi-channel paid ads execution across Google Search/Display and Meta platforms (Facebook & Instagram).",
+    deliverables: [
+      "Paid ads campaign setup & structure",
+      "Audience targeting & retargeting funnels",
+      "Ad copy, creative testing & ROAS optimization",
+    ],
+    impact: "Maximized ad spend efficiency and scalable customer acquisition.",
+  },
+  {
+    slug: "customer-support-crm",
+    category: "Customer Support",
+    title: "Customer Support (Email, Chat & CRM)",
+    firstMonthPrice: 0,
+    secondMonthPrice: 250,
+    monthlyPrice: 399,
+    description:
+      "Omnichannel customer support delivering fast resolution times, empathetic service, and meticulous ticket tracking.",
+    deliverables: [
+      "Email and live chat support coverage",
+      "Helpdesk & CRM management (Zendesk, HubSpot, Freshdesk)",
+      "Customer satisfaction monitoring & resolution logs",
+    ],
+    impact: "High CSAT scores, rapid response times, and increased customer retention.",
+  },
+  {
+    slug: "graphic-design",
+    category: "Graphic Design",
+    title: "Graphic Design",
+    firstMonthPrice: 0,
+    secondMonthPrice: 250,
+    monthlyPrice: 399,
+    description:
+      "Creative brand design and digital visual assets to power marketing campaigns, social media, and brand identity.",
+    deliverables: [
+      "Social media creatives & ad banners",
+      "Marketing decks, one-pagers & brochures",
+      "Brand identity assets & visual guidelines",
+    ],
+    impact: "Elevated visual presence and polished high-converting brand assets.",
+  },
+  {
+    slug: "transcripts",
+    category: "Transcripts & Translation",
+    title: "Transcripts",
+    firstMonthPrice: 0,
+    secondMonthPrice: 250,
+    monthlyPrice: 399,
+    description:
+      "Precise audio and video transcription with speaker identification, timestamps, and formatting for business needs.",
+    deliverables: [
+      "Clean verbatim & full verbatim transcriptions",
+      "Speaker identification & timecode synchronization",
+      "Meeting summaries & structured interview notes",
+    ],
+    impact: "Flawless documentation and accessible, searchable multimedia content.",
+  },
+  {
+    slug: "translation",
+    category: "Transcripts & Translation",
+    title: "Translation",
+    firstMonthPrice: 0,
+    secondMonthPrice: 250,
+    monthlyPrice: 399,
+    description:
+      "Accurate, culturally nuanced multi-language translation and localization across corporate, technical, and humanitarian domains.",
+    deliverables: [
+      "Multi-language document & website translation",
+      "Cultural adaptation & localization checks",
+      "Quality assurance & proofreading",
+    ],
+    impact: "Seamless cross-border communication and culturally resonant messaging.",
+  },
+  {
+    slug: "amazon-brand-acquisition",
+    category: "Amazon Growth Agency",
+    title: "Brands/Suppliers Acquisition",
+    firstMonthPrice: 0,
+    secondMonthPrice: 250,
+    monthlyPrice: 499,
+    description:
+      "Identifying, attracting, and closing new business accounts including brands and suppliers for Amazon Growth Agencies.",
+    deliverables: [
+      "Targeted brand research and qualification",
+      "Supplier discovery and outreach pipelines",
+      "High-value lead generation and retainer conversion",
+    ],
+    impact: "Continuous flow of qualified high-ticket brand retainers for your agency.",
+  },
+  {
+    slug: "amazon-account-management",
+    category: "Amazon Growth Agency",
+    title: "Total Account Management",
+    firstMonthPrice: 0,
+    secondMonthPrice: 250,
+    monthlyPrice: 499,
+    description:
+      "End-to-end management of your Amazon business across catalog, advertising, operations, and execution.",
+    deliverables: [
+      "Full catalog operations and inventory health",
+      "Sponsored Ads monitoring and daily optimizations",
+      "Cross-functional operational execution without silos",
+    ],
+    impact: "Eliminates operational bottlenecks and accelerates profitable growth.",
+  },
+  {
+    slug: "amazon-catalog-case-management",
+    category: "Amazon Growth Agency",
+    title: "Catalog & Case Management",
+    firstMonthPrice: 0,
+    secondMonthPrice: 250,
+    monthlyPrice: 499,
+    description:
+      "Keeping your Amazon catalog clean, compliant, and optimized to support advertising performance and conversion.",
+    deliverables: [
+      "Listing creation, variations, and attribute hygiene",
+      "Suppression resolution and brand registry support",
+      "Seller Support cases tracking and proactive resolution",
+    ],
+    impact: "Maximum listing visibility, zero downtime, and robust compliance.",
   },
   {
     slug: "social-engagement",

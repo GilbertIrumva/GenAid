@@ -268,6 +268,35 @@ export default function ProgramDetail() {
                 ))}
               </div>
             </div>
+
+            {/* Program Gallery */}
+            {detail.gallery && detail.gallery.length > 0 && (
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+                  Visuals & Field Highlights
+                </span>
+                <h2 className="mt-2 font-display text-2xl font-bold text-neutral-heading dark:text-slate-50">
+                  Program Gallery
+                </h2>
+                <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {detail.gallery.map((imgSrc, idx) => (
+                    <div
+                      key={idx}
+                      className="group overflow-hidden rounded-xl border border-neutral-border dark:border-slate-800 bg-white dark:bg-slate-800 shadow-sm transition hover:shadow-md"
+                    >
+                      <div className="aspect-[4/3] w-full overflow-hidden bg-brand-50 dark:bg-slate-900">
+                        <SmartImage
+                          src={imgSrc}
+                          alt={`${detail.title} photo ${idx + 1}`}
+                          fallbackLabel={detail.title}
+                          className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Sidebar */}
@@ -403,7 +432,7 @@ export default function ProgramDetail() {
             Support Our Work
           </span>
           <h2 className="font-display text-3xl font-extrabold sm:text-4xl !text-white">
-            {t("programDetail.ctaTitle", "Support Refugee-Led Transformation")}
+            {t("programDetail.ctaTitle", "Support Refugee Led Transformation")}
           </h2>
           <p className="max-w-xl text-base text-white/90">
             {t(

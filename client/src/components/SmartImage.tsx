@@ -8,6 +8,8 @@ type Props = {
   fallbackLabel?: string;
   /** Set to true for hero banners and above-the-fold images to load immediately */
   priority?: boolean;
+  /** Optional callback fired when image loading fails */
+  onError?: () => void;
 };
 
 /**
@@ -21,6 +23,7 @@ export default function SmartImage({
   className = "",
   fallbackLabel,
   priority = false,
+  onError,
 }: Props) {
   const [failed, setFailed] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -68,7 +71,10 @@ export default function SmartImage({
       fetchPriority={priority ? "high" : "auto"}
       className={`${className} transition-opacity duration-300 ${loaded ? "opacity-100" : "opacity-90"}`}
       onLoad={() => setLoaded(true)}
-      onError={() => setFailed(true)}
+      onError={() => {
+        setFailed(true);
+        onError?.();
+      }}
     />
   );
 }

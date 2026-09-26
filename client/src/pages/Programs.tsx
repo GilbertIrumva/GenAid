@@ -14,7 +14,7 @@ export default function Programs() {
   useSEO({
     title: "Programs",
     description:
-      "Explore Generation Aid's core refugee-led programs in Kakuma: Learning Through Play, Women in AI, Storytelling, Creative Arts, Climate Action, Social-Emotional Learning, Global Advocacy, English Literacy, and Computer Literacy.",
+      "Explore Generation Aid's core refugee led programs in Kakuma: Learning Through Play, Women in AI, Storytelling, Creative Arts, Climate Action, Social and Emotional Learning, Global Advocacy, English Literacy, and Computer Literacy.",
   });
 
   const { data: sanityPrograms = [] } = useQuery({
@@ -42,14 +42,15 @@ export default function Programs() {
       {/* HERO (Pattern C: Solid Primary Blue Impact) */}
       <section className="relative isolate flex min-h-[55vh] items-center overflow-hidden bg-brand-900 dark:bg-slate-950 text-white transition-colors">
         <SmartImage
-          src="/img/heroes/programs.jpg"
-          alt="Learner in a vocational training session"
+          src="/all-programs.jpg"
+          alt="Generation Aid center in Kakuma"
           fallbackLabel=""
+          priority={true}
           className="absolute inset-0 -z-20 h-full w-full object-cover"
         />
         <div
           aria-hidden
-          className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-950/90 via-brand-900/75 to-brand-900/45 dark:from-slate-950/95 dark:via-slate-900/90 dark:to-slate-950/85"
+          className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-950/80 via-brand-900/60 to-brand-900/35 dark:from-slate-950/85 dark:via-slate-900/70 dark:to-slate-950/50"
         />
         <div className="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="max-w-2xl text-white">
@@ -57,10 +58,10 @@ export default function Programs() {
               {t("programs.hero.eyebrow", "Our Core Initiatives")}
             </span>
             <h1 className="mt-4 text-4xl font-bold leading-tight sm:text-5xl !text-white dark:!text-white">
-              {t("programs.hero.title", "Refugee-Led Education & Livelihood Programs")}
+              {t("programs.hero.title", "Refugee Led Education & Livelihood Programs")}
             </h1>
             <p className="mt-5 max-w-xl text-lg text-white">
-              {t("programs.hero.subtitle", "Building practical digital, language, and vocational skills to unlock self-reliance.")}
+              {t("programs.hero.subtitle", "Building practical digital, language, and vocational skills to unlock self reliance.")}
             </p>
           </div>
         </div>
@@ -201,7 +202,7 @@ export default function Programs() {
           <p className="mt-3 text-white">
             {t(
               "programs.cta.subtitle",
-              "Sponsor a program cohort, donate equipment, or partner with us to expand refugee-led opportunities.",
+              "Sponsor a program cohort, donate equipment, or partner with us to expand refugee led opportunities.",
             )}
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
