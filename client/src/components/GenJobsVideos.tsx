@@ -129,11 +129,10 @@ export default function GenJobsVideos({ className = "" }: GenJobsVideosProps) {
                       key={video.id}
                       onClick={() => setSelectedVideo(video)}
                       type="button"
-                      className={`w-full text-left p-3.5 rounded-xl border transition-all duration-200 flex gap-3.5 items-start ${
-                        isSelected
+                      className={`w-full text-left p-3.5 rounded-xl border transition-all duration-200 flex gap-3.5 items-start ${isSelected
                           ? "bg-brand-50/90 dark:bg-brand-950/40 border-brand-500 dark:border-brand-500 shadow-xs"
                           : "bg-white dark:bg-slate-800/70 border-slate-200/80 dark:border-slate-800 hover:border-brand-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800"
-                      }`}
+                        }`}
                     >
                       {/* Video Thumbnail Preview */}
                       <div className="relative w-24 sm:w-28 aspect-video shrink-0 rounded-lg overflow-hidden bg-slate-900 border border-slate-700/60 group">
@@ -151,18 +150,16 @@ export default function GenJobsVideos({ className = "" }: GenJobsVideosProps) {
                       </div>
 
                       <div className="min-w-0 flex-1">
-                        <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full inline-block ${
-                          isSelected
+                        <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full inline-block ${isSelected
                             ? "bg-brand-600 text-white"
                             : "bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300"
-                        }`}>
+                          }`}>
                           {video.category}
                         </span>
-                        <h4 className={`mt-1 font-serif text-xs sm:text-sm font-bold leading-snug line-clamp-2 ${
-                          isSelected
+                        <h4 className={`mt-1 font-serif text-xs sm:text-sm font-bold leading-snug line-clamp-2 ${isSelected
                             ? "text-brand-900 dark:text-brand-300"
                             : "text-slate-900 dark:text-slate-100"
-                        }`}>
+                          }`}>
                           {video.title}
                         </h4>
                       </div>

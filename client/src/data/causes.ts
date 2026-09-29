@@ -35,12 +35,12 @@ export const causes: Cause[] = [
     key: "emergencyFoodMedical",
     title: "Emergency Food & Medical Support",
     description:
-      "Helping vulnerable refugee families in Kakuma and Kalobeyei access life-saving food assistance and essential healthcare when crises and acute emergencies arise.",
-    image: "/img/heroes/about.jpg",
+      "Helping vulnerable refugee families in Kakuma and Kalobeyei access life saving food assistance and essential healthcare when crises and acute emergencies arise.",
+    image: "/programs/emergency/globalgiving-23.jpg",
     goal: 30000,
     raised: 15600,
     donateUrl:
-      "https://www.globalgiving.org/donate/103731/humanitarian-resilience-aid/",
+      "https://www.globalgiving.org/projects/emergency-refugees-in-kakuma-are-suffering/",
   },
   {
     key: "languageOfHope",

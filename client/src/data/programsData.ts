@@ -599,6 +599,133 @@ export const defaultPrograms: DetailedProgram[] = [
     ctaText: "Enroll / Inquire About Cohort",
     ctaLink: "/contact",
   },
+  {
+    id: "emergency-response",
+    slug: "emergency-response",
+    title: "Emergency Response: Kakuma Crisis Relief & Lifeline",
+    category: "Crisis Relief & Emergency Aid",
+    tagline:
+      "Delivering urgent food, safe water, hygiene essentials, and disability inclusive education to 150 of Kakuma's most vulnerable refugees.",
+    partner: "GlobalGiving (Project #68993)",
+    body:
+      "Over 252,066 refugees in the Kakuma refugee camp face severe humanitarian distress, compounding shortages of food, and limited access to schooling and livelihood opportunities. Generation Aid's Emergency Response Initiative serves as an immediate lifeline to protect vulnerable families, children with disabilities, and at risk women and girls. Through vetted partnerships and refugee led grassroots response, this project provides emergency food rations, chlorine water purification, special needs educational sponsorships, dignity hygiene kits, and emergency shelter materials, while equipping households with micro enterprise grants for sustainable, long term self reliance.",
+    image: "/programs/emergency/globalgiving-23.jpg",
+    gallery: [
+      "/programs/emergency/globalgiving-23.jpg",
+      "/programs/emergency/globalgiving-4.jpg",
+      "/programs/emergency/globalgiving-5.jpg",
+      "/programs/emergency/globalgiving-7.jpg",
+      "/programs/emergency/globalgiving-11.jpg",
+      "/programs/emergency/globalgiving-34.jpg",
+    ],
+    problemStatement:
+      "Thousands of refugees in Kakuma are struggling right now to survive severe humanitarian aid reductions. Children with disabilities are shut out of school without assistive care, families face extreme hunger and worsening malnutrition, and women and children risk deadly waterborne epidemics from contaminated water sources. Overcrowded living conditions, lack of sanitary supplies, and nonexistent local income opportunities trap households in chronic vulnerability. Without swift community led intervention, vulnerable lives remain at immediate risk.",
+    whyItMatters:
+      "In acute humanitarian crises, emergency relief must protect human dignity and preserve future potential. Ensuring that a child with a disability remains in school, a family has nutritious food, and women and girls have clean water and dignity supplies prevents irreversible trauma and illness. By bridging urgent relief with micro enterprise and livelihood pathways, we empower refugees to transition from emergency survival to durable self sufficiency.",
+    goals: [
+      {
+        title: "Immediate Food & Nutrition Security",
+        description:
+          "Deliver monthly emergency food baskets to refugee families in Kakuma and Kalobeyei facing severe hunger and malnutrition.",
+      },
+      {
+        title: "Clean Water & Waterborne Disease Prevention",
+        description:
+          "Supply chlorine water treatment kits and safe storage supplies to protect vulnerable households from preventable illnesses.",
+      },
+      {
+        title: "Inclusive Education for Children with Disabilities",
+        description:
+          "Cover term school fees, assistive materials, and learning resources so children with disabilities can stay in school safely.",
+      },
+      {
+        title: "Dignity & Health for Women and Girls",
+        description:
+          "Distribute comprehensive menstrual hygiene and sanitation packages to women and girls living in crowded camp sectors.",
+      },
+      {
+        title: "Emergency Shelter & Essential Protection",
+        description:
+          "Provide warm blankets, protective clothing, and emergency shelter repair materials for vulnerable displaced households.",
+      },
+      {
+        title: "Livelihood & Small Business Self Sufficiency",
+        description:
+          "Award seed grants and micro business mentorship ($300 packages) to enable refugee families to build sustainable independent livelihoods.",
+      },
+    ],
+    targetAudience:
+      "Targeting the 150 most vulnerable refugees in Kakuma Refugee Camp and Kalobeyei Integrated Settlement, with specific focus on children with disabilities, female headed households, pregnant mothers, and families suffering acute malnutrition.",
+    components: [
+      {
+        title: "Emergency Nutrition & Food Ration Relief",
+        description:
+          "Regular delivery of nutrient dense food baskets, including grain, pulses, cooking oil, and therapeutic supplements, to alleviate acute household hunger.",
+      },
+      {
+        title: "Chlorine Water Purification & Sanitation Kits",
+        description:
+          "Distribution of household water treatment chemicals, chlorine tablets, and clean storage containers to halt cholera and waterborne bacteria.",
+      },
+      {
+        title: "Special Needs Educational Sponsorship",
+        description:
+          "Tuition support, specialized learning aids, and safe transportation arrangements to guarantee continuous schooling for refugee children with disabilities.",
+      },
+      {
+        title: "Women and Adolescent Girls' Dignity Kits",
+        description:
+          "Provision of sanitary pads, antiseptic soap, clean towels, and personal care necessities to preserve feminine dignity and hygiene in refugee camps.",
+      },
+      {
+        title: "Shelter Reinforcement & Cold Weather Blankets",
+        description:
+          "Emergency distribution of durable bedding, clothing, and weatherproofing materials to protect fragile dwellings against harsh semi desert elements.",
+      },
+      {
+        title: "Micro Business Seed Capital for Self Sufficiency",
+        description:
+          "Targeted seed investments of $300 coupled with financial coaching to help refugee heads of households launch resilient local businesses.",
+      },
+    ],
+    features: [
+      "Emergency Food Rations for Hungry Households",
+      "Chlorine Purification for Clean Drinking Water",
+      "School Sponsorship for Children with Disabilities",
+      "Dignity & Menstrual Hygiene Kits for Women and Girls",
+      "Shelter Reinforcement, Bedding & Protective Clothing",
+      "Micro Grants for Sustainable Refugee Self Reliance",
+      "Direct Vetted Donation via GlobalGiving (Project #68993)",
+      "Kenyan M Pesa Integration (Paybill: 891300, Account: GG68993)",
+    ],
+    gains: [
+      "Life saving food packages preventing child malnutrition and severe hunger",
+      "Protection from waterborne diseases through distributed chlorine water purification",
+      "Unbroken access to education and learning supplies for children with disabilities",
+      "Restored safety, hygiene, and dignity for displaced women and adolescent girls",
+      "Warmth and protection against severe weather via blankets and shelter materials",
+      "Sustainable economic independence through micro grant funded family enterprises",
+      "100% transparent and verified impact tracked through GlobalGiving reporting",
+    ],
+    howToJoin:
+      "Community members in urgent distress can be identified through Generation Aid field workers and local community leaders in Kakuma. Global supporters, donors, and humanitarian partners can directly support this verified initiative through our GlobalGiving project page (#68993) or via M Pesa.",
+    specialHighlight: {
+      title: "GlobalGiving Giving Tiers & Direct Impact",
+      description:
+        "Every dollar directly impacts Kakuma: $40 provides 1 term school fees and supplies for a child with disabilities; $50 feeds a refugee family for an entire month; $75 provides dignity kits for 10 women and girls; $100 supplies water purifying chlorine for 10 families; $200 provides blankets, clothing, and shelter materials; $300 funds a refugee family small business for lifelong self sufficiency. Support via M Pesa: Paybill 891300, Account GG68993.",
+    },
+    quote: {
+      text:
+        "Refugees in Kakuma are right now struggling to survive. Children with disabilities are missing school, families are going hungry, and women and children are drinking unsafe water. This campaign is a lifeline to provide education, food, and clean water to those who need it most.",
+      author: "Generation Aid Team",
+      role: "Field Operations & Community Relief, Kakuma",
+    },
+    vision:
+      "To ensure immediate crisis relief transitions into enduring resilience, restoring dignity, protecting every vulnerable child, and empowering refugee families to achieve self reliance.",
+    ctaText: "Support Emergency Response on GlobalGiving",
+    ctaLink:
+      "https://www.globalgiving.org/projects/emergency-refugees-in-kakuma-are-suffering/",
+  },
 ];
 
 

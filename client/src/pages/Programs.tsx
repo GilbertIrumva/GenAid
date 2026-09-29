@@ -14,7 +14,7 @@ export default function Programs() {
   useSEO({
     title: "Programs",
     description:
-      "Explore Generation Aid's core refugee led programs in Kakuma: Learning Through Play, Women in AI, Storytelling, Creative Arts, Climate Action, Social and Emotional Learning, Global Advocacy, English Literacy, and Computer Literacy.",
+      "Explore Generation Aid's core refugee led programs in Kakuma: Emergency Response, Learning Through Play, Women in AI, Storytelling, Creative Arts, Climate Action, Social and Emotional Learning, Global Advocacy, English Literacy, and Computer Literacy.",
   });
 
   const { data: sanityPrograms = [] } = useQuery({

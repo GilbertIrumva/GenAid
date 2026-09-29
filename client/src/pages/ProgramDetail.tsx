@@ -46,6 +46,13 @@ export default function ProgramDetail() {
   }
 
   const related = defaultPrograms.filter((p) => p.id !== detail.id).slice(0, 3);
+  const gallery = detail.gallery && detail.gallery.length > 0 ? detail.gallery : [detail.image];
+  const imgChallenge = gallery[0] || detail.image;
+  const imgWhyItMatters = gallery.length > 1 ? gallery[1] : undefined;
+  const imgComponents = gallery.length > 2 ? gallery[2] : undefined;
+  const imgHighlight = gallery.length > 3 ? gallery[3] : undefined;
+  const imgGains = gallery.length > 4 ? gallery[4] : (gallery.length > 1 ? gallery[1] : undefined);
+  const imgQuote = gallery.length > 5 ? gallery[5] : undefined;
 
   return (
     <div className="bg-white dark:bg-slate-900 transition-colors">
@@ -80,13 +87,37 @@ export default function ProgramDetail() {
                 {detail.tagline}
               </p>
             )}
+
+            {detail.ctaLink && (
+              <div className="mt-6 flex flex-wrap items-center gap-3">
+                {detail.ctaLink.startsWith("http") ? (
+                  <a
+                    href={detail.ctaLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold px-5 py-2.5 text-sm shadow-md transition transform hover:-translate-y-0.5"
+                  >
+                    <span>{detail.ctaText ?? "Support on GlobalGiving"}</span>
+                    <span>↗</span>
+                  </a>
+                ) : (
+                  <Link
+                    to={detail.ctaLink}
+                    className="inline-flex items-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold px-5 py-2.5 text-sm shadow-md transition"
+                  >
+                    <span>{detail.ctaText ?? "Learn More"}</span>
+                    <span>→</span>
+                  </Link>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </section>
 
       {/* MAIN CONTENT + SIDEBAR */}
       <Section pattern="canvas">
-        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_360px]">
+        <div className="mx-auto grid max-w-7xl gap-8 lg:gap-10 lg:grid-cols-[1fr_320px]">
           {/* Main Column */}
           <div className="space-y-12">
             {/* Overview */}
@@ -102,37 +133,61 @@ export default function ProgramDetail() {
               </p>
             </div>
 
-            {/* Problem Statement Callout (if present) */}
+            {/* Problem Statement Callout with Integrated Visual */}
             {detail.problemStatement && (
-              <div className="rounded-2xl border border-amber-200 dark:border-amber-900/50 bg-amber-50/70 dark:bg-amber-950/20 p-6 sm:p-8">
-                <div className="flex items-start gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-500 text-white font-bold">
-                    !
-                  </div>
+              <div className="overflow-hidden rounded-2xl border border-amber-200 dark:border-amber-900/50 bg-amber-50/70 dark:bg-amber-950/20 shadow-sm">
+                <div className={`grid gap-6 sm:gap-8 ${imgChallenge ? "md:grid-cols-2" : ""} items-center p-6 sm:p-8`}>
                   <div>
-                    <h3 className="font-display text-lg font-bold text-amber-950 dark:text-amber-200">
-                      The Challenge in Kakuma
-                    </h3>
-                    <p className="mt-2 text-sm sm:text-base leading-relaxed text-amber-900/90 dark:text-amber-300/90">
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-500 text-white font-bold">
+                        !
+                      </div>
+                      <h3 className="font-display text-lg sm:text-xl font-bold text-amber-950 dark:text-amber-200">
+                        The Challenge in Kakuma
+                      </h3>
+                    </div>
+                    <p className="mt-4 text-sm sm:text-base leading-relaxed text-amber-900/90 dark:text-amber-300/90">
                       {detail.problemStatement}
                     </p>
                   </div>
+                  {imgChallenge && (
+                    <div className="overflow-hidden rounded-xl shadow-md aspect-[16/10] sm:aspect-[4/3] w-full min-h-[220px]">
+                      <SmartImage
+                        src={imgChallenge}
+                        alt={`${detail.title} context in Kakuma`}
+                        className="h-full w-full object-cover transition duration-300 hover:scale-105"
+                      />
+                    </div>
+                  )}
                 </div>
               </div>
             )}
 
-            {/* Why It Matters (if present) */}
+            {/* Why It Matters with Integrated Visual */}
             {detail.whyItMatters && (
-              <div className="rounded-2xl border border-brand-100 dark:border-slate-800 bg-brand-50/50 dark:bg-slate-800/60 p-6 sm:p-8">
-                <span className="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-                  Impact Rationale
-                </span>
-                <h3 className="mt-2 font-display text-xl font-bold text-neutral-heading dark:text-slate-50">
-                  Why this initiative matters
-                </h3>
-                <p className="mt-3 text-base leading-relaxed text-neutral-body dark:text-slate-300">
-                  {detail.whyItMatters}
-                </p>
+              <div className="overflow-hidden rounded-2xl border border-brand-100 dark:border-slate-800 bg-brand-50/50 dark:bg-slate-800/60 p-6 sm:p-8 shadow-sm">
+                <div className={`grid gap-6 sm:gap-8 ${imgWhyItMatters ? "md:grid-cols-2 items-center" : ""}`}>
+                  {imgWhyItMatters && (
+                    <div className="order-last md:order-first overflow-hidden rounded-xl shadow-sm aspect-[16/10] sm:aspect-[4/3] w-full min-h-[220px]">
+                      <SmartImage
+                        src={imgWhyItMatters}
+                        alt={`${detail.title} impact in Kakuma`}
+                        className="h-full w-full object-cover transition duration-300 hover:scale-105"
+                      />
+                    </div>
+                  )}
+                  <div>
+                    <span className="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+                      Impact Rationale
+                    </span>
+                    <h3 className="mt-2 font-display text-xl font-bold text-neutral-heading dark:text-slate-50">
+                      Why this initiative matters
+                    </h3>
+                    <p className="mt-3 text-base leading-relaxed text-neutral-body dark:text-slate-300">
+                      {detail.whyItMatters}
+                    </p>
+                  </div>
+                </div>
               </div>
             )}
 
@@ -145,7 +200,7 @@ export default function ProgramDetail() {
                 <h2 className="mt-2 font-display text-2xl font-bold text-neutral-heading dark:text-slate-50">
                   Project Goals
                 </h2>
-                <div className="mt-6 grid gap-4 sm:grid-cols-3">
+                <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                   {detail.goals.map((g, idx) => (
                     <div
                       key={g.title}
@@ -166,7 +221,7 @@ export default function ProgramDetail() {
               </div>
             )}
 
-            {/* Project Components / Modules (if present) */}
+            {/* Project Components / Modules with Integrated Visual */}
             {detail.components && detail.components.length > 0 && (
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">
@@ -175,65 +230,102 @@ export default function ProgramDetail() {
                 <h2 className="mt-2 font-display text-2xl font-bold text-neutral-heading dark:text-slate-50">
                   Core Modules & Components
                 </h2>
-                <div className="mt-6 space-y-4">
-                  {detail.components.map((c, idx) => (
-                    <div
-                      key={c.title}
-                      className="flex flex-col sm:flex-row items-start gap-4 rounded-xl border border-neutral-border dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-sm"
-                    >
-                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-50 dark:bg-slate-700 text-sm font-bold text-brand-600 dark:text-brand-300">
-                        {idx + 1}
-                      </span>
-                      <div className="flex-1">
-                        <h3 className="font-display text-base font-bold text-neutral-heading dark:text-slate-100">
-                          {c.title}
-                        </h3>
-                        <p className="mt-1.5 text-sm leading-relaxed text-neutral-body dark:text-slate-300">
-                          {c.description}
-                        </p>
+                <div className={`mt-6 grid gap-6 sm:gap-8 ${imgComponents ? "lg:grid-cols-[1fr_380px] xl:grid-cols-[1fr_420px] items-start" : ""}`}>
+                  <div className="space-y-4">
+                    {detail.components.map((c, idx) => (
+                      <div
+                        key={c.title}
+                        className="flex flex-col sm:flex-row items-start gap-4 rounded-xl border border-neutral-border dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-sm"
+                      >
+                        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-50 dark:bg-slate-700 text-sm font-bold text-brand-600 dark:text-brand-300">
+                          {idx + 1}
+                        </span>
+                        <div className="flex-1">
+                          <h3 className="font-display text-base font-bold text-neutral-heading dark:text-slate-100">
+                            {c.title}
+                          </h3>
+                          <p className="mt-1.5 text-sm leading-relaxed text-neutral-body dark:text-slate-300">
+                            {c.description}
+                          </p>
+                        </div>
                       </div>
+                    ))}
+                  </div>
+                  {imgComponents && (
+                    <div className="overflow-hidden rounded-2xl shadow-sm aspect-[16/10] sm:aspect-[4/3] lg:aspect-[3/4] w-full block min-h-[260px]">
+                      <SmartImage
+                        src={imgComponents}
+                        alt={`${detail.title} in action`}
+                        className="h-full w-full object-cover transition duration-300 hover:scale-105"
+                      />
                     </div>
-                  ))}
+                  )}
                 </div>
               </div>
             )}
 
-            {/* Special Highlight (e.g. Senga Gallery) */}
+            {/* Special Highlight with Integrated Visual */}
             {detail.specialHighlight && (
-              <div className="rounded-2xl border border-brand-200 dark:border-brand-900 bg-gradient-to-br from-brand-50 via-white to-brand-50/30 dark:from-slate-800 dark:via-slate-850 dark:to-slate-800 p-6 sm:p-8">
-                <span className="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-                  Featured Space
-                </span>
-                <h3 className="mt-2 font-display text-xl font-bold text-neutral-heading dark:text-slate-50">
-                  {detail.specialHighlight.title}
-                </h3>
-                <p className="mt-3 text-base leading-relaxed text-neutral-body dark:text-slate-300">
-                  {detail.specialHighlight.description}
-                </p>
+              <div className="rounded-2xl border border-brand-200 dark:border-brand-900 bg-gradient-to-br from-brand-50 via-white to-brand-50/30 dark:from-slate-800 dark:via-slate-850 dark:to-slate-800 p-6 sm:p-8 shadow-sm">
+                <div className={`grid gap-6 sm:gap-8 ${imgHighlight ? "md:grid-cols-2 items-center" : ""}`}>
+                  <div>
+                    <span className="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+                      Featured Highlight
+                    </span>
+                    <h3 className="mt-2 font-display text-xl font-bold text-neutral-heading dark:text-slate-50">
+                      {detail.specialHighlight.title}
+                    </h3>
+                    <p className="mt-3 text-base leading-relaxed text-neutral-body dark:text-slate-300">
+                      {detail.specialHighlight.description}
+                    </p>
+                  </div>
+                  {imgHighlight && (
+                    <div className="overflow-hidden rounded-xl shadow-sm aspect-[16/10] sm:aspect-[4/3] w-full min-h-[220px]">
+                      <SmartImage
+                        src={imgHighlight}
+                        alt={detail.specialHighlight.title}
+                        className="h-full w-full object-cover transition duration-300 hover:scale-105"
+                      />
+                    </div>
+                  )}
+                </div>
               </div>
             )}
 
-            {/* Quote / Lived Experience Callout (if present) */}
+            {/* Quote / Lived Experience Callout with Integrated Visual */}
             {detail.quote && (
               <figure className="rounded-2xl border-l-4 border-brand-600 dark:border-brand-400 bg-brand-50/70 dark:bg-slate-800/80 p-6 sm:p-8 shadow-sm">
-                <blockquote className="text-base sm:text-lg font-medium leading-relaxed italic text-neutral-heading dark:text-slate-100">
-                  “{detail.quote.text}”
-                </blockquote>
-                <figcaption className="mt-4 flex items-center gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-600 text-white font-bold text-sm">
-                    {detail.quote.author.charAt(0)}
-                  </div>
+                <div className={`grid gap-6 sm:gap-8 ${imgQuote ? "md:grid-cols-[1fr_300px] lg:grid-cols-[1fr_340px] items-center" : ""}`}>
                   <div>
-                    <div className="font-bold text-neutral-heading dark:text-slate-100">
-                      {detail.quote.author}
-                    </div>
-                    {detail.quote.role && (
-                      <div className="text-xs text-neutral-body dark:text-slate-400">
-                        {detail.quote.role}
+                    <blockquote className="text-base sm:text-lg font-medium leading-relaxed italic text-neutral-heading dark:text-slate-100">
+                      “{detail.quote.text}”
+                    </blockquote>
+                    <figcaption className="mt-4 flex items-center gap-3">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-600 text-white font-bold text-sm">
+                        {detail.quote.author.charAt(0)}
                       </div>
-                    )}
+                      <div>
+                        <div className="font-bold text-neutral-heading dark:text-slate-100">
+                          {detail.quote.author}
+                        </div>
+                        {detail.quote.role && (
+                          <div className="text-xs text-neutral-body dark:text-slate-400">
+                            {detail.quote.role}
+                          </div>
+                        )}
+                      </div>
+                    </figcaption>
                   </div>
-                </figcaption>
+                  {imgQuote && (
+                    <div className="overflow-hidden rounded-xl shadow-sm aspect-[16/10] sm:aspect-square w-full min-h-[200px]">
+                      <SmartImage
+                        src={imgQuote}
+                        alt={detail.quote.author}
+                        className="h-full w-full object-cover transition duration-300 hover:scale-105"
+                      />
+                    </div>
+                  )}
+                </div>
               </figure>
             )}
 
@@ -249,54 +341,36 @@ export default function ProgramDetail() {
               </div>
             )}
 
-            {/* What Participants Gain */}
+            {/* What Participants Gain with Integrated Visual */}
             <div>
               <h2 className="font-display text-2xl font-bold text-neutral-heading dark:text-slate-50">
                 {t("programDetail.whatYoullGain", "Key Skills & Opportunities")}
               </h2>
-              <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                {(detail.gains && detail.gains.length > 0 ? detail.gains : detail.features).map((f) => (
-                  <div
-                    key={f}
-                    className="flex items-start gap-3 rounded-xl border border-neutral-border dark:border-slate-800 bg-white dark:bg-slate-800 p-4 text-sm text-neutral-heading dark:text-slate-100 shadow-sm"
-                  >
-                    <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-100 dark:bg-brand-900/50 text-brand-600 dark:text-brand-400">
-                      ✓
-                    </div>
-                    <span className="font-medium">{f}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Program Gallery */}
-            {detail.gallery && detail.gallery.length > 0 && (
-              <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-                  Visuals & Field Highlights
-                </span>
-                <h2 className="mt-2 font-display text-2xl font-bold text-neutral-heading dark:text-slate-50">
-                  Program Gallery
-                </h2>
-                <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {detail.gallery.map((imgSrc, idx) => (
+              <div className={`mt-6 grid gap-6 sm:gap-8 ${imgGains ? "lg:grid-cols-[1fr_380px] xl:grid-cols-[1fr_420px] items-center" : ""}`}>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {(detail.gains && detail.gains.length > 0 ? detail.gains : detail.features).map((f) => (
                     <div
-                      key={idx}
-                      className="group overflow-hidden rounded-xl border border-neutral-border dark:border-slate-800 bg-white dark:bg-slate-800 shadow-sm transition hover:shadow-md"
+                      key={f}
+                      className="flex items-start gap-3 rounded-xl border border-neutral-border dark:border-slate-800 bg-white dark:bg-slate-800 p-4 text-sm text-neutral-heading dark:text-slate-100 shadow-sm"
                     >
-                      <div className="aspect-[4/3] w-full overflow-hidden bg-brand-50 dark:bg-slate-900">
-                        <SmartImage
-                          src={imgSrc}
-                          alt={`${detail.title} photo ${idx + 1}`}
-                          fallbackLabel={detail.title}
-                          className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
-                        />
+                      <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-100 dark:bg-brand-900/50 text-brand-600 dark:text-brand-400">
+                        ✓
                       </div>
+                      <span className="font-medium">{f}</span>
                     </div>
                   ))}
                 </div>
+                {imgGains && (
+                  <div className="overflow-hidden rounded-2xl shadow-sm aspect-[16/10] sm:aspect-[4/3] w-full block min-h-[240px]">
+                    <SmartImage
+                      src={imgGains}
+                      alt={`${detail.title} community members`}
+                      className="h-full w-full object-cover transition duration-300 hover:scale-105"
+                    />
+                  </div>
+                )}
               </div>
-            )}
+            </div>
           </div>
 
           {/* Sidebar */}
@@ -326,13 +400,25 @@ export default function ProgramDetail() {
                 {detail.howToJoin ?? t("programDetail.howToJoinBody", "Reach out to our team or visit our learning hub in Kakuma to join the next intake.")}
               </p>
               {detail.ctaLink || detail.bookingUrl ? (
-                <Link
-                  to={detail.ctaLink || detail.bookingUrl || "/contact"}
-                  className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-600 dark:bg-brand-500 px-4 py-3 text-xs font-bold uppercase tracking-wider text-white shadow-sm transition hover:bg-brand-700 dark:hover:bg-brand-400"
-                >
-                  <span>{detail.ctaText ?? "Connect With Us"}</span>
-                  <span>→</span>
-                </Link>
+                (detail.ctaLink || detail.bookingUrl || "").startsWith("http") ? (
+                  <a
+                    href={detail.ctaLink || detail.bookingUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-700 px-4 py-3 text-xs font-bold uppercase tracking-wider text-white shadow-sm transition"
+                  >
+                    <span>{detail.ctaText ?? "Support on GlobalGiving"}</span>
+                    <span>↗</span>
+                  </a>
+                ) : (
+                  <Link
+                    to={detail.ctaLink || detail.bookingUrl || "/contact"}
+                    className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-600 dark:bg-brand-500 px-4 py-3 text-xs font-bold uppercase tracking-wider text-white shadow-sm transition hover:bg-brand-700 dark:hover:bg-brand-400"
+                  >
+                    <span>{detail.ctaText ?? "Connect With Us"}</span>
+                    <span>→</span>
+                  </Link>
+                )
               ) : (
                 <Link
                   to={`/contact?subject=${encodeURIComponent("Inquiry: " + detail.title)}`}
@@ -386,7 +472,7 @@ export default function ProgramDetail() {
               to="/programs"
               className="text-sm font-bold text-brand-600 dark:text-brand-400 hover:underline"
             >
-              View all 6 programs →
+              View all {defaultPrograms.length} programs →
             </Link>
           </div>
 

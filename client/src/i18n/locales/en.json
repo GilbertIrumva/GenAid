@@ -66,6 +66,7 @@
     },
     "programsMenu": {
       "all": "All programs",
+      "emergencyResponse": "Emergency Response",
       "learningThroughPlay": "Learning Through Play",
       "womenInAi": "Women in AI",
       "storytelling": "Storytelling",

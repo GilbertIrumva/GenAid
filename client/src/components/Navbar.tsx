@@ -26,6 +26,7 @@ const MENUS: Record<string, ReadonlyArray<MenuLink>> = {
   ],
   programs: [
     { to: "/programs", key: "all" },
+    { to: "/programs/emergency-response", key: "emergencyResponse" },
     { to: "/programs/learning-through-play", key: "learningThroughPlay" },
     { to: "/programs/women-in-ai", key: "womenInAi" },
     { to: "/programs/storytelling", key: "storytelling" },

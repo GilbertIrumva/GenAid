@@ -66,6 +66,7 @@
     },
     "programsMenu": {
       "all": "Tous les programmes",
+      "emergencyResponse": "Réponse d'urgence",
       "learningThroughPlay": "Apprentissage par le Jeu",
       "womenInAi": "Femmes et IA",
       "storytelling": "Récit d'Histoires",
