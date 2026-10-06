@@ -82,6 +82,13 @@ export const advisors: TeamMember[] = [
     image: "/img/board/Nancy Njeri.jpeg",
   },
   {
+    key: "hubert-secretary",
+    name: "Hubert Senga",
+    role: "Board Secretary",
+    bio: "Founder and Board Secretary maintaining board records, institutional governance policies, and statutory compliance while aligning executive operations with board stewardship.",
+    image: "/img/team/Hubert Senga.jpg",
+  },
+  {
     key: "carla",
     name: "Carla Sinatra",
     role: "Strategic Advisory Board Member",

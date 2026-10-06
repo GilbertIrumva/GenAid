@@ -73,6 +73,14 @@ export default function JobsFooter() {
                 Services & Pricing
               </Link>
             </li>
+            <li>
+              <Link
+                to="/jobs/hire"
+                className="text-brand-700 dark:text-brand-400 font-bold hover:underline transition-colors hover:translate-x-1 inline-block"
+              >
+                Hire a Refugee
+              </Link>
+            </li>
           </ul>
         </div>
 
@@ -82,6 +90,14 @@ export default function JobsFooter() {
             Hire & Connect
           </h4>
           <ul className="space-y-2.5 text-sm">
+            <li>
+              <Link
+                to="/jobs/hire"
+                className="text-slate-900 dark:text-slate-200 font-medium hover:text-brand-600 dark:hover:text-brand-400 transition-colors hover:translate-x-1 inline-block"
+              >
+                Sign Up as Client
+              </Link>
+            </li>
             <li>
               <Link
                 to="/jobs/employers"

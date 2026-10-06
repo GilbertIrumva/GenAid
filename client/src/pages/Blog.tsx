@@ -36,6 +36,12 @@ function fromSeed(p: SeedPost): DisplayPost {
   };
 }
 
+function getYouTubeId(url?: string | null): string | null {
+  if (!url) return null;
+  const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
+  return match ? match[1] : null;
+}
+
 export default function Blog() {
   const { t } = useTranslation();
   useSEO({
@@ -80,11 +86,11 @@ export default function Blog() {
           src="/img/heroes/blog.jpg"
           alt="Hands writing in a journal"
           fallbackLabel=""
-          className="absolute inset-0 -z-20 h-full w-full object-cover"
+          className="absolute inset-0 -z-20 h-full w-full object-cover object-[center_20%] brightness-105 sm:brightness-110 contrast-[1.04] dark:brightness-100 dark:contrast-[1.08]"
         />
         <div
           aria-hidden
-          className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-950/90 via-brand-900/75 to-brand-900/45 dark:from-slate-950/95 dark:via-slate-900/90 dark:to-slate-950/85"
+          className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-950/85 via-brand-900/50 via-50% to-transparent dark:from-slate-950/90 dark:via-slate-900/65 dark:to-slate-950/25"
         />
         <div className="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="max-w-2xl text-white">
@@ -294,60 +300,82 @@ export default function Blog() {
 
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {apiVideos.length > 0
-            ? apiVideos.map((v) => (
-              <article
-                key={v._id}
-                className="overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
-              >
-                <div className="relative aspect-video w-full overflow-hidden bg-brand-100 dark:bg-slate-900">
-                  <video
-                    src={v.videoUrl}
-                    poster={v.posterUrl || undefined}
-                    controls
-                    preload="metadata"
-                    className="absolute inset-0 h-full w-full object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="font-display text-lg font-semibold text-neutral-heading dark:text-slate-100">
-                    {v.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-neutral-body dark:text-slate-300">{v.description}</p>
-                  <p className="mt-3 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-                    {new Date(v.createdAt).toLocaleDateString(undefined, {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    })}
-                  </p>
-                </div>
-              </article>
-            ))
-            : fallbackVideos.map((v) => (
-              <article
-                key={v.title}
-                className="overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
-              >
-                <div className="relative aspect-video w-full overflow-hidden bg-brand-100 dark:bg-slate-900">
-                  {v.youtubeId ? (
-                    <iframe
-                      src={`https://www.youtube-nocookie.com/embed/${v.youtubeId}`}
-                      title={v.title}
-                      loading="lazy"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      allowFullScreen
-                      className="absolute inset-0 h-full w-full"
-                    />
-                  ) : v.videoUrl ? (
-                    <video
-                      src={v.videoUrl}
-                      poster={v.poster}
-                      controls
-                      preload="metadata"
-                      className="absolute inset-0 h-full w-full object-cover"
-                    />
-                  ) : (
-                    <div className="absolute inset-0 grid place-items-center bg-brand-600/30 text-white">
+            ? apiVideos.map((v) => {
+              const ytId = getYouTubeId(v.videoUrl);
+              return (
+                <article
+                  key={v._id}
+                  className="overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
+                >
+                  <div className="relative aspect-video w-full overflow-hidden bg-brand-100 dark:bg-slate-900">
+                    {ytId ? (
+                      <iframe
+                        src={`https://www.youtube-nocookie.com/embed/${ytId}?rel=0`}
+                        title={v.title}
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                        className="absolute inset-0 h-full w-full"
+                      />
+                    ) : (
+                      <video
+                        src={v.videoUrl}
+                        poster={v.posterUrl || undefined}
+                        controls
+                        playsInline
+                        preload="metadata"
+                        className="absolute inset-0 h-full w-full object-cover"
+                      >
+                        <source src={v.videoUrl} type="video/mp4" />
+                      </video>
+                    )}
+                  </div>
+                  <div className="p-6">
+                    <h3 className="font-display text-lg font-semibold text-neutral-heading dark:text-slate-100">
+                      {v.title}
+                    </h3>
+                    <p className="mt-2 text-sm text-neutral-body dark:text-slate-300">{v.description}</p>
+                    <p className="mt-3 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+                      {new Date(v.createdAt).toLocaleDateString(undefined, {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}
+                    </p>
+                  </div>
+                </article>
+              );
+            })
+            : fallbackVideos.map((v) => {
+              const ytId = v.youtubeId || getYouTubeId(v.videoUrl);
+              return (
+                <article
+                  key={v.title}
+                  className="overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
+                >
+                  <div className="relative aspect-video w-full overflow-hidden bg-brand-100 dark:bg-slate-900">
+                    {ytId ? (
+                      <iframe
+                        src={`https://www.youtube-nocookie.com/embed/${ytId}?rel=0`}
+                        title={v.title}
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                        className="absolute inset-0 h-full w-full"
+                      />
+                    ) : v.videoUrl ? (
+                      <video
+                        src={v.videoUrl}
+                        poster={v.poster}
+                        controls
+                        playsInline
+                        preload="metadata"
+                        className="absolute inset-0 h-full w-full object-cover"
+                      >
+                        <source src={v.videoUrl} type="video/mp4" />
+                      </video>
+                    ) : (
+                      <div className="absolute inset-0 grid place-items-center bg-brand-600/30 text-white">
                       <div className="text-center">
                         <svg
                           width="56"
@@ -377,7 +405,8 @@ export default function Blog() {
                   )}
                 </div>
               </article>
-            ))}
+            );
+          })}
         </div>
 
         <div className="mt-10 text-center">

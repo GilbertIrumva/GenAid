@@ -18,6 +18,9 @@ interface DisplayPost {
   author: string;
   excerpt: string;
   cover: string | undefined;
+  youtubeId?: string;
+  videoTitle?: string;
+  videoDescription?: string;
   content: string[];
 }
 
@@ -29,6 +32,9 @@ function fromSeed(p: SeedPost): DisplayPost {
     author: p.author,
     excerpt: p.excerpt,
     cover: p.cover,
+    youtubeId: p.youtubeId,
+    videoTitle: p.videoTitle,
+    videoDescription: p.videoDescription,
     content: p.content,
   };
 }
@@ -198,22 +204,22 @@ export default function BlogPost() {
   const isSideBySide = mediaList.length > 1;
   const activeMedia = mediaList[activeImageIndex] || mediaList[0];
 
-  const pbsSection = post.slug === "how-foreign-aid-cuts-threaten-refugee-led-initiatives-a-call-for-sustainable-solutions" && (
+  const videoSection = (post.youtubeId || (post.slug === "how-foreign-aid-cuts-threaten-refugee-led-initiatives-a-call-for-sustainable-solutions" ? "vIK-iBooRfo" : undefined)) && (
     <div className="my-10 overflow-hidden rounded-2xl border border-brand-200 dark:border-brand-800 bg-brand-50/70 dark:bg-slate-800/80 p-6 sm:p-8">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-brand-200/60 dark:border-slate-700">
         <div>
           <span className="inline-flex items-center gap-1.5 rounded-full bg-red-100 dark:bg-red-950/80 px-2.5 py-0.5 text-xs font-semibold text-red-700 dark:text-red-400">
-            ▶ Watch Broadcast
+            ▶ Watch Video
           </span>
           <h3 className="mt-2 text-lg sm:text-xl font-bold text-neutral-heading dark:text-white">
-            PBS News Interview with Hubert Senga
+            {post.videoTitle || (post.youtubeId === "vIK-iBooRfo" || post.slug.startsWith("how-foreign") ? "PBS News Interview with Hubert Senga" : "Featured Video")}
           </h3>
           <p className="mt-1 text-sm text-neutral-body dark:text-slate-300">
-            How foreign aid cuts affect programs and livelihoods in Kenya&apos;s Kakuma refugee camp.
+            {post.videoDescription || "Watch the video coverage and reflections from the ground in Kakuma."}
           </p>
         </div>
         <a
-          href="https://www.youtube.com/watch?v=vIK-iBooRfo&t=8s"
+          href={`https://www.youtube.com/watch?v=${post.youtubeId || "vIK-iBooRfo"}`}
           target="_blank"
           rel="noreferrer"
           className="inline-flex items-center gap-2 shrink-0 rounded-lg bg-red-600 hover:bg-red-700 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition"
@@ -228,8 +234,8 @@ export default function BlogPost() {
       <div className="mt-6 overflow-hidden rounded-xl border border-brand-200/80 dark:border-slate-700 shadow-md">
         <div className="relative aspect-video w-full bg-black">
           <iframe
-            src="https://www.youtube-nocookie.com/embed/vIK-iBooRfo"
-            title="PBS News Interview with Hubert Senga"
+            src={`https://www.youtube-nocookie.com/embed/${post.youtubeId || "vIK-iBooRfo"}`}
+            title={post.videoTitle || post.title}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
             className="absolute inset-0 h-full w-full"
@@ -237,21 +243,23 @@ export default function BlogPost() {
         </div>
       </div>
 
-      <div className="mt-6">
-        <h4 className="text-xs font-bold uppercase tracking-wider text-brand-700 dark:text-brand-300 mb-3">
-          How You Can Support Sustainable Solutions
-        </h4>
-        <div className="grid sm:grid-cols-2 gap-3 text-sm">
-          <div className="rounded-xl bg-white dark:bg-slate-900 p-4 border border-brand-100 dark:border-slate-700 shadow-sm">
-            <strong className="block text-neutral-heading dark:text-white font-semibold">1. Partner With Generation Aid</strong>
-            <span className="text-xs text-neutral-body dark:text-slate-400 mt-1 block">Collaborate with our digital labs to hire remote refugee talent and support digital literacy cohorts.</span>
-          </div>
-          <div className="rounded-xl bg-white dark:bg-slate-900 p-4 border border-brand-100 dark:border-slate-700 shadow-sm">
-            <strong className="block text-neutral-heading dark:text-white font-semibold">2. Direct RLO Investment</strong>
-            <span className="text-xs text-neutral-body dark:text-slate-400 mt-1 block">Support refugee-led organizations directly to build durable, localized economic freedom and digital independence.</span>
+      {post.slug === "how-foreign-aid-cuts-threaten-refugee-led-initiatives-a-call-for-sustainable-solutions" && (
+        <div className="mt-6">
+          <h4 className="text-xs font-bold uppercase tracking-wider text-brand-700 dark:text-brand-300 mb-3">
+            How You Can Support Sustainable Solutions
+          </h4>
+          <div className="grid sm:grid-cols-2 gap-3 text-sm">
+            <div className="rounded-xl bg-white dark:bg-slate-900 p-4 border border-brand-100 dark:border-slate-700 shadow-sm">
+              <strong className="block text-neutral-heading dark:text-white font-semibold">1. Partner With Generation Aid</strong>
+              <span className="text-xs text-neutral-body dark:text-slate-400 mt-1 block">Collaborate with our digital labs to hire remote refugee talent and support digital literacy cohorts.</span>
+            </div>
+            <div className="rounded-xl bg-white dark:bg-slate-900 p-4 border border-brand-100 dark:border-slate-700 shadow-sm">
+              <strong className="block text-neutral-heading dark:text-white font-semibold">2. Direct RLO Investment</strong>
+              <span className="text-xs text-neutral-body dark:text-slate-400 mt-1 block">Support refugee-led organizations directly to build durable, localized economic freedom and digital independence.</span>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 
@@ -288,7 +296,7 @@ export default function BlogPost() {
                   {textBlocks.map((block, i) => renderBlock(block, i))}
                 </div>
 
-                {pbsSection}
+                {videoSection}
               </article>
 
               {/* RIGHT COLUMN: Media Showcase (Side-by-Side Photos) */}
@@ -406,7 +414,7 @@ export default function BlogPost() {
               })}
             </div>
 
-            {pbsSection}
+            {videoSection}
           </article>
         </Section>
       )}

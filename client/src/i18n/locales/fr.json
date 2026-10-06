@@ -86,6 +86,7 @@
     },
     "getInvolvedMenu": {
       "volunteer": "Bénévolat & Stage",
+      "jobSeeker": "Demandeur d'emploi",
       "hireRefugee": "Recruter un Réfugié",
       "contact": "Contactez-nous"
     }

@@ -62,6 +62,7 @@ export default function JobsTalent() {
       eyebrow="Talent ecosystem"
       title="Unlocking global talent from Kakuma"
       subtitle="Generation Jobs transforms trained potential into globally deployable talent through a rigorous journey and quality assurance model."
+      heroImage="/gen jobs/IMG_20260630_104952_312.jpg"
     >
       {/* PROFILE PILLARS (Pattern A: Canvas) */}
       <Section pattern="canvas" className="!pt-4 sm:!pt-6">
@@ -96,22 +97,22 @@ export default function JobsTalent() {
               <SmartImage
                 src="/gen jobs/IMG-20260529-WA0065.jpg"
                 alt="Generation Jobs remote digital professional at workstation in Kakuma"
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                className="h-full w-full object-cover object-[center_20%] brightness-105 sm:brightness-110 contrast-[1.04] saturate-[1.08] dark:brightness-100 dark:contrast-[1.08] transition-transform duration-500 group-hover:scale-105"
               />
             </div>
             <div className="grid grid-cols-2 gap-3 sm:gap-4">
-              <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm aspect-video group">
+              <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm aspect-[4/3] group">
                 <SmartImage
                   src="/digital class.jpeg"
                   alt="Digital training classroom session in Kakuma"
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="h-full w-full object-cover object-[center_20%] brightness-105 sm:brightness-110 contrast-[1.04] saturate-[1.08] dark:brightness-100 dark:contrast-[1.08] transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-              <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm aspect-video group">
+              <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm aspect-[4/3] group">
                 <SmartImage
                   src="/Gradutes.webp"
                   alt="Generation Aid graduates with certificates"
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="h-full w-full object-cover object-[center_20%] brightness-105 sm:brightness-110 contrast-[1.04] saturate-[1.08] dark:brightness-100 dark:contrast-[1.08] transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
             </div>

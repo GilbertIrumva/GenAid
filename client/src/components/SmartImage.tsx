@@ -25,8 +25,15 @@ export default function SmartImage({
   priority = false,
   onError,
 }: Props) {
+  const [prevSrc, setPrevSrc] = useState(src);
   const [failed, setFailed] = useState(false);
   const [loaded, setLoaded] = useState(false);
+
+  if (src !== prevSrc) {
+    setPrevSrc(src);
+    setFailed(false);
+    setLoaded(false);
+  }
   const missing = !src || src.trim() === "";
 
   if (failed || missing) {
@@ -68,7 +75,7 @@ export default function SmartImage({
       alt={alt}
       loading={priority ? "eager" : "lazy"}
       decoding="async"
-      fetchPriority={priority ? "high" : "auto"}
+      fetchPriority={priority ? "high" : "low"}
       className={`${className} transition-opacity duration-300 ${loaded ? "opacity-100" : "opacity-90"}`}
       onLoad={() => setLoaded(true)}
       onError={() => {

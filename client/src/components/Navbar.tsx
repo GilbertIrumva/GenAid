@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next";
 import { cn } from "@/utils/cn";
 import { SITE } from "@/data/site";
 import ThemeToggle from "@/components/ThemeToggle";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { GenerationAidLogo } from "@/components/Logo";
 
 const NAV_ROUTES: ReadonlyArray<{ to: string; key: string; end?: boolean }> = [
@@ -44,7 +43,8 @@ const MENUS: Record<string, ReadonlyArray<MenuLink>> = {
   ],
   getInvolved: [
     { to: "/volunteer", key: "volunteer" },
-    { to: "/jobs/employers", key: "hireRefugee" },
+    { to: "/job-seeker", key: "jobSeeker" },
+    { to: "/jobs/hire", key: "hireRefugee" },
     { to: "/contact", key: "contact" },
   ],
 };
@@ -256,7 +256,6 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <LanguageSwitcher />
           <ThemeToggle />
           <a
             href={SITE.donateUrl}
@@ -281,7 +280,6 @@ export default function Navbar() {
         </div>
 
         <div className="flex shrink-0 items-center gap-1 sm:gap-2 lg:hidden">
-          <LanguageSwitcher />
           <ThemeToggle />
           <button
             type="button"

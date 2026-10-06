@@ -5,6 +5,8 @@ import JobsShell from "@/components/JobsShell";
 import { servicePackages, type ServiceCategory } from "@/data/jobsBoard";
 import { useSEO } from "@/utils/useSEO";
 
+const EMPLOYER_FORM_URL = "https://forms.gle/wydDfQ8Y9GduXxi26";
+
 const filters: Array<"All" | ServiceCategory> = [
   "All",
   "Sales & Outbound",
@@ -63,13 +65,22 @@ export default function JobsOpportunities() {
       eyebrow="Services and pricing"
       title="Operational packages built for growth"
       subtitle="Start with Month 1 at $0 and Month 2 at $250 with transparent scope and measurable KPIs."
+      heroImage="/gen jobs/home slide images (3).jpg"
     >
       {/* PACKAGES (Pattern A: Canvas) */}
       <Section pattern="canvas" className="!pt-4 sm:!pt-6">
-        <div className="sir-callout-border mb-6">
+        <div className="sir-callout-border mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 font-medium">
             Choose the service package that fits your needs. Start with <strong className="text-brand-700 dark:text-brand-400">Month 1 at $0 (Free)</strong> and <strong className="text-brand-700 dark:text-brand-400">Month 2 at $250</strong>. No hidden fees, cancel anytime.
           </p>
+          <a
+            href={EMPLOYER_FORM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="sir-btn-primary shrink-0 py-2 px-4 text-xs font-extrabold uppercase tracking-wider text-center justify-center whitespace-nowrap"
+          >
+            <span>Employer Request Form ↗</span>
+          </a>
         </div>
 
         <div className="mb-6 sm:mb-8 flex items-center gap-2 overflow-x-auto pb-2 w-full max-w-full sm:flex-wrap no-scrollbar">
@@ -140,6 +151,18 @@ export default function JobsOpportunities() {
                 <p className="mt-4 text-xs sm:text-sm font-extrabold text-slate-900 dark:text-slate-200">
                   Impact: {pkg.impact}
                 </p>
+
+                <div className="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800">
+                  <a
+                    href={EMPLOYER_FORM_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="sir-btn-primary w-full justify-center py-2.5 px-4 text-xs sm:text-sm font-extrabold uppercase tracking-wider group"
+                  >
+                    <span>Request This Service</span>
+                    <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+                  </a>
+                </div>
               </div>
             </article>
           ))}
@@ -167,16 +190,16 @@ export default function JobsOpportunities() {
               {roadmap.map((item) => (
                 <article
                   key={item.week}
-                  className="relative rounded-2xl bg-white text-slate-900 p-5 sm:p-8 shadow-xl border border-white flex flex-col justify-between"
+                  className="relative rounded-2xl bg-white dark:bg-slate-900/95 text-slate-900 dark:text-slate-100 p-5 sm:p-8 shadow-xl border border-white/80 dark:border-slate-800 flex flex-col justify-between transition-colors"
                 >
                   <div>
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-extrabold uppercase tracking-widest text-brand-700 bg-brand-50 border border-brand-200">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-extrabold uppercase tracking-widest text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-950/70 border border-brand-200 dark:border-brand-800">
                       {item.week}
                     </span>
-                    <h3 className="mt-4 font-serif text-lg sm:text-xl font-extrabold text-slate-900">
+                    <h3 className="mt-4 font-serif text-lg sm:text-xl font-extrabold text-slate-900 dark:text-slate-100">
                       {item.title}
                     </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-slate-600 font-medium">
+                    <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300 font-medium">
                       {item.body}
                     </p>
                   </div>
@@ -185,13 +208,15 @@ export default function JobsOpportunities() {
             </div>
 
             <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
-              <Link
-                to="/contact"
+              <a
+                href={EMPLOYER_FORM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 text-xs font-extrabold uppercase tracking-wider text-brand-700 shadow-md transition hover:bg-brand-50 hover:text-brand-800 w-full sm:w-auto"
               >
-                <span>Start Pilot</span>
+                <span>Start Pilot (Fill Form)</span>
                 <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
-              </Link>
+              </a>
               <Link
                 to="/jobs/employers"
                 className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/70 bg-white/10 px-6 py-3.5 text-xs font-extrabold uppercase tracking-wider text-white backdrop-blur-sm transition hover:bg-white hover:text-brand-800 w-full sm:w-auto"

@@ -158,11 +158,11 @@ export default function Impact() {
           src="https://media.licdn.com/dms/image/v2/D4D22AQF7u2wlvntemA/feedshare-shrink_800/B4DZ64fL7PHgAk-/0/1781211644043?e=2147483647&v=beta&t=L6S7NtqPrDOTcWbkr2IoFNRW1fs507W4ouiiQ8vS7p8"
           alt="UNHCR and Australian Aid delegation visit to Generation Aid in Kakuma"
           fallbackLabel=""
-          className="absolute inset-0 -z-20 h-full w-full object-cover"
+          className="absolute inset-0 -z-20 h-full w-full object-cover object-[center_20%] brightness-105 sm:brightness-110 contrast-[1.04] dark:brightness-100 dark:contrast-[1.08]"
         />
         <div
           aria-hidden
-          className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-950/90 via-brand-900/75 to-brand-900/45 dark:from-slate-950/95 dark:via-slate-900/90 dark:to-slate-950/85"
+          className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-950/85 via-brand-900/50 via-50% to-transparent dark:from-slate-950/90 dark:via-slate-900/65 dark:to-slate-950/25"
         />
         <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white">

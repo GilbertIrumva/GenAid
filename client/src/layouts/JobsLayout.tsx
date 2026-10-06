@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ThemeToggle from "@/components/ThemeToggle";
 import JobsFooter from "@/components/JobsFooter";
 import { cn } from "@/utils/cn";
@@ -10,6 +9,7 @@ const JOBS_NAV = [
   { to: "/jobs/talent", label: "Talent Model", end: false },
   { to: "/jobs/employers", label: "For Employers", end: false },
   { to: "/jobs/opportunities", label: "Services & Pricing", end: false },
+  { to: "/jobs/hire", label: "Hire a Refugee", end: false },
 ];
 
 export default function JobsLayout() {
@@ -80,16 +80,7 @@ export default function JobsLayout() {
 
           {/* Controls & CTA */}
           <div className="flex shrink-0 items-center gap-1.5 sm:gap-2.5">
-            <LanguageSwitcher className="hidden sm:inline-flex" />
             <ThemeToggle />
-
-            <Link
-              to="/contact?subject=Talent+Request"
-              className="sir-btn-primary px-3 py-1 text-[11px] font-extrabold uppercase tracking-wider hidden lg:inline-flex"
-            >
-              <span>Request Talent</span>
-              <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
-            </Link>
 
             <Link
               to="/"
@@ -134,13 +125,6 @@ export default function JobsLayout() {
             className="max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xl md:hidden"
           >
             <div className="space-y-3 p-4">
-              <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
-                <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
-                  Language
-                </span>
-                <LanguageSwitcher />
-              </div>
-
               <div className="pb-2 border-b border-slate-100 dark:border-slate-800">
                 <Link
                   to="/"
@@ -174,17 +158,6 @@ export default function JobsLayout() {
                     <span className="text-xs opacity-70">→</span>
                   </NavLink>
                 ))}
-              </div>
-
-              <div className="pt-3 mt-3 border-t border-slate-100 dark:border-slate-800 space-y-2">
-                <Link
-                  to="/contact?subject=Talent+Request"
-                  onClick={() => setOpen(false)}
-                  className="sir-btn-primary w-full py-3 text-xs uppercase tracking-wider justify-center"
-                >
-                  <span>Request Talent</span>
-                  <span>→</span>
-                </Link>
               </div>
             </div>
           </nav>

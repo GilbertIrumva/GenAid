@@ -75,7 +75,15 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                to="/jobs/employers"
+                to="/job-seeker"
+                className="text-slate-900 dark:text-slate-200 font-medium hover:text-brand-600 dark:hover:text-brand-400 transition-colors hover:translate-x-1 inline-block"
+              >
+                Job Seeker
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/jobs/hire"
                 className="text-slate-900 dark:text-slate-200 font-medium hover:text-brand-600 dark:hover:text-brand-400 transition-colors hover:translate-x-1 inline-block"
               >
                 Hire a Refugee

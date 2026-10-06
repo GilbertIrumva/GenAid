@@ -139,8 +139,9 @@ export default function GenJobsVideos({ className = "" }: GenJobsVideosProps) {
                         <img
                           src={`https://img.youtube.com/vi/${video.id}/mqdefault.jpg`}
                           alt={video.title}
-                          className="h-full w-full object-cover"
+                          className="h-full w-full object-cover brightness-105 contrast-[1.04] dark:brightness-100"
                           loading="lazy"
+                          decoding="async"
                         />
                         <div className={`absolute inset-0 flex items-center justify-center ${isSelected ? "bg-brand-600/30" : "bg-black/30"}`}>
                           <div className="w-6 h-6 rounded-full bg-white/90 text-slate-950 flex items-center justify-center shadow-xs">

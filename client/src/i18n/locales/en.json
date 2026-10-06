@@ -86,6 +86,7 @@
     },
     "getInvolvedMenu": {
       "volunteer": "Volunteer & Internship",
+      "jobSeeker": "Job Seeker",
       "hireRefugee": "Hire a Refugee",
       "contact": "Contact Us"
     }

@@ -158,10 +158,11 @@ const proofAndTrust = [
 ];
 
 const impactStats = [
-  { label: "Individuals trained", value: "5,000+" },
-  { label: "Earning before graduation", value: "80%" },
-  { label: "Average monthly income", value: "$200" },
-  { label: "Indirect beneficiaries reached", value: "7,000" },
+  { label: "Individuals trained", value: "870+" },
+  { label: "Earning after graduation", value: "62%" },
+  { label: "Earning before graduation", value: "20%" },
+  { label: "Average monthly income", value: "$250" },
+  { label: "Indirect beneficiaries reached", value: "5,000+" },
 ];
 
 export default function Jobs() {
@@ -197,7 +198,7 @@ export default function Jobs() {
       title={heroTitle}
       subtitle={heroSubtitle}
       customHero={
-        <section className="relative w-full overflow-hidden min-h-[380px] sm:min-h-[440px] lg:min-h-[480px] flex items-center bg-[#172554] gatsby-hero-bg">
+        <section className="relative w-full overflow-hidden min-h-[440px] sm:min-h-[500px] lg:min-h-[560px] flex items-center bg-[#172554] gatsby-hero-bg">
           {/* Full Width Cinematic Sliding Video-Like Reel (No dots, no arrows, continuous flow) */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             {genJobsHeroSlides.map((slide, index) => {
@@ -223,15 +224,15 @@ export default function Jobs() {
                     src={slide.src}
                     alt={slide.alt}
                     fallbackLabel=""
-                    className="h-full w-full object-cover contrast-[1.12] brightness-[0.85] saturate-[1.08]"
+                    className="h-full w-full object-cover object-[center_20%] brightness-105 sm:brightness-110 contrast-[1.04] saturate-[1.08] dark:brightness-100 dark:contrast-[1.08]"
                   />
                 </motion.div>
               );
             })}
           </div>
 
-          {/* Deep Royal Blue Gradient Overlay */}
-          <div className="absolute inset-0 z-[2] bg-gradient-to-r from-[#172554]/95 via-[#172554]/85 to-[#172554]/55 pointer-events-none" />
+          {/* Luminous Gradient Overlay */}
+          <div className="absolute inset-0 z-[2] bg-gradient-to-r from-[#0d1b3e]/90 via-[#0d1b3e]/60 via-45% to-transparent dark:from-slate-950/95 dark:via-slate-950/70 dark:to-slate-950/20 pointer-events-none" />
 
           {/* Hero Content Box */}
           <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
@@ -352,7 +353,7 @@ export default function Jobs() {
                 <SmartImage
                   src="/gen jobs/IMG-20260318-WA0031 - Copy.jpg"
                   alt="Generation Jobs team and global collaboration partners in Kakuma"
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="h-full w-full object-cover object-[center_20%] brightness-105 sm:brightness-110 contrast-[1.04] saturate-[1.08] dark:brightness-100 dark:contrast-[1.08] transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
             </div>
@@ -397,7 +398,7 @@ export default function Jobs() {
             <SmartImage
               src="/gen jobs/Copy of IMG_20260611_111051_050.jpg"
               alt="BPO Delivery Center and Workstations in Kakuma with UNHCR and Australian Aid partners"
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              className="h-full w-full object-cover object-[center_20%] brightness-105 sm:brightness-110 contrast-[1.04] saturate-[1.08] dark:brightness-100 dark:contrast-[1.08] transition-transform duration-500 group-hover:scale-105"
             />
           </div>
         </div>
@@ -480,16 +481,16 @@ export default function Jobs() {
             {pipelineSteps.map((step) => (
               <article
                 key={step.step}
-                className="relative rounded-2xl bg-white text-slate-900 p-5 sm:p-7 shadow-xl border border-white flex flex-col justify-between"
+                className="relative rounded-2xl bg-white dark:bg-slate-900/95 text-slate-900 dark:text-slate-100 p-5 sm:p-7 shadow-xl border border-white/80 dark:border-slate-800 flex flex-col justify-between transition-colors"
               >
                 <div>
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-extrabold uppercase tracking-widest text-brand-700 bg-brand-50 border border-brand-200">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-extrabold uppercase tracking-widest text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-950/70 border border-brand-200 dark:border-brand-800">
                     Step {step.step}
                   </span>
-                  <h3 className="mt-4 font-serif text-lg sm:text-xl font-extrabold text-slate-900">
+                  <h3 className="mt-4 font-serif text-lg sm:text-xl font-extrabold text-slate-900 dark:text-slate-100">
                     {step.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-slate-600 font-medium">
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300 font-medium">
                     {step.body}
                   </p>
                 </div>
@@ -514,7 +515,7 @@ export default function Jobs() {
               <SmartImage
                 src="/gen jobs/IMG_20260630_104952_312.jpg"
                 alt="Generation Aid and Konexio Africa partnership team in Kakuma"
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                className="h-full w-full object-cover object-[center_20%] brightness-105 sm:brightness-110 contrast-[1.04] saturate-[1.08] dark:brightness-100 dark:contrast-[1.08] transition-transform duration-500 group-hover:scale-105"
               />
             </div>
           </div>
@@ -642,7 +643,7 @@ export default function Jobs() {
             </p>
           </div>
 
-          <div className="mt-8 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
             {impactStats.map((item) => (
               <article
                 key={item.label}

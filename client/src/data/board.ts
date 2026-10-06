@@ -24,9 +24,9 @@ export const board: BoardMember[] = [
   },
   {
     key: "secretary",
-    name: "Board Secretary",
-    role: "Governance & compliance",
+    name: "Hubert Senga",
+    role: "Board Secretary",
     bio: "Maintains board records, governance policies and ensures compliance with statutory obligations.",
-    image: "/img/team/community.jpg",
+    image: "/img/team/Hubert Senga.jpg",
   },
 ];

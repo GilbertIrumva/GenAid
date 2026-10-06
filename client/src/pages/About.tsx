@@ -141,11 +141,11 @@ export default function About() {
           src="/who we are.jpg"
           alt="Generation Aid community collaborating and learning together in Kakuma"
           fallbackLabel=""
-          className="absolute inset-0 -z-20 h-full w-full object-cover"
+          className="absolute inset-0 -z-20 h-full w-full object-cover object-[center_20%] brightness-105 sm:brightness-110 contrast-[1.04] dark:brightness-100 dark:contrast-[1.08]"
         />
         <div
           aria-hidden
-          className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-950/90 via-brand-900/75 to-brand-900/45 dark:from-slate-950/95 dark:via-slate-900/90 dark:to-slate-950/85"
+          className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-950/85 via-brand-900/50 via-50% to-transparent dark:from-slate-950/90 dark:via-slate-900/65 dark:to-slate-950/25"
         />
         <div className="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="max-w-2xl text-white">
@@ -260,11 +260,11 @@ export default function About() {
           </div>
 
           {/* Full-width image under the words */}
-          <div className="mt-10 overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-xl group aspect-[16/9] sm:aspect-[21/9]">
+          <div className="mt-10 overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-xl group aspect-[16/10] sm:aspect-[16/7] md:aspect-[21/9]">
             <SmartImage
-              src="/Our Story.jpg"
-              alt="Hubert Senga speaking on refugee empowerment, digital inclusion, and global collaboration"
-              className="h-full w-full object-cover object-[center_20%] transition-transform duration-500 group-hover:scale-105"
+              src="/where_it_all_began.jpg"
+              alt="Hubert Senga, Founder of Generation Aid"
+              className="h-full w-full object-cover object-[center_35%] transition-transform duration-500 group-hover:scale-105"
             />
           </div>
         </div>
@@ -418,7 +418,7 @@ export default function About() {
           </p>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 max-w-7xl mx-auto">
           {advisors.map((advisor) => (
             <MemberCard key={advisor.key} member={advisor} />
           ))}

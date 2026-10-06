@@ -51,8 +51,20 @@ export default function ProgramDetail() {
   const imgWhyItMatters = gallery.length > 1 ? gallery[1] : undefined;
   const imgComponents = gallery.length > 2 ? gallery[2] : undefined;
   const imgHighlight = gallery.length > 3 ? gallery[3] : undefined;
-  const imgGains = gallery.length > 4 ? gallery[4] : (gallery.length > 1 ? gallery[1] : undefined);
-  const imgQuote = gallery.length > 5 ? gallery[5] : undefined;
+  const imgGains =
+    gallery.length > 4
+      ? gallery[4]
+      : gallery.length > 3
+        ? gallery[3]
+        : gallery.length > 1
+          ? gallery[1]
+          : undefined;
+  const imgQuote =
+    gallery.length > 5
+      ? gallery[5]
+      : gallery.length > 3 && !detail.gains
+        ? gallery[3]
+        : undefined;
 
   return (
     <div className="bg-white dark:bg-slate-900 transition-colors">
@@ -62,11 +74,11 @@ export default function ProgramDetail() {
           src={detail.image}
           alt={detail.title}
           fallbackLabel=""
-          className="absolute inset-0 -z-20 h-full w-full object-cover"
+          className="absolute inset-0 -z-20 h-full w-full object-cover object-[center_20%] brightness-105 sm:brightness-110 contrast-[1.04] dark:brightness-100 dark:contrast-[1.08]"
         />
         <div
           aria-hidden
-          className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-950/95 via-brand-900/85 to-brand-900/60 dark:from-slate-950/95 dark:via-slate-900/90 dark:to-slate-950/85"
+          className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-950/85 via-brand-900/50 via-50% to-transparent dark:from-slate-950/90 dark:via-slate-900/65 dark:to-slate-950/25"
         />
         <div className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="max-w-3xl text-white">
@@ -371,6 +383,86 @@ export default function ProgramDetail() {
                 )}
               </div>
             </div>
+
+            {/* International Media Features & Coverage */}
+            {detail.mediaVideos && detail.mediaVideos.length > 0 && (
+              <div className="pt-4 border-t border-neutral-border/80 dark:border-slate-800">
+                <div className="flex items-center gap-2">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-red-100 dark:bg-red-950/60 px-3 py-1 text-xs font-bold text-red-600 dark:text-red-400">
+                    <span className="h-2 w-2 rounded-full bg-red-500 animate-pulse" />
+                    International Media Coverage
+                  </span>
+                </div>
+                <h2 className="mt-2 font-display text-2xl font-bold text-neutral-heading dark:text-slate-50">
+                  Broadcast Features & Video Interviews
+                </h2>
+                <p className="mt-2 text-sm text-neutral-body dark:text-slate-300">
+                  Watch international television and broadcast reporting on refugee resilience, foreign aid budget cuts, and digital self-reliance featuring Hubert Senga and Generation Aid.
+                </p>
+
+                <div className="mt-6 grid gap-6 sm:grid-cols-2">
+                  {detail.mediaVideos.map((mv) => (
+                    <div
+                      key={mv.url}
+                      className="group flex flex-col overflow-hidden rounded-2xl border border-neutral-border dark:border-slate-800 bg-white dark:bg-slate-800 shadow-sm transition hover:shadow-md hover:border-brand-300 dark:hover:border-brand-500"
+                    >
+                      <div className="relative aspect-video w-full overflow-hidden bg-black">
+                        {mv.youtubeId ? (
+                          <iframe
+                            src={`https://www.youtube-nocookie.com/embed/${mv.youtubeId}`}
+                            title={mv.title}
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowFullScreen
+                            className="h-full w-full border-0"
+                            loading="lazy"
+                          />
+                        ) : (
+                          <div className="flex h-full w-full items-center justify-center bg-slate-900 text-white">
+                            <span>Video Player</span>
+                          </div>
+                        )}
+                      </div>
+                      <div className="flex flex-1 flex-col p-5">
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="rounded-md bg-brand-50 dark:bg-slate-700/80 px-2.5 py-1 text-xs font-bold text-brand-700 dark:text-brand-300">
+                            {mv.outlet}
+                          </span>
+                          <a
+                            href={mv.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-xs font-semibold text-brand-600 dark:text-brand-400 hover:underline"
+                          >
+                            <span>Watch on YouTube</span>
+                            <span>↗</span>
+                          </a>
+                        </div>
+                        <h3 className="mt-3 font-display text-base font-bold text-neutral-heading dark:text-slate-100 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition">
+                          {mv.title}
+                        </h3>
+                        <p className="mt-2 text-xs sm:text-sm leading-relaxed text-neutral-body dark:text-slate-300">
+                          {mv.description}
+                        </p>
+                        <div className="mt-4 pt-3 border-t border-neutral-border/60 dark:border-slate-700/60">
+                          <a
+                            href={mv.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-xs font-bold text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 transition"
+                          >
+                            <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">
+                              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                            </svg>
+                            <span>Open in YouTube ({mv.outlet})</span>
+                            <span>↗</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Sidebar */}
@@ -450,6 +542,24 @@ export default function ProgramDetail() {
                   <dt className="text-xs text-neutral-body dark:text-slate-400">Category</dt>
                   <dd className="font-semibold text-neutral-heading dark:text-slate-100">{detail.category}</dd>
                 </div>
+                {detail.mediaVideos && detail.mediaVideos.length > 0 && (
+                  <div>
+                    <dt className="text-xs text-neutral-body dark:text-slate-400">Media Features</dt>
+                    <dd className="mt-1 flex flex-wrap gap-1.5 font-semibold text-neutral-heading dark:text-slate-100">
+                      {detail.mediaVideos.map((mv) => (
+                        <a
+                          key={mv.url}
+                          href={mv.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 rounded bg-red-50 dark:bg-red-950/60 px-2 py-0.5 text-[11px] font-bold text-red-600 dark:text-red-400 hover:underline"
+                        >
+                          ▶ {mv.outlet} ↗
+                        </a>
+                      ))}
+                    </dd>
+                  </div>
+                )}
               </dl>
             </div>
           </aside>

@@ -14,6 +14,14 @@ export interface ProgramQuote {
   role?: string;
 }
 
+export interface ProgramMediaVideo {
+  title: string;
+  outlet: string;
+  youtubeId?: string;
+  url: string;
+  description: string;
+}
+
 export interface DetailedProgram {
   id: string;
   slug?: string;
@@ -42,6 +50,7 @@ export interface DetailedProgram {
   bookingUrl?: string;
   ctaText?: string;
   ctaLink?: string;
+  mediaVideos?: ProgramMediaVideo[];
 }
 
 export const defaultPrograms: DetailedProgram[] = [
@@ -113,11 +122,12 @@ export const defaultPrograms: DetailedProgram[] = [
     category: "Emerging Tech & AI",
     partner: "Generation Aid Tech Initiative",
     body: "Generation Aid’s Women in AI Program is a three month learning and fellowship initiative designed to equip refugee women with practical knowledge, confidence, and opportunities in Artificial Intelligence and emerging technologies. The program introduces participants to AI concepts, Generative AI, prompt engineering, responsible AI, digital innovation, and practical AI applications.",
-    image: "/programs/Women in Ai.jpg",
+    image: "/programs/women-in-ai-1.jpg",
     gallery: [
-      "/programs/Women in Ai.jpg",
+      "/programs/women-in-ai-1.jpg",
       "/programs/women in AI (2).jpg",
-      "/programs/women in AI.png",
+      "/programs/women-in-ai-3.jpg",
+      "/programs/women-in-ai-4.jpg",
     ],
     targetAudience:
       "Primarily for refugee women and young women in Kakuma and surrounding communities interested in technology, innovation, and the future of work. Participants do not need advanced technical backgrounds, just basic digital literacy and an eager commitment to learn.",
@@ -371,10 +381,10 @@ export const defaultPrograms: DetailedProgram[] = [
     speaker: "Hubert Senga | Founder & CEO, Generation Aid",
     partner: "International Alliances & Global Platforms",
     body: "Hubert Senga is a refugee advocate, social entrepreneur, and digital inclusion leader dedicated to empowering displaced communities through digital skills, innovative education, and pathways to meaningful employment. As a Congolese refugee and founder of Generation Aid in Kakuma, Kenya, Hubert works to bridge literacy, digital access, and unemployment gaps while connecting refugees to opportunities in the global economy. A recognized voice on refugee led solutions and economic inclusion, Hubert has advocated for refugees and Refugee Led Organizations through platforms including PBS News, FRANCE 24, the International Labour Organization (ILO), and Accountability Lab East & Southern Africa (ALESA).",
-    image: "/programs/GL advocacy.jpg",
+    image: "/programs/advocacy-top.jpg",
     gallery: [
       "/programs/GL advocacy.jpg",
-      "/programs/GL advocacy (2).jpg",
+      "/programs/advocacy-second.jpg",
       "/programs/GL advocacy (3).jpg",
       "/programs/GL advocacy (4).jpg",
     ],
@@ -434,6 +444,24 @@ export const defaultPrograms: DetailedProgram[] = [
     bookingUrl: "/contact?subject=Speaking+or+Partnership+with+Hubert+Senga",
     ctaText: "Book a 15 min Call with Hubert",
     ctaLink: "/contact?subject=Speaking+or+Partnership+with+Hubert+Senga",
+    mediaVideos: [
+      {
+        title: "PBS News Weekend: Foreign Aid Cuts Threaten Kakuma Programs",
+        outlet: "PBS NewsHour",
+        youtubeId: "vIK-iBooRfo",
+        url: "https://www.youtube.com/watch?v=vIK-iBooRfo",
+        description:
+          "Hubert Senga speaks on PBS News Weekend about how foreign aid budget cuts affect refugees in Kakuma and why refugee-led initiatives are vital for self-reliance.",
+      },
+      {
+        title: "France 24: « Nous ne voulons pas mourir » - Le cri d'alarme d'un réfugié au Kenya après la fin de l'USAID",
+        outlet: "FRANCE 24",
+        youtubeId: "_VxfVs41DRM",
+        url: "https://www.youtube.com/watch?v=_VxfVs41DRM",
+        description:
+          "Hubert Senga speaks on France 24 about the devastating impact of sudden humanitarian aid cuts in Kakuma and the urgent necessity of refugee self-reliance and digital inclusion.",
+      },
+    ],
   },
   {
     id: "english-language-literacy",

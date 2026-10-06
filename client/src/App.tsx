@@ -17,7 +17,9 @@ import Jobs from "./pages/Jobs";
 import JobsTalent from "./pages/JobsTalent";
 import JobsEmployers from "./pages/JobsEmployers";
 import JobsOpportunities from "./pages/JobsOpportunities";
+import JobsHire from "./pages/JobsHire";
 import Volunteer from "./pages/Volunteer";
+import JobSeeker from "./pages/JobSeeker";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
@@ -54,6 +56,7 @@ export default function App() {
         <Route path="/reports" element={<Navigate to="/impact" replace />} />
         <Route path="/partners" element={<Partners />} />
         <Route path="/volunteer" element={<Volunteer />} />
+        <Route path="/job-seeker" element={<JobSeeker />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
       </Route>
@@ -63,6 +66,7 @@ export default function App() {
         <Route path="talent" element={<JobsTalent />} />
         <Route path="employers" element={<JobsEmployers />} />
         <Route path="opportunities" element={<JobsOpportunities />} />
+        <Route path="hire" element={<JobsHire />} />
       </Route>
     </Routes>
   );

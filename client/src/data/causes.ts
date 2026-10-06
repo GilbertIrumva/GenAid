@@ -25,7 +25,7 @@ export const causes: Cause[] = [
     title: "Create Jobs for Refugees & Women's Empowerment",
     description:
       "Supporting employment pathways that connect talented refugee professionals with remote jobs, while investing in refugee women through vocational training and entrepreneurship.",
-    image: "/img/causes/jobs.jpg",
+    image: "/img/causes/create-jobs.jpg",
     goal: 40000,
     raised: 21850,
     donateUrl:
@@ -58,7 +58,7 @@ export const causes: Cause[] = [
     title: "AgriHope Initiative for Resilience and Livelihood",
     description:
       "Combating chronic food insecurity in Kakuma through permaculture, micro drip irrigation, climate smart agriculture, and kitchen gardens for youth and women.",
-    image: "/img/heroes/about-history.jpg",
+    image: "/img/causes/agrihope.jpg",
     goal: 35000,
     raised: 18900,
     donateUrl:

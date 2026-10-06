@@ -162,6 +162,7 @@ export default function JobsEmployers() {
       eyebrow="Strategic impact sourcing"
       title="Hiring through Generation Jobs is a strategic decision"
       subtitle="Secure high-performing digital talent while advancing ESG and social-impact mandates through a structured, measurable sourcing model."
+      heroImage="/gen jobs/home slide images (1).jpg"
     >
       {/* SERVED CLIENTS SOCIAL PROOF */}
       <SatisfiedClients showTitle={true} />
@@ -199,14 +200,14 @@ export default function JobsEmployers() {
               <SmartImage
                 src="/gen jobs/Copy of IMG_20260611_111051_050.jpg"
                 alt="Generation Jobs BPO Delivery Hub and Workstations in Kakuma with UNHCR and Australian Aid partners"
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                className="h-full w-full object-cover object-[center_20%] brightness-105 sm:brightness-110 contrast-[1.04] saturate-[1.08] dark:brightness-100 dark:contrast-[1.08] transition-transform duration-500 group-hover:scale-105"
               />
             </div>
             <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm aspect-[16/10] sm:aspect-[16/7] group">
               <SmartImage
                 src="/blog generation jobs launch.webp"
                 alt="Generation Jobs initiative launch"
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                className="h-full w-full object-cover object-[center_20%] brightness-105 sm:brightness-110 contrast-[1.04] saturate-[1.08] dark:brightness-100 dark:contrast-[1.08] transition-transform duration-500 group-hover:scale-105"
               />
             </div>
           </div>
@@ -214,10 +215,10 @@ export default function JobsEmployers() {
       </Section>
 
       {/* SERVICE LINES (Blue Palette) */}
-      <section className="bg-brand-600 dark:bg-brand-700 py-16 sm:py-20 text-white transition-colors border-t border-brand-500/50">
+      <section className="bg-brand-600 dark:bg-brand-900 py-16 sm:py-20 text-white transition-colors border-t border-brand-500/50 dark:border-brand-800">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <span className="inline-block rounded-full bg-white/20 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-white backdrop-blur mb-2 border border-white/25">
+            <span className="inline-block rounded-md bg-white/20 px-3.5 py-1 text-xs font-extrabold uppercase tracking-widest text-white border border-white/30 backdrop-blur-sm mb-2">
               Comprehensive service portfolio
             </span>
             <h2 className="mt-2 font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight !text-white">
@@ -229,18 +230,37 @@ export default function JobsEmployers() {
             {serviceLines.map((line) => (
               <article
                 key={line.title}
-                className="flex flex-col justify-between rounded-2xl bg-white p-6 shadow-md border border-white/80 transition hover:shadow-xl hover:-translate-y-0.5"
+                className="flex flex-col justify-between rounded-2xl bg-white dark:bg-slate-900/95 p-6 shadow-md border border-white/80 dark:border-slate-800 transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5"
               >
                 <div>
-                  <h3 className="font-serif text-lg sm:text-xl font-extrabold text-neutral-heading">
+                  <h3 className="font-serif text-lg sm:text-xl font-extrabold text-slate-900 dark:text-slate-100">
                     {line.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-neutral-body">
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300 font-medium">
                     {line.body}
                   </p>
                 </div>
               </article>
             ))}
+          </div>
+
+          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 text-center">
+            <a
+              href="https://forms.gle/wydDfQ8Y9GduXxi26"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 text-xs font-extrabold uppercase tracking-wider text-brand-700 shadow-md transition hover:bg-brand-50 hover:text-brand-800 w-full sm:w-auto"
+            >
+              <span>Fill Employer Inquiry Form</span>
+              <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+            </a>
+            <Link
+              to="/jobs/opportunities"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/70 bg-white/10 px-6 py-3.5 text-xs font-extrabold uppercase tracking-wider text-white backdrop-blur-sm transition hover:bg-white hover:text-brand-800 w-full sm:w-auto"
+            >
+              <span>Explore Pricing &amp; Packages</span>
+              <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+            </Link>
           </div>
         </div>
       </section>

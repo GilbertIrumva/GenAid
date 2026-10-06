@@ -99,6 +99,13 @@ export const partners: Partner[] = [
     url: "https://mylittlezen.com/",
     logo: "/partners/My little zen.jpeg",
   },
+  {
+    key: "women-in-ai",
+    name: "Women in AI",
+    category: "Strategic",
+    url: "https://www.womeninai.co/",
+    logo: "/partners/Women in AI.png",
+  },
 ];
 
 export const partnershipBenefits = [

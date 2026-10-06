@@ -317,15 +317,15 @@ export default function Home() {
                   src={slide.src}
                   alt={slide.alt}
                   fallbackLabel=""
-                  className="h-full w-full object-cover contrast-[1.15] brightness-[0.88] saturate-[1.1]"
+                  className="h-full w-full object-cover object-[center_20%] brightness-105 sm:brightness-110 contrast-[1.04] saturate-[1.08] dark:brightness-100 dark:contrast-[1.08]"
                 />
               </motion.div>
             );
           })}
         </div>
 
-        {/* Deep Royal Blue Gradient Overlay */}
-        <div className="absolute inset-0 z-[2] bg-gradient-to-r from-[#172554]/95 via-[#172554]/85 to-[#172554]/55 pointer-events-none" />
+        {/* Luminous Gradient Overlay (Protects text on left, lets faces shine with high light on right) */}
+        <div className="absolute inset-0 z-[2] bg-gradient-to-r from-[#0d1b3e]/90 via-[#0d1b3e]/60 via-45% to-transparent dark:from-slate-950/95 dark:via-slate-950/70 dark:to-slate-950/20 pointer-events-none" />
 
         {/* Hero Content Box */}
         <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
@@ -669,7 +669,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 max-w-7xl mx-auto px-4 sm:px-6">
           {advisors.map((advisor) => (
             <MemberCard key={advisor.key} member={advisor} />
           ))}
@@ -705,23 +705,23 @@ export default function Home() {
             {recentPosts.map((p) => (
               <article
                 key={p.slug}
-                className="flex flex-col justify-between rounded-2xl bg-white p-6 sm:p-7 shadow-md border border-white/80 transition hover:shadow-xl hover:-translate-y-0.5 group"
+                className="flex flex-col justify-between rounded-2xl bg-white dark:bg-slate-900/95 p-6 sm:p-7 shadow-md border border-white/80 dark:border-slate-800 transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5 group"
               >
                 <div>
-                  <time className="text-[11px] font-extrabold uppercase tracking-wider text-brand-600">
+                  <time className="text-[11px] font-extrabold uppercase tracking-wider text-brand-600 dark:text-brand-400">
                     {p.date}
                   </time>
-                  <h3 className="mt-3 font-serif text-lg font-bold text-neutral-heading group-hover:text-brand-600 transition-colors">
+                  <h3 className="mt-3 font-serif text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
                     <Link to={`/blog/${p.slug}`}>
                       {p.title}
                     </Link>
                   </h3>
-                  <p className="mt-2 text-sm text-neutral-body leading-relaxed line-clamp-3">{p.excerpt}</p>
+                  <p className="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-3 font-medium">{p.excerpt}</p>
                 </div>
-                <div className="mt-6 pt-4 border-t border-neutral-100">
+                <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
                   <Link
                     to={`/blog/${p.slug}`}
-                    className="inline-flex items-center gap-1 text-xs uppercase tracking-wider font-extrabold text-brand-600 group-hover:text-brand-700 transition"
+                    className="inline-flex items-center gap-1 text-xs uppercase tracking-wider font-extrabold text-brand-600 dark:text-brand-400 group-hover:text-brand-700 dark:group-hover:text-brand-300 transition"
                   >
                     <span>{t("common.readMoreArrow")}</span>
                     <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
@@ -782,6 +782,7 @@ export default function Home() {
                     alt={name}
                     className="h-12 w-12 rounded-full object-cover border-2 border-brand-500/20 dark:border-brand-400/30 flex-shrink-0 shadow-sm"
                     loading="lazy"
+                    decoding="async"
                   />
                   <div className="min-w-0">
                     <p className="font-serif text-sm font-extrabold text-slate-900 dark:text-slate-100 truncate">
@@ -831,9 +832,12 @@ export default function Home() {
                     src={v.videoUrl}
                     poster={v.poster}
                     controls
+                    playsInline
                     preload="metadata"
                     className="absolute inset-0 h-full w-full object-cover"
-                  />
+                  >
+                    <source src={v.videoUrl} type="video/mp4" />
+                  </video>
                 ) : (
                   <div className="absolute inset-0 grid place-items-center bg-brand-900/40 text-white">
                     <div className="text-center">
@@ -884,12 +888,12 @@ export default function Home() {
 
           <div className="mx-auto mt-12 grid max-w-5xl gap-6 md:grid-cols-3">
             {/* Card 1: Give */}
-            <div className="relative rounded-2xl bg-white text-slate-900 p-8 flex flex-col justify-between border border-white shadow-xl overflow-hidden">
+            <div className="relative rounded-2xl bg-white dark:bg-slate-900/95 text-slate-900 dark:text-slate-100 p-8 flex flex-col justify-between border border-white/80 dark:border-slate-800 shadow-xl overflow-hidden transition-colors">
               <div>
-                <h3 className="font-serif text-2xl font-extrabold text-slate-900">
+                <h3 className="font-serif text-2xl font-extrabold text-slate-900 dark:text-slate-100">
                   {t("home.donateBlock.give")}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300 font-medium">
                   {t("home.donateBlock.giveBody")}
                 </p>
               </div>
@@ -914,12 +918,12 @@ export default function Home() {
             </div>
 
             {/* Card 2: Sponsor */}
-            <div className="relative rounded-2xl bg-white text-slate-900 p-8 flex flex-col justify-between border border-white shadow-xl overflow-hidden">
+            <div className="relative rounded-2xl bg-white dark:bg-slate-900/95 text-slate-900 dark:text-slate-100 p-8 flex flex-col justify-between border border-white/80 dark:border-slate-800 shadow-xl overflow-hidden transition-colors">
               <div>
-                <h3 className="font-serif text-2xl font-extrabold text-slate-900">
+                <h3 className="font-serif text-2xl font-extrabold text-slate-900 dark:text-slate-100">
                   {t("home.donateBlock.sponsor")}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300 font-medium">
                   {t("home.donateBlock.sponsorBody")}
                 </p>
               </div>
@@ -933,12 +937,12 @@ export default function Home() {
             </div>
 
             {/* Card 3: Volunteer */}
-            <div className="relative rounded-2xl bg-white text-slate-900 p-8 flex flex-col justify-between border border-white shadow-xl overflow-hidden">
+            <div className="relative rounded-2xl bg-white dark:bg-slate-900/95 text-slate-900 dark:text-slate-100 p-8 flex flex-col justify-between border border-white/80 dark:border-slate-800 shadow-xl overflow-hidden transition-colors">
               <div>
-                <h3 className="font-serif text-2xl font-extrabold text-slate-900">
+                <h3 className="font-serif text-2xl font-extrabold text-slate-900 dark:text-slate-100">
                   {t("home.donateBlock.volunteer")}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300 font-medium">
                   {t("home.donateBlock.volunteerBody")}
                 </p>
               </div>

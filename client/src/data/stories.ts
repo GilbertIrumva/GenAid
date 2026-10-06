@@ -21,12 +21,9 @@ export const stories: Story[] = [
     role: "Curriculum Associate at Konexio Africa",
     program: "Digital Skills for Women",
     location: "Kakuma, Kenya",
-    image:
-      "https://media.licdn.com/dms/image/v2/D4D05AQHwh8xJLRFmjQ/videocover-high/B4DaA.QDK3KcBM-/0/1787750799675?e=2147483647&v=beta&t=Vk_godxuPXWuHjVHuGE_yU797aZ8G74-qJ1gj1cV3vg",
-    videoUrl:
-      "https://dms.licdn.com/playlist/vid/v2/D4D05AQHwh8xJLRFmjQ/mp4-640p-30fp-crf28/B4DaA.QDK3KcBk-/0/1787750808082?e=2147483647&v=beta&t=8UNIrbpwSNZuC4nezPpJPjFL34VFF7aLDDaU1E7fADU",
-    videoPoster:
-      "https://media.licdn.com/dms/image/v2/D4D05AQHwh8xJLRFmjQ/videocover-high/B4DaA.QDK3KcBM-/0/1787750799675?e=2147483647&v=beta&t=Vk_godxuPXWuHjVHuGE_yU797aZ8G74-qJ1gj1cV3vg",
+    image: "/videos/akia-poster.jpg",
+    videoUrl: "/videos/akia-success-story.mp4",
+    videoPoster: "/videos/akia-poster.jpg",
     excerpt:
       "Every journey begins with a single step. For the women in our Digital Skills for Women program, that first step is learning.",
     content: [

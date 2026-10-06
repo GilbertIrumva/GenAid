@@ -41,6 +41,12 @@ function fromFallback(s: FallbackStory): DisplayStory {
   };
 }
 
+function getYouTubeId(url?: string): string | null {
+  if (!url) return null;
+  const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
+  return match ? match[1] : null;
+}
+
 function renderFormattedText(text: string) {
   const parts = text.split(/(\*\*.*?\*\*)/g);
   return parts.map((part, index) => {
@@ -225,26 +231,43 @@ export default function StoryDetail() {
 
             {/* RIGHT COLUMN: Media Showcase (Video + Photos Side-by-Side) */}
             <aside className="lg:col-span-5 lg:sticky lg:top-24 space-y-6">
-              {story.videoUrl && (
-                <div className="overflow-hidden rounded-2xl border border-neutral-border dark:border-slate-700 bg-slate-950 shadow-md">
-                  <div className="relative aspect-video w-full">
-                    <video
-                      src={story.videoUrl}
-                      poster={story.videoPoster || story.image}
-                      controls
-                      preload="metadata"
-                      className="h-full w-full object-cover"
-                    />
+              {story.videoUrl && (() => {
+                const ytId = getYouTubeId(story.videoUrl);
+                return (
+                  <div className="overflow-hidden rounded-2xl border border-neutral-border dark:border-slate-700 bg-slate-950 shadow-md">
+                    <div className="relative aspect-video w-full bg-black">
+                      {ytId ? (
+                        <iframe
+                          src={`https://www.youtube-nocookie.com/embed/${ytId}?rel=0`}
+                          title={`${story.name} video documentary`}
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          allowFullScreen
+                          className="absolute inset-0 h-full w-full"
+                        />
+                      ) : (
+                        <video
+                          src={story.videoUrl}
+                          poster={story.videoPoster || story.image}
+                          controls
+                          playsInline
+                          preload="metadata"
+                          className="h-full w-full object-cover"
+                        >
+                          <source src={story.videoUrl} type="video/mp4" />
+                          Your browser does not support the video tag.
+                        </video>
+                      )}
+                    </div>
+                    <div className="bg-slate-900 px-4 py-3 text-xs text-slate-300 flex items-center justify-between border-t border-slate-800">
+                      <span className="font-semibold text-brand-400 uppercase tracking-wider flex items-center gap-1.5">
+                        <span className="inline-block h-2 w-2 rounded-full bg-red-500 animate-pulse" />
+                        Documentary Video
+                      </span>
+                      <span>Watch her story</span>
+                    </div>
                   </div>
-                  <div className="bg-slate-900 px-4 py-3 text-xs text-slate-300 flex items-center justify-between border-t border-slate-800">
-                    <span className="font-semibold text-brand-400 uppercase tracking-wider flex items-center gap-1.5">
-                      <span className="inline-block h-2 w-2 rounded-full bg-red-500 animate-pulse" />
-                      Documentary Video
-                    </span>
-                    <span>Watch her story</span>
-                  </div>
-                </div>
-              )}
+                );
+              })()}
 
               {validMediaList.length > 0 && activeMedia && (
                 <div className="space-y-3">

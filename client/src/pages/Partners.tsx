@@ -88,6 +88,7 @@ function PartnerCard({ partner }: { partner: Partner; key?: React.Key }) {
             src={partner.logo}
             alt={`${partner.name} logo`}
             loading="lazy"
+            decoding="async"
             className="h-full w-full object-contain"
             onError={() => setLogoFailed(true)}
           />
@@ -126,13 +127,13 @@ export default function Partners() {
       <section className="relative isolate flex min-h-[55vh] items-center overflow-hidden bg-brand-900 dark:bg-slate-950 text-white transition-colors">
         <SmartImage
           src="/img/heroes/partners.jpg"
-          alt="Partnership meeting in progress"
+          alt="Generation Aid partnerships"
           fallbackLabel=""
-          className="absolute inset-0 -z-20 h-full w-full object-cover"
+          className="absolute inset-0 -z-20 h-full w-full object-cover object-[center_20%] brightness-105 sm:brightness-110 contrast-[1.04] dark:brightness-100 dark:contrast-[1.08]"
         />
         <div
           aria-hidden
-          className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-950/90 via-brand-900/75 to-brand-900/45 dark:from-slate-950/95 dark:via-slate-900/90 dark:to-slate-950/85"
+          className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-950/85 via-brand-900/50 via-50% to-transparent dark:from-slate-950/90 dark:via-slate-900/65 dark:to-slate-950/25"
         />
         <div className="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="max-w-2xl text-white">

@@ -5,6 +5,9 @@ export interface BlogPost {
   author: string;
   excerpt: string;
   cover?: string;
+  youtubeId?: string;
+  videoTitle?: string;
+  videoDescription?: string;
   /** Paragraph blocks. Supports headings (##, ###), blockquotes (>), bullets (🔹), and bold (**text**). */
   content: string[];
 }
@@ -16,6 +19,9 @@ export const posts: BlogPost[] = [
     date: "March 05, 2025",
     author: "Hubert Senga",
     cover: "/pbs-hubert.png",
+    youtubeId: "vIK-iBooRfo",
+    videoTitle: "PBS News Interview with Hubert Senga",
+    videoDescription: "How foreign aid cuts affect programs and livelihoods in Kenya's Kakuma refugee camp.",
     excerpt:
       "For over three decades, Kakuma Refugee Camp in Kenya has sheltered nearly 290,000 people escaping war and persecution. Today, unprecedented foreign aid budget cuts threaten emergency food rations, tech education, and refugee led entrepreneurship. Generation Aid founder Hubert Senga calls for an urgent shift toward sustainable, dignified solutions.",
     content: [
@@ -55,6 +61,10 @@ export const posts: BlogPost[] = [
     date: "June 6, 2025",
     author: "Hubert",
     cover: "/blog2/cover.jpg",
+    youtubeId: "AKa99PyFqUg",
+    videoTitle: "Official Launch of Generation Jobs in Kakuma",
+    videoDescription:
+      "Watch the official launch ceremony of Generation Jobs, highlighting the digital hub, BPO center, and pathways to sustainable employment.",
     excerpt:
       "Generation Aid Hub Jobs launches in Kakuma: a digital jobs hub empowering refugees with remote work, tech careers, and income opportunities.",
     content: [

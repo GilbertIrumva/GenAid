@@ -39,11 +39,16 @@ export const videos: VideoItem[] = [
     date: "March 2025",
   },
   {
+    youtubeId: "_VxfVs41DRM",
+    title: "France 24: Le cri d'alarme d'un réfugié au Kenya après la fin de l'USAID",
+    description:
+      "Hubert Senga speaks on France 24 about the devastating impact of sudden humanitarian aid cuts in Kakuma and the urgent necessity of refugee self-reliance and digital inclusion.",
+    date: "July 2025",
+  },
+  {
     youtubeId: null,
-    videoUrl:
-      "https://dms.licdn.com/playlist/vid/v2/D4D05AQHwh8xJLRFmjQ/mp4-640p-30fp-crf28/B4DaA.QDK3KcBk-/0/1787750808082?e=2147483647&v=beta&t=8UNIrbpwSNZuC4nezPpJPjFL34VFF7aLDDaU1E7fADU",
-    poster:
-      "https://media.licdn.com/dms/image/v2/D4D05AQHwh8xJLRFmjQ/videocover-high/B4DaA.QDK3KcBM-/0/1787750799675?e=2147483647&v=beta&t=Vk_godxuPXWuHjVHuGE_yU797aZ8G74-qJ1gj1cV3vg",
+    videoUrl: "/videos/akia-success-story.mp4",
+    poster: "/videos/akia-poster.jpg",
     title: "From Education to Earning: Akia's Story",
     description:
       "Watch Akia Abil share how the Digital Skills for Women program funded by RefugePoint helped her transition from learning computer basics to working as a Curriculum Associate at Konexio Africa.",
