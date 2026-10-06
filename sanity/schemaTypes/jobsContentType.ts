@@ -82,6 +82,7 @@ export const jobsContentType = defineType({
     { name: "overview", title: "1. Jobs Overview Page (/jobs)", options: { collapsible: true, collapsed: false } },
     { name: "talentModel", title: "2. Talent Model Page (/jobs/talent)", options: { collapsible: true, collapsed: true } },
     { name: "employers", title: "3. For Employers Page (/jobs/employers)", options: { collapsible: true, collapsed: true } },
+    { name: "hire", title: "4. Hire Remote Talent Page (/jobs/hire)", options: { collapsible: true, collapsed: true } },
   ],
   fields: [
     defineField({
@@ -330,6 +331,36 @@ export const jobsContentType = defineType({
       type: "image",
       options: { hotspot: true },
       fieldset: "employers",
+    }),
+
+    // ==========================================
+    // 4. HIRE REMOTE TALENT PAGE (/jobs/hire)
+    // ==========================================
+    defineField({
+      name: "hireHeroTitle",
+      title: "Hire Page Hero Title",
+      type: "string",
+      fieldset: "hire",
+    }),
+    defineField({
+      name: "hireHeroSubtitle",
+      title: "Hire Page Hero Subtitle",
+      type: "text",
+      rows: 3,
+      fieldset: "hire",
+    }),
+    defineField({
+      name: "clientFormUrl",
+      title: "Client Intake Form URL (e.g. Google Form)",
+      type: "url",
+      fieldset: "hire",
+    }),
+    defineField({
+      name: "hireBenefits",
+      title: "Hire Page Key Benefits",
+      type: "array",
+      of: [cardItem],
+      fieldset: "hire",
     }),
   ],
   preview: {

@@ -18,6 +18,8 @@ import { useQuery } from "@tanstack/react-query";
 import {
   getPrograms,
   getTeamMembers,
+  getCauses,
+  getTestimonials,
   mapSanityProgramToDisplayProgram,
   mapSanityTeamMemberToDisplayTeamMember,
 } from "@/lib/sanity";
@@ -251,6 +253,23 @@ export default function Home() {
     sanityTeam.length > 0
       ? `Live from Studio · ${teamMembers.length} members`
       : `Static fallback · ${teamMembers.length} members`;
+
+  const { data: sanityCauses = [] } = useQuery({
+    queryKey: ["public", "sanity", "causes"],
+    queryFn: getCauses,
+    retry: false,
+  });
+
+  const displayCauses = sanityCauses.length > 0 ? sanityCauses : causes;
+
+  const { data: sanityTestimonials = [] } = useQuery({
+    queryKey: ["public", "sanity", "testimonials"],
+    queryFn: getTestimonials,
+    retry: false,
+  });
+
+  const displayTestimonials =
+    sanityTestimonials.length > 0 ? sanityTestimonials : testimonials;
 
   const [contact, setContact] = useState({ name: "", email: "", message: "" });
   const [contactState, setContactState] = useState<
@@ -511,7 +530,7 @@ export default function Home() {
         </div>
 
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {causes.map((c) => {
+          {displayCauses.map((c) => {
             const pct = Math.min(100, Math.round((c.raised / c.goal) * 100));
             const title = t(`home.causes.items.${c.key}.title`, c.title);
             const description = t(
@@ -745,7 +764,7 @@ export default function Home() {
         </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {testimonials.map((item) => {
+          {displayTestimonials.map((item) => {
             const quote = t(
               `home.testimonials.items.${item.key}.quote`,
               item.quote,

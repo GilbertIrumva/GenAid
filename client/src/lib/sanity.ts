@@ -560,7 +560,11 @@ export async function getJobsContent(): Promise<SanityJobsContent | null> {
         esgPillars,
         "esgImpactImage": coalesce(esgImpactImage.asset->url, ""),
         qualityPillars,
-        "employerInfraImage": coalesce(employerInfraImage.asset->url, "")
+        "employerInfraImage": coalesce(employerInfraImage.asset->url, ""),
+        hireHeroTitle,
+        hireHeroSubtitle,
+        clientFormUrl,
+        hireBenefits
       }`
     );
   } catch (error) {
@@ -703,6 +707,16 @@ export interface SanitySiteSettings {
   description?: string;
   logo?: string;
   donateUrl?: string;
+  phoneKenya?: string;
+  phoneInternational?: string;
+  email?: string;
+  address?: string;
+  socials?: {
+    facebook?: string;
+    linkedin?: string;
+    twitter?: string;
+    youtube?: string;
+  };
 }
 
 export async function getSiteSettings(): Promise<SanitySiteSettings | null> {
@@ -713,7 +727,12 @@ export async function getSiteSettings(): Promise<SanitySiteSettings | null> {
         title,
         description,
         "logo": logo.asset->url,
-        donateUrl
+        donateUrl,
+        phoneKenya,
+        phoneInternational,
+        email,
+        address,
+        socials
       }`
     );
   } catch (error) {
@@ -721,3 +740,94 @@ export async function getSiteSettings(): Promise<SanitySiteSettings | null> {
     return null;
   }
 }
+
+export interface DisplayCause {
+  key: string;
+  title: string;
+  description: string;
+  image: string;
+  goal: number;
+  raised: number;
+  donateUrl: string;
+}
+
+export async function getCauses(): Promise<DisplayCause[]> {
+  if (!sanityClient) return [];
+  try {
+    return await sanityClient.fetch<DisplayCause[]>(
+      `*[_type == "cause"] | order(coalesce(order, 0) asc) {
+        "key": coalesce(slug.current, _id),
+        title,
+        description,
+        "image": coalesce(image.asset->url, ""),
+        goal,
+        raised,
+        donateUrl
+      }`
+    );
+  } catch (error) {
+    console.warn("Sanity getCauses error:", error);
+    return [];
+  }
+}
+
+export interface DisplayTestimonial {
+  key: string;
+  quote: string;
+  name: string;
+  role: string;
+  image: string;
+}
+
+export async function getTestimonials(): Promise<DisplayTestimonial[]> {
+  if (!sanityClient) return [];
+  try {
+    return await sanityClient.fetch<DisplayTestimonial[]>(
+      `*[_type == "testimonial"] | order(coalesce(order, 0) asc) {
+        "key": coalesce(slug.current, _id),
+        name,
+        role,
+        quote,
+        "image": coalesce(image.asset->url, "")
+      }`
+    );
+  } catch (error) {
+    console.warn("Sanity getTestimonials error:", error);
+    return [];
+  }
+}
+
+export interface DisplayServicePackage {
+  slug: string;
+  category: string;
+  title: string;
+  firstMonthPrice: number;
+  secondMonthPrice: number;
+  monthlyPrice: number;
+  description: string;
+  deliverables: string[];
+  impact: string;
+}
+
+export async function getServicePackages(): Promise<DisplayServicePackage[]> {
+  if (!sanityClient) return [];
+  try {
+    return await sanityClient.fetch<DisplayServicePackage[]>(
+      `*[_type == "servicePackage"] | order(coalesce(order, 0) asc) {
+        "slug": coalesce(slug.current, _id),
+        category,
+        title,
+        firstMonthPrice,
+        secondMonthPrice,
+        monthlyPrice,
+        description,
+        deliverables,
+        impact
+      }`
+    );
+  } catch (error) {
+    console.warn("Sanity getServicePackages error:", error);
+    return [];
+  }
+}
+

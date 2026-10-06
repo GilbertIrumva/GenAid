@@ -28,20 +28,27 @@ export const videoType = defineType({
       name: "source",
       title: "Source",
       type: "string",
-      initialValue: "url",
+      initialValue: "youtube",
       options: {
         list: [
-          { title: "External URL (YouTube/Vimeo/direct)", value: "url" },
-          { title: "Upload file", value: "upload" },
+          { title: "YouTube Video ID", value: "youtube" },
+          { title: "Direct URL (MP4 / Web Video)", value: "url" },
+          { title: "Upload Video File", value: "upload" },
         ],
       },
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "youtubeId",
+      title: "YouTube Video ID (e.g. R0TnjpZkQjc)",
+      type: "string",
+      description: "The 11-character video ID from YouTube.",
+    }),
+    defineField({
       name: "videoUrl",
-      title: "Video URL",
+      title: "Direct Video URL",
       type: "url",
-      description: "Paste a YouTube, Vimeo, or direct video URL.",
+      description: "Direct URL to MP4 or video stream.",
     }),
     defineField({
       name: "videoFile",
@@ -51,9 +58,14 @@ export const videoType = defineType({
     }),
     defineField({
       name: "thumbnail",
-      title: "Thumbnail",
+      title: "Thumbnail / Poster Image",
       type: "image",
       options: { hotspot: true },
+    }),
+    defineField({
+      name: "date",
+      title: "Date / Episode Tag",
+      type: "string",
     }),
     defineField({
       name: "publishedAt",
@@ -61,4 +73,11 @@ export const videoType = defineType({
       type: "datetime",
     }),
   ],
+  preview: {
+    select: {
+      title: "title",
+      subtitle: "source",
+      media: "thumbnail",
+    },
+  },
 });

@@ -10,18 +10,27 @@ import { reportType } from "./reportType";
 import { teamMemberType } from "./teamMemberType";
 import { homepageTrustContentType } from "./homepageTrustContentType";
 import { jobsContentType } from "./jobsContentType";
+import { causeType } from "./causeType";
+import { testimonialType } from "./testimonialType";
+import { servicePackageType } from "./servicePackageType";
 
 export const schemaTypes = [
+  // Site 1: Generation Aid Core
   postType,
   storyType,
   programType,
+  causeType,
+  testimonialType,
   partnerType,
-  siteSettingsType,
-  photoType,
-  videoType,
+  teamMemberType,
   newsType,
   reportType,
-  teamMemberType,
+  videoType,
+  photoType,
+  siteSettingsType,
   homepageTrustContentType,
+
+  // Site 2: Generation Jobs Core
   jobsContentType,
+  servicePackageType,
 ];

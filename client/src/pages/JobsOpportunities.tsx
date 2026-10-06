@@ -2,7 +2,9 @@ import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import Section from "@/components/Section";
 import JobsShell from "@/components/JobsShell";
-import { servicePackages, type ServiceCategory } from "@/data/jobsBoard";
+import { servicePackages, type ServiceCategory, type ServicePackage } from "@/data/jobsBoard";
+import { getServicePackages } from "@/lib/sanity";
+import { useQuery } from "@tanstack/react-query";
 import { useSEO } from "@/utils/useSEO";
 
 const EMPLOYER_FORM_URL = "https://forms.gle/wydDfQ8Y9GduXxi26";
@@ -46,12 +48,23 @@ export default function JobsOpportunities() {
   const [activeFilter, setActiveFilter] =
     useState<(typeof filters)[number]>("All");
 
+  const { data: sanityPackages } = useQuery({
+    queryKey: ["public", "sanity", "servicePackages"],
+    queryFn: getServicePackages,
+    retry: false,
+  });
+
+  const allPackages =
+    sanityPackages && sanityPackages.length > 0
+      ? (sanityPackages as ServicePackage[])
+      : servicePackages;
+
   const packages = useMemo(
     () =>
       activeFilter === "All"
-        ? servicePackages
-        : servicePackages.filter((item) => item.category === activeFilter),
-    [activeFilter],
+        ? allPackages
+        : allPackages.filter((item) => item.category === activeFilter),
+    [activeFilter, allPackages],
   );
 
   useSEO({

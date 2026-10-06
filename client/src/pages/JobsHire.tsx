@@ -13,6 +13,8 @@ import JobsShell from "@/components/JobsShell";
 import SmartImage from "@/components/SmartImage";
 import GenJobsVideos from "@/components/GenJobsVideos";
 import SatisfiedClients from "@/components/SatisfiedClients";
+import { getJobsContent } from "@/lib/sanity";
+import { useQuery } from "@tanstack/react-query";
 import { useSEO } from "@/utils/useSEO";
 
 const CLIENT_FORM_URL = "https://forms.gle/wydDfQ8Y9GduXxi26";
@@ -119,6 +121,16 @@ const faqs = [
 ];
 
 export default function JobsHire() {
+  const { data: jobsContent } = useQuery({
+    queryKey: ["public", "sanity", "jobsContent"],
+    queryFn: getJobsContent,
+    retry: false,
+  });
+
+  const formUrl = (jobsContent?.clientFormUrl as string) || CLIENT_FORM_URL;
+  const title = (jobsContent?.hireHeroTitle as string) || "Scale Your Business While Empowering Global Talent";
+  const subtitle = (jobsContent?.hireHeroSubtitle as string) || "Partner with dedicated, vetted refugee professionals from Kakuma. Save time, reduce costs, and scale your operations while you focus on strategic duties — or enjoy a well-deserved holiday.";
+
   useSEO({
     title: "Hire a Refugee | Generation Jobs",
     description:
@@ -128,8 +140,8 @@ export default function JobsHire() {
   return (
     <JobsShell
       eyebrow="Hire a Refugee • Client Sign-Up"
-      title="Scale Your Business While Empowering Global Talent"
-      subtitle="Partner with dedicated, vetted refugee professionals from Kakuma. Save time, reduce costs, and scale your operations while you focus on strategic duties — or enjoy a well-deserved holiday."
+      title={title}
+      subtitle={subtitle}
       heroImage="/gen jobs/Copy of IMG_20260611_111051_050.jpg"
     >
       {/* SATISFIED CLIENTS TICKER */}
@@ -151,7 +163,7 @@ export default function JobsHire() {
               </p>
               <div className="pt-2 flex flex-wrap gap-3">
                 <a
-                  href={CLIENT_FORM_URL}
+                  href={formUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="sir-btn-primary py-3 px-6 text-xs sm:text-sm font-extrabold uppercase tracking-wider group"
@@ -336,7 +348,7 @@ export default function JobsHire() {
           </p>
           <div className="pt-4 flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 max-w-md sm:max-w-none mx-auto">
             <a
-              href={CLIENT_FORM_URL}
+              href={formUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-7 py-4 text-xs sm:text-sm font-extrabold uppercase tracking-wider text-brand-700 shadow-md transition hover:bg-brand-50 hover:text-brand-800 w-full sm:w-auto"
