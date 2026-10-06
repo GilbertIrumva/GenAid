@@ -4,10 +4,14 @@ export interface SanityPost {
   _id: string;
   title: string;
   excerpt?: string;
-  content?: string;
+  content?: string | string[];
   slug?: string;
   cover?: string;
   authorName?: string;
+  date?: string;
+  youtubeId?: string;
+  videoTitle?: string;
+  videoDescription?: string;
   publishedAt?: string;
   createdAt?: string;
 }
@@ -15,25 +19,57 @@ export interface SanityPost {
 export interface SanityStory {
   _id: string;
   title: string;
+  name?: string;
   excerpt?: string;
   body?: string;
+  content?: string[];
   slug?: string;
   cover?: string;
+  image?: string;
   role?: string;
   program?: string;
   location?: string;
+  videoUrl?: string;
+  videoPoster?: string;
   publishedAt?: string;
   createdAt?: string;
 }
 
 export interface SanityProgram {
   _id: string;
+  id?: string;
   title: string;
   excerpt?: string;
   slug?: string;
   cover?: string;
+  image?: string;
+  category?: string;
+  tagline?: string;
+  speaker?: string;
+  partner?: string;
   features?: string[];
   body?: string;
+  gallery?: string[];
+  problemStatement?: string;
+  goals?: Array<{ title: string; description: string }>;
+  targetAudience?: string;
+  whyItMatters?: string;
+  components?: Array<{ title: string; description: string }>;
+  gains?: string[];
+  howToJoin?: string;
+  specialHighlight?: { title: string; description: string };
+  vision?: string;
+  quote?: { text: string; author: string; role?: string };
+  bookingUrl?: string;
+  ctaText?: string;
+  ctaLink?: string;
+  mediaVideos?: Array<{
+    title: string;
+    outlet: string;
+    youtubeId?: string;
+    url: string;
+    description: string;
+  }>;
 }
 
 export interface SanityPartner {
@@ -109,6 +145,9 @@ export interface DisplayPost {
   author: string;
   excerpt: string;
   cover: string | undefined;
+  youtubeId?: string;
+  videoTitle?: string;
+  videoDescription?: string;
   content: string[];
 }
 
@@ -121,6 +160,8 @@ export interface DisplayStory {
   location: string;
   image: string;
   excerpt: string;
+  videoUrl?: string;
+  videoPoster?: string;
   paragraphs: string[];
 }
 
@@ -235,10 +276,14 @@ export async function getPublishedPosts(): Promise<SanityPost[]> {
     _id,
     title,
     excerpt,
-    "content": pt::text(body),
+    "content": coalesce(content, [pt::text(body)]),
     "slug": slug.current,
     "cover": coalesce(coverImage.asset->url, ""),
-    "authorName": authorName,
+    "authorName": coalesce(author, authorName, "Generation Aid"),
+    "date": coalesce(date, publishedAt),
+    youtubeId,
+    videoTitle,
+    videoDescription,
     publishedAt,
     _updatedAt
   }`);
@@ -254,10 +299,14 @@ export async function getPublishedPostBySlug(
       _id,
       title,
       excerpt,
-      "content": pt::text(body),
+      "content": coalesce(content, [pt::text(body)]),
       "slug": slug.current,
       "cover": coalesce(coverImage.asset->url, ""),
-      "authorName": authorName,
+      "authorName": coalesce(author, authorName, "Generation Aid"),
+      "date": coalesce(date, publishedAt),
+      youtubeId,
+      videoTitle,
+      videoDescription,
       publishedAt,
       _updatedAt
     }`,
@@ -272,14 +321,19 @@ export async function getPublishedStories(): Promise<SanityStory[]> {
     SanityStory[]
   >(`*[_type == "story" && defined(slug.current)] | order(publishedAt desc) {
     _id,
-    title,
+    "title": coalesce(name, title),
+    "name": coalesce(name, title),
     excerpt,
-    "body": pt::text(body),
+    "content": content,
+    "body": coalesce(pt::text(body), ""),
     "slug": slug.current,
-    "cover": coalesce(coverImage.asset->url, ""),
+    "cover": coalesce(image.asset->url, coverImage.asset->url, ""),
+    "image": coalesce(image.asset->url, coverImage.asset->url, ""),
     role,
     program,
     location,
+    videoUrl,
+    "videoPoster": coalesce(videoPoster.asset->url, ""),
     publishedAt,
     _updatedAt
   }`);
@@ -293,14 +347,19 @@ export async function getStoryBySlug(
   return sanityClient.fetch<SanityStory | null>(
     `*[_type == "story" && slug.current == $slug][0] {
       _id,
-      title,
+      "title": coalesce(name, title),
+      "name": coalesce(name, title),
       excerpt,
-      "body": pt::text(body),
+      "content": content,
+      "body": coalesce(pt::text(body), ""),
       "slug": slug.current,
-      "cover": coalesce(coverImage.asset->url, ""),
+      "cover": coalesce(image.asset->url, coverImage.asset->url, ""),
+      "image": coalesce(image.asset->url, coverImage.asset->url, ""),
       role,
       program,
       location,
+      videoUrl,
+      "videoPoster": coalesce(videoPoster.asset->url, ""),
       publishedAt,
       _updatedAt
     }`,
@@ -315,12 +374,33 @@ export async function getPrograms(): Promise<SanityProgram[]> {
     SanityProgram[]
   >(`*[_type == "program" && defined(slug.current)] | order(_createdAt asc) {
     _id,
+    "id": coalesce(slug.current, _id),
     title,
     excerpt,
     "slug": slug.current,
-    "cover": coalesce(coverImage.asset->url, ""),
+    "cover": coalesce(image.asset->url, coverImage.asset->url, ""),
+    "image": coalesce(image.asset->url, coverImage.asset->url, ""),
+    category,
+    tagline,
+    speaker,
+    partner,
     features,
-    "body": pt::text(body)
+    "body": coalesce(body, pt::text(body), ""),
+    "gallery": coalesce(gallery[].asset->url, []),
+    problemStatement,
+    targetAudience,
+    whyItMatters,
+    goals,
+    components,
+    gains,
+    howToJoin,
+    specialHighlight,
+    vision,
+    quote,
+    bookingUrl,
+    ctaText,
+    ctaLink,
+    mediaVideos
   }`);
 }
 
@@ -490,28 +570,41 @@ export async function getJobsContent(): Promise<SanityJobsContent | null> {
 }
 
 export function mapSanityPostToDisplayPost(post: SanityPost): DisplayPost {
+  const content = Array.isArray(post.content)
+    ? post.content
+    : splitParagraphs(typeof post.content === "string" ? post.content : "");
+
   return {
     slug: post.slug ?? post._id,
     title: post.title,
-    date: formatDate(post.publishedAt || post.createdAt || ""),
+    date: post.date || formatDate(post.publishedAt || post.createdAt || ""),
     author: post.authorName || "Generation Aid",
     excerpt: post.excerpt || "",
     cover: post.cover || undefined,
-    content: splitParagraphs(post.content || ""),
+    youtubeId: post.youtubeId,
+    videoTitle: post.videoTitle,
+    videoDescription: post.videoDescription,
+    content,
   };
 }
 
 export function mapSanityStoryToDisplayStory(story: SanityStory): DisplayStory {
+  const paragraphs = Array.isArray(story.content) && story.content.length > 0
+    ? story.content
+    : splitParagraphs(story.body || "");
+
   return {
     key: story.slug ?? story._id,
     href: `/stories/${story.slug ?? story._id}`,
-    name: story.title,
+    name: story.name || story.title,
     role: story.role || "",
     program: story.program || "",
     location: story.location || "",
-    image: story.cover || "",
+    image: story.image || story.cover || "",
     excerpt: story.excerpt || "",
-    paragraphs: splitParagraphs(story.body || ""),
+    videoUrl: story.videoUrl,
+    videoPoster: story.videoPoster,
+    paragraphs,
   };
 }
 
