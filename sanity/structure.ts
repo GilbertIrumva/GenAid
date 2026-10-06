@@ -13,6 +13,9 @@ export const structure: StructureResolver = (S) =>
             .documentId("jobsContent")
             .title("Generation Jobs Content & Imagery")
         ),
+      S.listItem()
+        .title("📦 Service Packages & Catalog (/jobs/opportunities)")
+        .child(S.documentTypeList("servicePackage").title("Service Packages")),
 
       S.divider(),
 
@@ -26,6 +29,12 @@ export const structure: StructureResolver = (S) =>
             .title("Homepage Trust Content")
         ),
       S.listItem()
+        .title("❤️ Urgent Causes (Homepage)")
+        .child(S.documentTypeList("cause").title("Urgent Causes")),
+      S.listItem()
+        .title("💬 Community & Partner Testimonials")
+        .child(S.documentTypeList("testimonial").title("Testimonials")),
+      S.listItem()
         .title("📰 Blog Posts")
         .child(S.documentTypeList("post").title("Blog Posts")),
       S.listItem()
@@ -35,7 +44,7 @@ export const structure: StructureResolver = (S) =>
         .title("📖 Impact Stories")
         .child(S.documentTypeList("story").title("Impact Stories")),
       S.listItem()
-        .title("🎓 Programs")
+        .title("🎓 Programs / Chambers")
         .child(S.documentTypeList("program").title("Programs")),
       S.listItem()
         .title("📊 Reports & Downloads")
@@ -45,7 +54,7 @@ export const structure: StructureResolver = (S) =>
 
       // 👥 PEOPLE & ORGANIZATIONS
       S.listItem()
-        .title("👥 Team Members")
+        .title("👥 Team & Board Members")
         .child(S.documentTypeList("teamMember").title("Team Members")),
       S.listItem()
         .title("🤝 Partners & Sponsors")
@@ -61,7 +70,7 @@ export const structure: StructureResolver = (S) =>
         .title("🎥 Video Library")
         .child(S.documentTypeList("video").title("Video Library")),
       S.listItem()
-        .title("⚙️ Site Settings")
+        .title("⚙️ Global Site Settings & Contact")
         .child(
           S.document()
             .schemaType("siteSettings")
