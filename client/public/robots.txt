@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://generationaid.org/sitemap.xml
+Sitemap: https://gen-aid.vercel.app/sitemap.xml
