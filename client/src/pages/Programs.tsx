@@ -34,7 +34,17 @@ export default function Programs() {
   }, [cmsPrograms]);
 
   const programDetails = useMemo(() => {
-    return displayPrograms as DetailedProgram[];
+    return displayPrograms.map((p) => {
+      const match = defaultPrograms.find(
+        (dp) => dp.id === p.id || dp.slug === p.slug || dp.title.toLowerCase() === p.title.toLowerCase(),
+      );
+      return {
+        ...match,
+        ...p,
+        id: p.id || p.slug || match?.id || "",
+        features: (Array.isArray(p.features) && p.features.length > 0) ? p.features : (match?.features || []),
+      } as DetailedProgram;
+    });
   }, [displayPrograms]);
 
   return (
@@ -118,8 +128,8 @@ export default function Programs() {
         const targetId = p.slug || p.id;
         return (
           <Section
-            key={p.id}
-            id={p.id}
+            key={targetId || p.title || i}
+            id={targetId || p.id || `program-${i}`}
             pattern={i % 2 === 0 ? "soft" : "canvas"}
           >
             <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2">
@@ -151,30 +161,32 @@ export default function Programs() {
                   {p.body}
                 </p>
 
-                <ul className="mt-5 grid gap-2 sm:grid-cols-2">
-                  {p.features.map((f) => (
-                    <li
-                      key={f}
-                      className="flex items-start gap-2 rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-2 text-sm text-neutral-heading dark:text-slate-100"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                        className="mt-0.5 h-4 w-4 flex-shrink-0 text-brand-600 dark:text-brand-400"
+                {Array.isArray(p.features) && p.features.length > 0 && (
+                  <ul className="mt-5 grid gap-2 sm:grid-cols-2">
+                    {p.features.map((f) => (
+                      <li
+                        key={f}
+                        className="flex items-start gap-2 rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-2 text-sm text-neutral-heading dark:text-slate-100"
                       >
-                        <path
-                          d="M4 10.5l3.5 3.5L16 6"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
+                        <svg
+                          aria-hidden="true"
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          className="mt-0.5 h-4 w-4 flex-shrink-0 text-brand-600 dark:text-brand-400"
+                        >
+                          <path
+                            d="M4 10.5l3.5 3.5L16 6"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                )}
 
                 {targetId && (
                   <div className="mt-6">

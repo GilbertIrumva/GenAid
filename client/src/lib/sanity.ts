@@ -166,10 +166,14 @@ export interface DisplayStory {
 }
 
 export interface DisplayProgram {
+  id: string;
   title: string;
   body: string;
   image: string;
   slug: string;
+  category?: string;
+  features?: string[];
+  [key: string]: unknown;
 }
 
 export interface DisplayPartner {
@@ -634,11 +638,32 @@ export function mapSanityProgramToDisplayProgram(
   program: SanityProgram,
   fallbackImage: string = "/img/team/programs.jpg",
 ): DisplayProgram {
+  const targetId = program.id || program.slug || program._id;
   return {
+    id: targetId,
+    slug: program.slug ?? program._id,
     title: program.title,
     body: program.excerpt || program.body || "",
-    image: program.cover || fallbackImage,
-    slug: program.slug ?? program._id,
+    image: program.cover || program.image || fallbackImage,
+    category: program.category || "Education & Skills",
+    features: Array.isArray(program.features) ? program.features : [],
+    tagline: program.tagline,
+    speaker: program.speaker,
+    partner: program.partner,
+    problemStatement: program.problemStatement,
+    goals: program.goals,
+    targetAudience: program.targetAudience,
+    whyItMatters: program.whyItMatters,
+    components: program.components,
+    gains: program.gains,
+    howToJoin: program.howToJoin,
+    specialHighlight: program.specialHighlight,
+    vision: program.vision,
+    quote: program.quote,
+    bookingUrl: program.bookingUrl,
+    ctaText: program.ctaText,
+    ctaLink: program.ctaLink,
+    mediaVideos: program.mediaVideos,
   };
 }
 
