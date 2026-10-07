@@ -78,7 +78,16 @@ export const teamMemberType = defineType({
     select: {
       title: "name",
       subtitle: "role",
+      category: "category",
       media: "image",
+    },
+    prepare({ title, subtitle, category, media }: any) {
+      const tag = category === "board" ? "🏛️ Board" : category === "advisor" ? "🎖️ Advisor" : "👥 Team";
+      return {
+        title,
+        subtitle: `${subtitle || ""} · ${tag}`,
+        media,
+      };
     },
   },
 });

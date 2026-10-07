@@ -54,8 +54,21 @@ export const structure: StructureResolver = (S) =>
 
       // 👥 PEOPLE & ORGANIZATIONS
       S.listItem()
-        .title("👥 Team & Board Members")
-        .child(S.documentTypeList("teamMember").title("Team Members")),
+        .title("👥 Executive & Core Team")
+        .child(
+          S.documentList()
+            .title("Executive & Core Team")
+            .filter('_type == "teamMember" && (category == "team" || !defined(category))')
+            .defaultOrdering([{ field: "order", direction: "asc" }])
+        ),
+      S.listItem()
+        .title("🏛️ Board of Directors & Advisors")
+        .child(
+          S.documentList()
+            .title("Board of Directors & Advisors")
+            .filter('_type == "teamMember" && (category == "board" || category == "advisor")')
+            .defaultOrdering([{ field: "order", direction: "asc" }])
+        ),
       S.listItem()
         .title("🤝 Partners & Sponsors")
         .child(S.documentTypeList("partner").title("Partners & Sponsors")),

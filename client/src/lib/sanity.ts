@@ -425,7 +425,25 @@ export async function getTeamMembers(): Promise<SanityTeamMember[]> {
 
   return sanityClient.fetch<
     SanityTeamMember[]
-  >(`*[_type == "teamMember" && active == true] | order(coalesce(order, 9999) asc, name asc) {
+  >(`*[_type == "teamMember" && active == true && (category == "team" || !defined(category))] | order(coalesce(order, 9999) asc, name asc) {
+    _id,
+    name,
+    role,
+    bio,
+    "image": coalesce(image.asset->url, ""),
+    linkedin,
+    order,
+    active,
+    "slug": slug.current
+  }`);
+}
+
+export async function getBoardMembers(): Promise<SanityTeamMember[]> {
+  if (!sanityClient) return [];
+
+  return sanityClient.fetch<
+    SanityTeamMember[]
+  >(`*[_type == "teamMember" && active == true && (category == "board" || category == "advisor")] | order(coalesce(order, 9999) asc, name asc) {
     _id,
     name,
     role,

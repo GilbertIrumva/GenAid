@@ -9,6 +9,7 @@ import { team, advisors } from "@/data/team";
 import { useQuery } from "@tanstack/react-query";
 import {
   getTeamMembers,
+  getBoardMembers,
   mapSanityTeamMemberToDisplayTeamMember,
 } from "@/lib/sanity";
 
@@ -132,6 +133,22 @@ export default function About() {
     sanityTeam.length > 0
       ? `Live from Studio · ${teamMembers.length} members`
       : `Static fallback · ${teamMembers.length} members`;
+
+  const { data: sanityBoard = [] } = useQuery({
+    queryKey: ["public", "sanity", "boardMembers"],
+    queryFn: getBoardMembers,
+    retry: false,
+  });
+
+  const boardMembers: DisplayTeamMember[] =
+    sanityBoard.length > 0
+      ? sanityBoard.map(mapSanityTeamMemberToDisplayTeamMember)
+      : advisors;
+
+  const boardSourceLabel =
+    sanityBoard.length > 0
+      ? `Live from Studio · ${boardMembers.length} members`
+      : `Static fallback · ${boardMembers.length} members`;
 
   return (
     <div className="bg-white dark:bg-slate-900 transition-colors">
@@ -416,10 +433,13 @@ export default function About() {
           <p className="mt-3 text-neutral-body dark:text-slate-300 max-w-2xl mx-auto">
             Distinguished leaders and domain experts guiding Generation Aid's strategic trajectory, organizational excellence, and sustainable global impact.
           </p>
+          <p className="mt-3 inline-flex rounded-full bg-brand-50 dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
+            {boardSourceLabel}
+          </p>
         </div>
 
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 max-w-7xl mx-auto">
-          {advisors.map((advisor) => (
+          {boardMembers.map((advisor) => (
             <MemberCard key={advisor.key} member={advisor} />
           ))}
         </div>
