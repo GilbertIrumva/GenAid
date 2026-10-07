@@ -59,8 +59,10 @@ export default function Stories() {
       };
     });
 
-  const featured = displayStories[0];
-  const rest = displayStories.slice(1);
+  const featured =
+    displayStories.find((s) => s.key === "from-skills-to-earning-success-story") ||
+    displayStories[0];
+  const rest = displayStories.filter((s) => s.key !== featured?.key);
 
   return (
     <div className="bg-white dark:bg-slate-900 transition-colors">

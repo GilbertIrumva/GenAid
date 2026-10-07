@@ -172,6 +172,29 @@ export const posts: BlogPost[] = [
       "![Group photo celebrating the Kalobeyei milestone](https://media.licdn.com/dms/image/v2/D4D22AQH_jt4anBzEkQ/feedshare-shrink_800/B4DZ712OLlKQAc-/0/1782241092704?e=2147483647&v=beta&t=xcPJagbxtRTvBsS5LGNHCKfEzjZqOaP-53I7X5Rjo9c)",
     ],
   },
+  {
+    slug: "unlocking-possibilities-english-class-kakuma",
+    title: "Unlocking New Possibilities: 109 Students in English Training",
+    date: "February 15, 2026",
+    author: "Generation Aid",
+    cover:
+      "https://media.licdn.com/dms/image/v2/D4D22AQESpbkVHdrWrQ/feedshare-shrink_800/B4DZ9b1poBK8Ac-/0/1783952220038?e=2147483647&v=beta&t=bezDMR7h9YrzrEDGF-zQe4dvEPw0mvd7FfbubksLFiM",
+    excerpt:
+      "Language is the key to unlocking new possibilities, and it’s incredible to witness the progress of our 109 students in our English Basic to Intermediate class today!",
+    content: [
+      "Language is the key to unlocking new possibilities, and it’s incredible to witness the progress of our 109 students in our English Basic to Intermediate class today!",
+      "It is inspiring to see our students actively engaging with lessons, challenging themselves, and building the communication skills that open doors to new opportunities.",
+      "A huge shoutout to our dedicated instructor and our students for their hard work and commitment to growth! We also want to extend our deepest gratitude to our individual donors. Your generous support provides the resources and foundation that make these classrooms possible. Thank you for believing in our mission and investing in our students' futures.",
+      "Special thanks to our donors and supporters: Lee Simms, Melodie Cochet, Aisling Kennedy.",
+      "![Students engaging actively during English class](https://media.licdn.com/dms/image/v2/D4D22AQESpbkVHdrWrQ/feedshare-shrink_800/B4DZ9b1poBK8Ac-/0/1783952220038?e=2147483647&v=beta&t=bezDMR7h9YrzrEDGF-zQe4dvEPw0mvd7FfbubksLFiM)",
+      "![Classroom learning in Kakuma](https://media.licdn.com/dms/image/v2/D4D22AQF_ONQ5a-nCYQ/feedshare-shrink_800/B4DZ9b1ps0H0Ac-/0/1783952220205?e=2147483647&v=beta&t=zb5X9-xjVzO8mFXyRAmyYyKEUDClE-qDb89lnU9x4TY)",
+      "![Students building communication skills](https://media.licdn.com/dms/image/v2/D4D22AQHdzKyFcmlkIg/feedshare-shrink_800/B4DZ9b1ppUKYAc-/0/1783952219747?e=2147483647&v=beta&t=qz4j3uy4ampKrEPXpQcOoKlZUSRVW1-E2ptPFMm52ns)",
+      "![Interactive English language instruction](https://media.licdn.com/dms/image/v2/D4D22AQGj2jc8vs7B2Q/feedshare-shrink_800/B4DZ9b1pnjI8Ac-/0/1783952219462?e=2147483647&v=beta&t=C2aiXMWOjrYwkjqwdelip4-ULNH9UV4nlfjos5I-2qc)",
+      "![Learners taking notes and participating](https://media.licdn.com/dms/image/v2/D4D22AQF48Gejuz7lpQ/feedshare-shrink_800/B4DZ9b1pywJcAc-/0/1783952220265?e=2147483647&v=beta&t=Hbvt5lzstFnNWk-M5ZA5MFegQuTzUQ6Sx6uJdhAkvJ8)",
+      "![Dedicated instructor and learners](https://media.licdn.com/dms/image/v2/D4D22AQHPs718DeFFhA/feedshare-shrink_800/B4DZ9b1pq6HQAc-/0/1783952219772?e=2147483647&v=beta&t=zEUi2_UlX6-FQTYce1eyeP7jmK8lD32QvdXwfcDDVSw)",
+      "![Full classroom of 109 students progressing together](https://media.licdn.com/dms/image/v2/D4D22AQE_Ou_3OTh4TQ/feedshare-shrink_800/B4DZ9b1psuHQAc-/0/1783952220159?e=2147483647&v=beta&t=9lZ-A1ZGFqClU9M58WZZYCusjOE-ztkQml1kIkKJ5jM)",
+    ],
+  },
 ];
 
 
