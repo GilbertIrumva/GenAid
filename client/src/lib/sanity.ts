@@ -234,7 +234,7 @@ const projectId = useSanity
   ? (
       import.meta.env.VITE_SANITY_PROJECT_ID ||
       import.meta.env.VITE_SANITY_STUDIO_PROJECT_ID ||
-      ""
+      "fr1v7hol"
     ).trim()
   : "";
 

@@ -10,7 +10,8 @@
     "seed:content": "node --import tsx scripts/seedContent.ts",
     "seed:posts": "node --import tsx scripts/seedPosts.ts",
     "seed:all": "node --import tsx scripts/seedAllLiveContent.ts",
-    "seed:jobs": "node --import tsx scripts/seedJobsContent.ts"
+    "seed:jobs": "node --import tsx scripts/seedJobsContent.ts",
+    "publish:jobs": "node --import tsx scripts/publishJobsContent.ts"
   },
   "dependencies": {
     "@sanity/client": "^7.0.0",
