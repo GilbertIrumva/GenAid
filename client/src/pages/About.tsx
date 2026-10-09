@@ -554,13 +554,15 @@ export default function About() {
                   {t("home.donateBlock.sponsorBody")}
                 </p>
               </div>
-              <Link
-                to="/programs"
+              <a
+                href={SITE.donateUrl}
+                target="_blank"
+                rel="noreferrer"
                 className="mt-6 inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-white px-4 py-3 text-xs font-extrabold uppercase tracking-wider text-brand-700 shadow-md transition hover:bg-brand-50 hover:text-brand-800"
               >
                 <span>{t("home.donateBlock.sponsorCta")}</span>
                 <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
-              </Link>
+              </a>
             </div>
 
             {/* Card 3: Volunteer */}

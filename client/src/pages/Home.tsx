@@ -962,7 +962,9 @@ export default function Home() {
                 </p>
               </div>
               <a
-                href="#programs"
+                href={SITE.donateUrl}
+                target="_blank"
+                rel="noreferrer"
                 className="mt-6 inline-flex w-1/2 items-center justify-center gap-1.5 rounded-lg bg-brand-600 px-3.5 py-2 text-[11px] font-extrabold uppercase tracking-wider text-white shadow-sm transition hover:bg-brand-700"
               >
                 <span>{t("home.donateBlock.sponsorCta")}</span>
