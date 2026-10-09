@@ -167,7 +167,7 @@ async function main() {
     console.log(`Uploading cover image: ${p.image}`);
     const imgRef = await uploadLocalImage(p.image);
 
-    const galleryRefs = [];
+    const galleryRefs: any[] = [];
     if (p.gallery && Array.isArray(p.gallery)) {
       for (const g of p.gallery) {
         const gRef = await uploadLocalImage(g);

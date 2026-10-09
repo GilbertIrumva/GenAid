@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const dest = path.resolve(__dirname, "../../client/public/gen jobs/hubert-leadership-partnership.jpg");
 
-function download(url, filePath) {
+function download(url: string, filePath: string) {
   return new Promise((resolve, reject) => {
     https.get(url, (res) => {
       if (res.statusCode && res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
