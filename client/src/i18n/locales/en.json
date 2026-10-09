@@ -585,7 +585,7 @@
       "programme": {
         "name": "Programme partner",
         "tagline": "Fund what we build",
-        "body": "Co-design and co-deliver a specific programme — digital skills, tailoring, English, or remote work — with quarterly impact reports tied to your investment.",
+        "body": "Co-design and co-deliver a specific programme in digital skills, tailoring, English, or remote work, with quarterly impact reports tied to your investment.",
         "from": "From $10,000 / year",
         "features": [
           "Branded cohort or curriculum module",
@@ -598,7 +598,7 @@
       "hub": {
         "name": "Hub sponsor",
         "tagline": "Anchor the Digital Hub",
-        "body": "Multi-year support for the Digital Community Hub: named-room sponsorship, on-site brand visibility, and a permanent place in our annual report and donor wall.",
+        "body": "Multi-year support for the Digital Community Hub: named room sponsorship, on-site brand visibility, and a permanent place in our annual report and donor wall.",
         "from": "From $25,000 / year",
         "features": [
           "Named room or workstation inside the Hub",
@@ -612,11 +612,11 @@
       "talent": {
         "name": "Talent partner",
         "tagline": "Hire refugee talent",
-        "body": "Hire Generation Jobs graduates directly into remote roles — we handle screening, onboarding and ongoing mentorship at no cost to your company.",
-        "from": "No fee — hiring partnership",
+        "body": "Hire Generation Jobs graduates directly into remote roles, where we handle screening, onboarding and ongoing mentorship at no cost to your company.",
+        "from": "No fee, hiring partnership",
         "features": [
           "Shortlist of vetted, role-ready candidates",
-          "Free onboarding + first-90-days mentor support",
+          "Free onboarding + first 90 days mentor support",
           "Quarterly hiring partner sync",
           "Optional joint case study after first hire"
         ],
