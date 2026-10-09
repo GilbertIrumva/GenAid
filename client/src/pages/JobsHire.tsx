@@ -130,6 +130,10 @@ export default function JobsHire() {
   const formUrl = (jobsContent?.clientFormUrl as string) || CLIENT_FORM_URL;
   const title = (jobsContent?.hireHeroTitle as string) || "Scale Your Business While Empowering Global Talent";
   const subtitle = (jobsContent?.hireHeroSubtitle as string) || "Partner with dedicated, vetted refugee professionals from Kakuma. Save time, reduce costs, and scale your operations while you focus on strategic duties — or enjoy a well-deserved holiday.";
+  const calloutTag = (jobsContent?.hireCalloutTag as string) || "Why Hire With Us";
+  const calloutTitle = (jobsContent?.hireCalloutTitle as string) || "Work smarter, grow faster, and create meaningful global impact.";
+  const calloutBody = (jobsContent?.hireCalloutBody as string) || "Hiring through Generation Jobs gives you access to loyal, highly trained digital talent with built-in oversight, managed infrastructure, and a 100% free Month 1 pilot.";
+  const calloutImage = (jobsContent?.hireCalloutImage as string) || "/gen jobs/work-smarter-impact.jpg";
 
   useSEO({
     title: "Hire a Refugee | Generation Jobs",
@@ -153,13 +157,13 @@ export default function JobsHire() {
           <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-8 items-center">
             <div className="space-y-4">
               <span className="sir-tag">
-                Why Hire With Us
+                {calloutTag}
               </span>
               <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">
-                Work smarter, grow faster, and create meaningful global impact.
+                {calloutTitle}
               </h2>
               <p className="text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
-                Hiring through Generation Jobs gives you access to loyal, highly trained digital talent with built-in oversight, managed infrastructure, and a <strong className="text-brand-600 dark:text-brand-400">100% free Month 1 pilot</strong>.
+                {calloutBody}
               </p>
               <div className="pt-2 flex flex-wrap gap-3">
                 <a
@@ -182,8 +186,8 @@ export default function JobsHire() {
 
             <div className="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 shadow-lg aspect-[4/3] group bg-slate-100 dark:bg-slate-800">
               <SmartImage
-                src="/gen jobs/IMG-20260529-WA0065.jpg"
-                alt="Refugee digital worker at workstation in Kakuma"
+                src={calloutImage}
+                alt={calloutTitle}
                 className="h-full w-full object-cover object-[center_20%] brightness-105 sm:brightness-110 contrast-[1.04] saturate-[1.08] dark:brightness-100 dark:contrast-[1.08] transition-transform duration-500 group-hover:scale-105"
               />
             </div>

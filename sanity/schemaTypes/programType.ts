@@ -1,4 +1,4 @@
-import { defineField, defineType } from "sanity";
+import { defineArrayMember, defineField, defineType } from "sanity";
 
 const programGoal = {
   name: "programGoal",
@@ -38,6 +38,11 @@ const programComponent = {
       type: "text",
       rows: 2,
       validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "url",
+      title: "Reference URL / Article Link (Optional)",
+      type: "url",
     }),
   ],
 };
@@ -116,6 +121,11 @@ const specialHighlight = {
       type: "text",
       rows: 3,
     }),
+    defineField({
+      name: "url",
+      title: "Reference / Article Link (Optional)",
+      type: "url",
+    }),
   ],
 };
 
@@ -179,6 +189,20 @@ export const programType = defineType({
       options: { hotspot: true },
     }),
     defineField({
+      name: "heroImage",
+      title: "Hero Background Image",
+      type: "image",
+      options: { hotspot: true },
+      description: "Custom hero background image for this program (falls back to Main Cover Image)",
+    }),
+    defineField({
+      name: "whyItMattersImage",
+      title: "Why This Initiative Matters Image",
+      type: "image",
+      options: { hotspot: true },
+      description: "Dedicated image for the 'Why this initiative matters' section (falls back to gallery[1])",
+    }),
+    defineField({
       name: "gallery",
       title: "Photo Gallery",
       type: "array",
@@ -219,6 +243,57 @@ export const programType = defineType({
       title: "Curriculum Components / Syllabus",
       type: "array",
       of: [programComponent],
+    }),
+    defineField({
+      name: "gainsTitle",
+      title: "Gains / Connect Section Title",
+      type: "string",
+      description: "Custom heading for this section (e.g. 'Want to Connect with Hubert?' or default 'Key Skills & Opportunities')",
+    }),
+    defineField({
+      name: "gainsImage",
+      title: "Gains / Connect Section Image",
+      type: "image",
+      options: { hotspot: true },
+      description: "Dedicated image displayed alongside the connect / gains section",
+    }),
+    defineField({
+      name: "connectLinks",
+      title: "Connect & Social Media Links",
+      type: "array",
+      of: [
+        defineArrayMember({
+          type: "object",
+          name: "connectLink",
+          title: "Connect Link",
+          fields: [
+            defineField({
+              name: "label",
+              title: "Label / Title (e.g. LinkedIn, Email Me, Read My Articles)",
+              type: "string",
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: "url",
+              title: "URL / Destination (e.g. profile link or mailto:)",
+              type: "string",
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: "icon",
+              title: "Icon Type (linkedin, facebook, instagram, email, article, or custom)",
+              type: "string",
+            }),
+          ],
+          preview: {
+            select: {
+              title: "label",
+              subtitle: "url",
+            },
+          },
+        }),
+      ],
+      description: "Direct social profile and contact links (e.g. LinkedIn, Facebook, Instagram, Email Me, Articles)",
     }),
     defineField({
       name: "gains",

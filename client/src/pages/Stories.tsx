@@ -19,7 +19,40 @@ interface DisplayStory {
   program: string;
   image: string;
   excerpt: string;
+  videoUrl?: string;
+  videoPoster?: string;
 }
+
+const successStoryVideos = [
+  {
+    youtubeId: "VRoXjJpB854",
+    title: "Employer Testimonial: Inspiring Reflection by Michelle Lee",
+    badge: "Employer Reflection · Global Hiring",
+    description:
+      "Hear firsthand feedback from global employers on the talent caliber, dedication, and transformative collaboration delivered by Generation Aid & Jobs graduates.",
+  },
+  {
+    youtubeId: "HoWTNc58HZg",
+    title: "English Language & Literacy Success Story: Unlocking Possibilities",
+    badge: "Student Success Story · Education",
+    description:
+      "Watch refugee students in Kakuma share how practical English communication and literacy opened doors to scholarships, jobs, and renewed hope.",
+  },
+  {
+    youtubeId: "o3gR64PDTZU",
+    title: "Emergency Relief & Community Support: Standing Together in Kakuma",
+    badge: "Community Lifeline · Kakuma",
+    description:
+      "Witness community solidarity and emergency food distribution as refugee leaders step forward during critical humanitarian funding cuts in Kakuma.",
+  },
+  {
+    youtubeId: "rnSZrhR1PCw",
+    title: "Refugee Voices & Lived Experience: Journeys of Transformation",
+    badge: "Refugee Voices · Lived Experience",
+    description:
+      "Inspiring stories and lived experiences of refugee youth in Kakuma turning adversity into opportunity through skills, solidarity, and education.",
+  },
+];
 
 export default function Stories() {
   const { t } = useTranslation();
@@ -45,9 +78,14 @@ export default function Stories() {
       program: s.program,
       image: s.image,
       excerpt: s.excerpt,
+      videoUrl: s.videoUrl,
+      videoPoster: s.videoPoster,
     }))
     : sanityStories.map((story) => {
       const mapped = mapSanityStoryToDisplayStory(story);
+      const isAkia =
+        mapped.key === "from-skills-to-earning-success-story" ||
+        mapped.name.toLowerCase().includes("akia");
       return {
         key: mapped.key,
         href: mapped.href,
@@ -56,6 +94,8 @@ export default function Stories() {
         program: mapped.program,
         image: mapped.image,
         excerpt: mapped.excerpt,
+        videoUrl: mapped.videoUrl || (isAkia ? "/videos/akia-success-story.mp4" : undefined),
+        videoPoster: mapped.videoPoster || (isAkia ? "/videos/akia-poster.jpg" : undefined),
       };
     });
 
@@ -113,12 +153,53 @@ export default function Stories() {
       ) : featured ? (
         <Section pattern="canvas">
           <article className="grid items-center gap-10 lg:grid-cols-2">
-            <div className="aspect-[4/3] w-full overflow-hidden rounded-2xl border border-neutral-border dark:border-slate-700 bg-brand-50 dark:bg-slate-800 shadow-sm">
-              <SmartImage
-                src={featured.image}
-                alt={`${featured.name}${featured.role ? ` · ${featured.role}` : ""}`}
-                className="h-full w-full object-cover"
-              />
+            <div className="aspect-[4/3] w-full overflow-hidden rounded-2xl border border-neutral-border dark:border-slate-700 bg-brand-50 dark:bg-slate-800 shadow-sm relative group flex flex-col">
+              {featured.videoUrl ? (
+                (() => {
+                  const isYouTube =
+                    featured.videoUrl.includes("youtube.com") ||
+                    featured.videoUrl.includes("youtu.be");
+                  const ytId = isYouTube
+                    ? featured.videoUrl.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/)?.[1]
+                    : null;
+
+                  if (ytId) {
+                    return (
+                      <div className="relative h-full w-full bg-black">
+                        <iframe
+                          src={`https://www.youtube-nocookie.com/embed/${ytId}?rel=0`}
+                          title={`${featured.name} video`}
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          allowFullScreen
+                          className="h-full w-full border-0"
+                        />
+                      </div>
+                    );
+                  }
+
+                  return (
+                    <div className="relative h-full w-full flex flex-col bg-black">
+                      <video
+                        src={featured.videoUrl}
+                        poster={featured.videoPoster || featured.image}
+                        controls
+                        playsInline
+                        preload="metadata"
+                        className="h-full w-full object-cover"
+                      >
+                        <source src={featured.videoUrl} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  );
+                })()
+              ) : (
+                <SmartImage
+                  src={featured.image}
+                  alt={`${featured.name}${featured.role ? ` · ${featured.role}` : ""}`}
+                  className="h-full w-full object-cover"
+                />
+              )}
             </div>
             <div>
               <span className="inline-block rounded-full bg-brand-50 dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
@@ -145,6 +226,76 @@ export default function Stories() {
           </article>
         </Section>
       ) : null}
+
+      {/* VIDEO TESTIMONIALS & SUCCESS STORIES */}
+      <section className="py-16 sm:py-20 bg-neutral-50 dark:bg-slate-900/60 border-t border-neutral-border/80 dark:border-slate-800 transition-colors">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto">
+            <h2 className="font-display text-3xl font-bold text-neutral-heading dark:text-slate-50 sm:text-4xl">
+              Watch Real Impact in Motion
+            </h2>
+            <p className="mt-3 text-base text-neutral-body dark:text-slate-300">
+              Experience authentic reflections and documentary features from graduates, employer partners, and community leaders in Kakuma.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-8 md:grid-cols-2">
+            {successStoryVideos.map((v) => (
+              <div
+                key={v.youtubeId}
+                className="group flex flex-col overflow-hidden rounded-2xl border border-neutral-border dark:border-slate-800 bg-white dark:bg-slate-800 shadow-sm transition hover:shadow-lg hover:border-brand-300 dark:hover:border-brand-500"
+              >
+                <div className="relative aspect-video w-full overflow-hidden bg-black">
+                  <iframe
+                    src={`https://www.youtube-nocookie.com/embed/${v.youtubeId}`}
+                    title={v.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    className="h-full w-full border-0"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="flex flex-1 flex-col p-6">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="rounded-md bg-brand-50 dark:bg-slate-700/80 px-2.5 py-1 text-xs font-bold text-brand-700 dark:text-brand-300">
+                      {v.badge}
+                    </span>
+                    <a
+                      href={`https://www.youtube.com/watch?v=${v.youtubeId}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-xs font-semibold text-brand-600 dark:text-brand-400 hover:underline"
+                    >
+                      <span>YouTube</span>
+                      <span>↗</span>
+                    </a>
+                  </div>
+                  <h3 className="mt-3 font-display text-lg font-bold text-neutral-heading dark:text-slate-100 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition">
+                    {v.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-neutral-body dark:text-slate-300 flex-1">
+                    {v.description}
+                  </p>
+                  <div className="mt-5 pt-3 border-t border-neutral-border/60 dark:border-slate-700/60">
+                    <a
+                      href={`https://www.youtube.com/watch?v=${v.youtubeId}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 transition"
+                    >
+                      <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                      </svg>
+                      <span>Watch on YouTube</span>
+                      <span>↗</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* STORY GRID (Brand Blue Palette) */}
       <section className="bg-brand-600 dark:bg-brand-700 py-16 sm:py-20 text-white transition-colors border-t border-brand-500/50">

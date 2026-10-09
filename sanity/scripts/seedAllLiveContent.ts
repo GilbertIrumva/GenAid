@@ -447,6 +447,9 @@ async function runSeed() {
   const employerHeroImageRef = await uploadLocalImage("gen jobs/Copy of IMG_20260611_111051_050.jpg");
   const esgImpactImageRef = await uploadLocalImage("gen jobs/served clients (1).jpg");
   const employerInfraImageRef = await uploadLocalImage("gen jobs/served clients (2).jpg");
+  const hireCalloutImageRef = await uploadLocalImage("gen jobs/work-smarter-impact.jpg");
+  const leadershipImageRef = await uploadLocalImage("gen jobs/IMG-20260318-WA0031 - Copy.jpg");
+  const leadershipImageSecondaryRef = await uploadLocalImage("gen jobs/hubert-leadership-partnership.jpg");
 
   const jobsDoc: Record<string, unknown> = {
     _id: "jobsContent",
@@ -736,6 +739,10 @@ async function runSeed() {
         body: "Modern workstations, solar and generator backup power, high-speed fiber internet, and active oversight inside Kakuma.",
       },
     ],
+    hireCalloutTag: "Why Hire With Us",
+    hireCalloutTitle: "Work smarter, grow faster, and create meaningful global impact.",
+    hireCalloutBody:
+      "Hiring through Generation Jobs gives you access to loyal, highly trained digital talent with built-in oversight, managed infrastructure, and a 100% free Month 1 pilot.",
   };
 
   if (heroImageRef) jobsDoc.overviewHeroImage = heroImageRef;
@@ -745,6 +752,9 @@ async function runSeed() {
   if (employerHeroImageRef) jobsDoc.employerHeroImage = employerHeroImageRef;
   if (esgImpactImageRef) jobsDoc.esgImpactImage = esgImpactImageRef;
   if (employerInfraImageRef) jobsDoc.employerInfraImage = employerInfraImageRef;
+  if (hireCalloutImageRef) jobsDoc.hireCalloutImage = hireCalloutImageRef;
+  if (leadershipImageRef) jobsDoc.leadershipImage = leadershipImageRef;
+  if (leadershipImageSecondaryRef) jobsDoc.leadershipImageSecondary = leadershipImageSecondaryRef;
 
   await withRetry(async () => client.createOrReplace(jobsDoc as any));
 

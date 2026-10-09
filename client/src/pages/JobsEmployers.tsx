@@ -1,18 +1,16 @@
 import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 import Section from "@/components/Section";
 import JobsShell from "@/components/JobsShell";
 import SmartImage from "@/components/SmartImage";
 import SatisfiedClients from "@/components/SatisfiedClients";
 import { useSEO } from "@/utils/useSEO";
+import { getJobsContent } from "@/lib/sanity";
 
 const valuePillars = [
   {
     title: "Unmatched daily rates",
-    body: "Access digital workers around €50/day compared with freelancers, agencies, or internal teams at much higher cost.",
-  },
-  {
-    title: "Employer of record support",
-    body: "Generation Jobs handles HR, payroll, compliance, and work permit administration to reduce legal and operational burden.",
+    body: "Access digital workers around $8/day compared with freelancers, agencies, or internal teams at much higher cost.",
   },
   {
     title: "Rapid onboarding",
@@ -86,14 +84,9 @@ const amazonAgencyServices = [
     tag: "Lead Generation & Deals",
   },
   {
-    title: "Total Account Management",
-    body: "We manage your Amazon business end to end: catalog, advertising, operations, and execution. Nothing slips through the cracks and decisions aren't made in silos.",
-    tag: "End-to-End Operations",
-  },
-  {
-    title: "Catalog & Case Management",
-    body: "From listings and variations to suppressions and Seller Support cases, we keep your catalog clean, compliant, and built to support advertising and conversion.",
-    tag: "Listing & Compliance Health",
+    title: "Listing & Compliance Health",
+    body: "We manage your Amazon business end to end catalog: From listings and variations, A+ content to suppressions and Seller Support cases, we keep your catalog clean, compliant, and built to support advertising and conversion.",
+    tag: "End-to-End Catalog Operations & Case Management",
   },
 ];
 
@@ -116,25 +109,6 @@ const partnershipModels = [
   },
 ];
 
-const esgPillars = [
-  {
-    title: "ESG and CSR alignment",
-    body: "Integrate measurable social impact into your sourcing strategy while meeting reporting requirements.",
-  },
-  {
-    title: "UN SDG contribution",
-    body: "Contribute directly to No Poverty, Quality Education, and Decent Work through structured talent pathways.",
-  },
-  {
-    title: "Brand and stakeholder trust",
-    body: "Build a purpose-driven, diverse workforce narrative that resonates with customers, partners, and investors.",
-  },
-  {
-    title: "Strategic advantage",
-    body: "Access resilient, motivated, multilingual teams with competitive delivery economics and rapid deployment.",
-  },
-];
-
 const qualityPillars = [
   {
     title: "Robust infrastructure",
@@ -151,6 +125,29 @@ const qualityPillars = [
 ];
 
 export default function JobsEmployers() {
+  const { data: jobsContent } = useQuery({
+    queryKey: ["public", "sanity", "jobsContent"],
+    queryFn: getJobsContent,
+    retry: false,
+  });
+
+  const heroTitle = jobsContent?.employerHeroTitle || "Hiring through Generation Jobs is a strategic decision";
+  const heroSubtitle = jobsContent?.employerHeroSubtitle || "Secure high-performing digital talent while advancing ESG and social-impact mandates through a structured, measurable sourcing model.";
+  const heroImage = jobsContent?.employerHeroImage || "/gen jobs/home slide images (1).jpg";
+
+  const amazonTag = (jobsContent?.amazonAgencyTag as string) || "FOR FULL AMAZON GROWTH AGENCY";
+  const amazonTitle = (jobsContent?.amazonAgencyTitle as string) || "Specialized Support for Amazon Growth Agencies";
+  const amazonSubtitle = (jobsContent?.amazonAgencySubtitle as string) || "Are you a full channel Amazon Growth Agency founded to help brands scale profitably through advertising, creative optimization, and marketplace strategy?";
+  const amazonBody = (jobsContent?.amazonAgencyBody as string) || "We got you covered too. We specialize in researching and finding brands/suppliers that agencies like yours would be excited to work with.";
+  const amazonImage = (jobsContent?.amazonAgencyImage as string) || "/gen jobs/amazon-growth-agency.jpg";
+
+  const whyHireTag = (jobsContent?.whyHireTag as string) || "Why Hire Through Generation Jobs";
+  const whyHireTitle = (jobsContent?.whyHireTitle as string) || "Competitive delivery economics with built-in social impact";
+  const whyHireImage = (jobsContent?.whyHireImage as string) || "/gen jobs/why-hire-feature.jpg";
+
+  const strategicImpactTag = (jobsContent?.strategicImpactTag as string) || "Strategic impact sourcing";
+  const strategicImpactImage = (jobsContent?.strategicImpactImage as string) || "/gen jobs/strategic-impact-sourcing.jpg";
+
   useSEO({
     title: "Generation Jobs | For Employers",
     description:
@@ -160,56 +157,55 @@ export default function JobsEmployers() {
   return (
     <JobsShell
       eyebrow="Strategic impact sourcing"
-      title="Hiring through Generation Jobs is a strategic decision"
-      subtitle="Secure high-performing digital talent while advancing ESG and social-impact mandates through a structured, measurable sourcing model."
-      heroImage="/gen jobs/home slide images (1).jpg"
+      title={heroTitle}
+      subtitle={heroSubtitle}
+      heroImage={heroImage}
     >
       {/* SERVED CLIENTS SOCIAL PROOF */}
       <SatisfiedClients showTitle={true} />
 
-      {/* VALUE PILLARS (Pattern A: Canvas) */}
+      {/* VALUE PILLARS & STRATEGIC MODEL (Pattern A: Canvas) */}
       <Section pattern="canvas" className="!pt-4 sm:!pt-6">
-        <div className="grid gap-6 sm:gap-8 lg:grid-cols-2 items-center">
-          <div className="space-y-4 sm:space-y-6 min-w-0">
-            <span className="sir-tag">
-              Why Hire Through Generation Jobs
+        <div className="space-y-8 sm:space-y-10">
+          {/* Header Block */}
+          <div className="max-w-3xl">
+            <span className="inline-block rounded-md bg-brand-50 dark:bg-brand-950/60 px-3.5 py-1 text-sm font-bold uppercase tracking-wider text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800">
+              {whyHireTag}
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-slate-50 lg:text-4xl break-words">
-              Competitive delivery economics with built-in social impact
+            <h2 className="mt-3 font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 break-words">
+              {whyHireTitle}
             </h2>
-            <div className="sir-callout-border !my-2 sm:!my-3">
+            <div className="sir-callout-border !my-3">
               <p className="text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-300 font-medium">
-                Employers access cost-effective, managed remote teams with EOR compliance support, rapid onboarding, and reliable retention.
+                Employers access cost-effective, managed remote teams with structured support, rapid onboarding, and reliable retention.
               </p>
-            </div>
-            <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2">
-              {valuePillars.map((pillar) => (
-                <article
-                  key={pillar.title}
-                  className="sir-card-accent p-4 sm:p-5"
-                >
-                  <h3 className="font-serif text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100">{pillar.title}</h3>
-                  <p className="mt-1.5 sm:mt-2 text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-300">{pillar.body}</p>
-                </article>
-              ))}
             </div>
           </div>
 
-          <div className="space-y-4 min-w-0 w-full">
-            <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-md aspect-[4/3] group">
+          {/* High-Resolution Infographic Showcase (Full Width & Height - All Information Visible) */}
+          <div className="w-full overflow-hidden rounded-2xl sm:rounded-3xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xl group transition-all duration-300 hover:shadow-brand-500/10">
+            <div className="relative w-full aspect-[1536/1024] bg-slate-950/5 dark:bg-slate-950/40">
               <SmartImage
-                src="/gen jobs/Copy of IMG_20260611_111051_050.jpg"
-                alt="Generation Jobs BPO Delivery Hub and Workstations in Kakuma with UNHCR and Australian Aid partners"
-                className="h-full w-full object-cover object-[center_20%] brightness-105 sm:brightness-110 contrast-[1.04] saturate-[1.08] dark:brightness-100 dark:contrast-[1.08] transition-transform duration-500 group-hover:scale-105"
+                src={whyHireImage}
+                alt={whyHireTitle}
+                className="w-full h-full object-contain object-center brightness-105 sm:brightness-110 contrast-[1.04] saturate-[1.05]"
               />
             </div>
-            <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm aspect-[16/10] sm:aspect-[16/7] group">
-              <SmartImage
-                src="/blog generation jobs launch.webp"
-                alt="Generation Jobs initiative launch"
-                className="h-full w-full object-cover object-[center_20%] brightness-105 sm:brightness-110 contrast-[1.04] saturate-[1.08] dark:brightness-100 dark:contrast-[1.08] transition-transform duration-500 group-hover:scale-105"
-              />
-            </div>
+          </div>
+
+          {/* 3 Core Value Pillar Cards */}
+          <div className="grid gap-4 sm:gap-6 sm:grid-cols-3">
+            {valuePillars.map((pillar) => (
+              <article
+                key={pillar.title}
+                className="sir-card-accent p-5 sm:p-6 flex flex-col justify-between"
+              >
+                <div>
+                  <h3 className="font-serif text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100">{pillar.title}</h3>
+                  <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-300">{pillar.body}</p>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </Section>
@@ -268,26 +264,49 @@ export default function JobsEmployers() {
       {/* FULL AMAZON GROWTH AGENCY SUPPORT (Pattern A: Canvas) */}
       <Section pattern="canvas" id="amazon-growth-agency">
         <div className="sir-card-accent p-6 sm:p-10 lg:p-12 border-2 border-brand-500/30 dark:border-brand-500/20">
-          <div className="max-w-3xl">
-            <span className="sir-tag">
-              FOR FULL AMAZON GROWTH AGENCY
-            </span>
-            <h2 className="mt-3 font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">
-              Specialized Support for Amazon Growth Agencies
-            </h2>
-            <p className="mt-4 text-base sm:text-lg font-medium text-slate-800 dark:text-slate-200 leading-relaxed">
-              Are you a full channel Amazon Growth Agency founded to help brands scale profitably through advertising, creative optimization, and marketplace strategy?
-            </p>
-            <p className="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-              We got you covered too. We specialize in researching and finding brands/suppliers that agencies like yours would be excited to work with.
-            </p>
+          <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-8 lg:gap-10 items-center">
+            <div className="space-y-4 min-w-0">
+              <span className="sir-tag">
+                {amazonTag}
+              </span>
+              <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 break-words">
+                {amazonTitle}
+              </h2>
+              <div className="sir-callout-border !my-3">
+                <p className="text-base sm:text-lg font-bold text-slate-800 dark:text-slate-100 leading-relaxed">
+                  {amazonSubtitle}
+                </p>
+              </div>
+              <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+                {amazonBody}
+              </p>
+
+              <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-semibold">
+                <div className="flex items-center gap-2">
+                  <span className="flex-shrink-0 w-2 h-2 rounded-full bg-brand-500"></span>
+                  <span>Brand &amp; Supplier Prospecting</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="flex-shrink-0 w-2 h-2 rounded-full bg-brand-500"></span>
+                  <span>Catalog Health &amp; Compliance</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative group overflow-hidden rounded-2xl border border-slate-200/90 dark:border-slate-800 shadow-xl bg-slate-900/10 dark:bg-slate-900/60 aspect-[4/3] sm:aspect-[16/11] w-full">
+              <SmartImage
+                src={amazonImage}
+                alt={amazonTitle}
+                className="h-full w-full object-cover object-center brightness-105 sm:brightness-110 contrast-[1.03] saturate-[1.05] transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
           </div>
 
-          <div className="mt-8 grid gap-6 md:grid-cols-3">
+          <div className="mt-10 pt-8 border-t border-slate-200/80 dark:border-slate-800 grid gap-6 md:grid-cols-2">
             {amazonAgencyServices.map((service) => (
               <div
                 key={service.title}
-                className="sir-card p-6 border-t-4 border-t-brand-600 dark:border-t-brand-500 flex flex-col justify-between"
+                className="sir-card p-6 border-t-4 border-t-brand-600 dark:border-t-brand-500 flex flex-col justify-between hover:shadow-lg transition-all duration-300"
               >
                 <div>
                   <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wider text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-950/60 border border-brand-200 dark:border-brand-800">
@@ -321,51 +340,60 @@ export default function JobsEmployers() {
 
       {/* STRATEGIC IMPACT SOURCING (Pattern A: Canvas) */}
       <Section pattern="canvas">
-        <div className="mx-auto max-w-3xl text-center">
-          <span className="sir-tag">
-            Strategic impact sourcing
-          </span>
-          <h2 className="mt-3 font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">
-            High-performance business investment, not charity
-          </h2>
-        </div>
+        <div className="space-y-8 sm:space-y-10">
+          <div className="mx-auto max-w-4xl text-center">
+            <span className="inline-block rounded-md bg-brand-50 dark:bg-brand-950/60 px-3.5 py-1 text-xs font-extrabold uppercase tracking-widest text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800 shadow-2xs mb-3">
+              Purpose &amp; Delivery Alignment
+            </span>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">
+              {strategicImpactTag}
+            </h2>
+          </div>
 
-        <div className="mt-8 sm:mt-10 grid gap-5 sm:gap-6 lg:grid-cols-2">
-          {esgPillars.map((pillar) => (
-            <article
-              key={pillar.title}
-              className="sir-card-accent p-5 sm:p-6"
-            >
-              <h3 className="font-serif text-lg sm:text-xl font-extrabold text-slate-900 dark:text-slate-100">{pillar.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{pillar.body}</p>
-            </article>
-          ))}
+          {/* High-Resolution Feature Infographic Showcase (Full Width & Uncropped Height) */}
+          <div className="w-full overflow-hidden rounded-2xl sm:rounded-3xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xl group transition-all duration-300 hover:shadow-brand-500/10">
+            <div className="relative w-full aspect-[1536/1024] bg-slate-950/5 dark:bg-slate-950/40">
+              <SmartImage
+                src={strategicImpactImage}
+                alt="Strategic impact sourcing - High-performance business investment, not charity"
+                className="w-full h-full object-contain object-center brightness-105 sm:brightness-110 contrast-[1.04] saturate-[1.05]"
+              />
+            </div>
+          </div>
         </div>
       </Section>
 
-      {/* OPERATIONAL EXCELLENCE (Pattern B: Soft Contrast) */}
-      <Section pattern="soft">
-        <div className="mx-auto max-w-3xl text-center">
-          <span className="sir-tag">
-            Operational excellence
-          </span>
-          <h2 className="mt-3 font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">
-            Quality assurance embedded in every delivery
-          </h2>
-        </div>
+      {/* OPERATIONAL EXCELLENCE (Blue Palette) */}
+      <section className="bg-brand-600 dark:bg-brand-900 py-16 sm:py-20 text-white transition-colors border-t border-brand-500/50 dark:border-brand-800">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="inline-block rounded-md bg-white/20 px-3.5 py-1 text-xs font-extrabold uppercase tracking-widest text-white border border-white/30 backdrop-blur-sm mb-2">
+              Operational excellence
+            </span>
+            <h2 className="mt-2 font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight !text-white">
+              Quality assurance embedded in every delivery
+            </h2>
+          </div>
 
-        <div className="mt-8 sm:mt-10 grid gap-5 sm:gap-6 sm:grid-cols-3">
-          {qualityPillars.map((pillar) => (
-            <article
-              key={pillar.title}
-              className="sir-card p-5 sm:p-6"
-            >
-              <h3 className="font-serif text-lg sm:text-xl font-extrabold text-slate-900 dark:text-slate-100">{pillar.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{pillar.body}</p>
-            </article>
-          ))}
+          <div className="mt-8 sm:mt-10 grid gap-5 sm:gap-6 sm:grid-cols-3">
+            {qualityPillars.map((pillar) => (
+              <article
+                key={pillar.title}
+                className="flex flex-col justify-between rounded-2xl bg-white dark:bg-slate-900/95 p-6 shadow-md border border-white/80 dark:border-slate-800 transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5"
+              >
+                <div>
+                  <h3 className="font-serif text-lg sm:text-xl font-extrabold text-slate-900 dark:text-slate-100">
+                    {pillar.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300 font-medium">
+                    {pillar.body}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
-      </Section>
+      </section>
 
       {/* PARTNERSHIP MODELS (Pattern A: Canvas) */}
       <Section pattern="canvas">

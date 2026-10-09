@@ -45,7 +45,12 @@ export const structure: StructureResolver = (S) =>
         .child(S.documentTypeList("story").title("Impact Stories")),
       S.listItem()
         .title("🎓 Programs / Chambers")
-        .child(S.documentTypeList("program").title("Programs")),
+        .child(
+          S.documentList()
+            .title("Programs")
+            .filter('_type == "program"')
+            .defaultOrdering([{ field: "_createdAt", direction: "desc" }])
+        ),
       S.listItem()
         .title("📊 Reports & Downloads")
         .child(S.documentTypeList("report").title("Reports & Downloads")),

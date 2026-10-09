@@ -188,23 +188,83 @@ export default function About() {
 
           <div className="mt-6 space-y-4 text-base leading-relaxed text-neutral-body dark:text-slate-300">
             <p>
-              <strong className="font-semibold text-neutral-heading dark:text-slate-100">Generation Aid</strong> is a refugee-led nonprofit organization based in Kakuma Refugee Camp and Kalobeyei Settlement, Kenya, dedicated to transforming lives through education, livelihoods, and innovation. We believe that refugees and vulnerable communities possess extraordinary potential when given access to quality education, digital skills, meaningful employment, and opportunities to thrive.
+              Many refugees in Kakuma have lived in prolonged displacement for years, with limited pathways to resettlement, employment, or economic independence. This leaves enormous talent and potential untapped.
             </p>
             <p>
-              Founded by <strong className="font-semibold text-neutral-heading dark:text-slate-100">Hubert Senga</strong>, a Congolese refugee living in the Kakuma refugee camp, Generation Aid works to bridge the gap between humanitarian assistance and long-term economic empowerment. Through digital skills training, vocational education, language learning, entrepreneurship, and employment pathways, we equip young people and women with the tools they need to build sustainable futures.
+              Today, we are living in a world increasingly powered by technology and opportunities, yet many refugees remain disconnected from the opportunities that the Global economy and community can offer.
+            </p>
+            <p className="font-semibold text-neutral-heading dark:text-slate-100 text-lg">
+              At Generation Aid, we are changing that.
             </p>
             <p>
-              Beyond training, we connect talented graduates with remote work opportunities, businesses, and global partners, ensuring that skills translate into real livelihoods and lasting impact. At Generation Aid, we don't just support communities; we empower them to become leaders, innovators, and contributors to the global economy.
+              We are a refugee-led Community Based organization based in Kakuma Refugee Camp, founded by a refugee and social Entrepreneur <strong className="font-semibold text-neutral-heading dark:text-slate-100">Hubert Senga</strong>, to equip refugees with digital, vocational, entrepreneurial and livelihood skills, to exposure and connecting them to remote or onsite work and Global economic opportunities.
             </p>
           </div>
 
-          {/* Dedicated Who We Are Callout */}
-          <div className="mt-8 rounded-2xl border border-brand-200 dark:border-slate-700 bg-brand-50/50 dark:bg-slate-800/80 p-6 sm:p-8">
-            <h3 className="font-serif text-xl font-bold text-slate-900 dark:text-slate-100">
+          {/* Creative Video Feature */}
+          <div className="mt-10 overflow-hidden rounded-2xl border border-brand-200 dark:border-slate-700 bg-gradient-to-br from-brand-900 via-slate-900 to-brand-950 p-5 sm:p-7 text-white shadow-xl">
+            <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+              <div className="flex items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-red-600/90 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white shadow-sm">
+                  <span className="h-2 w-2 rounded-full bg-white animate-pulse" />
+                  PBS NewsHour Feature
+                </span>
+                <span className="text-xs text-slate-300 hidden sm:inline">
+                  Kakuma Voices & Remote Work
+                </span>
+              </div>
+              <span className="text-xs font-medium text-brand-200">
+                Hubert Senga · Executive Director
+              </span>
+            </div>
+
+            <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-black shadow-inner border border-white/10">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/vIK-iBooRfo"
+                title="PBS NewsHour: How refugees in Kakuma are connecting to the global digital economy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                className="h-full w-full border-0"
+                loading="lazy"
+              />
+            </div>
+            <p className="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Watch the international PBS NewsHour report on how Hubert Senga and Generation Aid are turning displacement into digital innovation, connecting refugees in Kakuma to dignified remote and onsite work.
+            </p>
+          </div>
+
+          {/* OUR APPROACH & FOUR PILLARS */}
+          <div className="mt-14 pt-10 border-t border-slate-200 dark:border-slate-800">
+            <div className="text-center max-w-3xl mx-auto mb-8">
+              <span className="inline-block rounded-full bg-brand-50 dark:bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-700">
+                Our Strategic Model
+              </span>
+              <h3 className="mt-3 text-2xl sm:text-3xl font-bold text-neutral-heading dark:text-slate-50">
+                Our approach is built around four simple pillars:
+              </h3>
+              <p className="mt-2 text-sm sm:text-base text-neutral-body dark:text-slate-400">
+                A structured, sustainable progression from foundational education to global economic self-reliance.
+              </p>
+            </div>
+
+            {/* Large clear pillars image */}
+            <div className="overflow-hidden rounded-2xl border-2 border-brand-100 dark:border-slate-700 bg-white dark:bg-slate-800 p-2 sm:p-4 md:p-6 shadow-xl">
+              <img
+                src="/img/about/four-pillars.png"
+                alt="Generation Aid Four Simple Pillars: Approach from learning to economic independence"
+                className="w-full h-auto object-contain rounded-xl max-h-[850px] mx-auto"
+                loading="eager"
+              />
+            </div>
+          </div>
+
+          {/* INVESTING IN HUMAN POTENTIAL */}
+          <div className="mt-12 rounded-2xl border-l-4 border-brand-600 bg-brand-50/70 dark:bg-slate-800/90 dark:border-brand-500 p-6 sm:p-8 shadow-sm">
+            <h3 className="text-xl sm:text-2xl font-bold text-neutral-heading dark:text-slate-100">
               Investing in Human Potential
             </h3>
-            <p className="mt-3 text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-300">
-              Generation Aid is a refugee-led, youth-driven nonprofit organization transforming lives through education, technology, and economic empowerment. Founded in Kakuma Refugee Camp, Kenya, we believe that displacement should never define a person's future. We equip refugees and vulnerable host community members with the skills, opportunities, and resources they need to become self-reliant and contribute meaningfully to their communities. At Generation Aid, we don't just respond to crises; we invest in people's potential, creating pathways to dignity, opportunity, and lasting impact for the refugees.
+            <p className="mt-3 text-base sm:text-lg leading-relaxed text-slate-700 dark:text-slate-200">
+              This is more than training. It is an investment in human potential and economic independence and inclusion, turning a refugee from learner into earners and job creators. At Generation Aid, we don&apos;t just respond to crises; we invest in people&apos;s potential, creating pathways to dignity, opportunity, and lasting impact for the refugees.
             </p>
           </div>
 
@@ -222,15 +282,6 @@ export default function About() {
               {t("common.contactUs")}
             </Link>
           </div>
-
-          {/* Full-width image under the words */}
-          <div className="mt-10 overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-xl group aspect-[16/9] sm:aspect-[21/9]">
-            <SmartImage
-              src="/who we are.jpg"
-              alt="Generation Aid team and community collaborating on strategic planning in Kakuma"
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-          </div>
         </div>
       </Section>
 
@@ -243,47 +294,48 @@ export default function About() {
           <h2 className="mt-3 text-3xl font-bold text-neutral-heading dark:text-slate-50 sm:text-4xl">
             Where It All Began
           </h2>
-          <div className="mt-6 space-y-4 text-base leading-relaxed text-neutral-body dark:text-slate-300">
-            <p className="font-medium text-neutral-heading dark:text-slate-200">
-              Generation Aid was founded with that one fundamental question:
-            </p>
-            <p>
-              In 2019, Our Founder, Hubert Senga asked himself a very simple question:
-            </p>
-            <blockquote className="border-l-4 border-brand-500 bg-white/70 dark:bg-slate-800/80 p-4 rounded-r-xl italic font-medium text-lg text-neutral-heading dark:text-slate-100 shadow-sm my-2">
-              &ldquo;What if, instead of preparing the over 300,000 refugees in Kakuma to depend on aid, we could prepare them to participate in the global economy?&rdquo;
+
+          {/* Quote Block */}
+          <div className="mt-8 rounded-2xl border-l-4 border-brand-500 bg-white dark:bg-slate-800 p-6 sm:p-8 shadow-sm">
+            <blockquote className="text-lg sm:text-xl font-medium italic leading-relaxed text-neutral-heading dark:text-slate-100">
+              &ldquo;In 2019 , I asked myself , What if, instead of preparing the over 300,000 refugees in Kakuma to depend on aid, we can prepared them to participate in the global economy?
+              <br className="my-2" />
+              That question became our mission. &rdquo;
             </blockquote>
-            <p className="font-medium text-brand-700 dark:text-brand-300">
-              That question became our mission as Generation Aid.
-            </p>
-            <p>
-              Hubert Senga is a Congolese refugee, social entrepreneur, and founder of Generation Aid.
-            </p>
-            <p>
-              His leadership journey began with a displacement story in 2016. He was forced to flee the Democratic Republic of Congo due to political instability, war and violence consuming his home country. When he arrived in Kakuma Refugee Camp, like many refugees, he experienced firsthand the barriers to education, employment, and opportunity. He had to rebuild his life from almost nothing.
-            </p>
-            <p>
-              But living in Kakuma taught him something important: being displaced does not mean being without talent, ambition, or potential.
-            </p>
-            <p>
-              Around him are teachers, entrepreneurs, young innovators and skilled people ready to work but disconnected from opportunity. Refugees face barriers to livelihood skills, formal employment, documentation, technology and global markets.
-            </p>
-            <p>
-              So in 2019, he founded Generation Aid with that one fundamental question to create practical solutions that empower refugees with the skills needed to thrive in the modern world.
-            </p>
-            <p>
-              What started as a small community initiative has grown into a trusted refugee-led organization serving refugees and host communities through education, digital innovation, vocational training, and employment pathways. Today, Generation Aid continues to build a future where every displaced person has the opportunity to learn, work, lead, and rebuild their life with dignity.
+            <p className="mt-4 text-sm font-semibold text-brand-600 dark:text-brand-400">
+              Said By Hubert Senga, Founder and Executive Director of Generation
             </p>
           </div>
 
-          {/* Full-width image under the words */}
-          <div className="mt-10 overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-xl group aspect-[16/10] sm:aspect-[16/7] md:aspect-[21/9]">
-            <SmartImage
-              src="/where_it_all_began.jpg"
-              alt="Hubert Senga, Founder of Generation Aid"
-              className="h-full w-full object-cover object-[center_35%] transition-transform duration-500 group-hover:scale-105"
+          <div className="mt-8 space-y-4 text-base leading-relaxed text-neutral-body dark:text-slate-300">
+            <p>
+              I’m Hubert Senga, a Congolese refugee, refugee advocate, social entrepreneur, and founder of Generation Aid.
+            </p>
+            <p>
+              My leadership journey began with my personal displacement story in 2016. I was forced to flee the Democratic Republic of Congo after political violence, instability, and war ravaging my home country. When I arrived in Kakuma Refugee Camp, I had to rebuild my life from almost nothing.
+            </p>
+            <p>
+              But living in Kakuma taught me something important: being displaced or a refugee does not mean being without talent, ambition, or potential.
+            </p>
+            <p>
+              Around me are teachers, entrepreneurs, young innovators, and skilled people ready to work but disconnected from opportunity. Refugees face barriers to Livelihood skills, formal employment, documentation, technology, and global markets.
+            </p>
+            <p>
+              So in 2019, I founded Generation Aid with that one fundamental question
+            </p>
+          </div>
+
+          {/* Hubert Senga Origin Photo */}
+          <div className="mt-10 overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-xl group aspect-[4/3] sm:aspect-[16/11] max-h-[650px]">
+            <img
+              src="/img/about/hubert-origin.jpg"
+              alt="Hubert Senga, Founder and Executive Director of Generation Aid"
+              className="h-full w-full object-cover object-[center_25%] transition-transform duration-500 group-hover:scale-105"
             />
           </div>
+          <p className="mt-2 text-center text-xs text-slate-500 dark:text-slate-400 italic">
+            Hubert Senga, Founder and Executive Director of Generation Aid
+          </p>
         </div>
       </Section>
 

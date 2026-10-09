@@ -43,6 +43,8 @@ export interface SanityProgram {
   slug?: string;
   cover?: string;
   image?: string;
+  heroImage?: string;
+  whyItMattersImage?: string;
   category?: string;
   tagline?: string;
   speaker?: string;
@@ -54,10 +56,13 @@ export interface SanityProgram {
   goals?: Array<{ title: string; description: string }>;
   targetAudience?: string;
   whyItMatters?: string;
-  components?: Array<{ title: string; description: string }>;
+  components?: Array<{ title: string; description: string; url?: string }>;
+  gainsTitle?: string;
+  gainsImage?: string;
+  connectLinks?: Array<{ label: string; url: string; icon?: string }>;
   gains?: string[];
   howToJoin?: string;
-  specialHighlight?: { title: string; description: string };
+  specialHighlight?: { title: string; description: string; url?: string };
   vision?: string;
   quote?: { text: string; author: string; role?: string };
   bookingUrl?: string;
@@ -107,6 +112,7 @@ export interface SanityVideo {
   title: string;
   description?: string;
   source?: string;
+  youtubeId?: string;
   videoUrl?: string;
   videoFileUrl?: string;
   thumbnailUrl?: string;
@@ -282,7 +288,7 @@ export async function getPublishedPosts(): Promise<SanityPost[]> {
     excerpt,
     "content": coalesce(content, [pt::text(body)]),
     "slug": slug.current,
-    "cover": coalesce(coverImage.asset->url, ""),
+    "cover": coalesce(coverImage.asset->url, coverImage, cover, ""),
     "authorName": coalesce(author, authorName, "Generation Aid"),
     "date": coalesce(date, publishedAt),
     youtubeId,
@@ -305,7 +311,7 @@ export async function getPublishedPostBySlug(
       excerpt,
       "content": coalesce(content, [pt::text(body)]),
       "slug": slug.current,
-      "cover": coalesce(coverImage.asset->url, ""),
+      "cover": coalesce(coverImage.asset->url, coverImage, cover, ""),
       "authorName": coalesce(author, authorName, "Generation Aid"),
       "date": coalesce(date, publishedAt),
       youtubeId,
@@ -331,13 +337,13 @@ export async function getPublishedStories(): Promise<SanityStory[]> {
     "content": content,
     "body": coalesce(pt::text(body), ""),
     "slug": slug.current,
-    "cover": coalesce(image.asset->url, coverImage.asset->url, ""),
-    "image": coalesce(image.asset->url, coverImage.asset->url, ""),
+    "cover": coalesce(image.asset->url, coverImage.asset->url, image, coverImage, ""),
+    "image": coalesce(image.asset->url, coverImage.asset->url, image, coverImage, ""),
     role,
     program,
     location,
     videoUrl,
-    "videoPoster": coalesce(videoPoster.asset->url, ""),
+    "videoPoster": coalesce(videoPoster.asset->url, videoPoster, ""),
     publishedAt,
     _updatedAt
   }`);
@@ -357,13 +363,13 @@ export async function getStoryBySlug(
       "content": content,
       "body": coalesce(pt::text(body), ""),
       "slug": slug.current,
-      "cover": coalesce(image.asset->url, coverImage.asset->url, ""),
-      "image": coalesce(image.asset->url, coverImage.asset->url, ""),
+      "cover": coalesce(image.asset->url, coverImage.asset->url, image, coverImage, ""),
+      "image": coalesce(image.asset->url, coverImage.asset->url, image, coverImage, ""),
       role,
       program,
       location,
       videoUrl,
-      "videoPoster": coalesce(videoPoster.asset->url, ""),
+      "videoPoster": coalesce(videoPoster.asset->url, videoPoster, ""),
       publishedAt,
       _updatedAt
     }`,
@@ -384,6 +390,8 @@ export async function getPrograms(): Promise<SanityProgram[]> {
     "slug": slug.current,
     "cover": coalesce(image.asset->url, coverImage.asset->url, ""),
     "image": coalesce(image.asset->url, coverImage.asset->url, ""),
+    "heroImage": coalesce(heroImage.asset->url, image.asset->url, coverImage.asset->url, ""),
+    "whyItMattersImage": coalesce(whyItMattersImage.asset->url, ""),
     category,
     tagline,
     speaker,
@@ -396,6 +404,9 @@ export async function getPrograms(): Promise<SanityProgram[]> {
     whyItMatters,
     goals,
     components,
+    gainsTitle,
+    "gainsImage": coalesce(gainsImage.asset->url, ""),
+    connectLinks,
     gains,
     howToJoin,
     specialHighlight,
@@ -484,6 +495,7 @@ export async function getVideos(): Promise<SanityVideo[]> {
     title,
     description,
     source,
+    youtubeId,
     videoUrl,
     "videoFileUrl": coalesce(videoFile.asset->url, ""),
     "thumbnailUrl": coalesce(thumbnail.asset->url, ""),
@@ -534,14 +546,30 @@ export interface SanityJobsContent {
   overviewHeroTitle?: string;
   overviewHeroSubtitle?: string;
   overviewHeroImage?: string;
+  employerHeroTitle?: string;
+  employerHeroSubtitle?: string;
+  employerHeroImage?: string;
+  leadershipTitle?: string;
+  leadershipBody?: string;
   leadershipImage?: string;
+  leadershipImageSecondary?: string;
   pipelineImage?: string;
   marketNeedTitle?: string;
   marketProblems?: string[];
+  amazonAgencyTag?: string;
+  amazonAgencyTitle?: string;
+  amazonAgencySubtitle?: string;
+  amazonAgencyBody?: string;
+  amazonAgencyImage?: string;
   pipelineTitle?: string;
   pipelineSteps?: string[];
   talentCategories?: string[];
   howHiringWorks?: string[];
+  whyHireTag?: string;
+  whyHireTitle?: string;
+  whyHireImage?: string;
+  strategicImpactTag?: string;
+  strategicImpactImage?: string;
   [key: string]: unknown;
 }
 
@@ -574,19 +602,34 @@ export async function getJobsContent(): Promise<SanityJobsContent | null> {
         leadershipTitle,
         leadershipBody,
         "leadershipImage": coalesce(leadershipImage.asset->url, ""),
+        "leadershipImageSecondary": coalesce(leadershipImageSecondary.asset->url, ""),
         employerHeroTitle,
         employerHeroSubtitle,
         "employerHeroImage": coalesce(employerHeroImage.asset->url, ""),
+        whyHireTag,
+        whyHireTitle,
+        "whyHireImage": coalesce(whyHireImage.asset->url, employerInfraImage.asset->url, ""),
+        strategicImpactTag,
+        "strategicImpactImage": coalesce(strategicImpactImage.asset->url, esgImpactImage.asset->url, ""),
         valuePillars,
         serviceLines,
         esgPillars,
         "esgImpactImage": coalesce(esgImpactImage.asset->url, ""),
         qualityPillars,
         "employerInfraImage": coalesce(employerInfraImage.asset->url, ""),
+        amazonAgencyTag,
+        amazonAgencyTitle,
+        amazonAgencySubtitle,
+        amazonAgencyBody,
+        "amazonAgencyImage": coalesce(amazonAgencyImage.asset->url, ""),
         hireHeroTitle,
         hireHeroSubtitle,
         clientFormUrl,
-        hireBenefits
+        hireBenefits,
+        hireCalloutTag,
+        hireCalloutTitle,
+        hireCalloutBody,
+        "hireCalloutImage": coalesce(hireCalloutImage.asset->url, "")
       }`
     );
   } catch (error) {
@@ -644,7 +687,9 @@ export function mapSanityProgramToDisplayProgram(
     slug: program.slug ?? program._id,
     title: program.title,
     body: program.excerpt || program.body || "",
-    image: program.cover || program.image || fallbackImage,
+    image: program.heroImage || program.cover || program.image || fallbackImage,
+    heroImage: program.heroImage,
+    whyItMattersImage: program.whyItMattersImage,
     category: program.category || "Education & Skills",
     features: Array.isArray(program.features) ? program.features : [],
     tagline: program.tagline,
@@ -655,6 +700,9 @@ export function mapSanityProgramToDisplayProgram(
     targetAudience: program.targetAudience,
     whyItMatters: program.whyItMatters,
     components: program.components,
+    gainsTitle: program.gainsTitle,
+    gainsImage: program.gainsImage,
+    connectLinks: program.connectLinks,
     gains: program.gains,
     howToJoin: program.howToJoin,
     specialHighlight: program.specialHighlight,
@@ -802,7 +850,7 @@ export async function getCauses(): Promise<DisplayCause[]> {
         "key": coalesce(slug.current, _id),
         title,
         description,
-        "image": coalesce(image.asset->url, ""),
+        "image": coalesce(image.asset->url, image, ""),
         goal,
         raised,
         donateUrl

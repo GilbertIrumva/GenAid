@@ -139,30 +139,14 @@ export const servicePackages: ServicePackage[] = [
     impact: "Continuous flow of qualified high-ticket brand retainers for your agency.",
   },
   {
-    slug: "amazon-account-management",
-    category: "Amazon Growth Agency",
-    title: "Total Account Management",
-    firstMonthPrice: 0,
-    secondMonthPrice: 250,
-    monthlyPrice: 499,
-    description:
-      "End-to-end management of your Amazon business across catalog, advertising, operations, and execution.",
-    deliverables: [
-      "Full catalog operations and inventory health",
-      "Sponsored Ads monitoring and daily optimizations",
-      "Cross-functional operational execution without silos",
-    ],
-    impact: "Eliminates operational bottlenecks and accelerates profitable growth.",
-  },
-  {
     slug: "amazon-catalog-case-management",
     category: "Amazon Growth Agency",
-    title: "Catalog & Case Management",
+    title: "Listing & Compliance Health",
     firstMonthPrice: 0,
     secondMonthPrice: 250,
     monthlyPrice: 499,
     description:
-      "Keeping your Amazon catalog clean, compliant, and optimized to support advertising performance and conversion.",
+      "We manage your Amazon business end to end catalog: From listings and variations, A+ content to suppressions and Seller Support cases, we keep your catalog clean, compliant, and built to support advertising and conversion.",
     deliverables: [
       "Listing creation, variations, and attribute hygiene",
       "Suppression resolution and brand registry support",

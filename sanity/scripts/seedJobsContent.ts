@@ -79,6 +79,12 @@ async function seedJobs() {
   const employerHeroImageRef = await uploadLocalImage("gen jobs/Copy of IMG_20260611_111051_050.jpg");
   const esgImpactImageRef = await uploadLocalImage("gen jobs/served clients (1).jpg");
   const employerInfraImageRef = await uploadLocalImage("gen jobs/served clients (2).jpg");
+  const hireCalloutImageRef = await uploadLocalImage("gen jobs/work-smarter-impact.jpg");
+  const leadershipImageRef = await uploadLocalImage("gen jobs/IMG-20260318-WA0031 - Copy.jpg");
+  const leadershipImageSecondaryRef = await uploadLocalImage("gen jobs/hubert-leadership-partnership.jpg");
+  const amazonAgencyImageRef = await uploadLocalImage("gen jobs/amazon-growth-agency.jpg");
+  const whyHireImageRef = await uploadLocalImage("gen jobs/why-hire-feature.jpg");
+  const strategicImpactImageRef = await uploadLocalImage("gen jobs/strategic-impact-sourcing.jpg");
 
   const jobsDoc: Record<string, unknown> = {
     _id: "jobsContent",
@@ -328,12 +334,7 @@ async function seedJobs() {
       {
         _type: "cardItem",
         title: "Unmatched daily rates",
-        body: "Access digital workers around €50/day compared with freelancers, agencies, or internal teams at much higher cost.",
-      },
-      {
-        _type: "cardItem",
-        title: "Employer of record support",
-        body: "Generation Jobs handles HR, payroll, compliance, and work permit administration to reduce legal and operational burden.",
+        body: "Access digital workers around $8/day compared with freelancers, agencies, or internal teams at much higher cost.",
       },
       {
         _type: "cardItem",
@@ -434,6 +435,28 @@ async function seedJobs() {
   if (employerHeroImageRef) jobsDoc.employerHeroImage = employerHeroImageRef;
   if (esgImpactImageRef) jobsDoc.esgImpactImage = esgImpactImageRef;
   if (employerInfraImageRef) jobsDoc.employerInfraImage = employerInfraImageRef;
+  if (hireCalloutImageRef) jobsDoc.hireCalloutImage = hireCalloutImageRef;
+  if (leadershipImageRef) jobsDoc.leadershipImage = leadershipImageRef;
+  if (leadershipImageSecondaryRef) jobsDoc.leadershipImageSecondary = leadershipImageSecondaryRef;
+  if (amazonAgencyImageRef) jobsDoc.amazonAgencyImage = amazonAgencyImageRef;
+  if (whyHireImageRef) jobsDoc.whyHireImage = whyHireImageRef;
+  if (strategicImpactImageRef) jobsDoc.strategicImpactImage = strategicImpactImageRef;
+
+  jobsDoc.whyHireTag = "Why Hire Through Generation Jobs";
+  jobsDoc.whyHireTitle = "Competitive delivery economics with built-in social impact";
+  jobsDoc.strategicImpactTag = "Strategic impact sourcing";
+
+  jobsDoc.hireCalloutTag = "Why Hire With Us";
+  jobsDoc.hireCalloutTitle = "Work smarter, grow faster, and create meaningful global impact.";
+  jobsDoc.hireCalloutBody =
+    "Hiring through Generation Jobs gives you access to loyal, highly trained digital talent with built-in oversight, managed infrastructure, and a 100% free Month 1 pilot.";
+
+  jobsDoc.amazonAgencyTag = "FOR FULL AMAZON GROWTH AGENCY";
+  jobsDoc.amazonAgencyTitle = "Specialized Support for Amazon Growth Agencies";
+  jobsDoc.amazonAgencySubtitle =
+    "Are you a full channel Amazon Growth Agency founded to help brands scale profitably through advertising, creative optimization, and marketplace strategy?";
+  jobsDoc.amazonAgencyBody =
+    "We got you covered too. We specialize in researching and finding brands/suppliers that agencies like yours would be excited to work with.";
 
   console.log("Saving jobsContent document in Sanity...");
   await withRetry(async () => client.createOrReplace(jobsDoc as any));

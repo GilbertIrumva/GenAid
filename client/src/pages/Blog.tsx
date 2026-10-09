@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
@@ -13,7 +14,6 @@ import {
   getVideos,
   mapSanityPhotoToDisplayPhoto,
   mapSanityPostToDisplayPost,
-  mapSanityVideoToDisplayVideo,
 } from "@/lib/sanity";
 
 interface DisplayPost {
@@ -74,9 +74,50 @@ export default function Blog() {
 
   const recent = posts.slice(0, 3);
   const photos = sanityPhotos.map(mapSanityPhotoToDisplayPhoto);
-  const apiVideos = sanityVideos
-    .map(mapSanityVideoToDisplayVideo)
-    .filter((v) => Boolean(v.videoUrl));
+
+  const allVideos = useMemo(() => {
+    const list = fallbackVideos.map((v) => ({
+      key: v.youtubeId || v.videoUrl || v.title,
+      title: v.title,
+      description: v.description,
+      youtubeId: v.youtubeId || getYouTubeId(v.videoUrl),
+      videoUrl: v.videoUrl,
+      poster: v.poster,
+      date: v.date,
+    }));
+
+    if (sanityVideos && sanityVideos.length > 0) {
+      for (const sv of sanityVideos) {
+        const ytId = sv.youtubeId || getYouTubeId(sv.videoUrl);
+        const vidUrl = sv.source === "upload" ? sv.videoFileUrl : sv.videoUrl;
+        const exists = list.some(
+          (item) =>
+            (ytId && item.youtubeId === ytId) ||
+            (vidUrl && item.videoUrl === vidUrl) ||
+            item.title.toLowerCase().trim() === sv.title.toLowerCase().trim()
+        );
+        if (!exists && (ytId || vidUrl)) {
+          list.push({
+            key: sv._id,
+            title: sv.title,
+            description: sv.description || "",
+            youtubeId: ytId,
+            videoUrl: vidUrl,
+            poster: sv.thumbnailUrl,
+            date: sv.publishedAt
+              ? new Date(sv.publishedAt).toLocaleDateString(undefined, {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })
+              : undefined,
+          });
+        }
+      }
+    }
+
+    return list;
+  }, [sanityVideos]);
 
   return (
     <div className="bg-white dark:bg-slate-900 transition-colors">
@@ -299,83 +340,36 @@ export default function Blog() {
         </div>
 
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {apiVideos.length > 0
-            ? apiVideos.map((v) => {
-              const ytId = getYouTubeId(v.videoUrl);
-              return (
-                <article
-                  key={v._id}
-                  className="overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
-                >
-                  <div className="relative aspect-video w-full overflow-hidden bg-brand-100 dark:bg-slate-900">
-                    {ytId ? (
-                      <iframe
-                        src={`https://www.youtube-nocookie.com/embed/${ytId}?rel=0`}
-                        title={v.title}
-                        loading="lazy"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowFullScreen
-                        className="absolute inset-0 h-full w-full"
-                      />
-                    ) : (
-                      <video
-                        src={v.videoUrl}
-                        poster={v.posterUrl || undefined}
-                        controls
-                        playsInline
-                        preload="metadata"
-                        className="absolute inset-0 h-full w-full object-cover"
-                      >
-                        <source src={v.videoUrl} type="video/mp4" />
-                      </video>
-                    )}
-                  </div>
-                  <div className="p-6">
-                    <h3 className="font-display text-lg font-semibold text-neutral-heading dark:text-slate-100">
-                      {v.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-neutral-body dark:text-slate-300">{v.description}</p>
-                    <p className="mt-3 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-                      {new Date(v.createdAt).toLocaleDateString(undefined, {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                      })}
-                    </p>
-                  </div>
-                </article>
-              );
-            })
-            : fallbackVideos.map((v) => {
-              const ytId = v.youtubeId || getYouTubeId(v.videoUrl);
-              return (
-                <article
-                  key={v.title}
-                  className="overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
-                >
-                  <div className="relative aspect-video w-full overflow-hidden bg-brand-100 dark:bg-slate-900">
-                    {ytId ? (
-                      <iframe
-                        src={`https://www.youtube-nocookie.com/embed/${ytId}?rel=0`}
-                        title={v.title}
-                        loading="lazy"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowFullScreen
-                        className="absolute inset-0 h-full w-full"
-                      />
-                    ) : v.videoUrl ? (
-                      <video
-                        src={v.videoUrl}
-                        poster={v.poster}
-                        controls
-                        playsInline
-                        preload="metadata"
-                        className="absolute inset-0 h-full w-full object-cover"
-                      >
-                        <source src={v.videoUrl} type="video/mp4" />
-                      </video>
-                    ) : (
-                      <div className="absolute inset-0 grid place-items-center bg-brand-600/30 text-white">
+          {allVideos.map((v) => {
+            const ytId = v.youtubeId || getYouTubeId(v.videoUrl);
+            return (
+              <article
+                key={v.key}
+                className="overflow-hidden rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
+              >
+                <div className="relative aspect-video w-full overflow-hidden bg-brand-100 dark:bg-slate-900">
+                  {ytId ? (
+                    <iframe
+                      src={`https://www.youtube-nocookie.com/embed/${ytId}?rel=0`}
+                      title={v.title}
+                      loading="lazy"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      className="absolute inset-0 h-full w-full"
+                    />
+                  ) : v.videoUrl ? (
+                    <video
+                      src={v.videoUrl}
+                      poster={v.poster || undefined}
+                      controls
+                      playsInline
+                      preload="metadata"
+                      className="absolute inset-0 h-full w-full object-cover"
+                    >
+                      <source src={v.videoUrl} type="video/mp4" />
+                    </video>
+                  ) : (
+                    <div className="absolute inset-0 grid place-items-center bg-brand-600/30 text-white">
                       <div className="text-center">
                         <svg
                           width="56"

@@ -20,10 +20,6 @@ const genJobsHeroSlides = [
     alt: "Refugee talent providing global digital services",
   },
   {
-    src: "/gen jobs/home slide images (3).jpg",
-    alt: "Tech and BPO operations at Generation Aid hub",
-  },
-  {
     src: "/gen jobs/home slide images (1).jpeg",
     alt: "High-performance digital delivery from Kakuma",
   },
@@ -334,27 +330,55 @@ export default function Jobs() {
               Generation Aid is the nonprofit and impact engine. It provides education, digital skills, language training, entrepreneurship, and career preparation. Generation Jobs is the economic engine that converts those skills into paid work. This is consistent with Generation Aid’s public description of Generation Jobs as connecting trained refugees and host-community members with remote and global clients through BPO and digital services.
             </p>
 
-            <div className="rounded-xl border-l-4 border-brand-600 bg-brand-50/70 dark:bg-slate-800/80 p-5 sm:p-6 mt-4 grid lg:grid-cols-[1.2fr_0.8fr] gap-6 items-center">
-              <div>
-                <span className="sir-tag mb-2">
+            <div className="rounded-2xl bg-brand-600 dark:bg-brand-900 text-white p-6 sm:p-8 lg:p-10 mt-6 space-y-6 sm:space-y-8 shadow-xl border border-brand-500/30 dark:border-brand-800 transition-colors">
+              <div className="max-w-3xl">
+                <span className="inline-block rounded-md bg-white/20 px-3.5 py-1 text-xs font-extrabold uppercase tracking-widest text-white border border-white/30 backdrop-blur-sm mb-3">
                   Youth-refugee-led leadership
                 </span>
-                <h3 className="font-serif text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-slate-100">
-                  Rooted in Kakuma, built for global collaboration.
+                <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold !text-white tracking-tight">
+                  {jobsContent?.leadershipTitle || "Rooted in Kakuma, built for global collaboration."}
                 </h3>
-                <p className="mt-3 text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-300 font-medium">
+                <p className="mt-3.5 text-base sm:text-lg leading-relaxed text-white/95 font-medium">
                   Generation Jobs, founded by Hubert Senga under Generation Aid, is Generation Aid’s employment and sustainability arm connecting skilled refugees and host-community professionals to global work while generating revenue to strengthen the organization’s long-term sustainability.
                 </p>
-                <p className="mt-2 text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-300 font-medium">
+                <p className="mt-2.5 text-base sm:text-lg leading-relaxed text-blue-100/90 font-medium">
                   Generation Aid and Generation Jobs combine local trust, authentic leadership, and global execution standards.
                 </p>
+                <div className="mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4">
+                  <Link
+                    to="/jobs/employers"
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-extrabold text-brand-700 shadow-md transition-all duration-200 hover:bg-slate-100 hover:shadow-lg w-full sm:w-auto text-center group"
+                  >
+                    <span>See Employer Value</span>
+                    <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+                  </Link>
+                  <Link
+                    to="/about"
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-extrabold text-slate-800 shadow-md transition-all duration-200 hover:bg-slate-100 hover:shadow-lg w-full sm:w-auto text-center group"
+                  >
+                    <span>About Generation Aid</span>
+                    <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+                  </Link>
+                </div>
               </div>
-              <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm aspect-[4/3] group">
-                <SmartImage
-                  src="/gen jobs/IMG-20260318-WA0031 - Copy.jpg"
-                  alt="Generation Jobs team and global collaboration partners in Kakuma"
-                  className="h-full w-full object-cover object-[center_20%] brightness-105 sm:brightness-110 contrast-[1.04] saturate-[1.08] dark:brightness-100 dark:contrast-[1.08] transition-transform duration-500 group-hover:scale-105"
-                />
+
+              {/* TWO LARGE IMAGES */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 pt-2">
+                <div className="overflow-hidden rounded-2xl border border-white/25 shadow-2xl aspect-[4/3] group bg-brand-800/40">
+                  <SmartImage
+                    src={jobsContent?.leadershipImage || "/gen jobs/IMG-20260318-WA0031 - Copy.jpg"}
+                    alt="Generation Jobs team and global collaboration in Kakuma"
+                    className="h-full w-full object-cover object-center brightness-105 sm:brightness-110 contrast-[1.04] saturate-[1.08] transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+
+                <div className="overflow-hidden rounded-2xl border border-white/25 shadow-2xl aspect-[4/3] group bg-brand-800/40">
+                  <SmartImage
+                    src={jobsContent?.leadershipImageSecondary || "/gen jobs/hubert-leadership-partnership.jpg"}
+                    alt="Hubert Senga with global partners"
+                    className="h-full w-full object-cover object-center brightness-105 sm:brightness-110 contrast-[1.04] saturate-[1.08] transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -546,34 +570,43 @@ export default function Jobs() {
         </div>
       </Section>
 
-      {/* HOW HIRING WORKS */}
-      <Section pattern="soft">
-        <div className="mx-auto max-w-3xl text-center">
-          <span className="sir-tag">
-            How Hiring Works
-          </span>
-          <h2 className="mt-3 font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">
-            A guided hiring process for employers
-          </h2>
-        </div>
+      {/* HOW HIRING WORKS (BRAND BLUE PALETTE) */}
+      <section className="bg-brand-600 dark:bg-brand-900 text-white py-14 sm:py-20 border-y border-brand-700 dark:border-brand-800 transition-colors">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="inline-block rounded-md bg-white/20 px-3.5 py-1 text-xs font-extrabold uppercase tracking-widest text-white border border-white/30 backdrop-blur-sm">
+              How Hiring Works
+            </span>
+            <h2 className="mt-3 font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight !text-white">
+              A guided hiring process for employers
+            </h2>
+            <p className="mt-3 text-sm sm:text-base leading-relaxed text-blue-100/90 max-w-2xl mx-auto">
+              A transparent, low-friction pathway designed to help you onboard motivated, job-ready professionals with confidence.
+            </p>
+          </div>
 
-        <div className="mt-8 sm:mt-10 grid gap-5 sm:gap-6 lg:grid-cols-3">
-          {howHiringWorks.map((item, index) => (
-            <article
-              key={item.title}
-              className="sir-card p-5 sm:p-7"
-            >
-              <span className="sir-tag">
-                Step {String(index + 1).padStart(2, "0")}
-              </span>
-              <h3 className="mt-4 font-serif text-lg sm:text-xl font-extrabold text-slate-900 dark:text-slate-100">
-                {item.title}
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{item.body}</p>
-            </article>
-          ))}
+          <div className="mt-10 sm:mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {howHiringWorks.map((item, index) => (
+              <article
+                key={item.title}
+                className="rounded-2xl bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 p-6 sm:p-7 shadow-xl border border-slate-100 dark:border-slate-800 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl flex flex-col justify-between"
+              >
+                <div>
+                  <span className="sir-tag">
+                    Step {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="mt-4 font-serif text-lg sm:text-xl font-extrabold text-slate-900 dark:text-slate-100">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                    {item.body}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
-      </Section>
+      </section>
 
       {/* ============ GENERATION JOBS VIDEO SHOWCASE & TESTIMONIALS ============ */}
       <GenJobsVideos />
@@ -602,29 +635,38 @@ export default function Jobs() {
         </div>
       </Section>
 
-      {/* PROOF & TRUST */}
-      <Section pattern="soft">
-        <div className="mx-auto max-w-3xl text-center">
-          <span className="sir-tag">
-            Proof & Trust
-          </span>
-          <h2 className="mt-3 font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">
-            Built on local leadership and structured support
-          </h2>
-        </div>
+      {/* PROOF & TRUST (BRAND BLUE PALETTE) */}
+      <section className="bg-brand-600 dark:bg-brand-900 text-white py-14 sm:py-20 border-y border-brand-700 dark:border-brand-800 transition-colors">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="inline-block rounded-md bg-white/20 px-3.5 py-1 text-xs font-extrabold uppercase tracking-widest text-white border border-white/30 backdrop-blur-sm">
+              Proof &amp; Trust
+            </span>
+            <h2 className="mt-3 font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight !text-white">
+              Built on local leadership and structured support
+            </h2>
+            <p className="mt-3 text-sm sm:text-base leading-relaxed text-blue-100/90 max-w-2xl mx-auto">
+              Combining grassroots authenticity and trust in Kakuma with professional execution standards.
+            </p>
+          </div>
 
-        <div className="mt-8 sm:mt-10 grid gap-5 sm:gap-6 lg:grid-cols-3">
-          {proofAndTrust.map((item) => (
-            <article
-              key={item.title}
-              className="sir-card p-5 sm:p-7"
-            >
-              <h3 className="font-serif text-lg sm:text-xl font-extrabold text-slate-900 dark:text-slate-100">{item.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{item.body}</p>
-            </article>
-          ))}
+          <div className="mt-10 sm:mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {proofAndTrust.map((item) => (
+              <article
+                key={item.title}
+                className="rounded-2xl bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 p-6 sm:p-7 shadow-xl border border-slate-100 dark:border-slate-800 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+              >
+                <h3 className="font-serif text-lg sm:text-xl font-extrabold text-slate-900 dark:text-slate-100">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                  {item.body}
+                </p>
+              </article>
+            ))}
+          </div>
         </div>
-      </Section>
+      </section>
 
       {/* IMPACT METRICS */}
       <Section pattern="canvas">

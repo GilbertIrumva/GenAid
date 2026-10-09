@@ -11,6 +11,7 @@ interface ImpactMetric {
   _id: string;
   title: string;
   value: number;
+  displayValue?: string;
   icon: string;
   order: number;
 }
@@ -100,20 +101,23 @@ const metrics: ImpactMetric[] = [
     _id: "impact-1",
     title: "Directly Impacted",
     value: 1600,
+    displayValue: "1,600+",
     icon: "🎓",
     order: 1,
   },
   {
     _id: "impact-2",
-    title: "Indirect Community Reach",
-    value: 1200,
+    title: "Indirect Beneficiaries Reached",
+    value: 2100,
+    displayValue: "2,100+",
     icon: "🌍",
     order: 2,
   },
   {
     _id: "impact-3",
-    title: "Refugees & Youth Trained",
-    value: 700,
+    title: "Individuals Trained",
+    value: 470,
+    displayValue: "470+",
     icon: "💻",
     order: 3,
   },
@@ -121,6 +125,7 @@ const metrics: ImpactMetric[] = [
     _id: "impact-4",
     title: "Graduates Employed",
     value: 50,
+    displayValue: "50+",
     icon: "🚀",
     order: 4,
   },
@@ -128,6 +133,7 @@ const metrics: ImpactMetric[] = [
     _id: "impact-5",
     title: "Emergency Food & Medical Aid",
     value: 210,
+    displayValue: "210",
     icon: "🏥",
     order: 5,
   },
@@ -135,6 +141,7 @@ const metrics: ImpactMetric[] = [
     _id: "impact-6",
     title: "Partner Collaborations",
     value: 15,
+    displayValue: "15+",
     icon: "🤝",
     order: 6,
   },
@@ -205,7 +212,7 @@ export default function Impact() {
                 className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
               >
                 <div className="font-display text-4xl font-bold text-brand-600 dark:text-brand-400">
-                  {formatValue(m.value)}
+                  {m.displayValue || formatValue(m.value)}
                 </div>
                 <p className="mt-2 text-sm font-semibold text-neutral-heading dark:text-slate-100">{m.title}</p>
               </div>

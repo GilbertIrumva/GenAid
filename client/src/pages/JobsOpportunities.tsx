@@ -78,7 +78,7 @@ export default function JobsOpportunities() {
       eyebrow="Services and pricing"
       title="Operational packages built for growth"
       subtitle="Start with Month 1 at $0 and Month 2 at $250 with transparent scope and measurable KPIs."
-      heroImage="/gen jobs/home slide images (3).jpg"
+      heroImage="/gen jobs/home slide images (1).jpeg"
     >
       {/* PACKAGES (Pattern A: Canvas) */}
       <Section pattern="canvas" className="!pt-4 sm:!pt-6">

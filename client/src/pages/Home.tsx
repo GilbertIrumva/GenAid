@@ -127,14 +127,14 @@ const impactStats = [
     description: "Through our education, livelihood, and humanitarian programs.",
   },
   {
-    value: "1,200+",
-    label: "Indirect Community Reach",
+    value: "2,100+",
+    label: "Indirect Beneficiaries Reached",
     description: "People reached through indirect community impact.",
   },
   {
-    value: "700+",
-    label: "Refugees & Youth Trained",
-    description: "Equipped in digital and professional skills for self-reliance.",
+    value: "470+",
+    label: "Individuals Trained",
+    description: "Equipped in digital, professional, and language skills for self-reliance.",
   },
   {
     value: "50+",
@@ -155,8 +155,8 @@ const impactStats = [
 
 const impactBullets = [
   "1,600+ people directly impacted through our education, livelihood, and humanitarian programs.",
-  "1,200+ people reached through indirect community impact.",
-  "700+ refugees and vulnerable youth trained in digital and professional skills.",
+  "2,100+ indirect beneficiaries reached through community impact.",
+  "470+ individuals trained in digital, professional, and language skills.",
   "50+ graduates connected to employment and income opportunities.",
   "210 vulnerable individuals supported with emergency food and medical assistance.",
   "Multiple local and international partners collaborating to expand opportunities for refugees.",
@@ -537,6 +537,16 @@ export default function Home() {
               `home.causes.items.${c.key}.description`,
               c.description,
             );
+            const causeFallbackMap: Record<string, string> = {
+              empoweringRefugees: "/img/causes/hub.jpg",
+              createJobsWomen: "/img/causes/create-jobs.jpg",
+              emergencyFoodMedical: "/programs/emergency/globalgiving-23.jpg",
+              languageOfHope: "/programs/english (1).jpg",
+              agrihopeInitiative: "/img/causes/agrihope.jpg",
+            };
+            const fallbackImg = causeFallbackMap[c.key] || "/img/causes/create-jobs.jpg";
+            const imageSrc = c.image && c.image.trim() !== "" ? c.image : fallbackImg;
+
             return (
               <article
                 key={c.key}
@@ -544,7 +554,7 @@ export default function Home() {
               >
                 <div className="aspect-video w-full overflow-hidden bg-brand-50 dark:bg-slate-950">
                   <SmartImage
-                    src={c.image}
+                    src={imageSrc}
                     alt={title}
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
@@ -881,6 +891,11 @@ export default function Home() {
                   {v.title}
                 </h3>
                 <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">{v.description}</p>
+                {v.date && (
+                  <p className="mt-3 text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+                    {v.date}
+                  </p>
+                )}
               </div>
             </article>
           ))}

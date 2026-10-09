@@ -15,19 +15,19 @@ export const causes: Cause[] = [
     description:
       "Equipping refugees with vocational, digital, entrepreneurship, and English language skills through practical training, mentorship, and youth focused programs to achieve self reliance.",
     image: "/img/causes/hub.jpg",
-    goal: 50000,
-    raised: 28400,
+    goal: 60000,
+    raised: 3936,
     donateUrl:
       "https://www.globalgiving.org/donate/103731/humanitarian-resilience-aid/",
   },
   {
     key: "createJobsWomen",
-    title: "Create Jobs for Refugees & Women's Empowerment",
+    title: "Empowering Refugees with Generation Jobs Project",
     description:
       "Supporting employment pathways that connect talented refugee professionals with remote jobs, while investing in refugee women through vocational training and entrepreneurship.",
     image: "/img/causes/create-jobs.jpg",
-    goal: 40000,
-    raised: 21850,
+    goal: 50000,
+    raised: 362,
     donateUrl:
       "https://www.globalgiving.org/donate/103731/humanitarian-resilience-aid/",
   },
@@ -48,8 +48,8 @@ export const causes: Cause[] = [
     description:
       "Providing structured English literacy and communication training to overcome language barriers for women, girls, and children from Afghanistan, Pakistan, and across Africa.",
     image: "/programs/english (1).jpg",
-    goal: 25000,
-    raised: 12200,
+    goal: 10000,
+    raised: 7061,
     donateUrl:
       "https://www.globalgiving.org/donate/103731/humanitarian-resilience-aid/",
   },
@@ -59,8 +59,8 @@ export const causes: Cause[] = [
     description:
       "Combating chronic food insecurity in Kakuma through permaculture, micro drip irrigation, climate smart agriculture, and kitchen gardens for youth and women.",
     image: "/img/causes/agrihope.jpg",
-    goal: 35000,
-    raised: 18900,
+    goal: 13800,
+    raised: 411,
     donateUrl:
       "https://www.globalgiving.org/donate/103731/humanitarian-resilience-aid/",
   },

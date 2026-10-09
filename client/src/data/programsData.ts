@@ -6,6 +6,7 @@ export interface ProgramGoal {
 export interface ProgramComponent {
   title: string;
   description: string;
+  url?: string;
 }
 
 export interface ProgramQuote {
@@ -22,6 +23,12 @@ export interface ProgramMediaVideo {
   description: string;
 }
 
+export interface ProgramConnectLink {
+  label: string;
+  url: string;
+  icon?: string;
+}
+
 export interface DetailedProgram {
   id: string;
   slug?: string;
@@ -32,6 +39,10 @@ export interface DetailedProgram {
   partner?: string;
   body: string;
   image: string;
+  heroImage?: string;
+  whyItMattersImage?: string;
+  gainsImage?: string;
+  gainsTitle?: string;
   gallery?: string[];
   features: string[];
   problemStatement?: string;
@@ -40,10 +51,12 @@ export interface DetailedProgram {
   whyItMatters?: string;
   components?: ProgramComponent[];
   gains?: string[];
+  connectLinks?: ProgramConnectLink[];
   howToJoin?: string;
   specialHighlight?: {
     title: string;
     description: string;
+    url?: string;
   };
   vision?: string;
   quote?: ProgramQuote;
@@ -238,6 +251,7 @@ export const defaultPrograms: DetailedProgram[] = [
       title: "The Senga Gallery & Community Art Space",
       description:
         "A dedicated cultural venue in Kakuma where refugee artists exhibit their original work, engage with visitors, and sell artwork to international collectors and partners.",
+      url: "https://www.linkedin.com/posts/hubert-sengap_refugeeart-kakumavoices-thesengagallery-ugcPost-7330257466212958208-QMQX/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAClBGikBTHoy6JXtv7jQ2lbqFZPmPaoXmEA",
     },
     gains: [
       "Fine arts and mixed media technique refinement",
@@ -250,16 +264,19 @@ export const defaultPrograms: DetailedProgram[] = [
         title: "Studio Workshops & Masterclasses",
         description:
           "Hands on sessions with experienced guest artists covering painting, sculpture, sketching, and traditional textile crafts.",
+        url: "https://www.every-place.org/our-work#:~:text=00%3A00-,Featured%20project,-Kakuma%20Refugee%20Camp",
       },
       {
         title: "Curated Exhibitions & Senga Gallery",
         description:
           "Regular physical and digital exhibitions showcasing refugee artists to buyers, NGOs, and art enthusiasts globally.",
+        url: "https://www.bbc.com/news/articles/c87yg0rx4npo",
       },
       {
         title: "Art Business & Fair Trade Pricing",
         description:
           "Practical guidance on artwork valuation, shipping logistics, copyright, and ethical marketplace representation.",
+        url: "https://www.every-place.org/our-work/kenya#:~:text=A%20selection%20of%20work%20by%20Brighter%20artists%20%E2%80%94%20painted%2C%20gathered%2C%20and%20shown%20at%20the%20public%20exhibition%20in%20Kakuma.",
       },
     ],
     features: [
@@ -393,10 +410,12 @@ export const defaultPrograms: DetailedProgram[] = [
     whyItMatters:
       "Refugees bring immense talent, resilience, and vision. Hubert’s advocacy moves the conversation from 'How do we help refugees?' to 'How do we remove the structural barriers preventing refugees from contributing?' Connecting lived experience from Kakuma directly with global decision making spaces ensures sustainable and dignity centered policies.",
     quote: {
-      text: "I am not advocating for refugees because I feel sorry for them. I advocate because I have seen what refugees can accomplish when they are given access to opportunity. The problem is not a lack of talent in refugee communities; it is a lack of access to education, technology, employment, capital, networks and decision making spaces. My work is about changing that.",
+      text: "I advocate for refugees because I am one of them. I know what it feels like to flee home, lose so much, arrive in a refugee camp, and still carry dreams for a better future. I have experienced how displacement can limit opportunities, but I have also seen the incredible talent and resilience within refugee communities. That is why I use my journey and my voice to open doors for others so being a refugee never means giving up on your dreams.",
       author: "Hubert Senga",
       role: "Founder & CEO, Generation Aid",
     },
+    gainsTitle: "Want to Connect with Hubert?",
+    gainsImage: "/programs/Hubert connect.jpg",
     goals: [
       {
         title: "From Dependency to Opportunity",
@@ -433,11 +452,46 @@ export const defaultPrograms: DetailedProgram[] = [
           "Advising global corporations, tech platforms, and donors on structuring remote work pipelines and ethical refugee talent hiring.",
       },
     ],
+    connectLinks: [
+      {
+        label: "LinkedIn",
+        url: "https://www.linkedin.com/in/hubert-sengap/",
+        icon: "linkedin",
+      },
+      {
+        label: "Facebook",
+        url: "https://www.facebook.com/people/Hubert-Pridjoh/61552635191538/",
+        icon: "facebook",
+      },
+      {
+        label: "Instagram",
+        url: "https://www.instagram.com/hubertprigon/",
+        icon: "instagram",
+      },
+      {
+        label: "Email Me",
+        url: "mailto:hubert@generationaid.org",
+        icon: "email",
+      },
+      {
+        label: "Read My Articles",
+        url: "https://www.linkedin.com/in/hubert-sengap/recent-activity/articles/",
+        icon: "article",
+      },
+    ],
     features: [
-      "UN & Multilateral Policy Representation",
-      "PBS News & France 24 Media Feature",
-      "Global Keynote & Panel Speaking",
-      "Corporate Remote Hiring Consultations",
+      "LinkedIn: Hubert Senga",
+      "Facebook: Hubert Pridjoh",
+      "Instagram: @hubertprigon",
+      "Email Me: hubert@generationaid.org",
+      "Read My Articles (LinkedIn Articles)",
+    ],
+    gains: [
+      "LinkedIn: Hubert Senga",
+      "Facebook: Hubert Pridjoh",
+      "Instagram: @hubertprigon",
+      "Email Me: hubert@generationaid.org",
+      "Read My Articles (LinkedIn Articles)",
     ],
     howToJoin:
       "Book a speaking engagement, media interview, or 15 minute introductory partnership call with Hubert Senga to explore strategic collaborations.",
@@ -471,8 +525,10 @@ export const defaultPrograms: DetailedProgram[] = [
     partner: "Kakuma Community Education Hub",
     body: "Generation Aid’s English Language & Literacy Skills Program is designed for refugees and displaced young people in Kakuma and Kalobeyei who want to strengthen their ability to communicate in English. The program supports learners at all levels: beginners, intermediate, and advanced, focusing on practical speaking, reading, writing, and professional workplace communication.",
     image: "/programs/english (1).jpg",
+    whyItMattersImage: "/programs/english-why-it-matters.jpg",
     gallery: [
       "/programs/english (1).jpg",
+      "/programs/english-why-it-matters.jpg",
       "/programs/english (2).jpg",
       "/programs/english (3).jpg",
     ],
@@ -511,6 +567,16 @@ export const defaultPrograms: DetailedProgram[] = [
       "CV & Interview Preparation",
       "Pathway to Higher Ed & Remote Jobs",
     ],
+    mediaVideos: [
+      {
+        title: "English Language & Literacy Success Story: Unlocking Possibilities in Kakuma",
+        outlet: "Success Story",
+        youtubeId: "HoWTNc58HZg",
+        url: "https://www.youtube.com/watch?v=HoWTNc58HZg",
+        description:
+          "Watch how English language training and digital literacy empower refugee students in Kakuma to overcome language barriers, unlock educational pathways, and build sustainable futures.",
+      },
+    ],
     howToJoin:
       "Follow Generation Aid announcements for the next cohort intake. Space is allocated based on a brief placement assessment at our learning center.",
   },
@@ -521,10 +587,12 @@ export const defaultPrograms: DetailedProgram[] = [
     category: "Women & Digital Livelihoods",
     partner: "In partnership with RefugePoint",
     body: "Generation Aid’s Women’s Digital Skills for Economic Empowerment Program is a 12 week initiative designed to equip refugee women in Kakuma with practical digital skills that open pathways to employment, entrepreneurship, freelancing, remote work, and active participation in the global digital economy. Implemented in partnership with RefugePoint, the program connects digital training with structured career mentorship and economic opportunities.",
-    image: "/programs/Women in digital skills (1).jpg",
+    image: "/programs/Women in digital skills hero.jpg",
+    heroImage: "/programs/Women in digital skills hero.jpg",
+    whyItMattersImage: "/programs/Women in digital skills why-it-matters.jpg",
     gallery: [
-      "/programs/Women in digital skills (1).jpg",
-      "/programs/Women in digital skills (2).jpg",
+      "/programs/Women in digital skills hero.jpg",
+      "/programs/Women in digital skills why-it-matters.jpg",
       "/programs/Women in digital skills (3).jpg",
     ],
     targetAudience:

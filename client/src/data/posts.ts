@@ -116,8 +116,7 @@ export const posts: BlogPost[] = [
     title: "Welcoming UNHCR and Australian Aid Delegation: Showcasing Refugee-Led Innovation in Kakuma",
     date: "June 11, 2026",
     author: "Generation Aid",
-    cover:
-      "https://media.licdn.com/dms/image/v2/D4D22AQF7u2wlvntemA/feedshare-shrink_800/B4DZ64fL7PHgAk-/0/1781211644043?e=2147483647&v=beta&t=L6S7NtqPrDOTcWbkr2IoFNRW1fs507W4ouiiQ8vS7p8",
+    cover: "/blog/unhcr-visit-cover.jpg",
     excerpt:
       "Generation Aid was honored to welcome a high-level delegation from UNHCR and Australian Aid, showcasing the transformative impact of refugee-led digital livelihoods, entrepreneurship, and youth skills development in Kakuma.",
     content: [
@@ -146,8 +145,7 @@ export const posts: BlogPost[] = [
     title: "Welcoming Our Remote Volunteer Team to Kakuma: From Virtual English Training to Onsite Impact",
     date: "June 23, 2026",
     author: "Generation Aid",
-    cover:
-      "https://media.licdn.com/dms/image/v2/D4D22AQERAd3wDPcDWQ/feedshare-shrink_800/B4DZ712OlaKQAc-/0/1782241094415?e=2147483647&v=beta&t=bBUqLnRxJCCJNhZMvJebH5X50DswjRv9kEyvOkkhBjs",
+    cover: "/blog/remote-volunteers-kalobeyei-cover.jpg",
     excerpt:
       "A meaningful milestone for Generation Aid: welcoming our global remote volunteer team (Dimple Agarwal, Jasmine, Shiv Ganesh, and Paul) to Kakuma as we open our new Kalobeyei facility and transition from remote learning to onsite training.",
     content: [
@@ -177,8 +175,7 @@ export const posts: BlogPost[] = [
     title: "Unlocking New Possibilities: 109 Students in English Training",
     date: "February 15, 2026",
     author: "Generation Aid",
-    cover:
-      "https://media.licdn.com/dms/image/v2/D4D22AQESpbkVHdrWrQ/feedshare-shrink_800/B4DZ9b1poBK8Ac-/0/1783952220038?e=2147483647&v=beta&t=bezDMR7h9YrzrEDGF-zQe4dvEPw0mvd7FfbubksLFiM",
+    cover: "/blog/english-class-109-students-cover.jpg",
     excerpt:
       "Language is the key to unlocking new possibilities, and it’s incredible to witness the progress of our 109 students in our English Basic to Intermediate class today!",
     content: [
