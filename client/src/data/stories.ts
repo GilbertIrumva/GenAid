@@ -83,11 +83,15 @@ export const stories: Story[] = [
     program: "Language & Education",
     location: "Kakuma, Kenya",
     image: "/blog/english-class-109-students-cover.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=HoWTNc58HZg",
+    videoPoster: "https://img.youtube.com/vi/HoWTNc58HZg/maxresdefault.jpg",
     excerpt:
       "Language is the key to unlocking new possibilities, and it’s incredible to witness the progress of our 109 students in our English Basic to Intermediate class today!",
     content: [
       "Language is the key to unlocking new possibilities, and it’s incredible to witness the progress of our 109 students in our English Basic to Intermediate class today!",
       "It is inspiring to see our students actively engaging with lessons, challenging themselves, and building the communication skills that open doors to new opportunities.",
+      "## English Language & Literacy Success Story: Unlocking Possibilities",
+      "> “Watch refugee students in Kakuma share how practical English communication and literacy opened doors to scholarships, jobs, and renewed hope.”",
       "A huge shoutout to our dedicated instructor and our students for their hard work and commitment to growth! We also want to extend our deepest gratitude to our individual donors. Your generous support provides the resources and foundation that make these classrooms possible. Thank you for believing in our mission and investing in our students' futures.",
       "Special thanks to our donors and supporters: Lee Simms, Melodie Cochet, Aisling Kennedy.",
       "![Students engaging actively during English class](https://media.licdn.com/dms/image/v2/D4D22AQESpbkVHdrWrQ/feedshare-shrink_800/B4DZ9b1poBK8Ac-/0/1783952220038?e=2147483647&v=beta&t=bezDMR7h9YrzrEDGF-zQe4dvEPw0mvd7FfbubksLFiM)",

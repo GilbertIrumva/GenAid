@@ -106,16 +106,20 @@ export default function Contact() {
 
     setStatus("sending");
     try {
-      await Promise.resolve();
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        throw new Error(errorData.error || t("contact.errorSendFailed"));
+      }
       setStatus("sent");
       setForm({ name: "", email: "", subject: subjects[0]!, message: "" });
-    } catch (err) {
-      const e2 = err as {
-        response?: { data?: { error?: string } };
-        message?: string;
-      };
+    } catch (err: any) {
       setServerError(
-        e2.response?.data?.error ?? e2.message ?? t("contact.errorSendFailed"),
+        err.message ?? t("contact.errorSendFailed"),
       );
       setStatus("error");
     }

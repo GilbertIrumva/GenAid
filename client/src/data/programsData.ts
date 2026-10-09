@@ -470,7 +470,7 @@ export const defaultPrograms: DetailedProgram[] = [
       },
       {
         label: "Email Me",
-        url: "mailto:hubert@generationaid.org",
+        url: "mailto:info@generationaid.org",
         icon: "email",
       },
       {
@@ -483,14 +483,14 @@ export const defaultPrograms: DetailedProgram[] = [
       "LinkedIn: Hubert Senga",
       "Facebook: Hubert Pridjoh",
       "Instagram: @hubertprigon",
-      "Email Me: hubert@generationaid.org",
+      "Email Me: info@generationaid.org",
       "Read My Articles (LinkedIn Articles)",
     ],
     gains: [
       "LinkedIn: Hubert Senga",
       "Facebook: Hubert Pridjoh",
       "Instagram: @hubertprigon",
-      "Email Me: hubert@generationaid.org",
+      "Email Me: info@generationaid.org",
       "Read My Articles (LinkedIn Articles)",
     ],
     howToJoin:

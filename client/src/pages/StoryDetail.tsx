@@ -263,7 +263,7 @@ export default function StoryDetail() {
                         <span className="inline-block h-2 w-2 rounded-full bg-red-500 animate-pulse" />
                         Documentary Video
                       </span>
-                      <span>Watch her story</span>
+                      <span>{story.key === "from-skills-to-earning-success-story" ? "Watch her story" : "Watch story video"}</span>
                     </div>
                   </div>
                 );

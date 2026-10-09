@@ -132,12 +132,12 @@ const impactStats = [
     description: "People reached through indirect community impact.",
   },
   {
-    value: "470+",
+    value: "810+",
     label: "Individuals Trained",
     description: "Equipped in digital, professional, and language skills for self-reliance.",
   },
   {
-    value: "50+",
+    value: "87",
     label: "Graduates Employed",
     description: "Connected to employment and income-generating opportunities.",
   },
@@ -156,8 +156,8 @@ const impactStats = [
 const impactBullets = [
   "1,600+ people directly impacted through our education, livelihood, and humanitarian programs.",
   "2,100+ indirect beneficiaries reached through community impact.",
-  "470+ individuals trained in digital, professional, and language skills.",
-  "50+ graduates connected to employment and income opportunities.",
+  "810+ individuals trained in digital, professional, and language skills.",
+  "87 graduates connected to employment and income opportunities.",
   "210 vulnerable individuals supported with emergency food and medical assistance.",
   "Multiple local and international partners collaborating to expand opportunities for refugees.",
   "Programs serving refugees and host communities in Kakuma Refugee Camp, Kenya.",
@@ -185,8 +185,16 @@ async function submitContact(payload: {
   email: string;
   message: string;
 }) {
-  await Promise.resolve();
-  return { ok: true, message: "Thank you for reaching out!", payload };
+  const res = await fetch("/api/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+  if (!res.ok) {
+    const errorData = await res.json().catch(() => ({}));
+    throw new Error(errorData.error || "Could not send message");
+  }
+  return res.json();
 }
 
 const homeHeroSlides = [
@@ -1016,10 +1024,10 @@ export default function Home() {
                   {t("home.contact.emailLabel")}
                 </span>
                 <a
-                  href="mailto:hello@generationaid.org"
+                  href={`mailto:${SITE.email}`}
                   className="text-brand-600 dark:text-brand-400 font-extrabold hover:underline"
                 >
-                  hello@generationaid.org
+                  {SITE.email}
                 </a>
               </li>
             </ul>

@@ -154,7 +154,7 @@ async function main() {
       {
         _key: generateKey(),
         label: "Email Me",
-        url: "mailto:hubert@generationaid.org",
+        url: "mailto:info@generationaid.org",
         icon: "email",
       },
       {
@@ -168,14 +168,14 @@ async function main() {
       "LinkedIn: Hubert Senga",
       "Facebook: Hubert Pridjoh",
       "Instagram: @hubertprigon",
-      "Email Me: hubert@generationaid.org",
+      "Email Me: info@generationaid.org",
       "Read My Articles (LinkedIn Articles)",
     ],
     gains: [
       "LinkedIn: Hubert Senga",
       "Facebook: Hubert Pridjoh",
       "Instagram: @hubertprigon",
-      "Email Me: hubert@generationaid.org",
+      "Email Me: info@generationaid.org",
       "Read My Articles (LinkedIn Articles)",
     ],
   });

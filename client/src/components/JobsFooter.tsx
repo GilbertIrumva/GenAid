@@ -147,10 +147,10 @@ export default function JobsFooter() {
           <div className="pt-1">
             <p className="text-xs font-bold uppercase tracking-widest text-slate-700 dark:text-slate-400">Direct Inquiries</p>
             <a
-              href="mailto:hello@generationaid.org"
+              href={`mailto:${SITE.email}`}
               className="text-sm font-bold text-brand-700 dark:text-brand-400 hover:underline"
             >
-              hello@generationaid.org
+              {SITE.email}
             </a>
           </div>
         </div>
