@@ -72,11 +72,11 @@ export default function JobsTalent() {
               Profile Pillars
             </span>
             <h2 className="font-serif text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-slate-50 lg:text-4xl break-words">
-              Vetted digital professionals built for global delivery
+              {jobsContent?.profilePillarsTitle || "Vetted digital professionals built for global delivery"}
             </h2>
             <div className="sir-callout-border !my-2 sm:!my-3">
               <p className="text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-300 font-medium">
-                Our talent pool in Kakuma is equipped with multilingual communication, technical proficiency, and high commitment to long-term operational success.
+                {jobsContent?.profilePillarsSubtitle || "Our talent pool in Kakuma is equipped with multilingual communication, technical proficiency, and high commitment to long-term operational success."}
               </p>
             </div>
             <div className="grid gap-3 sm:gap-4 sm:grid-cols-2">
@@ -95,7 +95,7 @@ export default function JobsTalent() {
           <div className="space-y-4 sm:space-y-6">
             <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-md aspect-[4/3] group">
               <SmartImage
-                src="/gen jobs/IMG-20260529-WA0065.jpg"
+                src={jobsContent?.talentPillarsImageMain || "/gen jobs/IMG-20260529-WA0065.jpg"}
                 alt="Generation Jobs remote digital professional at workstation in Kakuma"
                 className="h-full w-full object-cover object-[center_20%] brightness-105 sm:brightness-110 contrast-[1.04] saturate-[1.08] dark:brightness-100 dark:contrast-[1.08] transition-transform duration-500 group-hover:scale-105"
               />
@@ -103,14 +103,14 @@ export default function JobsTalent() {
             <div className="grid grid-cols-2 gap-3 sm:gap-4">
               <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm aspect-[4/3] group">
                 <SmartImage
-                  src="/digital class.jpeg"
+                  src={jobsContent?.talentPillarsImageSecondary1 || "/digital class.jpeg"}
                   alt="Digital training classroom session in Kakuma"
                   className="h-full w-full object-cover object-[center_20%] brightness-105 sm:brightness-110 contrast-[1.04] saturate-[1.08] dark:brightness-100 dark:contrast-[1.08] transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
               <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm aspect-[4/3] group">
                 <SmartImage
-                  src="/Gradutes.webp"
+                  src={jobsContent?.talentPillarsImageSecondary2 || "/Gradutes.webp"}
                   alt="Generation Aid graduates with certificates"
                   className="h-full w-full object-cover object-[center_20%] brightness-105 sm:brightness-110 contrast-[1.04] saturate-[1.08] dark:brightness-100 dark:contrast-[1.08] transition-transform duration-500 group-hover:scale-105"
                 />

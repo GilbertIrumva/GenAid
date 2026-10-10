@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Section from "@/components/Section";
@@ -88,6 +88,22 @@ export default function Contact() {
   const [serverError, setServerError] = useState<string | null>(null);
   const [errors, setErrors] = useState<FieldErrors>({});
 
+  function resetForm() {
+    setForm({ name: "", email: "", subject: subjects[0]!, message: "" });
+    setErrors({});
+    setServerError(null);
+    setStatus("idle");
+  }
+
+  useEffect(() => {
+    if (status === "sent") {
+      const timer = setTimeout(() => {
+        resetForm();
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [status]);
+
   function validate(): FieldErrors {
     const e: FieldErrors = {};
     if (form.name.trim().length < 2) e.name = t("contact.errorName");
@@ -117,19 +133,12 @@ export default function Contact() {
       }
       setStatus("sent");
       setForm({ name: "", email: "", subject: subjects[0]!, message: "" });
-    } catch (err: any) {
+    } catch (err: unknown) {
       setServerError(
-        err.message ?? t("contact.errorSendFailed"),
+        err instanceof Error ? err.message : t("contact.errorSendFailed"),
       );
       setStatus("error");
     }
-  }
-
-  function resetForm() {
-    setForm({ name: "", email: "", subject: subjects[0]!, message: "" });
-    setErrors({});
-    setServerError(null);
-    setStatus("idle");
   }
 
   function update<K extends keyof typeof form>(key: K, value: string) {
@@ -176,15 +185,15 @@ export default function Contact() {
           <div className="lg:col-span-2">
             <div className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm sm:p-8">
               {status === "sent" ? (
-                <div className="flex flex-col items-start gap-5 text-left">
+                <div className="flex flex-col items-center justify-center py-14 px-4 text-center space-y-4">
                   <span
                     aria-hidden
-                    className="grid h-14 w-14 place-items-center rounded-full bg-brand-50 dark:bg-slate-700 text-brand-600 dark:text-brand-400 border border-brand-100 dark:border-slate-600"
+                    className="grid h-16 w-16 place-items-center rounded-full bg-brand-50 dark:bg-slate-700 text-brand-600 dark:text-brand-400 border border-brand-200 dark:border-slate-600 shadow-sm"
                   >
                     <svg
                       viewBox="0 0 24 24"
-                      width="28"
-                      height="28"
+                      width="32"
+                      height="32"
                       fill="none"
                       stroke="currentColor"
                       strokeWidth="2.5"
@@ -195,62 +204,9 @@ export default function Contact() {
                     </svg>
                   </span>
                   <div>
-                    <h2 className="font-display text-2xl font-bold text-neutral-heading dark:text-slate-50">
-                      {t("contact.messageSent")}
+                    <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-neutral-heading dark:text-slate-50">
+                      Message sent — thank you
                     </h2>
-                    <p className="mt-2 text-sm text-neutral-body dark:text-slate-300 sm:text-base">
-                      {t("contact.messageSentBody")}
-                    </p>
-                  </div>
-                  <ul className="mt-2 grid w-full gap-3 sm:grid-cols-3">
-                    <li className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-900 p-4">
-                      <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-                        {t("contact.next")}
-                      </p>
-                      <p className="mt-1 text-sm text-neutral-heading dark:text-slate-200">
-                        {t("contact.nextBody")}
-                      </p>
-                    </li>
-                    <li className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-900 p-4">
-                      <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-                        {t("contact.replyWindow")}
-                      </p>
-                      <p className="mt-1 text-sm text-neutral-heading dark:text-slate-200">
-                        {t("contact.replyWindowBody")}
-                      </p>
-                    </li>
-                    <li className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-900 p-4">
-                      <p className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-                        {t("contact.needSooner")}
-                      </p>
-                      <p className="mt-1 text-sm text-neutral-heading dark:text-slate-200">
-                        Email{" "}
-                        <a
-                          href={`mailto:${SITE.email}`}
-                          className="text-brand-600 dark:text-brand-400 hover:underline"
-                        >
-                          {SITE.email}
-                        </a>
-                        .
-                      </p>
-                    </li>
-                  </ul>
-                  <div className="mt-2 flex flex-wrap gap-3">
-                    <button
-                      type="button"
-                      onClick={resetForm}
-                      className="rounded-lg bg-brand-600 dark:bg-brand-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-700 dark:hover:bg-brand-400 transition"
-                    >
-                      {t("contact.sendAnother")}
-                    </button>
-                    <a
-                      href={SITE.donateUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="rounded-lg border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-900 px-5 py-2.5 text-sm font-semibold text-neutral-heading dark:text-slate-200 hover:border-brand-600 dark:hover:border-brand-400 hover:text-brand-600 dark:hover:text-brand-400 transition"
-                    >
-                      {t("contact.supportOurWork")}
-                    </a>
                   </div>
                 </div>
               ) : (

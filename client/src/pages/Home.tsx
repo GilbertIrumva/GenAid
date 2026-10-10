@@ -641,17 +641,17 @@ export default function Home() {
         </div>
 
         {/* Detailed Impact Highlights */}
-        <div className="mx-auto mt-12 max-w-4xl rounded-2xl border border-white/20 bg-white/10 p-6 sm:p-8 backdrop-blur-md">
-          <h3 className="font-display text-lg sm:text-xl font-bold !text-white text-center mb-6">
+        <div className="mx-auto mt-12 max-w-4xl rounded-2xl border border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8 shadow-xl">
+          <h3 className="font-display text-lg sm:text-xl font-bold text-slate-900 dark:text-slate-100 text-center mb-6">
             Real Change Measured Through Transformed Lives
           </h3>
           <div className="grid gap-3">
             {impactBullets.map((bullet, idx) => (
               <div
                 key={idx}
-                className="rounded-xl bg-white dark:bg-slate-800 px-5 py-4 border border-slate-100 dark:border-slate-700 shadow-sm text-center sm:text-left transition-all"
+                className="rounded-xl bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500 px-5 py-4 border border-blue-500 dark:border-blue-500 shadow-sm text-center sm:text-left transition-all"
               >
-                <p className="text-sm sm:text-base text-slate-800 dark:text-slate-100 leading-relaxed font-medium">
+                <p className="text-sm sm:text-base text-white leading-relaxed font-semibold">
                   {bullet}
                 </p>
               </div>
@@ -742,27 +742,38 @@ export default function Home() {
             {recentPosts.map((p) => (
               <article
                 key={p.slug}
-                className="flex flex-col justify-between rounded-2xl bg-white dark:bg-slate-900/95 p-6 sm:p-7 shadow-md border border-white/80 dark:border-slate-800 transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5 group"
+                className="flex flex-col justify-between overflow-hidden rounded-2xl bg-white dark:bg-slate-900/95 shadow-md border border-white/80 dark:border-slate-800 transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5 group"
               >
-                <div>
-                  <time className="text-[11px] font-extrabold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-                    {p.date}
-                  </time>
-                  <h3 className="mt-3 font-serif text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
-                    <Link to={`/blog/${p.slug}`}>
-                      {p.title}
+                {p.cover && (
+                  <div className="aspect-video w-full overflow-hidden bg-slate-100 dark:bg-slate-800">
+                    <SmartImage
+                      src={p.cover}
+                      alt={p.title}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                )}
+                <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+                  <div>
+                    <time className="text-[11px] font-extrabold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+                      {p.date}
+                    </time>
+                    <h3 className="mt-2 font-serif text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                      <Link to={`/blog/${p.slug}`}>
+                        {p.title}
+                      </Link>
+                    </h3>
+                    <p className="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-3 font-medium">{p.excerpt}</p>
+                  </div>
+                  <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
+                    <Link
+                      to={`/blog/${p.slug}`}
+                      className="inline-flex items-center gap-1 text-xs uppercase tracking-wider font-extrabold text-brand-600 dark:text-brand-400 group-hover:text-brand-700 dark:group-hover:text-brand-300 transition"
+                    >
+                      <span>{t("common.readMoreArrow")}</span>
+                      <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
                     </Link>
-                  </h3>
-                  <p className="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-3 font-medium">{p.excerpt}</p>
-                </div>
-                <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
-                  <Link
-                    to={`/blog/${p.slug}`}
-                    className="inline-flex items-center gap-1 text-xs uppercase tracking-wider font-extrabold text-brand-600 dark:text-brand-400 group-hover:text-brand-700 dark:group-hover:text-brand-300 transition"
-                  >
-                    <span>{t("common.readMoreArrow")}</span>
-                    <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
-                  </Link>
+                  </div>
                 </div>
               </article>
             ))}

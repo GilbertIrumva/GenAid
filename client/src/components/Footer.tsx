@@ -152,10 +152,24 @@ export default function Footer() {
 
       <div className="border-t border-slate-300 dark:border-slate-800 bg-slate-300/80 dark:bg-slate-950 py-6">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 text-center text-xs text-slate-900 dark:text-slate-300 font-medium sm:flex-row sm:px-6 lg:px-8">
-          <span>
-            &copy; {new Date().getFullYear()} Generation Aid.{" "}
-            {t("footer.rights")}
-          </span>
+          <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 sm:justify-start">
+            <span>
+              &copy; {new Date().getFullYear()} Generation Aid.{" "}
+              {t("footer.rights")}
+            </span>
+            <span className="hidden sm:inline text-slate-400 dark:text-slate-600">•</span>
+            <span>
+              Developed by{" "}
+              <a
+                href="https://gilbert-portfolio-n3wv.onrender.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold text-brand-700 dark:text-brand-400 hover:text-brand-800 dark:hover:text-brand-300 hover:underline transition-colors"
+              >
+                &lt;/Gilbert&gt;
+              </a>
+            </span>
+          </div>
           <div className="flex gap-6 font-semibold">
             <Link to="/about" className="hover:text-brand-700 dark:hover:text-white transition-colors">About Us</Link>
             <Link to="/contact" className="hover:text-brand-700 dark:hover:text-white transition-colors">Contact</Link>

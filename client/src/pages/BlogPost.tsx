@@ -127,7 +127,13 @@ export default function BlogPost() {
   });
 
   const post: DisplayPost | null = sanityPost
-    ? mapSanityPostToDisplayPost(sanityPost)
+    ? (() => {
+        const mapped = mapSanityPostToDisplayPost(sanityPost);
+        return {
+          ...mapped,
+          cover: mapped.cover && mapped.cover.trim() !== "" ? mapped.cover : seedMatch?.cover,
+        };
+      })()
     : seedMatch
       ? fromSeed(seedMatch)
       : null;
@@ -420,27 +426,42 @@ export default function BlogPost() {
       )}
 
       {others.length > 0 && (
-        <Section pattern="soft" className="!pt-12">
+        <Section pattern="impact" className="!pt-14 !pb-16">
           <div className="mx-auto max-w-5xl">
-            <h2 className="font-display text-2xl font-bold text-neutral-heading dark:text-slate-50">
-              {t("blog.moreArticles")}
-            </h2>
-            <div className="mt-6 grid gap-6 md:grid-cols-3">
+            <div className="flex items-center justify-between mb-8">
+              <h2 className="font-display text-2xl sm:text-3xl font-bold !text-white">
+                {t("blog.moreArticles", "More articles")}
+              </h2>
+              <Link
+                to="/blog"
+                className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-white/90 hover:text-white bg-white/15 hover:bg-white/25 border border-white/25 rounded-lg px-3 py-1.5 transition backdrop-blur-sm"
+              >
+                <span>View all</span>
+                <span aria-hidden="true">&rarr;</span>
+              </Link>
+            </div>
+            <div className="grid gap-6 md:grid-cols-3">
               {others.map((o) => (
                 <Link
                   key={o.slug}
                   to={`/blog/${o.slug}`}
-                  className="rounded-xl border border-neutral-border dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm transition hover:border-brand-300 dark:hover:border-brand-500 hover:shadow-md"
+                  className="group flex flex-col justify-between rounded-2xl border border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
                 >
-                  <time className="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-                    {o.date}
-                  </time>
-                  <h3 className="mt-2 font-display text-base font-semibold text-neutral-heading dark:text-slate-100">
-                    {o.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-neutral-body dark:text-slate-300 line-clamp-3">
-                    {o.excerpt}
-                  </p>
+                  <div>
+                    <time className="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+                      {o.date}
+                    </time>
+                    <h3 className="mt-2 font-display text-base font-bold text-slate-900 dark:text-slate-100 leading-snug group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                      {o.title}
+                    </h3>
+                    <p className="mt-2.5 text-sm text-slate-600 dark:text-slate-300 line-clamp-3 leading-relaxed">
+                      {o.excerpt}
+                    </p>
+                  </div>
+                  <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-bold text-brand-600 dark:text-brand-400 flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+                    <span>Read article</span>
+                    <span aria-hidden="true">&rarr;</span>
+                  </div>
                 </Link>
               ))}
             </div>

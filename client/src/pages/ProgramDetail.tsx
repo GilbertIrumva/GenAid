@@ -42,6 +42,7 @@ export default function ProgramDetail() {
       gainsTitle: mapped.gainsTitle || matchedDefault?.gainsTitle,
       gainsImage: mapped.gainsImage || matchedDefault?.gainsImage,
       whyItMattersImage: mapped.whyItMattersImage || matchedDefault?.whyItMattersImage,
+      componentsImage: mapped.componentsImage || matchedDefault?.componentsImage,
       mediaVideos:
         mapped.mediaVideos && mapped.mediaVideos.length > 0
           ? mapped.mediaVideos
@@ -98,7 +99,7 @@ export default function ProgramDetail() {
   const gallery = detail.gallery && detail.gallery.length > 0 ? detail.gallery : [detail.image];
   const imgChallenge = gallery[0] || detail.image;
   const imgWhyItMatters = detail.whyItMattersImage || (gallery.length > 1 ? gallery[1] : undefined);
-  const imgComponents = gallery.length > 2 ? gallery[2] : undefined;
+  const imgComponents = detail.componentsImage || (gallery.length > 2 ? gallery[2] : undefined);
   const imgHighlight = gallery.length > 3 ? gallery[3] : undefined;
   const imgGains =
     detail.gainsImage ||
@@ -292,18 +293,29 @@ export default function ProgramDetail() {
                 <h2 className="mt-2 font-display text-2xl font-bold text-neutral-heading dark:text-slate-50">
                   Core Modules & Components
                 </h2>
-                <div className={`mt-6 grid gap-6 sm:gap-8 ${imgComponents ? "lg:grid-cols-[1fr_380px] xl:grid-cols-[1fr_420px] items-start" : ""}`}>
-                  <div className="space-y-4">
-                    {detail.components.map((c, idx) => (
-                      <div
-                        key={c.title}
-                        className="flex flex-col sm:flex-row items-start gap-4 rounded-xl border border-neutral-border dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-sm"
-                      >
-                        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-50 dark:bg-slate-700 text-sm font-bold text-brand-600 dark:text-brand-300">
-                          {idx + 1}
-                        </span>
-                        <div className="flex-1">
-                          <h3 className="font-display text-base font-bold text-neutral-heading dark:text-slate-100">
+
+                {imgComponents && (
+                  <div className="mt-6 overflow-hidden rounded-2xl shadow-md aspect-[16/8] sm:aspect-[16/7] md:aspect-[16/6] w-full block min-h-[220px] max-h-[340px]">
+                    <SmartImage
+                      src={imgComponents}
+                      alt={`${detail.title} in action`}
+                      className="h-full w-full object-cover object-[center_35%] transition duration-300 hover:scale-105"
+                    />
+                  </div>
+                )}
+
+                <div className="mt-6 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+                  {detail.components.map((c, idx) => (
+                    <div
+                      key={c.title}
+                      className="group flex flex-col justify-between rounded-xl border border-neutral-border dark:border-slate-800 bg-white dark:bg-slate-800 p-5 shadow-sm transition-all hover:shadow-md hover:border-brand-300 dark:hover:border-brand-500"
+                    >
+                      <div>
+                        <div className="flex items-center gap-3">
+                          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-brand-50 dark:bg-slate-700 text-sm font-bold text-brand-600 dark:text-brand-300">
+                            {idx + 1}
+                          </span>
+                          <h3 className="font-display text-base font-bold text-neutral-heading dark:text-slate-100 leading-snug">
                             {c.url || c.title.toLowerCase().includes("curated exhibitions & senga gallery") ? (
                               <a
                                 href={c.url || "https://www.bbc.com/news/articles/c87yg0rx4npo"}
@@ -319,22 +331,13 @@ export default function ProgramDetail() {
                               c.title
                             )}
                           </h3>
-                          <p className="mt-1.5 text-sm leading-relaxed text-neutral-body dark:text-slate-300">
-                            {c.description}
-                          </p>
                         </div>
+                        <p className="mt-3 text-sm leading-relaxed text-neutral-body dark:text-slate-300">
+                          {c.description}
+                        </p>
                       </div>
-                    ))}
-                  </div>
-                  {imgComponents && (
-                    <div className="overflow-hidden rounded-2xl shadow-sm aspect-[16/10] sm:aspect-[4/3] lg:aspect-[3/4] w-full block min-h-[260px]">
-                      <SmartImage
-                        src={imgComponents}
-                        alt={`${detail.title} in action`}
-                        className="h-full w-full object-cover transition duration-300 hover:scale-105"
-                      />
                     </div>
-                  )}
+                  ))}
                 </div>
               </div>
             )}
@@ -435,21 +438,21 @@ export default function ProgramDetail() {
               <h2 className="font-display text-2xl font-bold text-neutral-heading dark:text-slate-50">
                 {detail.gainsTitle || t("programDetail.whatYoullGain", "Key Skills & Opportunities")}
               </h2>
-              <div className={`mt-6 grid gap-6 sm:gap-8 lg:gap-10 ${imgGains ? "lg:grid-cols-[480px_1fr] xl:grid-cols-[540px_1fr] items-center" : ""}`}>
-                {/* Visual on the LEFT side */}
-                {imgGains && (
-                  <div className="overflow-hidden rounded-2xl shadow-md aspect-[4/3] sm:aspect-[5/4] lg:aspect-square w-full block min-h-[300px] sm:min-h-[380px]">
-                    <SmartImage
-                      src={imgGains}
-                      alt={detail.gainsTitle || `${detail.title} community members`}
-                      className="h-full w-full object-cover object-top transition duration-300 hover:scale-105"
-                    />
-                  </div>
-                )}
 
-                {/* Content on the RIGHT side */}
+              {imgGains && (
+                <div className="mt-6 overflow-hidden rounded-2xl shadow-md aspect-[16/8] sm:aspect-[16/7] md:aspect-[16/6] w-full block min-h-[220px] max-h-[340px]">
+                  <SmartImage
+                    src={imgGains}
+                    alt={detail.gainsTitle || `${detail.title} community members`}
+                    className="h-full w-full object-cover object-[center_35%] transition duration-300 hover:scale-105"
+                  />
+                </div>
+              )}
+
+              {/* Content: Connect Links (if present) OR 3 side by side Gains Cards */}
+              <div className="mt-6">
                 {detail.connectLinks && detail.connectLinks.length > 0 ? (
-                  <div className="grid gap-3 sm:grid-cols-2">
+                  <div className="grid gap-3 sm:grid-cols-2 w-full">
                     {detail.connectLinks.map((link) => {
                       const isEmail = link.url.startsWith("mailto:") || link.icon === "email";
                       return (
@@ -515,16 +518,18 @@ export default function ProgramDetail() {
                     })}
                   </div>
                 ) : (
-                  <div className="grid gap-3 sm:grid-cols-2">
+                  <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                     {(detail.gains && detail.gains.length > 0 ? detail.gains : detail.features).map((f) => (
                       <div
                         key={f}
-                        className="flex items-start gap-3 rounded-xl border border-neutral-border dark:border-slate-800 bg-white dark:bg-slate-800 p-4 text-sm text-neutral-heading dark:text-slate-100 shadow-sm"
+                        className="group flex items-start gap-3 rounded-xl border border-neutral-border dark:border-slate-800 bg-white dark:bg-slate-800 p-4.5 shadow-sm transition-all hover:shadow-md hover:border-brand-300 dark:hover:border-brand-500"
                       >
-                        <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-100 dark:bg-brand-900/50 text-brand-600 dark:text-brand-400">
+                        <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-100 dark:bg-brand-900/50 text-brand-600 dark:text-brand-400 text-xs font-bold mt-0.5">
                           ✓
                         </div>
-                        <span className="font-medium">{f}</span>
+                        <span className="text-sm sm:text-base leading-relaxed font-medium text-neutral-heading dark:text-slate-100">
+                          {f}
+                        </span>
                       </div>
                     ))}
                   </div>
@@ -637,7 +642,7 @@ export default function ProgramDetail() {
             {/* How to Join / Apply / Engage */}
             <div className="rounded-2xl border border-brand-200 dark:border-brand-900/60 bg-brand-50/50 dark:bg-slate-800 p-6 shadow-sm">
               <div className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                <span className="h-2 w-2 rounded-full bg-brand-500" />
                 <h3 className="font-display text-base font-bold text-neutral-heading dark:text-slate-100">
                   {t("programDetail.howToJoinTitle", "How to Participate / Engage")}
                 </h3>

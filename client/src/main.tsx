@@ -11,8 +11,8 @@ import "./index.css";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 60_000,
-      refetchOnWindowFocus: false,
+      staleTime: 5_000, // 5 seconds so updates appear quickly
+      refetchOnWindowFocus: true, // Auto-refetch fresh data when switching back from Sanity Studio
       retry: 1,
     },
   },

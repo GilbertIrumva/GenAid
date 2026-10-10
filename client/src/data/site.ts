@@ -7,6 +7,7 @@ export const SITE = {
   address: "Kakuma Refugee Camp and Kalobeyei Settlement, Kenya",
   socials: {
     facebook: "https://www.facebook.com/profile.php?id=61556075543152",
+    instagram: "https://www.instagram.com/generation_aid/",
     linkedin: "https://www.linkedin.com/company/generation-aid",
     twitter: "https://x.com/Generation70143",
     youtube: "https://www.youtube.com/@generationaid9407",

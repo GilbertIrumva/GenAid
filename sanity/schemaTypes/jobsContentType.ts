@@ -235,6 +235,46 @@ export const jobsContentType = defineType({
     }),
 
     defineField({
+      name: "profilePillarsTitle",
+      title: "Profile Pillars Section Title",
+      type: "string",
+      description: "Default: 'Vetted digital professionals built for global delivery'",
+      fieldset: "talentModel",
+    }),
+    defineField({
+      name: "profilePillarsSubtitle",
+      title: "Profile Pillars Section Subtitle",
+      type: "text",
+      rows: 2,
+      description: "Default: 'Our talent pool in Kakuma is equipped with multilingual communication, technical proficiency, and high commitment to long-term operational success.'",
+      fieldset: "talentModel",
+    }),
+    defineField({
+      name: "talentPillarsImageMain",
+      title: "Vetted Digital Professionals - Main Featured Image",
+      description: "Large top image next to profile pillars (e.g., professional at workstation)",
+      type: "image",
+      options: { hotspot: true },
+      fieldset: "talentModel",
+    }),
+    defineField({
+      name: "talentPillarsImageSecondary1",
+      title: "Vetted Digital Professionals - Bottom-Left Image",
+      description: "First small image below the main featured image (e.g., digital classroom session)",
+      type: "image",
+      options: { hotspot: true },
+      fieldset: "talentModel",
+    }),
+    defineField({
+      name: "talentPillarsImageSecondary2",
+      title: "Vetted Digital Professionals - Bottom-Right Image",
+      description: "Second small image below the main featured image (e.g., graduates with certificates)",
+      type: "image",
+      options: { hotspot: true },
+      fieldset: "talentModel",
+    }),
+
+    defineField({
       name: "journeySteps",
       title: "Talent Journey Steps",
       type: "array",
@@ -412,6 +452,20 @@ export const jobsContentType = defineType({
       title: "Amazon Growth Agency Feature Image",
       type: "image",
       options: { hotspot: true },
+      fieldset: "employers",
+    }),
+    defineField({
+      name: "amazonAgencyCapabilities",
+      title: "Amazon Agency Key Capabilities / Bullet Points",
+      type: "array",
+      of: [{ type: "string" }],
+      initialValue: [
+        "Brand & Supplier Prospecting",
+        "Catalog Health & Compliance",
+        "Full catalog operations and inventory health",
+        "Sponsored Ads monitoring and daily optimizations",
+        "Cross-functional operational execution without silos",
+      ],
       fieldset: "employers",
     }),
 

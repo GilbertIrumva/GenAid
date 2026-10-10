@@ -1,16 +1,18 @@
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
+import type { ViteDevServer, Plugin } from 'vite'
+import type { IncomingMessage, ServerResponse } from 'node:http'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import path from 'node:path'
 
-function devContactApiPlugin() {
+function devContactApiPlugin(resendApiKey?: string): Plugin {
   return {
     name: 'dev-contact-api',
-    configureServer(server: any) {
-      server.middlewares.use('/api/contact', async (req: any, res: any) => {
+    configureServer(server: ViteDevServer) {
+      server.middlewares.use('/api/contact', async (req: IncomingMessage, res: ServerResponse) => {
         if (req.method === 'POST') {
           let body = ''
-          req.on('data', (chunk: any) => { body += chunk })
+          req.on('data', (chunk: Buffer | string) => { body += chunk.toString() })
           req.on('end', async () => {
             try {
               const parsed = JSON.parse(body || '{}')
@@ -23,7 +25,7 @@ function devContactApiPlugin() {
                 return
               }
 
-              const apiKey = process.env.RESEND_API_KEY
+              const apiKey = resendApiKey || process.env.RESEND_API_KEY
               if (!apiKey) {
                 res.statusCode = 500
                 res.setHeader('Content-Type', 'application/json')
@@ -77,10 +79,11 @@ function devContactApiPlugin() {
               res.setHeader('Content-Type', 'application/json')
               res.statusCode = response.ok ? 200 : response.status
               res.end(JSON.stringify(data))
-            } catch (err: any) {
+            } catch (err: unknown) {
               res.statusCode = 500
               res.setHeader('Content-Type', 'application/json')
-              res.end(JSON.stringify({ error: err.message }))
+              const errorMessage = err instanceof Error ? err.message : 'Internal server error'
+              res.end(JSON.stringify({ error: errorMessage }))
             }
           })
         } else {
@@ -93,14 +96,20 @@ function devContactApiPlugin() {
 }
 
 // https://vite.dev/config/
-export default defineConfig({
-  plugins: [react(), tailwindcss(), devContactApiPlugin()],
-  resolve: {
-    alias: {
-      '@': path.resolve(import.meta.dirname, './src'),
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, path.resolve(import.meta.dirname, '.'), '')
+  // Also populate process.env for any server modules or handlers
+  Object.assign(process.env, env)
+
+  return {
+    plugins: [react(), tailwindcss(), devContactApiPlugin(env.RESEND_API_KEY)],
+    resolve: {
+      alias: {
+        '@': path.resolve(import.meta.dirname, './src'),
+      },
     },
-  },
-  server: {
-    port: 5173,
-  },
+    server: {
+      port: 5173,
+    },
+  }
 })

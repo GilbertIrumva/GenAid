@@ -159,10 +159,24 @@ export default function JobsFooter() {
       {/* BOTTOM LEGAL STRIP */}
       <div className="border-t border-slate-300 dark:border-slate-800 bg-slate-300/80 dark:bg-slate-950 py-6 text-xs text-slate-900 dark:text-slate-300 font-medium">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 text-center sm:text-left sm:flex-row sm:px-6 lg:px-8">
-          <p>© {currentYear} Generation Jobs by Generation Aid. Refugee Led Innovation & Global Livelihoods.</p>
+          <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 sm:justify-start">
+            <span>© {currentYear} Generation Jobs by Generation Aid. Refugee Led Innovation &amp; Global Livelihoods.</span>
+            <span className="hidden sm:inline text-slate-400 dark:text-slate-600">•</span>
+            <span>
+              Developed by{" "}
+              <a
+                href="https://gilbert-portfolio-n3wv.onrender.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold text-brand-700 dark:text-brand-400 hover:text-brand-800 dark:hover:text-brand-300 hover:underline transition-colors"
+              >
+                &lt;/Gilbert&gt;
+              </a>
+            </span>
+          </div>
           <div className="flex flex-wrap justify-center gap-4 sm:gap-6 font-semibold">
             <Link to="/contact" className="hover:text-brand-700 dark:hover:text-white transition-colors">
-              Contact & Inquiries
+              Contact &amp; Inquiries
             </Link>
             <Link to="/" className="hover:text-brand-700 dark:hover:text-white transition-colors">
               Generation Aid Main Site

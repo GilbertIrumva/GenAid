@@ -44,8 +44,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         "bg-red-600 dark:bg-red-500 text-white hover:bg-red-700 dark:hover:bg-red-400 active:bg-red-800 shadow-sm border border-transparent",
       ghost:
         "bg-transparent text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white",
-      glow: "bg-emerald-600 text-white shadow-[0_0_20px_rgba(16,185,129,0.4)] hover:bg-emerald-500 hover:shadow-[0_0_25px_rgba(16,185,129,0.6)] border border-emerald-400/30",
-      aid: "bg-gradient-to-r from-emerald-600 to-teal-600 text-white hover:from-emerald-500 hover:to-teal-500 shadow-md shadow-emerald-500/20 active:scale-[0.98] border border-emerald-400/30 font-bold",
+      glow: "bg-brand-600 text-white shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:bg-brand-500 hover:shadow-[0_0_25px_rgba(37,99,235,0.6)] border border-brand-400/30",
+      aid: "bg-gradient-to-r from-brand-600 to-indigo-600 text-white hover:from-brand-500 hover:to-indigo-500 shadow-md shadow-brand-500/20 active:scale-[0.98] border border-brand-400/30 font-bold",
       jobs: "bg-gradient-to-r from-cyan-500 to-indigo-600 text-white hover:from-cyan-400 hover:to-indigo-500 shadow-md shadow-cyan-500/20 active:scale-[0.98] border border-cyan-400/30 font-bold",
     };
 
@@ -62,7 +62,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         type={type}
         disabled={disabled || isLoading}
         className={cn(
-          "inline-flex items-center justify-center gap-2 font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 select-none",
+          "inline-flex items-center justify-center gap-2 font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 select-none",
           variants[variant],
           sizes[size],
           className,

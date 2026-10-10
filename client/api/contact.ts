@@ -86,8 +86,9 @@ export default async function handler(req: any, res: any) {
     }
 
     return res.status(200).json({ success: true, id: data.id });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Contact handler error:", error);
-    return res.status(500).json({ error: error.message || "Internal server error." });
+    const message = error instanceof Error ? error.message : "Internal server error.";
+    return res.status(500).json({ error: message });
   }
 }

@@ -370,7 +370,7 @@ export default function Impact() {
 
                 <div className="absolute bottom-4 left-4 right-4 text-xs text-white/90 bg-black/40 backdrop-blur-md p-3 rounded-xl border border-white/10">
                   <div className="flex items-center gap-2 font-medium">
-                    <span className="flex h-2 w-2 rounded-full bg-emerald-400" />
+                    <span className="flex h-2 w-2 rounded-full bg-brand-400" />
                     <span>Featured on PBS News Hour &amp; LinkedIn Pulse</span>
                   </div>
                 </div>
@@ -423,7 +423,7 @@ export default function Impact() {
                       </p>
                     </div>
                     <div className="rounded-lg bg-neutral-bg/60 dark:bg-slate-800/60 p-2.5">
-                      <p className="text-[11px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+                      <p className="text-[11px] font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">
                         RLO Solution
                       </p>
                       <p className="mt-1 text-xs text-neutral-body dark:text-slate-300 leading-normal">

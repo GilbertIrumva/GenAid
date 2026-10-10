@@ -203,6 +203,20 @@ export const programType = defineType({
       description: "Dedicated image for the 'Why this initiative matters' section (falls back to gallery[1])",
     }),
     defineField({
+      name: "componentsImage",
+      title: "Core Modules & Components Image",
+      type: "image",
+      options: { hotspot: true },
+      description: "Dedicated image for the 'Core Modules & Components' section (falls back to gallery[2])",
+    }),
+    defineField({
+      name: "gainsImage",
+      title: "What You Will Gain Section Image",
+      type: "image",
+      options: { hotspot: true },
+      description: "Dedicated image for the 'What You Will Gain / Key Skills' section (e.g. for Women’s Digital Skills)",
+    }),
+    defineField({
       name: "gallery",
       title: "Photo Gallery",
       type: "array",
@@ -249,13 +263,6 @@ export const programType = defineType({
       title: "Gains / Connect Section Title",
       type: "string",
       description: "Custom heading for this section (e.g. 'Want to Connect with Hubert?' or default 'Key Skills & Opportunities')",
-    }),
-    defineField({
-      name: "gainsImage",
-      title: "Gains / Connect Section Image",
-      type: "image",
-      options: { hotspot: true },
-      description: "Dedicated image displayed alongside the connect / gains section",
     }),
     defineField({
       name: "connectLinks",

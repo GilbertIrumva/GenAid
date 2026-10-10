@@ -55,10 +55,27 @@ export default function Blog() {
     retry: false,
   });
 
-  const posts: DisplayPost[] =
-    sanityPosts.length > 0
-      ? sanityPosts.map(mapSanityPostToDisplayPost)
-      : seedPosts.map(fromSeed);
+  const posts: DisplayPost[] = useMemo(() => {
+    const list: DisplayPost[] = [];
+    const seenSlugs = new Set<string>();
+
+    sanityPosts.forEach((sp) => {
+      const p = mapSanityPostToDisplayPost(sp);
+      if (p.slug && !seenSlugs.has(p.slug)) {
+        seenSlugs.add(p.slug);
+        list.push(p);
+      }
+    });
+
+    seedPosts.forEach((seed) => {
+      if (!seenSlugs.has(seed.slug)) {
+        seenSlugs.add(seed.slug);
+        list.push(fromSeed(seed));
+      }
+    });
+
+    return list;
+  }, [sanityPosts]);
 
   const { data: sanityPhotos = [] } = useQuery({
     queryKey: ["public", "sanity", "photos"],

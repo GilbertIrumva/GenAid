@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Play, ExternalLink } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Play, ExternalLink, Newspaper } from "lucide-react";
 
 export interface GenJobVideo {
   id: string;
@@ -72,6 +73,61 @@ export default function GenJobsVideos({ className = "" }: GenJobsVideosProps) {
           <p className="mt-3 text-sm sm:text-base leading-relaxed text-slate-600 dark:text-slate-300">
             Watch our official launch, hear client testimonials, and explore how our Kakuma digital delivery hub turns skills into global remote employment.
           </p>
+        </div>
+
+        {/* The Guardian Global Investigation Feature Card */}
+        <div className="mb-10 rounded-2xl border-2 border-brand-500/30 dark:border-brand-500/30 bg-gradient-to-br from-brand-50/80 via-white to-blue-50/50 dark:from-slate-900 dark:via-slate-900/90 dark:to-brand-950/40 p-5 sm:p-7 shadow-lg">
+          <div className="grid lg:grid-cols-[1.5fr_1fr] gap-6 items-center">
+            <div className="space-y-2.5">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-red-600 text-white shadow-xs">
+                  <Newspaper className="w-3.5 h-3.5" />
+                  <span>The Guardian Investigation</span>
+                </span>
+                <span className="text-xs font-bold text-slate-500 dark:text-slate-400">
+                  October 8, 2026 • World &amp; Technology Feature
+                </span>
+              </div>
+              <h3 className="font-serif text-lg sm:text-2xl font-extrabold text-slate-900 dark:text-slate-50 leading-snug">
+                ‘Someone else will do it for less’: Refugees in Kenya are powering tech for dwindling pay
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+                Major investigative report by <em>The Guardian</em> features Generation Aid founder Hubert Senga on the realities of AI microwork in Kakuma — and why Generation Jobs is building the ethical alternative with guaranteed solar infrastructure, specialized roles, and fair wages.
+              </p>
+              <div className="pt-1 flex flex-wrap items-center gap-3">
+                <Link
+                  to="/blog/someone-else-will-do-it-for-less-the-guardian-features-generation-aid"
+                  className="sir-btn-primary py-2.5 px-5 text-xs font-extrabold uppercase tracking-wider"
+                >
+                  <span>Read Generation Aid’s Full Article</span>
+                  <span>→</span>
+                </Link>
+                <a
+                  href="https://www.theguardian.com/technology/ng-interactive/2026/oct/08/ai-gig-work-refugees-kenya?CMP=Share_iOSApp_Other"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white/80 dark:bg-slate-800 text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 transition"
+                >
+                  <span>Original Guardian Report</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </div>
+
+            <div className="relative group overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700 shadow-md aspect-video">
+              <img
+                src="/blog/guardian-kakuma-workspace.jpg"
+                alt="Generation Aid workspace featured in The Guardian"
+                className="h-full w-full object-cover brightness-105 group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-3.5">
+                <span className="text-[11px] font-semibold text-white/95">
+                  Featured: Generation Aid tech workspace in Kakuma
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Featured Video Player Box */}

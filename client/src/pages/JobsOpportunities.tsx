@@ -165,12 +165,12 @@ export default function JobsOpportunities() {
                   Impact: {pkg.impact}
                 </p>
 
-                <div className="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800">
+                <div className="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center">
                   <a
                     href={EMPLOYER_FORM_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="sir-btn-primary w-full justify-center py-2.5 px-4 text-xs sm:text-sm font-extrabold uppercase tracking-wider group"
+                    className="sir-btn-primary py-2.5 px-5 text-xs sm:text-sm font-extrabold uppercase tracking-wider group"
                   >
                     <span>Request This Service</span>
                     <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>

@@ -140,6 +140,17 @@ export default function JobsEmployers() {
   const amazonSubtitle = (jobsContent?.amazonAgencySubtitle as string) || "Are you a full channel Amazon Growth Agency founded to help brands scale profitably through advertising, creative optimization, and marketplace strategy?";
   const amazonBody = (jobsContent?.amazonAgencyBody as string) || "We got you covered too. We specialize in researching and finding brands/suppliers that agencies like yours would be excited to work with.";
   const amazonImage = (jobsContent?.amazonAgencyImage as string) || "/gen jobs/amazon-growth-agency.jpg";
+  const clientFormUrl = (jobsContent?.clientFormUrl as string) || "https://forms.gle/wydDfQ8Y9GduXxi26";
+  const amazonCapabilities =
+    jobsContent?.amazonAgencyCapabilities && jobsContent.amazonAgencyCapabilities.length > 0
+      ? (jobsContent.amazonAgencyCapabilities as string[])
+      : [
+          "Brand & Supplier Prospecting",
+          "Catalog Health & Compliance",
+          "Full catalog operations and inventory health",
+          "Sponsored Ads monitoring and daily optimizations",
+          "Cross-functional operational execution without silos",
+        ];
 
   const whyHireTag = (jobsContent?.whyHireTag as string) || "Why Hire Through Generation Jobs";
   const whyHireTitle = (jobsContent?.whyHireTitle as string) || "Competitive delivery economics with built-in social impact";
@@ -282,14 +293,12 @@ export default function JobsEmployers() {
               </p>
 
               <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-semibold">
-                <div className="flex items-center gap-2">
-                  <span className="flex-shrink-0 w-2 h-2 rounded-full bg-brand-500"></span>
-                  <span>Brand &amp; Supplier Prospecting</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="flex-shrink-0 w-2 h-2 rounded-full bg-brand-500"></span>
-                  <span>Catalog Health &amp; Compliance</span>
-                </div>
+                {amazonCapabilities.map((cap, idx) => (
+                  <div key={idx} className="flex items-center gap-2">
+                    <span className="flex-shrink-0 w-2 h-2 rounded-full bg-brand-500"></span>
+                    <span>{cap}</span>
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -306,16 +315,16 @@ export default function JobsEmployers() {
             {amazonAgencyServices.map((service) => (
               <div
                 key={service.title}
-                className="sir-card p-6 border-t-4 border-t-brand-600 dark:border-t-brand-500 flex flex-col justify-between hover:shadow-lg transition-all duration-300"
+                className="rounded-2xl bg-brand-600 hover:bg-brand-700 dark:bg-brand-700 dark:hover:bg-brand-600 p-6 sm:p-7 text-white shadow-md border border-brand-500/80 dark:border-brand-600/80 flex flex-col justify-between hover:shadow-xl transition-all duration-300"
               >
                 <div>
-                  <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wider text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-950/60 border border-brand-200 dark:border-brand-800">
+                  <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-extrabold uppercase tracking-wider text-white bg-white/20 border border-white/30 backdrop-blur-xs">
                     {service.tag}
                   </span>
-                  <h3 className="mt-4 font-serif text-lg font-bold text-slate-900 dark:text-slate-100">
+                  <h3 className="mt-4 font-serif text-lg sm:text-xl font-bold !text-white">
                     {service.title}
                   </h3>
-                  <p className="mt-3 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                  <p className="mt-3 text-sm leading-relaxed text-blue-50/95 dark:text-blue-100 font-normal">
                     {service.body}
                   </p>
                 </div>
@@ -327,13 +336,15 @@ export default function JobsEmployers() {
             <p className="text-sm font-medium text-slate-700 dark:text-slate-300">
               Need dedicated Amazon operators, account managers, or catalog specialists?
             </p>
-            <Link
-              to="/contact?subject=Amazon+Growth+Agency+Inquiry"
-              className="sir-btn-primary py-2.5 px-5 text-xs uppercase tracking-wider font-extrabold whitespace-nowrap"
+            <a
+              href={clientFormUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="sir-btn-primary py-2.5 px-5 text-xs uppercase tracking-wider font-extrabold whitespace-nowrap group"
             >
-              <span>Partner With Us</span>
+              <span>Request This Service</span>
               <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
-            </Link>
+            </a>
           </div>
         </div>
       </Section>

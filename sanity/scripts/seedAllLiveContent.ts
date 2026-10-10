@@ -108,7 +108,7 @@ async function runSeed() {
     console.log(` -> Processing Program: "${p.title}" (${p.id})`);
 
     const imageRef = await uploadLocalImage(p.image);
-    const galleryRefs = [];
+    const galleryRefs: any[] = [];
     if (p.gallery && Array.isArray(p.gallery)) {
       for (const g of p.gallery) {
         const ref = await uploadLocalImage(g);

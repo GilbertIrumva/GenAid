@@ -41,6 +41,7 @@ export interface DetailedProgram {
   image: string;
   heroImage?: string;
   whyItMattersImage?: string;
+  componentsImage?: string;
   gainsImage?: string;
   gainsTitle?: string;
   gallery?: string[];
@@ -590,6 +591,8 @@ export const defaultPrograms: DetailedProgram[] = [
     image: "/programs/Women in digital skills hero.jpg",
     heroImage: "/programs/Women in digital skills hero.jpg",
     whyItMattersImage: "/programs/Women in digital skills why-it-matters.jpg",
+    componentsImage: "/programs/Women in digital skills (3).jpg",
+    gainsImage: "/programs/Women in digital skills (3).jpg",
     gallery: [
       "/programs/Women in digital skills hero.jpg",
       "/programs/Women in digital skills why-it-matters.jpg",

@@ -45,6 +45,7 @@ export interface SanityProgram {
   image?: string;
   heroImage?: string;
   whyItMattersImage?: string;
+  componentsImage?: string;
   category?: string;
   tagline?: string;
   speaker?: string;
@@ -392,6 +393,7 @@ export async function getPrograms(): Promise<SanityProgram[]> {
     "image": coalesce(image.asset->url, coverImage.asset->url, ""),
     "heroImage": coalesce(heroImage.asset->url, image.asset->url, coverImage.asset->url, ""),
     "whyItMattersImage": coalesce(whyItMattersImage.asset->url, ""),
+    "componentsImage": coalesce(componentsImage.asset->url, ""),
     category,
     tagline,
     speaker,
@@ -561,6 +563,7 @@ export interface SanityJobsContent {
   amazonAgencySubtitle?: string;
   amazonAgencyBody?: string;
   amazonAgencyImage?: string;
+  amazonAgencyCapabilities?: string[];
   pipelineTitle?: string;
   pipelineSteps?: string[];
   talentCategories?: string[];
@@ -570,6 +573,11 @@ export interface SanityJobsContent {
   whyHireImage?: string;
   strategicImpactTag?: string;
   strategicImpactImage?: string;
+  profilePillarsTitle?: string;
+  profilePillarsSubtitle?: string;
+  talentPillarsImageMain?: string;
+  talentPillarsImageSecondary1?: string;
+  talentPillarsImageSecondary2?: string;
   [key: string]: unknown;
 }
 
@@ -598,6 +606,11 @@ export async function getJobsContent(): Promise<SanityJobsContent | null> {
         talentHeroSubtitle,
         "talentHeroImage": coalesce(talentHeroImage.asset->url, ""),
         profilePillars,
+        profilePillarsTitle,
+        profilePillarsSubtitle,
+        "talentPillarsImageMain": coalesce(talentPillarsImageMain.asset->url, ""),
+        "talentPillarsImageSecondary1": coalesce(talentPillarsImageSecondary1.asset->url, ""),
+        "talentPillarsImageSecondary2": coalesce(talentPillarsImageSecondary2.asset->url, ""),
         journeySteps,
         leadershipTitle,
         leadershipBody,
@@ -621,6 +634,7 @@ export async function getJobsContent(): Promise<SanityJobsContent | null> {
         amazonAgencyTitle,
         amazonAgencySubtitle,
         amazonAgencyBody,
+        amazonAgencyCapabilities,
         "amazonAgencyImage": coalesce(amazonAgencyImage.asset->url, ""),
         hireHeroTitle,
         hireHeroSubtitle,
@@ -690,6 +704,7 @@ export function mapSanityProgramToDisplayProgram(
     image: program.heroImage || program.cover || program.image || fallbackImage,
     heroImage: program.heroImage,
     whyItMattersImage: program.whyItMattersImage,
+    componentsImage: program.componentsImage,
     category: program.category || "Education & Skills",
     features: Array.isArray(program.features) ? program.features : [],
     tagline: program.tagline,
@@ -804,6 +819,7 @@ export interface SanitySiteSettings {
   address?: string;
   socials?: {
     facebook?: string;
+    instagram?: string;
     linkedin?: string;
     twitter?: string;
     youtube?: string;

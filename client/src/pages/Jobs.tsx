@@ -297,7 +297,7 @@ export default function Jobs() {
 
           <div className="sir-card-accent p-6 sm:p-10 space-y-6 text-base leading-relaxed text-slate-700 dark:text-slate-300">
             <p className="text-base sm:text-lg font-medium text-slate-900 dark:text-slate-100 leading-relaxed">
-              Generation Jobs is positioned as Generation Aid’s employment and sustainability arm but its role is broader than simply generating revenue. Generation Jobs is the employment and social-enterprise arm of Generation Aid, created to turn skills into income while building a sustainable revenue engine for Generation Aid’s non profit mission.
+              Generation Jobs is positioned as Generation Aid’s employment and sustainability arm but its role is broader than simply generating revenue. Generation Jobs is the employment and social-enterprise arm of Generation Aid, created to turn skills into income while building a sustainable revenue engine for Generation Aid’s non-profit mission.
             </p>
 
             <div className="grid sm:grid-cols-2 gap-5 pt-2">
@@ -313,8 +313,8 @@ export default function Jobs() {
                 </p>
               </div>
 
-              <div className="rounded-xl border border-emerald-200/80 dark:border-emerald-900/60 bg-white/90 dark:bg-slate-900/80 p-5 shadow-sm">
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800">
+              <div className="rounded-xl border border-brand-200/80 dark:border-brand-900/60 bg-white/90 dark:bg-slate-900/80 p-5 shadow-sm">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-950/60 border border-brand-200 dark:border-brand-800">
                   Generation Jobs
                 </span>
                 <h3 className="mt-3 font-serif font-bold text-slate-900 dark:text-slate-100 text-base">
@@ -523,19 +523,19 @@ export default function Jobs() {
           </div>
 
           {/* Partnership Banner with Konexio & Generation Aid */}
-          <div className="mt-10 rounded-2xl overflow-hidden border border-white/20 bg-white/10 p-5 sm:p-7 backdrop-blur-sm grid md:grid-cols-[1fr_1.1fr] gap-6 items-center">
-            <div className="space-y-3">
-              <span className="inline-block rounded-md bg-white/20 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white border border-white/30">
+          <div className="mt-10 rounded-2xl overflow-hidden bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 p-6 sm:p-8 lg:p-10 shadow-2xl border border-white/80 dark:border-slate-800 grid md:grid-cols-[1fr_1.1fr] gap-6 sm:gap-8 items-center transition-colors">
+            <div className="space-y-3.5">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-extrabold uppercase tracking-widest text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-950/70 border border-brand-200 dark:border-brand-800">
                 Partners in Enabling Impact
               </span>
-              <h3 className="font-serif text-xl sm:text-2xl font-extrabold text-white">
+              <h3 className="font-serif text-xl sm:text-2xl lg:text-3xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">
                 Konexio Africa &amp; Generation Aid
               </h3>
-              <p className="text-sm text-white/90 leading-relaxed font-medium">
+              <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
                 Our training and economic empowerment pathways are powered through robust on-the-ground collaboration with Konexio Africa and global facilitators, preparing high-caliber digital professionals directly in Kakuma.
               </p>
             </div>
-            <div className="overflow-hidden rounded-xl border border-white/20 shadow-md aspect-[16/10] group">
+            <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 shadow-lg aspect-[16/10] group bg-slate-100 dark:bg-slate-800">
               <SmartImage
                 src="/gen jobs/IMG_20260630_104952_312.jpg"
                 alt="Generation Aid and Konexio Africa partnership team in Kakuma"
