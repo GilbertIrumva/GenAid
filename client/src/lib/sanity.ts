@@ -65,7 +65,7 @@ export interface SanityProgram {
   howToJoin?: string;
   specialHighlight?: { title: string; description: string; url?: string };
   vision?: string;
-  quote?: { text: string; author: string; role?: string };
+  quote?: { text: string; author: string; role?: string; image?: string };
   bookingUrl?: string;
   ctaText?: string;
   ctaLink?: string;

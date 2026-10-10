@@ -393,9 +393,18 @@ export default function ProgramDetail() {
                       “{detail.quote.text}”
                     </blockquote>
                     <figcaption className="mt-4 flex items-center gap-3">
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-600 text-white font-bold text-sm">
-                        {detail.quote.author.charAt(0)}
-                      </div>
+                      {detail.quote.image || detail.quote.author.toLowerCase().includes("hubert") ? (
+                        <SmartImage
+                          src={detail.quote.image || "/img/team/Hubert Senga.jpg"}
+                          alt={detail.quote.author}
+                          className="h-11 w-11 shrink-0 rounded-full object-cover object-top border-2 border-brand-200 dark:border-brand-700 shadow-sm"
+                          fallbackLabel={detail.quote.author.charAt(0)}
+                        />
+                      ) : (
+                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-600 text-white font-bold text-sm">
+                          {detail.quote.author.charAt(0)}
+                        </div>
+                      )}
                       <div>
                         <div className="font-bold text-neutral-heading dark:text-slate-100">
                           {detail.quote.author}

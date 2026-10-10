@@ -294,6 +294,15 @@ export default function Home() {
     return () => clearInterval(timer);
   }, []);
 
+  useEffect(() => {
+    if (contactState === "sent") {
+      const timer = setTimeout(() => {
+        setContactState("idle");
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [contactState]);
+
   async function handleContactSubmit(e: React.FormEvent) {
     e.preventDefault();
     setContactState("sending");
@@ -1093,9 +1102,27 @@ export default function Home() {
             </label>
 
             {contactState === "sent" && (
-              <p className="rounded-lg bg-brand-50 dark:bg-brand-950/80 border border-brand-200 px-3.5 py-2.5 text-sm font-bold text-brand-700 dark:text-brand-300">
-                {t("common.thanks")}
-              </p>
+              <div
+                role="status"
+                aria-live="polite"
+                className="rounded-lg bg-blue-50 dark:bg-slate-800/90 border border-blue-200 dark:border-brand-700 px-4 py-3 text-sm font-bold text-blue-700 dark:text-blue-300 flex items-center gap-2.5 animate-in fade-in duration-300"
+              >
+                <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-600 text-white">
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="12"
+                    height="12"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </span>
+                <span>Message sent — thank you</span>
+              </div>
             )}
             {contactState === "error" && contactError && (
               <p className="rounded-lg bg-blue-50 dark:bg-slate-800 border border-brand-300 px-3.5 py-2.5 text-sm font-bold text-brand-700 dark:text-brand-300">

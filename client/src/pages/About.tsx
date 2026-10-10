@@ -302,9 +302,17 @@ export default function About() {
               <br className="my-2" />
               That question became our mission. &rdquo;
             </blockquote>
-            <p className="mt-4 text-sm font-semibold text-brand-600 dark:text-brand-400">
-              Said By Hubert Senga, Founder and Executive Director of Generation
-            </p>
+            <div className="mt-4 flex items-center gap-3">
+              <SmartImage
+                src="/img/team/Hubert Senga.jpg"
+                alt="Hubert Senga"
+                className="h-11 w-11 shrink-0 rounded-full object-cover object-top border-2 border-brand-200 dark:border-brand-700 shadow-sm"
+                fallbackLabel="H"
+              />
+              <p className="text-sm font-semibold text-brand-600 dark:text-brand-400">
+                Said By Hubert Senga, Founder and Executive Director of Generation Aid
+              </p>
+            </div>
           </div>
 
           <div className="mt-8 space-y-4 text-base leading-relaxed text-neutral-body dark:text-slate-300">

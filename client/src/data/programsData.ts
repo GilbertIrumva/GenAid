@@ -13,6 +13,7 @@ export interface ProgramQuote {
   text: string;
   author: string;
   role?: string;
+  image?: string;
 }
 
 export interface ProgramMediaVideo {
@@ -414,6 +415,7 @@ export const defaultPrograms: DetailedProgram[] = [
       text: "I advocate for refugees because I am one of them. I know what it feels like to flee home, lose so much, arrive in a refugee camp, and still carry dreams for a better future. I have experienced how displacement can limit opportunities, but I have also seen the incredible talent and resilience within refugee communities. That is why I use my journey and my voice to open doors for others so being a refugee never means giving up on your dreams.",
       author: "Hubert Senga",
       role: "Founder & CEO, Generation Aid",
+      image: "/img/team/Hubert Senga.jpg",
     },
     gainsTitle: "Want to Connect with Hubert?",
     gainsImage: "/programs/Hubert connect.jpg",
