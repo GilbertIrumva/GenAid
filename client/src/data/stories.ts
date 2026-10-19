@@ -49,10 +49,6 @@ export const stories: Story[] = [
     program: "Digital Skills for Women",
     location: "Kakuma, Kenya",
     image: "/digital class.jpeg",
-    videoUrl:
-      "https://dms.licdn.com/playlist/vid/v2/D4D05AQFnqODgmSSLuA/mp4-640p-30fp-crf28/B4DZ9wo5iSKYBs-/0/1784301235980?e=2147483647&beta&t=F8LVxGLpmtLiPtbjdblGaJX_fTnrbng4nLutRny9ee0",
-    videoPoster:
-      "https://media.licdn.com/dms/image/v2/D4D05AQFnqODgmSSLuA/videocover-high/B4DZ9wo5iSKYBU-/0/1784301213053?e=2147483647&beta&t=CUD_yI87rBZ1qgGSfqXdUaZCSkX6TqGCuhTc0xwBzKQ",
     excerpt:
       "Roughly 100 resilient refugee women in Kakuma are braving scorching heat, long walks, and family responsibilities to master digital literacy and remote work—turning daily obstacles into life-changing breakthroughs.",
     content: [
@@ -73,7 +69,7 @@ export const stories: Story[] = [
       "With more women flocking to the center each week asking to enroll even mid-course, Generation Aid is committed to expanding its capacity in upcoming cohorts so that no motivated woman is left behind.",
       "We express our deep appreciation to our partners, RefugePoint and UNHCR, the UN Refugee Agency, whose steadfast collaboration helps make this digital empowerment journey possible.",
       "> “There are women here who are looking for this opportunity. Through your generosity and partnership, you can support them, invest in their potential, and walk alongside them on this transformative, uplifting journey.”",
-      "![Classroom learning in Kakuma](https://media.licdn.com/dms/image/v2/D4D05AQFnqODgmSSLuA/videocover-high/B4DZ9wo5iSKYBU-/0/1784301213053?e=2147483647&beta&t=CUD_yI87rBZ1qgGSfqXdUaZCSkX6TqGCuhTc0xwBzKQ)",
+      "![Classroom learning in Kakuma](/digital class.jpeg)",
     ],
   },
   {

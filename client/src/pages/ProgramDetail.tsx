@@ -449,11 +449,17 @@ export default function ProgramDetail() {
               </h2>
 
               {imgGains && (
-                <div className="mt-6 overflow-hidden rounded-2xl shadow-md aspect-[16/8] sm:aspect-[16/7] md:aspect-[16/6] w-full block min-h-[220px] max-h-[340px]">
+                <div
+                  className={`mt-6 overflow-hidden rounded-2xl shadow-md w-full block ${
+                    detail.connectLinks && detail.connectLinks.length > 0
+                      ? "aspect-[16/10] sm:aspect-[16/9] min-h-[360px] sm:min-h-[480px] max-h-[600px]"
+                      : "aspect-[16/9] sm:aspect-[16/8] md:aspect-[16/7] min-h-[260px] sm:min-h-[360px] max-h-[480px]"
+                  }`}
+                >
                   <SmartImage
                     src={imgGains}
                     alt={detail.gainsTitle || `${detail.title} community members`}
-                    className="h-full w-full object-cover object-[center_35%] transition duration-300 hover:scale-105"
+                    className="h-full w-full object-cover object-[center_25%] transition duration-300 hover:scale-105"
                   />
                 </div>
               )}

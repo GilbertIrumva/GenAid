@@ -112,7 +112,7 @@ export default function About() {
   useSEO({
     title: "About",
     description:
-      "Generation Aid is a refugee-led nonprofit in Kakuma Refugee Camp, Kenya, transforming lives through education, livelihoods, and innovation.",
+      "Generation Aid is a refugee-led humanitarian and community development organization in Kakuma Refugee Camp, Kenya, dedicated to empowering displaced communities through education, economic opportunity, innovation, and self-reliance.",
   });
 
   const objectives = t("about.objectives", { returnObjects: true }) as string[];
@@ -188,16 +188,25 @@ export default function About() {
 
           <div className="mt-6 space-y-4 text-base leading-relaxed text-neutral-body dark:text-slate-300">
             <p>
-              Many refugees in Kakuma have lived in prolonged displacement for years, with limited pathways to resettlement, employment, or economic independence. This leaves enormous talent and potential untapped.
+              Generation Aid is a refugee-led humanitarian and community development organization based in Kakuma Refugee Camp, Kenya, dedicated to empowering displaced and underserved communities through education, economic opportunity, innovation, social inclusion, and sustainable community development.
             </p>
             <p>
-              Today, we are living in a world increasingly powered by technology and opportunities, yet many refugees remain disconnected from the opportunities that the Global economy and community can offer.
+              Founded in Kakuma Refugee Camp, Kenya, Generation Aid works to transform communities affected by forced displacement from places of dependency and limited opportunity into environments where people can learn, create, earn, lead, and thrive.
+            </p>
+            <p>
+              Our work goes beyond digital skills training. We implement integrated programs in education and lifelong learning, workforce development and entrepreneurship, women&apos;s and youth empowerment, arts and culture, children&apos;s development, disability inclusion, environmental sustainability, and community-led innovation.
+            </p>
+            <p>
+              Through these interconnected initiatives, we address barriers to opportunity while strengthening individual capabilities, community resilience, economic independence, and local leadership.
+            </p>
+            <p>
+              We believe refugees are not merely beneficiaries of humanitarian assistance, but talented individuals, innovators, entrepreneurs, and changemakers capable of contributing meaningfully to their communities and the global economy.
+            </p>
+            <p>
+              Our vision is a world where displacement does not define a person&apos;s future, and every individual has the opportunity, resources, and agency to reach their full potential.
             </p>
             <p className="font-semibold text-neutral-heading dark:text-slate-100 text-lg">
-              At Generation Aid, we are changing that.
-            </p>
-            <p>
-              We are a refugee-led Community Based organization based in Kakuma Refugee Camp, founded by a refugee and social Entrepreneur <strong className="font-semibold text-neutral-heading dark:text-slate-100">Hubert Senga</strong>, to equip refugees with digital, vocational, entrepreneurial and livelihood skills, to exposure and connecting them to remote or onsite work and Global economic opportunities.
+              Our goal is simple, empowering refugees move from aid dependency to dignity, self-reliance and full participation in the wider economy.
             </p>
           </div>
 
@@ -249,11 +258,11 @@ export default function About() {
 
             {/* Large clear pillars image */}
             <div className="overflow-hidden rounded-2xl border-2 border-brand-100 dark:border-slate-700 bg-white dark:bg-slate-800 p-2 sm:p-4 md:p-6 shadow-xl">
-              <img
+              <SmartImage
                 src="/img/about/four-pillars.png"
                 alt="Generation Aid Four Simple Pillars: Approach from learning to economic independence"
                 className="w-full h-auto object-contain rounded-xl max-h-[850px] mx-auto"
-                loading="eager"
+                fallbackLabel="Four Pillars"
               />
             </div>
           </div>
@@ -326,19 +335,26 @@ export default function About() {
               But living in Kakuma taught me something important: being displaced or a refugee does not mean being without talent, ambition, or potential.
             </p>
             <p>
+              Many refugees in Kakuma have lived in prolonged displacement for years, with limited pathways to resettlement, employment, or economic independence. This leaves enormous talent and potential untapped.
+            </p>
+            <p>
+              Today, we are living in a world increasingly powered by technology and opportunities, yet many refugees remain disconnected from the opportunities that the Global economy and community can offer.
+            </p>
+            <p>
               Around me are teachers, entrepreneurs, young innovators, and skilled people ready to work but disconnected from opportunity. Refugees face barriers to Livelihood skills, formal employment, documentation, technology, and global markets.
             </p>
             <p>
-              So in 2019, I founded Generation Aid with that one fundamental question
+              So in 2019, I founded Generation Aid with that one fundamental question:
             </p>
           </div>
 
           {/* Hubert Senga Origin Photo */}
           <div className="mt-10 overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-xl group aspect-[4/3] sm:aspect-[16/11] max-h-[650px]">
-            <img
+            <SmartImage
               src="/img/about/hubert-origin.jpg"
               alt="Hubert Senga, Founder and Executive Director of Generation Aid"
               className="h-full w-full object-cover object-[center_25%] transition-transform duration-500 group-hover:scale-105"
+              fallbackLabel="Hubert Senga"
             />
           </div>
           <p className="mt-2 text-center text-xs text-slate-500 dark:text-slate-400 italic">
