@@ -352,6 +352,9 @@
       "subtitle": "Former les jeunes, les femmes et les enfants de Kakuma aux compétences numériques, aux arts créatifs, à l'agriculture durable et au bien-être émotionnel."
     },
     "programLabel": "Programme {{n}}",
+    "donate": "Faire un don",
+    "donateGlobalGiving": "Donner sur GlobalGiving",
+    "supportCampaign": "Soutenir sur GlobalGiving",
     "cta": {
       "title": "Aidez-nous à toucher plus de jeunes et d'enfants réfugiés.",
       "subtitle": "Parrainez une cohorte de programme, donnez du matériel ou devenez partenaire pour étendre les opportunités portées par les réfugiés."

@@ -69,6 +69,7 @@ export interface SanityProgram {
   bookingUrl?: string;
   ctaText?: string;
   ctaLink?: string;
+  donateUrl?: string;
   mediaVideos?: Array<{
     title: string;
     outlet: string;
@@ -180,6 +181,7 @@ export interface DisplayProgram {
   slug: string;
   category?: string;
   features?: string[];
+  donateUrl?: string;
   [key: string]: unknown;
 }
 
@@ -417,6 +419,7 @@ export async function getPrograms(): Promise<SanityProgram[]> {
     bookingUrl,
     ctaText,
     ctaLink,
+    donateUrl,
     mediaVideos
   }`);
 }
@@ -726,6 +729,7 @@ export function mapSanityProgramToDisplayProgram(
     bookingUrl: program.bookingUrl,
     ctaText: program.ctaText,
     ctaLink: program.ctaLink,
+    donateUrl: program.donateUrl || (program.ctaLink?.includes("globalgiving.org") ? program.ctaLink : undefined),
     mediaVideos: program.mediaVideos,
   };
 }

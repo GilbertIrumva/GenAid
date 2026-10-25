@@ -352,6 +352,9 @@
       "subtitle": "Equipping youth, women, and children in Kakuma with digital innovation, playful learning, creative arts, climate smart agriculture, and emotional wellbeing."
     },
     "programLabel": "Program {{n}}",
+    "donate": "Donate",
+    "donateGlobalGiving": "Donate on GlobalGiving",
+    "supportCampaign": "Support on GlobalGiving",
     "cta": {
       "title": "Help us reach more refugee youth & children.",
       "subtitle": "Sponsor a program cohort, donate equipment or partner with us to expand refugee led opportunities."

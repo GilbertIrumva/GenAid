@@ -63,6 +63,12 @@ export default function ProgramDetail() {
         Array.isArray(mapped.gallery) && mapped.gallery.length > 0
           ? mapped.gallery
           : matchedDefault?.gallery || [],
+      donateUrl:
+        mapped.donateUrl ||
+        matchedDefault?.donateUrl ||
+        (typeof mapped.ctaLink === "string" && mapped.ctaLink.includes("globalgiving.org")
+          ? mapped.ctaLink
+          : undefined),
     } as DetailedProgram;
   }, [matchedSanity, matchedDefault]);
 
@@ -151,29 +157,51 @@ export default function ProgramDetail() {
               </p>
             )}
 
-            {detail.ctaLink && (
-              <div className="mt-6 flex flex-wrap items-center gap-3">
-                {detail.ctaLink.startsWith("http") ? (
+            <div className="mt-8 flex flex-wrap items-center gap-3.5">
+              <a
+                href={
+                  detail.donateUrl ||
+                  (typeof detail.ctaLink === "string" && detail.ctaLink.includes("globalgiving.org")
+                    ? detail.ctaLink
+                    : SITE.donateUrl)
+                }
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold px-6 py-3 text-sm shadow-lg shadow-rose-950/40 transition transform hover:-translate-y-0.5"
+              >
+                <svg aria-hidden width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 21s-7-4.534-9.5-9.07C.94 8.94 2.4 5.5 5.6 5.5c1.74 0 3.41 1 4.4 2.5 1-1.5 2.66-2.5 4.4-2.5 3.2 0 4.66 3.44 3.1 6.43C19 16.466 12 21 12 21z" />
+                </svg>
+                <span>
+                  {typeof detail.ctaLink === "string" && detail.ctaLink.includes("globalgiving.org") && detail.ctaText
+                    ? detail.ctaText
+                    : t("programs.donateGlobalGiving", "Donate on GlobalGiving")}
+                </span>
+                <span className="opacity-80">↗</span>
+              </a>
+
+              {detail.ctaLink && !detail.ctaLink.includes("globalgiving.org") && (
+                detail.ctaLink.startsWith("http") ? (
                   <a
                     href={detail.ctaLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold px-5 py-2.5 text-sm shadow-md transition transform hover:-translate-y-0.5"
+                    className="inline-flex items-center gap-2 rounded-xl bg-white/15 hover:bg-white/25 border border-white/30 text-white font-bold px-5 py-3 text-sm backdrop-blur transition"
                   >
-                    <span>{detail.ctaText ?? "Support on GlobalGiving"}</span>
+                    <span>{detail.ctaText ?? "Partner With Us"}</span>
                     <span>↗</span>
                   </a>
                 ) : (
                   <Link
                     to={detail.ctaLink}
-                    className="inline-flex items-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold px-5 py-2.5 text-sm shadow-md transition"
+                    className="inline-flex items-center gap-2 rounded-xl bg-white/15 hover:bg-white/25 border border-white/30 text-white font-bold px-5 py-3 text-sm backdrop-blur transition"
                   >
-                    <span>{detail.ctaText ?? "Learn More"}</span>
+                    <span>{detail.ctaText ?? "Partner With Us"}</span>
                     <span>→</span>
                   </Link>
-                )}
-              </div>
-            )}
+                )
+              )}
+            </div>
           </div>
         </div>
       </section>
@@ -654,6 +682,43 @@ export default function ProgramDetail() {
               </p>
             </div>
 
+            {/* GlobalGiving Campaign Donation Card */}
+            <div className="rounded-2xl border border-rose-200 dark:border-rose-900/60 bg-gradient-to-br from-rose-50/70 to-white dark:from-rose-950/30 dark:to-slate-800 p-6 shadow-sm">
+              <div className="flex items-center justify-between gap-2">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-rose-100 dark:bg-rose-900/50 px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-rose-700 dark:text-rose-300">
+                  GlobalGiving Verified
+                </span>
+                <span className="text-[11px] font-semibold text-rose-600 dark:text-rose-400">100% Tax-Deductible</span>
+              </div>
+              <h3 className="mt-3 font-display text-base font-bold text-neutral-heading dark:text-slate-100">
+                Support this Program
+              </h3>
+              <p className="mt-2 text-xs leading-relaxed text-neutral-body dark:text-slate-300">
+                Directly fund learning materials, equipment, and learner sponsorships in Kakuma through our verified GlobalGiving campaign.
+              </p>
+              <a
+                href={
+                  detail.donateUrl ||
+                  (typeof detail.ctaLink === "string" && detail.ctaLink.includes("globalgiving.org")
+                    ? detail.ctaLink
+                    : SITE.donateUrl)
+                }
+                target="_blank"
+                rel="noreferrer"
+                className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-rose-600 hover:bg-rose-700 px-4 py-3 text-xs font-bold uppercase tracking-wider text-white shadow-md transition transform hover:-translate-y-0.5"
+              >
+                <svg aria-hidden width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 21s-7-4.534-9.5-9.07C.94 8.94 2.4 5.5 5.6 5.5c1.74 0 3.41 1 4.4 2.5 1-1.5 2.66-2.5 4.4-2.5 3.2 0 4.66 3.44 3.1 6.43C19 16.466 12 21 12 21z" />
+                </svg>
+                <span>
+                  {typeof detail.ctaLink === "string" && detail.ctaLink.includes("globalgiving.org") && detail.ctaText
+                    ? detail.ctaText
+                    : t("programs.donateGlobalGiving", "Donate on GlobalGiving")}
+                </span>
+                <span>↗</span>
+              </a>
+            </div>
+
             {/* How to Join / Apply / Engage */}
             <div className="rounded-2xl border border-brand-200 dark:border-brand-900/60 bg-brand-50/50 dark:bg-slate-800 p-6 shadow-sm">
               <div className="flex items-center gap-2">
@@ -812,15 +877,21 @@ export default function ProgramDetail() {
           </p>
           <div className="mt-4 flex flex-wrap justify-center gap-4">
             <a
-              href={SITE.donateUrl}
+              href={
+                detail.donateUrl ||
+                (typeof detail.ctaLink === "string" && detail.ctaLink.includes("globalgiving.org")
+                  ? detail.ctaLink
+                  : SITE.donateUrl)
+              }
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-bold text-brand-600 hover:bg-brand-50 transition shadow-md"
+              className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-bold text-rose-600 hover:bg-rose-50 transition shadow-md"
             >
               <svg aria-hidden width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 21s-7-4.534-9.5-9.07C.94 8.94 2.4 5.5 5.6 5.5c1.74 0 3.41 1 4.4 2.5 1-1.5 2.66-2.5 4.4-2.5 3.2 0 4.66 3.44 3.1 6.43C19 16.466 12 21 12 21z" />
               </svg>
               <span>{t("common.donate", "Donate to This Program")}</span>
+              <span className="text-xs opacity-80">↗</span>
             </a>
             <Link
               to="/contact"

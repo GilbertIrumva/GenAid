@@ -65,6 +65,7 @@ export interface DetailedProgram {
   bookingUrl?: string;
   ctaText?: string;
   ctaLink?: string;
+  donateUrl?: string;
   mediaVideos?: ProgramMediaVideo[];
 }
 
@@ -129,6 +130,8 @@ export const defaultPrograms: DetailedProgram[] = [
     ],
     howToJoin:
       "Enrollment is open through Generation Aid community learning centres and local partner schools. Parents, guardians, and educators can register eligible children during intake periods.",
+    donateUrl:
+      "https://www.globalgiving.org/donate/103731/humanitarian-resilience-aid/",
   },
   {
     id: "women-in-ai",
@@ -179,6 +182,8 @@ export const defaultPrograms: DetailedProgram[] = [
     ],
     howToJoin:
       "Interested refugee women can follow Generation Aid's official cohort announcements and apply online or at the digital lab. Applicants participate in an introductory interview and onboarding session.",
+    donateUrl:
+      "https://www.globalgiving.org/donate/103731/humanitarian-resilience-aid/",
   },
   {
     id: "storytelling",
@@ -231,6 +236,8 @@ export const defaultPrograms: DetailedProgram[] = [
     ],
     howToJoin:
       "Refugees and community members can express their interest via Generation Aid or submit a short story concept during open pitch windows.",
+    donateUrl:
+      "https://www.globalgiving.org/donate/103731/humanitarian-resilience-aid/",
   },
   {
     id: "creative-arts",
@@ -289,6 +296,8 @@ export const defaultPrograms: DetailedProgram[] = [
     ],
     howToJoin:
       "Artists can bring samples of their work to Senga Gallery or sign up for upcoming masterclasses during community open calls.",
+    donateUrl:
+      "https://www.globalgiving.org/donate/103731/humanitarian-resilience-aid/",
   },
   {
     id: "climate-action",
@@ -340,6 +349,8 @@ export const defaultPrograms: DetailedProgram[] = [
     ],
     howToJoin:
       "Join as a trainee farmer, volunteer nursery keeper, or community climate champion by connecting with the Generation Aid eco hub.",
+    donateUrl:
+      "https://www.globalgiving.org/donate/103731/humanitarian-resilience-aid/",
   },
   {
     id: "social-emotional-learning",
@@ -391,6 +402,8 @@ export const defaultPrograms: DetailedProgram[] = [
     ],
     howToJoin:
       "Children participate through Generation Aid learning centers. Parents, caregivers, schools, and community partners can register children at the start of each term.",
+    donateUrl:
+      "https://www.globalgiving.org/donate/103731/humanitarian-resilience-aid/",
   },
   {
     id: "advocacy",
@@ -519,6 +532,8 @@ export const defaultPrograms: DetailedProgram[] = [
           "Hubert Senga speaks on France 24 about the devastating impact of sudden humanitarian aid cuts in Kakuma and the urgent necessity of refugee self-reliance and digital inclusion.",
       },
     ],
+    donateUrl:
+      "https://www.globalgiving.org/donate/103731/humanitarian-resilience-aid/",
   },
   {
     id: "english-language-literacy",
@@ -582,6 +597,8 @@ export const defaultPrograms: DetailedProgram[] = [
     ],
     howToJoin:
       "Follow Generation Aid announcements for the next cohort intake. Space is allocated based on a brief placement assessment at our learning center.",
+    donateUrl:
+      "https://www.globalgiving.org/donate/103731/humanitarian-resilience-aid/",
   },
   {
     id: "womens-digital-skills",
@@ -637,6 +654,8 @@ export const defaultPrograms: DetailedProgram[] = [
     ],
     howToJoin:
       "Eligible refugee women aged 18 to 35 can register during upcoming cohort intake calls announced jointly by Generation Aid and RefugePoint.",
+    donateUrl:
+      "https://www.globalgiving.org/donate/103731/humanitarian-resilience-aid/",
   },
   {
     id: "computer-literacy-skills",
@@ -699,6 +718,8 @@ export const defaultPrograms: DetailedProgram[] = [
       "Interested participants can contact Generation Aid to find out about upcoming training cohorts, registration dates, eligibility requirements, schedules, and available spaces. Training opportunities may vary depending on the current cohort and program capacity.",
     ctaText: "Enroll / Inquire About Cohort",
     ctaLink: "/contact",
+    donateUrl:
+      "https://www.globalgiving.org/donate/103731/humanitarian-resilience-aid/",
   },
   {
     id: "emergency-response",
@@ -825,6 +846,8 @@ export const defaultPrograms: DetailedProgram[] = [
       "To ensure immediate crisis relief transitions into enduring resilience, restoring dignity, protecting every vulnerable child, and empowering refugee families to achieve self reliance.",
     ctaText: "Support Emergency Response on GlobalGiving",
     ctaLink:
+      "https://www.globalgiving.org/projects/emergency-refugees-in-kakuma-are-suffering/",
+    donateUrl:
       "https://www.globalgiving.org/projects/emergency-refugees-in-kakuma-are-suffering/",
   },
 ];

@@ -348,6 +348,12 @@ export const programType = defineType({
       type: "string",
     }),
     defineField({
+      name: "donateUrl",
+      title: "GlobalGiving Campaign / Donation URL",
+      type: "url",
+      description: "Direct link to this program's GlobalGiving campaign (e.g. https://www.globalgiving.org/projects/... or https://www.globalgiving.org/donate/103731/...)",
+    }),
+    defineField({
       name: "mediaVideos",
       title: "Featured Media & Broadcast Interviews",
       type: "array",

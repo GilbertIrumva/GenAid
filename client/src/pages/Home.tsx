@@ -507,7 +507,7 @@ export default function Home() {
                       {p.body}
                     </p>
                   </div>
-                  <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
+                  <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2">
                     <Link
                       to={`/programs/${targetId}`}
                       className="sir-link-underline text-xs uppercase tracking-wider font-extrabold text-brand-600 dark:text-brand-400 inline-flex items-center gap-1.5"
@@ -515,6 +515,25 @@ export default function Home() {
                       <span>Explore Program</span>
                       <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
                     </Link>
+
+                    <a
+                      href={
+                        ("donateUrl" in p && typeof p.donateUrl === "string" && p.donateUrl) ||
+                        ("ctaLink" in p && typeof p.ctaLink === "string" && p.ctaLink.includes("globalgiving.org")
+                          ? p.ctaLink
+                          : SITE.donateUrl)
+                      }
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 rounded-lg bg-rose-600 hover:bg-rose-700 text-white px-3 py-1.5 text-xs font-bold shadow-sm transition transform hover:-translate-y-0.5"
+                      title="Donate to this program on GlobalGiving"
+                    >
+                      <svg aria-hidden width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 21s-7-4.534-9.5-9.07C.94 8.94 2.4 5.5 5.6 5.5c1.74 0 3.41 1 4.4 2.5 1-1.5 2.66-2.5 4.4-2.5 3.2 0 4.66 3.44 3.1 6.43C19 16.466 12 21 12 21z" />
+                      </svg>
+                      <span>{t("common.donate", "Donate")}</span>
+                      <span className="text-[10px] opacity-80">↗</span>
+                    </a>
                   </div>
                 </div>
               </article>

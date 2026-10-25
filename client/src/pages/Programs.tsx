@@ -42,6 +42,7 @@ export default function Programs() {
         ...match,
         ...p,
         id: p.id || p.slug || match?.id || "",
+        donateUrl: (p.donateUrl as string) || match?.donateUrl || (typeof p.ctaLink === "string" && p.ctaLink.includes("globalgiving.org") ? p.ctaLink : SITE.donateUrl),
         features: (Array.isArray(p.features) && p.features.length > 0) ? p.features : (match?.features || []),
       } as DetailedProgram;
     });
@@ -82,6 +83,10 @@ export default function Programs() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {displayPrograms.map((p) => {
             const targetId = ("slug" in p && p.slug) || ("id" in p && p.id) || "";
+            const donateLink =
+              (p.donateUrl as string) ||
+              (typeof p.ctaLink === "string" && p.ctaLink.includes("globalgiving.org") ? p.ctaLink : SITE.donateUrl);
+
             return (
               <article
                 key={p.title}
@@ -104,17 +109,32 @@ export default function Programs() {
                     {p.title}
                   </h3>
                   <p className="mt-2 line-clamp-3 text-sm text-neutral-body dark:text-slate-300">{p.body}</p>
-                  {targetId ? (
-                    <div className="mt-auto pt-4">
+                  
+                  <div className="mt-auto pt-5 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between gap-3">
+                    {targetId ? (
                       <Link
                         to={`/programs/${targetId}`}
-                        className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400 hover:underline"
+                        className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400 hover:underline"
                       >
-                        <span>View program details</span>
+                        <span>View details</span>
                         <span>→</span>
                       </Link>
-                    </div>
-                  ) : null}
+                    ) : <span />}
+
+                    <a
+                      href={donateLink}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 rounded-lg bg-rose-600 hover:bg-rose-700 text-white px-3 py-1.5 text-xs font-bold shadow-sm transition transform hover:-translate-y-0.5"
+                      title="Donate to this program on GlobalGiving"
+                    >
+                      <svg aria-hidden width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 21s-7-4.534-9.5-9.07C.94 8.94 2.4 5.5 5.6 5.5c1.74 0 3.41 1 4.4 2.5 1-1.5 2.66-2.5 4.4-2.5 3.2 0 4.66 3.44 3.1 6.43C19 16.466 12 21 12 21z" />
+                      </svg>
+                      <span>{t("common.donate", "Donate")}</span>
+                      <span className="text-[10px] opacity-80">↗</span>
+                    </a>
+                  </div>
                 </div>
               </article>
             );
@@ -126,6 +146,8 @@ export default function Programs() {
       {programDetails.map((p, i) => {
         const imageFirst = i % 2 === 1;
         const targetId = p.slug || p.id;
+        const donateLink = p.donateUrl || (p.ctaLink?.includes("globalgiving.org") ? p.ctaLink : SITE.donateUrl);
+
         return (
           <Section
             key={targetId || p.title || i}
@@ -188,8 +210,8 @@ export default function Programs() {
                   </ul>
                 )}
 
-                {targetId && (
-                  <div className="mt-6">
+                <div className="mt-6 flex flex-wrap items-center gap-3">
+                  {targetId && (
                     <Link
                       to={`/programs/${targetId}`}
                       className="inline-flex items-center gap-2 rounded-xl bg-brand-600 dark:bg-brand-500 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white shadow-sm transition hover:bg-brand-700 dark:hover:bg-brand-400"
@@ -197,8 +219,20 @@ export default function Programs() {
                       <span>Explore Full Curriculum & Details</span>
                       <span>→</span>
                     </Link>
-                  </div>
-                )}
+                  )}
+                  <a
+                    href={donateLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 rounded-xl border border-rose-200 dark:border-rose-900/60 bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 dark:hover:bg-rose-900/60 text-rose-700 dark:text-rose-300 px-4 py-2.5 text-xs font-bold uppercase tracking-wider shadow-sm transition"
+                  >
+                    <svg aria-hidden width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="text-rose-600 dark:text-rose-400">
+                      <path d="M12 21s-7-4.534-9.5-9.07C.94 8.94 2.4 5.5 5.6 5.5c1.74 0 3.41 1 4.4 2.5 1-1.5 2.66-2.5 4.4-2.5 3.2 0 4.66 3.44 3.1 6.43C19 16.466 12 21 12 21z" />
+                    </svg>
+                    <span>{t("programs.donateGlobalGiving", "Donate on GlobalGiving")}</span>
+                    <span className="text-[10px] opacity-80">↗</span>
+                  </a>
+                </div>
               </div>
             </div>
           </Section>
